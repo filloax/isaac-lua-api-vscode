@@ -1,10 +1,10 @@
 {
 	"name": "isaac-lua-api-vscode",
-	"publisher": "filloax",
+	"publisher": "Filloax",
 	"displayName": "Binding of Isaac Lua API",
 	"description": "Adds support and autocomplete for the The Binding of Isaac: Repentance modding API",
-	"version": "1.0.0",
-	"icon": "ADD ICON",
+	"version": "1.0.1",
+	"icon": "icon.png",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/filloax/isaac-lua-api-vscode"

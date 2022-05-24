@@ -1,70 +1,60 @@
-# isaac-lua-api-vscode README
+<div align="center">
 
-This is the README for your extension "isaac-lua-api-vscode". After writing up a brief description, we recommend including the following sections.
+# Binding of Isaac Lua API
 
-## Features
+A VSCode Extension to add support and autocomplete for the The Binding of Isaac: Repentance modding API to the Lua Language Server by Sumneko.
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+[![Open in VSCode](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://open.vscode.dev/Filloax/isaac-lua-api-vscode) [![Build Status](https://github.com/ManticoreGamesInc/vscode-core/workflows/CI/badge.svg)](https://github.com/Filloax/isaac-lua-api-vscode/actions?workflow=CI) [![Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/Filloax.isaac-lua-api-vscode?label=Visual%20Studio%20Marketplace&logo=visual-studio-code "Current Version")](https://marketplace.visualstudio.com/items?itemName=Filloax.isaac-lua-api-vscode)
 
-For example if there is an image subfolder under your extension project workspace:
+![](https://i.imgur.com/iZDP2iy.png)
 
-\!\[feature X\]\(images/feature-x.png\)
+</div>
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+This extension uses the [Lua Language Server](https://microsoft.github.io/language-server-protocol/) by [Sumneko's](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) to add autocomplete for The Binding of Isaac: Repentance's modding API with [EmmyLua](https://github.com/sumneko/lua-language-server/wiki/EmmyLua-Annotations) annotations.
 
-## Requirements
+> Tired of having to go to the [docs](https://wofsauge.github.io/IsaacDocs/rep/) every time you want to mod any small thing? Of having to run the whole game to find out if you made an error that would have been immediately visible in the editor in any other language? Or just want an autocomplete that isn't "here's every single function name I found in the mod folder"? Then this might help you.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## How to use
+
+By default, with the extension global functions like `Game()`, `Vector(x, y)` and `Isaac.xxx` should already be recognized. To have it work for callback parameters, you'll need to add `---@param` tags, like so:
+
+```Lua
+---@param npc EntityNPC
+---@param intParameter integer
+---@param source EntityRef
+local myCallbackFunction(_, npc, intParameter, source)
+```
+
+Autocomplete should work with the type specifications too, so it shouldn't be too annoying. You should also do this for any other function where you want the autocomplete to work on its params, also adding `---@return` for return types.
+
+You can also use `---@type` for specific variables, more info on the [annotation documentation](https://github.com/sumneko/lua-language-server/wiki/EmmyLua-Annotations). Example:
+
+```Lua
+---@type ItemConfig_Item
+local item = [etc.]
+```
+
+More examples:
+
+![](https://i.imgur.com/1BiL3CE.png)
+![](https://i.imgur.com/WnC5IFv.png)
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+This extension has no settings; you can configure behavior in the Lua Language Server extension settings.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+None at the moment.
 
 ## Release Notes
 
 Users appreciate release notes as you update your extension.
 
-### 1.0.0
-
-Initial release of ...
-
 ### 1.0.1
 
-Fixed issue #.
+Page fixes
 
-### 1.1.0
+### 1.0.0
 
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Initial release.
