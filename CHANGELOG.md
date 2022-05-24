@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.1.0]
+
+- Added enums to the autocomplete
+- Fix ItemConfig autocomplete
+
 ## [1.0.4]
 
 - Page fixes (still still learning VSCode publishing)

@@ -51,6 +51,10 @@ None at the moment.
 
 ## Release Notes
 
+### 1.1.0
+
+Added enums to the autocomplete.
+
 ### 1.0.0
 
 Initial release.
