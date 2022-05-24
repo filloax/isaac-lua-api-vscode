@@ -196,7 +196,7 @@ local CppList_intValues = {}
 ---@field FlipX boolean
 ---@field FrameCount integer
 ---@field Friction number
----@field EntityGridCollisionClass EntityGridCollisionClass
+---@field GridCollisionClass EntityGridCollisionClass
 ---@field HitPoints number
 ---@field Index integer
 ---@field InitSeed integer
@@ -212,6 +212,7 @@ local CppList_intValues = {}
 ---@field SpawnerType integer @EntityType
 ---@field SpawnerVariant integer
 ---@field SpawnGridIndex integer
+---@field Color Color
 ---@field SplatColor Color
 ---@field SpriteOffset Vector
 ---@field SpriteRotation number
@@ -369,7 +370,7 @@ end
 function Entity:HasMortalDamage()
 end
 
----@param includeDead boolean
+---@param includeDead? boolean
 ---@return boolean
 function Entity:IsActiveEnemy(includeDead)
 end
@@ -7677,7 +7678,7 @@ end
 ---@field VarData integer
 local GridEntity = {}
 
----@param Immediate boolean
+---@param Immediate? boolean
 ---@return boolean
 function GridEntity:Destroy(Immediate)
 end
@@ -7855,7 +7856,7 @@ function GridEntityDoor:TryBlowOpen(FromExplosion, source)
 end
 
 ---@param player EntityPlayer
----@param Force boolean
+---@param Force? boolean
 ---@return boolean
 function GridEntityDoor:TryUnlock(player, Force)
 end
@@ -8112,14 +8113,14 @@ end
 ---@param SubType? integer @default: -1
 ---@param Cache? boolean @default: false
 ---@param IgnoreFriendly? boolean @default: false
----@return table
+---@return Entity[]
 function Isaac.FindByType(Type, Variant, SubType, Cache, IgnoreFriendly)
 end
 
 ---@param Position Vector
 ---@param Radius number
 ---@param Partitions? integer @default: 0xFFFFFFFF
----@return table
+---@return Entity[]
 function Isaac.FindInRadius(Position, Radius, Partitions)
 end
 
@@ -10021,8 +10022,8 @@ function Sprite:RemoveOverlay()
 end
 
 ---@param Position Vector
----@param TopLeftClamp Vector
----@param BottomRightClamp Vector
+---@param TopLeftClamp? Vector @default: Vector.Zero
+---@param BottomRightClamp? Vector @default: Vector.Zero
 function Sprite:Render(Position, TopLeftClamp, BottomRightClamp)
 end
 
@@ -10041,16 +10042,16 @@ end
 function Sprite:Reset()
 end
 
+--- Passing Reset as false will continue the animation from the current frame.
+--- This is a really good tool for familiars that alternate between different
+--- FloatDirection animations dynamically and other entities that follow
+--- similar behaviors.
 ---@param AnimationName string
 ---@param Reset? boolean @default: true
 ---@return boolean
 function Sprite:SetAnimation(AnimationName, Reset)
 end
 
---- Passing Reset as false will continue the animation from the current frame.
---- This is a really good tool for familiars that alternate between different
---- FloatDirection animations dynamically and other entities that follow
---- similar behaviors.
 ---@param AnimationName string
 ---@param FrameNum integer
 ---@overload fun(self: Sprite, FrameNum: integer)

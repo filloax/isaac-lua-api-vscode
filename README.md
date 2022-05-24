@@ -47,7 +47,10 @@ This extension has no settings; you can configure behavior in the Lua Language S
 
 ## Known Issues
 
-None at the moment.
+There are some issues on the Lua Language Server (which otherwise is very very good) side. They might be fixed when the language server is updated.
+
+- Variables obtained from vector and color operators won't be detected as the correct type: for example, `local c = a + b` where `a` and `b` are Vectors won't have `c` be recognized as a Vector.
+- Entity convertion operations (like `entity = entity:ToNPC()`) won't make the language server recognize the variable as the new type after the call; either use a separate variable or even better a `---@type EntityNPC` or equivalent comment above it, for now.
 
 ## Release Notes
 
