@@ -1,0 +1,3 @@
+[submodule "isaac-api-autocomplete-lua"]
+	path = isaac-api-autocomplete-lua
+	url = https://github.com/filloax/isaac-api-autocomplete-lua
