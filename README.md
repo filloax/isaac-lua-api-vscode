@@ -10,7 +10,7 @@ A VSCode Extension to add support and autocomplete for the The Binding of Isaac:
 
 </div>
 
-This extension uses the [Lua Language Server](https://microsoft.github.io/language-server-protocol/) by [Sumneko's](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) to add autocomplete for The Binding of Isaac: Repentance's modding API with [EmmyLua](https://github.com/sumneko/lua-language-server/wiki/EmmyLua-Annotations) annotations.
+This extension uses the [Lua Language Server](https://microsoft.github.io/language-server-protocol/) by [Sumneko](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) to add autocomplete for The Binding of Isaac: Repentance's modding API with [EmmyLua](https://github.com/sumneko/lua-language-server/wiki/EmmyLua-Annotations) annotations.
 
 > Tired of having to go to the [docs](https://wofsauge.github.io/IsaacDocs/rep/) every time you want to mod any small thing? Of having to run the whole game to find out if you made an error that would have been immediately visible in the editor in any other language? Or just want an autocomplete that isn't "here's every single function name I found in the mod folder"? Then this might help you.
 
