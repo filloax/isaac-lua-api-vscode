@@ -14,6 +14,8 @@ This extension uses the [Lua Language Server](https://microsoft.github.io/langua
 
 > Tired of having to go to the [docs](https://wofsauge.github.io/IsaacDocs/rep/) every time you want to mod any small thing? Of having to run the whole game to find out if you made an error that would have been immediately visible in the editor in any other language? Or just want an autocomplete that isn't "here's every single function name I found in the mod folder"? Then this might help you.
 
+This extension is based on the [isaac-api-autocomplete-lua](https://github.com/filloax/isaac-api-autocomplete-lua) repository.
+
 ## How to use
 
 By default, with the extension global functions like `Game()`, `Vector(x, y)` and `Isaac.xxx` should already be recognized. To have it work for callback parameters, you'll need to add `---@param` tags, like so:
@@ -50,10 +52,6 @@ None at the moment.
 ## Release Notes
 
 Users appreciate release notes as you update your extension.
-
-### 1.0.1
-
-Page fixes
 
 ### 1.0.0
 

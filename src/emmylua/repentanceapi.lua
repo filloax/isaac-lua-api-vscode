@@ -3034,7 +3034,7 @@ end
 function GridEntityDoor:CanBlowOpen()
 end
 
----@param Force boolean
+---@param Force? boolean
 function GridEntityDoor:Close(Force)
 end
 
