@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.4]
+
+- Page fixes (still still learning VSCode publishing)
+
 # [1.0.3]
 
 - Update API to repository changes.
