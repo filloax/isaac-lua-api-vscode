@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import * as path from "path";
+import { ISAAC_GLOBALS } from './isaacGlobals';
 
 // Used https://github.com/ManticoreGamesInc/vscode-core 
 // (with MIT license) as reference for how to do this
@@ -9,11 +10,15 @@ import * as path from "path";
 export function activate(context: vscode.ExtensionContext) {
     const emmyluaPath = path.join("out", "emmylua");
     setExternalLibrary(context, emmyluaPath, true);
-    updateConfig();
+    setDefinedGlobals(true);
+    setMiscConfig(true);
+    updateMaxFileSize();
 }
 
 export function deactivate(context: vscode.ExtensionContext) {
     const emmyluaPath = path.join("out", "emmylua");
+    setMiscConfig(false);
+    setDefinedGlobals(false);
     setExternalLibrary(context, emmyluaPath, false);
 }
 
@@ -50,7 +55,45 @@ export function setExternalLibrary(context: vscode.ExtensionContext, folder: str
     }
 }
 
-function updateConfig() {
+function setDefinedGlobals(enable: boolean) {
+    const config = vscode.workspace.getConfiguration("Lua", null);
+    const configKey = "diagnostics.globals";
+    const definedGlobals: string[] | undefined = config.get(configKey);
+
+    if (definedGlobals) {
+        ISAAC_GLOBALS.forEach(global => {
+            const index = definedGlobals.indexOf(global);
+            if (index === -1 && enable) {
+                definedGlobals.push(global);
+                console.log(`added ${global} to globals`);
+            } else if (index !== -1 && !enable) {
+                definedGlobals.splice(index, 1);
+                console.log(`removed ${global} from globals`);
+            }
+        });
+        config.update(configKey, definedGlobals);
+    }
+}
+
+function setMiscConfig(enable: boolean) {
+    const filesConfig = vscode.workspace.getConfiguration("files", null);
+    const config = vscode.workspace.getConfiguration("Lua", null);
+    const associationsKey = "associations";
+    const associations: any = filesConfig.get(associationsKey);
+
+    if (associations) {
+        if (enable && !("*.anm2" in associations)) {
+            associations["*.anm2"] = "xml";
+            console.log("Added .anm2 recognition");
+        } else if (!enable && "*.anm2" in associations) {
+            delete associations["*.anm2"];
+            console.log("Removed .anm2 recognition");
+        }
+        filesConfig.update(associationsKey, associations);
+    }
+}
+
+function updateMaxFileSize() {
     const ourfilesize = 120;
 
     const sumneko = vscode.workspace.getConfiguration("Lua");
