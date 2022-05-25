@@ -1,5 +1,9 @@
 # Change Log
 
+# [1.1.2]
+
+- Add API globals to Lua settings 
+
 ## [1.1.1]
 
 - Fix Isaac.FindInRadius and Isaac.FindByType return type
