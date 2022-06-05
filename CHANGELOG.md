@@ -1,5 +1,10 @@
 # Change Log
 
+* [1.1.3]
+
+- Fix Entity:ToX() methods
+- Fix RoomDescriptor enum namespace
+
 # [1.1.2]
 
 - Add API globals to Lua settings 

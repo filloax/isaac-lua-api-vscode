@@ -466,23 +466,23 @@ end
 function Entity:TakeDamage(Damage, Flags, Source, DamageCountdown)
 end
 
----@return any @EntityBomb
+---@return EntityBomb
 function Entity:ToBomb()
 end
 
----@return any @EntityEffect
+---@return EntityEffect
 function Entity:ToEffect()
 end
 
----@return any @EntityFamiliar
+---@return EntityFamiliar
 function Entity:ToFamiliar()
 end
 
----@return any @EntityKnife
+---@return EntityKnife
 function Entity:ToKnife()
 end
 
----@return any @EntityLaser
+---@return EntityLaser
 function Entity:ToLaser()
 end
 
@@ -490,19 +490,19 @@ end
 function Entity:ToNPC()
 end
 
----@return any @EntityPickup
+---@return EntityPickup
 function Entity:ToPickup()
 end
 
----@return any @EntityPlayer
+---@return EntityPlayer
 function Entity:ToPlayer()
 end
 
----@return any @EntityProjectile
+---@return EntityProjectile
 function Entity:ToProjectile()
 end
 
----@return any @EntityTear
+---@return EntityTear
 function Entity:ToTear()
 end
 
@@ -7007,32 +7007,32 @@ RenderMode = {
 }
 
 	-- RoomDescriptor.DISPLAY_*
-ItemConfig.DISPLAY_NONE = 0
-ItemConfig.DISPLAY_BOX = 1
-ItemConfig.DISPLAY_LOCK = 2
-ItemConfig.DISPLAY_ICON = 4
-ItemConfig.DISPLAY_ALL = 5
+RoomDescriptor.DISPLAY_NONE = 0
+RoomDescriptor.DISPLAY_BOX = 1
+RoomDescriptor.DISPLAY_LOCK = 2
+RoomDescriptor.DISPLAY_ICON = 4
+RoomDescriptor.DISPLAY_ALL = 5
 	
 	-- RoomDescriptor.FLAG_*
-ItemConfig.FLAG_CLEAR = 1<<0						-- Room is clear, don't spawn enemies when visiting
-ItemConfig.FLAG_PRESSURE_PLATES_TRIGGERED = 1<<1	-- All pressure plates have been triggered in this room. This won't be set if there are no trigger pressure plates in the first place.
-ItemConfig.FLAG_SACRIFICE_DONE = 1<<2				-- Sacrifice room has paid out
-ItemConfig.FLAG_CHALLENGE_DONE = 1<<3				-- Challenge room finished
-ItemConfig.FLAG_SURPRISE_MINIBOSS = 1<<4			-- Load Greed/Krampus instead of the room specified by Type, Variant
-ItemConfig.FLAG_HAS_WATER = 1<<5					-- Pits in this room contain water
-ItemConfig.FLAG_ALT_BOSS_MUSIC = 1<<6				-- Play alternate boss music in this room
-ItemConfig.FLAG_NO_REWARD = 1<<7					-- Don't pay out with a reward when clearing this room, used for traps that lock the player in the room when triggered
-ItemConfig.FLAG_FLOODED = 1<<8					-- Was flooded by an item (i.e. Flush)
-ItemConfig.FLAG_PITCH_BLACK = 1<<9				-- Complete darkness
-ItemConfig.FLAG_RED_ROOM = 1<<10					-- Room spawned by Red Key
-ItemConfig.FLAG_DEVIL_TREASURE = 1<<11			-- Treasure room transformed by Devil's Crown
-ItemConfig.FLAG_USE_ALTERNATE_BACKDROP = 1<<12	-- Use an alternate backdrop (this is used by some floors such as Dross and Ashpit)
-ItemConfig.FLAG_CURSED_MIST = 1<<13				-- Room is covered in cursed mist, player is temporarily reduced to base items and stats
-ItemConfig.FLAG_MAMA_MEGA = 1<<14					-- Mama Mega has activated in this room
-ItemConfig.FLAG_NO_WALLS = 1<<15					-- Don't generate walls (for Beast arena)
-ItemConfig.FLAG_ROTGUT_CLEARED = 1<<16			-- Rotgut's heart was killed, immediately play Rotgut's death animation when reentering this room
-ItemConfig.FLAG_PORTAL_LINKED = 1<<17				-- A portal spawned by Lil Portal now links to this room, don't create more portals that link to it
-ItemConfig.FLAG_BLUE_REDIRECT = 1<<18				-- If walking into this room through a door, redirect to a Blue Womb room instead (this is used by Blue Key)
+RoomDescriptor.FLAG_CLEAR = 1<<0						-- Room is clear, don't spawn enemies when visiting
+RoomDescriptor.FLAG_PRESSURE_PLATES_TRIGGERED = 1<<1	-- All pressure plates have been triggered in this room. This won't be set if there are no trigger pressure plates in the first place.
+RoomDescriptor.FLAG_SACRIFICE_DONE = 1<<2				-- Sacrifice room has paid out
+RoomDescriptor.FLAG_CHALLENGE_DONE = 1<<3				-- Challenge room finished
+RoomDescriptor.FLAG_SURPRISE_MINIBOSS = 1<<4			-- Load Greed/Krampus instead of the room specified by Type, Variant
+RoomDescriptor.FLAG_HAS_WATER = 1<<5					-- Pits in this room contain water
+RoomDescriptor.FLAG_ALT_BOSS_MUSIC = 1<<6				-- Play alternate boss music in this room
+RoomDescriptor.FLAG_NO_REWARD = 1<<7					-- Don't pay out with a reward when clearing this room, used for traps that lock the player in the room when triggered
+RoomDescriptor.FLAG_FLOODED = 1<<8					-- Was flooded by an item (i.e. Flush)
+RoomDescriptor.FLAG_PITCH_BLACK = 1<<9				-- Complete darkness
+RoomDescriptor.FLAG_RED_ROOM = 1<<10					-- Room spawned by Red Key
+RoomDescriptor.FLAG_DEVIL_TREASURE = 1<<11			-- Treasure room transformed by Devil's Crown
+RoomDescriptor.FLAG_USE_ALTERNATE_BACKDROP = 1<<12	-- Use an alternate backdrop (this is used by some floors such as Dross and Ashpit)
+RoomDescriptor.FLAG_CURSED_MIST = 1<<13				-- Room is covered in cursed mist, player is temporarily reduced to base items and stats
+RoomDescriptor.FLAG_MAMA_MEGA = 1<<14					-- Mama Mega has activated in this room
+RoomDescriptor.FLAG_NO_WALLS = 1<<15					-- Don't generate walls (for Beast arena)
+RoomDescriptor.FLAG_ROTGUT_CLEARED = 1<<16			-- Rotgut's heart was killed, immediately play Rotgut's death animation when reentering this room
+RoomDescriptor.FLAG_PORTAL_LINKED = 1<<17				-- A portal spawned by Lil Portal now links to this room, don't create more portals that link to it
+RoomDescriptor.FLAG_BLUE_REDIRECT = 1<<18				-- If walking into this room through a door, redirect to a Blue Womb room instead (this is used by Blue Key)
 
 SkinColor = {
 	SKIN_PINK = -1,
