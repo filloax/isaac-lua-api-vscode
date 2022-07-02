@@ -10230,6 +10230,30 @@ end
 ---@field Y number
 local Vector = {}
 
+---@param Right Vector
+---@return Vector
+function Vector:__add(Right)
+end
+
+---@param Modifier number|Vector
+---@return Vector
+function Vector:__div(Modifier)
+end
+
+---@param Modifier number|Vector
+---@return Vector
+function Vector:__mul(Modifier)
+end
+
+---@param Right Vector
+---@return Vector
+function Vector:__sub(Right)
+end
+
+---@return Vector
+function Vector:__unm()
+end
+
 ---@param MinX number
 ---@param MinY number
 ---@param MaxX number

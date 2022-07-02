@@ -1,5 +1,11 @@
 # Change Log
 
+* [1.2.0]
+
+- Settings are now applied locally to the project, without affecting the global settings of the Lua extension, will be configurable in the future on a per-project basis
+- Added "workspaceSettings" setting to disable changing base VSCode settings (ie anm2 to XML file associations)
+- Added placeholder metamethods (:__add, etc) to Vector, will replace with proper metamethod definitions when the Lua extension adds them
+
 * [1.1.3]
 
 - Fix Entity:ToX() methods

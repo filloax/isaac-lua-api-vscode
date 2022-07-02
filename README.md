@@ -54,10 +54,15 @@ There are some issues on the Lua Language Server (which otherwise is very very g
 
 ## Release Notes
 
+## 1.2.0
+
+- Settings are now applied locally to the project, without affecting the global settings of the Lua extension, will be configurable in the future on a per-project basis
+- Added "workspaceSettings" setting to disable changing base VSCode settings (ie anm2 to XML file associations)
+
 ### 1.1.0
 
-Added enums to the autocomplete.
+- Added enums to the autocomplete.
 
 ### 1.0.0
 
-Initial release.
+- Initial release.
