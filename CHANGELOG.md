@@ -1,5 +1,9 @@
 # Change Log
 
+* [1.2.1]
+
+- Fixed some return types for Isaac and Entity classes
+
 * [1.2.0]
 
 - Settings are now applied locally to the project, without affecting the global settings of the Lua extension, will be configurable in the future on a per-project basis

@@ -208,8 +208,8 @@ local CppList_intValues = {}
 ---@field RenderZOffset integer
 ---@field Size number
 ---@field SizeMulti Vector
----@field SpawnerEntity Entity
----@field SpawnerType integer @EntityType
+---@field SpawnerEntity Entity?
+---@field SpawnerType EntityType
 ---@field SpawnerVariant integer
 ---@field SpawnGridIndex integer
 ---@field Color Color
@@ -220,7 +220,7 @@ local CppList_intValues = {}
 ---@field SubType integer
 ---@field Target Entity
 ---@field TargetPosition Vector
----@field Type integer @EntityType
+---@field Type EntityType
 ---@field Variant integer
 ---@field Velocity Vector
 ---@field Visible boolean
@@ -8125,16 +8125,16 @@ function Isaac.FindInRadius(Position, Radius, Partitions)
 end
 
 ---@param cardHudName string
----@return integer
+---@return Card
 function Isaac.GetCardIdByName(cardHudName)
 end
 
----@return integer
+---@return Challenge
 function Isaac.GetChallenge()
 end
 
 ---@param challengeName string
----@return integer
+---@return Challenge
 function Isaac.GetChallengeIdByName(challengeName)
 end
 
@@ -8144,12 +8144,12 @@ function Isaac.GetCostumeIdByPath(path)
 end
 
 ---@param curseName string
----@return integer
+---@return LevelCurse
 function Isaac.GetCurseIdByName(curseName)
 end
 
 ---@param entityName string
----@return integer
+---@return EntityType
 function Isaac.GetEntityTypeByName(entityName)
 end
 
@@ -8173,17 +8173,17 @@ function Isaac.GetItemConfig()
 end
 
 ---@param itemName string
----@return integer
+---@return CollectibleType
 function Isaac.GetItemIdByName(itemName)
 end
 
 ---@param musicName string
----@return integer
+---@return Music
 function Isaac.GetMusicIdByName(musicName)
 end
 
 ---@param pillEffect string
----@return integer
+---@return PillEffect
 function Isaac.GetPillEffectByName(pillEffect)
 end
 
@@ -8202,7 +8202,7 @@ end
 function Isaac.GetRandomPosition()
 end
 
----@return table
+---@return Entity[]
 function Isaac.GetRoomEntities()
 end
 
@@ -8219,7 +8219,7 @@ function Isaac.GetScreenWidth()
 end
 
 ---@param soundName string
----@return integer
+---@return SoundEffect
 function Isaac.GetSoundIdByName(soundName)
 end
 
@@ -8233,7 +8233,7 @@ function Isaac.GetTime()
 end
 
 ---@param trinketName string
----@return integer
+---@return TrinketType
 function Isaac.GetTrinketIdByName(trinketName)
 end
 
