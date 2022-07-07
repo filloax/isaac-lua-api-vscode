@@ -1,5 +1,9 @@
 # Change Log
 
+* [1.2.2]
+
+- Fixed associations setting
+
 * [1.2.1]
 
 - Fixed some return types for Isaac and Entity classes
