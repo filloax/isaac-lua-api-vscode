@@ -131,7 +131,7 @@ function setMiscConfig(enable: boolean) {
 
     const filesConfig = vscode.workspace.getConfiguration("files", null);
     const associationsKey = "associations";
-    const associations: any = filesConfig[associationsKey];
+    const associations: any = filesConfig.get(associationsKey);
 
     if (associations) {
         if (enable && !("*.anm2" in associations)) {
