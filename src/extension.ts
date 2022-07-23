@@ -44,7 +44,7 @@ export function activate(context: vscode.ExtensionContext) {
         // console.log(JSON.stringify(luaCfg));
     });
 
-    resetOldVersions(context);
+    // resetOldVersions(context);
 }
 
 export function deactivate(context: vscode.ExtensionContext) {
