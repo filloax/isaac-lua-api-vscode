@@ -49,10 +49,29 @@ This extension has no settings; you can configure behavior in the Lua Language S
 
 There are some issues on the Lua Language Server (which otherwise is very very good) side. They might be fixed when the language server is updated.
 
-- Variables obtained from vector and color operators won't be detected as the correct type: for example, `local c = a + b` where `a` and `b` are Vectors won't have `c` be recognized as a Vector.
-- Entity convertion operations (like `entity = entity:ToNPC()`) won't make the language server recognize the variable as the new type after the call; either use a separate variable or even better a `---@type EntityNPC` or equivalent comment above it, for now.
+- Vector multiplication/division doesn't support number-vector operators such as
+
+```
+local a = Vector(0,1)
+local b = 2 * a
+```
 
 ## Release Notes
+
+See [CHANGELOG.md](CHANGELOG.md) for full changes.
+
+## 1.3.0
+
+- Use vscode-lua's 3.5.0 new features:
+    - @operator: Vectors and other classes with custom operators should work, currently doesn't support number-vector operators such as
+
+    ```
+    local a = Vector(0,1)
+    local b = 2 * a
+    ```
+    - @enum: Enums are now properly defined as enum types
+- Fix EntityPlayer:UseActiveItem overloading
+- Fix removing old versions of library
 
 ## 1.2.0
 

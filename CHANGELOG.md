@@ -1,5 +1,18 @@
 # Change Log
 
+* [1.3.0]
+
+- Use vscode-lua's 3.5.0 new features:
+    - @operator: Vectors and other classes with custom operators should work, currently doesn't support number-vector operators such as
+
+    ```
+    local a = Vector(0,1)
+    local b = 2 * a
+    ```
+    - @enum: Enums are now properly defined as enum types
+- Fix EntityPlayer:UseActiveItem overloading
+- Fix removing old versions of library
+
 * [1.2.2]
 
 - Fixed associations setting

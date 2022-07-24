@@ -11,5 +11,6 @@
     "Lua.diagnostics.globals": [],
     "files.associations": {
         "*.anm2": "xml"
-    }
+    },
+    "Lua.runtime.unicodeName": true
 }
