@@ -84,8 +84,8 @@ export function setExternalLibrary(config: any, context: vscode.ExtensionContext
         // remove any older versions of our path e.g. "publisher.name-0.0.1"
         for (let i = library.length - 1; i >= 0; i--) {
             const el = library[i];
-            const isSelfExtension = el.indexOf(extensionId) > -1;
-            const isCurrentVersion = el.indexOf(extensionPath) > -1;
+            const isSelfExtension = el.toLowerCase().indexOf(extensionId.toLowerCase()) > -1;
+            const isCurrentVersion = el.toLowerCase().indexOf(extensionPath.toLowerCase()) > -1;
             if (isSelfExtension && !isCurrentVersion) {
                 library.splice(i, 1);
             }
