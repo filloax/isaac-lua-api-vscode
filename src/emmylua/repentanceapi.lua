@@ -7529,7 +7529,7 @@ end
 function Game:HasEncounteredBoss(Boss, Variant)
 end
 
----@return integer
+---@return boolean
 function Game:HasHallucination()
 end
 
@@ -7600,7 +7600,7 @@ end
 ---@param Variant integer
 ---@param Position Vector
 ---@param Velocity Vector
----@param Spawner Entity
+---@param Spawner Entity?
 ---@param SubType integer
 ---@param Seed integer
 ---@return Entity
@@ -8302,7 +8302,7 @@ end
 ---@param entitySubtype integer
 ---@param position Vector
 ---@param velocity Vector
----@param Spawner Entity
+---@param Spawner Entity?
 ---@return Entity
 function Isaac.Spawn(entityType, entityVariant, entitySubtype, position, velocity, Spawner)
 end
