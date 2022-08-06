@@ -1,5 +1,9 @@
 # Change Log
 
+* [1.3.3]
+
+- Fix UseActiveItem
+
 * [1.3.2]
 
 - Fix Isaac.Spawn and Game:Spawn parent not being nullable

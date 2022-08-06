@@ -2168,7 +2168,7 @@ end
 ---@param Item CollectibleType
 ---@param UseFlags? UseFlag @default: 0
 ---@param Slot? ActiveSlot @default: -1
----@overload fun(Item: CollectibleType, ShowAnim?: boolean, KeepActiveItem?: boolean, AllowNonMainPlayer?: boolean, ToAddCostume?: boolean, Slot?: ActiveSlot)
+---@overload fun(self: EntityPlayer, Item: CollectibleType, ShowAnim?: boolean, KeepActiveItem?: boolean, AllowNonMainPlayer?: boolean, ToAddCostume?: boolean, Slot?: ActiveSlot)
 function EntityPlayer:UseActiveItem(Item, UseFlags, Slot)
 end
 
