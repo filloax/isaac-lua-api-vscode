@@ -26,6 +26,7 @@ def merge_lua_in_dir(path: str, out: TextIO):
 
 def main():
     with open(os.path.join(EMMYLUA_DIR, API_OUT_NAME), 'w') as f:
+        f.write("---@diagnostic disable: missing-return\n\n")
         merge_lua_in_dir(API_META_DIR, f)
 
 
