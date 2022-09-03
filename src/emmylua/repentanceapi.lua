@@ -1,3 +1,5 @@
+---@diagnostic disable: missing-return
+
 ---@class ActiveItemDesc
 ---@field BatteryCharge integer
 ---@field Charge integer
@@ -987,7 +989,7 @@ function EntityNPC:ResetPathFinderTarget()
 end
 
 ---@param Position Vector
----@param Spawner Entity
+---@param Spawner? Entity
 ---@param TargetPos Vector
 ---@param Big boolean
 ---@param YOffset number
@@ -2075,8 +2077,8 @@ function EntityPlayer:SetPill(SlotId, Pill)
 end
 
 ---@param Type CollectibleType
----@param Slot ActiveSlot
----@param KeepInPools boolean
+---@param Slot? ActiveSlot
+---@param KeepInPools? boolean
 function EntityPlayer:SetPocketActiveItem(Type, Slot, KeepInPools)
 end
 
@@ -8074,7 +8076,7 @@ end
 function Isaac.CountEnemies()
 end
 
----@param Spawner Entity
+---@param Spawner? Entity  Optionally specify only entities spawned by this entity
 ---@param Type? EntityType @default: EntityType.ENTITY_NULL
 ---@param Variant? integer @default: -1
 ---@param SubType? integer @default: -1
@@ -8229,7 +8231,7 @@ end
 ---@param gridEntityType GridEntityType
 ---@param variant integer
 ---@param position Vector
----@param forced boolean
+---@param forced? boolean [bug] currently doesn't have any effect
 ---@return GridEntity
 function Isaac.GridSpawn(gridEntityType, variant, position, forced)
 end

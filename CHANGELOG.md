@@ -1,5 +1,10 @@
 # Change Log
 
+* [1.3.4]
+
+- Fix warnings in repentanceapi.lua
+- Fix function params for Isaac.CountEntities, Isaac.GridSpawn, EntityPlayer:SetPocketActive, EntityNPC.ThrowSpider
+
 * [1.3.3]
 
 - Fix UseActiveItem
