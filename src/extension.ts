@@ -34,6 +34,7 @@ export function activate(context: vscode.ExtensionContext) {
         }
     }).then(() => {
         luaCfg["$schema"] = "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json";
+        luaCfg["runtime.version"] = "Lua 5.3";
 
         setExternalLibrary(luaCfg, context, emmyluaPath, true);
         setDefinedGlobals(luaCfg, true);
