@@ -137,4 +137,5 @@ export const ISAAC_GLOBALS = [
     "CustomGameOver",
     "Encyclopedia",
     "DetailedRespawn",
+    "MinimapAPI",
 ];
