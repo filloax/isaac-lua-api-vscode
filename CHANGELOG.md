@@ -1,5 +1,20 @@
 # Change Log
 
+* [1.3.6]
+
+- Add some fields that were officially undocumented but work (thanks to kittenchilly)
+    + EntityFamiliar:
+        + IsDelayed
+        + IsFollower
+        + OrbitLayer
+        + OrbitSpeed
+    + ItemConfig_Item:
+        + AddCostumeOnPickup
+    + RoomConfig_Room:
+        + OriginalVariant
+    + RoomConfig_Spawn:
+        + Entries
+
 * [1.3.5]
 
 - Set lua version to 5.3

@@ -585,10 +585,14 @@ end
 ---@field FireCooldown integer
 ---@field HeadFrameDelay integer
 ---@field Hearts integer
+---@field IsDelayed boolean # Not officially documented but functional
+---@field IsFollower boolean # Not officially documented but functional
 ---@field Keys integer
 ---@field LastDirection Direction
 ---@field MoveDirection Direction
 ---@field OrbitAngleOffset number
+---@field OrbitLayer Vector # Not officially documented but functional
+---@field OrbitSpeed number # Not officially documented but functional
 ---@field OrbitDistance Vector
 ---@field Player EntityPlayer
 ---@field RoomClearCount integer
@@ -8420,6 +8424,7 @@ local ItemConfig_Costume = {}
 ---@field AddBlackHearts integer
 ---@field AddBombs integer
 ---@field AddCoins integer
+---@field AddCostumeOnPickup boolean # Not officially documented but functional
 ---@field AddHearts integer
 ---@field AddKeys integer
 ---@field AddMaxHearts integer
@@ -9660,6 +9665,7 @@ local RoomConfig_Entry = {}
 ---@field InitialWeight number @const
 ---@field Name string @const
 ---@field Shape RoomShape @const
+---@field OriginalVariant integer @const | Not officially documented but functional
 ---@field SpawnCount integer @const
 ---@field Spawns CppList_RoomConfigSpawn @const
 ---@field StageID integer @const
@@ -9673,6 +9679,7 @@ local RoomConfig_Room = {}
 
 
 ---@class RoomConfig_Spawn
+---@field Entries CppList_RoomConfigEntries # Not officially documented but functional
 ---@field EntryCount integer
 ---@field SumWeights number
 ---@field X integer
