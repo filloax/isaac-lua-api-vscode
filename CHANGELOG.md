@@ -1,5 +1,16 @@
 # Change Log
 
+* [1.3.7]
+
+- Added new enum values from Repentance 1.7.9
+    + PickupPrice
+        + PRICE_ONE_SOUL_HEART
+        + PRICE_TWO_SOUL_HEARTS
+        + PRICE_ONE_HEART_AND_ONE_SOUL_HEART
+- Added missing enum value
+    + PickupVariant 
+        + PICKUP_BROKEN_SHOVEL 
+
 * [1.3.6]
 
 - Add some fields that were officially undocumented but work (thanks to kittenchilly)

@@ -3064,6 +3064,7 @@ PickupVariant = {
 	PICKUP_PILL = 70,
 	PICKUP_LIL_BATTERY = 90,
 	PICKUP_COLLECTIBLE = 100,
+	PICKUP_BROKEN_SHOVEL = 110,
 	PICKUP_SHOPITEM = 150,
 	PICKUP_TAROTCARD = 300,
 	PICKUP_BIGCHEST = 340,
@@ -3154,6 +3155,9 @@ PickupPrice = {
 	PRICE_ONE_HEART_AND_TWO_SOULHEARTS = -4,
 	PRICE_SPIKES = -5,
 	PRICE_SOUL = -6,
+	PRICE_ONE_SOUL_HEART = -7,
+	PRICE_TWO_SOUL_HEARTS = -8,
+	PRICE_ONE_HEART_AND_ONE_SOUL_HEART = -9,
 	PRICE_FREE = -1000,
 }
 
@@ -8103,7 +8107,7 @@ end
 function Isaac.Explode(pos, source, damage)
 end
 
----@param Type EntityType
+---@param Type integer
 ---@param Variant? integer @default: -1
 ---@param SubType? integer @default: -1
 ---@param Cache? boolean @default: false
