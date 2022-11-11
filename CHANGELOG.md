@@ -1,5 +1,17 @@
 # Change Log
 
+* [1.3.8]
+
+- Added new enum values from Repentance 1.7.9a
+    + ModCallbacks
+        + MC_PRE_ENTITY_DEVOLVE
+    + SoundEffect: various missing values
+    + TearFlags: various missing values
+- Added functions to Hud from Repentance 1.7.9a
+    + Hud:Update()
+    + Hud:Render()
+    + Hud:PostUpdate()
+
 * [1.3.7]
 
 - Added new enum values from Repentance 1.7.9
