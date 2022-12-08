@@ -1,5 +1,9 @@
 # Change Log
 
+* [1.3.9]
+
+- Added new enum and API from Repentance 1.7.9b
+
 * [1.3.8]
 
 - Added new enum values from Repentance 1.7.9a

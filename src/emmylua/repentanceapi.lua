@@ -218,6 +218,7 @@ local CppList_intValues = {}
 ---@field SpawnerVariant integer
 ---@field SpawnGridIndex integer
 ---@field Color Color
+---@field SortingLayer SortingLayer # Affects render priority, see enum
 ---@field SplatColor Color
 ---@field SpriteOffset Vector
 ---@field SpriteRotation number
@@ -2432,7 +2433,16 @@ ModCallbacks = {
 	MC_PRE_NPC_UPDATE = 69, -- (EntityNPC NPC), returns true if the internal ai should be ignored, false or nil/nothing otherwise
 	MC_PRE_SPAWN_CLEAN_AWARD = 70, -- (RNG& Rng, Vector SpawnPos), returns true if the spawn routine should be ignored, false or nil/nothing otherwise
 	MC_PRE_ROOM_ENTITY_SPAWN = 71, -- (EntityType Type, integer Variant, integer SubType, integer GridIndex, integer Seed) - This is called when entering a new room, before spawning entities which are part its layout. Grid entities will also trigger this callback and their type will the same as the type used by the gridspawn command. Because of this, effects are assigned the type 999 instead of 1000 in this callback. Optional return: an array table with new values { Type, Variant, Subtype }. Returning a table will override any replacements that might naturally occur i.e. enemy variants.
-	MC_PRE_ENTITY_DEVOLVE = 72, -- (Entity Ent), returns true if the internal devolving behavior should be ignored - When returning true, this callback is responsible for spawning the devolved entity and removing the original one.
+	MC_PRE_ENTITY_DEVOLVE = 72, -- (Entity Ent) - returns true if the internal devolving behavior should be ignored - When returning true, this callback is responsible for spawning the devolved entity and removing the original one.
+	MC_PRE_MOD_UNLOAD = 73, -- (table Mod) - This is called right before any mod is unloaded (when disabling a mod or reloading it using luamod), the mod's table is passed as an argu
+}
+
+---@enum CallbackPriority
+CallbackPriority = {
+	IMPORTANT = -200,
+	EARLY = -100,
+	DEFAULT = 0,
+	LATE = 100,
 }
 
 ---@enum EntityType
@@ -3245,6 +3255,26 @@ BombVariant = {
 	BOMB_GOLDENTROLL = 18,
 	BOMB_ROCKET = 19,
 	BOMB_ROCKET_GIGA = 20,
+}
+
+---@enum LaserVariant
+LaserVariant = {
+	LASER_NULL = 0,
+	THICK_RED = 1,
+	THIN_RED = 2,
+	SHOOP = 3,
+	PRIDE = 4,
+	LIGHT_BEAM = 5,
+	GIANT_RED = 6,
+	TRACTOR_BEAM = 7,
+	LIGHT_RING = 8,
+	BRIM_TECH = 9,
+	ELECTRIC = 10,
+	THICKER_RED = 11,
+	THICK_BROWN = 12,
+	BEAST = 13,
+	THICKER_BRIM_TECH = 14,
+	GIANT_BRIM_TECH = 15
 }
 
 ---@enum CacheFlag
@@ -6332,6 +6362,7 @@ TearVariant = {
 	SWORD_BEAM = 47,
 	SPORE = 48,
 	TECH_SWORD_BEAM = 49,
+	FETUS = 50,
 }
 
 local function TEARFLAG(x)
@@ -7690,7 +7721,13 @@ end
 function Game:UpdateStrangeAttractor(Position, Force, Radius)
 end
 
-
+---For reference, Monstro's stomp has Amplitude=0.035, Speed=0.025, Duration=10
+---@param Position Vector
+---@param Amplitude number
+---@param Speed number
+---@param Duration integer
+function Game:MakeShockwave(Position, Amplitude, Speed, Duration)
+end
 
 -- Others (mostly constructors) are defined in their own files
 
@@ -8102,11 +8139,52 @@ end
 ---@class Isaac
 _G.Isaac = {}
 
+---@alias CallbackID any
+
 ---@param modRef table
----@param callbackId function
----@param callbackFn table
----@param entityId integer
+---@param callbackId CallbackID # Vanilla IDs are integers, custom IDs can be any type including strings
+---@param callbackFn function
+---@param entityId? integer
 function Isaac.AddCallback(modRef, callbackId, callbackFn, entityId)
+end
+
+---@param modRef table
+---@param callbackId CallbackID # Vanilla IDs are integers, custom IDs can be any type including strings
+---@param priority CallbackPriority # Default priority is 0, higher goes later, using the CallbackPriority table is recommended
+---@param callbackFn table
+---@param entityId? integer
+function Isaac.AddPriorityCallback(modRef, callbackId, priority, callbackFn, entityId)
+end
+
+---@param modRef table
+---@param callbackId CallbackID # Vanilla IDs are integers, custom IDs can be any type including strings
+---@param callbackFn table
+function Isaac.RemoveCallback(modRef, callbackId, callbackFn)
+end
+
+---@vararg any # Callback args
+---@param callbackId CallbackID # Vanilla IDs are integers, custom IDs can be any type including strings
+---@return any # Type of callback return
+function Isaac.RunCallback(callbackId, ...)
+end
+
+---@vararg any # Callback args
+---@param param any # Param to check against
+---@param callbackId CallbackID # Vanilla IDs are integers, custom IDs can be any type including strings
+---@return any # Type of callback return
+function Isaac.RunCallbackWithParam(callbackId, param, ...)
+end
+
+---@class CallbackEntry
+---@field Mod table
+---@field Function function
+---@field Priority integer #default=0
+---@field Param integer #default=-1; entity ID or anything else
+
+---@param callbackId CallbackID
+---@param createIfMissing? boolean
+---@return CallbackEntry[] callbackList #sorted by priority and addition order, can set __matchParams metamethod (see https://wofsauge.github.io/IsaacDocs/rep/tutorials/CustomCallbacks.html)
+function Isaac.GetCallbacks(callbackId, createIfMissing)
 end
 
 ---@param pillEffect integer
@@ -8303,12 +8381,6 @@ function Isaac.RegisterMod(modRef, modName, apiVersion)
 end
 
 ---@param modRef table
----@param callbackId function
----@param callbackFn table
-function Isaac.RemoveCallback(modRef, callbackId, callbackFn)
-end
-
----@param modRef table
 function Isaac.RemoveModData(modRef)
 end
 
@@ -8448,7 +8520,24 @@ end
 ---@field HudAnim string
 ---@field ID integer
 ---@field Name string
+---@field PickupSubtype integer
+---@field CardType integer # accepts any value from the ItemConfig.CARDTYPE_* enum
+---@field AnnouncerVoice integer # accepts any value from the SoundEffect.SOUND_* enum
+---@field AnnouncerDelay integer
+---@field MimicCharge integer
 local ItemConfig_Card = {}
+
+---@return boolean
+function ItemConfig_Card:IsCard()
+end
+
+---@return boolean
+function ItemConfig_Card:IsRune()
+end
+
+---@return boolean
+function ItemConfig_Card:IsAvailable()
+end
 
 
 
@@ -8515,16 +8604,26 @@ end
 function ItemConfig_Item:IsTrinket()
 end
 
-
+---@return boolean
+function ItemConfig_Item:IsAvailable()
+end
 
 ---@class ItemConfig_PillEffect
 ---@field AchievementID integer
 ---@field GreedModeAllowed boolean
 ---@field ID integer
 ---@field Name string
+---@field AnnouncerVoice integer # accepts any value from the SoundEffect.SOUND_* enum
+---@field AnnouncerVoiceSuper integer # accepts any value from the SoundEffect.SOUND_* enum
+---@field AnnouncerDelay integer
+---@field MimicCharge integer
+---@field EffectClass integer
+---@field EffectSubClass integer
 local ItemConfig_PillEffect = {}
 
-
+---@return boolean
+function ItemConfig_PillEffect:IsAvailable()
+end
 
 ---@class ItemPool
 local ItemPool = {}
@@ -9366,6 +9465,7 @@ end
 function Room:GetLRoomTileDesc()
 end
 
+---@deprecated # Removed from the game! Keeping for old information
 ---@return integer
 function Room:GetNextShockwaveId()
 end
@@ -9409,8 +9509,9 @@ function Room:GetSecondBossID()
 end
 
 ---@param Seed integer
+---@param noDecrease? boolean # default = false
 ---@return CollectibleType
-function Room:GetSeededCollectible(Seed)
+function Room:GetSeededCollectible(Seed, noDecrease)
 end
 
 ---@return integer
@@ -9583,8 +9684,9 @@ end
 function Room:SetSacrificeDone(Done)
 end
 
+---@deprecated # Removed from the game! Keeping for old information
 ---@param ShockwaveId integer
----@param Params ShockwaveParams
+---@param Params unknown
 function Room:SetShockwaveParam(ShockwaveId, Params)
 end
 
@@ -9940,17 +10042,6 @@ end
 
 function SFXManager:StopLoopingSounds()
 end
-
-
-
----@class ShockwaveParams
----@field Age integer
----@field LifeSpan integer
----@field Position Vector
----@field Strength number
----@field Time number
----@field TimeDT number
-local ShockwaveParams = {}
 
 
 
