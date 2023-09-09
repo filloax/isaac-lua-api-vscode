@@ -18,6 +18,8 @@ This extension is based on the [isaac-api-autocomplete-lua](https://github.com/f
 
 ## How to use
 
+First off, the extension won't be active by default even if enabled for convenience (not having to manually disable-enable it in each workspace), but instead it will detect if your workspace matches an Isaac mod (contains a metadata.xml file and lua files), then will ask you for confirmation, once per workspace. It also works if metadata.xml etc are in subfolders. You can also manually enable or disable the mod with a palette command, even if you initially answered otherwise.
+
 By default, with the extension global functions like `Game()`, `Vector(x, y)` and `Isaac.xxx` should already be recognized. To have it work for callback parameters, you'll need to add `---@param` tags, like so:
 
 ```Lua
@@ -59,6 +61,10 @@ local b = 2 * a
 ## Release Notes
 
 See [CHANGELOG.md](CHANGELOG.md) for full changes.
+
+## 1.5.0
+
+Now automatically detects if the folder is an Isaac mod, and asks the user for confirmation. See the top of the README for info.
 
 ## 1.3.0
 
