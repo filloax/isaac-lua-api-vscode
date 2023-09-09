@@ -27,6 +27,7 @@
         "mod"
     ],
     "activationEvents": [
+        "workspaceContains:**/metadata.xml",
         "onLanguage:lua"
     ],
     "main": "./out/extension.js",

@@ -4,22 +4,84 @@ import * as vscode from 'vscode';
 import * as path from "path";
 import { ISAAC_GLOBALS } from './isaacGlobals';
 import * as fs from 'fs'; // In NodeJS: 'const fs = require('fs')'
+import { getState } from './persist';
 
 // Used https://github.com/ManticoreGamesInc/vscode-core 
 // (with MIT license) as reference for how to do this
 
 const LUA_CONFIG_FILENAME = ".luarc.json";
 
-const CONFIG_EXT_ID = "boi-lua"
+const CONFIG_EXT_ID = "boi-lua";
 
 export function activate(context: vscode.ExtensionContext) {
+    const state = getState(context);
+
+    // Manual enabling command
+    let disposable = vscode.commands.registerCommand(`${context.extension.id}.activate`, () => {
+        state.asked = true;
+        state.enabled = true;
+        console.log("Manually activating");
+        // doActivate(context);
+    });
+    
+    if (!state.asked) {
+        checkActivate(context);
+        // check on every lua file too
+        context.subscriptions.push(vscode.workspace.onDidOpenTextDocument(ev => onDidOpenLuaFile(context, ev)));
+    } else if (state.enabled) {
+        console.log("Already enabled, activating");
+        doActivate(context);
+    }
+
+    context.subscriptions.push(disposable);
+}
+
+function onDidOpenLuaFile(context: vscode.ExtensionContext, event: vscode.TextDocument) {
+    const state = getState(context);
+    if (event.languageId === 'lua' && !state.asked && !state.enabled) {
+        checkActivate(context);
+    }
+}
+  
+function checkActivate(context: vscode.ExtensionContext) {
     // Must be opened in a workspace
     if (!vscode.workspace.workspaceFolders) {
         return;
     }
+    const state = getState(context);
+
+    if (state.asked || state.enabled) { return; }
+
+    checkIsModEnvironment().then(result => {
+        if (result) {
+            askActivation().then(answer => {
+                console.log("Answered", answer);
+                state.enabled = answer;
+                if (answer) {
+                    console.log("User accepted, activating...");
+                    doActivate(context);
+                    vscode.window.showInformationMessage("Isaac Lua VSCode activated! (You won't need to do this again in this workspace)");
+                };
+                state.asked = true;
+            });
+        }
+    });
+}
+
+async function askActivation() {
+    const yesItem = { title: 'Yes' };
+    const noItem = { title: 'No' };
+    const out = await vscode.window.showInformationMessage(
+        'Detected files matching an Isaac mod project (metadata.xml and lua files), do you want to activate isaac-vscode-lua?',
+        yesItem, noItem
+    );
+    return out === yesItem;
+}
+
+function doActivate(context: vscode.ExtensionContext) {
+    console.log("Activating...");
 
     const emmyluaPath = path.join("out", "emmylua");
-
     const filenamePath = getCfgFilePath();
 
     if (!fs.existsSync(filenamePath)) {
@@ -103,6 +165,11 @@ export function setExternalLibrary(config: any, context: vscode.ExtensionContext
             }
         }
     }
+}
+
+async function checkIsModEnvironment() {
+    return (await vscode.workspace.findFiles('**/metadata.xml')).length > 0
+        && (await vscode.workspace.findFiles('**.lua')).length > 0;
 }
 
 function setDefinedGlobals(config: any, enable: boolean) {
