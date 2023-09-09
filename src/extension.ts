@@ -17,12 +17,22 @@ export function activate(context: vscode.ExtensionContext) {
     const state = getState(context);
 
     // Manual enabling command
-    let disposable = vscode.commands.registerCommand(`${context.extension.id}.activate`, () => {
-        state.asked = true;
-        state.enabled = true;
-        console.log("Manually activating");
-        // doActivate(context);
-    });
+    let disposables = [
+        vscode.commands.registerCommand(`${CONFIG_EXT_ID}.activate`, () => {
+            state.asked = true;
+            state.enabled = true;
+            console.log("Manually activating");
+            doActivate(context);
+            vscode.window.showInformationMessage("Isaac Lua VSCode manually activated! (You won't need to do this again in this workspace)");
+        }),
+        vscode.commands.registerCommand(`${CONFIG_EXT_ID}.deactivate`, () => {
+            state.asked = true;
+            state.enabled = false;
+            console.log("Manually deactivating");
+            doDeactivate(context);
+            vscode.window.showInformationMessage("Isaac Lua VSCode manually deactivated!");
+        }),
+    ];
     
     if (!state.asked) {
         checkActivate(context);
@@ -31,9 +41,11 @@ export function activate(context: vscode.ExtensionContext) {
     } else if (state.enabled) {
         console.log("Already enabled, activating");
         doActivate(context);
+    } else {
+        console.log("Already asked user and refused, won't ask again");
     }
 
-    context.subscriptions.push(disposable);
+    disposables.forEach(d => context.subscriptions.push(d));
 }
 
 function onDidOpenLuaFile(context: vscode.ExtensionContext, event: vscode.TextDocument) {
@@ -72,7 +84,7 @@ async function askActivation() {
     const yesItem = { title: 'Yes' };
     const noItem = { title: 'No' };
     const out = await vscode.window.showInformationMessage(
-        'Detected files matching an Isaac mod project (metadata.xml and lua files), do you want to activate isaac-vscode-lua?',
+        'Detected files matching an Isaac mod project (metadata.xml and lua files), do you want to activate isaac-vscode-lua?\nYou can do this later with the ',
         yesItem, noItem
     );
     return out === yesItem;
@@ -111,6 +123,10 @@ function doActivate(context: vscode.ExtensionContext) {
 }
 
 export function deactivate(context: vscode.ExtensionContext) {
+    doDeactivate(context);
+}
+
+function doDeactivate(context: vscode.ExtensionContext) {
     const emmyluaPath = path.join("out", "emmylua");
 
     const filenamePath = getCfgFilePath();
@@ -197,19 +213,17 @@ function setMiscConfig(enable: boolean) {
         enable = false;
     }
 
-    const filesConfig = vscode.workspace.getConfiguration("files", null);
-    const associationsKey = "associations";
-    const associations: any = filesConfig.get(associationsKey);
-
+    const config = vscode.workspace.getConfiguration();
+    const associations = { ...config.get("files.associations") } as Record<string, string>;
     if (associations) {
-        if (enable && !("*.anm2" in associations)) {
-            associations["*.anm2"] = "xml";
+        if (enable && !(".anm2" in associations)) {
+            associations[".anm2"] = "xml";
             console.log("Added .anm2 recognition");
-        } else if (!enable && "*.anm2" in associations) {
-            delete associations["*.anm2"];
+        } else if (!enable && ".anm2" in associations) {
+            delete associations[".anm2"];
             console.log("Removed .anm2 recognition");
         }
-        filesConfig.update(associationsKey, associations);
+        config.update('files.associations', associations, vscode.ConfigurationTarget.Workspace);
     }
 }
 
@@ -222,6 +236,11 @@ function updateMaxFileSize(config: any) {
         console.log(`Bumping Lua preloadFileSize to ${ourfilesize}`);
         config["workspace.preloadFileSize"] = ourfilesize;
     }
+}
+
+function getCfgFilePath() {
+    const workspaceFolders = vscode.workspace.workspaceFolders as vscode.WorkspaceFolder[];
+    return path.join(workspaceFolders[0].uri.fsPath, LUA_CONFIG_FILENAME);
 }
 
 // Remove global settings from old versions
@@ -262,9 +281,4 @@ function resetOldVersions(context: vscode.ExtensionContext) {
         });
         config.update(configKey, definedGlobals);
     }
-}
-
-function getCfgFilePath() {
-    const workspaceFolders = vscode.workspace.workspaceFolders as vscode.WorkspaceFolder[];
-    return path.join(workspaceFolders[0].uri.fsPath, LUA_CONFIG_FILENAME);
 }

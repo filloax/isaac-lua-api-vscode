@@ -1,5 +1,11 @@
 # Change Log
 
+* [1.5.0]
+
+- The extension now detects if the workspace matches a isaac mod project, and asks the user for confirmation before enabling (once per workspace).
+- Add palette commands to manually enable/disable the extension in the workspace (if you initially denied to enable it)
+- Fixed some warnings in the lua api file
+
 * [1.3.9]
 
 - Added new enum and API from Repentance 1.7.9b
