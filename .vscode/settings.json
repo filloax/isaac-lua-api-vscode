@@ -12,5 +12,13 @@
     "files.associations": {
         "*.anm2": "xml"
     },
-    "Lua.runtime.unicodeName": true
+    "Lua.runtime.unicodeName": true,
+    "Lua.workspace.ignoreDir": [
+        ".vscode",
+        "isaac-api-autocomplete-lua",
+        // "repentanceapi.lua",
+    ],
+    "Lua.diagnostics.disable": [
+        "missing-return"
+    ]
 }
