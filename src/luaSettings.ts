@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { ISAAC_GLOBALS, REPENTOGON_GLOBALS } from './isaacGlobals';
+import { ISAAC_GLOBALS, REPENTOGON_GLOBALS, COMMON_MOD_GLOBALS } from './isaacGlobals';
 import * as path from "path";
 
 
@@ -42,7 +42,7 @@ function setDefinedGlobals(config: any, enable: boolean, withRepentogon: boolean
     config[configKey] = config[configKey] || [];
     const definedGlobals: string[] = config[configKey];
 
-    const globals = [...ISAAC_GLOBALS];
+    const globals = [...ISAAC_GLOBALS, ...COMMON_MOD_GLOBALS];
     if (withRepentogon) { globals.push(...REPENTOGON_GLOBALS); }
 
     globals.forEach(global => {
