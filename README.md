@@ -62,6 +62,10 @@ local b = 2 * a
 
 See [CHANGELOG.md](CHANGELOG.md) for full changes.
 
+## 1.6.0
+
+[Repentogon](https://repentogon.com/) support as an extension setting. Thanks to 4head for writing the Lua docs for it!
+
 ## 1.5.0
 
 Now automatically detects if the folder is an Isaac mod, and asks the user for confirmation. See the top of the README for info.

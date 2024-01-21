@@ -1,5 +1,11 @@
 # Change Log
 
+* [1.6.0]
+
+    - Support for [Repentogon](https://repentogon.com/) API! Can be enabled via extension settings. Thanks to 4head for writing the Lua docs for it!
+    - Re-enabled ModReference class
+    - Internal changes
+
 * [1.5.0]
 
     - The extension now detects if the workspace matches a isaac mod project, and asks the user for confirmation before enabling (once per workspace).
