@@ -54,6 +54,11 @@
                     "type": "boolean",
                     "default": true,
                     "description": "Add some useful settings to the workspace settings.json (anm2 to XML association)."
+                },
+                "boi-lua.repentogonEnabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable Repentogon API support"
                 }
             }
         },

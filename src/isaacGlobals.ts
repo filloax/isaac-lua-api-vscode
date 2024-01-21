@@ -1,4 +1,4 @@
-export const ISAAC_GLOBALS = [
+const ISAAC_GLOBALS = [
     "ActionTriggers",
     "ActiveSlot",
     "BabySubType",
@@ -139,3 +139,9 @@ export const ISAAC_GLOBALS = [
     "DetailedRespawn",
     "MinimapAPI",
 ];
+
+const REPENTOGON_GLOBALS = [
+    "REPENTOGON",
+];
+
+export { ISAAC_GLOBALS, REPENTOGON_GLOBALS };
