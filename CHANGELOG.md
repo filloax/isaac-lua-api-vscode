@@ -1,5 +1,9 @@
 # Change Log
 
+* [1.6.1]
+
+    - Fix syntax errors in Repentogon API docs
+
 * [1.6.0]
 
     - Support for [Repentogon](https://repentogon.com/) API! Can be enabled via extension settings. Thanks to 4head for writing the Lua docs for it!
