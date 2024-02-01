@@ -1,0 +1,2 @@
+---@class GridEntityWeb
+local GridEntityWeb = {}

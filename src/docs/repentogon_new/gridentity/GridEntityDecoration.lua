@@ -1,0 +1,2 @@
+---@class GridEntityDecoration
+local GridEntityDecoration = {}

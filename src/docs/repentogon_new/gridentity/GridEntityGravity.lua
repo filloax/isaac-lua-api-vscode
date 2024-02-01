@@ -1,0 +1,2 @@
+---@class GridEntityGravity
+local GridEntityGravity = {}

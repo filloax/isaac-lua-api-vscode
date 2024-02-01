@@ -1,0 +1,2 @@
+---@class GridEntityWall
+local GridEntityWall = {}

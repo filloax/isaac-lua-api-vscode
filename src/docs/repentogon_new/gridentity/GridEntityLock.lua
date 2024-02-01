@@ -1,0 +1,2 @@
+---@class GridEntityLock
+local GridEntityLock = {}

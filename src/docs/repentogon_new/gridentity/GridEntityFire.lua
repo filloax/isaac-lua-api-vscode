@@ -1,0 +1,2 @@
+---@class GridEntityFire
+local GridEntityFire = {}

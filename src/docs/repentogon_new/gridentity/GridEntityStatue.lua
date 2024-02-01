@@ -1,0 +1,2 @@
+---@class GridEntityStatue
+local GridEntityStatue = {}

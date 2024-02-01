@@ -15,7 +15,7 @@
     "Lua.runtime.unicodeName": true,
     "Lua.workspace.ignoreDir": [
         ".vscode",
-        "isaac-api-autocomplete-lua",
+        "src/docs",
         // "repentanceapi.lua",
     ],
     "Lua.diagnostics.disable": [
