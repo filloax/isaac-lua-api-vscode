@@ -38,4 +38,4 @@ function copyFolderRecursiveSync( source, target ) {
     }
 }
 
-copyFolderRecursiveSync(path.join("src", "emmylua"), "out");
+copyFolderRecursiveSync(path.join("merge", "emmylua"), "out");
