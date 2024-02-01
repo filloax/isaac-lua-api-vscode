@@ -5,6 +5,10 @@ Needs `git submodule init` to have been run.
 
 import os
 from typing import TextIO
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-T", "--track-files", action='store_true', help="Prints a comment at the start of the segment of each file")
 
 SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 ROOT_DIR = os.path.join(SCRIPT_PATH, "..")
@@ -43,6 +47,10 @@ def merge_lua_in_dir(path: str, out: TextIO):
                 out.write("\n\n")
 
 def main():
+    args = parser.parse_args()
+
+    track_files: bool = args.track_files
+
     os.makedirs(EMMYLUA_DIR, exist_ok=True)
 
     sourcefiles = [
@@ -56,9 +64,14 @@ def main():
             f.write("---@diagnostic disable: missing-return\n\n")
             files = get_files_relative_paths(sourcedirs)
             for luafile in filter(lambda f: f.endswith(".lua"), files):
+                if track_files:
+                    f.write(f'-- START FILE {luafile} --\n')
                 with open(luafile, 'r') as lf:
                     f.write(lf.read())
                     f.write("\n\n")
+                if track_files:
+                    f.write(f'-- END FILE {luafile} --\n\n')
+        print("Written", os.path.join(EMMYLUA_DIR, fname))
 
 if __name__ == "__main__":
     main()
