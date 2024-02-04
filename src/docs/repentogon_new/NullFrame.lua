@@ -6,7 +6,7 @@ function NullFrame:GetColor()
 end
 
 ---@return Vector
-function NullFrame:GetVector()
+function NullFrame:GetPos()
 end
 
 ---@return number
