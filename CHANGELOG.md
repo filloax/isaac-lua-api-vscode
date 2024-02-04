@@ -1,5 +1,12 @@
 # Change Log
 
+* [1.7.1]
+
+    - Fix various duplicate entries in repentogon docs
+    - More contributions by Sanio and Maya-bee
+    - Internal changes: enums are saved as JSON instead
+    - Internal changes: now no longer uses docs repo as submodule
+
 * [1.7.0]
 
     - Many fixes, docs and improvements thanks to Sanio!
