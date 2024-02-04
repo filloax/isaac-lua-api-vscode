@@ -56,7 +56,7 @@ function EntityNPC:PlaySound(ID, Volume, FrameDelay, Loop, Pitch)
 end
 
 ---Sets the ControllerId for the NPC, which indicates which player will 
----control it. Set it to `-1` for no player controls(back to normal behaviour).
+---control it. Set it to `-1` for no player controls (back to normal behaviour).
 ---@param ControllerID integer
 function EntityNPC:SetControllerId(ControllerID)
 end

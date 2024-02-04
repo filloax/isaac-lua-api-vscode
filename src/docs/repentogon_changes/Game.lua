@@ -11,8 +11,9 @@ end
 function Game:AddDebugFlags(flags)
 end
 
+---Devolves an enemy, as if the item D10 was used on it.
 ---@param entity Entity
-function Game:DevolveEntity(entity)
+function Game:DevolveEnemy(entity)
 end
 
 ---@return ChallengeParams
@@ -29,10 +30,6 @@ end
 function Game:GetDebugFlags()
 end
 
----@return Dimension
-function Game:GetDimension()
-end
-
 ---Deprecated as `ItemOverlay` is now a global table.
 ---@deprecated
 ---@return userdata @ItemOverlay
@@ -45,19 +42,18 @@ end
 function Game:GetLerpColorModifier()
 end
 
----Deprecated as `PauseMenu` is now a global table. You can get the state 
----via `PauseMenu.GetState()`
----@deprecated
 ---@return PauseMenuStates
 function Game:GetPauseMenuState()
 end
 
----Returns the amount of planetariums that has been entered in the current run.
+---Returns the amount of planetariums that have been entered in the current run.
 ---@return integer
 function Game:GetPlanetariumsVisited()
 end
 
 ---Returns the target ColorModifier.
+---If currently lerping between two ColorModifier states, returns the target state.
+---It is otherwise the same as `Game:GetCurrentColorModifier`.
 ---@return ColorModifier
 function Game:GetTargetColorModifier()
 end
@@ -69,7 +65,7 @@ end
 function Game:IsErased(entity)
 end
 
----Returns `true `if the next or current wave is a boss wave. Returns `false` 
+---Returns `true` if the next or current wave is a boss wave. Returns `false`
 ---otherwise or if not in Greed Mode.
 ---@return boolean
 function Game:IsGreedBoss()

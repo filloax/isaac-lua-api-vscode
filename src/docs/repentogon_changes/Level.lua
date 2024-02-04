@@ -30,7 +30,7 @@ end
 function Level:HasPhotoDoor()
 end
 
----Returns `true` is the provided `levelStage` and `stageType` combination is available to be generated in any given run. Returns `false` if locked behind an achievement.
+---Returns `true` if the provided `levelStage` and `stageType` combination is available to be generated in any given run. Returns `false` if locked behind an achievement.
 ---@param levelStage LevelStage
 ---@param stageType StageType
 ---@return boolean

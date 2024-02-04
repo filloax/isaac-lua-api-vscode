@@ -16,7 +16,7 @@ end
 ---|0 # None
 ---|1 # Normal
 ---|2 # Hard
-function Isaac.AllTaintedMarksFilled(playerType, taintedMarksGroup)
+function Isaac.AllTaintedCompletion(playerType, taintedMarksGroup)
 end
 
 ---@return boolean
@@ -264,7 +264,7 @@ end
 function Isaac.ShowErrorDialog(title, text, icon, buttons)
 end
 
----Simulates a window resize, useful to refresh some option changes like `MaxRender`.
+---Simulates a window resize, useful to refresh some option changes like `MaxRenderScale`.
 function Isaac.TriggerWindowResize()
 end
 

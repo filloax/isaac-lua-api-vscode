@@ -15,7 +15,7 @@ end
 function EntityPickup:GetAlternatePedestal()
 end
 
----Returns a table of all collectibles types being used inside it's collectible cycle (i.e. Cracked Crown).
+---Returns a table of all collectibles types being used inside its collectible cycle (i.e. Cracked Crown).
 ---@return CollectibleType[] --Table will be empty if used on non-collectible EntityPickups
 function EntityPickup:GetCollectibleCycle()
 end
@@ -72,14 +72,12 @@ end
 function EntityPickup:SetVarData(varData)
 end
 
----Will try to flip the collectible, such as when using the Flip collectible on an collectible pedestal with a second, holographic collectible present behind the first one.
+---Will try to flip the collectible, such as when using the Flip item on a collectible pedestal with a second, holographic collectible present behind the first one.
 ---@return boolean wasFlipped Returns `true` if the collectible was successfully flipped. Returns `false` otherwise, or if used on non-collectible EntityPickups.
 function EntityPickup:TryFlip()
 end
 
 ---Causes the collectible pedestal to start cycling through the specified amount of collectibles, including its own collectible type.
----
---- or if the collectible was already cycling.
 ---@param numCycle integer The amount of collectibles to add to the cycle.
 ---@return boolean didCycleInit Returns `true` if the cycle was successfully initialized. Returns `false` if the collectible was already cycling, or if use on non-collectible EntityPickups.
 function EntityPickup:TryInitOptionCycle(numCycle)

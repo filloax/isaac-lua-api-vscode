@@ -546,7 +546,7 @@ end
 function EntityPlayer:IsFootstepFrame(foot)
 end
 
----Returns `true` is the player is headless due to collectibles such as Guillotine, The Intruder, Scissors, and Decap Attack,
+---Returns `true` is the player is headless due to collectibles such as Guillotine, The Intruder, Scissors, and Decap Attack.
 ---@return boolean
 function EntityPlayer:IsHeadless()
 end
@@ -568,7 +568,7 @@ end
 function EntityPlayer:IsItemCostumeVisible(item, layerID)
 end
 
----For online play. Returns `true` if you're a local player, `false` otherwise
+---For online play. Returns `true` if you're a local player, `false` otherwise.
 ---@return boolean
 function EntityPlayer:IsLocalPlayer()
 end
@@ -662,11 +662,15 @@ end
 function EntityPlayer:SetBagOfCraftingContent(contentTable)
 end
 
+---Sets the output of the player's Bag of Crafting to the specified collectible.
+---@param collectible CollectibleType
+function EntityPlayer:SetBagOfCraftingOutput(collectible)
+end
+
 ---Sets the specified slot in the player's Bag of Crafting to the specified pickup or collectible.
 ---@param slot integer
 ---@param pickup BagOfCraftingPickup
----@overload fun(collectible: CollectibleType)
-function EntityPlayer:SetBagOfCraftingOutput(slot, pickup)
+function EntityPlayer:SetBagOfCraftingSlot(slot, pickup)
 end
 
 ---Sets the charge for when the player stops shooting and charges the Kidney Stone item.
@@ -676,7 +680,7 @@ end
 function EntityPlayer:SetBladderCharge(charge)
 end
 
----Sets how much damage has been taken for the Cambion Conception item
+---Sets how much damage has been taken for the Cambion Conception item.
 ---@param state integer
 function EntityPlayer:SetCambionConceptionState(state)
 end

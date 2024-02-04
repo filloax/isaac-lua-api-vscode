@@ -41,11 +41,10 @@ end
 function Entity:ComputeStatusEffectDuration(initialLength, source)
 end
 
----If no Entity is specified, this will recursively copy status effects to all Child Entities.
----@param target Entity
----@param copyColor? boolean default: true
----@overload fun(self: Entity, copyColor?: boolean)
-function Entity:CopyStatusEffects(target, copyColor)
+---If no `target` Entity is specified, this will recursively copy status effects to all Child Entities.
+---@param target? Entity
+---@param overwrite? boolean If `true`, removes all other status effects from `target`, and sets the properties of existing once to match the entity. default: false
+function Entity:CopyStatusEffects(target, overwrite)
 end
 
 ---@param entity Entity
@@ -224,19 +223,16 @@ end
 function Entity:IgnoreEffectFromFriendly(ref)
 end
 
----Spawns two blood poof effects. The second effect is the child of the 
----effect this function returns.
+---This function spawns two dust poof effects of subtypes 3 and 4;
+---the second of which will be the the Child of the one returned.
 ---@param position Vector? @default: `self.Position`
 ---@param color Color? @default: `Color.Default`
 ---@param scale? number @default: `1.0`
 function Entity:MakeBloodPoof(position, color, scale)
 end
 
----Spawns two blood poof effects. The second effect is the child of the 
----effect this function returns.
----
----Deprecated in favor of `Entity:MakeBloodPoof()`
----@deprecated
+---This function spawns two dust poof effects of subtypes 1 and 2;
+---the second of which will be the the Child of the one returned.
 ---@param position Vector? @default: `self.Position`
 ---@param color Color? @default: `Color.Default`
 ---@param scale? number @default: `1.0`
