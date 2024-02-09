@@ -274,7 +274,8 @@ end
 
 ---@param IAmErrorRoom boolean
 ---@param Seed integer
-function Game:MoveToRandomRoom(IAmErrorRoom, Seed)
+---@param Player EntityPlayer
+function Game:MoveToRandomRoom(IAmErrorRoom, Seed, Player)
 end
 
 function Game:NextVictoryLap()

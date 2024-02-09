@@ -29,7 +29,7 @@ function HUD:ShowFortuneText(MainString, SecondaryString, ...)
 end
 
 ---@param MainString string
----@param SecondaryString string
+---@param SecondaryString? string
 ---@param IsCurseDisplay? boolean @default: `false`
 ---@diagnostic disable-next-line: duplicate-set-field
 function HUD:ShowItemText(MainString, SecondaryString, IsCurseDisplay)
