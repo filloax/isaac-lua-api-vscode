@@ -1,5 +1,10 @@
 # Change Log
 
+* [1.7.2]
+
+    - Fix some Repentogon functions and overloads
+    - Fix some vanilla functions
+
 * [1.7.1]
 
     - Fix various duplicate entries in repentogon docs

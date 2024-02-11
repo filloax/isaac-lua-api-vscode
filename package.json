@@ -3,7 +3,7 @@
     "publisher": "Filloax",
     "displayName": "Binding of Isaac Lua API",
     "description": "Adds support and autocomplete for the The Binding of Isaac: Repentance modding API",
-    "version": "1.7.1",
+    "version": "1.7.2",
     "icon": "icon.png",
     "repository": {
         "type": "git",
