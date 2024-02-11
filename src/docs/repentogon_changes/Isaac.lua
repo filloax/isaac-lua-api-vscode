@@ -271,6 +271,6 @@ end
 ---Converts the World position from input to a pinned main menu position that varies depending on the enum selected. It's important to reconvert this every frame, in a similar fashion to `Isaac.WorldToRender`, in order to properly render when menus are changed or the window is resized.
 ---@param menuId MainMenuType
 ---@param position Vector
----@return VectorList
+---@return Vector
 function Isaac.WorldToMenuPosition(menuId, position)
 end
