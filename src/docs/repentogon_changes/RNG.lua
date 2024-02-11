@@ -1,6 +1,5 @@
----@param min integer
----@param max integer
-function RNG:RandomInt(min, max)
+---@overload fun(self: RNG, Min: integer, Max: integer)
+function RNG:RandomInt(Max)
 end
 
 ---@param Seed integer
