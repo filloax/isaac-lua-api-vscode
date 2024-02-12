@@ -97,8 +97,6 @@ function Game:SetColorModifier(colorModifier, lerp, rate)
 end
 
 ---TODO: Document me!
----
----**NOTE**: In upcoming release of REPENTOGON v1.0.6
 function Game:ShowGenericLeaderboard()
 end
 

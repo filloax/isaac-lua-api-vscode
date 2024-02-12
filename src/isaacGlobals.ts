@@ -199,6 +199,7 @@ const REPENTOGON_GLOBALS = [
     "MouseButton",
     "NightmareScene",
     "PCTypes",
+    "PauseMenu",
     "PauseMenuStates",
     "PedestalType",
     "PillCardSlot",

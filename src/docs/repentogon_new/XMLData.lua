@@ -42,3 +42,9 @@ end
 ---@return integer
 function XMLData.GetNumEntries(nodeType)
 end
+
+---Returns a table containing the attributes of metadata.xml. Identical to GetEntryById, but returns the expected result when inputting the actual mod id.
+---@param id integer | string
+---@return table<string, unknown>
+function XMLData.GetModById(id)
+end

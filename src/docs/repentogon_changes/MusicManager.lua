@@ -1,9 +1,15 @@
+function MusicManager:GetCurentPitch()
+end
+
 ---Plays a jingle.
----@param musicId Music 
+---@param musicId Music
 function MusicManager:PlayJingle(musicId)
+end
+
+---@param pitch number
+function MusicManager:SetCurrentPitch(pitch)
 end
 
 ---Stops the currently playing jingle.
 function MusicManager:StopJingle()
 end
-

@@ -41,9 +41,8 @@ end
 function Entity:ComputeStatusEffectDuration(initialLength, source)
 end
 
----If no `target` Entity is specified, this will recursively copy status effects to all Child Entities.
----@param target? Entity
----@param overwrite? boolean If `true`, removes all other status effects from `target`, and sets the properties of existing once to match the entity. default: false
+---@param target? Entity @default: `nil`. If `nil`, this will recursively copy status effects to all Child Entities.
+---@param overwrite? boolean @default: `false`. If `true`, removes all other status effects from `target`, and sets the properties of existing once to match the entity. default: false
 function Entity:CopyStatusEffects(target, overwrite)
 end
 

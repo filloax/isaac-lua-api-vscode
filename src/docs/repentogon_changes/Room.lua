@@ -11,6 +11,11 @@ end
 function Room:CanSpawnObstacleAtPosition(gridIndex, force)
 end
 
+---Creates a lightning effect as seen in Downpour.
+---@param seed integer @default: `RandomSeed`. Determines intensity (1.3 + RandomFloat()*.6) and sound pitch (0.9 + RandomFloat()*0.2)
+function Room:DoLightningStrike(seed)
+end
+
 ---@return Backdrop
 function Room:GetBackdrop()
 end
@@ -48,6 +53,16 @@ function Room:GetGreedWaveTimer() end
 function Room:GetGridIndexByTile(gridRow, gridColumn)
 end
 
+---Gets the intensity of the lightning effect used in Downpour. This variable will affect the visibility of Wraiths.
+---
+---This is set by the game in a random range between `1.3` and `2.1`, and decays by `value * .75` per render.
+function Room:GetLightningIntensity()
+end
+
+---The number of areas in a room that spawn rain effects in a tight radius.
+function Room:GetNumRainSpawners()
+end
+
 ---Returns the rail variant at the grid index.
 ---@param gridIndex integer
 ---@return StbRailVariant
@@ -56,6 +71,10 @@ function Room:GetRail(gridIndex) end
 ---Returns the room's RailManager class.
 ---@return RailManager
 function Room:GetRailManager()
+end
+
+---Used by the positional rain effect spawners in Downpour. No noticable effect beyond `1.0`.
+function Room:GetRainIntensity()
 end
 
 ---TODO: Document me!
@@ -119,6 +138,18 @@ function Room:SetBackdropType(backdrop, unknown) end
 ---@param time integer
 function Room:SetGreedWaveTimer(time) end
 
+---This primarily affects `UpdateColorModifier` (if `Process` is true, an orange glow is added based on the number of pits and lava intensity).
+---@param intensity number
+function Room:SetLavalIntensity(intensity)
+end
+
+---Sets the intensity of the lightning effect used in Downpour. This variable will affect the visibility of Wraiths.
+---
+---This is set by the game in a random range between `1.3` and `2.1`, and decays by `value * .75` per render.
+---@param intensity number
+function Room:SetLightningIntensity(intensity)
+end
+
 ---Sets the amount of drames the pause effect is activated for in the room.
 ---@param time integer
 function Room:SetPauseTimer(time) end
@@ -127,6 +158,11 @@ function Room:SetPauseTimer(time) end
 ---@param gridIndex integer
 ---@param railVariant StbRailVariant
 function Room:SetRail(gridIndex, railVariant) end
+
+---Used by the positional rain effect spawners in Downpour. No noticable effect beyond `1.0`.
+---@param intensity number
+function Room:SetRainIntensity(intensity)
+end
 
 ---TODO: Document me!
 ---@param delay integer
