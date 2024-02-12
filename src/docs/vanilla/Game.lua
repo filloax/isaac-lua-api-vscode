@@ -364,12 +364,6 @@ end
 function Game:StartRoomTransition(RoomIndex, Direction, Animation, Player, Dimension)
 end
 
----@param SameStage boolean
----@param Animation integer @StageTransition::Animation
----@param Player EntityPlayer
-function Game:StartStageTransition(SameStage, Animation, Player)
-end
-
 function Game:Update()
 end
 
