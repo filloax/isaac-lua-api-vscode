@@ -1,5 +1,12 @@
 # Change Log
 
+* [1.7.3]
+
+    - Repentogon
+        - XMLData.GetBossColorByTypeVarSub
+    - Define Vector.One and Vector.Zero as Vectors
+    - Assorted fixes
+
 * [1.7.2]
 
     - Fix some Repentogon functions and overloads
