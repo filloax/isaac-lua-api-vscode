@@ -1,6 +1,18 @@
 ---@class XMLData
 _G.XMLData = {}
 
+---@param type EntityType
+---@param variant? integer @default: `0`
+---@param subType? integer @default: `0`
+---Returns a table containing the attributes of the bosscolor on bosscolors.xml that match the given type variant and subtype.
+---
+---**Example Code**
+---```lua
+---	print("Red Monstro's suffix:", XMLData.GetBossColorByTypeVarSub(20,0,1).suffix)
+---	```
+function XMLData.GetBossColorByTypeVarSub(type, variant, subType)
+end
+
 ---Returns a table containing the attributes of the entity in `entities2.xml`.
 ---
 ---Child nodes are returned as tables alongside the rest of the attributes. For example,
@@ -41,4 +53,15 @@ end
 ---@param nodeType XMLNode
 ---@return integer
 function XMLData.GetNumEntries(nodeType)
+end
+
+---Returns a table containing the attributes of the metdata xml of the matching mod id.
+---
+---**Example Code**
+---```lua
+---print("Car's mod name:", XMLData.GetModById("2788006730").name)
+---```
+---@param id integer | string
+---@return table<string, unknown>
+function XMLData.GetModById(id)
 end

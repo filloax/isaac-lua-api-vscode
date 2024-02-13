@@ -14,7 +14,9 @@ local Vector = {}
 function _G.Vector(x, y) end
 
 _G.Vector = {
+    ---@type Vector
     One = Vector(1, 1),
+    ---@type Vector
     Zero = Vector(0, 0),
 }
 

@@ -104,8 +104,14 @@ end
 
 ---Returns the achievement ID by name.
 ---@param name string
----@return Achievement
+---@return Achievement --Returns `-1` if it fails to find an achievement with the provided name
 function Isaac.GetAchievementIdByName(name)
+end
+
+---Returns the bosscoloridx
+---@param name string
+---@return integer --Returns `-1` if it fails to find a boss color with the provided name
+function Isaac.GetBossColorIdxByName(name)
 end
 
 ---Returns the contents of the player's clipboard. If nothing is in the 

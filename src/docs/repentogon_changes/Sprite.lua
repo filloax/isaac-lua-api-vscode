@@ -1,6 +1,7 @@
 ---@param ANM2Path string
 ---@param LoadGraphics? boolean
 ---@return Sprite, boolean wasLoadSuccessful
+---@overload fun(): Sprite
 function _G.Sprite(ANM2Path, LoadGraphics)
 end
 
@@ -62,6 +63,8 @@ function Sprite:GetRenderFlags() end
 ---@return boolean
 function Sprite:IsOverlayEventTriggered(eventName) end
 
+---@param LayerId integer
+---@param PngFilename string
 ---@param LoadGraphics? boolean
 function Sprite:ReplaceSpritesheet(LayerId, PngFilename, LoadGraphics)
 end

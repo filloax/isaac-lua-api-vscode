@@ -90,11 +90,13 @@ function LayerState:SetVisible(isVisible)
 end
 
 ---Sets the wrap mode for the x coordinate. See [this website](https://open.gl/textures) for a general overview.
+---@param mode integer
 ---@return integer
-function LayerState:SetWrapSMode()
+function LayerState:SetWrapSMode(mode)
 end
 
 ---Sets the wrap mode for the y coordinate. See [this website](https://open.gl/textures) for a general overview.
+---@param mode integer
 ---@return integer
-function LayerState:SetWrapTMode()
+function LayerState:SetWrapTMode(mode)
 end

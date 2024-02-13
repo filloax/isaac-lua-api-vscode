@@ -1,4 +1,5 @@
 ---@overload fun(self: RNG, Min: integer, Max: integer)
+---@return integer
 function RNG:RandomInt(Max)
 end
 
