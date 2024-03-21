@@ -1,5 +1,9 @@
 # Change Log
 
+* [1.7.4]
+
+    - Fix flag enums
+
 * [1.7.3]
 
     - Repentogon
