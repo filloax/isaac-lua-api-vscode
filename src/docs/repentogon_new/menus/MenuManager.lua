@@ -49,3 +49,9 @@ end
 ---@param position Vector 
 function MenuManager.SetViewPosition(position)
 end
+
+--TODO: Uncomment for next update
+--[[ ---Selectively allows/disallows the game's menu read certain inputs, useful for custom menus
+---@param mask ButtonActionBitwise
+function MenuManager.SetInputMask(mask)
+end ]]

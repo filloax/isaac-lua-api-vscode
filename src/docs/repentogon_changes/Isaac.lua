@@ -1,4 +1,4 @@
----Checks if a given character has completed all marks and returns the 
+---Checks if a given character has completed all marks and returns the
 ---highest difficulty it was accomplished in.
 ---@param playerType PlayerType
 ---@return integer
@@ -8,7 +8,7 @@
 function Isaac.AllMarksFilled(playerType)
 end
 
----Checks if a given character has completed all tainted-related marks 
+---Checks if a given character has completed all tainted-related marks
 ---and returns the highest difficulty it was accomplished in.
 ---@param playerType PlayerType
 ---@param taintedMarksGroup TaintedMarksGroup
@@ -23,7 +23,7 @@ end
 function Isaac.CanStartTrueCoop()
 end
 
---- Moves the windows mouse cursor to the center of the game's window. It 
+--- Moves the windows mouse cursor to the center of the game's window. It
 ---won't move the cursor if the game's window is out of focus.
 function Isaac.CenterCursor()
 end
@@ -45,8 +45,8 @@ end
 
 ---Spawns a timer effect.
 ---
----The timer is called every game update. This means the timer only runs 
----while the game is unpaused and uses update frames for its delay parameter 
+---The timer is called every game update. This means the timer only runs
+---while the game is unpaused and uses update frames for its delay parameter
 ---(30 frames per second).
 ---
 ---If your use case requires a timer that takes paused time into acount, stick with a custom timer running on a RENDER callback.
@@ -58,7 +58,7 @@ end
 function Isaac.CreateTimer(intervalFunction, interval, times, persistent)
 end
 
----Creates and returns a Weapon object. It is not automatically useable by 
+---Creates and returns a Weapon object. It is not automatically useable by
 ---`owner` and `Isaac.SetWeaponType` must be used in tandem.
 ---@param weaponType WeaponType
 ---@param owner Entity Advised that this only be used for `EntityPlayer` and `EntityFamiliar` objects.
@@ -114,13 +114,13 @@ end
 function Isaac.GetBossColorIdxByName(name)
 end
 
----Returns the contents of the player's clipboard. If nothing is in the 
+---Returns the contents of the player's clipboard. If nothing is in the
 ---clipboard, `nil` is returned instead.
----@return string? 
+---@return string?
 function Isaac.GetClipboard()
 end
 
----Returns what position a collectible would actually spawn at from the 
+---Returns what position a collectible would actually spawn at from the
 ---provided position.
 ---@param position Vector
 ---@return Vector
@@ -156,8 +156,8 @@ end
 function Isaac.GetCompletionMarks(playerType)
 end
 
----Sets the completion marks of a character to match an input table. 
----Requires a dictionary containing all the marks for the character, 
+---Sets the completion marks of a character to match an input table.
+---Requires a dictionary containing all the marks for the character,
 ---getting it from GetCompletionMarks is advised for convenience.
 ---@param marks CompletionMarks
 function Isaac.SetCompletionMarks(marks)
@@ -280,3 +280,28 @@ end
 ---@return Vector
 function Isaac.WorldToMenuPosition(menuId, position)
 end
+
+---@param musicid Music
+function Isaac.SetCurrentFloorMusic(musicid)
+end
+
+---@param backdropid BackdropType
+function Isaac.GetCurrentFloorBackdrop(backdropid)
+end
+
+---@param name string
+function Isaac.SetCurrentFloorName(name)
+end
+
+---@return integer
+function Isaac.GetCurrentStageConfigId()
+end
+--TODO: Uncomment for next update
+--[[ 
+---Allows starting the game from within the main menu
+---@param playerType PlayerType
+---@param challenge Challenge Can be set to `Challenge.CHALLENGE_NULL` to start a non-challenge run.
+---@param difficulty Difficulty
+---@param seed integer
+function Isaac.StartNewGame(playerType, challenge, difficulty, seed)
+end ]]

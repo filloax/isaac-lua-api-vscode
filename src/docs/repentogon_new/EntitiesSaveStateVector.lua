@@ -14,3 +14,6 @@ end
 ---@return EntitiesSaveState
 function EntitiesSaveStateVector:GetByType(type, variant, subType)
 end
+
+function EntitiesSaveStateVector:Clear()
+end

@@ -19,3 +19,14 @@ end
 ---@return EntityConfigPlayer?
 function EntityConfig.GetPlayer(playerType)
 end
+
+---Returns nil if there is no co-op baby with the given ID.
+---@param type BabySubType
+---@return EntityConfigBaby?
+function EntityConfig.GetBaby(type)
+end
+
+---Returns the highest ID (corresponds to SubType) currently assigned to a valid co-op baby.
+---@return integer
+function EntityConfig.GetMaxBabyID()
+end

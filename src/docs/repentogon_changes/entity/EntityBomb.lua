@@ -45,3 +45,23 @@ end
 
 function EntityBomb:UpdateDirtColor()
 end
+
+---Target angle for rocket bombs. It influences both their movement and the orientation of their sprite.
+---@return number
+function EntityBomb:GetRocketAngle()
+end
+
+---Target angle for rocket bombs. It influences both their movement and the orientation of their sprite.
+---@param angle number
+function EntityBomb:SetRocketAngle(angle)
+end
+
+---Target speed for rocket bombs. Naturally increases by 1 every frame.
+---@return number
+function EntityBomb:GetRocketSpeed()
+end
+
+---Target speed for rocket bombs. Naturally increases by 1 every frame.
+---@param speed number
+function EntityBomb:SetRocketSpeed(speed)
+end

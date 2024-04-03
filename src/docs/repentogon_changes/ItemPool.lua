@@ -76,3 +76,7 @@ end
 ---@param pill PillColor
 function ItemPool:UnidentifyPill(pill)
 end
+
+---@param poolType ItemPoolType
+function ItemPool:GetBibleUpgrades(poolType)
+end

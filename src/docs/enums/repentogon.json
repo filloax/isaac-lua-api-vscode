@@ -6,11 +6,19 @@
     },
     "MC_POST_ADD_COLLECTIBLE": {
       "value": "1005",
-      "comment": "(CollectibleType Type int Charge boolean FirstTime int Slot int VarData EntityPlayer Player),"
+      "comment": "(CollectibleType Type int Charge boolean FirstTime int Slot int VarData EntityPlayer Player)"
     },
     "MC_POST_TAKE_DMG": "1006",
     "MC_POST_ENTITY_TAKE_DMG": "1006",
     "MC_PRE_PLAYER_TAKE_DMG": "1008",
+    "MC_PRE_PLAYER_ADD_HEARTS": {
+      "value": 1009,
+      "comment": "(EntityPlayer Player, int Amount, AddHealthType AddHealthType, bool OptionalArg): int - Runs before Add(...)Hearts functions, allows returning a value to change the given amount of health. Functions that include an argument (e.g. ignoreKeeper for AddMaxHearts) provide the value using OptionalArg."
+    },
+    "MC_POST_PLAYER_ADD_HEARTS": {
+      "value": 1010,
+      "comment": "(EntityPlayer Player, int Amount, AddHealthType AddHealthType, bool OptionalArg) - Runs after Add(...)Hearts functions, allows returning a value to change the given amount of health. Functions that include an argument (e.g. ignoreKeeper for AddMaxHearts) provide the value using OptionalArg."
+    },
     "MC_GRID_ROCK_UPDATE": "1010",
     "MC_POST_GRID_ROCK_DESTROY": "1011",
     "MC_GRID_HURT_DAMAGE": "1012",
@@ -24,7 +32,15 @@
     "MC_PRE_MUSIC_PLAY": "1034",
     "MC_PRE_MUSIC_LAYER_TOGGLE": "1035",
     "MC_PRE_RENDER_PLAYER_HEAD": "1038",
+    "MC_POST_RENDER_PLAYER_HEAD": {
+      "value": 1045,
+      "comment": "(EntityPlayer Player, Vector RenderPos)"
+    },
     "MC_PRE_RENDER_PLAYER_BODY": "1039",
+    "MC_POST_RENDER_PLAYER_BODY": {
+      "value": 1046,
+      "comment": "(EntityPlayer Player, Vector RenderPos)"
+    },
     "MC_PRE_ENTITY_THROW": "1040",
     "MC_POST_ENTITY_THROW": "1041",
     "MC_PLAYER_INIT_POST_LEVEL_INIT_STATS": "1042",
@@ -92,7 +108,6 @@
     "MC_COMPLETION_MARK_GET": "1047",
     "MC_POST_COMPLETION_MARK_GET": "1048",
     "MC_PRE_COMPLETION_EVENT": "1049",
-    "MC_USE_PILL": "1001",
     "MC_POST_PLAYERHUD_RENDER_ACTIVE_ITEM": "1079",
     "MC_POST_PLAYERHUD_RENDER_HEARTS": "1091",
     "MC_PRE_GET_LIGHTING_ALPHA": "1150",
@@ -117,25 +132,16 @@
     "MC_PRE_PLAYER_USE_BOMB": "1220",
     "MC_POST_PLAYER_USE_BOMB": "1221",
     "MC_NPC_PICK_TARGET": "1222",
-    "MC_PRE_PLAYER_COLLISION": "1230",
     "MC_POST_PLAYER_COLLISION": "1231",
-    "MC_PRE_TEAR_COLLISION": "1232",
     "MC_POST_TEAR_COLLISION": "1233",
-    "MC_PRE_FAMILIAR_COLLISION": "1234",
     "MC_POST_FAMILIAR_COLLISION": "1235",
-    "MC_PRE_BOMB_COLLISION": "1236",
     "MC_POST_BOMB_COLLISION": "1237",
-    "MC_PRE_PICKUP_COLLISION": "1238",
     "MC_POST_PICKUP_COLLISION": "1239",
     "MC_PRE_SLOT_COLLISION": "1240",
     "MC_POST_SLOT_COLLISION": "1241",
-    "MC_PRE_KNIFE_COLLISION": "1242",
     "MC_POST_KNIFE_COLLISION": "1243",
-    "MC_PRE_PROJECTILE_COLLISION": "1244",
     "MC_POST_PROJECTILE_COLLISION": "1245",
-    "MC_PRE_NPC_COLLISION": "1246",
     "MC_POST_NPC_COLLISION": "1247",
-    "MC_PRE_LASER_COLLISION": "1248",
     "MC_POST_LASER_COLLISION": "1249",
     "MC_CONSOLE_AUTOCOMPLETE": "1120",
     "MC_PLAYER_INIT_PRE_LEVEL_INIT_STATS": "1127",
@@ -165,7 +171,31 @@
     "MC_POST_SAVESLOT_LOAD": "1465",
     "MC_PRE_PICKUP_VOIDED": "1265",
     "MC_PRE_PICKUP_VOIDED_ABYSS": "1266",
-    "MC_PRE_PICKUP_COMPOSTED": "1267"
+    "MC_PRE_PICKUP_COMPOSTED": "1267",
+    "MC_POST_NPC_DARK_RED_CHAMPION_REGEN": {
+      "value": 1223,
+      "comment": "(EntityNPC NPC) - Runs right after a dark red champion regenerates out of the goo form."
+    },
+    "MC_POST_ACHIEVEMENT_UNLOCK": {
+      "value": 1476,
+      "comment": "Called after an achievement is unlocked, has the achievement id as its param"
+    },
+    "MC_PRE_MINIMAP_UPDATE": {
+      "value": 1477,
+      "comment": "Called right before the minimap is updated"
+    },
+    "MC_POST_MINIMAP_UPDATE": {
+      "value": 1478,
+      "comment": "Called right after the minimap is updated"
+    },
+    "MC_PRE_MINIMAP_RENDER": {
+      "value": 1479,
+      "comment": "Called right before the minimap is rendered"
+    },
+    "MC_POST_MINIMAP_RENDER": {
+      "value": 1480,
+      "comment": "Called right after the minimap is rendered"
+    }
   },
   "Renderer": {
     "GLSLType": {
@@ -3865,5 +3895,29 @@
     "DEFAULT": "0",
     "MIRROR": "1",
     "MINESHAFT": "2"
+  },
+  "BlendFactor": {
+    "ZERO": "0",
+    "ONE": "1",
+    "SRC_COLOR": "2",
+    "ONE_MINUS_SRC_COLOR": "3",
+    "DST_COLOR": "4",
+    "ONE_MINUS_DST_COLOR": "5",
+    "SRC_ALPHA": "6",
+    "ONE_MINUS_SRC_ALPHA": "7",
+    "DST_ALPHA": "8",
+    "ONE_MINUS_DST_ALPHA": "9",
+    "CONSTANT_COLOR": "10",
+    "ONE_MINUS_CONSTANT_COLOR": "11",
+    "CONSTANT_ALPHA": "12",
+    "ONE_MINUS_CONSTANT_ALPHA": "13",
+    "SRC_ALPHA_SATURATE": "14"
+  },
+  "BlendType": {
+    "CONSTANT": "0",
+    "NORMAL": "1",
+    "ADDITIVE": "2",
+    "MULTIPLICATIVE": "3",
+    "OVERLAY": "4"
   }
 }

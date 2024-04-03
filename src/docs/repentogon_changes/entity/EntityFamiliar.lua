@@ -10,7 +10,7 @@ end
 function EntityFamiliar:GetPathFinder()
 end
 
----Returns `nil` for familiars that don't mimic the player's attacks 
+---Returns `nil` for familiars that don't mimic the player's attacks
 ---(Incubus, etc).
 ---@return Weapon?
 function EntityFamiliar:GetWeapon()
@@ -20,11 +20,30 @@ end
 function EntityFamiliar:TriggerRoomClear()
 end
 
----@param aimDirection Vector 
+---@param aimDirection Vector
 ---@param direction Direction
 ---@return Vector?
 function EntityFamiliar:TryAimAtMarkedTarget(aimDirection, direction)
 end
 
 function EntityFamiliar:UpdateDirtColor()
+end
+
+function EntityFamiliar:RemoveFromPlayer()
+end
+
+---@return boolean
+function EntityFamiliar:CanBlockProjectiles()
+end
+
+---@return boolean
+function EntityFamiliar:CanBeDamagedByProjectiles()
+end
+
+---@return boolean
+function EntityFamiliar:CanBeDamagedByEnemies()
+end
+
+---@return boolean
+function EntityFamiliar:CanBeDamagedByLasers()
 end

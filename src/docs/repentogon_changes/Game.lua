@@ -110,3 +110,13 @@ end
 ---@param Player? EntityPlayer
 function Game:StartStageTransition(SameStage, Animation, Player)
 end
+
+---TODO: Document me!
+---@param donation integer
+function Game:SetDonationModAngel(donation)
+end
+
+---TODO: Document me!
+---@param donation integer
+function Game:SetDonationModGreed(donation)
+end
