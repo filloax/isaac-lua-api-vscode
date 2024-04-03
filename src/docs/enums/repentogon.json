@@ -2,198 +2,870 @@
   "ModCallbacks": {
     "MC_PRE_ADD_COLLECTIBLE": {
       "value": "1004",
-      "comment": "(CollectibleType Type int Charge boolean FirstTime int Slot int VarData EntityPlayer Player) - Returning a CollectibleType overrides the collectible. You can also return a table of parameters to further modify the collectible given: {Type Charge FirstTime Slot VarData Player}"
+      "comment": "(CollectibleType Type integer Charge boolean FirstTime integer Slot integer VarData EntityPlayer Player) - Returning a CollectibleType overrides the collectible. You can also return a table of parameters to further modify the collectible given: {Type Charge FirstTime Slot VarData Player}"
     },
     "MC_POST_ADD_COLLECTIBLE": {
       "value": "1005",
-      "comment": "(CollectibleType Type int Charge boolean FirstTime int Slot int VarData EntityPlayer Player)"
+      "comment": "(CollectibleType Type integer Charge boolean FirstTime integer Slot integer VarData EntityPlayer Player)"
     },
-    "MC_POST_TAKE_DMG": "1006",
-    "MC_POST_ENTITY_TAKE_DMG": "1006",
-    "MC_PRE_PLAYER_TAKE_DMG": "1008",
+    "MC_POST_TAKE_DMG": {
+      "value":  "1006",
+      "comment": "(Entity Entity, float Damage, DamageFlags DamageFlags, EntityRef Source, integer DamageCountdown) - Leftover for backwards compatibility. Use MC_POST_ENTITY_TAKE_DMG instead."
+    },
+    "MC_POST_ENTITY_TAKE_DMG": {
+      "value":  "1006",
+      "comment": "(Entity Entity, float Damage, DamageFlags DamageFlags, EntityRef Source, integer DamageCountdown)"
+    },
+    "MC_PRE_PLAYER_TAKE_DMG": {
+      "value":  "1008",
+      "comment": "(EntityPlayer Player, float Damage, DamageFlags DamageFlags, EntityRef Source, integer DamageCountdown) - Runs earlier than MC_ENTITY_TAKE_DMG, and even if the player is considered invincible or has Holy Mantles. Only accepts returning false to cancel the damage. Good for giving the player invincibility that takes precedence over other damage negation effects, such as Holy Mantle."
+    },
     "MC_PRE_PLAYER_ADD_HEARTS": {
       "value": 1009,
-      "comment": "(EntityPlayer Player, int Amount, AddHealthType AddHealthType, bool OptionalArg): int - Runs before Add(...)Hearts functions, allows returning a value to change the given amount of health. Functions that include an argument (e.g. ignoreKeeper for AddMaxHearts) provide the value using OptionalArg."
+      "comment": "(EntityPlayer Player, integer Amount, AddHealthType AddHealthType, bool OptionalArg): integer - Runs before Add(...)Hearts functions, allows returning a value to change the given amount of health. Functions that include an argument (e.g. ignoreKeeper for AddMaxHearts) provide the value using OptionalArg."
     },
     "MC_POST_PLAYER_ADD_HEARTS": {
       "value": 1010,
-      "comment": "(EntityPlayer Player, int Amount, AddHealthType AddHealthType, bool OptionalArg) - Runs after Add(...)Hearts functions, allows returning a value to change the given amount of health. Functions that include an argument (e.g. ignoreKeeper for AddMaxHearts) provide the value using OptionalArg."
+      "comment": "(EntityPlayer Player, integer Amount, AddHealthType AddHealthType, bool OptionalArg) - Runs after Add(...)Hearts functions, allows returning a value to change the given amount of health. Functions that include an argument (e.g. ignoreKeeper for AddMaxHearts) provide the value using OptionalArg."
     },
-    "MC_GRID_ROCK_UPDATE": "1010",
-    "MC_POST_GRID_ROCK_DESTROY": "1011",
-    "MC_GRID_HURT_DAMAGE": "1012",
-    "MC_POST_GRID_HURT_DAMAGE": "1013",
-    "MC_HUD_UPDATE": "1020",
-    "MC_HUD_POST_UPDATE": "1021",
-    "MC_HUD_RENDER": "1022",
-    "MC_MAIN_MENU_RENDER": "1023",
-    "MC_PRE_SFX_PLAY": "1030",
-    "MC_POST_SFX_PLAY": "1031",
-    "MC_PRE_MUSIC_PLAY": "1034",
-    "MC_PRE_MUSIC_LAYER_TOGGLE": "1035",
-    "MC_PRE_RENDER_PLAYER_HEAD": "1038",
+    "MC_POST_GRID_ROCK_DESTROY": {
+      "value": "1011",
+      "comment": "(GridEntityRock Rock, GridEntityType Type, boolean Immediate) - When adding callback, specify a GridEntityType to only respond to that one grid type."
+    },
+    "MC_GRID_HURT_DAMAGE": {
+      "value": "1012",
+      "comment": "(GridEntity GridEntity, Entity Entity, integer DamageAmount, DamageFlags DamageFlags, float Unknown, boolean Unknown) - Return false if entity or player should ignore damage from it. When adding callback, specify a GridEntityType to only respond to that grid type."
+    },
+    "MC_POST_GRID_HURT_DAMAGE": {
+      "value": "1013",
+      "comment": "(GridEntity GridEntity, Entity Entity, integer DamageAmount, DamageFlags DamageFlags, float Unknown, boolean Unknown) - Runs after MC_GRID_HURT_DAMAGE."
+    },
+    "MC_HUD_UPDATE": {
+      "value": "1020",
+      "comment": "Callback has no arguments. Called during HUD update."
+    },
+    "MC_HUD_POST_UPDATE": {
+      "value": "1021",
+      "comment": "Callback has no arguments. Called after HUD update."
+    },
+    "MC_HUD_RENDER": {
+      "value": "1022",
+      "comment": "Callback has no arguments. Called during HUD render."
+    },
+    "MC_MAIN_MENU_RENDER": {
+      "value": "1023",
+      "comment": "Callback has no arguments. Called after HUD render."
+    },
+    "MC_PRE_SFX_PLAY": {
+      "value": "1030",
+      "comment": "(SoundEffect ID, float Volume, integer FrameDelay, boolean Loop, float Pitch, float Pan): table{ID, Volume, FrameDelay, Loop, Pitch, Pan} | boolean, Optional Arg: SoundEffect - Called before a sound plays. Accepts a table of parameters to override the sound, or false to cancel the sound."
+    },
+    "MC_POST_SFX_PLAY": {
+      "value": "1031",
+      "comment": "(SoundEffect ID, float Volume, integer FrameDelay, boolean Loop, float Pitch, float Pan), Optional Arg: Sound Effect - Called after a sound plays."
+    },
+    "MC_PRE_MUSIC_PLAY": {
+      "value": "1034",
+      "comment": "(Music ID, float Volume | float FadeRate, boolean IsFade): table{ID, Volume | FadeRate}, Optional Arg: Music - Called before a music track plays. Accepts a table of parameters to override the music, or false to cancel the track."
+    },
+    "MC_PRE_MUSIC_LAYER_TOGGLE": {
+      "value": "1035",
+      "comment": "(integer ID, boolean CurrentState): integer | boolean, Optional Arg: integer - Accepts a music layer ID (enum pending) to change the layer, or a boolean to change the state of the layer: true to keep it running, false to stop it."
+    },
+    "MC_PRE_RENDER_PLAYER_HEAD": {
+      "value": "1038",
+      "comment": "(EntityPlayer Player, Vector RenderPos): Vector | boolean, Optional Arg: PlayerType - Called before a player's head is rendered. Accepts an override Vector for RenderPos, alternatively accepts false to stop the rendering."
+    },
     "MC_POST_RENDER_PLAYER_HEAD": {
-      "value": 1045,
-      "comment": "(EntityPlayer Player, Vector RenderPos)"
+      "value": "1045",
+      "comment": "(EntityPlayer Player, Vector RenderPos), Optional Arg: PlayerType - Called after MC_PRE_RENDER_PLAYER_HEAD, assuming it wasn't skipped."
     },
-    "MC_PRE_RENDER_PLAYER_BODY": "1039",
+    "MC_PRE_RENDER_PLAYER_BODY": {
+      "value": "1039",
+      "comment": "(EntityPlayer Player, Vector RenderPos): Vector | boolean, Optional Arg: PlayerType - Called before a player's body is rendered. Accepts an override Vector for RenderPos, alternatively accepts false to stop the rendering."
+    },
     "MC_POST_RENDER_PLAYER_BODY": {
-      "value": 1046,
-      "comment": "(EntityPlayer Player, Vector RenderPos)"
+      "value": "1046",
+      "comment": "(EntityPlayer Player, Vector RenderPos), Optional Arg: PlayerType - Called after MC_PRE_RENDER_PLAYER_BODY, assuming it wasn't skipped."
     },
-    "MC_PRE_ENTITY_THROW": "1040",
-    "MC_POST_ENTITY_THROW": "1041",
-    "MC_PLAYER_INIT_POST_LEVEL_INIT_STATS": "1042",
-    "MC_PRE_ROOM_EXIT": "1043",
-    "MC_PRE_LEVEL_INIT": "1060",
-    "MC_PRE_TRIGGER_PLAYER_DEATH": "1050",
-    "MC_PRE_RESTOCK_SHOP": "1070",
-    "MC_POST_RESTOCK_SHOP": "1071",
-    "MC_PRE_CHANGE_ROOM": "1061",
-    "MC_POST_PICKUP_SHOP_PURCHASE": "1062",
-    "MC_GET_FOLLOWER_PRIORITY": "1063",
-    "MC_PRE_NPC_MORPH": "1212",
-    "MC_PRE_PICKUP_MORPH": "1213",
-    "MC_POST_NPC_MORPH": "1214",
-    "MC_POST_PICKUP_MORPH": "1215",
-    "MC_PRE_COMPLETION_MARKS_RENDER": "1216",
-    "MC_POST_COMPLETION_MARKS_RENDER": "1217",
-    "MC_PRE_PAUSE_SCREEN_RENDER": "1218",
-    "MC_POST_PAUSE_SCREEN_RENDER": "1219",
-    "MC_PRE_USE_CARD": "1064",
-    "MC_PRE_USE_PILL": "1065",
-    "MC_GET_SHOP_ITEM_PRICE": "1066",
-    "MC_PLAYER_GET_HEALTH_TYPE": "1067",
-    "MC_PRE_ROOM_TRIGGER_CLEAR": "1068",
-    "MC_PRE_PLAYER_TRIGGER_ROOM_CLEAR": "1069",
-    "MC_PRE_FAMILIAR_RENDER": "1080",
-    "MC_PRE_NPC_RENDER": "1081",
-    "MC_PRE_PLAYER_RENDER": "1082",
-    "MC_PRE_PICKUP_RENDER": "1083",
-    "MC_PRE_TEAR_RENDER": "1084",
-    "MC_PRE_PROJECTILE_RENDER": "1085",
-    "MC_PRE_KNIFE_RENDER": "1086",
-    "MC_PRE_EFFECT_RENDER": "1087",
-    "MC_PRE_BOMB_RENDER": "1088",
-    "MC_PRE_SLOT_RENDER": "1089",
-    "MC_POST_SLOT_RENDER": "1090",
-    "MC_PRE_GRID_INIT": "1100",
-    "MC_POST_GRID_INIT": "1101",
-    "MC_PLAYER_GET_ACTIVE_MAX_CHARGE": "1072",
-    "MC_PLAYER_GET_ACTIVE_MIN_USABLE_CHARGE": "1073",
-    "MC_PLAYER_GET_HEART_LIMIT": "1074",
-    "MC_POST_ITEM_OVERLAY_UPDATE": "1075",
-    "MC_PRE_ITEM_OVERLAY_SHOW": "1076",
-    "MC_POST_PLAYER_NEW_ROOM_TEMP_EFFECTS": "1077",
-    "MC_POST_PLAYER_NEW_LEVEL": "1078",
-    "MC_POST_PLAYER_GET_MULTI_SHOT_PARAMS": "1251",
-    "MC_PRE_REPLACE_SPRITESHEET": "1116",
-    "MC_POST_REPLACE_SPRITESHEET": "1117",
-    "MC_PRE_PLANETARIUM_APPLY_STAGE_PENALTY": "1110",
-    "MC_PRE_PLANETARIUM_APPLY_PLANETARIUM_PENALTY": "1111",
-    "MC_PRE_PLANETARIUM_APPLY_TREASURE_PENALTY": "1112",
-    "MC_PRE_PLANETARIUM_APPLY_ITEMS": "1113",
-    "MC_PRE_PLANETARIUM_APPLY_TELESCOPE_LENS": "1114",
-    "MC_POST_PLANETARIUM_CALCULATE": "1115",
-    "MC_POST_SLOT_INIT": "1121",
-    "MC_POST_SLOT_UPDATE": "1122",
-    "MC_PRE_SLOT_CREATE_EXPLOSION_DROPS": "1123",
-    "MC_POST_SLOT_CREATE_EXPLOSION_DROPS": "1124",
-    "MC_PRE_SLOT_SET_PRIZE_COLLECTIBLE": "1125",
-    "MC_POST_SLOT_SET_PRIZE_COLLECTIBLE": "1126",
-    "MC_PRE_DEVIL_APPLY_ITEMS": "1130",
-    "MC_PRE_DEVIL_APPLY_STAGE_PENALTY": "1131",
-    "MC_PRE_DEVIL_APPLY_SPECIAL_ITEMS": "1132",
-    "MC_POST_DEVIL_CALCULATE": "1133",
-    "MC_COMPLETION_MARK_GET": "1047",
-    "MC_POST_COMPLETION_MARK_GET": "1048",
-    "MC_PRE_COMPLETION_EVENT": "1049",
-    "MC_POST_PLAYERHUD_RENDER_ACTIVE_ITEM": "1079",
-    "MC_POST_PLAYERHUD_RENDER_HEARTS": "1091",
-    "MC_PRE_GET_LIGHTING_ALPHA": "1150",
-    "MC_PRE_RENDER_GRID_LIGHTING": "1151",
-    "MC_PRE_RENDER_ENTITY_LIGHTING": "1152",
-    "MC_PRE_PLAYER_APPLY_INNATE_COLLECTIBLE_NUM": "1092",
-    "MC_PRE_PLAYER_HAS_COLLECTIBLE": "1093",
-    "MC_PRE_MUSIC_PLAY_JINGLE": "1094",
-    "MC_POST_TRIGGER_COLLECTIBLE_REMOVED": "1095",
-    "MC_POST_TRIGGER_TRINKET_ADDED": "1096",
-    "MC_POST_TRIGGER_TRINKET_REMOVED": "1097",
-    "MC_POST_TRIGGER_WEAPON_FIRED": "1098",
-    "MC_POST_LEVEL_LAYOUT_GENERATED": "1099",
-    "MC_POST_NIGHTMARE_SCENE_RENDER": "1102",
-    "MC_POST_NIGHTMARE_SCENE_SHOW": "1103",
-    "MC_PRE_LEVEL_SELECT": "1104",
-    "MC_POST_WEAPON_FIRE": "1105",
-    "MC_PRE_BACKDROP_RENDER_WALLS": "1106",
-    "MC_PRE_BACKDROP_RENDER_FLOOR": "1107",
-    "MC_PRE_BACKDROP_RENDER_WATER": "1108",
-    "MC_POST_BACKDROP_PRE_RENDER_WALLS": "1109",
-    "MC_PRE_PLAYER_USE_BOMB": "1220",
-    "MC_POST_PLAYER_USE_BOMB": "1221",
-    "MC_NPC_PICK_TARGET": "1222",
-    "MC_POST_PLAYER_COLLISION": "1231",
-    "MC_POST_TEAR_COLLISION": "1233",
-    "MC_POST_FAMILIAR_COLLISION": "1235",
-    "MC_POST_BOMB_COLLISION": "1237",
-    "MC_POST_PICKUP_COLLISION": "1239",
-    "MC_PRE_SLOT_COLLISION": "1240",
-    "MC_POST_SLOT_COLLISION": "1241",
-    "MC_POST_KNIFE_COLLISION": "1243",
-    "MC_POST_PROJECTILE_COLLISION": "1245",
-    "MC_POST_NPC_COLLISION": "1247",
-    "MC_POST_LASER_COLLISION": "1249",
-    "MC_CONSOLE_AUTOCOMPLETE": "1120",
-    "MC_PLAYER_INIT_PRE_LEVEL_INIT_STATS": "1127",
-    "MC_CUSTOM_CHARACTER_UNLOCKED": "1140",
-    "MC_PRE_NEW_ROOM": "1200",
-    "MC_PRE_MEGA_SATAN_ENDING": "1201",
-    "MC_POST_MODS_LOADED": "1210",
-    "MC_POST_ITEM_OVERLAY_SHOW": "1134",
-    "MC_PRE_RENDER": "1135",
-    "MC_PRE_OPENGL_RENDER": "1136",
-    "MC_PRE_LEVEL_PLACE_ROOM": "1137",
-    "MC_PRE_M_MORPH_ACTIVE": "1190",
-    "MC_PICKUP_GET_COIN_VALUE": "1250",
-    "MC_POST_FAMILIAR_FIRE_PROJECTILE": "1252",
-    "MC_POST_FIRE_BOMB": "1253",
-    "MC_POST_FIRE_BONE_CLUB": "1254",
-    "MC_POST_FIRE_BRIMSTONE": "1255",
-    "MC_POST_FIRE_BRIMSTONE_BALL": "1256",
-    "MC_POST_FIRE_KNIFE": "1257",
-    "MC_POST_FIRE_SWORD": "1258",
-    "MC_POST_FIRE_TECH_LASER": "1259",
-    "MC_POST_FIRE_TECH_X_LASER": "1260",
-    "MC_POST_FAMILIAR_FIRE_BRIMSTONE": "1261",
-    "MC_POST_FAMILIAR_FIRE_TECH_LASER": "1262",
-    "MC_PRE_PLAYERHUD_TRINKET_RENDER": "1264",
-    "MC_MENU_INPUT_ACTION": "1464",
-    "MC_POST_SAVESLOT_LOAD": "1465",
-    "MC_PRE_PICKUP_VOIDED": "1265",
-    "MC_PRE_PICKUP_VOIDED_ABYSS": "1266",
-    "MC_PRE_PICKUP_COMPOSTED": "1267",
+    "MC_PRE_ENTITY_THROW": {
+      "value":  "1040",
+      "comment": "(EntityPlayer ThrowingPlayer, Entity HeldEntity, Vector Velocity): Vector - Called before a held entity is thrown. Accepts a Vector which will modify the velocity of the thrown entity."
+    },
+    "MC_POST_ENTITY_THROW": {
+      "value":  "1041",
+      "comment": "(EntityPlayer ThrowingPlayer, Entity HeldEntity, Vector Velocity) - Called after a held entity is thrown."
+    },
+    "MC_PLAYER_INIT_POST_LEVEL_INIT_STATS": {
+      "value":  "1042",
+      "comment": "(EntityPlayer Player), Optional Arg: PlayerType. Called after a player is initialized for the first time, being when starting the run, joining the game as a co-op player, or when activating Genesis."
+    },
+    "MC_PRE_ROOM_EXIT": {
+      "value":  "1043",
+      "comment": "(EntityPlayer Player, boolean NewLevel) - Called before exiting the current room. NewLevel is true if the room is transitioning into a new floor."
+    },
+    "MC_PRE_LEVEL_INIT": {
+      "value":  "1060",
+      "comment": "Callback has no arguments. Called before a new level is initialized."
+    },
+    "MC_PRE_TRIGGER_PLAYER_DEATH": {
+      "value":  "1050",
+      "comment": "(EntityPlayer Player): boolean - Called right before the game over screen. Accepts false to cancel the death, reviving the player in-place with half a heart, or true/nil/nothing to allow the death to go through."
+    },
+    "MC_PRE_RESTOCK_SHOP": {
+      "value":  "1070",
+      "comment": "(boolean Partial) - Accepts false to cancel the restock, blocking shop rerolls from restock machines or restocks from Restock altogether. Partial is true for Room::ShopRestockPartial() and Restock, false for Room::ShopRestockFull() and restock machines."
+    },
+    "MC_POST_RESTOCK_SHOP": {
+      "value":  "1071",
+      "comment": "(boolean Partial) - Called after a shop rerolls from restock machines or Restock. Partial is true for Room::ShopRestockPartial() and Restock, false for Room::ShopRestockFull() and restock machines."
+    },
+    "MC_PRE_CHANGE_ROOM": {
+      "value":  "1061",
+      "comment": "(integer TargetRoomIdx, integer Dimension): table{TargetRoomIdx, Dimension} - Called before the room changes. Accepts a table of parameters to change what room you enter."
+    },
+    "MC_POST_PICKUP_SHOP_PURCHASE": {
+      "value":  "1062",
+      "comment": "(EntityPickup Pickup, EntityPlayer Player, integer MoneySpent), Optional Arg: PickupVariant - Called after an item is purchased. This includes devil deals."
+    },
+    "MC_GET_FOLLOWER_PRIORITY": {
+      "value":  "1063",
+      "comment": "(EntityFamiliar Familiar): FollowerPriority | integer, Optional Arg: FamiliarVariant - Accepts FollowerPriority to give familiar priority. Can accept any integer."
+    },
+    "MC_PRE_NPC_MORPH": {
+      "value":  "1212",
+      "comment": "(EntityNPC NPC, EntityType EntityType, integer Variant, integer SubType, ChampionColor ChampionId): table{EntityType, Variant, SubType, ChampionId} | {EntityType, Variant, SubType} | boolean - Called before an NPC morphs. Accepts a table of parameters to change what entity they morph into, or false to cancel the morph."
+    },
+    "MC_PRE_PICKUP_MORPH": {
+      "value":  "1213",
+      "comment": "(EntityPickup Pickup, integer EntityType, integer Variant, integer SubType, boolean KeepPrice, boolean KeepSeed, boolean IgnoreModifiers): table{EntityType, Variant, SubType, KeepPrice, KeepSeed, IgnoreModifiers} | table{EntityType, Variant, SubType} | boolean - Called before a pickup is morphed. Accepts a table of parameters to change what pickup it morphs into, or false to cancel the morph."
+    },
+    "MC_POST_NPC_MORPH": {
+      "value":  "1214",
+      "comment": "(EntityNPC NPC, EntityType EntityType, integer Variant, integer SubType, ChampionColor ChampionId). Called after an NPC morphs, assuming it wasn't cancelled."
+    },
+    "MC_POST_PICKUP_MORPH": {
+      "value":  "1215",
+      "comment": "(EntityPickup Pickup, integer EntityType, integer Variant, integer SubType, boolean KeepPrice, boolean KeepSeed, boolean IgnoreModifiers). Called after a pickup morphs, assuming it wasn't cancelled."
+    },
+    "MC_PRE_COMPLETION_MARKS_RENDER": {
+      "value":  "1216",
+      "comment": "(Sprite CompletionMarksSprite, Vector RenderPos, Vector RenderScale, PlayerType PlayerType): boolean - Called before a character's completion marks are rendered on the character selection screen. Return false to prevent the completion marks from rendering."
+    },
+    "MC_POST_COMPLETION_MARKS_RENDER": {
+      "value":  "1217",
+      "comment": "(Sprite CompletionMarksSprite, Vector RenderPos, Vector RenderScale, PlayerType PlayerType) - Called before a character's completion marks are rendered on the character selection screen, assuming it wasn't skipped."
+    },
+    "MC_PRE_PAUSE_SCREEN_RENDER": {
+      "value":  "1218",
+      "comment": "(Sprite PauseBody, Sprite PauseStats): boolean - Called before the pause screen is rendered in-game. Return false to prevent the pause screen from rendering. Doing so will also prevent the screen from darkening."
+    },
+    "MC_POST_PAUSE_SCREEN_RENDER": {
+      "value":  "1219",
+      "comment": "(Sprite PauseBody, Sprite PauseStats): boolean - Called before the pause screen is rendered in-game, assuming it wasn't skipped."
+    },
+    "MC_PRE_USE_CARD": {
+      "value":  "1064",
+      "comment": "(Card CardID, EntityPlayer Player, integer UseFlag): boolean - Called before a card is used. Return false to cancel card use. This will still consume the card."
+    },
+    "MC_PRE_USE_PILL": {
+      "value":  "1065",
+      "comment": "(PillEffect PillEffectID, PillColor PillColorID, EntityPlayer Player, integer UseFlag): boolean - Called before a pill is used. Return false to cancel pill use. This will still consume the pill."
+    },
+    "MC_GET_SHOP_ITEM_PRICE": {
+      "value":  "1066",
+      "comment": "(integer PickupVariant, integer PickupSubType, integer ShopItemID, integer Price): PickupPrice | integer, Optional Arg: PickupVariant - Called after the price for a shop item was calculated. Return an integer or PickupPrice to change the price of the item."
+    },
+    "MC_PLAYER_GET_HEALTH_TYPE": {
+      "value":  "1067",
+      "comment": "(EntityPlayer Player): HealthType, Optional Arg: PlayerType - Called when getting the health type of the player. Return a HealthType to change the health type of the character."
+    },
+    "MC_PRE_ROOM_TRIGGER_CLEAR": {
+      "value":  "1068",
+      "comment": "(boolean PlaySound) - Called before a room is cleared."
+    },
+    "MC_PRE_PLAYER_TRIGGER_ROOM_CLEAR": {
+      "value":  "1069",
+      "comment": "(EntityPlayer Player): boolean, Optional Arg: PlayerVariant. Called before all room clear-related effects for a player is triggered. This also accounts for challenge waves. Return false to cancel trigger effects."
+    },
+    "MC_PRE_FAMILIAR_RENDER": {
+      "value":  "1080",
+      "comment": "(EntityFamiliar Familiar): Vector | boolean, Optional Arg: FamiliarVariant - Called before a familiar is rendered. Return a Vector to modify render offset or false to cancel rendering."
+    },
+    "MC_PRE_NPC_RENDER": {
+      "value":  "1081",
+      "comment": "(EntityNPC NPC): Vector | boolean, Optional Arg: EntityType - Called before an NPC is rendered. Return a Vector to modify render offset or false to cancel rendering."
+    },
+    "MC_PRE_PLAYER_RENDER": {
+      "value":  "1082",
+      "comment": "(EntityPlayer Player): Vector | boolean, Optional Arg: PlayerVariant - Called before a player is rendered. Return a Vector to modify render offset or false to cancel rendering."
+    },
+    "MC_PRE_PICKUP_RENDER": {
+      "value":  "1083",
+      "comment": "(EntityPickup Pickup): Vector | boolean, Optional Arg: PickupVariant - Called before a pickup is rendered. Return a Vector to modify render offset or false to cancel rendering."
+    },
+    "MC_PRE_TEAR_RENDER": {
+      "value":  "1084",
+      "comment": "(EntityTear Tear): Vector | boolean, Optional Arg: TearVariant - Called before a tear is rendered. Return a Vector to modify render offset or false to cancel rendering."
+    },
+    "MC_PRE_PROJECTILE_RENDER": {
+      "value":  "1085",
+      "comment": "(EntityProjectile Projectile): Vector | boolean, Optional Arg: ProjectileVariant - Called before a projectile is rendered. Return a Vector to modify render offset or false to cancel rendering."
+    },
+    "MC_PRE_KNIFE_RENDER": {
+      "value":  "1086",
+      "comment": "(EntityKnife Knife): Vector | boolean, Optional Arg: KnifeVariant - Called before a knife is rendered. Return a Vector to modify render offset or false to cancel rendering."
+    },
+    "MC_PRE_EFFECT_RENDER": {
+      "value":  "1087",
+      "comment": "(EntityEffect Effect): Vector | boolean, Optional Arg: EffectVariant - Called before an effect is rendered. Return a Vector to modify render offset or false to cancel rendering."
+    },
+    "MC_PRE_BOMB_RENDER": {
+      "value":  "1088",
+      "comment": "(EntityBomb Bomb): Vector | boolean, Optional Arg: BombVariant - Called before a bomb is rendered. Return a Vector to modify render offset or false to cancel rendering."
+    },
+    "MC_PRE_SLOT_RENDER": {
+      "value":  "1089",
+      "comment": "(EntitySlot Slot): Vector | boolean, Optional Arg: SlotVariant - Called before a slot is rendered. Return a Vector to modify render offset or false to cancel rendering."
+    },
+    "MC_POST_SLOT_RENDER": {
+      "value":  "1090",
+      "comment": "(EntityFamiliar Familiar): Vector | boolean, Optional Arg: FamiliarVariant - Called after a familiar is rendered, assuming it wasn't skipped."
+    },
+    "MC_PLAYER_GET_ACTIVE_MAX_CHARGE": {
+      "value":  "1072",
+      "comment": "(CollectibleType ItemID, EntityPlayerPlayer, integer VarData): integer, Optional Arg: CollectibleType - Called when getting the active charge of an active item. Return an integer to override the max charge for the active item."
+    },
+    "MC_PLAYER_GET_ACTIVE_MIN_USABLE_CHARGE": {
+      "value":  "1073",
+      "comment": "(ActiveSlot Slot): integer, Optional Arg: CollectibleType - Called when getting the minimum charge requirement for using an active item (seen in items such as Larynx). Return an integer to override the minimum charge to use the active item."
+    },
+    "MC_PLAYER_GET_HEART_LIMIT": {
+      "value":  "1074",
+      "comment": "(ENtityPlayer Player, integer HeartLimit, boolean IsKeeper): integer, Optional Arg: PlayerType - Called when getting the max amount of hearts the player can have. Return an integer to override the heart limit (1 unit equals half a heart)."
+    },
+    "MC_POST_ITEM_OVERLAY_UPDATE": {
+      "value":  "1075",
+      "comment": "Callback has no arguments. Optional Arg: Giantbook - Called after an item overlay updates."
+    },
+    "MC_PRE_ITEM_OVERLAY_SHOW": {
+      "value":  "1076",
+      "comment": "(Giantbook GiantBookID, integer Delay, EntityPlayer Player): Giantbook | boolean, Optional Arg: Giantbook - Called before an item overlay is shown. Return Giantbook to change what Giantbook is shown or false to cancel it."
+    },
+    "MC_POST_PLAYER_NEW_ROOM_TEMP_EFFECTS": {
+      "value":  "1077",
+      "comment": "(EntityPlayer Player), Optional Arg: PlayerType - Called after a player's TemporaryEffects are reset after a new room."
+    },
+    "MC_POST_PLAYER_NEW_LEVEL": {
+      "value":  "1078",
+      "comment": "(EntityPlayer Player), Optional Arg: PlayerType - Called after entering a new level, but provides the player. Useful for player-specific effects on a new level."
+    },
+    "MC_POST_PLAYER_GET_MULTI_SHOT_PARAMS": {
+      "value":  "1251",
+      "comment": "(EntityPlayer Player): MultiShotParams, Optional Arg: PlayerType - Called after getting the player's MultiShotParams. Return a MultiShotParams object to change the properties of the players shooting behavior in regards to the MultiShotParams object properties."
+    },
+    "MC_PRE_REPLACE_SPRITESHEET": {
+      "value":  "1116",
+      "comment": "(integer LayerID, string PNGFilename): table{LayerID, PNGFilename}, Optional Arg: string ANM2Filename - Called before a Sprite object's spritesheet is replaced. Return a table of parameters to change what spritesheet is replaced."
+    },
+    "MC_POST_REPLACE_SPRITESHEET": {
+      "value":  "1117",
+      "comment": "(integer LayerID, string PNGFilename), Optional Arg: string ANM2Filename - Called after a Sprite object's spritesheet is replaced."
+    },
+    "MC_PRE_PLANETARIUM_APPLY_STAGE_PENALTY": {
+      "value":  "1110",
+      "comment": "Callback has no arguments. Start of planetarium calculation. Return false to bypass the normal planetarium stage penalty, such as when its at 0% for floors past Depths II/Womb II with Telescope Lens."
+    },
+    "MC_PRE_PLANETARIUM_APPLY_PLANETARIUM_PENALTY": {
+      "value":  "1111",
+      "comment": "(integer Chance): boolean - Called if on a valid stage and before applying the penalty for entering a Planetarium. Chance will be 1% (10% with Telescope Lens). Return false to bypass the penalty."
+    },
+    "MC_PRE_PLANETARIUM_APPLY_TREASURE_PENALTY": {
+      "value":  "1112",
+      "comment": "(integer TreasureRoomsVisited): boolean | integer - Called if no planetariums have been entered before and during calculation for applying the penalty for entering treasure rooms. Return false to bypass the penalty or an integer to modify how many treasure rooms the game believes have been entered. "
+    },
+    "MC_PRE_PLANETARIUM_APPLY_ITEMS": {
+      "value":  "1113",
+      "comment": "(float Chance): float - Called after checking the amount of treasure rooms entered and during calculation for applying additional planetarium chance from Crystal Ball, Magic 8 Ball, Sausage, and Telescope Lens' +15% planetarium chance. Return a float to modify the chance in this step of this calculation."
+    },
+    "MC_PRE_PLANETARIUM_APPLY_TELESCOPE_LENS": {
+      "value":  "1114",
+      "comment": "(float Chance): float - Called after checking all previous calculations steps and during calculation for applying Telescope Lens' +9% base planetarium chance. Return a float to modify the chance in this step of the calculation."
+    },
+    "MC_POST_PLANETARIUM_CALCULATE": {
+      "value":  "1115",
+      "comment": "(float Chance): float - Last step of planetarium chance calculation. Return a float to override the final chance."
+    },
+    "MC_POST_SLOT_INIT": {
+      "value":  "1121",
+      "comment": "(EntitySlot Slot), Optional Arg: SlotVariant - Called after a slot is initialized."
+    },
+    "MC_POST_SLOT_UPDATE": {
+      "value":  "1122",
+      "comment": "(EntitySlot Slot), Optional Arg: SlotVariant - Called after a slot is updated."
+    },
+    "MC_PRE_SLOT_CREATE_EXPLOSION_DROPS": {
+      "value":  "1123",
+      "comment": "(EntitySlot Slot), Optional Arg: SlotVariant - Called before a slot creates explosion drops, whether from exploding or having EntitySlot::CreateExplosionDrops() called. Return false to stop explosions from dropping the standard consumables."
+    },
+    "MC_POST_SLOT_CREATE_EXPLOSION_DROPS": {
+      "value":  "1124",
+      "comment": "(EntitySlot Slot), Optional Arg: SlotVariant - Called after a slot creates explosion drops, whether from exploding or having EntitySlot::CreateExplosionDrops() called, assuming it wasn't cancelled."
+    },
+    "MC_PRE_SLOT_SET_PRIZE_COLLECTIBLE": {
+      "value":  "1125",
+      "comment": "(EntitySlot Slot, CollectibleType ItemID): CollectibleType, Optional Arg: SlotVariant - Used by Shell Game, Hell Game, and Crane Game before determining the CollectibleType it gives on payout. Return a CollectibleType to override what the game will pay out with."
+    },
+    "MC_POST_SLOT_SET_PRIZE_COLLECTIBLE": {
+      "value":  "1126",
+      "comment": "(EntitySlot Slot, CollectibleType ItemID): CollectibleType, Optional Arg: SlotVariant - Used by Shell Game, Hell Game, and Crane Game for the CollectibleType is gives on payout."
+    },
+    "MC_PRE_DEVIL_APPLY_ITEMS": {
+      "value":  "1130",
+      "comment": "(): float - Start of devil deal calculation. Called before stage penalty and during calculation for most items that affect devil deal chance. Return a float to modify the chance in this step of the calculation."
+    },
+    "MC_PRE_DEVIL_APPLY_STAGE_PENALTY": {
+      "value":  "1131",
+      "comment": "(): boolean - Called during calculation for stage penalty. If a deal spawned anywhere on the previous two floors, the game decays the resulting chance by either 50% or 25% depending on how many deals have spawned. Return a boolean to bypass the stage penalty."
+    },
+    "MC_PRE_DEVIL_APPLY_SPECIAL_ITEMS": {
+      "value":  "1132",
+      "comment": "(): float - Called after stage penalty and during calculation for items like Goat Head and Eucharist. Return a float to modify the chance in this step of the calculation."
+    },
+    "MC_POST_DEVIL_CALCULATE": {
+      "value":  "1133",
+      "comment": "(integer Chance): float - Last step of devil deal chance calculation. Return a float to override the final chance."
+    },
+    "MC_COMPLETION_MARK_GET": {
+      "value":  "1047",
+      "comment": "(CompletionType Completion, PlayerType PlayerType): boolean, Optional Arg: PlayerType - Called when the player gets a completion mark. Return false to cancel the completion mark."
+    },
+    "MC_POST_COMPLETION_MARK_GET": {
+      "value":  "1048",
+      "comment": "(CompletionType Completion, PlayerType PlayerType), Optional Arg: PlayerType - Called when the player gets a completion mark, assuming it wasn't cancelled."
+    },
+    "MC_PRE_COMPLETION_EVENT": {
+      "value":  "1049",
+      "comment": "(CompletionType Completion): boolean - Triggers when an event for a completion gets triggered, typically when defeating a major boss or beating Boss Rush. Return false to cancel the completion event, which will prevent all marks and completion event related stuff to trigger for all players."
+    },
+    "MC_POST_PLAYERHUD_RENDER_ACTIVE_ITEM": {
+      "value":  "1079",
+      "comment": "(EntityPlayer Player, ActiveSlot Slot, Vector Offset, float Alpha, float Scale, Vector ChargeBarOffset) - Called after the player's active item is rendered."
+    },
+    "MC_POST_PLAYERHUD_RENDER_HEARTS": {
+      "value":  "1091",
+      "comment": "(Vector Offset(?), Sprite HeartsSprite, Vector Position, float Unknown, EntityPlayer Player) - Called after the player's hearts are rendered, both on the corners of the HUD and above Strawman-like players, assuming it wasn't skipped."
+    },
+    "MC_PRE_GET_LIGHTING_ALPHA": {
+      "value":  "1150",
+      "comment": "(float OriginalAlpha): float - Called when getting the alpha of the lighting in the room. Return a float to modify the lightning alpha. Generally this is between 0 and 1 but you can technically go higher than this."
+    },
+    "MC_PRE_RENDER_GRID_LIGHTING": {
+      "value":  "1151",
+      "comment": "(GridEntity GridEntity, Vector Offset) - Called before the the lighting of a grid entity is rendered. Return a Vector to modify render offset or false to cancel rendering."
+    },
+    "MC_PRE_RENDER_ENTITY_LIGHTING": {
+      "value":  "1152",
+      "comment": "(Entity Entity, Vector Offset) - Called before the lighting of an entity is rendered. Return a Vector to modify render offset or false to cancel rendering."
+    },
+    "MC_PRE_PLAYER_APPLY_INNATE_COLLECTIBLE_NUM": {
+      "value":  "1092",
+      "comment": "(int ModCount, EntityPlayer Player, CollectibleType Type, boolean OnlyCountTrueItems): integer - Called when getting the amount of innate items on the player. Return an integer to modify how many of a specific innate item the player has."
+    },
+    "MC_PRE_MUSIC_PLAY_JINGLE": {
+      "value":  "1094",
+      "comment": "(Music MusicID): Music | boolean, Optional Arg: Music - Called before a music jingle is played. Return a Music to change the track or false to cancel the track."
+    },
+    "MC_POST_TRIGGER_COLLECTIBLE_REMOVED": {
+      "value":  "1095",
+      "comment": "(EntityPlayer Player, CollectibleType ItemID), Optional Arg: CollectibleType. Called after a collectible is removed from the player."
+    },
+    "MC_POST_TRIGGER_TRINKET_ADDED": {
+      "value":  "1096",
+      "comment": "(EntityPlayer Player, TrinketType TrinketID, boolean FirstTimePickingUp), Optional Arg: TrinketType. Called after a trinket is added to the player."
+    },
+    "MC_POST_TRIGGER_TRINKET_REMOVED": {
+      "value":  "1097",
+      "comment": "(EntityPlayer Player, TrinketType TrinketID), Optional Arg: TrinketType. Called after a trinket is removed from the player."
+    },
+    "MC_POST_TRIGGER_WEAPON_FIRED": {
+      "value":  "1098",
+      "comment": "(Vector FireDirection, int FireAmount, Entity Owner, Weapon Weapon), Optional Arg: WeaponType - Called after a weapon is fired. A weapon can count as 'fired' while its continuously active, such as Brimstone."
+    },
+    "MC_POST_LEVEL_LAYOUT_GENERATED": {
+      "value":  "1099",
+      "comment": "(LevelGenerator LevelGen) - Called after the layout of a level is generated."
+    },
+    "MC_POST_NIGHTMARE_SCENE_RENDER": {
+      "value":  "1102",
+      "comment": "Callback has no arguments. Called after the nightmare scene transition between floors or during the interaction with Mom's Bed in Home is rendered."
+    },
+    "MC_POST_NIGHTMARE_SCENE_SHOW": {
+      "value":  "1103",
+      "comment": "(boolean IsDogmaNightmare) - Called after triggering the nightmare scene transition between floors or during the interaction with Mom's Bed in Home."
+    },
+    "MC_PRE_LEVEL_SELECT": {
+      "value":  "1104",
+      "comment": "(LevelStage Level, StageType Type): table{Level, Type} - Called when the game selects which level (also known as stage) to load, usually when the player enters a trapdoor. Return a table of parameters to change what level is loaded."
+    },
+    "MC_POST_WEAPON_FIRE": {
+      "value":  "1105",
+      "comment": "(Weapon Weapon, Vector FireDirection, boolean IsShooting, boolean IsInterpolated), Optional Arg: WeaponType - Called after every weapon update, whether the Weapon owner is actually firing or not."
+    },
+    "MC_PRE_BACKDROP_RENDER_WALLS": {
+      "value":  "1106",
+      "comment": "(ColorModifier ColorModifier) - Called the backdrop's walls are rendered."
+    },
+    "MC_PRE_BACKDROP_RENDER_FLOOR": {
+      "value":  "1107",
+      "comment": "(ColorModifier ColorModifier) - Called before the backdrop's floor is rendered."
+    },
+    "MC_PRE_BACKDROP_RENDER_WATER": {
+      "value":  "1108",
+      "comment": "Callback has no arguments. Called before water over the floor is rendered."
+    },
+    "MC_POST_BACKDROP_PRE_RENDER_WALLS": {
+      "value":  "1109",
+      "comment": "(ColorModifier ColorModifier) - Called after the backdrop's walls are rendered."
+    },
+    "MC_PRE_PLAYER_USE_BOMB": {
+      "value":  "1220",
+      "comment": "(EntityPlayer Player): boolean, Optional Arg: PlayerVariant - Called before the player uses a bomb. Return false to stop the player from using a bomb. This will still consume the bomb."
+    },
+    "MC_POST_PLAYER_USE_BOMB": {
+      "value":  "1221",
+      "comment": "(EntityPlayer Player): boolean, Optional Arg: PlayerVariant - Called after the player uses a bomb, assuming it hasn't been cancelled."
+    },
+    "MC_NPC_PICK_TARGET": {
+      "value":  "1222",
+      "comment": "(EntityNPC NPC, Entity CurrentTarget): Entity, Optional Arg: EntityType - Called whenever an EntityNPC selects its target, such as when EntityNPC:GetPlayerTarget() is called."
+    },
+    "MC_POST_PLAYER_COLLISION": {
+      "value":  "1231",
+      "comment": "Runs after the on-collision code of this entity, assuming it wasn't skipped."
+    },
+    "MC_POST_TEAR_COLLISION": {
+      "value":  "1233",
+      "comment": "Runs after the on-collision code of this entity, assuming it wasn't skipped."
+    },
+    "MC_POST_FAMILIAR_COLLISION": {
+      "value":  "1235",
+      "comment": "Runs after the on-collision code of this entity, assuming it wasn't skipped."
+    },
+    "MC_POST_BOMB_COLLISION": {
+      "value":  "1237",
+      "comment": "Runs after the on-collision code of this entity, assuming it wasn't skipped."
+    },
+    "MC_POST_PICKUP_COLLISION": {
+      "value":  "1239",
+      "comment": "Runs after the on-collision code of this entity, assuming it wasn't skipped."
+    },
+    "MC_PRE_SLOT_COLLISION": {
+      "value":  "1240",
+      "comment": "(EntitySlot, Entity Collider, boolean Low): boolean, Optional Arg: SlotVariant - "
+    },
+    "MC_POST_SLOT_COLLISION": {
+      "value":  "1241",
+      "comment": "Runs after the on-collision code of this entity, assuming it wasn't skipped."
+    },
+    "MC_POST_KNIFE_COLLISION": {
+      "value":  "1243",
+      "comment": "Runs after the on-collision code of this entity, assuming it wasn't skipped."
+    },
+    "MC_POST_PROJECTILE_COLLISION": {
+      "value":  "1245",
+      "comment": "Runs after the on-collision code of this entity, assuming it wasn't skipped."
+    },
+    "MC_POST_NPC_COLLISION": {
+      "value":  "1247",
+      "comment": "Runs after the on-collision code of this entity, assuming it wasn't skipped."
+    },
+    "MC_POST_LASER_COLLISION": {
+      "value":  "1249",
+      "comment": "Runs after the on-collision code of this entity, assuming it wasn't skipped."
+    },
+    "MC_CONSOLE_AUTOCOMPLETE": {
+      "value":  "1120",
+      "comment": "(string Command, string Params): table, Optional Arg: string Command - Called whenever a function with the CUSTOM AutocompleteType enum is being entered into the console. Called every time the console input changes."
+    },
+    "MC_PLAYER_INIT_PRE_LEVEL_INIT_STATS": {
+      "value":  "1127",
+      "comment": "(EntityPlayer Player), Optional Arg: PlayerType. Called before a player is initialized for the first time, being when starting the run, joining the game as a co-op player, or when activating Genesis."
+    },
+    "MC_PRE_NEW_ROOM": {
+      "value":  "1200",
+      "comment": "(Room Room, RoomDescriptor Descriptor) - Called before entering a new room."
+    },
+    "MC_PRE_MEGA_SATAN_ENDING": {
+      "value":  "1201",
+      "comment": "(): boolean - Called right before Mega Satan forcibly ends the game. Return true to suppress the ending, guaranteeing a portal to the Void while retaining the completion mark for active characters."
+    },
+    "MC_POST_MODS_LOADED": {
+      "value":  "1210",
+      "comment": "Callback has no arguments. Called after all Lua scripts have been loaded. Ideal for running code that is expected to run after all mods are initialized, but without the need for load order idiocy!"
+    },
+    "MC_POST_ITEM_OVERLAY_SHOW": {
+      "value":  "1134",
+      "comment": "(Giantbook GiantBookID, integer Delay, EntityPlayer Player), Optional Arg: Giantbook - Called after an item overlay is shown, assuming it wasn't cancelled."
+    },
+    "MC_PRE_RENDER": {
+      "value":  "1135",
+      "comment": "Callback has no arguments. Gets called right before the Manager::Render() function gets called."
+    },
+    "MC_PRE_OPENGL_RENDER": {
+      "value":  "1136",
+      "comment": "(VertexBuffer VertexBuffer, integer ShaderID, RenderContext Unknown): Unknown - Gets called right before the Manager::Render() function gets called."
+    },
+    "MC_PRE_LEVEL_PLACE_ROOM": {
+      "value":  "1137",
+      "comment": "(LevelGeneratorRoom Slot, RoomConfigRoom RoomConfig, int Seed): RoomConfigRoom - Called before a room is placed during level generation. Return a RoomConfigRoom to change the room being placed."
+    },
+    "MC_PRE_M_MORPH_ACTIVE": {
+      "value":  "1190",
+      "comment": "(EntityPlayer Player, CollectibleType ItemID), Optional Arg: CollectibleType | boolean - Called before an active gets rerolled by 'M (trinket id 138). Return a CollectibleType to change the CollectibleType it rerolls into or false to prevent the active from being rerolled entirely."
+    },
+    "MC_PICKUP_GET_COIN_VALUE": {
+      "value":  "1250",
+      "comment": "(EntityPickup Pickup): integer, Optional Arg: CoinSubType - Called when getting the coin value of a coin pickup. Return an integer to modify the amount of coins the coin can give you on pickup."
+    },
+    "MC_POST_FAMILIAR_FIRE_PROJECTILE": {
+      "value":  "1252",
+      "comment": "(EntityTear Tear), Optional Arg: FamiliarVariant - Called when a familiar fires a tear. (Is this just for Weapon familiars or all familiars??)"
+    },
+    "MC_POST_FIRE_BOMB": {
+      "value":  "1253",
+      "comment": "(EntityBomb Bomb) - Called when the player fires a Dr. Fetus bomb."
+    },
+    "MC_POST_FIRE_BONE_CLUB": {
+      "value":  "1254",
+      "comment": "(EntityKnife Knife) - Called when the player fired The Forgotten's bone club. This is only called when the club is initially spawned, not when swung or charged and shot."
+    },
+    "MC_POST_FIRE_BRIMSTONE": {
+      "value":  "1255",
+      "comment": "(EntityLaser Laser) - Called when the player fires a brimstone laser. This is also called for delayed Brimstone."
+    },
+    "MC_POST_FIRE_BRIMSTONE_BALL": {
+      "value":  "1256",
+      "comment": "(EntityEffect Effect) - Called when the player fires a brimstone ball."
+    },
+    "MC_POST_FIRE_KNIFE": {
+      "value":  "1257",
+      "comment": "(EntityKnife Knife) - Called when the player fires the knife from Mom's Knife. This is only called when the knife is initially spawned, not when charged and shot."
+    },
+    "MC_POST_FIRE_SWORD": {
+      "value":  "1258",
+      "comment": "(EntityKnife Knife) - Called when the player swings the sword from Spirit Sword. This is not called for the sword's charged swing."
+    },
+    "MC_POST_FIRE_TECH_LASER": {
+      "value":  "1259",
+      "comment": "(EntityLaser Laser) - Called when the player fires a Tech laser."
+    },
+    "MC_POST_FIRE_TECH_X_LASER": {
+      "value":  "1260",
+      "comment": "(EntityLaser Laser) - Called when the player fires a Tech X laser."
+    },
+    "MC_POST_FAMILIAR_FIRE_BRIMSTONE": {
+      "value":  "1261",
+      "comment": "(EntityLaser Laser), Optional Arg: FamiliarVariant - Called when a familiar fires a brimstone laser."
+    },
+    "MC_POST_FAMILIAR_FIRE_TECH_LASER": {
+      "value":  "1262",
+      "comment": "(EntityLaser Laser), Optional Arg: FamiliarVariant - Called when a familiar fires a Tech laser."
+    },
+    "MC_PRE_PLAYERHUD_TRINKET_RENDER": {
+      "value":  "1264",
+      "comment": "(ActiveSlot Slot, Vector Position, float Scale, EntityPlayer Player): table{Position, Scale} | boolean, Optional Arg: ActiveSlot - Called before the player's trinket on the HUD is rendered. Return a table with any combination of its parameters to override those respective fields or true to cancel rendering."
+    },
+    "MC_MENU_INPUT_ACTION": {
+      "value":  "1464",
+      "comment": "(Entity Entity, InputHook InputHook, ButtonAction ButtonAction): boolean | float, Optional Arg: InputHook - Same as MC_INPUT_ACTION, but only works in the main menu."
+    },
+    "MC_POST_SAVESLOT_LOAD": {
+      "value":  "1465",
+      "comment": "(integer SaveSlot, boolean IsSaveSlotSelected, integer RawSlot) - This is called whenever a save slot is loaded by the game. "
+    },
+    "MC_PRE_PICKUP_VOIDED": {
+      "value":  "1265",
+      "comment": "(EntityPickup Pickup, boolean IsBlackRune): boolean, Optional Arg: PickupVariant - Called when a pickup is consumed with the Void active or Black Rune. The IsBlackRune parameter indicates the source. If Black Rune is used, the callback gets fired both for pedestal items and for small pickups that turn into flies. Return false to cancel the pickup getting consumed."
+    },
+    "MC_PRE_PICKUP_VOIDED_ABYSS": {
+      "value":  "1266",
+      "comment": "(EntityPickup Pickup): boolean, Optional Arg: PickupVariant - Called when a pickup is consumed with the Abyss active. Accepts false to cancel the pickup getting consumed."
+    },
+    "MC_PRE_PICKUP_COMPOSTED": {
+      "value":  "1267",
+      "comment": "(EntityPickup Pickup) - Called when a pickup is consumed with the Compost active. Return false to cancel the pickup getting consumed."
+    },
+    "MC_PRE_GRID_ENTITY_DECORATION_UPDATE": {
+      "value": "1400",
+      "comment": "(GridEntityDecoration Decoration) - Called before this grid entity is updated. Return false to cancel the update."
+    }, 
+    "MC_POST_GRID_ENTITY_DECORATION_UPDATE": {
+      "value": "1401",
+      "comment": "(GridEntityDecoration Decoration) - Called after this grid entity is updated, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_DOOR_UPDATE": {
+      "value": "1402",
+      "comment": "(GridEntityDoor Door) - Called before this grid entity is updated. Return false to cancel the update."
+    }, 
+    "MC_POST_GRID_ENTITY_DOOR_UPDATE": {
+      "value": "1403",
+      "comment": "(GridEntityDoor Door) - Called after this grid entity is updated, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_FIRE_UPDATE": {
+      "value": "1404",
+      "comment": "(GridEntityFire Fire) - Called before this grid entity is updated. Return false to cancel the update."
+    }, 
+    "MC_POST_GRID_ENTITY_FIRE_UPDATE": {
+      "value": "1405",
+      "comment": "(GridEntityFire Fire) - Called after this grid entity is updated, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_GRAVITY_UPDATE": {
+      "value": "1406",
+      "comment": "(GridEntityGravity Gravity) - Called before this grid entity is updated. Return false to cancel the update."
+    }, 
+    "MC_POST_GRID_ENTITY_GRAVITY_UPDATE": {
+      "value": "1407",
+      "comment": "(GridEntityGravity Gravity) - Called after this grid entity is updated, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_LOCK_UPDATE": {
+      "value": "1408",
+      "comment": "(GridEntityLock Lock) - Called before this grid entity is updated. Return false to cancel the update."
+    }, 
+    "MC_POST_GRID_ENTITY_LOCK_UPDATE": {
+      "value": "1409",
+      "comment": "(GridEntityLock Lock) - Called after this grid entity is updated, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_PIT_UPDATE": {
+      "value": "1410",
+      "comment": "(GridEntityPit Pit) - Called before this grid entity is updated. Return false to cancel the update."
+    }, 
+    "MC_POST_GRID_ENTITY_PIT_UPDATE": {
+      "value": "1411",
+      "comment": "(GridEntityPit Pit) - Called after this grid entity is updated, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_POOP_UPDATE": {
+      "value": "1412",
+      "comment": "(GridEntityPoop Poop) - Called before this grid entity is updated. Return false to cancel the update."
+    }, 
+    "MC_POST_GRID_ENTITY_POOP_UPDATE": {
+      "value": "1413",
+      "comment": "(GridEntityPoop Poop) - Called after this grid entity is updated, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_PRESSUREPLATE_UPDATE": {
+      "value": "1414",
+      "comment": "(GridEntityPressurePlate PressurePlate) - Called before this grid entity is updated. Return false to cancel the update."
+    }, 
+    "MC_POST_GRID_ENTITY_PRESSUREPLATE_UPDATE": {
+      "value": "1415",
+      "comment": "(GridEntityPressurePlate PressurePlate) - Called after this grid entity is updated, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_ROCK_UPDATE": {
+      "value": "1416",
+      "comment": "(GridEntityRock Rock) - Called before this grid entity is updated. Return false to cancel the update."
+    }, 
+    "MC_POST_GRID_ENTITY_ROCK_UPDATE": {
+      "value": "1417",
+      "comment": "(GridEntityRock Rock) - Called after this grid entity is updated, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_SPIKES_UPDATE": {
+      "value": "1418",
+      "comment": "(GridEntitySpikes Spikes) - Called before this grid entity is updated. Return false to cancel the update."
+    }, 
+    "MC_POST_GRID_ENTITY_SPIKES_UPDATE": {
+      "value": "1419",
+      "comment": "(GridEntitySpikes Spikes) - Called after this grid entity is updated, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_STAIRCASE_UPDATE": {
+      "value": "1420",
+      "comment": "(GridEntityStaircase Staircase) - Called before this grid entity is updated. Return false to cancel the update."
+    }, 
+    "MC_POST_GRID_ENTITY_STAIRCASE_UPDATE": {
+      "value": "1421",
+      "comment": "(GridEntityStaircase Staircase) - Called after this grid entity is updated, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_STATUE_UPDATE": {
+      "value": "1422",
+      "comment": "(GridEntityStatue Statue) - Called before this grid entity is updated. Return false to cancel the update."
+    }, 
+    "MC_POST_GRID_ENTITY_STATUE_UPDATE": {
+      "value": "1423",
+      "comment": "(GridEntityStatue Statue) - Called after this grid entity is updated, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_TELEPORTER_UPDATE": {
+      "value": "1424",
+      "comment": "(GridEntityTeleporter Teleporter) - Called before this grid entity is updated. Return false to cancel the update."
+    }, 
+    "MC_POST_GRID_ENTITY_TELEPORTER_UPDATE": {
+      "value": "1425",
+      "comment": "(GridEntityTeleporter Teleporter) - Called after this grid entity is updated, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_TRAPDOOR_UPDATE": {
+      "value": "1426",
+      "comment": "(GridEntityTrapdoor Trapdoor) - Called before this grid entity is updated. Return false to cancel the update."
+    }, 
+    "MC_POST_GRID_ENTITY_TRAPDOOR_UPDATE": {
+      "value": "1427",
+      "comment": "(GridEntityTrapdoor Trapdoor) - Called after this grid entity is updated, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_WEB_UPDATE": {
+      "value": "1428",
+      "comment": "(GridEntityWeb Web) - Called before this grid entity is updated. Return false to cancel the update."
+    }, 
+    "MC_POST_GRID_ENTITY_WEB_UPDATE": {
+      "value": "1429",
+      "comment": "(GridEntityWeb Web) - Called after this grid entity is updated, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_TNT_UPDATE": {
+      "value": "1430",
+      "comment": "(GridEntityTNT TNT) - Called before this grid entity is updated. Return false to cancel the update."
+    }, 
+    "MC_POST_GRID_ENTITY_TNT_UPDATE": {
+      "value": "1431",
+      "comment": "(GridEntityTNT TNT) - Called after this grid entity is updated, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_SPIKES_RENDER": {
+      "value": "1432",
+      "comment": "(GridEntitySpikes Spikes, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return false to cancel the render."
+    }, 
+    "MC_POST_GRID_ENTITY_SPIKES_RENDER": {
+      "value": "1433",
+      "comment": "(GridEntitySpikes Spikes, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_WEB_RENDER": {
+      "value": "1434",
+      "comment": "(GridEntityWeb Web, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return false to cancel the render."
+    }, 
+    "MC_POST_GRID_ENTITY_WEB_RENDER": {
+      "value": "1435",
+      "comment": "(GridEntityWeb Web, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_TNT_RENDER": {
+      "value": "1436",
+      "comment": "(GridEntityTNT TNT, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return false to cancel the render."
+    }, 
+    "MC_POST_GRID_ENTITY_TNT_RENDER": {
+      "value": "1437",
+      "comment": "(GridEntityTNT TNT, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_TRAPDOOR_RENDER": {
+      "value": "1438",
+      "comment": "(GridEntityTrapdoor Trapdoor, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return false to cancel the render."
+    }, 
+    "MC_POST_GRID_ENTITY_TRAPDOOR_RENDER": {
+      "value": "1439",
+      "comment": "(GridEntityTrapdoor Trapdoor, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_STAIRCASE_RENDER": {
+      "value": "1440",
+      "comment": "(GridEntityStaircase Staircase, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return false to cancel the render."
+    }, 
+    "MC_POST_GRID_ENTITY_STAIRCASE_RENDER": {
+      "value": "1441",
+      "comment": "(GridEntityStaircase Staircase, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_DECORATION_RENDER": {
+      "value": "1444",
+      "comment": "(GridEntityDecoration Decoration, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return false to cancel the render."
+    }, 
+    "MC_POST_GRID_ENTITY_DECORATION_RENDER": {
+      "value": "1445",
+      "comment": "(GridEntityDecoration Decoration, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_DOOR_RENDER": {
+      "value": "1446",
+      "comment": "(GridEntityDoor Door, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return false to cancel the render."
+    }, 
+    "MC_POST_GRID_ENTITY_DOOR_RENDER": {
+      "value": "1447",
+      "comment": "(GridEntityDoor Door, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_FIRE_RENDER": {
+      "value": "1448",
+      "comment": "(GridEntityFire Fire, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return false to cancel the render."
+    }, 
+    "MC_POST_GRID_ENTITY_FIRE_RENDER": {
+      "value": "1449",
+      "comment": "(GridEntityFire Fire, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_LOCK_RENDER": {
+      "value": "1450",
+      "comment": "(GridEntityLock Lock, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return false to cancel the render."
+    }, 
+    "MC_POST_GRID_ENTITY_LOCK_RENDER": {
+      "value": "1451",
+      "comment": "(GridEntityLock Lock, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_TELEPORTER_RENDER": {
+      "value": "1452",
+      "comment": "(GridEntityTeleporter Teleporter, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return false to cancel the render."
+    }, 
+    "MC_POST_GRID_ENTITY_TELEPORTER_RENDER": {
+      "value": "1453",
+      "comment": "(GridEntityTeleporter Teleporter, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_PIT_RENDER": {
+      "value": "1454",
+      "comment": "(GridEntityPit Pit, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return false to cancel the render."
+    }, 
+    "MC_POST_GRID_ENTITY_PIT_RENDER": {
+      "value": "1455",
+      "comment": "(GridEntityPit Pit, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_POOP_RENDER": {
+      "value": "1456",
+      "comment": "(GridEntityPoop Poop, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return false to cancel the render."
+    }, 
+    "MC_POST_GRID_ENTITY_POOP_RENDER": {
+      "value": "1457",
+      "comment": "(GridEntityPoop Poop, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_ROCK_RENDER": {
+      "value": "1458",
+      "comment": "(GridEntityRock Rock, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return false to cancel the render."
+    }, 
+    "MC_POST_GRID_ENTITY_ROCK_RENDER": {
+      "value": "1459",
+      "comment": "(GridEntityRock Rock, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_PRESSUREPLATE_RENDER": {
+      "value": "1460",
+      "comment": "(GridEntityPressurePlate PressurePlate, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return false to cancel the render."
+    }, 
+    "MC_POST_GRID_ENTITY_PRESSUREPLATE_RENDER": {
+      "value": "1461",
+      "comment": "(GridEntityPressurePlate PressurePlate, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+    }, 
+    "MC_PRE_GRID_ENTITY_WALL_RENDER": {
+      "value": "1462",
+      "comment": "(GridEntityWall Wall, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return false to cancel the render."
+    }, 
+    "MC_POST_GRID_ENTITY_WALL_RENDER": {
+      "value": "1463",
+      "comment": "(GridEntityWall Wall, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+    }, 
     "MC_POST_NPC_DARK_RED_CHAMPION_REGEN": {
-      "value": 1223,
+      "value": "1223",
       "comment": "(EntityNPC NPC) - Runs right after a dark red champion regenerates out of the goo form."
     },
     "MC_POST_ACHIEVEMENT_UNLOCK": {
-      "value": 1476,
+      "value": "1476",
       "comment": "Called after an achievement is unlocked, has the achievement id as its param"
     },
     "MC_PRE_MINIMAP_UPDATE": {
-      "value": 1477,
+      "value": "1477",
       "comment": "Called right before the minimap is updated"
     },
     "MC_POST_MINIMAP_UPDATE": {
-      "value": 1478,
+      "value": "1478",
       "comment": "Called right after the minimap is updated"
     },
     "MC_PRE_MINIMAP_RENDER": {
-      "value": 1479,
+      "value": "1479",
       "comment": "Called right before the minimap is rendered"
     },
     "MC_POST_MINIMAP_RENDER": {
-      "value": 1480,
+      "value": "1480",
       "comment": "Called right after the minimap is rendered"
     }
   },
