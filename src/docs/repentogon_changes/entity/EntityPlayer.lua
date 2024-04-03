@@ -966,15 +966,15 @@ end
 
 ---@param type integer
 ---@param costume boolean
----@param cooldown? integer default: `default cooldown`
----@param additive? boolean default: `true`
+---@param cooldown? integer @default: `default cooldown`
+---@param additive? boolean @default: `true`
 function EntityPlayer:AddNullItemEffect(type, costume, cooldown, additive)
 end
 
 ---@param type integer
 ---@param costume boolean
----@param cooldown? integer default: `default cooldown`
----@param additive? boolean default: `true`
+---@param cooldown? integer @default: `default cooldown`
+---@param additive? boolean @default: `true`
 function EntityPlayer:AddCollectibleEffect(type, costume, cooldown, additive)
 end
 

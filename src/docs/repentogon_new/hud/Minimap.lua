@@ -13,14 +13,17 @@ end
 function Minimap.GetState()
 end
 
+---Returns how long the button action for the map has been held down to expand the map
 ---@return integer
 function Minimap.GetHoldTime()
 end
 
+---Returns the Sprite object that holds map icons for Curses, Restock, and map-revealing effects
 ---@return Sprite
 function Minimap.GetItemIconsSprite()
 end
 
+---Returns the Sprite object that holds all map icons 
 ---@return Sprite
 function Minimap.GetIconsSprite()
 end
@@ -48,6 +51,7 @@ end
 function Minimap.SetState(state)
 end
 
+---Sets how long the button action for the map has been held down to expand the map
 ---@param time integer
 function Minimap.SetHoldTime(time)
 end
