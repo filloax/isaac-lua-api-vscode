@@ -1,6 +1,7 @@
 ---@class RoomDescriptor
 ---@field Doors userdata @RoomDescriptorDoors
 ---@field AllowedDoors integer
+---@field BossDeathSeed integer
 local RoomDescriptor1 = {}
 
 -- Note: in current emmylua, defining class twice to add fields to it is valid, as done above

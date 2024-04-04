@@ -152,7 +152,7 @@ end
 function EntityPlayer:GetBagOfCraftingSlot(slotId)
 end
 
----Returns the current charge for when the player stops shooting 
+---Returns the current charge for when the player stops shooting
 ---and charges the Kidney Stone item.
 ---@return integer
 function EntityPlayer:GetBladderCharge()
@@ -162,7 +162,7 @@ end
 function EntityPlayer:GetBodyMoveDirection()
 end
 
----Returns how many times the player has taken damage with the 
+---Returns how many times the player has taken damage with the
 ---Cambion Conception item.
 ---@return integer
 function EntityPlayer:GetCambionConceptionState()
@@ -172,7 +172,7 @@ end
 function EntityPlayer:GetCambionPregnancyLevel()
 end
 
----Returns a table with the amount of each collectible the player 
+---Returns a table with the amount of each collectible the player
 ---has without counting innate items.
 ---@return table<CollectibleType, integer>
 function EntityPlayer:GetCollectiblesList()
@@ -959,3 +959,56 @@ end
 ---@return boolean
 function EntityPlayer:VoidHasCollectible(collectible)
 end
+
+---@return integer
+function EntityPlayer:GetUrnSouls()
+end
+
+---@param type integer
+---@param costume boolean
+---@param cooldown? integer @default: `default cooldown`
+---@param additive? boolean @default: `true`
+function EntityPlayer:AddNullItemEffect(type, costume, cooldown, additive)
+end
+
+---@param type integer
+---@param costume boolean
+---@param cooldown? integer @default: `default cooldown`
+---@param additive? boolean @default: `true`
+function EntityPlayer:AddCollectibleEffect(type, costume, cooldown, additive)
+end
+
+---@param direction Vector
+---@param time integer
+---@param force? boolean
+function EntityPlayer:SetHeadDirection(direction, time, force)
+end
+
+---@return integer
+function EntityPlayer:GetHeadDirectionLockTime()
+end
+
+---@param time integer
+function EntityPlayer:SetHeadDirectionLockTime(time)
+end
+
+--TODO: Uncomment for next update
+--[[ ---@return integer
+function EntityPlayer:GetBombPlaceDelay()
+end
+
+---@param delay integer
+function EntityPlayer:SetBombPlaceDelay(delay)
+end
+
+---@param itemID CollectibleType
+function EntityPlayer:BlockCollectible(itemID)
+end
+
+---@param itemID CollectibleType
+function EntityPlayer:UnblockCollectible(itemID)
+end
+
+---@param itemID CollectibleType
+function EntityPlayer:IsCollectibleBlocked(itemID)
+end ]]

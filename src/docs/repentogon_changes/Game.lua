@@ -110,3 +110,23 @@ end
 ---@param Player? EntityPlayer
 function Game:StartStageTransition(SameStage, Animation, Player)
 end
+
+---Returns how many times you've donated to a beggar this floor. Resets on the next floor. (BUG: Currently returns the same as Game::GetDonationModGreed())
+---@param donation integer
+function Game:GetDonationModAngel(donation)
+end
+
+---Returns how many times you've donated to the donation machine this floor. Resets on the next floor.
+---@param donation integer
+function Game:GetDonationModGreed(donation)
+end
+
+---Sets how many times you've donated to a beggar this floor. Resets on the next floor.
+---@param donation integer
+function Game:SetDonationModAngel(donation)
+end
+
+---Sets how many times you've donated to the donation machine this floor. Resets on the next floor.
+---@param donation integer
+function Game:SetDonationModGreed(donation)
+end

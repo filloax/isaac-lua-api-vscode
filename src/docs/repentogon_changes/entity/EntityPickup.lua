@@ -1,4 +1,4 @@
----Adds the specified collectible to cycle with the pedestal's collectibles. 
+---Adds the specified collectible to cycle with the pedestal's collectibles.
 ---
 ---Does nothing for non-collectible EntityPickups.
 ---@param collectible CollectibleType
@@ -33,9 +33,9 @@ end
 function EntityPickup:GetVarData()
 end
 
----Returns `true` if the pickup is a collectible pedestal and is hidden (such as when Curse of the Blind is active).
----@return boolean
-function EntityPickup:IsBlind()
+---@param checkForceBlindOnly? boolean Set to `true` to ignore the Curse of the Blind and only check for forced blinded items, such as in alt path rooms
+---@return boolean `true` if the pickup is a collectible pedestal and is hidden. Always returns `false` for non-collectible EntityPickups.
+function EntityPickup:IsBlind(checkForceBlindOnly)
 end
 
 ---Turns the pickup into a shop item for sale.

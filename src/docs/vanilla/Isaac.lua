@@ -288,7 +288,7 @@ end
 ---@param entitySubtype integer
 ---@param position Vector
 ---@param velocity Vector
----@param Spawner Entity?
+---@param Spawner Entity | nil
 ---@return Entity
 function Isaac.Spawn(entityType, entityVariant, entitySubtype, position, velocity, Spawner)
 end

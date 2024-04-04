@@ -80,7 +80,7 @@ end
 function Entity:GetCharmedCountdown()
 end
 
----@param vector Vector
+---@param vector? Vector @default: 'Vector.Zero'
 ---@return Capsule
 function Entity:GetCollisionCapsule(vector)
 end

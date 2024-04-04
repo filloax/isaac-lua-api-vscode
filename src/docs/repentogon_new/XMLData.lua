@@ -65,3 +65,9 @@ end
 ---@return table<string, unknown>
 function XMLData.GetModById(id)
 end
+
+---Similar to GetByName or GetById, but it returns the node based on the order in which it appears on the xmls (1 will return the first node, 2 the second one and so on). Useful to iterate through xmls in combination with GetNumEntries, specially for redundant xmls like entities.xml.
+---@param nodeType XMLNode
+---@param order integer
+function XMLData.GetEntryByOrder(nodeType, order)
+end

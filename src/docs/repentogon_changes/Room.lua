@@ -202,3 +202,11 @@ end
 ---@param lerp boolean
 ---@param rate? number @default: `0.015`.
 function Room:UpdateColorModifier(process, lerp, rate) end
+
+---@return Music
+function Room:GetBossVictoryJingle()
+end
+
+--TODO: Document me!
+function Room:SaveState()
+end

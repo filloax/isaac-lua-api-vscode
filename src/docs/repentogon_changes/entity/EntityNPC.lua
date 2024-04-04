@@ -26,10 +26,6 @@ end
 function EntityNPC:FireProjectilesEx(Position, Velocity, Mode, Params)
 end
 
----@return integer
-function EntityNPC:GetBossColorIdx()
-end
-
 ---Returns the ControllerId for the NPC, which indicates which player 
 ---is controlling it. Will return -1 when its not being controlled by 
 ---any player.
@@ -134,4 +130,8 @@ end
 ---automatically on vanilla entities.
 ---@param immediate boolean If true, the dirt color will be set to exactly what is beneath the entity. Otherwise, it will be updated smoothly over the course of multiple frames.
 function EntityNPC:UpdateDirtColor(immediate)
+end
+
+---@return integer
+function EntityNPC:GetDarkRedChampionRegenTimer()
 end
