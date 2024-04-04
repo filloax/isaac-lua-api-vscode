@@ -1,5 +1,9 @@
 # Change Log
 
+* [1.8.1]
+
+    - Tweaks to Repentogon docs
+
 * [1.8.0]
 
     - include defined as alias of require
