@@ -111,22 +111,22 @@ end
 function Game:StartStageTransition(SameStage, Animation, Player)
 end
 
----Returns how many times you've donated to a beggar this floor. Resets on the next floor. (BUG: Currently returns the same as Game::GetDonationModGreed())
+---Returns how many times you've donated to a donation machine this floor, used for increasing angel deal chance when after 10 coins donated. Resets on the next floor.
 ---@param donation integer
 function Game:GetDonationModAngel(donation)
 end
 
----Returns how many times you've donated to the donation machine this floor. Resets on the next floor.
+---Returns how many times you've donated to a donation machine this floor, used for Greed Donation Machine jam chance. Resets on the next floor.
 ---@param donation integer
 function Game:GetDonationModGreed(donation)
 end
 
----Sets how many times you've donated to a beggar this floor. Resets on the next floor.
+---Sets how many times you've donated to a donation machine this floor, used for increasing angel deal chance when after 10 coins donated. Resets on the next floor.
 ---@param donation integer
 function Game:SetDonationModAngel(donation)
 end
 
----Sets how many times you've donated to the donation machine this floor. Resets on the next floor.
+---Sets how many times you've donated to a donation machine this floor, used for Greed Donation Machine jam chance. Resets on the next floor.
 ---@param donation integer
 function Game:SetDonationModGreed(donation)
 end
