@@ -26,7 +26,7 @@ function LayerState:GetName()
 end
 
 ---@return Vector
-function LayerState:GetPosition()
+function LayerState:GetPos()
 end
 
 ---Returns the bitflags of the current render flags.
@@ -69,7 +69,7 @@ function LayerState:SetCropOffset(offset)
 end
 
 ---@param position Vector
-function LayerState:SetPosition(position)
+function LayerState:SetPos(position)
 end
 
 ---Sets the current render flags. Accepts a bitmask.
