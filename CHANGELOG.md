@@ -1,5 +1,10 @@
 # Change Log
 
+* [1.8.0]
+
+    - include defined as alias of require
+    - Support for Repentogon 1.0.8 (thanks Sanio!)
+
 * [1.7.4]
 
     - Fix flag enums
