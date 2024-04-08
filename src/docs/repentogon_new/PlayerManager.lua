@@ -58,6 +58,12 @@ end
 function PlayerManager.GetEsauJrState(index)
 end
 
+---Returns the total number of the specified collectible held by all players.
+---@param collectible CollectibleType
+---@return integer
+function PlayerManager.GetNumCollectibles(collectible)
+end
+
 ---Returns a table containing all players.
 ---@return EntityPlayer[]
 function PlayerManager.GetPlayers()

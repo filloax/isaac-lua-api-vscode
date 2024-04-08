@@ -11,6 +11,7 @@ end
 ---@param runeChance integer
 ---@param suitChance integer
 ---@param allowNonCards boolean
+---@return Card
 function ItemPool:GetCardEx(seed, specialChance, runeChance, suitChance, allowNonCards)
 end
 
