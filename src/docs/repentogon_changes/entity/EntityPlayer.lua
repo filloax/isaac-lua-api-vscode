@@ -120,7 +120,7 @@ function EntityPlayer:GetActiveItemDesc(slot)
 end
 
 ---@param collectible CollectibleType
----@return ActiveSlot?
+---@return ActiveSlot
 function EntityPlayer:GetActiveItemSlot(collectible)
 end
 
