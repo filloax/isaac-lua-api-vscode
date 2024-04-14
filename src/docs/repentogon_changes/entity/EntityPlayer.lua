@@ -992,6 +992,15 @@ end
 function EntityPlayer:SetHeadDirectionLockTime(time)
 end
 
+---@param LoopIndex integer
+---@param Weapon WeaponType
+---@param ShotDirection Vector
+---@param ShotSpeed number
+---@param params MultiShotParams
+---@return PosVel
+function EntityPlayer:GetMultiShotPositionVelocity(LoopIndex, Weapon, ShotDirection, ShotSpeed, params)
+end
+
 --TODO: Uncomment for next update
 --[[ ---@return integer
 function EntityPlayer:GetBombPlaceDelay()
