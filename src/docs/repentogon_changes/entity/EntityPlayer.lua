@@ -7,7 +7,8 @@
 function EntityPlayer:AddActiveCharge(charge, slot, flashHUD, overcharge, force)
 end
 
-function EntityPlayer:AddBoneOrbital()
+---@param position Vector
+function EntityPlayer:AddBoneOrbital(position)
 end
 
 ---@param CacheFlag CacheFlag
@@ -120,7 +121,7 @@ function EntityPlayer:GetActiveItemDesc(slot)
 end
 
 ---@param collectible CollectibleType
----@return ActiveSlot?
+---@return ActiveSlot
 function EntityPlayer:GetActiveItemSlot(collectible)
 end
 
