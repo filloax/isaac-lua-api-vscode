@@ -37,3 +37,17 @@ end
 ---@return Vector 
 function Capsule:GetV3()
 end
+
+---@param position Vector
+---@param sizeMultiplier Vector
+---@param rotation number
+---@param size number
+function _G.Capsule(position, sizeMultiplier, rotation, size)
+end
+
+---@param position Vector
+---@param targetPosition Vector
+---@param size number 
+function _G.Capsule(position, targetPosition, size)
+end
+
