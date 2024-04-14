@@ -978,7 +978,7 @@ end
 function EntityPlayer:AddCollectibleEffect(type, costume, cooldown, additive)
 end
 
----@param direction Vector
+---@param direction Direction
 ---@param time integer
 ---@param force? boolean
 function EntityPlayer:SetHeadDirection(direction, time, force)
