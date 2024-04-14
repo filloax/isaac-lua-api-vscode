@@ -7,7 +7,8 @@
 function EntityPlayer:AddActiveCharge(charge, slot, flashHUD, overcharge, force)
 end
 
-function EntityPlayer:AddBoneOrbital()
+---@param position Vector
+function EntityPlayer:AddBoneOrbital(position)
 end
 
 ---@param CacheFlag CacheFlag
