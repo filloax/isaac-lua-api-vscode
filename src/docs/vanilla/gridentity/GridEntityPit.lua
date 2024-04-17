@@ -2,7 +2,7 @@
 ---@field HasLadder boolean
 local GridEntityPit = {}
 
----@param parentEntity GridEntity
+---@param parentEntity GridEntity | nil
 function GridEntityPit:MakeBridge(parentEntity)
 end
 
