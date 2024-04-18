@@ -72,16 +72,16 @@ function TemporaryEffects:HasTrinketEffect(TrinketType)
 end
 
 ---@param CollectibleType CollectibleType
----@param Count? integer @default: `1`
+---@param Count? integer @default: `1`. Setting this to -1 removes all instances of the effect
 function TemporaryEffects:RemoveCollectibleEffect(CollectibleType, Count)
 end
 
 ---@param NullId integer @ItemConfigNullItemID
----@param Count? integer @default: `1`
+---@param Count? integer @default: `1`. Setting this to -1 removes all instances of the effect
 function TemporaryEffects:RemoveNullEffect(NullId, Count)
 end
 
 ---@param TrinketType TrinketType
----@param Count? integer @default: `1`
+---@param Count? integer @default: `1`. Setting this to -1 removes all instances of the effect
 function TemporaryEffects:RemoveTrinketEffect(TrinketType, Count)
 end
