@@ -13,7 +13,7 @@ end
 function NightmareScene.GetProgressBarMap()
 end
 
----@return integer[]
+---@return Sprite
 function NightmareScene.GetProgressBarSprite()
 end
 
