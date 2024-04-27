@@ -1001,7 +1001,7 @@ end
 function EntityPlayer:GetMultiShotPositionVelocity(LoopIndex, Weapon, ShotDirection, ShotSpeed, params)
 end
 
----@return integer
+---@return integer --May return -1 in some circumstances
 function EntityPlayer:GetPlayerIndex()
 end
 
