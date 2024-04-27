@@ -1001,6 +1001,10 @@ end
 function EntityPlayer:GetMultiShotPositionVelocity(LoopIndex, Weapon, ShotDirection, ShotSpeed, params)
 end
 
+---@return integer
+function EntityPlayer:GetPlayerIndex()
+end
+
 --TODO: Uncomment for next update
 --[[ ---@return integer
 function EntityPlayer:GetBombPlaceDelay()
