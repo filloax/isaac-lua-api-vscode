@@ -1,5 +1,18 @@
 # Change Log
 
+* [1.8.2]
+
+    - Tweaks to Repentogon docs (Syntax Sculptor contribution)
+
+* [1.8.1]
+
+    - Tweaks to Repentogon docs
+
+* [1.8.0]
+
+    - include defined as alias of require
+    - Support for Repentogon 1.0.8 (thanks Sanio!)
+
 * [1.7.4]
 
     - Fix flag enums

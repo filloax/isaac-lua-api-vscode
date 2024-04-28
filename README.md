@@ -64,7 +64,7 @@ See [CHANGELOG.md](CHANGELOG.md) for full changes.
 
 ## 1.6.0
 
-[Repentogon](https://repentogon.com/) support as an extension setting. Thanks to 4head for writing the Lua docs for it!
+[Repentogon](https://repentogon.com/) support as an extension setting. Thanks to 4head and Sanio for writing the Lua docs for it!
 
 ## 1.5.0
 
