@@ -42,12 +42,14 @@ end
 ---@param sizeMultiplier Vector
 ---@param rotation number
 ---@param size number
+---@return Capsule
 function _G.Capsule(position, sizeMultiplier, rotation, size)
 end
 
 ---@param position Vector
 ---@param targetPosition Vector
 ---@param size number 
+---@return Capsule
 function _G.Capsule(position, targetPosition, size)
 end
 
