@@ -5,7 +5,7 @@ local MusicManager = {}
 function _G.MusicManager()
 end
 
----@param ID MusicManager
+---@param ID Music
 ---@param FadeRate? number @default: `0.08`
 function MusicManager:Crossfade(ID, FadeRate)
 end
@@ -25,7 +25,7 @@ end
 function MusicManager:EnableLayer(LayerId, Instant)
 end
 
----@param ID MusicManager
+---@param ID Music
 ---@param Volume? number @default: `1`
 ---@param FadeRate? number @default: `0.08`
 function MusicManager:Fadein(ID, Volume, FadeRate)
