@@ -22,3 +22,12 @@ end
 ---@return userdata @PocketItem
 function EntityPlayer:GetPocketItem(SlotId)
 end
+
+---@param LoopIndex integer
+---@param Weapon WeaponType
+---@param ShotDirection Vector
+---@param ShotSpeed number
+---@param params userdata @MultiShotParams
+---@return PosVel
+function EntityPlayer:GetMultiShotPositionVelocity(LoopIndex, Weapon, ShotDirection, ShotSpeed, params)
+end

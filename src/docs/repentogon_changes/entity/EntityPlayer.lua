@@ -979,7 +979,7 @@ end
 function EntityPlayer:AddCollectibleEffect(type, costume, cooldown, additive)
 end
 
----@param direction Vector
+---@param direction Direction
 ---@param time integer
 ---@param force? boolean
 function EntityPlayer:SetHeadDirection(direction, time, force)
@@ -991,6 +991,19 @@ end
 
 ---@param time integer
 function EntityPlayer:SetHeadDirectionLockTime(time)
+end
+
+---@param LoopIndex integer
+---@param Weapon WeaponType
+---@param ShotDirection Vector
+---@param ShotSpeed number
+---@param params MultiShotParams
+---@return PosVel
+function EntityPlayer:GetMultiShotPositionVelocity(LoopIndex, Weapon, ShotDirection, ShotSpeed, params)
+end
+
+---@return integer --May return -1 in some circumstances
+function EntityPlayer:GetPlayerIndex()
 end
 
 --TODO: Uncomment for next update

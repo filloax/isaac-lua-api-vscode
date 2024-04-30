@@ -8,7 +8,7 @@
 ---@field Type integer @EntityType
 ---@field Variant integer
 
----@param Entity Entity
+---@param Entity Entity | nil
 ---@return EntityRef
 function EntityRef(Entity)
 

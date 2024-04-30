@@ -145,12 +145,14 @@ end
 function Game:GetDevilRoomDeals()
 end
 
+---Returns how many times you've donated to a donation machine this floor, used for increasing angel deal chance when after 10 coins donated. Resets on the next floor.
 ---@return integer
 function Game:GetDonationModAngel()
 end
 
+---Returns how many times you've donated to a donation machine this floor, used for Greed Donation Machine jam chance. Resets on the next floor.
 ---@return integer
-function Game:GetDonationModGreed()
+function Game:GetDonationModGreed(donation)
 end
 
 ---@return Font

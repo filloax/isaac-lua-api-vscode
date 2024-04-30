@@ -14,7 +14,7 @@
     },
     "MC_USE_ITEM": {
       "value": "3",
-      "comment": "(CollectibleType ItemID, RNG RNG), Optional Arg: CollectibleType - Return true to show the \"use item\" animation, otherwise false. Called when a custom active item is used, after discharging it. The item RNG allows for the item's random events to be seeded."
+      "comment": "(CollectibleType ItemID, RNG RNG, EntityPlayer Player, UseFlags Flags, ActiveSlot Slot, integer CustomVarData), Optional Arg: CollectibleType - Return true to show the \"use item\" animation, otherwise false. Called when a custom active item is used, after discharging it. The item RNG allows for the item's random events to be seeded."
     },
     "MC_POST_PEFFECT_UPDATE": {
       "value": "4",
