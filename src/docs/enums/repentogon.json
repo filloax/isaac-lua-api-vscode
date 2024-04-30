@@ -416,6 +416,10 @@
       "value":  "1106",
       "comment": "(ColorModifier ColorModifier) - Called the backdrop's walls are rendered."
     },
+    "MC_PRE_BACKDROP_CHANGE": {
+      "value":  "1141",
+      "comment": "(BackdropType Type) - Accepts an integer to change BackdropType."
+    },
     "MC_PRE_BACKDROP_RENDER_FLOOR": {
       "value":  "1107",
       "comment": "(ColorModifier ColorModifier) - Called before the backdrop's floor is rendered."
