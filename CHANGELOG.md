@@ -1,5 +1,9 @@
 # Change Log
 
+* [1.8.3]
+
+    - Assorted tweaks and improvements (Sanio & S0meEngineer contribution)
+
 * [1.8.2]
 
     - Tweaks to Repentogon docs (Syntax Sculptor contribution)
