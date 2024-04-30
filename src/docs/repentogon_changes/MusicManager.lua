@@ -1,4 +1,4 @@
-function MusicManager:GetCurentPitch()
+function MusicManager:GetCurrentPitch()
 end
 
 ---Plays a jingle.
