@@ -2,19 +2,16 @@
 local LevelGeneratorEntry = {}
 
 ---TODO: Document me!
----@param room LevelGeneratorEntry 
 ---@param doors integer 
-function LevelGeneratorEntry:SetAllowedDoors(room, doors)
+function LevelGeneratorEntry:SetAllowedDoors(doors)
 end
 
 ---TODO: Document me!
----@param room LevelGeneratorEntry
 ---@param colIdx integer 
-function LevelGeneratorEntry:SetColIdx(room, colIdx)
+function LevelGeneratorEntry:SetColIdx(colIdx)
 end
 
 ---TODO: Document me!
----@param room LevelGeneratorEntry
 ---@param lineIndex integer
-function LevelGeneratorEntry:SetLineIdx(room, lineIndex)
+function LevelGeneratorEntry:SetLineIdx(lineIndex)
 end
