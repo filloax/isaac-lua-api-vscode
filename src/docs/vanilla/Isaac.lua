@@ -1,7 +1,7 @@
 ---@class Isaac
 _G.Isaac = {}
 
----@alias CallbackID any
+---@alias CallbackID ModCallbacks | string
 
 ---@param modRef table
 ---@param callbackId CallbackID # Vanilla IDs are integers, custom IDs can be any type including strings

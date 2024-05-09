@@ -2,13 +2,13 @@
 ---@field Name string
 local ModReference = {}
 
----@param callbackID ModCallbacks
+---@param callbackID ModCallbacks | string
 ---@param callbackFn function
 ---@param entityID? integer
 function ModReference:AddCallback(callbackID, callbackFn, entityID)
 end
 
----@param callbackID ModCallbacks
+---@param callbackID ModCallbacks | string
 ---@param priority CallbackPriority
 ---@param callbackFn function
 ---@param entityID? integer
