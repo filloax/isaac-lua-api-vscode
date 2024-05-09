@@ -442,47 +442,47 @@
     },
     "MC_POST_PLAYER_COLLISION": {
       "value":  "1231",
-      "comment": "Runs after the on-collision code of this entity, assuming it wasn't skipped."
+      "comment": "(EntityPlayer Player, Entity Collider, boolean Low), Optional Arg: PlayerVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
     },
     "MC_POST_TEAR_COLLISION": {
       "value":  "1233",
-      "comment": "Runs after the on-collision code of this entity, assuming it wasn't skipped."
+      "comment": "(EntityTear Tear, Entity Collider, boolean Low), Optional Arg: TearVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
     },
     "MC_POST_FAMILIAR_COLLISION": {
       "value":  "1235",
-      "comment": "Runs after the on-collision code of this entity, assuming it wasn't skipped."
+      "comment": "(EntityFamiliar Familiar, Entity Collider, boolean Low), Optional Arg: FamiliarVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
     },
     "MC_POST_BOMB_COLLISION": {
       "value":  "1237",
-      "comment": "Runs after the on-collision code of this entity, assuming it wasn't skipped."
+      "comment": "(EntityBomb Bomb, Entity Collider, boolean Low), Optional Arg: BombVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
     },
     "MC_POST_PICKUP_COLLISION": {
       "value":  "1239",
-      "comment": "Runs after the on-collision code of this entity, assuming it wasn't skipped."
+      "comment": "(EntityPickup Pickup, Entity Collider, boolean Low), Optional Arg: PickupVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
     },
     "MC_PRE_SLOT_COLLISION": {
       "value":  "1240",
-      "comment": "(EntitySlot, Entity Collider, boolean Low): boolean, Optional Arg: SlotVariant - "
+      "comment": "(EntitySlot, Entity Collider, boolean Low): boolean, Optional Arg: SlotVariant  - Return true/false to ignore collision code (true to respond to collision, false to not), or nil to continue the internal code."
     },
     "MC_POST_SLOT_COLLISION": {
       "value":  "1241",
-      "comment": "Runs after the on-collision code of this entity, assuming it wasn't skipped."
+      "comment": "(EntitySlot Slot, Entity Collider, boolean Low), Optional Arg: SlotVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
     },
     "MC_POST_KNIFE_COLLISION": {
       "value":  "1243",
-      "comment": "Runs after the on-collision code of this entity, assuming it wasn't skipped."
+      "comment": "(EntityKnife Knife, Entity Collider, boolean Low), Optional Arg: KnifeSubType - Runs after the on-collision code of this entity, assuming it wasn't skipped."
     },
     "MC_POST_PROJECTILE_COLLISION": {
       "value":  "1245",
-      "comment": "Runs after the on-collision code of this entity, assuming it wasn't skipped."
+      "comment": "(EntityProjectile Projectile, Entity Collider, boolean Low), Optional Arg: ProjectileVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
     },
     "MC_POST_NPC_COLLISION": {
       "value":  "1247",
-      "comment": "Runs after the on-collision code of this entity, assuming it wasn't skipped."
+      "comment": "(EntityNPC NPC, Entity Collider, boolean Low), Optional Arg: EntityType - Runs after the on-collision code of this entity, assuming it wasn't skipped."
     },
     "MC_POST_LASER_COLLISION": {
       "value":  "1249",
-      "comment": "Runs after the on-collision code of this entity, assuming it wasn't skipped."
+      "comment": "(EntityLaser Laser, Entity Collider, boolean Low), Optional Arg: LaserVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
     },
     "MC_CONSOLE_AUTOCOMPLETE": {
       "value":  "1120",
