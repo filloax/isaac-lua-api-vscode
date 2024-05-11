@@ -1,5 +1,9 @@
 # Change Log
 
+* [1.9.0]
+
+    - Support for Repentogon 1.0.9 and some other docs adjustments by Sanio (It's me, I'm Sanio, I can do this now :>)
+
 * [1.8.3]
 
     - Assorted tweaks and improvements (Sanio & S0meEngineer contribution)
