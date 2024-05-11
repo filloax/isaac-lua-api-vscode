@@ -1014,8 +1014,8 @@ end
 function EntityPlayer:SetBombPlaceDelay(delay)
 end
 
----Returns a table of CollectibleTypes that are blocked via EntityPlayer::BlockCollectible()
----@return CollectibleType[]
+---Returns an array of tables for all currently spoofed (innate) collectibles.
+---@return {CollectibleID: CollectibleType, AppendedCount: integer, IsBlocked: boolean}[]
 function EntityPlayer:GetSpoofedCollectiblesList()
 end
 
