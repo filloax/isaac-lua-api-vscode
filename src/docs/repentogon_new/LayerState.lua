@@ -100,3 +100,29 @@ end
 ---@return integer
 function LayerState:SetWrapTMode(mode)
 end
+
+---@param path string
+function LayerState:SetCustomShader(path)
+end
+
+function LayerState:ClearCustomShader()
+end
+
+---Returns `true` if the specified shader is currently set. If no string is provided, returns true if any custom shader is applied.
+---@param path? string
+---@return boolean
+function LayerState:HasCustomShader(path)
+end
+
+---@param path string
+function LayerState:SetCustomChampionShader(path)
+end
+
+function LayerState:ClearCustomChampionShader()
+end
+
+---Returns `true` if the specified shader is currently set. If no string is provided, returns true if any custom shader is applied.
+---@param path? string
+---@return boolean
+function LayerState:HasCustomChampionShader(path)
+end

@@ -296,12 +296,35 @@ end
 ---@return integer
 function Isaac.GetCurrentStageConfigId()
 end
---TODO: Uncomment for next update
---[[ 
+
 ---Allows starting the game from within the main menu
 ---@param playerType PlayerType
 ---@param challenge Challenge Can be set to `Challenge.CHALLENGE_NULL` to start a non-challenge run.
 ---@param difficulty Difficulty
 ---@param seed integer
 function Isaac.StartNewGame(playerType, challenge, difficulty, seed)
-end ]]
+end
+
+---@return DwmWindowAttributes
+function Isaac.GetDwmWindowAttribute()
+end
+
+---@param attribute DwmWindowAttributes
+function Isaac.SetDwmWindowAttribute(attribute)
+end
+
+---Returns the appended text on the game window's title
+---@return string
+function Isaac.GetWindowTitle()
+end
+
+---Sets the appended text on the game window's title
+---@param title string
+function Isaac.SetWindowTitle(title)
+end
+
+---Sets the 16x16 icon located on the game window. Does not update the icon elsewhere, such as the taskbar.
+---@param icon integer | string Set to 0 for the default Isaac icon, 1 for the Tainted Isaac icon, or a string for the path to a custom icon.
+---@param bypassSize? boolean @default: `false`. Set to `true` to bypass the 16x16 resolution cap.
+function Isaac.SetIcon(icon, bypassSize)
+end

@@ -47,3 +47,12 @@ end
 ---@return boolean
 function EntityFamiliar:CanBeDamagedByLasers()
 end
+
+---Returns the amount in frames that the familiar's movements are delayed from your own.
+function EntityFamiliar:GetMoveDelayNum()
+end
+
+---Sets the amount in frames that the familiar's movements are delayed from your own.
+---@param delay integer
+function EntityFamiliar:SetMoveDelayNum(delay)
+end

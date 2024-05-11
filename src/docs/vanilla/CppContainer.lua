@@ -1,4 +1,5 @@
 ---@class CppList
+---@field Size integer
 local CppList = {}
 
 -- missing metamethod len as not supported for now
@@ -6,10 +7,6 @@ local CppList = {}
 ---@param idx integer
 ---@return any
 function CppList:Get(idx)
-end
-
----@return any
-function CppList:Size()
 end
 
 ---@class CppList_RoomDescriptor : CppList

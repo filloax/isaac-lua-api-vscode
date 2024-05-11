@@ -1,0 +1,2 @@
+function EntityTear:ResetSpriteScale()
+end

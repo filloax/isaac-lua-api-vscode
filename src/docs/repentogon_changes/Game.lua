@@ -120,3 +120,18 @@ end
 ---@param donation integer
 function Game:SetDonationModGreed(donation)
 end
+
+---Sets the dizzy amount akin to Wavy Cap
+---@param amount number Amount that screen will be affected. Will reset current dizziness and slowly intensify screen until the dizzy amount is reached.
+---@param intensity number Starting intensity
+function Game:SetDizzyAmount(amount, intensity)
+end
+
+---Returns the current dizzy amount akin to Wavy Cap
+function Game:GetDizzyAmount()
+end
+
+---@param duration number
+---@param amount number
+function Game:SetBloom(duration, amount)
+end

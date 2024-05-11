@@ -89,3 +89,17 @@ end
 ---@return boolean wasRemoved Returns `true` if the collectible was removed. Returns `false` if it was already empty, or if use on non-collectible EntityPickups.
 function EntityPickup:TryRemoveCollectible()
 end
+
+---@param shouldAdvance? boolean @default: `false`
+---@return LootList
+function EntityPickup:GetLootList(shouldAdvance)
+end
+
+---Returns the `EffectVariant.PICKUP_GHOST` EntityEffect. If not visible, returns `nil`.
+---@return EntityEffect?
+function EntityPickup:GetPickupGhost()
+end
+
+---Updates the `EffectVariant.PICKUP_GHOST` EntityEffect with its current LootList 
+function EntityPickup:UpdatePickupGhosts()
+end

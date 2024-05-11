@@ -1006,8 +1006,7 @@ end
 function EntityPlayer:GetPlayerIndex()
 end
 
---TODO: Uncomment for next update
---[[ ---@return integer
+---@return integer
 function EntityPlayer:GetBombPlaceDelay()
 end
 
@@ -1015,14 +1014,57 @@ end
 function EntityPlayer:SetBombPlaceDelay(delay)
 end
 
+---Returns a table of CollectibleTypes that are blocked via EntityPlayer::BlockCollectible()
+---@return CollectibleType[]
+function EntityPlayer:GetSpoofedCollectiblesList()
+end
+
+---Blocks the provided `CollectibleType`. This will make it so the game thinks you don't have the item, even if it's in your inventory.
 ---@param itemID CollectibleType
 function EntityPlayer:BlockCollectible(itemID)
 end
 
+---Unblocks a `CollectibleType` set by EntityPlayer::BlockCollectible().
 ---@param itemID CollectibleType
 function EntityPlayer:UnblockCollectible(itemID)
 end
 
+---Returns if the `CollectibleType` was blocked through EntityPlayer::BlockCollectible().
 ---@param itemID CollectibleType
+---@return boolean
 function EntityPlayer:IsCollectibleBlocked(itemID)
-end ]]
+end
+
+---@param Type CollectibleType
+---@param IgnoreModifiers? boolean @default: `false`
+---@param IgnoreSpoof? boolean @default: `false`. Ignores collectible block when set to true.
+---@return boolean
+function EntityPlayer:HasCollectible(Type, IgnoreModifiers, IgnoreSpoof)
+end
+
+---@param Type CollectibleType
+---@param OnlyCountTrueItems? boolean @default: `false`
+---@param IgnoreSpoof? boolean @default: `false`. Ignores collectible block when set to true.
+---@return integer
+function EntityPlayer:GetCollectibleNum(Type, OnlyCountTrueItems, IgnoreSpoof)
+end
+
+---Returns if you have a golden variant of the provided `TrinketType`.
+---@param trinketType TrinketType
+function EntityPlayer:HasGoldenTrinket(trinketType)
+end
+
+---Returns the grace period countdown of retaining stats from the Hallowed Ground/Star of Bethlehem aura.
+---@return integer
+function EntityPlayer:GetHallowedGroundCountdown()
+end
+
+---Sets the grace period countdown of retaining stats from the Hallowed Ground/Star of Bethlehem aura.
+---@param countdown integer
+function EntityPlayer:SetHallowedGroundCountdown(countdown)
+end
+
+---Returns `true` if a "?" would be displayed on the player's extra life count (ie, Guppy's Collar)
+---@return boolean
+function EntityPlayer:HasChanceRevive()
+end

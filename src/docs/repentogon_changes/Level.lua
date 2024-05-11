@@ -55,3 +55,11 @@ end
 ---@param name string
 function Level:SetName(name)
 end
+
+---@return integer
+function Level:GetGreedWavesClearedWithoutRedHeartDamage()
+end
+
+---@param wavesCleared integer
+function Level:SetGreedWavesClearedWithoutRedHeartDamage(wavesCleared)
+end

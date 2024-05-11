@@ -46,8 +46,3 @@ end
 ---@return boolean
 function Input.IsMouseBtnPressed(button)
 end
-
---TODO: Uncomment for next update
---[[ ---@return string
-function Input.GetDeviceNameByIdx()
-end ]]

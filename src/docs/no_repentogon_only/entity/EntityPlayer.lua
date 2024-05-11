@@ -31,3 +31,15 @@ end
 ---@return PosVel
 function EntityPlayer:GetMultiShotPositionVelocity(LoopIndex, Weapon, ShotDirection, ShotSpeed, params)
 end
+
+---@param Type CollectibleType
+---@param IgnoreModifiers? boolean @default: `false`
+---@return boolean
+function EntityPlayer:HasCollectible(Type, IgnoreModifiers)
+end
+
+---@param Type CollectibleType
+---@param OnlyCountTrueItems? boolean @default: `false`
+---@return integer
+function EntityPlayer:GetCollectibleNum(Type, OnlyCountTrueItems)
+end

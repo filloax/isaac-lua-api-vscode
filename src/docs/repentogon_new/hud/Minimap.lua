@@ -6,10 +6,7 @@ _G.Minimap = {}
 function Minimap.GetDisplayedSize()
 end
 
----@return integer
----|0 # Normal
----|1 # Expanded (Opaque)
----|2 # Expanded
+---@return MinimapState
 function Minimap.GetState()
 end
 
@@ -44,10 +41,7 @@ end
 function Minimap.SetShakeOffset(offset)
 end
 
----@param state integer
----|0 # Normal
----|1 # Expanded (Opaque)
----|2 # Expanded
+---@param state MinimapState
 function Minimap.SetState(state)
 end
 
