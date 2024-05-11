@@ -10,4 +10,4 @@ function Random()
 end
 
 ---This global is `true` in Repentance DLC and `nil` in Afterbirth+
-REPENTANCE = true ---@type true|nil
+_G.REPENTANCE = true ---@type true|nil
