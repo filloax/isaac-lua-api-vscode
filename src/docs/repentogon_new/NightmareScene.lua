@@ -21,3 +21,7 @@ end
 ---@return boolean 
 function NightmareScene.IsDogmaNightmare()
 end
+
+---@return Sprite
+function NightmareScene.GetPlayerExtraPortraitSprite()
+end

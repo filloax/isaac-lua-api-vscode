@@ -490,12 +490,6 @@ end
 function EntityPlayer:GetCollectibleCount()
 end
 
----@param Type CollectibleType
----@param OnlyCountTrueItems? boolean @default: `false`
----@return integer
-function EntityPlayer:GetCollectibleNum(Type, OnlyCountTrueItems)
-end
-
 ---@param ID CollectibleType
 ---@return RNG
 function EntityPlayer:GetCollectibleRNG(ID)
@@ -784,12 +778,6 @@ end
 
 ---@return CollectibleType
 function EntityPlayer:GetZodiacEffect()
-end
-
----@param Type CollectibleType
----@param IgnoreModifiers? boolean @default: `false`
----@return boolean
-function EntityPlayer:HasCollectible(Type, IgnoreModifiers)
 end
 
 ---@return boolean

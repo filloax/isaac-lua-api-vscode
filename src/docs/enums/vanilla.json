@@ -278,11 +278,11 @@
     },
     "MC_PRE_NPC_UPDATE": {
       "value": "69",
-      "comment": "(EntityNPC NPC): boolean, Optional Arg: EntityType - Return true if the internal AI should be ignored, false or nil/nothing otherwise."
+      "comment": "(EntityNPC NPC): boolean, Optional Arg: EntityType - Return true if the internal AI should be ignored, false or `nil`/nothing otherwise."
     },
     "MC_PRE_SPAWN_CLEAN_AWARD": {
       "value": "70",
-      "comment": "(RNG Rng, Vector SpawnPos): boolean - Return true if the spawn routine after any room clear should be ignored, false or nil/nothing otherwise."
+      "comment": "(RNG Rng, Vector SpawnPos): boolean - Return true if the spawn routine after any room clear should be ignored, false or `nil`/nothing otherwise."
     },
     "MC_PRE_ROOM_ENTITY_SPAWN": {
       "value": "71",

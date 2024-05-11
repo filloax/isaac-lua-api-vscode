@@ -89,3 +89,29 @@ function Sprite:StopOverlay() end
 ---@return boolean
 function Sprite:WasOverlayEventTriggered(eventName)
 end
+
+---@param path string
+function Sprite:SetCustomShader(path)
+end
+
+function Sprite:ClearCustomShader()
+end
+
+---Returns `true` if the specified shader is currently set. If no string is provided, returns true if any custom shader is applied.
+---@param path? string
+---@return boolean
+function Sprite:HasCustomShader(path)
+end
+
+---@param path string
+function Sprite:SetCustomChampionShader(path)
+end
+
+function Sprite:ClearCustomChampionShader()
+end
+
+---Returns `true` if the specified shader is currently set. If no string is provided, returns true if any custom shader is applied.
+---@param path? string
+---@return boolean
+function Sprite:HasCustomChampionShader(path)
+end

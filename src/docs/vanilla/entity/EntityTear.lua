@@ -38,9 +38,6 @@ end
 function EntityTear:HasTearFlags(Flags)
 end
 
-function EntityTear:ResetSpriteScale()
-end
-
 ---@param Intensity number
 function EntityTear:SetDeadEyeIntensity(Intensity)
 end

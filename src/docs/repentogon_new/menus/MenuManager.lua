@@ -50,8 +50,11 @@ end
 function MenuManager.SetViewPosition(position)
 end
 
---TODO: Uncomment for next update
---[[ ---Selectively allows/disallows the game's menu read certain inputs, useful for custom menus
+---Selectively allows/disallows the game's menu to read certain inputs. Useful for custom menus.
 ---@param mask ButtonActionBitwise
 function MenuManager.SetInputMask(mask)
-end ]]
+end
+
+---@return ButtonActionBitwise
+function MenuManager.GetInputMask()
+end

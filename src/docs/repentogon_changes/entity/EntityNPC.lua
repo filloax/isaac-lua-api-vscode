@@ -135,3 +135,13 @@ end
 ---@return integer
 function EntityNPC:GetDarkRedChampionRegenTimer()
 end
+
+---Returns the unique `LootList` used by Fireplaces.
+---@return LootList
+function EntityNPC:GetFireplaceLoot()
+end
+
+---Returns the unique `LootList` used by Shopkeepers.
+---@return LootList
+function EntityNPC:GetShopkeeperLoot()
+end

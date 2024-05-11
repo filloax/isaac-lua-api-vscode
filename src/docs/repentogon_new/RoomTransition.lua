@@ -26,3 +26,7 @@ end
 ---@param boss2? BossType @default: `0`. If it is a non-zero value, a second boss will be rendered if the room is a Double Trouble encounter.
 function RoomTransition:StartBossIntro(boss1, boss2)
 end
+
+---@return Sprite
+function RoomTransition.GetPlayerExtraPortraitSprite()
+end

@@ -89,3 +89,15 @@ end
 ---Triggers the effects of a room clear for players and familiars.
 function PlayerManager.TriggerRoomClear()
 end
+
+---@param playerType PlayerType
+---@param trinketType TrinketType
+---@param ignoreModifiers? boolean @default: `false`
+function PlayerManager.AnyPlayerTypeHasTrinket(playerType, trinketType, ignoreModifiers)
+end
+
+---@param playerType PlayerType
+---@param itemID TrinketType
+---@param ignoreModifiers? boolean @default: `false`
+function PlayerManager.AnyPlayerTypeHasCollectible(playerType, itemID, ignoreModifiers)
+end
