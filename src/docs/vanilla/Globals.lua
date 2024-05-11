@@ -8,3 +8,6 @@ end
 ---@return integer
 function Random()
 end
+
+---This global is `true` in Repentance DLC and `nil` in Afterbirth+
+REPENTANCE = true ---@type true|nil
