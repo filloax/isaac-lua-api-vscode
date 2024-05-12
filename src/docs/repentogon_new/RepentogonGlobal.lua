@@ -22,7 +22,6 @@ REPENTOGON.Extras.ChangeLog.ChangelogSprite = nil ---@type Sprite
 REPENTOGON.Extras.ChangeLog.Font = nil ---@type Font
 REPENTOGON.Extras.ChangeLog.FontColor = nil ---@type KColor
 REPENTOGON.Extras.ChangeLog.LineHeight = nil ---@type number
-REPENTOGON.Extras.ChangeLog.LineHeight = nil ---@type number
 REPENTOGON.Extras.ChangeLog.NoteOffset = nil ---@type Vector
 REPENTOGON.Extras.ChangeLog.NoteSprite = nil ---@type Sprite
 REPENTOGON.Extras.ChangeLog.PaperOffset = nil ---@type Vector
