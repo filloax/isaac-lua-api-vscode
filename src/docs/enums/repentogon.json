@@ -1017,7 +1017,7 @@
       "comment": "(EntitySlot Slot), Optional Arg: SlotVariant - Called before the slot is updated. Return `true` if the internal AI should be ignored, `false` or `nil`/nothing otherwise."
     },
     "MC_TRIGGER_PLAYER_DEATH_POST_CHECK_REVIVES": {
-      "value": "",
+      "value": "1051",
       "comment": "(EntityPlayer Player) - Called upon player death after the game is done checking for vanilla revives. Return `false` to cancel the death, reviving the player in-place with half a heart, or `true`/`nil`/nothing to allow the death to go through."
     }
   },
