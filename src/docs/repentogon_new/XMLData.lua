@@ -43,7 +43,7 @@ end
 function XMLData.GetEntryByName(nodeType, name)
 end
 
----@param entity EntityPlayer
+---@param entity Entity
 ---@param autoXMLPick? boolean @default: `true`. If set to `true`, picks the xml that matches the `EntityType`. If `false`, picks the entry from entities2.xml.
 ---@param strict boolean If set to `true`, only returns a value when the type, variant and subtype attributes match. If `false`, only matches an entry with the type.
 function XMLData.GetEntryFromEntity(entity, autoXMLPick, strict)
