@@ -1,5 +1,11 @@
 # Change Log
 
+* [1.9.1]
+
+    - Add Giantbook.MEGA_MUSH
+    - Fix MC_TRIGGER_PLAYER_DEATH_POST_CHECK_REVIVES not having it's ID
+    - Fix XMLData.GetEntryFromEntity using EntityPlayer instead of Entity
+
 * [1.9.0]
 
     - Support for Repentogon 1.0.9 and some other docs adjustments by Sanio (It's me, I'm Sanio, I can do this now :>)
