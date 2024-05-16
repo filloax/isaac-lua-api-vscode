@@ -1,5 +1,10 @@
 # Change Log
 
+* [1.9.2]
+
+    - Support for Repentogon 1.0.9a
+    - Tweaks to Repentogon docs (Sanio, SomeEngineer and thicco-catto contribution)
+
 * [1.9.1]
 
     - Add Giantbook.MEGA_MUSH
