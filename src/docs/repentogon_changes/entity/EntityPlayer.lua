@@ -147,7 +147,7 @@ end
 function EntityPlayer:GetBagOfCraftingOutput()
 end
 
----Gets the current content of the bag in the given Slot ID.
+---Returns the current content of the bag in the given Slot ID.
 ---@param slotId integer
 ---@return BagOfCraftingPickup
 function EntityPlayer:GetBagOfCraftingSlot(slotId)

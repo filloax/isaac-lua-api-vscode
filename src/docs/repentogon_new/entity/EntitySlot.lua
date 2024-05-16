@@ -88,7 +88,7 @@ end
 function EntitySlot:SetTouch(newValue)
 end
 
----Gets the index used by Shell Game and Hell Game to determine which prize animation to play.
+---Returns the index used by Shell Game and Hell Game to determine which prize animation to play.
 ---@return integer
 function EntitySlot:GetShellGameAnimationIndex()
 end
@@ -98,7 +98,7 @@ end
 function EntitySlot:SetShellGameAnimationIndex(index)
 end
 
----Gets a number used by Bomb Bum and Reroll Machine
+---Returns a number used by Bomb Bum and Reroll Machine
 ---
 ---When bombing Bomb Bum, this is set to `30`
 ---

@@ -53,7 +53,7 @@ function Room:GetGreedWaveTimer() end
 function Room:GetGridIndexByTile(gridRow, gridColumn)
 end
 
----Gets the intensity of the lightning effect used in Downpour. This variable will affect the visibility of Wraiths.
+---Returns the intensity of the lightning effect used in Downpour. This variable will affect the visibility of Wraiths.
 ---
 ---This is set by the game in a random range between `1.3` and `2.1`, and decays by `value * .75` per render.
 function Room:GetLightningIntensity()
