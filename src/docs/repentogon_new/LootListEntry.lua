@@ -17,6 +17,7 @@ end
 function LootListEntry:GetSeed()
 end
 
+---May return `nil`.
 ---@return RNG?
 function LootListEntry:GetRNG()
 end

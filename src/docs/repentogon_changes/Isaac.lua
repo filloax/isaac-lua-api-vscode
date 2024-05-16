@@ -302,11 +302,11 @@ end
 function Isaac.GetCurrentStageConfigId()
 end
 
----Allows starting the game from within the main menu
+---Allows starting the game from within the main menu.
 ---@param playerType PlayerType
----@param challenge Challenge Can be set to `Challenge.CHALLENGE_NULL` to start a non-challenge run.
----@param difficulty Difficulty
----@param seed integer
+---@param challenge? Challenge @default: `Challenge.CHALLENGE_NULL`
+---@param difficulty? Difficulty @default: `Difficulty.DIFFICULTY_NORMAL`
+---@param seed? integer @default: `Random()`
 function Isaac.StartNewGame(playerType, challenge, difficulty, seed)
 end
 
@@ -318,12 +318,12 @@ end
 function Isaac.SetDwmWindowAttribute(attribute)
 end
 
----Returns the appended text on the game window's title
+---Returns the appended text on the game window's title.
 ---@return string
 function Isaac.GetWindowTitle()
 end
 
----Sets the appended text on the game window's title
+---Sets the appended text on the game window's title.
 ---@param title string
 function Isaac.SetWindowTitle(title)
 end

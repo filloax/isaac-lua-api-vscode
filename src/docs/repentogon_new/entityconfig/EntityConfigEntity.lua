@@ -57,7 +57,7 @@ function EntityConfigEntity:GetBestiaryScale()
 end
 
 ---Returns the entity's BossID.
----@return integer
+---@return BossType
 function EntityConfigEntity:GetBossID()
 end
 

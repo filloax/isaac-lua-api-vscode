@@ -1037,20 +1037,21 @@ end
 
 ---@param Type CollectibleType
 ---@param IgnoreModifiers? boolean @default: `false`
----@param IgnoreSpoof? boolean @default: `false`. Ignores collectible block when set to true.
+---@param IgnoreSpoof? boolean @default: `false`. Ignores innate items when set to true.
 ---@return boolean
 function EntityPlayer:HasCollectible(Type, IgnoreModifiers, IgnoreSpoof)
 end
 
 ---@param Type CollectibleType
 ---@param OnlyCountTrueItems? boolean @default: `false`
----@param IgnoreSpoof? boolean @default: `false`. Ignores collectible block when set to true.
+---@param IgnoreSpoof? boolean @default: `false`. Ignores innate items when set to true.
 ---@return integer
 function EntityPlayer:GetCollectibleNum(Type, OnlyCountTrueItems, IgnoreSpoof)
 end
 
----Returns if you have a golden variant of the provided `TrinketType`.
+---Returns `true` if you have a golden variant of the provided `TrinketType`.
 ---@param trinketType TrinketType
+---@return boolean
 function EntityPlayer:HasGoldenTrinket(trinketType)
 end
 

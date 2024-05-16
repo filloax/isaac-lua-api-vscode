@@ -90,16 +90,17 @@ end
 function EntityPickup:TryRemoveCollectible()
 end
 
+---**NOTE**: This is read-only. You will not be able to use `LootList:PushEntry` for this. Instead, use `MC_PRE_PICKUP_GET_LOOT_LIST` in tandem with the `LootList()` constructor.
 ---@param shouldAdvance? boolean @default: `false`
 ---@return LootList
 function EntityPickup:GetLootList(shouldAdvance)
 end
 
----Returns the `EffectVariant.PICKUP_GHOST` EntityEffect. If not visible, returns `nil`.
+---Returns the `EffectVariant.PICKUP_GHOST` EntityEffect visible through Guppy's Eye. If not visible, returns `nil`.
 ---@return EntityEffect?
 function EntityPickup:GetPickupGhost()
 end
 
----Updates the `EffectVariant.PICKUP_GHOST` EntityEffect with its current LootList 
+---Updates the `EffectVariant.PICKUP_GHOST` EntityEffect in accordance to the pickup's current `LootList`.
 function EntityPickup:UpdatePickupGhosts()
 end

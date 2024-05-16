@@ -48,11 +48,11 @@ end
 function EntityFamiliar:CanBeDamagedByLasers()
 end
 
----Returns the amount in frames that the familiar's movements are delayed from your own.
+---Returns the amount in frames that the familiar's movements are delayed from the player's. 30 frames = 1 second.
 function EntityFamiliar:GetMoveDelayNum()
 end
 
----Sets the amount in frames that the familiar's movements are delayed from your own.
+---Sets the amount in frames that the familiar's movements are delayed from the player's. 30 frames = 1 second.
 ---@param delay integer
 function EntityFamiliar:SetMoveDelayNum(delay)
 end

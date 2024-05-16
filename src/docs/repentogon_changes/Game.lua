@@ -122,16 +122,33 @@ function Game:SetDonationModGreed(donation)
 end
 
 ---Sets the dizzy amount akin to Wavy Cap
----@param amount number Amount that screen will be affected. Will reset current dizziness and slowly intensify screen until the dizzy amount is reached.
----@param intensity number Starting intensity
+---@param amount number Amount that the screen will be affected. Screen will slowly reach the desired intensity. Also works in reverse if current intensity is higher than the `Amount`.
+---@param intensity number Starting intensity of the effect.
 function Game:SetDizzyAmount(amount, intensity)
 end
 
 ---Returns the current dizzy amount akin to Wavy Cap
+---
+---**BUG**: This function currently only returns `0`. Using `Game:SetDizzyAmount` or the Wavy Cap collectible has no effect on this function.
+---@return integer
 function Game:GetDizzyAmount()
 end
 
 ---@param duration number
 ---@param amount number
 function Game:SetBloom(duration, amount)
+end
+
+---Clears out all enemies listed as an erased enemy, allowing them to spawn again.
+function Game:ClearErasedEnemies()
+end
+
+---Returns how many times you've visited a shop in the current run. Used for Schoolbag's unlock method.
+---@return integer
+function Game:GetShopVisits()
+end
+
+---Add how many times you've visited a shop in the current run. Used for Schoolbag's unlock method.
+---@param count integer
+function Game:AddShopVisits(count)
 end

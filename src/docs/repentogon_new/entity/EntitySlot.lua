@@ -87,3 +87,30 @@ end
 ---@param newValue integer
 function EntitySlot:SetTouch(newValue)
 end
+
+---Gets the index used by Shell Game and Hell Game to determine which prize animation to play.
+---@return integer
+function EntitySlot:GetShellGameAnimationIndex()
+end
+
+---Sets the index used by Shell Game and Hell Game to determine which prize animation to play.
+---@param index integer
+function EntitySlot:SetShellGameAnimationIndex(index)
+end
+
+---Gets a number used by Bomb Bum and Reroll Machine
+---
+---When bombing Bomb Bum, this is set to `30`
+---
+---Reroll Machine increments this by `1` for every successful reroll. When bombed, has a chance to set it to 11 and reroll another item.
+function EntitySlot:GetTriggerTimerNum()
+end
+
+---Sets a number used by Bomb Bum and Reroll Machine
+---
+---When bombing Bomb Bum, this is set to `30`
+---
+---Reroll Machine increments this by `1` for every successful reroll. When bombed, has a chance to set it to 11 and reroll another item.
+---@param num integer
+function EntitySlot:SetTriggerTimerNum(num)
+end

@@ -29,10 +29,11 @@ end
 ---@param mode? integer @default: `0`
 ---|0 # Normal Mode rooms
 ---|1 # Greed Mode rooms
+---@return RoomConfigSet
 function RoomConfigStage:GetRoomSet(mode)
 end
 
----Returns the suffix used by the stage for stage variants.
+---Returns the suffix used by the stage for stage-unique sprites, such as the boss/player spot and unique variants for enemies.
 ---@return string
 function RoomConfigStage:GetSuffix()
 end
@@ -62,7 +63,7 @@ end
 function RoomConfigStage:SetPlayerSpot(spritePath)
 end
 
----Sets the suffix used by the stage for stage variants.
+---Sets the suffix used by the stage for stage-unique sprites, such as the boss/player spot and unique variants for enemies.
 ---@param suffix string
 function RoomConfigStage:SetSuffix(suffix)
 end

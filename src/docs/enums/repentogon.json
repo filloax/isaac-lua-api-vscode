@@ -882,11 +882,11 @@
     },
     "MC_POST_PLAYER_TRIGGER_EFFECT_REMOVED": {
       "value": "1268",
-      "comment": "(EntityPlayer Player, ItemConfigItem ItemConfigItem) - Called after the effect of the `ItemConfigItem` was removed."
+      "comment": "(EntityPlayer Player, ItemConfigItem ItemConfigItem) - Called after the player's `ItemConfigItem` TemporaryEffect is removed"
     },
     "MC_POST_ROOM_TRIGGER_EFFECT_REMOVED": {
       "value": "1269",
-      "comment": "(ItemConfigItem ItemConfigItem) - Called after the effect of the `ItemConfigItem` was removed on a new room if it wasn't persistent."
+      "comment": "(ItemConfigItem ItemConfigItem) - Called after the room's `TemporaryEffects` is removed. Room has its own `TemporaryEffects` that are accessed through `Room::GetEffects()`"
     },
     "MC_PRE_PLAYER_GRID_COLLISION": {
       "value": "1171",
@@ -973,7 +973,7 @@
       "comment": "Callback has no arguments. Called on an update frame during the boss intro."
     },
     "MC_POST_ROOM_TRANSITION_RENDER": {
-      "value": "1271",
+      "value": "1272",
       "comment": "Callback has no arguments. Called on a render frame during the boss intro."
     },
     "MC_PRE_PLAYER_UPDATE": {
