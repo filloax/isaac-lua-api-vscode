@@ -181,8 +181,13 @@ end
 
 ---Returns the giantbook id by name. For vanilla giantbooks, the png filename, from the gfx xml attribute, is used as the giantbook name.
 ---@param name string
----@return integer
+---@return Giantbook
 function Isaac.GetGiantBookIdByName(name)
+end
+
+---@param name string
+---@return BackdropType
+function Isaac.GetBackdropIdByName(name)
 end
 
 ---Returns a key-value table of all loaded script values, where the key is the path of the script and the value is what it returns.

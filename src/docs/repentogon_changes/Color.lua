@@ -5,8 +5,12 @@
 ---@param RO? number @default: `0`
 ---@param GO? number @default: `0`
 ---@param BO? number @default: `0`
+---@param RC? number @default: `0`
+---@param GC? number @default: `0`
+---@param BC? number @default: `0`
+---@param AC? number @default: `0`
 ---@return Color
-function _G.Color(R, G, B, A, RO, GO, BO)
+function _G.Color(R, G, B, A, RO, GO, BO, RC, GC, BC, AC)
 end
 
 --- Returns a dictionary corresponding to the color's current Colorize values: `{R, G, B, A}`
