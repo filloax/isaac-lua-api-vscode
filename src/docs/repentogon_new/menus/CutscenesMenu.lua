@@ -2,13 +2,13 @@
 _G.CutscenesMenu = {}
 
 ---@return Sprite 
-function CutscenesMenu:GetSprite()
+function CutscenesMenu.GetSprite()
 end
 
 ---@return integer 
-function CutscenesMenu:GetSelectedElement()
+function CutscenesMenu.GetSelectedElement()
 end
 
 ---@param elementNumber integer 
-function CutscenesMenu:SetSelectedElement(elementNumber)
+function CutscenesMenu.SetSelectedElement(elementNumber)
 end

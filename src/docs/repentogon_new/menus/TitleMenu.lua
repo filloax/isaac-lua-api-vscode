@@ -2,6 +2,6 @@
 _G.TitleMenu = {}
 
 ---@return Sprite 
-function TitleMenu:GetSprite()
+function TitleMenu.GetSprite()
 end
 

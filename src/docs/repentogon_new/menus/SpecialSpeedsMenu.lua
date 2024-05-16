@@ -2,13 +2,13 @@
 _G.SpecialSpeedsMenu = {}
 
 ---@return Sprite 
-function SpecialSpeedsMenu:GetSprite()
+function SpecialSpeedsMenu.GetSprite()
 end
 
 ---@return integer 
-function SpecialSpeedsMenu:GetSelectedElement()
+function SpecialSpeedsMenu.GetSelectedElement()
 end
 
 ---@param elementNumber integer 
-function SpecialSpeedsMenu:SetSelectedElement(elementNumber)
+function SpecialSpeedsMenu.SetSelectedElement(elementNumber)
 end

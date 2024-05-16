@@ -1,7 +1,7 @@
 ---@class MenuManager
 _G.MenuManager = {}
 
----Returns the `MainMenuType` of the currently active (visible) section of the main menu.
+---Returns the active menu on the main menu matching `MainMenuType`.
 ---@return MainMenuType
 function MenuManager.GetActiveMenu()
 end
@@ -35,7 +35,7 @@ end
 function MenuManager.GetViewPosition()
 end
 
----Changes the active menu on the main menu to match the input `menuType`.
+---Changes the active menu on the main menu to match the given `MainMenuType`.
 ---@param menuType MainMenuType
 function MenuManager.SetActiveMenu(menuType)
 end

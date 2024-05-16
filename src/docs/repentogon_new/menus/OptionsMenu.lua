@@ -2,17 +2,17 @@
 _G.OptionsMenu = {}
 
 ---@return Sprite 
-function OptionsMenu:GetGammaWidgetSprite()
+function OptionsMenu.GetGammaWidgetSprite()
 end
 
 ---@return Sprite 
-function OptionsMenu:GetOptionsMenuSprite()
+function OptionsMenu.GetOptionsMenuSprite()
 end
 
 ---@return integer 
-function OptionsMenu:GetSelectedElement()
+function OptionsMenu.GetSelectedElement()
 end
 
 ---@param elementNumber integer 
-function OptionsMenu:SetSelectedElement(elementNumber)
+function OptionsMenu.SetSelectedElement(elementNumber)
 end

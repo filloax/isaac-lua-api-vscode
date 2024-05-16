@@ -2,13 +2,13 @@
 _G.ControllerSelectMenu = {}
 
 ---@return Sprite 
-function ControllerSelectMenu:GetSprite()
+function ControllerSelectMenu.GetSprite()
 end
 
 ---@return integer 
-function ControllerSelectMenu:GetSelectedElement()
+function ControllerSelectMenu.GetSelectedElement()
 end
 
 ---@param elementNumber integer 
-function ControllerSelectMenu:SetSelectedElement(elementNumber)
+function ControllerSelectMenu.SetSelectedElement(elementNumber)
 end

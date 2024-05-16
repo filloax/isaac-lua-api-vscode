@@ -2,17 +2,17 @@
 _G.MainMenu = {}
 
 ---@return Sprite 
-function MainMenu:GetContinueWidgetSprite()
+function MainMenu.GetContinueWidgetSprite()
 end
 
 ---@return Sprite 
-function MainMenu:GetGameMenuSprite()
+function MainMenu.GetGameMenuSprite()
 end
 
 ---@return integer 
-function MainMenu:GetSelectedElement()
+function MainMenu.GetSelectedElement()
 end
 
 ---@param elementNumber integer 
-function MainMenu:SetSelectedElement(elementNumber)
+function MainMenu.SetSelectedElement(elementNumber)
 end

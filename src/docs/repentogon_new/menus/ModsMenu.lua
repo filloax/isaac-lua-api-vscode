@@ -2,18 +2,18 @@
 _G.ModsMenu = {}
 
 ---@return Sprite 
-function ModsMenu:GetSprite()
+function ModsMenu.GetSprite()
 end
 
 ---@return integer 
-function ModsMenu:GetSelectedElement()
+function ModsMenu.GetSelectedElement()
 end
 
 ---@param elementNumber integer 
-function ModsMenu:SetSelectedElement(elementNumber)
+function ModsMenu.SetSelectedElement(elementNumber)
 end
 
 ---Returns true if the mod list was edited.
 ---@return boolean
-function ModsMenu:WasListEdited()
+function ModsMenu.WasListEdited()
 end
