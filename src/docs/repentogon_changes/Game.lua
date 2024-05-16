@@ -143,12 +143,12 @@ end
 function Game:ClearErasedEnemies()
 end
 
----Returns how many times you've visited a shop in the current run. Used for Schoolbag's unlock method.
+---Returns the amount of shops the player has entered this run.
 ---@return integer
 function Game:GetShopVisits()
 end
 
----Add how many times you've visited a shop in the current run. Used for Schoolbag's unlock method.
+---Adds the amount of shops the player has entered this run.
 ---@param count integer
 function Game:AddShopVisits(count)
 end
