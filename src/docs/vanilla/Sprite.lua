@@ -53,7 +53,7 @@ end
 function Sprite:IsEventTriggered(EventName)
 end
 
----@param AnimationName string
+---@param AnimationName? string
 ---@return boolean
 function Sprite:IsFinished(AnimationName)
 end
@@ -62,17 +62,17 @@ end
 function Sprite:IsLoaded()
 end
 
----@param AnimationName string
+---@param AnimationName? string
 ---@return boolean
 function Sprite:IsOverlayFinished(AnimationName)
 end
 
----@param AnimationName string
+---@param AnimationName? string
 ---@return boolean
 function Sprite:IsOverlayPlaying(AnimationName)
 end
 
----@param AnimationName string
+---@param AnimationName? string
 ---@return boolean
 function Sprite:IsPlaying(AnimationName)
 end
@@ -148,6 +148,12 @@ end
 ---@param AnimationName string
 ---@return boolean
 function Sprite:SetOverlayAnimation(AnimationName)
+end
+
+---@param AnimationName string
+---@param FrameNum integer
+---@overload fun(self: Sprite, FrameNum: integer)
+function Sprite:SetOverlayFrame(AnimationName, FrameNum)
 end
 
 ---@param RenderFirst boolean

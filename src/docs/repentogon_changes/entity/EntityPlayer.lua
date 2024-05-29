@@ -396,6 +396,7 @@ end
 function EntityPlayer:GetPlayerFormCounter(playerForm)
 end
 
+---Returns a `PocketItem` object. `SlotId` is not synonymous with `ActiveSlot`, instead referring to where the PocketItem is located in your inventory.
 ---@param SlotId integer
 ---@return PocketItem
 function EntityPlayer:GetPocketItem(SlotId)

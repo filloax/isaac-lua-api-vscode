@@ -90,6 +90,11 @@ end
 function Game:IsRerun()
 end
 
+---Sets marks and unlocks achievements associated with this type for all players. Used by the game to award marks as well as tainted completion paper groups.
+---@param completionType CompletionType
+function Game:RecordPlayerCompletion(completionType)
+end
+
 ---@param colorModifier ColorModifier
 ---@param lerp? boolean @default: `true`
 ---@param rate? number @default: `0.015`.

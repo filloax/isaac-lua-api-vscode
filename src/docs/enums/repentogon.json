@@ -2,7 +2,7 @@
   "ModCallbacks": {
     "MC_PRE_ADD_COLLECTIBLE": {
       "value": "1004",
-      "comment": "(CollectibleType Type integer Charge boolean FirstTime integer Slot integer VarData EntityPlayer Player) - Returning a `CollectibleType` overrides the collectible. You can also return a table of parameters to further modify the collectible given: {Type Charge FirstTime Slot VarData Player}"
+      "comment": "(CollectibleType Type integer Charge boolean FirstTime integer Slot integer VarData EntityPlayer Player): `CollectibleType` | {Type Charge FirstTime Slot VarData Player} - Returning a `CollectibleType` overrides the collectible. You can also return a table of parameters to further modify the collectible given."
     },
     "MC_POST_ADD_COLLECTIBLE": {
       "value": "1005",
@@ -346,7 +346,11 @@
     },
     "MC_PRE_COMPLETION_EVENT": {
       "value":  "1049",
-      "comment": "(CompletionType Completion): boolean - Triggers when an event for a completion gets triggered, typically when defeating a major boss or beating Boss Rush. Return `false` to cancel the completion event, which will prevent all marks and completion event related stuff to trigger for all players."
+      "comment": "(CompletionType Completion): boolean | `CompletionType` - Triggers before a completion event gets triggered, such as when defeating a major boss or beating Boss Rush. Can return a new [CompletionType](CompletionType.md) or `false` to cancel the completion event. Canceling it will prevent all marks and completion event related stuff to trigger for all players."
+    },
+    "MC_POST_COMPLETION_EVENT": {
+      "value":  "1052",
+      "comment": "(CompletionType Completion): boolean - Triggers after a completion event gets triggered, such as when defeating a major boss or beating Boss Rush."
     },
     "MC_POST_PLAYERHUD_RENDER_ACTIVE_ITEM": {
       "value":  "1079",
