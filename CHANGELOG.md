@@ -1,5 +1,9 @@
 # Change Log
 
+* [1.9.5]
+
+    - Remove duplicates for SetOverlayFrame
+
 * [1.9.4]
 
     - Accepts and preserves non-standard JSON formatting in .luarc (comments, trailing commas)
