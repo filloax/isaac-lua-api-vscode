@@ -1,5 +1,6 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
+// Used https://github.com/ManticoreGamesInc/vscode-core 
+// (with MIT license) as reference for how to do this
+
 import * as vscode from 'vscode';
 import * as path from "path";
 import * as fs from 'fs'; // In NodeJS: 'const fs = require('fs')'
@@ -8,9 +9,7 @@ import { checkActivate } from './activationCheck';
 import { setDefinedGlobals, setExternalLibrary, setMiscConfig, updateMaxFileSize } from './luaSettings';
 import { getConfig } from './config';
 import { Constants } from './constants';
-
-// Used https://github.com/ManticoreGamesInc/vscode-core 
-// (with MIT license) as reference for how to do this
+import { modifyJsoncFile } from './modifyJson';
 
 const LUA_CONFIG_FILENAME = ".luarc.json";
 
@@ -73,13 +72,7 @@ function onActivate(context: vscode.ExtensionContext) {
         fs.writeFileSync(filenamePath, "{\n}");
     }
 
-    const luaCfg: any = {};
-    vscode.workspace.openTextDocument(filenamePath).then(doc => {
-        const readCfg = JSON.parse(doc.getText());
-        for (const k in readCfg) {
-            luaCfg[k] = readCfg[k];
-        }
-    }).then(() => {
+    modifyJsoncFile(filenamePath, luaCfg => {
         luaCfg["$schema"] = "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json";
         luaCfg["runtime.version"] = "Lua 5.3";
 
@@ -90,8 +83,7 @@ function onActivate(context: vscode.ExtensionContext) {
         setMiscConfig(config.workspaceSettings);
         updateMaxFileSize(luaCfg);    
 
-        fs.writeFileSync(filenamePath, JSON.stringify(luaCfg, null, 4));
-        // console.log(JSON.stringify(luaCfg));
+        return luaCfg;
     });
 
     context.subscriptions.push(vscode.workspace.onDidChangeConfiguration(event => onConfigChange(context, event)));
@@ -101,20 +93,12 @@ function onDeactivate(context: vscode.ExtensionContext) {
     const filenamePath = getCfgFilePath();
 
     if (fs.existsSync(filenamePath)) {
-        const luaCfg: any = {};
-        vscode.workspace.openTextDocument(filenamePath).then(doc => {
-            const readCfg = JSON.parse(doc.getText());
-            for (const k in readCfg) {
-                luaCfg[k] = readCfg[k];
-            }
-        }).then(() =>{
+        modifyJsoncFile(filenamePath, luaCfg => {
             setMiscConfig(false);
             setDefinedGlobals(luaCfg, false);
             setExternalLibrary(luaCfg, context, VANILLA_LUA_LIBRARY, false);
             setExternalLibrary(luaCfg, context, REPENTOGON_LUA_LIBRARY, false);
-
-            fs.writeFileSync(filenamePath, JSON.stringify(luaCfg, null, 4));
-            // console.log(JSON.stringify(luaCfg));
+            return luaCfg;
         });
     }
 }
@@ -123,18 +107,11 @@ function onConfigChange(context: vscode.ExtensionContext, event: vscode.Configur
     const config = getConfig();
     
     if (event.affectsConfiguration("boi-lua.repentogonEnabled")) {
-        const luaCfg: any = {};
         const filenamePath = getCfgFilePath();
-        vscode.workspace.openTextDocument(filenamePath).then(doc => {
-            const readCfg = JSON.parse(doc.getText());
-            for (const k in readCfg) {
-                luaCfg[k] = readCfg[k];
-            }
-        }).then(() => {
+        modifyJsoncFile(filenamePath, luaCfg => {
             setExternalLibrary(luaCfg, context, VANILLA_LUA_LIBRARY, !config.repentogonEnabled);
             setExternalLibrary(luaCfg, context, REPENTOGON_LUA_LIBRARY, config.repentogonEnabled);
-
-            fs.writeFileSync(filenamePath, JSON.stringify(luaCfg, null, 4));
+            return luaCfg;
         });
     }
 }

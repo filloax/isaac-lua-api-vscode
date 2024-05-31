@@ -71,8 +71,7 @@
                 "command": "boi-lua.deactivate",
                 "title": "Manually deactivate Isaac Lua autocompletion for this workspace"
             }
-        ]    
-
+        ]
     },
     "devDependencies": {
         "@types/glob": "^7.2.0",
@@ -87,5 +86,8 @@
         "glob": "^8.0.1",
         "mocha": "^9.2.2",
         "typescript": "^4.6.4"
+    },
+    "dependencies": {
+        "golden-fleece": "^1.0.9"
     }
 }
