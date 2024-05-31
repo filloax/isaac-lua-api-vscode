@@ -69,11 +69,6 @@ function Sprite:IsOverlayEventTriggered(eventName) end
 function Sprite:ReplaceSpritesheet(LayerId, PngFilename, LoadGraphics)
 end
 
----@overload fun(self: Sprite, FrameNum: integer)
----@param AnimationName string
----@param FrameNum integer
-function Sprite:SetOverlayFrame(AnimationName, FrameNum) end
-
 ---Sets the sprite's render flags.
 ---@param renderFlags integer
 function Sprite:SetRenderFlags(renderFlags) end
