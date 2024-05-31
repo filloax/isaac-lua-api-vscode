@@ -150,12 +150,6 @@ end
 function Sprite:SetOverlayAnimation(AnimationName)
 end
 
----@param AnimationName string
----@param FrameNum integer
----@overload fun(self: Sprite, FrameNum: integer)
-function Sprite:SetOverlayFrame(AnimationName, FrameNum)
-end
-
 ---@param RenderFirst boolean
 function Sprite:SetOverlayRenderPriority(RenderFirst)
 end
