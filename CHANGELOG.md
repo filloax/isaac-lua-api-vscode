@@ -1,5 +1,9 @@
 # Change Log
 
+* [1.9.4]
+
+    - Accepts and preserves non-standard JSON formatting in .luarc (comments, trailing commas)
+
 * [1.9.3]
 
     - Support for Repentogon 1.0.9b
