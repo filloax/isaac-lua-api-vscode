@@ -169,6 +169,7 @@ end
 function EntityPlayer:GetCambionConceptionState()
 end
 
+---Corresponds to the current visible state of Cambion Conception's costume (0-2).
 ---@return integer
 function EntityPlayer:GetCambionPregnancyLevel()
 end
@@ -324,7 +325,7 @@ end
 function EntityPlayer:GetHistory()
 end
 
----Returns how many hearts have been collected with the Immaculate Conception item.
+---Returns how many hearts have been collected with the Immaculate Conception item. Resets to 0 after spawning a familiar/soul heart.
 ---@return integer
 function EntityPlayer:GetImmaculateConceptionState()
 end
@@ -396,8 +397,8 @@ end
 function EntityPlayer:GetPlayerFormCounter(playerForm)
 end
 
----Returns a `PocketItem` object. `SlotId` is not synonymous with `ActiveSlot`, instead referring to where the PocketItem is located in your inventory.
----@param SlotId integer
+---Gets the card/pill/rune in the specified pocket slot.
+---@param Slot PillCardSlot
 ---@return PocketItem
 function EntityPlayer:GetPocketItem(SlotId)
 end

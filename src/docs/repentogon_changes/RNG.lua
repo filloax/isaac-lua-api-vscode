@@ -1,4 +1,4 @@
----@overload fun(self: RNG, Min: integer, Max: integer)
+---@overload fun(self: RNG, Min: integer, Max: integer): integer
 ---@return integer
 function RNG:RandomInt(Max)
 end
@@ -33,4 +33,24 @@ end
 ---Returns a random vector with length `1`.
 ---@return Vector
 function RNG:RandomVector()
+end
+
+---Returns the shift index used by the RNG object. By default, vanilla RNG objects use `35`.
+---@return integer
+function RNG:GetShiftIdx()
+end
+
+---Similar to `:Next()`, except it does not affect the internal state of the RNG object and serves to only return its seed if it did.
+---@return integer
+function RNG:PhantomNext()
+end
+
+---"Iterates" the RNG's seed to the previous random number in the psuedo-random sequence. (The internal PRNG algorithm used is Xorshift.)
+---@return integer --Integer returned is the new seed of the RNG object.
+function RNG:Previous()
+end
+
+---Similar to `:Previous()`, except it does not affect the internal state of the RNG object and serves to only return its seed if it did.
+---@return integer
+function RNG:PhantomPrevious()
 end

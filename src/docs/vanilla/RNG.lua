@@ -11,7 +11,7 @@ function RNG:GetSeed()
 end
 
 ---"Iterates" the RNG's seed to the next random number in the psuedo-random sequence. (The internal PRNG algorithm used is Xorshift.)
----@return integer
+---@return integer --Integer returned is the new seed of the RNG object.
 function RNG:Next()
 end
 
