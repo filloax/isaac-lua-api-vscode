@@ -1,10 +1,6 @@
 ---@class RNG
 local RNG = {}
 
----@return RNG
-function _G.RNG()
-end
-
 ---Returns the current seed of the RNG object.
 ---@return integer
 function RNG:GetSeed()

@@ -1,3 +1,9 @@
+---@param Seed? integer @default: `2853650767`
+---@param ShiftIdx? integer @default: `35`
+---@return RNG
+function _G.RNG(Seed, ShiftIdx)
+end
+
 ---@overload fun(self: RNG, Min: integer, Max: integer): integer
 ---@return integer
 function RNG:RandomInt(Max)
