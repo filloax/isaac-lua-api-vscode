@@ -12,6 +12,7 @@
 ---@field ChargeType integer
 ---@field ClearEffectsOnRemove boolean
 ---@field Costume ItemConfigCostume @const
+---@field CraftingQuality integer
 ---@field Description string
 ---@field DevilPrice integer
 ---@field Discharged boolean
