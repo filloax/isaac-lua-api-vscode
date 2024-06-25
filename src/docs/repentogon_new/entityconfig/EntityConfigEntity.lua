@@ -98,7 +98,7 @@ end
 
 ---Returns the amount of gibs the entity spawns upon death.
 ---@return NullItemID
-function EntityConfigEntity:GetGibAmount()
+function EntityConfigEntity:GetGibsAmount()
 end
 
 ---Returns the entity's grid collision points.
