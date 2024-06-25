@@ -249,8 +249,9 @@ function Isaac.MarkChallengeAsNotDone(challengeId)
 end
 
 ---Plays a cutscene.
----@param cutsceneId integer | Ending
-function Isaac.PlayCutscene(cutsceneId)
+---@param cutsceneId Ending
+---@param clearGameState
+function Isaac.PlayCutscene(cutsceneId, clearGameState)
 end
 
 ---Sets the contents of the player's clipboard.

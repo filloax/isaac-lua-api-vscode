@@ -1,3 +1,7 @@
+---@return RNG
+function _G.RNG()
+end
+
 ---Returns an integer between `0` (inclusive) and the max value (exclusive).
 ---
 ---Note that this will automatically call the `RNG.Next` method before retrieving the random number. Since this mutates the RNG object, you should use this method with care.

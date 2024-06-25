@@ -169,6 +169,7 @@ end
 function EntityPlayer:GetCambionConceptionState()
 end
 
+---Corresponds to the current visible state of Cambion Conception's costume (0-2).
 ---@return integer
 function EntityPlayer:GetCambionPregnancyLevel()
 end
@@ -324,7 +325,7 @@ end
 function EntityPlayer:GetHistory()
 end
 
----Returns how many hearts have been collected with the Immaculate Conception item.
+---Returns how many hearts have been collected with the Immaculate Conception item. Resets to 0 after spawning a familiar/soul heart.
 ---@return integer
 function EntityPlayer:GetImmaculateConceptionState()
 end
@@ -396,8 +397,8 @@ end
 function EntityPlayer:GetPlayerFormCounter(playerForm)
 end
 
----Returns a `PocketItem` object. `SlotId` is not synonymous with `ActiveSlot`, instead referring to where the PocketItem is located in your inventory.
----@param SlotId integer
+---Gets the card/pill/rune in the specified pocket slot.
+---@param Slot PillCardSlot
 ---@return PocketItem
 function EntityPlayer:GetPocketItem(SlotId)
 end
@@ -1069,4 +1070,14 @@ end
 ---Returns `true` if a "?" would be displayed on the player's extra life count (ie, Guppy's Collar)
 ---@return boolean
 function EntityPlayer:HasChanceRevive()
+end
+
+---Returns the bitmask corresponding to which familiars have been spawned by Cambion/Immaculate Conception. The additional familiars provided by this bitmask are spawned during familiar cache evaluation, but only while the player has one of those two items.
+---@return ConceptionFamiliarFlag
+function EntityPlayer:GetConceptionFamiliarFlags()
+end
+
+---Sets the bitmask corresponding to which familiars have been spawned by Cambion/Immaculate Conception. The additional familiars provided by this bitmask are spawned during familiar cache evaluation, but only while the player has one of those two items.
+---@param flag ConceptionFamiliarFlag
+function EntityPlayer:SetConceptionFamiliarFlags(flag)
 end
