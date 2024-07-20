@@ -1,5 +1,13 @@
 # Change Log
 
+* [1.9.6]
+
+    - fix EntityConfigEntity:GetGibsAmount
+    - RNG constructor and Get/SetConceptionFlags
+    - Added ItemConfigItem.CraftingQuality
+    - Assorted RGon update additions
+    - Fix $schema issue when editing files that led to wrong .luarc.json being generated
+
 * [1.9.5]
 
     - Remove duplicates for SetOverlayFrame
