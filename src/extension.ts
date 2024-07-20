@@ -73,7 +73,7 @@ function onActivate(context: vscode.ExtensionContext) {
     }
 
     modifyJsoncFile(filenamePath, luaCfg => {
-        luaCfg["$schema"] = "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json";
+        // luaCfg["$schema"] = "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json";
         luaCfg["runtime.version"] = "Lua 5.3";
 
         setExternalLibrary(luaCfg, context, VANILLA_LUA_LIBRARY, !config.repentogonEnabled);
