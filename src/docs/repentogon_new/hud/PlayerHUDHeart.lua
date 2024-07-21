@@ -18,10 +18,19 @@ end
 
 ---Returns true if the golden heart overlay is visible.
 ---@return boolean 
-function PlayerHUDHeart:IsHoldenHeartOverlayVisible()
+function PlayerHUDHeart:IsGoldenHeartOverlayVisible()
 end
 
 ---Returns true if the heart is visible.
 ---@return boolean 
 function PlayerHUDHeart:IsVisible()
+end
+
+---Returns true if the eternal heart overlay is visible.
+---@return boolean
+function PlayerHUDHeart:IsEternalHeartOverlayVisible()
+end
+
+---Returns true if affected under Tainted Magdeline's fading heart mechanic.
+function PlayerHUDHeart:IsFadingHeart()
 end

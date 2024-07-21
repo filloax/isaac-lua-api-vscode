@@ -398,7 +398,7 @@ function EntityPlayer:GetPlayerFormCounter(playerForm)
 end
 
 ---Gets the card/pill/rune in the specified pocket slot.
----@param Slot PillCardSlot
+---@param SlotId PillCardSlot
 ---@return PocketItem
 function EntityPlayer:GetPocketItem(SlotId)
 end
@@ -1080,4 +1080,9 @@ end
 ---Sets the bitmask corresponding to which familiars have been spawned by Cambion/Immaculate Conception. The additional familiars provided by this bitmask are spawned during familiar cache evaluation, but only while the player has one of those two items.
 ---@param flag ConceptionFamiliarFlag
 function EntityPlayer:SetConceptionFamiliarFlags(flag)
+end
+
+---Converts a soul heart into a black heart.
+---@param soulHeartIndex integer @Determines which soul heart gets converted. 1 for the first Soul Heart, 2 for the second, and so on.
+function EntityPlayer:SetBlackHeart(soulHeartIndex)
 end

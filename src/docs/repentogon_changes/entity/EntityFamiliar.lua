@@ -56,3 +56,7 @@ end
 ---@param delay integer
 function EntityFamiliar:SetMoveDelayNum(delay)
 end
+
+---@return ItemConfigItem
+function EntityFamiliar:GetItemConfig()
+end

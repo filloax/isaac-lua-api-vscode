@@ -126,15 +126,15 @@ end
 function Game:SetDonationModGreed(donation)
 end
 
----Sets the dizzy amount akin to Wavy Cap
----@param amount number Amount that the screen will be affected. Screen will slowly reach the desired intensity. Also works in reverse if current intensity is higher than the `Amount`.
----@param intensity number Starting intensity of the effect.
-function Game:SetDizzyAmount(amount, intensity)
+---Sets the dizzy amount akin to Wavy Cap. The current intensity of the effect will gradually move towards the "TargetIntensity".
+---
+---**NOTE**: Best to stay within `0`-`1` and increment by `0.1` while using this function. `1` has the most extreme effect on the screen while `0` removes the effect.
+---@param TargetIntensity number @If provided, the current intensity is instantly changed to that amount. If unspecified, the current intensity will remain unchanged.
+---@param CurrentIntensity? number @Starting intensity of the effect.
+function Game:SetDizzyAmount(TargetIntensity, CurrentIntensity)
 end
 
----Returns the current dizzy amount akin to Wavy Cap
----
----**BUG**: This function currently only returns `0`. Using `Game:SetDizzyAmount` or the Wavy Cap collectible has no effect on this function.
+---Returns the current dizzy amount akin to Wavy Cap.
 ---@return integer
 function Game:GetDizzyAmount()
 end

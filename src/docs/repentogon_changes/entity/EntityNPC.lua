@@ -65,11 +65,12 @@ end
 function EntityNPC:SetShieldStrength(Strength)
 end
 
+---@param Position Vector
 ---@param Target Vector
 ---@param Velocity? number @default: `-24`
 ---@param YOffset? number @default: `-8`
----@return EntityNPC
-function EntityNPC:ShootMaggotProjectile(Target, Velocity, YOffset)
+---@return EntityNPC @Returns the `EntityNPC` of the maggot being fired.
+function EntityNPC:ShootMaggotProjectile(Position, Target, Velocity, YOffset)
 end
 
 ---@param Position Vector

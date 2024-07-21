@@ -42,3 +42,11 @@ end
 ---@param element integer 
 function DailyChallengeMenu.SetSelectedElement(element)
 end
+
+---@return integer
+function DailyChallengeMenu.GetState()
+end
+
+---@param state integer
+function DailyChallengeMenu.SetState(state)
+end

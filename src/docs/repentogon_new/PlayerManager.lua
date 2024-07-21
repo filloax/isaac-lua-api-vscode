@@ -47,7 +47,7 @@ end
 ---Returns the first player to pick up the provided trinket. If no player has picked up the trinket yet, returns `nil`.
 ---@param trinket TrinketType
 ---@param rng? RNG @default: `nil`
----@param lazarusSharedGlobalTag boolean @default: `true`
+---@param lazarusSharedGlobalTag? boolean @default: `true`
 ---@return EntityPlayer?
 function PlayerManager.FirstTrinketOwner(trinket, rng, lazarusSharedGlobalTag)
 end
@@ -100,4 +100,9 @@ end
 ---@param itemID TrinketType
 ---@param ignoreModifiers? boolean @default: `false`
 function PlayerManager.AnyPlayerTypeHasCollectible(playerType, itemID, ignoreModifiers)
+end
+
+---Instantly removes a player.
+---@param player EntityPlayer
+function PlayerManager.RemoveCoPlayer(player)
 end

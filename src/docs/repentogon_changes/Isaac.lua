@@ -250,7 +250,7 @@ end
 
 ---Plays a cutscene.
 ---@param cutsceneId Ending
----@param clearGameState
+---@param clearGameState? boolean @default: `false`
 function Isaac.PlayCutscene(cutsceneId, clearGameState)
 end
 

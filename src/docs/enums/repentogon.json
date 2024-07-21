@@ -234,11 +234,11 @@
     },
     "MC_PLAYER_GET_ACTIVE_MAX_CHARGE": {
       "value":  "1072",
-      "comment": "(CollectibleType ItemID, EntityPlayerPlayer, integer VarData): integer, Optional Arg: CollectibleType - Called when getting the active charge of an active item. Return an integer to override the max charge for the active item."
+      "comment": "(CollectibleType ItemID, EntityPlayerPlayer, integer VarData, integer CurrentMaxCharge): integer, Optional Arg: CollectibleType - Called when getting the active charge of an active item. Return an integer to override the max charge for the active item."
     },
     "MC_PLAYER_GET_ACTIVE_MIN_USABLE_CHARGE": {
       "value":  "1073",
-      "comment": "(ActiveSlot Slot): integer, Optional Arg: CollectibleType - Called when getting the minimum charge requirement for using an active item (seen in items such as Larynx). Return an integer to override the minimum charge to use the active item."
+      "comment": "(ActiveSlot Slot, EntityPlayer Player, integer CurrentMinUsableCharge): integer, Optional Arg: CollectibleType - Called when getting the minimum charge requirement for using an active item (seen in items such as Larynx). Return an integer to override the minimum charge to use the active item."
     },
     "MC_PLAYER_GET_HEART_LIMIT": {
       "value":  "1074",
