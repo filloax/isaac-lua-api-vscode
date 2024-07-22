@@ -21,3 +21,7 @@ function RoomDescriptor1:GetEntitiesSaveState() end
 ---TODO: Document me!
 ---@return integer[]
 function RoomDescriptor1:GetRestrictedGridIndexes() end
+
+---@param rng RNG
+function RoomDescriptor1:InitSeeds(rng)
+end

@@ -3,7 +3,8 @@ end
 
 ---Plays a jingle.
 ---@param musicId Music
-function MusicManager:PlayJingle(musicId)
+---@param duration integer
+function MusicManager:PlayJingle(musicId, duration)
 end
 
 ---@param pitch number

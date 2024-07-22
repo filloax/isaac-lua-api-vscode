@@ -763,7 +763,7 @@ function EntityPlayer:SetFootprintColor(color, isRightFootprint)
 end
 
 ---Sets how many hearts have been collected for the Immaculate Conception item.
----@param state integer
+---@param state integer @Can only be between `0`-`14`, inclusive. Values outside this are clamped to this range.
 function EntityPlayer:SetImmaculateConceptionState(state)
 end
 

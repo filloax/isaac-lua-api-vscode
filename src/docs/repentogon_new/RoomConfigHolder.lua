@@ -23,7 +23,7 @@ end
 ---@param stage StbType
 ---@param type RoomType
 ---@param variant integer
----@param difficulty integer
+---@param difficulty? integer @default: `-1`, pulling from all difficulties.
 ---@return RoomConfigRoom
 function RoomConfigHolder.GetRoomByStageTypeAndVariant(stage, type, variant, difficulty)
 end
