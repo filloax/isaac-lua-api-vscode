@@ -1,8 +1,14 @@
 # Change Log
 
+* [1.9.7]
+
+    - Fix for dupe ItemConfig and missing TEARFLAG warnings
+    - Fixed a few incomplete functions
+    - Added remaining additions up to Repentogon v1.0.10c
+
 * [1.9.6]
 
-    - fix EntityConfigEntity:GetGibsAmount
+    - Fix EntityConfigEntity:GetGibsAmount
     - RNG constructor and Get/SetConceptionFlags
     - Added ItemConfigItem.CraftingQuality
     - Assorted RGon update additions
