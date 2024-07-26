@@ -288,7 +288,7 @@ function EntityPlayer:GetFocusEntity()
 end
 
 ---@param isLeftFootprint boolean If true, the left footprint color is returned. Otherwise, the right footprint color is returned.
----@return Color
+---@return KColor
 function EntityPlayer:GetFootprintColor(isLeftFootprint)
 end
 
