@@ -1,2 +1,2 @@
----@class GridEntityWeb
+---@class GridEntityWeb : GridEntity
 local GridEntityWeb = {}

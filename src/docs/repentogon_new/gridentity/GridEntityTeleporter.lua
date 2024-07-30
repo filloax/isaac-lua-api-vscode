@@ -1,2 +1,2 @@
----@class GridEntityTeleporter
+---@class GridEntityTeleporter : GridEntity
 local GridEntityTeleporter = {}

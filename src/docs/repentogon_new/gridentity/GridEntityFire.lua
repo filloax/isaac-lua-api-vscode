@@ -1,2 +1,2 @@
----@class GridEntityFire
+---@class GridEntityFire : GridEntity
 local GridEntityFire = {}

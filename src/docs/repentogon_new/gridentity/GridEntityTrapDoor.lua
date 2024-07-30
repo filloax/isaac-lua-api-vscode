@@ -1,2 +1,2 @@
----@class GridEntityTrapDoor
+---@class GridEntityTrapDoor : GridEntity
 local GridEntityTrapDoor = {}
