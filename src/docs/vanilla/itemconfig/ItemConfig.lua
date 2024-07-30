@@ -1,62 +1,59 @@
 ---@class ItemConfig
-_G.ItemConfig = {}
-
----@class ItemConfig
-local ItemConfig1 = {
+local ItemConfig_Class = {
     Config = {}
 }
 
 ---@param ID Card
 ---@return ItemConfigCard
-function ItemConfig1:GetCard(ID)
+function ItemConfig_Class:GetCard(ID)
 end
 
 ---@return CardConfigList
-function ItemConfig1:GetCards()
+function ItemConfig_Class:GetCards()
 end
 
 ---@param ID integer
 ---@return ItemConfigItem
-function ItemConfig1:GetCollectible(ID)
+function ItemConfig_Class:GetCollectible(ID)
 end
 
 ---@return userdata
-function ItemConfig1:GetCollectibles()
+function ItemConfig_Class:GetCollectibles()
 end
 
 ---@param ID integer
 ---@return ItemConfigItem
-function ItemConfig1:GetNullItem(ID)
+function ItemConfig_Class:GetNullItem(ID)
 end
 
 ---@return ItemConfigList
-function ItemConfig1:GetNullItems()
+function ItemConfig_Class:GetNullItems()
 end
 
 ---@param ID PillEffect
 ---@return ItemConfigPillEffect
-function ItemConfig1:GetPillEffect(ID)
+function ItemConfig_Class:GetPillEffect(ID)
 end
 
 ---@return PillConfigList
-function ItemConfig1:GetPillEffects()
+function ItemConfig_Class:GetPillEffects()
 end
 
 ---@param ID integer
 ---@return ItemConfigItem
-function ItemConfig1:GetTrinket(ID)
+function ItemConfig_Class:GetTrinket(ID)
 end
 
 ---@return ItemConfigList
-function ItemConfig1:GetTrinkets()
+function ItemConfig_Class:GetTrinkets()
 end
 
 ---@param ID CollectibleType
 ---@return boolean
-function ItemConfig1.Config.IsValidCollectible(ID)
+function ItemConfig_Class.Config.IsValidCollectible(ID)
 end
 
----@param Item ItemConfig
+---@param Item ItemConfigItem
 ---@return boolean
-function ItemConfig1.Config.ShouldAddCostumeOnPickup(Item)
+function ItemConfig_Class.Config.ShouldAddCostumeOnPickup(Item)
 end

@@ -121,7 +121,7 @@ def main():
     for fname, sourcedirs, enumfiles in sourcefiles:
         os.makedirs(os.path.dirname(os.path.join(EMMYLUA_DIR, fname)), exist_ok=True)
         with open(os.path.join(EMMYLUA_DIR, fname), 'w') as f:
-            f.write("---@diagnostic disable: missing-return\n\n")
+            f.write("---@diagnostic disable: missing-return, duplicate-doc-alias\n\n")
             files = get_files_relative_paths(sourcedirs)
             for luafile in filter(lambda f: f.endswith(".lua"), files):
                 if track_files:

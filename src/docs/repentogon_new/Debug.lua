@@ -1,5 +1,3 @@
----@diagnostic disable: missing-return
-
 ---@class Debug
 Debug = {}
 

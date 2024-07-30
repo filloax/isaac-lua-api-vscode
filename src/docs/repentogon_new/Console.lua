@@ -1,5 +1,3 @@
----@diagnostic disable: missing-return
-
 _G.Console = {}
 
 ---Returns a table containing current command history.
