@@ -52,6 +52,10 @@
       "value": "1022",
       "comment": "Callback has no arguments. Called during HUD render."
     },
+    "MC_POST_HUD_RENDER": {
+      "value": "1024",
+      "comment": "Callback has no arguments. Called after HUD render."
+    },
     "MC_MAIN_MENU_RENDER": {
       "value": "1023",
       "comment": "Callback has no arguments. Called after HUD render."
