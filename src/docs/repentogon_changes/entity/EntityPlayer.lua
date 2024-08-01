@@ -460,11 +460,11 @@ end
 ---
 ---Always check for `nil`, even for slot 1, as it can be deleted by mods via `Isaac.DestroyWeapon`
 ---@param weaponSlot integer
----|0 Backup Weapon such as Notched Axe and Urn of Souls.
----|1 Primary Weapon.
----|2 Additional Weapon. Few instances of this exist in the vanilla game but can also be populated by mods.
----|3 Additional Weapon.
----|4 Additional Weapon.
+---|0 # Backup Weapon such as Notched Axe and Urn of Souls.
+---|1 # Primary Weapon.
+---|2 # Additional Weapon. Few instances of this exist in the vanilla game but can also be populated by mods.
+---|3 # Additional Weapon.
+---|4 # Additional Weapon.
 ---@return Weapon?
 function EntityPlayer:GetWeapon(weaponSlot)
 end
@@ -542,9 +542,9 @@ end
 
 ---TODO: Document me!
 ---@param foot? integer @default: `-1`.
----|-1 Returns true every 12 frames
----|0 Returns true every 24 frames
----|1 Always false
+---|-1 # Returns true every 12 frames
+---|0 # Returns true every 24 frames
+---|1 # Always false
 ---@return boolean
 function EntityPlayer:IsFootstepFrame(foot)
 end
@@ -863,11 +863,11 @@ end
 ---Sets the active Weapon in the assigned `weaponSlot`
 ---@param weapon Weapon
 ---@param weaponSlot integer
----|0 Backup Weapon such as Notched Axe and Urn of Souls.
----|1 Primary Weapon.
----|2 Additional Weapon.
----|3 Additional Weapon.
----|4 Additional Weapon.
+---|0 # Backup Weapon such as Notched Axe and Urn of Souls.
+---|1 # Primary Weapon.
+---|2 # Additional Weapon.
+---|3 # Additional Weapon.
+---|4 # Additional Weapon.
 function EntityPlayer:SetWeapon(weapon, weaponSlot)
 end
 
@@ -1085,4 +1085,28 @@ end
 ---Converts a soul heart into a black heart.
 ---@param soulHeartIndex integer @Determines which soul heart gets converted. 1 for the first Soul Heart, 2 for the second, and so on.
 function EntityPlayer:SetBlackHeart(soulHeartIndex)
+end
+
+---Returns the pickups that are stored on the player through the use of the Moving Box collectible.
+---@return EntitiesSaveStateVector
+function EntityPlayer:GetMovingBoxContents()
+end
+
+---Returns the player's TearDisplacement value, used to check what eye the player was last shooting from.
+---@return integer
+---|-1 # Left eye
+---|1 # Right eye
+function EntityPlayer:GetTearDisplacement()
+end
+
+---Add CustomCacheTag(s) to be evaluated next time EvaluateItems runs (which is right now, if the optional boolean is passed).
+---@param tag string | string[]
+---@param EvaluateItems? boolean @default: `false`.
+function EntityPlayer:AddCustomCacheTag(tag, EvaluateItems)
+end
+
+---Returns the current cached value for the specified CustomCacheTag.
+---@param CustomCacheTag string
+---@return integer @Will return `0` by default if the provided tag has not been evaluated.
+function EntityPlayer:GetCustomCacheValue(CustomCacheTag)
 end

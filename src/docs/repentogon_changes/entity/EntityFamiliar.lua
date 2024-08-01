@@ -60,3 +60,7 @@ end
 ---@return ItemConfigItem
 function EntityFamiliar:GetItemConfig()
 end
+
+---Makes it so that the next time GetMultiplier is called (which doesn't exist yet), `MC_EVALUATE_FAMILIAR_MULTIPLIER` is triggered to recalculate/allow modifying the multiplier.
+function EntityFamiliar:InvalidateCachedMultiplier()
+end

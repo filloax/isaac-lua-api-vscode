@@ -81,3 +81,8 @@ end
 ---@param poolType ItemPoolType
 function ItemPool:GetBibleUpgrades(poolType)
 end
+
+---Retrieves the total number of itempools in the game, including custom itempools.
+---@return integer
+function ItemPool:GetNumItemPools()
+end

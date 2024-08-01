@@ -146,3 +146,19 @@ end
 ---@return LootList
 function EntityNPC:GetShopkeeperLoot()
 end
+
+---Sets an override to the return value of IsFlying, which is normally based on EntityGridCollisionClass. Can be used to make grounded enemies ignore creep, or flying enemies get hit by creep.
+---@param IsFlying boolean
+function EntityNPC:SetFlyingOverride(IsFlying)
+end
+
+---Removes any value set by `SetFlyingOverride()`.
+function EntityNPC:ClearFlyingOverride()
+end
+
+---TODO: Document me!
+---@param DefaultDamage number
+---@param Source EntityRef
+---@param DoScreenEffects? boolean @default: `true`
+function EntityNPC:TrySplit(DefaultDamage, Source, DoScreenEffects)
+end

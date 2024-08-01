@@ -26,3 +26,23 @@ end
 ---@param force? boolean @default: `false`. If set to `true`, forces the tear to re-evaluate which scale animation it should be playing.
 function EntityTear:ResetSpriteScale(force)
 end
+
+---Returns if the tear was created through the Multi Dimensional Baby effect.
+---@return boolean
+function EntityTear:IsMultidimensionalTouched()
+end
+
+---Returns if the tear was created through the Angelic Prism effect.
+---@return boolean
+function EntityTear:IsPrismTouched()
+end
+
+---Sets if the tear was created through the Multi Dimensional Baby effect.
+---@param IsTouched boolean
+function EntityTear:SetMultidimensionalTouched(IsTouched)
+end
+
+---Sets if the tear was created through the Angelic Prism effect.
+---@param IsTouched boolean
+function EntityTear:SetPrimsTouched(IsTouched)
+end

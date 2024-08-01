@@ -334,3 +334,8 @@ end
 ---@param bypassSize? boolean @default: `false`. Set to `true` to bypass the 16x16 resolution cap.
 function Isaac.SetIcon(icon, bypassSize)
 end
+
+---@param name string
+---@return ItemPoolType
+function Isaac.GetPoolIdByName(name)
+end

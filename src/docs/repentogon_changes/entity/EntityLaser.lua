@@ -53,3 +53,11 @@ end
 ---@param damageMult number
 function EntityLaser:SetDamageMultiplier(damageMult)
 end
+
+---Requests the laser's shape to be fully recalculated next time it updates. Can be used to force the laser to instantly change its MaxDistance/Radius instead of transitioning to it. No effect for OneHit or non-sample lasers.
+function EntityLaser:RecalculateSamplesNextUpdate()
+end
+
+---@return boolean
+function EntityLaser:IsMultidimensionalTouched()
+end

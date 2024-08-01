@@ -104,3 +104,7 @@ end
 ---Updates the `EffectVariant.PICKUP_GHOST` EntityEffect in accordance to the pickup's current `LootList`.
 function EntityPickup:UpdatePickupGhosts()
 end
+
+---Removes pickups with the same option group `EntityPickup.OptionsPickupIndex` as the target pickup.
+function EntityPickup:TriggerTheresOptionsPickup()
+end

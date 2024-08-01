@@ -126,3 +126,19 @@ end
 ---@return boolean
 function LayerState:HasCustomChampionShader(path)
 end
+
+---@return boolean
+function LayerState:GetFlipX()
+end
+
+---@return boolean
+function LayerState:GetFlipY()
+end
+
+---@param FlipX boolean
+function LayerState:SetFlipX(FlipX)
+end
+
+---@param FlipY boolean
+function LayerState:SetFlipY(FlipY)
+end

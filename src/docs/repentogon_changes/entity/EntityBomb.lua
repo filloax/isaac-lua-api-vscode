@@ -65,3 +65,23 @@ end
 ---@param speed number
 function EntityBomb:SetRocketSpeed(speed)
 end
+
+---Returns if the tear was created through the Multi Dimensional Baby effect.
+---@return boolean
+function EntityBomb:IsMultidimensionalTouched()
+end
+
+---Returns if the tear was created through the Angelic Prism effect.
+---@return boolean
+function EntityBomb:IsPrismTouched()
+end
+
+---Sets if the tear was created through the Multi Dimensional Baby effect.
+---@param IsTouched boolean
+function EntityBomb:SetMultidimensionalTouched(IsTouched)
+end
+
+---Sets if the tear was created through the Angelic Prism effect.
+---@param IsTouched boolean
+function EntityBomb:SetPrimsTouched(IsTouched)
+end

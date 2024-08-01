@@ -78,7 +78,7 @@
     },
     "MC_POST_RENDER_PLAYER_HEAD": {
       "value": "1045",
-      "comment": "(EntityPlayer Player, Vector RenderPos), Optional Arg: PlayerType - Called after MC_PRE_RENDER_PLAYER_HEAD, assuming it wasn't skipped."
+      "comment": "(EntityPlayer Player, Vector RenderPos), Optional Arg: PlayerType - Called before a player's head is rendered, assuming it wasn't skipped."
     },
     "MC_PRE_RENDER_PLAYER_BODY": {
       "value": "1039",
@@ -86,7 +86,7 @@
     },
     "MC_POST_RENDER_PLAYER_BODY": {
       "value": "1046",
-      "comment": "(EntityPlayer Player, Vector RenderPos), Optional Arg: PlayerType - Called after MC_PRE_RENDER_PLAYER_BODY, assuming it wasn't skipped."
+      "comment": "(EntityPlayer Player, Vector RenderPos), Optional Arg: PlayerType - Called before a player's body is rendered, assuming it wasn't skipped."
     },
     "MC_PRE_ENTITY_THROW": {
       "value": "1040",
@@ -530,7 +530,11 @@
     },
     "MC_PRE_M_MORPH_ACTIVE": {
       "value": "1190",
-      "comment": "(EntityPlayer Player, CollectibleType ItemID), Optional Arg: CollectibleType | boolean - Called before an active gets rerolled by 'M (trinket id 138). Return `CollectibleType` to change the CollectibleType it rerolls into or `false` to prevent the active from being rerolled entirely."
+      "comment": "(EntityPlayer Player, CollectibleType ItemID): CollectibleType | boolean - Called before an active gets rerolled by 'M (trinket id 138). Return `CollectibleType` to change the CollectibleType it rerolls into or `false` to prevent the active from being rerolled entirely."
+    },
+    "MC_PRE_NPC_SPLIT": {
+      "value": "1191",
+      "comment": "(EntityNPC NPC, boolean IsBlacklisted), Optional Arg: EntityType - Called when the game is about to decide whether or not an EntityNPC can be split, i.e. the Meat Cleaver effect. Return `true` to prevent the split, `false` to allow it even if blacklisted, or `nil` to continue default behavior."
     },
     "MC_PICKUP_GET_COIN_VALUE": {
       "value": "1250",
@@ -579,6 +583,10 @@
     "MC_POST_FAMILIAR_FIRE_TECH_LASER": {
       "value": "1262",
       "comment": "(EntityLaser Laser), Optional Arg: FamiliarVariant - Called when a familiar fires a Tech laser."
+    },
+    "MC_IS_PERSISTENT_ROOM_ENTITY": {
+      "value": "1263",
+      "comment": "(EntityType Type, int Variant): boolean - Return `true` to allow the entity to respawn when moving out and back into the room it was located in."
     },
     "MC_PRE_PLAYERHUD_TRINKET_RENDER": {
       "value": "1264",
@@ -948,6 +956,10 @@
       "value": "1184",
       "comment": "(EntityNPC NPC, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: GridEntityType - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. As this also involves empty grid entities, GridEntity may be nil."
     },
+    "MC_PRE_PLAYERHUD_RENDER_HEARTS": {
+      "value": "1118",
+      "comment": "(Vector Offset(?), Sprite HeartsSprite, Vector Position, float Unknown, EntityPlayer Player): boolean - Called before the player's hearts are rendered, both on the corners of the HUD and above Strawman-like players. Return `true` to cancel hearts HUD rendering."
+    },
     "MC_PRE_PLAYERHUD_RENDER_ACTIVE_ITEM": {
       "value": "1119",
       "comment": "(EntityPlayer Player, ActiveSlot Slot, Vector Offset, float Alpha, float Scale, Vector ChargeBarOffset) - Called before the player's active item is rendered. Return `true` to cancel rendering."
@@ -1088,9 +1100,13 @@
       "value": "1360",
       "comment": "(EntityPlayer Player, EntityPickup Pickup, PillCardSlot Slot), Optional Arg: Card - Called after a player drops a card onto the ground from their inventory."
     },
-    "MC_POST_PLAYER_DROP_PILL": {
-      "value": "1361",
-      "comment": "(EntityPlayer Player, EntityPickup Pickup, PillCardSlot Slot), Optional Arg: PillColor - Called after a player drops a pill onto the ground from their inventory."
+    "MC_PRE_CHALLENGE_DONE": {
+      "value": "1471",
+      "comment": "(Challenge ChallengeID, EntityPlayer Player): boolean, Optional Arg: Challenge - Called before a challenge is marked as completed. Return `false` to prevent further execution of the challenge completion-tracking function."
+    },
+    "MC_POST_CHALLENGE_DONE": {
+      "value": "1472",
+      "comment": "(Challenge ChallengeID), Optional Arg: Challenge - Called after a challenge is marked as completed."
     },
     "MC_PRE_PLAYER_GIVE_BIRTH_CAMBION": {
       "value": "1474",
@@ -1107,6 +1123,26 @@
     "MC_PRE_PLAYER_REMOVE_COSTUME": {
       "value": "1282",
       "comment": "(ItemConfigItem itemConfig, EntityPlayer Player): boolean - Called before the costume is removed from the player. Return `true` to cancel the removal."
+    },
+    "MC_POST_PLAYER_ADD_COSTUME": {
+      "value": "1283",
+      "comment": "(ItemConfigItem itemConfig, EntityPlayer Player, boolean ItemStateOnly) - Called after the costume is added to the player, assuming it wasn't skipped."
+    },
+    "MC_POST_PLAYER_REMOVE_COSTUME": {
+      "value": "1284",
+      "comment": "(ItemConfigItem itemConfig, EntityPlayer Player): boolean - Called after the costume is removed from the player, assuming it wasn't skipped."
+    },
+    "MC_POST_FORCE_PILL_EFFECT": {
+      "value": "1129",
+      "comment": "(PillEffect PillEffectID, PillColor PillColorID) - TODO: Document me!"
+    },
+    "MC_EVALUATE_CUSTOM_CACHE" : {
+      "value": "9999",
+      "comment": "(EntityPlayer Player, CustomCacheTag string, float Value): float, Optional Arg: CustomCacheTag - Called when a custom cache tag is evaluated. Return a number to modify the value. Modified values are passed onto the next callback."
+    },
+    "MC_EVALUATE_FAMILIAR_MULTIPLIER": {
+      "value": "9999",
+      "comment": "(EntityFamiliar Familiar, float Mult, EntityPlayer Player): float, Optional Arg: FamiliarVariant. Called when a familiar's cached multiplier needs to be re-evaluated. Return a number to modify the multiplier. Modified values are passed to the next callback."
     }
   },
   "Renderer": {

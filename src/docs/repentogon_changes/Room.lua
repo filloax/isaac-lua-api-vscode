@@ -210,3 +210,15 @@ end
 --TODO: Document me!
 function Room:SaveState()
 end
+
+---Retrieves the pooltype the game would use to generate random collectibles in the current room.
+---@param Seed integer
+---@param Raw? boolean @default: `false`. If `true`, will return the item pool with all of its items as defined in `itempools.xml`.
+---@return ItemPoolType
+function Room:GetItemPool(Seed, Raw)
+end
+
+---Sets the pool to use when the game needs to generate random collectibles in the current room.
+---@param PoolType ItemPoolType
+function Room:SetItemPool(PoolType)
+end

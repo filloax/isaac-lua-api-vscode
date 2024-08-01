@@ -157,3 +157,8 @@ end
 ---@param count integer
 function Game:AddShopVisits(count)
 end
+
+---Returns the currently active `GenericPrompt` object.
+---@return GenericPrompt
+function Game:GetGenericPrompt()
+end

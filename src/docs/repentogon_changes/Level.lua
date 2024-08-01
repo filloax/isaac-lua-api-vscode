@@ -63,3 +63,8 @@ end
 ---@param wavesCleared integer
 function Level:SetGreedWavesClearedWithoutRedHeartDamage(wavesCleared)
 end
+
+---Returns the pickups that will be transferred to the next floor by the Myosotis trinket effect.
+---@return EntitiesSaveStateVector
+function Level:GetMyosotisPickups()
+end
