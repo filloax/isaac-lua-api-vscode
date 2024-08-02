@@ -1,10 +1,18 @@
 # Change Log
 
+* [1.10.0]
+
+    - Support for Repentogon 1.0.11
+    - Fix Repentogon-added Grid Entity subclasses not being a child of the GridEntity class
+    - Fix EntityPlayer:GetFootprintColor returning Color instead of KColor
+    - ItemConfig and RoomDescriptor both now work properly as both a class and an enum
+    - Add some missing functions
+
 * [1.9.7]
 
     - Fix for dupe ItemConfig and missing TEARFLAG warnings
-    - Fixed a few incomplete functions
-    - Added remaining additions up to Repentogon v1.0.10c
+    - Fix a few incomplete functions
+    - Add remaining additions up to Repentogon v1.0.10c
 
 * [1.9.6]
 
