@@ -162,3 +162,10 @@ end
 ---@param DoScreenEffects? boolean @default: `true`
 function EntityNPC:TrySplit(DefaultDamage, Source, DoScreenEffects)
 end
+
+---Similar to Sprite:ReplaceSpritesheet. Appends "_champion"/stage suffix to PngFilename if possible.
+---@param LayerID integer
+---@param PngFilename string
+---@param LoadGraphics? boolean
+function EntityNPC:ReplaceSpritesheet(LayerID, PngFilename, LoadGraphics)
+end
