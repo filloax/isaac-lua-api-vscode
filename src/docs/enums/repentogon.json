@@ -1090,7 +1090,7 @@
     },
     "MC_POST_PLAYER_COLLECT_CARD": {
       "value": "1357",
-      "comment": "(EntityPlayer Player, EntityPickup Pickup), Optional Arg: Card - Called before a player picks up a card off the ground."
+      "comment": "(EntityPlayer Player, EntityPickup Pickup), Optional Arg: Card - Called after a player picks up a card off the ground."
     },
     "MC_PRE_PLAYER_COLLECT_PILL": {
       "value": "1358",
@@ -1098,7 +1098,7 @@
     },
     "MC_POST_PLAYER_COLLECT_PILL": {
       "value": "1359",
-      "comment": "(EntityPlayer Player, EntityPickup Pickup), Optional Arg: Card - Called before a player picks up a pill off the ground."
+      "comment": "(EntityPlayer Player, EntityPickup Pickup), Optional Arg: Card - Called after a player picks up a pill off the ground."
     },
     "MC_POST_PLAYER_DROP_CARD": {
       "value": "1360",
