@@ -22,22 +22,22 @@ end
 function EntityKnife:SetIsSpinAttack(bool)
 end
 
----Returns if the tear was created through the Multi Dimensional Baby effect.
+---Returns if the knife was created through the Multi Dimensional Baby effect.
 ---@return boolean
 function EntityKnife:IsMultidimensionalTouched()
 end
 
----Returns if the tear was created through the Angelic Prism effect.
+---Returns if the knife was created through the Angelic Prism effect.
 ---@return boolean
 function EntityKnife:IsPrismTouched()
 end
 
----Sets if the tear was created through the Multi Dimensional Baby effect.
+---Sets if the knife was created through the Multi Dimensional Baby effect.
 ---@param IsTouched boolean
 function EntityKnife:SetMultidimensionalTouched(IsTouched)
 end
 
----Sets if the tear was created through the Angelic Prism effect.
+---Sets if the knife was created through the Angelic Prism effect.
 ---@param IsTouched boolean
 function EntityKnife:SetPrismTouched(IsTouched)
 end
