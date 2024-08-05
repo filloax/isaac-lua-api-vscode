@@ -232,14 +232,14 @@ end
 function Room:SaveState()
 end
 
----Retrieves the pooltype the game would use to generate random collectibles in the current room.
+---Retrieves the pool the game would use to generate random collectibles in the current room. Unlike `ItemPool:GetPoolForRoom()`, this takes into account the pool set using SetItemPool(), and runs the game's pool selection code, which handles unique cases (ex. Boss Room + Used Satanic Bible = Devil Pool).
 ---@param Seed integer
----@param Raw? boolean @default: `false`. If `true`, will return the item pool with all of its items as defined in `itempools.xml`.
+---@param Raw? boolean @default: `false`. If set to true and the pool is set to `POOL_NULL` then `POOL_NULL` will be returned, instead of running the game's pool selection code.
 ---@return ItemPoolType
 function Room:GetItemPool(Seed, Raw)
 end
 
----Sets the pool to use when the game needs to generate random collectibles in the current room.
+---Sets the pool to use when the game needs to generate random collectibles in the current room. This takes priority over the game's regular pool selection code. Can be set to `POOL_NULL` to let the game handle pool selection. This is reset every room transition.
 ---@param PoolType ItemPoolType
 function Room:SetItemPool(PoolType)
 end
