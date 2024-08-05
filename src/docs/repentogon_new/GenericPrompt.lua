@@ -2,6 +2,7 @@
 _G.GenericPrompt = {}
 
 ---Returns a GenericPrompt object. Allows for rendering a popup paper with the option to include text and tracking input for a yes/no decision.
+---**BUG**: Will crash if used during a run while no generic prompt is active.
 ---@return GenericPrompt
 function GenericPrompt()
 end
@@ -29,11 +30,11 @@ function GenericPrompt:Render()
 end
 
 ---Set text that will appear on the paper.
----@param Text1? string @default: `""`. Top line.
----@param Text2? string @default: `""`. Top-middle line.
----@param Text3? string @default: `""`. Middle line.
----@param Text4? string @default: `""`. Bottom-middle line.
----@param Text5? string @default: `""`. Bottom line.
+---@param Text1? string @default: `""`. Top line. Used as header text. Will be bold with a higher font size.
+---@param Text2? string @default: `""`. Top-middle line. Used as header text. Will be bold with a higher font size.
+---@param Text3? string @default: `""`. Middle line. Used as description text.
+---@param Text4? string @default: `""`. Bottom-middle line. Used as description text.
+---@param Text5? string @default: `""`. Bottom line. Used as description text.
 function GenericPrompt:SetText(Text1, Text2, Text3, Text4, Text5)
 end
 
