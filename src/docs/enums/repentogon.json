@@ -1145,11 +1145,11 @@
       "comment": "(PillEffect PillEffectID, PillColor PillColorID) - TODO: Document me!"
     },
     "MC_EVALUATE_CUSTOM_CACHE" : {
-      "value": "9999",
+      "value": "1224",
       "comment": "(EntityPlayer Player, CustomCacheTag string, float Value): float, Optional Arg: CustomCacheTag - Called when a custom cache tag is evaluated. Return a number to modify the value. Modified values are passed onto the next callback."
     },
     "MC_EVALUATE_FAMILIAR_MULTIPLIER": {
-      "value": "9999",
+      "value": "1225",
       "comment": "(EntityFamiliar Familiar, float Mult, EntityPlayer Player): float, Optional Arg: FamiliarVariant. Called when a familiar's cached multiplier needs to be re-evaluated. Return a number to modify the multiplier. Modified values are passed to the next callback."
     }
   },

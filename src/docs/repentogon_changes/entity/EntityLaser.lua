@@ -58,6 +58,17 @@ end
 function EntityLaser:RecalculateSamplesNextUpdate()
 end
 
+---Sets if the laser was created through the Multi Dimensional Baby effect.
 ---@return boolean
 function EntityLaser:IsMultidimensionalTouched()
+end
+
+---Returns if the laser was created through the Angelic Prism effect.
+---@return boolean
+function EntityLaser:IsPrismTouched()
+end
+
+---Returns if the laser was created through the Angelic Prism effect.
+---@return boolean
+function EntityLaser:SetPrismTouched()
 end

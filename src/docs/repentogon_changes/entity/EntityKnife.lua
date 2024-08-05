@@ -39,5 +39,5 @@ end
 
 ---Sets if the tear was created through the Angelic Prism effect.
 ---@param IsTouched boolean
-function EntityKnife:SetPrimsTouched(IsTouched)
+function EntityKnife:SetPrismTouched(IsTouched)
 end

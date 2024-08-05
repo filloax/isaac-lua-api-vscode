@@ -83,5 +83,5 @@ end
 
 ---Sets if the tear was created through the Angelic Prism effect.
 ---@param IsTouched boolean
-function EntityBomb:SetPrimsTouched(IsTouched)
+function EntityBomb:SetPrismTouched(IsTouched)
 end
