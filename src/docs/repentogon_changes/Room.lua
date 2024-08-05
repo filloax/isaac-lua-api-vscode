@@ -1,3 +1,24 @@
+---GridPath values pseudo-enumeration:
+---
+---`900` : Set by some enemies when they pass through a tile. De-prioritises the tile for pathfinders. Degrades over time in steps of 100.
+---
+---`950` : Set by fire places. De-prioritises the tile for pathfinders. Does not degrade.
+---
+---`1000` : Set by grid entities. Invalidates the tile for pathfinders. Impedes grounded player movement. Does not degrade.
+---
+---`3000` : Set by pits. Invalidates the tile for pathfinders. Impedes grounded player movement. Does not degrade.
+---
+---`3999` : Set by grimaces. Invalidates the tile for pathfinders. Impedes grounded player movement. Drops to 900 and then degrades over time in steps of 100 (Grimaces reset value every frame).
+---@param Pos1 Vector
+---@param Pos2 Vector
+---@param Mode LineCheckMode
+---@param GridPathThreshold? integer @default: `0`. See `GetGridPath` for GridPath values pseudo-enumeration.
+---@param IgnoreWalls? boolean @default: `false`
+---@param IgnoreCrushable? boolean @default: `false`
+---@return boolean
+function Room:CheckLine(Pos1, Pos2, Mode, GridPathThreshold, IgnoreWalls, IgnoreCrushable)
+end
+
 ---Returns true if the grid entity at the given position can be picked up.
 ---@param gridIndex integer
 ---@return boolean

@@ -906,59 +906,59 @@
     },
     "MC_PRE_PLAYER_GRID_COLLISION": {
       "value": "1171",
-      "comment": "(EntityPlayer Player, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: GridEntityType - Called when this entity collides with a `GridEntity`. As this also involves empty grid entities, GridEntity may be nil. Return `true` to ignore collision."
+      "comment": "(EntityPlayer Player, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: PlayerVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_PLAYER_GRID_COLLISION": {
       "value": "1172",
-      "comment": "(EntityPlayer Player, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: GridEntityType - Called when this entity collide, assuming it wasn't skippeds with a `GridEntity`. As this also involves empty grid entities, GridEntity may be nil."
+      "comment": "(EntityPlayer Player, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: PlayerVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_PRE_TEAR_GRID_COLLISION": {
       "value": "1173",
-      "comment": "(EntityTear Tear, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: GridEntityType - Called when this entity collides with a `GridEntity`. As this also involves empty grid entities, GridEntity may be nil. Return `true` to ignore collision."
+      "comment": "(EntityTear Tear, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: TearVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_TEAR_GRID_COLLISION": {
       "value": "1174",
-      "comment": "(EntityTear Tear, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: GridEntityType - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. As this also involves empty grid entities, GridEntity may be nil."
+      "comment": "(EntityTear Tear, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: TearVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_PRE_FAMILIAR_GRID_COLLISION": {
       "value": "1175",
-      "comment": "(EntityFamiliar Familiar, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: GridEntityType - Called when this entity collides with a `GridEntity`. As this also involves empty grid entities, GridEntity may be nil. Return `true` to ignore collision."
+      "comment": "(EntityFamiliar Familiar, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: FamiliarVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_FAMILIAR_GRID_COLLISION": {
       "value": "1176",
-      "comment": "(EntityFamiliar Familiar, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: GridEntityType - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. As this also involves empty grid entities, GridEntity may be nil."
+      "comment": "(EntityFamiliar Familiar, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: FamiliarVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_PRE_BOMB_GRID_COLLISION": {
       "value": "1177",
-      "comment": "(EntityBomb Bomb, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: GridEntityType - Called when this entity collides with a `GridEntity`. As this also involves empty grid entities, GridEntity may be nil. Return `true` to ignore collision."
+      "comment": "(EntityBomb Bomb, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: BombVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_BOMB_GRID_COLLISION": {
       "value": "1178",
-      "comment": "(EntityBomb Bomb, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: GridEntityType - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. As this also involves empty grid entities, GridEntity may be nil."
+      "comment": "(EntityBomb Bomb, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: BombVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_PRE_PICKUP_GRID_COLLISION": {
       "value": "1179",
-      "comment": "(EntityPickup Pickup, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: GridEntityType - Called when this entity collides with a `GridEntity`. As this also involves empty grid entities, GridEntity may be nil. Return `true` to ignore collision."
+      "comment": "(EntityPickup Pickup, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: PickupVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_PICKUP_GRID_COLLISION": {
       "value": "1180",
-      "comment": "(EntityPickup Pickup, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: GridEntityType - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. As this also involves empty grid entities, GridEntity may be nil."
+      "comment": "(EntityPickup Pickup, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: PickupVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_PRE_PROJECTILE_GRID_COLLISION": {
       "value": "1181",
-      "comment": "(EntityProjectile Projectile, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: GridEntityType - Called when this entity collides with a `GridEntity`. As this also involves empty grid entities, GridEntity may be nil. Return `true` to ignore collision."
+      "comment": "(EntityProjectile Projectile, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: ProjectileVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_PROJECTILE_GRID_COLLISION": {
       "value": "1182",
-      "comment": "(EntityProjectile Projectile, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: GridEntityType - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. As this also involves empty grid entities, GridEntity may be nil."
+      "comment": "(EntityProjectile Projectile, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: ProjectileVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_PRE_NPC_GRID_COLLISION": {
       "value": "1183",
-      "comment": "(EntityNPC NPC, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: GridEntityType - Called when this entity collides with a `GridEntity`. As this also involves empty grid entities, GridEntity may be nil. Return `true` to ignore collision."
+      "comment": "(EntityNPC NPC, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: EntityType - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_NPC_GRID_COLLISION": {
       "value": "1184",
-      "comment": "(EntityNPC NPC, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: GridEntityType - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. As this also involves empty grid entities, GridEntity may be nil."
+      "comment": "(EntityNPC NPC, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: EntityType - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_PRE_PLAYERHUD_RENDER_HEARTS": {
       "value": "1118",
@@ -4864,18 +4864,45 @@
     "ONE_MINUS_SRC_ALPHA": "7",
     "DST_ALPHA": "8",
     "ONE_MINUS_DST_ALPHA": "9",
-    "CONSTANT_COLOR": "10",
-    "ONE_MINUS_CONSTANT_COLOR": "11",
-    "CONSTANT_ALPHA": "12",
-    "ONE_MINUS_CONSTANT_ALPHA": "13",
+    "CONSTANT_COLOR": {
+      "value": "10",
+      "comment": "Currently nonfunctional."
+    },
+    "ONE_MINUS_CONSTANT_COLOR": {
+      "value": "11",
+      "comment": "Currently nonfunctional."
+    },
+    "CONSTANT_ALPHA": {
+      "value": "12",
+      "comment": "Currently nonfunctional."
+    },
+    "ONE_MINUS_CONSTANT_ALPHA": {
+      "value": "13",
+      "comment": "Currently nonfunctional."
+    },
     "SRC_ALPHA_SATURATE": "14"
   },
   "BlendType": {
-    "CONSTANT": "0",
-    "NORMAL": "1",
-    "ADDITIVE": "2",
-    "MULTIPLICATIVE": "3",
-    "OVERLAY": "4"
+    "CONSTANT": {
+      "value": "0",
+      "comment": "`{1, 0, 1, 0}`. Seems to be used to ignore any kind of source/destination modifiers."
+    },
+    "NORMAL": {
+      "value": "1",
+      "comment": "`{1, 7, 1, 7}`"
+    },
+    "ADDITIVE": {
+      "value": "2",
+      "comment": "`{1, 1, 1, 1}`"
+    },
+    "MULTIPLICATIVE": {
+      "value": "3",
+      "comment": "`{0, 2, 0, 2}`"
+    },
+    "OVERLAY": {
+      "value": "4",
+      "comment": "`{4, 7, 4, 7}`"
+    }
   },
   "AddHealthType": {
     "NONE": "0",
@@ -4902,8 +4929,14 @@
     "DWMWA_HAS_ICONIC_BITMAP": "10",
     "DWMWA_DISALLOW_PEEK": "11",
     "DWMWA_EXCLUDED_FROM_PEEK": "12",
-    "DWMWA_CLOAK": "13",
-    "DWMWA_CLOAKED": "14",
+    "DWMWA_CLOAK": {
+      "value": "13",
+      "comment": "Blocked"
+    },
+    "DWMWA_CLOAKED": {
+      "value": "14",
+      "comment": "Blocked"
+    },
     "DWMWA_FREEZE_REPRESENTATION": "15",
     "DWMWA_PASSIVE_UPDATE_MODE": "16",
     "DWMWA_USE_HOSTBACKDROPBRUSH": "17",

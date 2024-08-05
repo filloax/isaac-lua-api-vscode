@@ -1,18 +1,6 @@
 ---@class Room
 local Room = {}
 
----@class LinecheckMode : integer
-
----@param Pos1 Vector
----@param Pos2 Vector
----@param Mode LinecheckMode
----@param GridPathThreshold? integer @default: `0`
----@param IgnoreWalls? boolean @default: `false`
----@param IgnoreCrushable? boolean @default: `false`
----@return boolean
-function Room:CheckLine(Pos1, Pos2, Mode, GridPathThreshold, IgnoreWalls, IgnoreCrushable)
-end
-
 ---@param Index integer
 ---@param Damage integer
 ---@return boolean
@@ -154,11 +142,33 @@ end
 function Room:GetGridIndex(Position)
 end
 
+---GridPath values pseudo-enumeration:
+---
+---`900` : Set by some enemies when they pass through a tile. De-prioritises the tile for pathfinders. Degrades over time in steps of 100.
+---
+---`950` : Set by fire places. De-prioritises the tile for pathfinders. Does not degrade.
+---
+---`1000` : Set by grid entities. Invalidates the tile for pathfinders. Impedes grounded player movement. Does not degrade.
+---
+---`3000` : Set by pits. Invalidates the tile for pathfinders. Impedes grounded player movement. Does not degrade.
+---
+---`3999` : Set by grimaces. Invalidates the tile for pathfinders. Impedes grounded player movement. Drops to 900 and then degrades over time in steps of 100 (Grimaces reset value every frame).
 ---@param Index integer
 ---@return integer
 function Room:GetGridPath(Index)
 end
 
+---GridPath values pseudo-enumeration:
+---
+---`900` : Set by some enemies when they pass through a tile. De-prioritises the tile for pathfinders. Degrades over time in steps of 100.
+---
+---`950` : Set by fire places. De-prioritises the tile for pathfinders. Does not degrade.
+---
+---`1000` : Set by grid entities. Invalidates the tile for pathfinders. Impedes grounded player movement. Does not degrade.
+---
+---`3000` : Set by pits. Invalidates the tile for pathfinders. Impedes grounded player movement. Does not degrade.
+---
+---`3999` : Set by grimaces. Invalidates the tile for pathfinders. Impedes grounded player movement. Drops to 900 and then degrades over time in steps of 100 (Grimaces reset value every frame).
 ---@param Position Vector
 ---@return integer
 function Room:GetGridPathFromPos(Position)
