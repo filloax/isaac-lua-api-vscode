@@ -1094,15 +1094,19 @@
     },
     "MC_PRE_PLAYER_COLLECT_PILL": {
       "value": "1358",
-      "comment": "(EntityPlayer Player, EntityPickup Pickup): boolean, Optional Arg: Card - Called before a player picks up a pill off the ground. Return `false` to prevent the pill from being picked up."
+      "comment": "(EntityPlayer Player, EntityPickup Pickup): boolean, Optional Arg: PillColor - Called before a player picks up a pill off the ground. Return `false` to prevent the pill from being picked up."
     },
     "MC_POST_PLAYER_COLLECT_PILL": {
       "value": "1359",
-      "comment": "(EntityPlayer Player, EntityPickup Pickup), Optional Arg: Card - Called after a player picks up a pill off the ground."
+      "comment": "(EntityPlayer Player, EntityPickup Pickup), Optional Arg: PillColor - Called after a player picks up a pill off the ground."
     },
     "MC_POST_PLAYER_DROP_CARD": {
       "value": "1360",
       "comment": "(EntityPlayer Player, EntityPickup Pickup, PillCardSlot Slot), Optional Arg: Card - Called after a player drops a card onto the ground from their inventory."
+    },
+    "MC_POST_PLAYER_DROP_PILL": {
+      "value": "1361",
+      "comment": "(EntityPlayer Player, EntityPickup Pickup, PillCardSlot Slot), Optional Arg: PillColor - Called after a player drops a pill onto the ground from their inventory."
     },
     "MC_PRE_CHALLENGE_DONE": {
       "value": "1471",
