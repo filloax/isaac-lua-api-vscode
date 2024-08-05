@@ -156,7 +156,7 @@ end
 function EntityNPC:ClearFlyingOverride()
 end
 
----TODO: Document me!
+---Will attempt to split the enemy in two like the Meat Cleaver collectible. Returns `false` if the enemy dies from the damage before they split, `true` otherwise.
 ---@param DefaultDamage number
 ---@param Source EntityRef
 ---@param DoScreenEffects? boolean @default: `true`
