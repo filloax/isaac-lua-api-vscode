@@ -1,5 +1,9 @@
 # Change Log
 
+* [1.10.1]
+
+    - Tweaks to Repentogon docs
+
 * [1.10.0]
 
     - Support for Repentogon 1.0.11
