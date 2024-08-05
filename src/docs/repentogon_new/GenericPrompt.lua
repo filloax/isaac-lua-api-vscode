@@ -2,7 +2,6 @@
 _G.GenericPrompt = {}
 
 ---Returns a GenericPrompt object. Allows for rendering a popup paper with the option to include text and tracking input for a yes/no decision.
----**BUG**: Will crash if used during a run while no generic prompt is active.
 ---@return GenericPrompt
 function GenericPrompt()
 end

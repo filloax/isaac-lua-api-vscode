@@ -159,6 +159,7 @@ function Game:AddShopVisits(count)
 end
 
 ---Returns the currently active `GenericPrompt` object.
+---**BUG**: Will crash if used during a run while no generic prompt is active.
 ---@return GenericPrompt
 function Game:GetGenericPrompt()
 end
