@@ -2,11 +2,11 @@
   "ModCallbacks": {
     "MC_PRE_ADD_COLLECTIBLE": {
       "value": "1004",
-      "comment": "(CollectibleType Type integer Charge boolean FirstTime integer Slot integer VarData EntityPlayer Player): `CollectibleType` | {Type Charge FirstTime Slot VarData Player} - Returning a `CollectibleType` overrides the collectible. You can also return a table of parameters to further modify the collectible given."
+      "comment": "(CollectibleType Type, integer Charge, boolean FirstTime, integer Slot, integer VarData, EntityPlayer Player): `CollectibleType` | {Type Charge FirstTime Slot VarData Player} - Returning a `CollectibleType` overrides the collectible. You can also return a table of parameters to further modify the collectible given."
     },
     "MC_POST_ADD_COLLECTIBLE": {
       "value": "1005",
-      "comment": "(CollectibleType Type integer Charge boolean FirstTime integer Slot integer VarData EntityPlayer Player)"
+      "comment": "(CollectibleType Type, integer Charge, boolean FirstTime, integer Slot, integer VarData, EntityPlayer Player)"
     },
     "MC_POST_TAKE_DMG": {
       "value": "1006",

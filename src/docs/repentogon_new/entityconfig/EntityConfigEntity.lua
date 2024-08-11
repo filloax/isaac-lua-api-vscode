@@ -52,7 +52,7 @@ function EntityConfigEntity:GetBestiaryOverlay()
 end
 
 ---Returns the entity's scale in the bestiary.
----@retrun number
+---@return number
 function EntityConfigEntity:GetBestiaryScale()
 end
 
