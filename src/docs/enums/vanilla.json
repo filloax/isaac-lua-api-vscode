@@ -14,7 +14,7 @@
     },
     "MC_USE_ITEM": {
       "value": "3",
-      "comment": "(CollectibleType ItemID, RNG RNG, EntityPlayer Player, UseFlags Flags, ActiveSlot Slot, integer CustomVarData), Optional Arg: CollectibleType - Return true to show the \"use item\" animation, otherwise false. Called when a custom active item is used, after discharging it. The item RNG allows for the item's random events to be seeded."
+      "comment": "(CollectibleType ItemID, RNG RNG, EntityPlayer Player, UseFlags Flags, ActiveSlot Slot, integer CustomVarData): boolean | table, Optional Arg: CollectibleType - Called when a custom active item is used. The item RNG allows for the item's random events to be seeded. Return true to show the \"use item\" animation, otherwise false. If a table is returned instead of a boolean, the following fields can be set to a non-nil value for extra functionality: {Discharge: Determines whether the item should be discharged or not after being used, Remove: Determines whether the item should be removed from the player or not after being used, ShowAnim: Plays the default use animation if set to true (equivalent to simply returning true in AB+)}"
     },
     "MC_POST_PEFFECT_UPDATE": {
       "value": "4",
@@ -22,7 +22,7 @@
     },
     "MC_USE_CARD": {
       "value": "5",
-      "comment": "(Card CardID), Optional Arg: Card - Called when a custom card is used."
+      "comment": "(Card CardID, EntityPlayer Player, UseFlags integer), Optional Arg: Card - Called when a custom card is used."
     },
     "MC_FAMILIAR_UPDATE": {
       "value": "6",
