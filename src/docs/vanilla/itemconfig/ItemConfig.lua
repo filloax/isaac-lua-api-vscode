@@ -1,7 +1,17 @@
+ItemConfig.Config = {}
+
+---@param ID CollectibleType
+---@return boolean
+function ItemConfig.Config.IsValidCollectible(ID)
+end
+
+---@param Item ItemConfigItem
+---@return boolean
+function ItemConfig.Config.ShouldAddCostumeOnPickup(Item)
+end
+
 ---@class ItemConfig
-local ItemConfig_Class = {
-    Config = {}
-}
+local ItemConfig_Class = {}
 
 ---@param ID Card
 ---@return ItemConfigCard
@@ -46,14 +56,4 @@ end
 
 ---@return ItemConfigList
 function ItemConfig_Class:GetTrinkets()
-end
-
----@param ID CollectibleType
----@return boolean
-function ItemConfig_Class.Config.IsValidCollectible(ID)
-end
-
----@param Item ItemConfigItem
----@return boolean
-function ItemConfig_Class.Config.ShouldAddCostumeOnPickup(Item)
 end
