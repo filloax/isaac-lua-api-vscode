@@ -1,5 +1,11 @@
 # Change Log
 
+* [1.11.0]
+    - Support for Repentogon 1.0.12
+    - Fix issues with ItemConfig: Correct enum values, add descriptions, and move ItemConfig.Config under the enum instead of the class
+    - Add missing description information to MC_USE_ITEM and MC_USE_CARD
+    - Add XMLNode.BOSSCOLOR
+
 * [1.10.1]
 
     - Tweaks to Repentogon docs
@@ -22,8 +28,8 @@
 
     - Fix EntityConfigEntity:GetGibsAmount
     - RNG constructor and Get/SetConceptionFlags
-    - Added ItemConfigItem.CraftingQuality
-    - Assorted RGon update additions
+    - Add ItemConfigItem.CraftingQuality
+    - Assort RGON update additions
     - Fix $schema issue when editing files that led to wrong .luarc.json being generated
 
 * [1.9.5]
