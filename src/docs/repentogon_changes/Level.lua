@@ -73,11 +73,11 @@ end
 ---@param roomConfigRoom RoomConfigRoom
 ---@param gridIndex integer
 ---@param dimension Dimension @default: `Dimension.CURRENT`
----@param allowMultipleDoors boolean @default: `true`
----@param allowSpecialNeigbors boolean @default: `false`
----@param allowNoNeighbors boolean @default: `false`
+---@param allowMultipleDoors boolean @default: `true`. Set to false to only allow successful placement if the room would only have one door (for placing special rooms).
+---@param allowSpecialNeighbors boolean @default: `false`. Set to true to allow connections to existing special rooms (note secret rooms are always allowed, but boss rooms are never allowed).
+---@param allowNoNeighbors boolean @default: `false`. Set to true to allow placing the room out in the void with no neighbors.
 ---@return boolean
-function Level:CanPlaceRoom(roomConfigRoom, gridIndex, dimension, allowMultipleDoors, allowSpecialNeigbors, allowNoNeighbors)
+function Level:CanPlaceRoom(roomConfigRoom, gridIndex, dimension, allowMultipleDoors, allowSpecialNeighbors, allowNoNeighbors)
 end
 
 ---Will only place the room if it can fit and all doors can be successfully connected to neighboring rooms.
