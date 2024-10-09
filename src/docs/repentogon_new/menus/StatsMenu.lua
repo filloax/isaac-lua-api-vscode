@@ -60,8 +60,13 @@ end
 function StatsMenu.IsSecretsMenuActive()
 end
 
+---@param element integer
+function StatsMenu.SetSelectedElement(element)
+end
 
-
+---@return integer
+function StatsMenu.GetSelectedElement()
+end
 
 
 

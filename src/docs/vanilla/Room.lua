@@ -201,14 +201,6 @@ end
 function Room:GetLightingAlpha()
 end
 
----@return userdata @LRoomAreaDesc
-function Room:GetLRoomAreaDesc()
-end
-
----@return userdata @LRoomTileDesc
-function Room:GetLRoomTileDesc()
-end
-
 ---@deprecated # Removed from the game! Keeping for old information
 ---@return integer
 function Room:GetNextShockwaveId()

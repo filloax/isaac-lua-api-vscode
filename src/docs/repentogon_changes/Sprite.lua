@@ -115,3 +115,21 @@ end
 ---@return boolean
 function Sprite:HasCustomChampionShader(path)
 end
+
+---`SetLayerFrame` for overlays.
+---@param layer integer
+---@param frame integer
+function Sprite:SetOverlayLayerFrame(layer, frame)
+end
+
+---Returns the current AnimationFrame for the given layer.
+---@param layer integer
+---@return AnimationFrame
+function Sprite:GetLayerFrameData(layer)
+end
+
+---`GetLayerFrameData` for overlays.
+---@param layer integer
+---@return AnimationFrame
+function Sprite:GetOverlayLayerFrameData(layer)
+end

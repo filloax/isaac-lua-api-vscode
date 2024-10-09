@@ -71,6 +71,7 @@ function Room:GetGreedWaveTimer() end
 ---@param gridRow integer
 ---@param gridColumn integer
 ---@return integer --Returns `-1` if the function fails to find a valid grid index.
+---@overload fun(self: Room, gridTable: {[1]: integer, [2]: integer})
 function Room:GetGridIndexByTile(gridRow, gridColumn)
 end
 
@@ -242,4 +243,12 @@ end
 ---Sets the pool to use when the game needs to generate random collectibles in the current room. This takes priority over the game's regular pool selection code. Can be set to `POOL_NULL` to let the game handle pool selection. This is reset every room transition.
 ---@param PoolType ItemPoolType
 function Room:SetItemPool(PoolType)
+end
+
+---@return LRoomAreaDesc
+function Room:GetLRoomAreaDesc()
+end
+
+---@return LRoomTileDesc
+function Room:GetLRoomTileDesc()
 end

@@ -1110,3 +1110,15 @@ end
 ---@return integer @Will return `0` by default if the provided tag has not been evaluated.
 function EntityPlayer:GetCustomCacheValue(CustomCacheTag)
 end
+
+---@return integer
+function EntityPlayer:GetMaxCoins()
+end
+
+---@return integer
+function EntityPlayer:GetMaxKeys()
+end
+
+---@return integer
+function EntityPlayer:GetMaxBombs()
+end

@@ -36,3 +36,10 @@ function Ambush.SpawnWave() end
 
 ---**BUG:** Calling this function outside of the boss rush room or a challenge room will do nothing except permanently close the doors, resulting in a softlock.
 function Ambush.StartChallenge() end
+
+---Gets the number of waves in a boss challenge room
+---@return integer
+function Ambush.GetMaxBossChallengeWaves() end
+
+---Sets the number of waves in a boss challenge room
+function Ambush.SetMaxBossChallengeWaves() end

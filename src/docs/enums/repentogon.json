@@ -1060,6 +1060,14 @@
       "value": "1301",
       "comment": "(integer Slot) - Called after the Glowing Hourglass state is loaded."
     },
+    "MC_PRE_GLOWING_HOURGLASS_SAVE": {
+      "value": "1302",
+      "comment": "(integer Slot) - Called before the Glowing Hourglass state is saved."
+    },
+    "MC_PRE_GLOWING_HOURGLASS_LOAD": {
+      "value": "1303",
+      "comment": "(integer Slot) - Called before the Glowing Hourglass state is loaded"
+    },
     "MC_PRE_PLAYER_ADD_CARD": {
       "value": "1350",
       "comment": "(EntityPlayer Player, Card CardID, PillCardSlot Slot): boolean | int, Optional Arg: Card - Called before a card gets added to the player's inventory. Return `Card` to change the card being added or `false` to cancel adding it entirely."

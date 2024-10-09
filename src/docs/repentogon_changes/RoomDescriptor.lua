@@ -2,26 +2,34 @@
 ---@field Doors userdata @RoomDescriptorDoors
 ---@field AllowedDoors integer
 ---@field BossDeathSeed integer
-local RoomDescriptor1 = {}
+local RoomDescriptor_RGON = {}
 
 -- Note: in current emmylua, defining class twice to add fields to it is valid, as done above
 
 ---TODO: Document me!
 ---@param gridIndex integer
-function RoomDescriptor1:AddRestrictedGridIndex(gridIndex) end
+function RoomDescriptor_RGON:AddRestrictedGridIndex(gridIndex) end
 
 ---TODO: Document me!
 ---@return EntitiesSaveStateVector
-function RoomDescriptor1:GetGridEntitiesSaveState(gridIndex) end
+function RoomDescriptor_RGON:GetGridEntitiesSaveState(gridIndex) end
 
 ---TODO: Document me!
 ---@return EntitiesSaveStateVector
-function RoomDescriptor1:GetEntitiesSaveState() end
+function RoomDescriptor_RGON:GetEntitiesSaveState() end
 
 ---TODO: Document me!
 ---@return integer[]
-function RoomDescriptor1:GetRestrictedGridIndexes() end
+function RoomDescriptor_RGON:GetRestrictedGridIndexes() end
 
 ---@param rng RNG
-function RoomDescriptor1:InitSeeds(rng)
+function RoomDescriptor_RGON:InitSeeds(rng)
+end
+
+---@return Dimension
+function RoomDescriptor_RGON:GetDimension()
+end
+
+---@return {[DoorSlot]: RoomDescriptor}
+function RoomDescriptor_RGON:GetNeighboringRooms()
 end

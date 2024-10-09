@@ -60,3 +60,17 @@ end
 ---@return boolean
 function PersistentGameData:Unlocked(achievement)
 end
+
+---@param entType EntityType
+---@param variant integer @default: `0`
+function PersistentGameData:AddBestiaryKill(entType, variant)
+end
+
+---@param bossType BossType
+function PersistentGameData:AddBossKilled(bossType)
+end
+
+---@param bossType BossType
+---@return boolean
+function PersistentGameData:IsBossKilled(bossType)
+end

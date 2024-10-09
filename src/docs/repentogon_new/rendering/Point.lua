@@ -31,3 +31,21 @@ end
 ---@param position Vector
 function Point:SetPosition(position)
 end
+
+---@return Color
+function Point:GetColor()
+end
+
+---@param color Color
+function Point:SetColor(color)
+end
+
+---If false, Point is using screenspace when rendering. Otherwise, it's using worldspace.
+---@return boolean
+function Point:GetIsWorldSpace()
+end
+
+---If false, automatically converts this Point's position from worldspace to screenspace when rendering.
+---@param isWorldSpace boolean
+function Point:SetIsWorldSpace(isWorldSpace)
+end

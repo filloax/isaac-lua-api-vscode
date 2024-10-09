@@ -6,8 +6,8 @@
 ---@field ID integer
 ---@field Name string
 ---@field PickupSubtype integer
----@field CardType integer # accepts any value from the ItemConfig.CARDTYPE_* enum
----@field AnnouncerVoice integer # accepts any value from the SoundEffect.SOUND_* enum
+---@field CardType integer @Accepts any value from the ItemConfig.CARDTYPE_* enum
+---@field AnnouncerVoice integer @Accepts any value from the SoundEffect.SOUND_* enum
 ---@field AnnouncerDelay integer
 ---@field MimicCharge integer
 local ItemConfigCard = {}

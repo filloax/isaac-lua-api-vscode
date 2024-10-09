@@ -34,3 +34,11 @@ end
 ---@return boolean
 function Room:TrySpawnSpecialQuestDoor()
 end
+
+---@return userdata @LRoomAreaDesc
+function Room:GetLRoomAreaDesc()
+end
+
+---@return userdata @LRoomTileDesc
+function Room:GetLRoomTileDesc()
+end

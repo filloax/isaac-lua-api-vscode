@@ -30,3 +30,9 @@ function AnimationFrame:IsInterpolated() end
 
 ---@return boolean
 function AnimationFrame:IsVisible() end
+
+---@return integer
+function AnimationFrame:GetStartFrame() end
+
+---@return integer
+function AnimationFrame:GetEndFrame() end
