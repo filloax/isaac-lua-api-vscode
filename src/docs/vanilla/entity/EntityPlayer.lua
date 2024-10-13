@@ -37,7 +37,7 @@ end
 
 ---@param Amount integer
 ---@param Position Vector
----@param Target Entity
+---@param Target Entity?
 ---@return Entity
 function EntityPlayer:AddBlueFlies(Amount, Position, Target)
 end
