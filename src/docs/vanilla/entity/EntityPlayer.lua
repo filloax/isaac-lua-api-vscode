@@ -409,7 +409,7 @@ function EntityPlayer:FlushQueueItem()
 end
 
 ---@param ActiveSlot? ActiveSlot @default: `ActiveSlot.SLOT_PRIMARY`
----@param Force? integer @default: `false`
+---@param Force? boolean @default: `false`
 ---@return boolean
 function EntityPlayer:FullCharge(ActiveSlot, Force)
 end
