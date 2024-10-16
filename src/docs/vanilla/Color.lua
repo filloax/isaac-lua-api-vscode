@@ -13,7 +13,7 @@ local Color = {}
 ---@param m2 Color
 ---@param t number
 ---@return Color
-function Color.Lerp(m1, m2, t)
+function _G.Color.Lerp(m1, m2, t)
 end
 
 function Color:Reset()
@@ -38,3 +38,8 @@ end
 ---@param AlphaTint number
 function Color:SetTint(RedTint, GreenTint, BlueTint, AlphaTint)
 end
+
+_G.Color = {
+	---@type Color
+	Default = Color(1,1,1,1)
+}
