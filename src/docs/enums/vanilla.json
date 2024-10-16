@@ -106,7 +106,7 @@
     },
     "MC_PRE_FAMILIAR_COLLISION": {
       "value": "26",
-      "comment": "(EntityFamiliar Familiar, Entity Collider, boolean Low): boolean, Optional Arg: FamiliarVariant - Return true/false to ignore collision code (true to respond to collision, false to not), or nil to continue the internal code."
+      "comment": "(EntityFamiliar Familiar, Entity Collider, boolean Low): boolean, Optional Arg: FamiliarVariant - Return true/false to ignore collision code (true to ignore collision, false to collide), or nil to continue the internal code."
     },
     "MC_POST_NPC_INIT": {
       "value": "27",
@@ -134,7 +134,7 @@
     },
     "MC_PRE_PLAYER_COLLISION": {
       "value": "33",
-      "comment": "(EntityPlayer Player, Entity Collider, boolean Low): boolean, Optional Arg: PlayerVariant - Return true/false to ignore collision code (true to respond to collision, false to not), or nil to continue the internal code."
+      "comment": "(EntityPlayer Player, Entity Collider, boolean Low): boolean, Optional Arg: PlayerVariant - Return true/false to ignore collision code (true to ignore collision, false to collide), or nil to continue the internal code."
     },
     "MC_POST_PICKUP_INIT": {
       "value": "34",
@@ -154,7 +154,7 @@
     },
     "MC_PRE_PICKUP_COLLISION": {
       "value": "38",
-      "comment": "(EntityPickup Pickup, Entity Collider, boolean Low): boolean - Return true/false to ignore collision code (true to respond to collision, false to not), or nil to continue the internal code."
+      "comment": "(EntityPickup Pickup, Entity Collider, boolean Low): boolean - Return true/false to ignore collision code (true to ignore collision, false to collide), or nil to continue the internal code."
     },
     "MC_POST_TEAR_INIT": {
       "value": "39",
@@ -170,7 +170,7 @@
     },
     "MC_PRE_TEAR_COLLISION": {
       "value": "42",
-      "comment": "(EntityTear Tear, Entity Collider, boolean Low): boolean - Return true/false to ignore collision code (true to respond to collision, false to not), or nil to continue the internal code."
+      "comment": "(EntityTear Tear, Entity Collider, boolean Low): boolean - Return true/false to ignore collision code (true to ignore collision, false to collide), or nil to continue the internal code."
     },
     "MC_POST_PROJECTILE_INIT": {
       "value": "43",
@@ -186,7 +186,7 @@
     },
     "MC_PRE_PROJECTILE_COLLISION": {
       "value": "46",
-      "comment": "(EntityProjectile Projectile, Entity Collider, boolean Low): boolean - Return true/false to ignore collision code (true to respond to collision, false to not), or nil to continue the internal code."
+      "comment": "(EntityProjectile Projectile, Entity Collider, boolean Low): boolean - Return true/false to ignore collision code (true to ignore collision, false to collide), or nil to continue the internal code."
     },
     "MC_POST_LASER_INIT": {
       "value": "47",
@@ -242,7 +242,7 @@
     },
     "MC_PRE_BOMB_COLLISION": {
       "value": "60",
-      "comment": "(EntityBomb Bomb, Entity Collider, boolean Low): boolean, Optional Arg: BombVariant - Return true/false to ignore collision code (true to respond to collision, false to not), or nil to continue the internal code."
+      "comment": "(EntityBomb Bomb, Entity Collider, boolean Low): boolean, Optional Arg: BombVariant - Return true/false to ignore collision code (true to ignore collision, false to collide), or nil to continue the internal code."
     },
     "MC_POST_FIRE_TEAR": {
       "value": "61",
