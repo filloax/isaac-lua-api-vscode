@@ -46,7 +46,7 @@
     },
     "MC_ENTITY_TAKE_DMG": {
       "value": "11",
-      "comment": "(Entity Entity, float Amount, integer DamageFlags, EntityRef Source, integer CountdownFrames): boolean, Optional Arg: EntityType - Called before new damage is applied."
+      "comment": "(Entity Entity, float Amount, integer DamageFlags, EntityRef Source, integer CountdownFrames): boolean, Optional Arg: EntityType - Called before new damage is applied. Return true or nil if the entity or player should sustain the damage, otherwise false to ignore it."
     },
     "MC_POST_CURSE_EVAL": {
       "value": "12",

@@ -22,8 +22,8 @@ end
 function HUD:IsVisible()
 end
 
----@param MainString string
----@param SecondaryString string
+---@param MainString? string
+---@param SecondaryString? string
 ---@vararg string
 function HUD:ShowFortuneText(MainString, SecondaryString, ...)
 end
