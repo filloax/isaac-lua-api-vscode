@@ -108,6 +108,20 @@ end
 function Isaac.GetAchievementIdByName(name)
 end
 
+---@param direction? Direction @default: `Direction.NO_DIRECTION`
+---@return Vector --Returns a vector with a length of 1 or 0 corresponding to the provided direction.
+---`NO_DIRECTION`: `Vector(0, 0)`
+---
+---`LEFT`: `Vector(-1, 0)`
+---
+---`UP`: `Vector(0, -1)`
+---
+---`RIGHT`: `Vector(1, 0)`
+---
+---`DOWN`: `Vector(0, 1)`
+function Isaac.GetAxisAlignedUnitVectorFromDir(direction)
+end
+
 ---Returns the bosscoloridx
 ---@param name string
 ---@return integer --Returns `-1` if it fails to find a boss color with the provided name
