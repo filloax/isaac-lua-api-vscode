@@ -1,5 +1,16 @@
 # Change Log
 
+* [1.11.1]
+    - Fix enum typos in build
+    - Fix EntityEffect.CreateLight (from nazjun)
+    - Document Isaac.GetAxisAlignedUnitVectorFromDir (from nazjun)
+    - Explain return type on ENTITY_TAKE_DMG
+    - strings on HUD:ShowFortuneText are optional
+    - Add Color.Default
+    - Fix collision callback descriptions
+    - Fix FullCharge, Color.Lerp
+    - Add Color.Default
+
 * [1.11.0]
     - Support for Repentogon 1.0.12
     - Fix issues with ItemConfig: Correct enum values, add descriptions, and move ItemConfig.Config under the enum instead of the class
