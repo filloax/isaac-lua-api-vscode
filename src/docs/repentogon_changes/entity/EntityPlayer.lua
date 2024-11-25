@@ -617,7 +617,7 @@ end
 function EntityPlayer:RemoveCollectibleByHistoryIndex(index)
 end
 
----@param slot ActiveSlot
+---@param slot PillCardSlot
 function EntityPlayer:RemovePocketItem(slot)
 end
 
