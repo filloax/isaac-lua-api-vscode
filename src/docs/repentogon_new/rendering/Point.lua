@@ -4,8 +4,10 @@ local Point = {}
 ---@param position Vector
 ---@param spritesheetCoordinate number The Y position of the spritesheet that should be drawn by the time this Point is reached. For example, two points of `0` and `64` SpritesheetCoordinate will render the spritesheet starting from `y 0` to `y 64`, while an additional third point of `0` will draw it in reverse from `y 64` to `y 0`. `width` acts as 
 ---@param width? number @default: `1.0`. A multiplier for how wide the beam should be. A non-zero value will scale the spritesheet width accordingly. This is interpolated between points.
+---@param color? Color @default: `Color.Default`
+---@param isWorldSpace? boolean @default: `false`
 ---@return Point
-function _G.Point(position, spritesheetCoordinate, width)
+function _G.Point(position, spritesheetCoordinate, width, color, isWorldSpace)
 end
 
 ---@return number
