@@ -1,3 +1,12 @@
+---@param PoolType ItemPoolType
+---@param Decrease? boolean @default: `false`
+---@param Seed? integer @default: `Random()`
+---@param DefaultItem? CollectibleType @default: `CollectibleType.COLLECTIBLE_NULL`
+---@param Flags? GetCollectibleFlag @default: `0`
+---@return CollectibleType
+function ItemPool:GetCollectible(PoolType, Decrease, Seed, DefaultItem, Flags)
+end
+
 ---Returns true if the collectible can be spawned.
 ---@param collectible CollectibleType
 ---@param ignoreLocked boolean If set to `true`, this function will return true for items that could appear but are locked behind achievements.
