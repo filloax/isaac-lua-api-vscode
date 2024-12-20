@@ -11,3 +11,6 @@ end
 
 ---This global is `true` in Repentance DLC and `nil` in Afterbirth+
 _G.REPENTANCE = true ---@type true|nil
+
+---This global is `true` in Repentance+ DLC and `nil` in Afterbirth+ and Repentance
+_G.REPENTANCE_PLUS = true ---@type true|nil
