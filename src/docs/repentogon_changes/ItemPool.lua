@@ -48,7 +48,14 @@ end
 ---Currently not applied by pill modifications, such as PHD/False PHD.
 ---@param pillEffect PillEffect
 ---@return PillColor
-function ItemPool:GetPillcolor(pillEffect)
+function ItemPool:GetPillColor(pillEffect)
+end
+
+---@param rng RNG
+---@param advancedSearch? boolean @default: false. Setting to `true` allows you to make use of the `filter` parameter.
+---@param filter? ItemPoolType[] @default: {}. Normally acts as a blacklist of unwanted item pools, however setting `isWhitelist` to `true` turns it into a list from which to choose from.
+---@param isWhitelist? boolean @default: false
+function ItemPool:GetRandomPool(rng, advancedSearch, filter, isWhitelist)
 end
 
 ---Returns a table of collectibles removed from all pools.
