@@ -25,4 +25,5 @@
 ---@field SFXVolume number
 ---@field UseBorderlessFullscreen boolean
 ---@field VSync boolean
+---@field JacobEsauControls integer --Repentance Plus only. 0 for classic controls, 1 for better controls
 _G.Options = {}
