@@ -1,1195 +1,20 @@
 {
-  "ModCallbacks": {
-    "MC_PRE_ADD_COLLECTIBLE": {
-      "value": "1004",
-      "comment": "(CollectibleType Type, integer Charge, boolean FirstTime, integer Slot, integer VarData, EntityPlayer Player): `CollectibleType` | {Type Charge FirstTime Slot VarData Player} - Returning a `CollectibleType` overrides the collectible. You can also return a table of parameters to further modify the collectible given."
-    },
-    "MC_POST_ADD_COLLECTIBLE": {
-      "value": "1005",
-      "comment": "(CollectibleType Type, integer Charge, boolean FirstTime, integer Slot, integer VarData, EntityPlayer Player)"
-    },
-    "MC_POST_TAKE_DMG": {
-      "value": "1006",
-      "comment": "(Entity Entity, float Damage, DamageFlags DamageFlags, EntityRef Source, integer DamageCountdown) - Leftover for backwards compatibility. Use MC_POST_ENTITY_TAKE_DMG instead."
-    },
-    "MC_POST_ENTITY_TAKE_DMG": {
-      "value": "1006",
-      "comment": "(Entity Entity, float Damage, DamageFlags DamageFlags, EntityRef Source, integer DamageCountdown)"
-    },
-    "MC_PRE_PLAYER_TAKE_DMG": {
-      "value": "1008",
-      "comment": "(EntityPlayer Player, float Damage, DamageFlags DamageFlags, EntityRef Source, integer DamageCountdown) - Runs earlier than MC_ENTITY_TAKE_DMG, and even if the player is considered invincible or has Holy Mantles. Only accepts returning `false` to cancel the damage. Good for giving the player invincibility that takes precedence over other damage negation effects, such as Holy Mantle."
-    },
-    "MC_PRE_PLAYER_ADD_HEARTS": {
-      "value": 1009,
-      "comment": "(EntityPlayer Player, integer Amount, AddHealthType AddHealthType, bool OptionalArg): integer - Runs before Add(...)Hearts functions, allows returning a value to change the given amount of health. Functions that include an argument (e.g. ignoreKeeper for AddMaxHearts) provide the value using OptionalArg."
-    },
-    "MC_POST_PLAYER_ADD_HEARTS": {
-      "value": 1010,
-      "comment": "(EntityPlayer Player, integer Amount, AddHealthType AddHealthType, bool OptionalArg) - Runs after Add(...)Hearts functions, allows returning a value to change the given amount of health. Functions that include an argument (e.g. ignoreKeeper for AddMaxHearts) provide the value using OptionalArg."
-    },
-    "MC_POST_GRID_ROCK_DESTROY": {
-      "value": "1011",
-      "comment": "(GridEntityRock Rock, GridEntityType Type, boolean Immediate) - When adding callback, specify a GridEntityType to only respond to that one grid type."
-    },
-    "MC_GRID_HURT_DAMAGE": {
-      "value": "1012",
-      "comment": "(GridEntity GridEntity, Entity Entity, integer DamageAmount, DamageFlags DamageFlags, float Unknown, boolean Unknown) - Return `false` if entity or player should ignore damage from it. When adding callback, specify a GridEntityType to only respond to that grid type."
-    },
-    "MC_POST_GRID_HURT_DAMAGE": {
-      "value": "1013",
-      "comment": "(GridEntity GridEntity, Entity Entity, integer DamageAmount, DamageFlags DamageFlags, float Unknown, boolean Unknown) - Runs after MC_GRID_HURT_DAMAGE."
-    },
-    "MC_HUD_UPDATE": {
-      "value": "1020",
-      "comment": "Callback has no arguments. Called during HUD update."
-    },
-    "MC_HUD_POST_UPDATE": {
-      "value": "1021",
-      "comment": "Callback has no arguments. Called after HUD update."
-    },
-    "MC_HUD_RENDER": {
-      "value": "1022",
-      "comment": "Callback has no arguments. Called during HUD render."
-    },
-    "MC_POST_HUD_RENDER": {
-      "value": "1024",
-      "comment": "Callback has no arguments. Called after HUD render."
-    },
-    "MC_MAIN_MENU_RENDER": {
-      "value": "1023",
-      "comment": "Callback has no arguments. Called after HUD render."
-    },
-    "MC_PRE_SFX_PLAY": {
-      "value": "1030",
-      "comment": "(SoundEffect ID, float Volume, integer FrameDelay, boolean Loop, float Pitch, float Pan): table{ID, Volume, FrameDelay, Loop, Pitch, Pan} | boolean, Optional Arg: SoundEffect - Called before a sound plays. Accepts a table of parameters to override the sound, or `false` to cancel the sound."
-    },
-    "MC_POST_SFX_PLAY": {
-      "value": "1031",
-      "comment": "(SoundEffect ID, float Volume, integer FrameDelay, boolean Loop, float Pitch, float Pan), Optional Arg: Sound Effect - Called after a sound plays."
-    },
-    "MC_PRE_MUSIC_PLAY": {
-      "value": "1034",
-      "comment": "(Music ID, float Volume | float FadeRate, boolean IsFade): table{ID, Volume | FadeRate}, Optional Arg: Music - Called before a music track plays. Accepts a table of parameters to override the music, or `false` to cancel the track."
-    },
-    "MC_PRE_MUSIC_LAYER_TOGGLE": {
-      "value": "1035",
-      "comment": "(integer ID, boolean CurrentState): integer | boolean, Optional Arg: integer - Accepts a music layer ID (enum pending) to change the layer, or a boolean to change the state of the layer: `true` to keep it running, `false` to stop it."
-    },
-    "MC_PRE_RENDER_PLAYER_HEAD": {
-      "value": "1038",
-      "comment": "(EntityPlayer Player, Vector RenderPos): Vector | boolean, Optional Arg: PlayerType - Called before a player's head is rendered. Accepts an override Vector for RenderPos, alternatively accepts `false` to stop the rendering."
-    },
-    "MC_POST_RENDER_PLAYER_HEAD": {
-      "value": "1045",
-      "comment": "(EntityPlayer Player, Vector RenderPos), Optional Arg: PlayerType - Called before a player's head is rendered, assuming it wasn't skipped."
-    },
-    "MC_PRE_RENDER_PLAYER_BODY": {
-      "value": "1039",
-      "comment": "(EntityPlayer Player, Vector RenderPos): Vector | boolean, Optional Arg: PlayerType - Called before a player's body is rendered. Accepts an override Vector for RenderPos, alternatively accepts `false` to stop the rendering."
-    },
-    "MC_POST_RENDER_PLAYER_BODY": {
-      "value": "1046",
-      "comment": "(EntityPlayer Player, Vector RenderPos), Optional Arg: PlayerType - Called before a player's body is rendered, assuming it wasn't skipped."
-    },
-    "MC_PRE_ENTITY_THROW": {
-      "value": "1040",
-      "comment": "(EntityPlayer ThrowingPlayer, Entity HeldEntity, Vector Velocity): Vector - Called before a held entity is thrown. Accepts a Vector which will modify the velocity of the thrown entity."
-    },
-    "MC_POST_ENTITY_THROW": {
-      "value": "1041",
-      "comment": "(EntityPlayer ThrowingPlayer, Entity HeldEntity, Vector Velocity) - Called after a held entity is thrown."
-    },
-    "MC_PLAYER_INIT_POST_LEVEL_INIT_STATS": {
-      "value": "1042",
-      "comment": "(EntityPlayer Player), Optional Arg: PlayerType. Called after a player is initialized for the first time, being when starting the run, joining the game as a co-op player, or when activating Genesis."
-    },
-    "MC_PRE_ROOM_EXIT": {
-      "value": "1043",
-      "comment": "(EntityPlayer Player, boolean NewLevel) - Called before exiting the current room. NewLevel is `true` if the room is transitioning into a new floor."
-    },
-    "MC_PRE_LEVEL_INIT": {
-      "value": "1060",
-      "comment": "Callback has no arguments. Called before a new level is initialized."
-    },
-    "MC_PRE_TRIGGER_PLAYER_DEATH": {
-      "value": "1050",
-      "comment": "(EntityPlayer Player): boolean - Called right before the game over screen. Return `false` to cancel the death, reviving the player in-place with half a heart, or true/`nil`/nothing to allow the death to go through."
-    },
-    "MC_PRE_RESTOCK_SHOP": {
-      "value": "1070",
-      "comment": "(boolean Partial) - Return `false` to cancel the restock, blocking shop rerolls from restock machines or restocks from Restock altogether. Partial is `true` for Room::ShopRestockPartial() and Restock, `false` for Room::ShopRestockFull() and restock machines."
-    },
-    "MC_POST_RESTOCK_SHOP": {
-      "value": "1071",
-      "comment": "(boolean Partial) - Called after a shop rerolls from restock machines or Restock. Partial is `true` for Room::ShopRestockPartial() and Restock, `false` for Room::ShopRestockFull() and restock machines."
-    },
-    "MC_PRE_CHANGE_ROOM": {
-      "value": "1061",
-      "comment": "(integer TargetRoomIdx, integer Dimension): table{TargetRoomIdx, Dimension} - Called before the room changes. Accepts a table of parameters to change what room you enter."
-    },
-    "MC_POST_PICKUP_SHOP_PURCHASE": {
-      "value": "1062",
-      "comment": "(EntityPickup Pickup, EntityPlayer Player, integer MoneySpent), Optional Arg: PickupVariant - Called after an item is purchased. This includes devil deals."
-    },
-    "MC_GET_FOLLOWER_PRIORITY": {
-      "value": "1063",
-      "comment": "(EntityFamiliar Familiar): FollowerPriority | integer, Optional Arg: FamiliarVariant - Accepts FollowerPriority to give familiar priority. Can accept any integer."
-    },
-    "MC_PRE_NPC_MORPH": {
-      "value": "1212",
-      "comment": "(EntityNPC NPC, EntityType EntityType, integer Variant, integer SubType, ChampionColor ChampionId): table{EntityType, Variant, SubType, ChampionId} | {EntityType, Variant, SubType} | boolean - Called before an NPC morphs. Accepts a table of parameters to change what entity they morph into, or `false` to cancel the morph."
-    },
-    "MC_PRE_PICKUP_MORPH": {
-      "value": "1213",
-      "comment": "(EntityPickup Pickup, integer EntityType, integer Variant, integer SubType, boolean KeepPrice, boolean KeepSeed, boolean IgnoreModifiers): table{EntityType, Variant, SubType, KeepPrice, KeepSeed, IgnoreModifiers} | table{EntityType, Variant, SubType} | boolean - Called before a pickup is morphed. Accepts a table of parameters to change what pickup it morphs into, or `false` to cancel the morph."
-    },
-    "MC_POST_NPC_MORPH": {
-      "value": "1214",
-      "comment": "(EntityNPC NPC, EntityType EntityType, integer Variant, integer SubType, ChampionColor ChampionId). Called after an NPC morphs, assuming it wasn't cancelled."
-    },
-    "MC_POST_PICKUP_MORPH": {
-      "value": "1215",
-      "comment": "(EntityPickup Pickup, integer EntityType, integer Variant, integer SubType, boolean KeepPrice, boolean KeepSeed, boolean IgnoreModifiers). Called after a pickup morphs, assuming it wasn't cancelled."
-    },
-    "MC_PRE_COMPLETION_MARKS_RENDER": {
-      "value": "1216",
-      "comment": "(Sprite CompletionMarksSprite, Vector RenderPos, Vector RenderScale, PlayerType PlayerType): boolean - Called before a character's completion marks are rendered on the character selection screen. Return `false` to prevent the completion marks from rendering."
-    },
-    "MC_POST_COMPLETION_MARKS_RENDER": {
-      "value": "1217",
-      "comment": "(Sprite CompletionMarksSprite, Vector RenderPos, Vector RenderScale, PlayerType PlayerType) - Called before a character's completion marks are rendered on the character selection screen, assuming it wasn't skipped."
-    },
-    "MC_PRE_PAUSE_SCREEN_RENDER": {
-      "value": "1218",
-      "comment": "(Sprite PauseBody, Sprite PauseStats): boolean - Called before the pause screen is rendered in-game. Return `false` to prevent the pause screen from rendering. Doing so will also prevent the screen from darkening."
-    },
-    "MC_POST_PAUSE_SCREEN_RENDER": {
-      "value": "1219",
-      "comment": "(Sprite PauseBody, Sprite PauseStats): boolean - Called before the pause screen is rendered in-game, assuming it wasn't skipped."
-    },
-    "MC_PRE_USE_CARD": {
-      "value": "1064",
-      "comment": "(Card CardID, EntityPlayer Player, integer UseFlag): boolean - Called before a card is used. Return `false` to cancel card use. This will still consume the card."
-    },
-    "MC_PRE_USE_PILL": {
-      "value": "1065",
-      "comment": "(PillEffect PillEffectID, PillColor PillColorID, EntityPlayer Player, integer UseFlag): boolean - Called before a pill is used. Return `false` to cancel pill use. This will still consume the pill."
-    },
-    "MC_GET_SHOP_ITEM_PRICE": {
-      "value": "1066",
-      "comment": "(integer PickupVariant, integer PickupSubType, integer ShopItemID, integer Price): PickupPrice | integer, Optional Arg: PickupVariant - Called after the price for a shop item was calculated. Return an integer or `PickupPrice` to change the price of the item."
-    },
-    "MC_PLAYER_GET_HEALTH_TYPE": {
-      "value": "1067",
-      "comment": "(EntityPlayer Player): HealthType, Optional Arg: PlayerType - Called when getting the health type of the player. Return a `HealthType` to change the health type of the character."
-    },
-    "MC_PRE_ROOM_TRIGGER_CLEAR": {
-      "value": "1068",
-      "comment": "(boolean PlaySound) - Called before a room is cleared."
-    },
-    "MC_PRE_PLAYER_TRIGGER_ROOM_CLEAR": {
-      "value": "1069",
-      "comment": "(EntityPlayer Player): boolean, Optional Arg: PlayerVariant. Called before all room clear-related effects for a player is triggered. This also accounts for challenge waves. Return `false` to cancel trigger effects."
-    },
-    "MC_PRE_FAMILIAR_RENDER": {
-      "value": "1080",
-      "comment": "(EntityFamiliar Familiar): Vector | boolean, Optional Arg: FamiliarVariant - Called before a familiar is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
-    },
-    "MC_PRE_NPC_RENDER": {
-      "value": "1081",
-      "comment": "(EntityNPC NPC): Vector | boolean, Optional Arg: EntityType - Called before an NPC is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
-    },
-    "MC_PRE_PLAYER_RENDER": {
-      "value": "1082",
-      "comment": "(EntityPlayer Player): Vector | boolean, Optional Arg: PlayerVariant - Called before a player is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
-    },
-    "MC_PRE_PICKUP_RENDER": {
-      "value": "1083",
-      "comment": "(EntityPickup Pickup): Vector | boolean, Optional Arg: PickupVariant - Called before a pickup is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
-    },
-    "MC_PRE_TEAR_RENDER": {
-      "value": "1084",
-      "comment": "(EntityTear Tear): Vector | boolean, Optional Arg: TearVariant - Called before a tear is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
-    },
-    "MC_PRE_PROJECTILE_RENDER": {
-      "value": "1085",
-      "comment": "(EntityProjectile Projectile): Vector | boolean, Optional Arg: ProjectileVariant - Called before a projectile is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
-    },
-    "MC_PRE_KNIFE_RENDER": {
-      "value": "1086",
-      "comment": "(EntityKnife Knife): Vector | boolean, Optional Arg: KnifeVariant - Called before a knife is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
-    },
-    "MC_PRE_EFFECT_RENDER": {
-      "value": "1087",
-      "comment": "(EntityEffect Effect): Vector | boolean, Optional Arg: EffectVariant - Called before an effect is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
-    },
-    "MC_PRE_BOMB_RENDER": {
-      "value": "1088",
-      "comment": "(EntityBomb Bomb): Vector | boolean, Optional Arg: BombVariant - Called before a bomb is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
-    },
-    "MC_PRE_SLOT_RENDER": {
-      "value": "1089",
-      "comment": "(EntitySlot Slot): Vector | boolean, Optional Arg: SlotVariant - Called before a slot is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
-    },
-    "MC_POST_SLOT_RENDER": {
-      "value": "1090",
-      "comment": "(EntityFamiliar Familiar): Vector | boolean, Optional Arg: FamiliarVariant - Called after a familiar is rendered, assuming it wasn't skipped."
-    },
-    "MC_PLAYER_GET_ACTIVE_MAX_CHARGE": {
-      "value": "1072",
-      "comment": "(CollectibleType ItemID, EntityPlayerPlayer, integer VarData, integer CurrentMaxCharge): integer, Optional Arg: CollectibleType - Called when getting the active charge of an active item. Return an integer to override the max charge for the active item."
-    },
-    "MC_PLAYER_GET_ACTIVE_MIN_USABLE_CHARGE": {
-      "value": "1073",
-      "comment": "(ActiveSlot Slot, EntityPlayer Player, integer CurrentMinUsableCharge): integer, Optional Arg: CollectibleType - Called when getting the minimum charge requirement for using an active item (seen in items such as Larynx). Return an integer to override the minimum charge to use the active item."
-    },
-    "MC_PLAYER_GET_HEART_LIMIT": {
-      "value": "1074",
-      "comment": "(ENtityPlayer Player, integer HeartLimit, boolean IsKeeper): integer, Optional Arg: PlayerType - Called when getting the max amount of hearts the player can have. Return an integer to override the heart limit (1 unit equals half a heart)."
-    },
-    "MC_POST_ITEM_OVERLAY_UPDATE": {
-      "value": "1075",
-      "comment": "Callback has no arguments. Optional Arg: Giantbook - Called after an item overlay updates."
-    },
-    "MC_PRE_ITEM_OVERLAY_SHOW": {
-      "value": "1076",
-      "comment": "(Giantbook GiantBookID, integer Delay, EntityPlayer Player): Giantbook | boolean, Optional Arg: Giantbook - Called before an item overlay is shown. Return `Giantbook` to change what Giantbook is shown or `false` to cancel it."
-    },
-    "MC_POST_PLAYER_NEW_ROOM_TEMP_EFFECTS": {
-      "value": "1077",
-      "comment": "(EntityPlayer Player), Optional Arg: PlayerType - Called after a player's TemporaryEffects are reset after a new room."
-    },
-    "MC_POST_PLAYER_NEW_LEVEL": {
-      "value": "1078",
-      "comment": "(EntityPlayer Player), Optional Arg: PlayerType - Called after entering a new level, but provides the player. Useful for player-specific effects on a new level."
-    },
-    "MC_POST_PLAYER_GET_MULTI_SHOT_PARAMS": {
-      "value": "1251",
-      "comment": "(EntityPlayer Player): MultiShotParams, Optional Arg: PlayerType - Called after getting the player's MultiShotParams. Return a `MultiShotParams` object to change the properties of the players shooting behavior in regards to the MultiShotParams object properties."
-    },
-    "MC_PRE_REPLACE_SPRITESHEET": {
-      "value": "1116",
-      "comment": "(integer LayerID, string PNGFilename): table{LayerID, PNGFilename}, Optional Arg: string ANM2Filename - Called before a Sprite object's spritesheet is replaced. Return a table of parameters to change what spritesheet is replaced."
-    },
-    "MC_POST_REPLACE_SPRITESHEET": {
-      "value": "1117",
-      "comment": "(integer LayerID, string PNGFilename), Optional Arg: string ANM2Filename - Called after a Sprite object's spritesheet is replaced."
-    },
-    "MC_PRE_PLANETARIUM_APPLY_STAGE_PENALTY": {
-      "value": "1110",
-      "comment": "Callback has no arguments. Start of planetarium calculation. Return `false` to bypass the normal planetarium stage penalty, such as when its at 0% for floors past Depths II/Womb II with Telescope Lens."
-    },
-    "MC_PRE_PLANETARIUM_APPLY_PLANETARIUM_PENALTY": {
-      "value": "1111",
-      "comment": "(integer Chance): boolean - Called if on a valid stage and before applying the penalty for entering a Planetarium. Chance will be 1% (10% with Telescope Lens). Return `false` to bypass the penalty."
-    },
-    "MC_PRE_PLANETARIUM_APPLY_TREASURE_PENALTY": {
-      "value": "1112",
-      "comment": "(integer TreasureRoomsVisited): boolean | integer - Called if no planetariums have been entered before and during calculation for applying the penalty for entering treasure rooms. Return `false` to bypass the penalty or an integer to modify how many treasure rooms the game believes have been entered. "
-    },
-    "MC_PRE_PLANETARIUM_APPLY_ITEMS": {
-      "value": "1113",
-      "comment": "(float Chance): float - Called after checking the amount of treasure rooms entered and during calculation for applying additional planetarium chance from Crystal Ball, Magic 8 Ball, Sausage, and Telescope Lens' +15% planetarium chance. Return a float to modify the chance in this step of this calculation."
-    },
-    "MC_PRE_PLANETARIUM_APPLY_TELESCOPE_LENS": {
-      "value": "1114",
-      "comment": "(float Chance): float - Called after checking all previous calculations steps and during calculation for applying Telescope Lens' +9% base planetarium chance. Return a float to modify the chance in this step of the calculation."
-    },
-    "MC_POST_PLANETARIUM_CALCULATE": {
-      "value": "1115",
-      "comment": "(float Chance): float - Last step of planetarium chance calculation. Return a float to override the final chance."
-    },
-    "MC_POST_SLOT_INIT": {
-      "value": "1121",
-      "comment": "(EntitySlot Slot), Optional Arg: SlotVariant - Called after a slot is initialized."
-    },
-    "MC_POST_SLOT_UPDATE": {
-      "value": "1122",
-      "comment": "(EntitySlot Slot), Optional Arg: SlotVariant - Called after a slot is updated."
-    },
-    "MC_PRE_SLOT_CREATE_EXPLOSION_DROPS": {
-      "value": "1123",
-      "comment": "(EntitySlot Slot), Optional Arg: SlotVariant - Called before a slot creates explosion drops, whether from exploding or having EntitySlot::CreateExplosionDrops() called. Return `false` to stop explosions from dropping the standard consumables."
-    },
-    "MC_POST_SLOT_CREATE_EXPLOSION_DROPS": {
-      "value": "1124",
-      "comment": "(EntitySlot Slot), Optional Arg: SlotVariant - Called after a slot creates explosion drops, whether from exploding or having EntitySlot::CreateExplosionDrops() called, assuming it wasn't cancelled."
-    },
-    "MC_PRE_SLOT_SET_PRIZE_COLLECTIBLE": {
-      "value": "1125",
-      "comment": "(EntitySlot Slot, CollectibleType ItemID): CollectibleType, Optional Arg: SlotVariant - Used by Shell Game, Hell Game, and Crane Game before determining the `CollectibleType` it gives on payout. Return a `CollectibleType` to override what the game will pay out with."
-    },
-    "MC_POST_SLOT_SET_PRIZE_COLLECTIBLE": {
-      "value": "1126",
-      "comment": "(EntitySlot Slot, CollectibleType ItemID): CollectibleType, Optional Arg: SlotVariant - Used by Shell Game, Hell Game, and Crane Game for the `CollectibleType` is gives on payout."
-    },
-    "MC_PRE_DEVIL_APPLY_ITEMS": {
-      "value": "1130",
-      "comment": "(): float - Start of devil deal calculation. Called before stage penalty and during calculation for most items that affect devil deal chance. Return a float to modify the chance in this step of the calculation."
-    },
-    "MC_PRE_DEVIL_APPLY_STAGE_PENALTY": {
-      "value": "1131",
-      "comment": "(): boolean - Called during calculation for stage penalty. If a deal spawned anywhere on the previous two floors, the game decays the resulting chance by either 50% or 25% depending on how many deals have spawned. Return a boolean to bypass the stage penalty."
-    },
-    "MC_PRE_DEVIL_APPLY_SPECIAL_ITEMS": {
-      "value": "1132",
-      "comment": "(): float - Called after stage penalty and during calculation for items like Goat Head and Eucharist. Return a float to modify the chance in this step of the calculation."
-    },
-    "MC_POST_DEVIL_CALCULATE": {
-      "value": "1133",
-      "comment": "(integer Chance): float - Last step of devil deal chance calculation. Return a float to override the final chance."
-    },
-    "MC_COMPLETION_MARK_GET": {
-      "value": "1047",
-      "comment": "(CompletionType Completion, PlayerType PlayerType): boolean, Optional Arg: PlayerType - Called when the player gets a completion mark. Return `false` to cancel the completion mark."
-    },
-    "MC_POST_COMPLETION_MARK_GET": {
-      "value": "1048",
-      "comment": "(CompletionType Completion, PlayerType PlayerType), Optional Arg: PlayerType - Called when the player gets a completion mark, assuming it wasn't cancelled."
-    },
-    "MC_PRE_COMPLETION_EVENT": {
-      "value": "1049",
-      "comment": "(CompletionType Completion): boolean | `CompletionType` - Triggers before a completion event gets triggered, such as when defeating a major boss or beating Boss Rush. Can return a new [CompletionType](CompletionType.md) or `false` to cancel the completion event. Canceling it will prevent all marks and completion event related stuff to trigger for all players."
-    },
-    "MC_POST_COMPLETION_EVENT": {
-      "value": "1052",
-      "comment": "(CompletionType Completion): boolean - Triggers after a completion event gets triggered, such as when defeating a major boss or beating Boss Rush."
-    },
-    "MC_POST_PLAYERHUD_RENDER_ACTIVE_ITEM": {
-      "value": "1079",
-      "comment": "(EntityPlayer Player, ActiveSlot Slot, Vector Offset, float Alpha, float Scale, Vector ChargeBarOffset) - Called after the player's active item is rendered."
-    },
-    "MC_POST_PLAYERHUD_RENDER_HEARTS": {
-      "value": "1091",
-      "comment": "(Vector Offset(?), Sprite HeartsSprite, Vector Position, float Unknown, EntityPlayer Player) - Called after the player's hearts are rendered, both on the corners of the HUD and above Strawman-like players, assuming it wasn't skipped."
-    },
-    "MC_PRE_GET_LIGHTING_ALPHA": {
-      "value": "1150",
-      "comment": "(float OriginalAlpha): float - Called when getting the alpha of the lighting in the room. Return a float to modify the lightning alpha. Generally this is between 0 and 1 but you can technically go higher than this."
-    },
-    "MC_PRE_RENDER_GRID_LIGHTING": {
-      "value": "1151",
-      "comment": "(GridEntity GridEntity, Vector Offset) - Called before the the lighting of a grid entity is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
-    },
-    "MC_PRE_RENDER_ENTITY_LIGHTING": {
-      "value": "1152",
-      "comment": "(Entity Entity, Vector Offset) - Called before the lighting of an entity is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
-    },
-    "MC_PRE_PLAYER_APPLY_INNATE_COLLECTIBLE_NUM": {
-      "value": "1092",
-      "comment": "(integer ModCount, EntityPlayer Player, CollectibleType Type, boolean OnlyCountTrueItems): integer - Called when getting the amount of innate items on the player. Return an integer to modify how many of a specific innate item the player has."
-    },
-    "MC_PRE_MUSIC_PLAY_JINGLE": {
-      "value": "1094",
-      "comment": "(Music MusicID): Music | boolean, Optional Arg: Music - Called before a music jingle is played. Return `Music` to change the track or `false` to cancel the track."
-    },
-    "MC_POST_TRIGGER_COLLECTIBLE_REMOVED": {
-      "value": "1095",
-      "comment": "(EntityPlayer Player, CollectibleType ItemID), Optional Arg: CollectibleType. Called after a collectible is removed from the player."
-    },
-    "MC_POST_TRIGGER_TRINKET_ADDED": {
-      "value": "1096",
-      "comment": "(EntityPlayer Player, TrinketType TrinketID, boolean FirstTimePickingUp), Optional Arg: TrinketType. Called after a trinket is added to the player."
-    },
-    "MC_POST_TRIGGER_TRINKET_REMOVED": {
-      "value": "1097",
-      "comment": "(EntityPlayer Player, TrinketType TrinketID), Optional Arg: TrinketType. Called after a trinket is removed from the player."
-    },
-    "MC_POST_TRIGGER_WEAPON_FIRED": {
-      "value": "1098",
-      "comment": "(Vector FireDirection, integer FireAmount, Entity Owner, Weapon Weapon), Optional Arg: WeaponType - Called after a weapon is fired. A weapon can count as 'fired' while its continuously active, such as Brimstone."
-    },
-    "MC_POST_LEVEL_LAYOUT_GENERATED": {
-      "value": "1099",
-      "comment": "(LevelGenerator LevelGen) - Called after the layout of a level is generated."
-    },
-    "MC_POST_NIGHTMARE_SCENE_RENDER": {
-      "value": "1102",
-      "comment": "Callback has no arguments. Called after the nightmare scene transition between floors or during the interaction with Mom's Bed in Home is rendered."
-    },
-    "MC_POST_NIGHTMARE_SCENE_SHOW": {
-      "value": "1103",
-      "comment": "(boolean IsDogmaNightmare) - Called after triggering the nightmare scene transition between floors or during the interaction with Mom's Bed in Home."
-    },
-    "MC_PRE_LEVEL_SELECT": {
-      "value": "1104",
-      "comment": "(LevelStage Level, StageType Type): table{Level, Type} - Called when the game selects which level (also known as stage) to load, usually when the player enters a trapdoor. Return a table of parameters to change what level is loaded."
-    },
-    "MC_POST_WEAPON_FIRE": {
-      "value": "1105",
-      "comment": "(Weapon Weapon, Vector FireDirection, boolean IsShooting, boolean IsInterpolated), Optional Arg: WeaponType - Called after every weapon update, whether the Weapon owner is actually firing or not."
-    },
-    "MC_PRE_BACKDROP_RENDER_WALLS": {
-      "value": "1106",
-      "comment": "(ColorModifier ColorModifier) - Called the backdrop's walls are rendered."
-    },
-    "MC_PRE_BACKDROP_CHANGE": {
-      "value": "1141",
-      "comment": "(BackdropType Type) - Accepts an integer to change BackdropType."
-    },
-    "MC_PRE_BACKDROP_RENDER_FLOOR": {
-      "value": "1107",
-      "comment": "(ColorModifier ColorModifier) - Called before the backdrop's floor is rendered."
-    },
-    "MC_PRE_BACKDROP_RENDER_WATER": {
-      "value": "1108",
-      "comment": "Callback has no arguments. Called before water over the floor is rendered."
-    },
-    "MC_POST_BACKDROP_PRE_RENDER_WALLS": {
-      "value": "1109",
-      "comment": "(ColorModifier ColorModifier) - Called after the backdrop's walls are rendered."
-    },
-    "MC_PRE_PLAYER_USE_BOMB": {
-      "value": "1220",
-      "comment": "(EntityPlayer Player): boolean, Optional Arg: PlayerVariant - Called before the player uses a bomb. Return `false` to stop the player from using a bomb. This will still consume the bomb."
-    },
-    "MC_POST_PLAYER_USE_BOMB": {
-      "value": "1221",
-      "comment": "(EntityPlayer Player): boolean, Optional Arg: PlayerVariant - Called after the player uses a bomb, assuming it hasn't been cancelled."
-    },
-    "MC_NPC_PICK_TARGET": {
-      "value": "1222",
-      "comment": "(EntityNPC NPC, Entity CurrentTarget): Entity, Optional Arg: EntityType - Called whenever an EntityNPC selects its target, such as when EntityNPC:GetPlayerTarget() is called."
-    },
-    "MC_POST_PLAYER_COLLISION": {
-      "value": "1231",
-      "comment": "(EntityPlayer Player, Entity Collider, boolean Low), Optional Arg: PlayerVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
-    },
-    "MC_POST_TEAR_COLLISION": {
-      "value": "1233",
-      "comment": "(EntityTear Tear, Entity Collider, boolean Low), Optional Arg: TearVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
-    },
-    "MC_POST_FAMILIAR_COLLISION": {
-      "value": "1235",
-      "comment": "(EntityFamiliar Familiar, Entity Collider, boolean Low), Optional Arg: FamiliarVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
-    },
-    "MC_POST_BOMB_COLLISION": {
-      "value": "1237",
-      "comment": "(EntityBomb Bomb, Entity Collider, boolean Low), Optional Arg: BombVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
-    },
-    "MC_POST_PICKUP_COLLISION": {
-      "value": "1239",
-      "comment": "(EntityPickup Pickup, Entity Collider, boolean Low), Optional Arg: PickupVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
-    },
-    "MC_PRE_SLOT_COLLISION": {
-      "value": "1240",
-      "comment": "(EntitySlot, Entity Collider, boolean Low): boolean, Optional Arg: SlotVariant  - Return a boolean to ignore collision code (`true` to respond to collision, `false` to not), or nil to continue the internal code."
-    },
-    "MC_POST_SLOT_COLLISION": {
-      "value": "1241",
-      "comment": "(EntitySlot Slot, Entity Collider, boolean Low), Optional Arg: SlotVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
-    },
-    "MC_POST_KNIFE_COLLISION": {
-      "value": "1243",
-      "comment": "(EntityKnife Knife, Entity Collider, boolean Low), Optional Arg: KnifeSubType - Runs after the on-collision code of this entity, assuming it wasn't skipped."
-    },
-    "MC_POST_PROJECTILE_COLLISION": {
-      "value": "1245",
-      "comment": "(EntityProjectile Projectile, Entity Collider, boolean Low), Optional Arg: ProjectileVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
-    },
-    "MC_POST_NPC_COLLISION": {
-      "value": "1247",
-      "comment": "(EntityNPC NPC, Entity Collider, boolean Low), Optional Arg: EntityType - Runs after the on-collision code of this entity, assuming it wasn't skipped."
-    },
-    "MC_POST_LASER_COLLISION": {
-      "value": "1249",
-      "comment": "(EntityLaser Laser, Entity Collider, boolean Low), Optional Arg: LaserVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
-    },
-    "MC_CONSOLE_AUTOCOMPLETE": {
-      "value": "1120",
-      "comment": "(string Command, string Params): table, Optional Arg: string Command - Called whenever a function with the CUSTOM AutocompleteType enum is being entered into the console. Called every time the console input changes."
-    },
-    "MC_PLAYER_INIT_PRE_LEVEL_INIT_STATS": {
-      "value": "1127",
-      "comment": "(EntityPlayer Player), Optional Arg: PlayerType. Called before a player is initialized for the first time, being when starting the run, joining the game as a co-op player, or when activating Genesis."
-    },
-    "MC_PRE_NEW_ROOM": {
-      "value": "1200",
-      "comment": "(Room Room, RoomDescriptor Descriptor) - Called before entering a new room."
-    },
-    "MC_PRE_MEGA_SATAN_ENDING": {
-      "value": "1201",
-      "comment": "(): boolean - Called right before Mega Satan forcibly ends the game. Return `true` to suppress the ending, guaranteeing a portal to the Void while retaining the completion mark for active characters."
-    },
-    "MC_POST_MODS_LOADED": {
-      "value": "1210",
-      "comment": "Callback has no arguments. Called after all Lua scripts have been loaded. Ideal for running code that is expected to run after all mods are initialized, but without the need for load order idiocy!"
-    },
-    "MC_POST_ITEM_OVERLAY_SHOW": {
-      "value": "1134",
-      "comment": "(Giantbook GiantBookID, integer Delay, EntityPlayer Player), Optional Arg: Giantbook - Called after an item overlay is shown, assuming it wasn't cancelled."
-    },
-    "MC_PRE_RENDER": {
-      "value": "1135",
-      "comment": "Callback has no arguments. Gets called right before the Manager::Render() function gets called."
-    },
-    "MC_PRE_OPENGL_RENDER": {
-      "value": "1136",
-      "comment": "(VertexBuffer VertexBuffer, integer ShaderID, RenderContext Unknown): Unknown - Gets called right before the Manager::Render() function gets called."
-    },
-    "MC_PRE_LEVEL_PLACE_ROOM": {
-      "value": "1137",
-      "comment": "(LevelGeneratorRoom Slot, RoomConfigRoom RoomConfig, integer Seed): RoomConfigRoom - Called before a room is placed during level generation. Return `RoomConfigRoom` to change the room being placed."
-    },
-    "MC_PRE_M_MORPH_ACTIVE": {
-      "value": "1190",
-      "comment": "(EntityPlayer Player, CollectibleType ItemID): CollectibleType | boolean - Called before an active gets rerolled by 'M (trinket id 138). Return `CollectibleType` to change the CollectibleType it rerolls into or `false` to prevent the active from being rerolled entirely."
-    },
-    "MC_PRE_NPC_SPLIT": {
-      "value": "1191",
-      "comment": "(EntityNPC NPC, boolean IsBlacklisted), Optional Arg: EntityType - Called when the game is about to decide whether or not an EntityNPC can be split, i.e. the Meat Cleaver effect. Return `true` to prevent the split, `false` to allow it even if blacklisted, or `nil` to continue default behavior."
-    },
-    "MC_PICKUP_GET_COIN_VALUE": {
-      "value": "1250",
-      "comment": "(EntityPickup Pickup): integer, Optional Arg: CoinSubType - Called when getting the coin value of a coin pickup. Return an integer to modify the amount of coins the coin can give you on pickup."
-    },
-    "MC_POST_FAMILIAR_FIRE_PROJECTILE": {
-      "value": "1252",
-      "comment": "(EntityTear Tear), Optional Arg: FamiliarVariant - Called when a familiar fires a tear. (Is this just for Weapon familiars or all familiars??)"
-    },
-    "MC_POST_FIRE_BOMB": {
-      "value": "1253",
-      "comment": "(EntityBomb Bomb) - Called when the player fires a Dr. Fetus bomb."
-    },
-    "MC_POST_FIRE_BONE_CLUB": {
-      "value": "1254",
-      "comment": "(EntityKnife Knife) - Called when the player fired The Forgotten's bone club. This is only called when the club is initially spawned, not when swung or charged and shot."
-    },
-    "MC_POST_FIRE_BRIMSTONE": {
-      "value": "1255",
-      "comment": "(EntityLaser Laser) - Called when the player fires a brimstone laser. This is also called for delayed Brimstone."
-    },
-    "MC_POST_FIRE_BRIMSTONE_BALL": {
-      "value": "1256",
-      "comment": "(EntityEffect Effect) - Called when the player fires a brimstone ball."
-    },
-    "MC_POST_FIRE_KNIFE": {
-      "value": "1257",
-      "comment": "(EntityKnife Knife) - Called when the player fires the knife from Mom's Knife. This is only called when the knife is initially spawned, not when charged and shot."
-    },
-    "MC_POST_FIRE_SWORD": {
-      "value": "1258",
-      "comment": "(EntityKnife Knife) - Called when the player swings the sword from Spirit Sword. This is not called for the sword's charged swing."
-    },
-    "MC_POST_FIRE_TECH_LASER": {
-      "value": "1259",
-      "comment": "(EntityLaser Laser) - Called when the player fires a Tech laser."
-    },
-    "MC_POST_FIRE_TECH_X_LASER": {
-      "value": "1260",
-      "comment": "(EntityLaser Laser) - Called when the player fires a Tech X laser."
-    },
-    "MC_POST_FAMILIAR_FIRE_BRIMSTONE": {
-      "value": "1261",
-      "comment": "(EntityLaser Laser), Optional Arg: FamiliarVariant - Called when a familiar fires a brimstone laser."
-    },
-    "MC_POST_FAMILIAR_FIRE_TECH_LASER": {
-      "value": "1262",
-      "comment": "(EntityLaser Laser), Optional Arg: FamiliarVariant - Called when a familiar fires a Tech laser."
-    },
-    "MC_IS_PERSISTENT_ROOM_ENTITY": {
-      "value": "1263",
-      "comment": "(EntityType Type, int Variant): boolean - Return `true` to allow the entity to respawn when moving out and back into the room it was located in."
-    },
-    "MC_PRE_PLAYERHUD_TRINKET_RENDER": {
-      "value": "1264",
-      "comment": "(ActiveSlot Slot, Vector Position, float Scale, EntityPlayer Player, Vector CropOffset): table{Position, Scale, CropOffset} | boolean, Optional Arg: ActiveSlot - Called before the player's trinket on the HUD is rendered. Return a table with any combination of its parameters to override those respective fields or `true` to cancel rendering."
-    },
-    "MC_MENU_INPUT_ACTION": {
-      "value": "1464",
-      "comment": "(Entity Entity, InputHook InputHook, ButtonAction ButtonAction): boolean | float, Optional Arg: InputHook - Same as MC_INPUT_ACTION, but only works in the main menu."
-    },
-    "MC_POST_SAVESLOT_LOAD": {
-      "value": "1465",
-      "comment": "(integer SaveSlot, boolean IsSaveSlotSelected, integer RawSlot) - This is called whenever a save slot is loaded by the game. "
-    },
-    "MC_PRE_PICKUP_VOIDED": {
-      "value": "1265",
-      "comment": "(EntityPickup Pickup, boolean IsBlackRune): boolean, Optional Arg: PickupVariant - Called when a pickup is consumed with the Void active or Black Rune. The IsBlackRune parameter indicates the source. If Black Rune is used, the callback gets fired both for pedestal items and for small pickups that turn into flies. Return `false` to cancel the pickup getting consumed."
-    },
-    "MC_PRE_PICKUP_VOIDED_ABYSS": {
-      "value": "1266",
-      "comment": "(EntityPickup Pickup): boolean, Optional Arg: PickupVariant - Called when a pickup is consumed with the Abyss active. Return `false` to cancel the pickup getting consumed."
-    },
-    "MC_PRE_PICKUP_COMPOSTED": {
-      "value": "1267",
-      "comment": "(EntityPickup Pickup) - Called when a pickup is consumed with the Compost active. Return `false` to cancel the pickup getting consumed."
-    },
-    "MC_PRE_GRID_ENTITY_DECORATION_UPDATE": {
-      "value": "1400",
-      "comment": "(GridEntityDecoration Decoration) - Called before this grid entity is updated. Return `false` to cancel the update."
-    },
-    "MC_POST_GRID_ENTITY_DECORATION_UPDATE": {
-      "value": "1401",
-      "comment": "(GridEntityDecoration Decoration) - Called after this grid entity is updated, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_DOOR_UPDATE": {
-      "value": "1402",
-      "comment": "(GridEntityDoor Door) - Called before this grid entity is updated. Return `false` to cancel the update."
-    },
-    "MC_POST_GRID_ENTITY_DOOR_UPDATE": {
-      "value": "1403",
-      "comment": "(GridEntityDoor Door) - Called after this grid entity is updated, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_FIRE_UPDATE": {
-      "value": "1404",
-      "comment": "(GridEntityFire Fire) - Called before this grid entity is updated. Return `false` to cancel the update."
-    },
-    "MC_POST_GRID_ENTITY_FIRE_UPDATE": {
-      "value": "1405",
-      "comment": "(GridEntityFire Fire) - Called after this grid entity is updated, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_GRAVITY_UPDATE": {
-      "value": "1406",
-      "comment": "(GridEntityGravity Gravity) - Called before this grid entity is updated. Return `false` to cancel the update."
-    },
-    "MC_POST_GRID_ENTITY_GRAVITY_UPDATE": {
-      "value": "1407",
-      "comment": "(GridEntityGravity Gravity) - Called after this grid entity is updated, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_LOCK_UPDATE": {
-      "value": "1408",
-      "comment": "(GridEntityLock Lock) - Called before this grid entity is updated. Return `false` to cancel the update."
-    },
-    "MC_POST_GRID_ENTITY_LOCK_UPDATE": {
-      "value": "1409",
-      "comment": "(GridEntityLock Lock) - Called after this grid entity is updated, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_PIT_UPDATE": {
-      "value": "1410",
-      "comment": "(GridEntityPit Pit) - Called before this grid entity is updated. Return `false` to cancel the update."
-    },
-    "MC_POST_GRID_ENTITY_PIT_UPDATE": {
-      "value": "1411",
-      "comment": "(GridEntityPit Pit) - Called after this grid entity is updated, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_POOP_UPDATE": {
-      "value": "1412",
-      "comment": "(GridEntityPoop Poop) - Called before this grid entity is updated. Return `false` to cancel the update."
-    },
-    "MC_POST_GRID_ENTITY_POOP_UPDATE": {
-      "value": "1413",
-      "comment": "(GridEntityPoop Poop) - Called after this grid entity is updated, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_PRESSUREPLATE_UPDATE": {
-      "value": "1414",
-      "comment": "(GridEntityPressurePlate PressurePlate) - Called before this grid entity is updated. Return `false` to cancel the update."
-    },
-    "MC_POST_GRID_ENTITY_PRESSUREPLATE_UPDATE": {
-      "value": "1415",
-      "comment": "(GridEntityPressurePlate PressurePlate) - Called after this grid entity is updated, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_ROCK_UPDATE": {
-      "value": "1416",
-      "comment": "(GridEntityRock Rock) - Called before this grid entity is updated. Return `false` to cancel the update."
-    },
-    "MC_POST_GRID_ENTITY_ROCK_UPDATE": {
-      "value": "1417",
-      "comment": "(GridEntityRock Rock) - Called after this grid entity is updated, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_SPIKES_UPDATE": {
-      "value": "1418",
-      "comment": "(GridEntitySpikes Spikes) - Called before this grid entity is updated. Return `false` to cancel the update."
-    },
-    "MC_POST_GRID_ENTITY_SPIKES_UPDATE": {
-      "value": "1419",
-      "comment": "(GridEntitySpikes Spikes) - Called after this grid entity is updated, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_STAIRCASE_UPDATE": {
-      "value": "1420",
-      "comment": "(GridEntityStaircase Staircase) - Called before this grid entity is updated. Return `false` to cancel the update."
-    },
-    "MC_POST_GRID_ENTITY_STAIRCASE_UPDATE": {
-      "value": "1421",
-      "comment": "(GridEntityStaircase Staircase) - Called after this grid entity is updated, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_STATUE_UPDATE": {
-      "value": "1422",
-      "comment": "(GridEntityStatue Statue) - Called before this grid entity is updated. Return `false` to cancel the update."
-    },
-    "MC_POST_GRID_ENTITY_STATUE_UPDATE": {
-      "value": "1423",
-      "comment": "(GridEntityStatue Statue) - Called after this grid entity is updated, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_TELEPORTER_UPDATE": {
-      "value": "1424",
-      "comment": "(GridEntityTeleporter Teleporter) - Called before this grid entity is updated. Return `false` to cancel the update."
-    },
-    "MC_POST_GRID_ENTITY_TELEPORTER_UPDATE": {
-      "value": "1425",
-      "comment": "(GridEntityTeleporter Teleporter) - Called after this grid entity is updated, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_TRAPDOOR_UPDATE": {
-      "value": "1426",
-      "comment": "(GridEntityTrapdoor Trapdoor) - Called before this grid entity is updated. Return `false` to cancel the update."
-    },
-    "MC_POST_GRID_ENTITY_TRAPDOOR_UPDATE": {
-      "value": "1427",
-      "comment": "(GridEntityTrapdoor Trapdoor) - Called after this grid entity is updated, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_WEB_UPDATE": {
-      "value": "1428",
-      "comment": "(GridEntityWeb Web) - Called before this grid entity is updated. Return `false` to cancel the update."
-    },
-    "MC_POST_GRID_ENTITY_WEB_UPDATE": {
-      "value": "1429",
-      "comment": "(GridEntityWeb Web) - Called after this grid entity is updated, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_TNT_UPDATE": {
-      "value": "1430",
-      "comment": "(GridEntityTNT TNT) - Called before this grid entity is updated. Return `false` to cancel the update."
-    },
-    "MC_POST_GRID_ENTITY_TNT_UPDATE": {
-      "value": "1431",
-      "comment": "(GridEntityTNT TNT) - Called after this grid entity is updated, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_SPIKES_RENDER": {
-      "value": "1432",
-      "comment": "(GridEntitySpikes Spikes, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
-    },
-    "MC_POST_GRID_ENTITY_SPIKES_RENDER": {
-      "value": "1433",
-      "comment": "(GridEntitySpikes Spikes, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_WEB_RENDER": {
-      "value": "1434",
-      "comment": "(GridEntityWeb Web, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
-    },
-    "MC_POST_GRID_ENTITY_WEB_RENDER": {
-      "value": "1435",
-      "comment": "(GridEntityWeb Web, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_TNT_RENDER": {
-      "value": "1436",
-      "comment": "(GridEntityTNT TNT, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
-    },
-    "MC_POST_GRID_ENTITY_TNT_RENDER": {
-      "value": "1437",
-      "comment": "(GridEntityTNT TNT, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_TRAPDOOR_RENDER": {
-      "value": "1438",
-      "comment": "(GridEntityTrapdoor Trapdoor, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
-    },
-    "MC_POST_GRID_ENTITY_TRAPDOOR_RENDER": {
-      "value": "1439",
-      "comment": "(GridEntityTrapdoor Trapdoor, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_STAIRCASE_RENDER": {
-      "value": "1440",
-      "comment": "(GridEntityStaircase Staircase, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
-    },
-    "MC_POST_GRID_ENTITY_STAIRCASE_RENDER": {
-      "value": "1441",
-      "comment": "(GridEntityStaircase Staircase, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_DECORATION_RENDER": {
-      "value": "1444",
-      "comment": "(GridEntityDecoration Decoration, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
-    },
-    "MC_POST_GRID_ENTITY_DECORATION_RENDER": {
-      "value": "1445",
-      "comment": "(GridEntityDecoration Decoration, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_DOOR_RENDER": {
-      "value": "1446",
-      "comment": "(GridEntityDoor Door, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
-    },
-    "MC_POST_GRID_ENTITY_DOOR_RENDER": {
-      "value": "1447",
-      "comment": "(GridEntityDoor Door, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_FIRE_RENDER": {
-      "value": "1448",
-      "comment": "(GridEntityFire Fire, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
-    },
-    "MC_POST_GRID_ENTITY_FIRE_RENDER": {
-      "value": "1449",
-      "comment": "(GridEntityFire Fire, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_LOCK_RENDER": {
-      "value": "1450",
-      "comment": "(GridEntityLock Lock, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
-    },
-    "MC_POST_GRID_ENTITY_LOCK_RENDER": {
-      "value": "1451",
-      "comment": "(GridEntityLock Lock, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_TELEPORTER_RENDER": {
-      "value": "1452",
-      "comment": "(GridEntityTeleporter Teleporter, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
-    },
-    "MC_POST_GRID_ENTITY_TELEPORTER_RENDER": {
-      "value": "1453",
-      "comment": "(GridEntityTeleporter Teleporter, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_PIT_RENDER": {
-      "value": "1454",
-      "comment": "(GridEntityPit Pit, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
-    },
-    "MC_POST_GRID_ENTITY_PIT_RENDER": {
-      "value": "1455",
-      "comment": "(GridEntityPit Pit, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_POOP_RENDER": {
-      "value": "1456",
-      "comment": "(GridEntityPoop Poop, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
-    },
-    "MC_POST_GRID_ENTITY_POOP_RENDER": {
-      "value": "1457",
-      "comment": "(GridEntityPoop Poop, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_ROCK_RENDER": {
-      "value": "1458",
-      "comment": "(GridEntityRock Rock, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
-    },
-    "MC_POST_GRID_ENTITY_ROCK_RENDER": {
-      "value": "1459",
-      "comment": "(GridEntityRock Rock, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_PRESSUREPLATE_RENDER": {
-      "value": "1460",
-      "comment": "(GridEntityPressurePlate PressurePlate, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
-    },
-    "MC_POST_GRID_ENTITY_PRESSUREPLATE_RENDER": {
-      "value": "1461",
-      "comment": "(GridEntityPressurePlate PressurePlate, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
-    },
-    "MC_PRE_GRID_ENTITY_WALL_RENDER": {
-      "value": "1462",
-      "comment": "(GridEntityWall Wall, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
-    },
-    "MC_POST_GRID_ENTITY_WALL_RENDER": {
-      "value": "1463",
-      "comment": "(GridEntityWall Wall, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
-    },
-    "MC_POST_NPC_DARK_RED_CHAMPION_REGEN": {
-      "value": "1223",
-      "comment": "(EntityNPC NPC) - Runs right after a dark red champion regenerates out of the goo form."
-    },
-    "MC_POST_ACHIEVEMENT_UNLOCK": {
-      "value": "1476",
-      "comment": "Callback has no arguments. Called after an achievement is unlocked, has the achievement id as its param"
-    },
-    "MC_PRE_MINIMAP_UPDATE": {
-      "value": "1477",
-      "comment": "Callback has no arguments. Called right before the minimap is updated"
-    },
-    "MC_POST_MINIMAP_UPDATE": {
-      "value": "1478",
-      "comment": "Callback has no arguments. Called right after the minimap is updated"
-    },
-    "MC_PRE_MINIMAP_RENDER": {
-      "value": "1479",
-      "comment": "Callback has no arguments. Called right before the minimap is rendered"
-    },
-    "MC_POST_MINIMAP_RENDER": {
-      "value": "1480",
-      "comment": "Callback has no arguments. Called right after the minimap is rendered"
-    },
-    "MC_PRE_PICKUP_GET_LOOT_LIST": {
-      "value": "1333",
-      "comment": "(EntityPickup Pickup, boolean ShouldAdvance): LootList - Called before the pickup determines its loot content. Return `LootList` to change loot content."
-    },
-    "MC_PRE_PICKUP_UPDATE_GHOST_PICKUPS": {
-      "value": "1334",
-      "comment": "(EntityPickup Pickup) - Called before a ghost pickup of the loot content is applied to the pickup. Return `true` to apply pickup ghost to your pickup entity, `false` to cancel it."
-    },
-    "MC_POST_PLAYER_TRIGGER_EFFECT_REMOVED": {
-      "value": "1268",
-      "comment": "(EntityPlayer Player, ItemConfigItem ItemConfigItem) - Called after the player's `ItemConfigItem` TemporaryEffect is removed"
-    },
-    "MC_POST_ROOM_TRIGGER_EFFECT_REMOVED": {
-      "value": "1269",
-      "comment": "(ItemConfigItem ItemConfigItem) - Called after the room's `TemporaryEffects` is removed. Room has its own `TemporaryEffects` that are accessed through `Room::GetEffects()`"
-    },
-    "MC_PRE_PLAYER_GRID_COLLISION": {
-      "value": "1171",
-      "comment": "(EntityPlayer Player, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: PlayerVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
-    },
-    "MC_PLAYER_GRID_COLLISION": {
-      "value": "1172",
-      "comment": "(EntityPlayer Player, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: PlayerVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
-    },
-    "MC_PRE_TEAR_GRID_COLLISION": {
-      "value": "1173",
-      "comment": "(EntityTear Tear, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: TearVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
-    },
-    "MC_TEAR_GRID_COLLISION": {
-      "value": "1174",
-      "comment": "(EntityTear Tear, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: TearVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
-    },
-    "MC_PRE_FAMILIAR_GRID_COLLISION": {
-      "value": "1175",
-      "comment": "(EntityFamiliar Familiar, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: FamiliarVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
-    },
-    "MC_FAMILIAR_GRID_COLLISION": {
-      "value": "1176",
-      "comment": "(EntityFamiliar Familiar, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: FamiliarVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
-    },
-    "MC_PRE_BOMB_GRID_COLLISION": {
-      "value": "1177",
-      "comment": "(EntityBomb Bomb, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: BombVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
-    },
-    "MC_BOMB_GRID_COLLISION": {
-      "value": "1178",
-      "comment": "(EntityBomb Bomb, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: BombVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
-    },
-    "MC_PRE_PICKUP_GRID_COLLISION": {
-      "value": "1179",
-      "comment": "(EntityPickup Pickup, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: PickupVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
-    },
-    "MC_PICKUP_GRID_COLLISION": {
-      "value": "1180",
-      "comment": "(EntityPickup Pickup, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: PickupVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
-    },
-    "MC_PRE_PROJECTILE_GRID_COLLISION": {
-      "value": "1181",
-      "comment": "(EntityProjectile Projectile, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: ProjectileVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
-    },
-    "MC_PROJECTILE_GRID_COLLISION": {
-      "value": "1182",
-      "comment": "(EntityProjectile Projectile, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: ProjectileVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
-    },
-    "MC_PRE_NPC_GRID_COLLISION": {
-      "value": "1183",
-      "comment": "(EntityNPC NPC, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: EntityType - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
-    },
-    "MC_NPC_GRID_COLLISION": {
-      "value": "1184",
-      "comment": "(EntityNPC NPC, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: EntityType - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
-    },
-    "MC_PRE_PLAYERHUD_RENDER_HEARTS": {
-      "value": "1118",
-      "comment": "(Vector Offset(?), Sprite HeartsSprite, Vector Position, float Unknown, EntityPlayer Player): boolean - Called before the player's hearts are rendered, both on the corners of the HUD and above Strawman-like players. Return `true` to cancel hearts HUD rendering."
-    },
-    "MC_PRE_PLAYERHUD_RENDER_ACTIVE_ITEM": {
-      "value": "1119",
-      "comment": "(EntityPlayer Player, ActiveSlot Slot, Vector Offset, float Alpha, float Scale, Vector ChargeBarOffset) - Called before the player's active item is rendered. Return `true` to cancel rendering."
-    },
-    "MC_PRE_PLAYER_REVIVE": {
-      "value": "1481",
-      "comment": "(EntityPlayer Player) - Called before the player revives. Return `false` to prevent the player from reviving."
-    },
-    "MC_POST_PLAYER_REVIVE": {
-      "value": "1482",
-      "comment": "(EntityPlayer Player) - Called after the player revives, assuming it wasn't cancelled."
-    },
-    "MC_POST_PROJECTILE_DEATH": {
-      "value": "1032",
-      "comment": "(EntityProjectile Projectile) - Called after the projectile dies."
-    },
-    "MC_POST_TEAR_DEATH": {
-      "value": "1032",
-      "comment": "(EntityTear Tear) - Called after the tear dies."
-    },
-    "MC_POST_BOSS_INTRO_SHOW": {
-      "value": "1270",
-      "comment": "(BossType BossID1, BossType BossID2) - Called right after the boss intro is initialized. `BossID2` is for Double Trouble."
-    },
-    "MC_POST_ROOM_TRANSITION_UPDATE": {
-      "value": "1271",
-      "comment": "Callback has no arguments. Called on an update frame during the boss intro."
-    },
-    "MC_POST_ROOM_TRANSITION_RENDER": {
-      "value": "1272",
-      "comment": "Callback has no arguments. Called on a render frame during the boss intro."
-    },
-    "MC_PRE_PLAYER_UPDATE": {
-      "value": "1160",
-      "comment": "(EntityPlayer Player), Optional Arg: PlayerVariant - Called before the player is updated. Return `true` if the internal AI should be ignored, `false` or `nil`/nothing otherwise."
-    },
-    "MC_PRE_TEAR_UPDATE": {
-      "value": "1161",
-      "comment": "(EntityTear Tear), Optional Arg: TearVariant - Called before the tear is updated. Return `true` if the internal AI should be ignored, `false` or `nil`/nothing otherwise."
-    },
-    "MC_PRE_FAMILIAR_UPDATE": {
-      "value": "1162",
-      "comment": "(EntityFamiliar Familiar), Optional Arg: FamiliarVariant - Called before the familiar is updated. Return `true` if the internal AI should be ignored, `false` or `nil`/nothing otherwise."
-    },
-    "MC_PRE_BOMB_UPDATE": {
-      "value": "1163",
-      "comment": "(EntityBomb Bomb), Optional Arg: BombVariant - Called before the bomb is updated. Return `true` if the internal AI should be ignored, `false` or `nil`/nothing otherwise."
-    },
-    "MC_PRE_PICKUP_UPDATE": {
-      "value": "1164",
-      "comment": "(EntityPickup Pickup), Optional Arg: PickupVariant - Called before the pickup is updated. Return `true` if the internal AI should be ignored, `false` or `nil`/nothing otherwise."
-    },
-    "MC_PRE_KNIFE_UPDATE": {
-      "value": "1165",
-      "comment": "(EntityKnife Knife), Optional Arg: KnifeSubType - Called before the knife is updated. Return `true` if the internal AI should be ignored, `false` or `nil`/nothing otherwise."
-    },
-    "MC_PRE_PROJECTILE_UPDATE": {
-      "value": "1166",
-      "comment": "(EntityProjectile Projectile), Optional Arg: ProjectileVariant - Called before the projectile is updated. Return `true` if the internal AI should be ignored, `false` or `nil`/nothing otherwise."
-    },
-    "MC_PRE_LASER_UPDATE": {
-      "value": "1167",
-      "comment": "(EntityLaser Laser), Optional Arg: LaserVariant - Called before the laser is updated. Return `true` if the internal AI should be ignored, `false` or `nil`/nothing otherwise."
-    },
-    "MC_PRE_EFFECT_UPDATE": {
-      "value": "1168",
-      "comment": "(EntityEffect Effect), Optional Arg: EffectVariant - Called before the effect is updated. Return `true` if the internal AI should be ignored, `false` or `nil`/nothing otherwise."
-    },
-    "MC_PRE_SLOT_UPDATE": {
-      "value": "1169",
-      "comment": "(EntitySlot Slot), Optional Arg: SlotVariant - Called before the slot is updated. Return `true` if the internal AI should be ignored, `false` or `nil`/nothing otherwise."
-    },
-    "MC_TRIGGER_PLAYER_DEATH_POST_CHECK_REVIVES": {
-      "value": "1051",
-      "comment": "(EntityPlayer Player) - Called upon player death after the game is done checking for vanilla revives. Return `false` to cancel the death, reviving the player in-place with half a heart, or `true`/`nil`/nothing to allow the death to go through."
-    },
-    "MC_PRE_FORTUNE_DISPLAY": {
-      "value": "1483",
-      "comment": "Callback has no arguments. Called before a fortune is displayed. Return false to cancel it."
-    },
-    "MC_PRE_ITEM_TEXT_DISPLAY": {
-      "value": "1484",
-      "comment": "(string Title, string Subtitle, boolean IsSticky, boolean IsCurseDisplay): boolean - Called before an item text is displayed. `IsSticky` is `true` is if the item text stays on screen for an indefinite amount of time, namely when holding down the map key. `IsCurseDisplay` is `true` if the text is for displaying a curse."
-    },
-    "MC_PRE_GET_RANDOM_ROOM_INDEX": {
-      "value": "1290",
-      "comment": "(integer RoomIndex, bool IAmErrorRoom, integer Seed): integer - Called when the game wishes to get a random available room index on the floor. Return an integer to override the target room index."
-    },
-    "MC_POST_GLOWING_HOURGLASS_SAVE": {
-      "value": "1300",
-      "comment": "(integer Slot) - Called after the Glowing Hourglass state is saved."
-    },
-    "MC_POST_GLOWING_HOURGLASS_LOAD": {
-      "value": "1301",
-      "comment": "(integer Slot) - Called after the Glowing Hourglass state is loaded."
-    },
-    "MC_PRE_GLOWING_HOURGLASS_SAVE": {
-      "value": "1302",
-      "comment": "(integer Slot) - Called before the Glowing Hourglass state is saved."
-    },
-    "MC_PRE_GLOWING_HOURGLASS_LOAD": {
-      "value": "1303",
-      "comment": "(integer Slot) - Called before the Glowing Hourglass state is loaded"
-    },
-    "MC_PRE_PLAYER_ADD_CARD": {
-      "value": "1350",
-      "comment": "(EntityPlayer Player, Card CardID, PillCardSlot Slot): boolean | int, Optional Arg: Card - Called before a card gets added to the player's inventory. Return `Card` to change the card being added or `false` to cancel adding it entirely."
-    },
-    "MC_POST_PLAYER_ADD_CARD": {
-      "value": "1351",
-      "comment": "(EntityPlayer Player, Card CardID, PillCardSlot Slot), Optional Arg: Card - Called after a card gets added to the player's inventory."
-    },
-    "MC_PRE_PLAYER_ADD_PILL": {
-      "value": "1352",
-      "comment": "(EntityPlayer Player, PillColor PillColor, PillCardSlot Slot): boolean | int, Optional Arg: PillColor - Called before a pill gets added to the player's inventory. Return `PillColor` to change the pill being added or `false` to cancel adding it entirely."
-    },
-    "MC_POST_PLAYER_ADD_PILL": {
-      "value": "1353",
-      "comment": "(EntityPlayer Player, PillColor PillColor, PillCardSlot Slot), Optional Arg: PillColor - Called after a pill gets added to the player's inventory."
-    },
-    "MC_POST_PLAYER_REMOVE_CARD": {
-      "value": "1354",
-      "comment": "(EntityPlayer Player, Card CardID, PillCardSlot Slot), Optional Arg: Card - Called after a card gets removed from the player's inventory by any means (dropped, direct removal, use, etc)."
-    },
-    "MC_POST_PLAYER_REMOVE_PILL": {
-      "value": "1355",
-      "comment": "(EntityPlayer Player, PillColor PillColor, PillCardSlot Slot), Optional Arg: PillColor - Called after a pill gets removed from the player's inventory by any means (dropped, direct removal, use, etc)."
-    },
-    "MC_PRE_PLAYER_COLLECT_CARD": {
-      "value": "1356",
-      "comment": "(EntityPlayer Player, EntityPickup Pickup): boolean, Optional Arg: Card - Called before a player picks up a card off the ground. Return `false` to prevent the card from being picked up."
-    },
-    "MC_POST_PLAYER_COLLECT_CARD": {
-      "value": "1357",
-      "comment": "(EntityPlayer Player, EntityPickup Pickup), Optional Arg: Card - Called after a player picks up a card off the ground."
-    },
-    "MC_PRE_PLAYER_COLLECT_PILL": {
-      "value": "1358",
-      "comment": "(EntityPlayer Player, EntityPickup Pickup): boolean, Optional Arg: PillColor - Called before a player picks up a pill off the ground. Return `false` to prevent the pill from being picked up."
-    },
-    "MC_POST_PLAYER_COLLECT_PILL": {
-      "value": "1359",
-      "comment": "(EntityPlayer Player, EntityPickup Pickup), Optional Arg: PillColor - Called after a player picks up a pill off the ground."
-    },
-    "MC_POST_PLAYER_DROP_CARD": {
-      "value": "1360",
-      "comment": "(EntityPlayer Player, EntityPickup Pickup, PillCardSlot Slot), Optional Arg: Card - Called after a player drops a card onto the ground from their inventory."
-    },
-    "MC_POST_PLAYER_DROP_PILL": {
-      "value": "1361",
-      "comment": "(EntityPlayer Player, EntityPickup Pickup, PillCardSlot Slot), Optional Arg: PillColor - Called after a player drops a pill onto the ground from their inventory."
-    },
-    "MC_PRE_CHALLENGE_DONE": {
-      "value": "1471",
-      "comment": "(Challenge ChallengeID, EntityPlayer Player): boolean, Optional Arg: Challenge - Called before a challenge is marked as completed. Return `false` to prevent further execution of the challenge completion-tracking function."
-    },
-    "MC_POST_CHALLENGE_DONE": {
-      "value": "1472",
-      "comment": "(Challenge ChallengeID), Optional Arg: Challenge - Called after a challenge is marked as completed."
-    },
-    "MC_PRE_PLAYER_GIVE_BIRTH_CAMBION": {
-      "value": "1474",
-      "comment": "(EntityPlayer Player, ConceptionFamiliarFlag Flag): boolean, Optional Arg: ConceptionFamiliarFlag - Called before the player gives birth to a familiar through the Cambion Conception collectible. Return `false` to cancel adding the familiar."
-    },
-    "MC_PRE_PLAYER_GIVE_BIRTH_IMMACULATE": {
-      "value": "1475",
-      "comment": "(EntityPlayer Player, ConceptionFamiliarFlag Flag): boolean, Optional Arg: ConceptionFamiliarFlag - Called before the player gives birth to a familiar through the Immaculate Conception collectible. Return `false` to cancel adding the familiar."
-    },
-    "MC_PRE_PLAYER_ADD_COSTUME": {
-      "value": "1281",
-      "comment": "(ItemConfigItem itemConfig, EntityPlayer Player, boolean ItemStateOnly): ItemConfigItem | boolean - Called before the costume is added to the player. Return `ItemConfigItem` to replace the costume or `true` to cancel adding it entirely."
-    },
-    "MC_PRE_PLAYER_REMOVE_COSTUME": {
-      "value": "1282",
-      "comment": "(ItemConfigItem itemConfig, EntityPlayer Player): boolean - Called before the costume is removed from the player. Return `true` to cancel the removal."
-    },
-    "MC_POST_PLAYER_ADD_COSTUME": {
-      "value": "1283",
-      "comment": "(ItemConfigItem itemConfig, EntityPlayer Player, boolean ItemStateOnly) - Called after the costume is added to the player, assuming it wasn't skipped."
-    },
-    "MC_POST_PLAYER_REMOVE_COSTUME": {
-      "value": "1284",
-      "comment": "(ItemConfigItem itemConfig, EntityPlayer Player): boolean - Called after the costume is removed from the player, assuming it wasn't skipped."
-    },
-    "MC_POST_FORCE_PILL_EFFECT": {
-      "value": "1129",
-      "comment": "(PillEffect PillEffectID, PillColor PillColorID) - TODO: Document me!"
-    },
-    "MC_EVALUATE_CUSTOM_CACHE" : {
-      "value": "1224",
-      "comment": "(EntityPlayer Player, CustomCacheTag string, float Value): float, Optional Arg: CustomCacheTag - Called when a custom cache tag is evaluated. Return a number to modify the value. Modified values are passed onto the next callback."
-    },
-    "MC_EVALUATE_FAMILIAR_MULTIPLIER": {
-      "value": "1225",
-      "comment": "(EntityFamiliar Familiar, float Mult, EntityPlayer Player): float, Optional Arg: FamiliarVariant. Called when a familiar's cached multiplier needs to be re-evaluated. Return a number to modify the multiplier. Modified values are passed to the next callback."
-    }
+  "AddHealthType": {
+    "NONE": "0",
+    "RED": "1<<0",
+    "MAX": "1<<1",
+    "SOUL": "1<<2",
+    "BLACK": "1<<3",
+    "ETERNAL": "1<<4",
+    "GOLDEN": "1<<5",
+    "BONE": "1<<6",
+    "ROTTEN": "1<<7",
+    "BROKEN": "1<<8"
   },
-  "Renderer": {
-    "GLSLType": {
-      "Float": "0",
-      "Vec2": "1",
-      "Vec3": "2",
-      "Vec4": "3"
-    },
-    "ShaderType": {
-      "SHADER_COLOR_OFFSET": "0",
-      "SHADER_PIXELATION": "1",
-      "SHADER_BLOOM": "2",
-      "SHADER_COLOR_CORRECTION": "3",
-      "SHADER_HQ4X": "4",
-      "SHADER_SHOCKWAVE": "5",
-      "SHADER_OLDTV": "6",
-      "SHADER_WATER": "7",
-      "SHADER_HALLUCINATION": "8",
-      "SHADER_COLOR_MOD": "9",
-      "SHADER_COLOR_OFFSET_CHAMPION": "10",
-      "SHADER_WATER_V2": "11",
-      "SHADER_BACKGROUND": "12",
-      "SHADER_WATER_OVERLAY": "13",
-      "SHADER_UNK": "14",
-      "SHADER_COLOR_OFFSET_DOGMA": "15",
-      "SHADER_COLOR_OFFSET_GOLD": "16",
-      "SHADER_DIZZY": "17",
-      "SHADER_HEAT_WAVE": "18",
-      "SHADER_MIRROR": "19"
-    }
+  "DeliriumCallbacks": {
+    "PRE_TRANSFORMATION": "\"DeliriumPreTransformation\"",
+    "TRANSFORMATION": "\"DeliriumTransformation\"",
+    "POST_TRANSFORMATION": "\"DeliriumPostTransformation\""
   },
   "StbType": {
     "SPECIAL_ROOMS": "0",
@@ -1211,7 +36,6 @@
     "DARK_ROOM": "16",
     "CHEST": "17",
     "THE_VOID": "26",
-    "VOID": "26",
     "DOWNPOUR": "27",
     "DROSS": "28",
     "MINES": "29",
@@ -1228,7 +52,7 @@
     "LARRY_JR": "2",
     "CHUB": "3",
     "GURDY": "4",
-    "MONSTRO_II": "5",
+    "MONSTRO_2": "5",
     "MOM": "6",
     "SCOLEX": "7",
     "MOMS_HEART": "8",
@@ -1246,69 +70,69 @@
     "STEVEN": "20",
     "CHAD": "21",
     "HEADLESS_HORSEMAN": "22",
-    "FALLEN": "23",
+    "THE_FALLEN": "23",
     "SATAN": "24",
     "IT_LIVES": "25",
-    "HOLLOW": "26",
-    "CARRION_QUEEN": "27",
+    "THE_HOLLOW": "26",
+    "THE_CARRION_QUEEN": "27",
     "GURDY_JR": "28",
-    "HUSK": "29",
-    "BLOAT": "30",
+    "THE_HUSK": "29",
+    "THE_BLOAT": "30",
     "LOKII": "31",
-    "BLIGHTED_OVUM": "32",
+    "THE_BLIGHTED_OVUM": "32",
     "TERATOMA": "33",
-    "WIDOW": "34",
+    "THE_WIDOW": "34",
     "MASK_OF_INFAMY": "35",
-    "WRETCHED": "36",
+    "THE_WRETCHED": "36",
     "PIN": "37",
     "CONQUEST": "38",
     "ISAAC": "39",
     "BLUE_BABY": "40",
     "DADDY_LONG_LEGS": "41",
     "TRIACHNID": "42",
-    "HAUNT": "43",
+    "THE_HAUNT": "43",
     "DINGLE": "44",
     "MEGA_MAW": "45",
-    "GATE": "46",
+    "THE_GATE": "46",
     "MEGA_FATTY": "47",
-    "CAGE": "48",
+    "THE_CAGE": "48",
     "MEGA_GURDY": "49",
     "DARK_ONE": "50",
-    "ADVERSARY": "51",
+    "THE_ADVERSARY": "51",
     "POLYCEPHALUS": "52",
     "MR_FRED": "53",
-    "LAMB": "54",
+    "THE_LAMB": "54",
     "MEGA_SATAN": "55",
     "GURGLINGS": "56",
-    "STAIN": "57",
+    "THE_STAIN": "57",
     "BROWNIE": "58",
-    "FORSAKEN": "59",
+    "THE_FORSAKEN": "59",
     "LITTLE_HORN": "60",
     "RAG_MAN": "61",
     "ULTRA_GREED": "62",
     "HUSH": "63",
     "DANGLE": "64",
     "TURDLINGS": "65",
-    "FRAIL": "66",
+    "THE_FRAIL": "66",
     "RAG_MEGA": "67",
     "SISTERS_VIS": "68",
     "BIG_HORN": "69",
     "DELIRIUM": "70",
     "ULTRA_GREEDIER": "71",
-    "MATRIARCH": "72",
-    "PILE": "73",
+    "THE_MATRIACH": "72",
+    "THE_PILE": "73",
     "REAP_CREEP": "74",
-    "BEELZEBLUB": "75",
+    "LIL_BLUB": "75",
     "WORMWOOD": "76",
-    "RAINMAKER": "77",
-    "VISAGE": "78",
-    "SIREN": "79",
+    "THE_RAINMAKER": "77",
+    "THE_VISAGE": "78",
+    "THE_SIREN": "79",
     "TUFF_TWINS": "80",
-    "HERETIC": "81",
+    "THE_HERETIC": "81",
     "HORNFEL": "82",
     "GREAT_GIDEON": "83",
     "BABY_PLUM": "84",
-    "SCOURGE": "85",
+    "THE_SCOURGE": "85",
     "CHIMERA": "86",
     "ROTGUT": "87",
     "MOTHER": "88",
@@ -1319,28 +143,62 @@
     "SINGE": "93",
     "BUMBINO": "94",
     "COLOSTOMIA": "95",
-    "SHELL": "96",
+    "THE_SHELL": "96",
     "TURDLET": "97",
     "RAGLICH": "98",
     "DOGMA": "99",
-    "BEAST": "100",
+    "THE_BEAST": "100",
     "HORNY_BOYS": "101",
     "CLUTCH": "102",
     "CADAVRA": "103"
+  },
+  "ButtonActionBitwise": {
+    "ACTION_LEFT": "1<<0",
+    "ACTION_RIGHT": "1<<1",
+    "ACTION_UP": "1<<2",
+    "ACTION_DOWN": "1<<3",
+    "ACTION_SHOOTLEFT": "1<<4",
+    "ACTION_SHOOTRIGHT": "1<<5",
+    "ACTION_SHOOTUP": "1<<6",
+    "ACTION_SHOOTDOWN": "1<<7",
+    "ACTION_BOMB": "1<<8",
+    "ACTION_ITEM": "1<<9",
+    "ACTION_PILLCARD": "1<<10",
+    "ACTION_DROP": "1<<11",
+    "ACTION_PAUSE": "1<<12",
+    "ACTION_MAP": "1<<13",
+    "ACTION_MENUCONFIRM": "1<<14",
+    "ACTION_MENUBACK": "1<<15",
+    "ACTION_RESTART": "1<<16",
+    "ACTION_FULLSCREEN": "1<<17",
+    "ACTION_MUTE": "1<<18",
+    "ACTION_JOINMULTIPLAYER": "1<<19",
+    "ACTION_MENULEFT": "1<<20",
+    "ACTION_MENURIGHT": "1<<21",
+    "ACTION_MENUUP": "1<<22",
+    "ACTION_MENUDOWN": "1<<23",
+    "ACTION_MENULT": "1<<24",
+    "ACTION_MENURT": "1<<25",
+    "ACTION_MENUTAB": "1<<26",
+    "ACTION_CONSOLE": "1<<28"
   },
   "NullPickupSubType": {
     "ANY": "0",
     "NO_COLLECTIBLE_CHEST": "1",
     "NO_COLLECTIBLE": "2",
     "NO_COLLECTIBLE_CHEST_COIN": "3",
-    "GREED_MODE_ANY": "3",
     "NO_COLLECTIBLE_TRINKET_CHEST": "4"
+  },
+  "GetCollectibleFlag": {
+    "BAN_ACTIVES": "1",
+    "IGNORE_MODIFIERS": "1",
+    "BAN_PASSIVES": "1"
   },
   "KnifeVariant": {
     "MOMS_KNIFE": "0",
     "BONE_CLUB": "1",
     "BONE_SCYTHE": "2",
-    "BERSERK_CLUB": "3",
+    "DONKEY_JAWBONE": "3",
     "BAG_OF_CRAFTING": "4",
     "SUMPTORIUM": "5",
     "NOTCHED_AXE": "9",
@@ -1421,8 +279,6 @@
     "CRAWLSPACE_NORMAL": "0",
     "CRAWLSPACE_GIDEON": "1",
     "CRAWLSPACE_ROTGUT": "2",
-    "CRAWLSPACE_GUS": "2",
-    "CRAWLSPACE_ROTGUT_HEART": "3",
     "CRAWLSPACE_ROTGUT_2": "3",
     "CRAWLSPACE_BEAST": "4",
     "SECRET_EXIT_DOWNPOUR": "1",
@@ -1462,46 +318,45 @@
     "ISAACS_BEDROOM_NORMAL": "0",
     "ISAACS_BEDROOM_GENESIS": "99",
     "DEPTHS_NORMAL": "0",
-    "DEPTHS_FOOL_ROOM": "1",
-    "DEPTHS_MARKED_SKULL": "1"
+    "DEPTHS_FOOL_ROOM": "1"
   },
   "Achievement": {
     "MAGDALENE": "1",
     "CAIN": "2",
     "JUDAS": "3",
-    "WOMB": "4",
-    "HORSEMEN": "5",
-    "CUBE_OF_MEAT": "6",
-    "BOOK_OF_REVELATIONS": "7",
-    "TRANSENDENCE": "8",
-    "NAIL": "9",
-    "QUARTER": "10",
-    "DR_FETUS": "11",
-    "SMALL_ROCK": "12",
+    "THE_WOMB": "4",
+    "THE_HARBINGERS": "5",
+    "A_CUBE_OF_MEAT": "6",
+    "THE_BOOK_OF_REVELATIONS": "7",
+    "A_NOOSE": "8",
+    "THE_NAIL": "9",
+    "A_QUARTER": "10",
+    "A_FETUS_IN_A_JAR": "11",
+    "A_SMALL_ROCK": "12",
     "MONSTROS_LUNG": "13",
     "LIL_CHUBBY": "14",
     "LOKIS_HORNS": "15",
-    "STEVEN": "16",
-    "CHAD": "17",
-    "GISH": "18",
-    "SUPER_BANDAGE": "19",
-    "RELIC": "20",
-    "BAG_OF_PENNIES": "21",
-    "BOOK_OF_SIN": "23",
+    "SOMETHING_FROM_THE_FUTURE": "16",
+    "SOMETHING_CUTE": "17",
+    "SOMETHING_STICKY": "18",
+    "A_BANDAGE": "19",
+    "A_CROSS": "20",
+    "A_BAG_OF_PENNIES": "21",
+    "THE_BOOK_OF_SIN": "22",
     "LITTLE_GISH": "23",
     "LITTLE_STEVEN": "24",
     "LITTLE_CHAD": "25",
-    "GAMEKID": "26",
-    "HALO": "27",
+    "A_GAMEKID": "26",
+    "A_HALO": "27",
     "MR_MEGA": "28",
     "ISAAC_HOLDS_THE_D6": "29",
-    "SCISSORS": "30",
-    "PARASITE": "31",
+    "THE_SCISSORS": "30",
+    "THE_PARASITE": "31",
     "BLUE_BABY": "32",
     "EVERYTHING_IS_TERRIBLE": "33",
     "IT_LIVES": "34",
     "MOMS_CONTACT": "35",
-    "NECRONOMICON": "36",
+    "THE_NECRONOMICON": "36",
     "BASEMENT_BOY": "37",
     "SPELUNKER_BOY": "38",
     "DARK_BOY": "39",
@@ -1509,31 +364,31 @@
     "GOLDEN_GOD": "41",
     "EVE": "42",
     "MOMS_KNIFE": "43",
-    "RAZOR": "44",
+    "THE_RAZOR": "44",
     "GUARDIAN_ANGEL": "45",
-    "BAG_OF_BOMBS": "46",
-    "DEMON_BABY": "47",
-    "FORGET_ME_NOW": "48",
-    "D20": "49",
-    "CELTIC_CROSS": "50",
+    "A_BAG_OF_BOMBS": "46",
+    "A_DEMON_BABY": "47",
+    "A_FORGET_ME_NOW": "48",
+    "THE_D20": "49",
+    "THE_CRUCIFIX": "50",
     "ABEL": "51",
     "CURVED_HORN": "52",
     "SACRIFICIAL_DAGGER": "53",
-    "BLOODY_LUST": "54",
-    "BLOODY_PENNY": "55",
+    "BLOOD_LUST": "54",
+    "BLOOD_PENNY": "55",
     "BLOOD_RIGHTS": "56",
-    "POLAROID": "57",
+    "THE_POLAROID": "57",
     "DADS_KEY": "58",
-    "BLUE_CANDLE": "59",
+    "THE_BLUE_CANDLE": "59",
     "BURNT_PENNY": "60",
     "LUCKY_TOE": "61",
     "EPIC_FETUS": "62",
     "SMB_SUPER_FAN": "63",
-    "COUNTERFEIT_PENNY": "65",
+    "COUNTERFEIT_COIN": "64",
     "GUPPYS_HAIRBALL": "65",
-    "CONQUEST": "66",
+    "A_FORGOTTEN_HORSEMAN": "66",
     "SAMSON": "67",
-    "TRIACHNID": "68",
+    "SOMETHING_ICKY": "68",
     "PLATINUM_GOD": "69",
     "ISAACS_HEAD": "70",
     "MAGGYS_FAITH": "71",
@@ -1542,18 +397,18 @@
     "SAMSONS_LOCK": "74",
     "CAINS_EYE": "75",
     "EVES_BIRD_FOOT": "76",
-    "LEFT_HAND": "77",
-    "NEGATIVE": "78",
-    "AZAZEL": "79",
+    "THE_LEFT_HAND": "77",
+    "THE_NEGATIVE": "78",
+    "DEMON_ISAAC": "79",
     "LAZARUS": "80",
     "EDEN": "81",
-    "LOST": "82",
+    "THE_SOUL": "82",
     "DEAD_BOY": "83",
-    "REAL_PLATINUM_GOD": "84",
+    "THE_REAL_PLATINUM_GOD": "84",
     "LUCKY_ROCK": "85",
-    "CELLAR": "86",
-    "CATACOMBS": "87",
-    "NECROPOLIS": "88",
+    "THE_CELLAR": "86",
+    "THE_CATACOMBS": "87",
+    "THE_NECROPOLIS": "88",
     "RUNE_OF_HAGALAZ": "89",
     "RUNE_OF_JERA": "90",
     "RUNE_OF_EHWAZ": "91",
@@ -1595,11 +450,10 @@
     "DAEMONS_TAIL": "127",
     "ABADDON": "128",
     "ISAACS_HEART": "129",
-    "MIND": "130",
-    "BODY": "131",
-    "SOUL": "132",
+    "THE_MIND_ITEM": "130",
+    "THE_BODY_ITEM": "131",
+    "THE_SOUL_ITEM": "132",
     "A_D100": "133",
-    "D100": "133",
     "BLUE_MAP": "134",
     "THERES_OPTIONS": "135",
     "BLACK_CANDLE": "136",
@@ -1608,20 +462,20 @@
     "WIRE_COAT_HANGER": "139",
     "IPECAC": "140",
     "EXPERIMENTAL_TREATMENT": "141",
-    "KRAMPUS": "142",
+    "KRAMPUS_UNLOCKED": "142",
     "HEAD_OF_KRAMPUS": "143",
     "SUPER_MEAT_BOY": "144",
     "BUTTER_BEAN": "145",
     "LITTLE_BAGGY": "146",
     "BLOOD_BAG": "147",
-    "D4": "148",
-    "MISSING_POSTER": "149",
+    "A_D4": "148",
+    "THE_LOST_POSTER": "149",
     "RUBBER_CEMENT": "150",
     "STORE_UPGRADE_LV1": "151",
     "STORE_UPGRADE_LV2": "152",
     "STORE_UPGRADE_LV3": "153",
     "STORE_UPGRADE_LV4": "154",
-    "ANGELS": "155",
+    "UNLOCKED_ANGEL_BOSSES": "155",
     "GODHEAD": "156",
     "CHALLENGE_4_DARKNESS_FALLS": "157",
     "CHALLENGE_5_THE_TANK": "158",
@@ -1641,11 +495,11 @@
     "WRAPPED_BABY": "172",
     "BEGOTTEN_BABY": "173",
     "DEAD_BABY": "174",
-    "ZERO_BABY": "175",
+    "O_BABY": "175",
     "GLITCH_BABY": "176",
     "FIGHTING_BABY": "177",
     "BECAME_LORD_OF_THE_FLIES": "178",
-    "FARTING_BABY": "179",
+    "FART_BABY": "179",
     "PURITY": "180",
     "D12": "181",
     "BETRAYAL": "182",
@@ -1690,10 +544,9 @@
     "SUCCUBUS": "221",
     "IMMACULATE_CONCEPTION": "222",
     "GOAT_HEAD_BABY": "223",
-    "GOLDEN_HEARTS": "224",
+    "GOLD_HEART": "224",
     "GET_OUT_OF_JAIL_FREE_CARD": "225",
     "GOLD_BOMB": "226",
-    "GOLDEN_BOMBS": "226",
     "TWO_NEW_PILLS": "227",
     "TWO_NEW_PILLS_2": "228",
     "POKER_CHIP": "229",
@@ -1717,7 +570,7 @@
     "SPECIAL_SHOPKEEPERS": "247",
     "EVE_HOLDS_RAZOR_BLADE": "248",
     "STORE_KEY": "249",
-    "LOST_HOLDS_HOLY_MANTLE": "250",
+    "THE_LOST_HOLDS_HOLY_MANTLE": "250",
     "KEEPER": "251",
     "HIVE_BABY": "252",
     "BUDDY_BABY": "253",
@@ -1787,27 +640,27 @@
     "MORT_BABY": "317",
     "SMELTER": "318",
     "APOLLYON_BABY": "319",
-    "VOID_FLOOR": "320",
-    "GULP_PILL": "321",
-    "ACE_OF_CLUBS": "322",
-    "SUPER_SPECIAL_ROCKS": "323",
-    "SUNSHINE_PILL": "324",
-    "HORF": "325",
-    "ACE_OF_DIAMONDS": "326",
-    "ACE_OF_SPADES": "327",
-    "SCARED_HEART": "328",
-    "ACE_OF_HEARTS": "329",
-    "VURP": "330",
+    "UNLOCKED_A_NEW_AREA": "320",
+    "ONCE_MORE_WITH_FEELING": "321",
+    "HAT_TRICK": "322",
+    "FIVE_NIGHTS_AT_MOMS": "323",
+    "SIN_COLLECTOR": "324",
+    "DEDICATION": "325",
+    "ZIP": "326",
+    "ITS_THE_KEY": "327",
+    "MR_RESETTER": "328",
+    "LIVING_ON_THE_EDGE": "329",
+    "U_BROKE_IT": "330",
     "LAZARUS_BLEEDS_MORE": "331",
-    "MAGDALENE_HOLDS_A_PILL": "332",
+    "MAGGY_HOLDS_A_PILL": "332",
     "CHARGED_KEY": "333",
     "SAMMSON_FEELS_HEALTHY": "334",
     "GREEDS_GULLET": "335",
     "CRACKED_CROWN": "336",
-    "RERUNS": "337",
+    "UNLOCKED_RERUNS": "337",
     "DELIRIOUS": "338",
-    "JUST_STOP": "339",
-    "APOLLYON": "340",
+    "ONE_MILLION_PERCENT_JUST_STOP": "339",
+    "THE_DESTROYER": "340",
     "GREEDIER": "341",
     "BURNING_BASEMENT": "342",
     "FLOODED_CAVES": "343",
@@ -1857,7 +710,7 @@
     "MYSTERY_EGG": "387",
     "ROTTEN_PENNY": "388",
     "BABY_BENDER": "389",
-    "FORGOTTEN": "390",
+    "THE_FORGOTTEN": "390",
     "BONE_HEARTS": "391",
     "MARROW": "392",
     "SLIPPED_RIB": "393",
@@ -1873,8 +726,8 @@
     "BOUND_BABY": "403",
     "BETHANY": "404",
     "JACOB_AND_ESAU": "405",
-    "PLANETARIUMS": "406",
-    "ALT_PATH": "407",
+    "THE_STARS_ARE_CALLING": "406",
+    "UNLOCKED_A_SECRET_EXIT": "407",
     "FORGOTTEN_LULLABY": "408",
     "FRUITY_PLUM": "409",
     "PLUM_FLUTE": "410",
@@ -1896,7 +749,7 @@
     "HOPE_BABY": "426",
     "GLOWING_BABY": "427",
     "DOUBLE_BABY": "428",
-    "STAIRWAY": "429",
+    "THE_STAIRWAY": "429",
     "RED_STEW": "430",
     "BIRTHRIGHT": "431",
     "DAMOCLES": "432",
@@ -1912,7 +765,7 @@
     "YUCK_HEART": "442",
     "CANDY_HEART": "443",
     "GUPPYS_EYE": "444",
-    "POUND_OF_FLESH": "445",
+    "A_POUND_OF_FLESH": "445",
     "AKELDAMA": "446",
     "REDEMPTION": "447",
     "ETERNAL_D6": "448",
@@ -1942,7 +795,7 @@
     "MAGIC_SKIN": "472",
     "FRIEND_FINDER": "473",
     "TAINTED_ISAAC": "474",
-    "TAINTED_MAGDALENE": "475",
+    "TAINTED_MAGGY": "475",
     "TAINTED_CAIN": "476",
     "TAINTED_JUDAS": "477",
     "TAINTED_BLUE_BABY": "478",
@@ -1951,18 +804,18 @@
     "TAINTED_AZAZEL": "481",
     "TAINTED_LAZARUS": "482",
     "TAINTED_EDEN": "483",
-    "TAINTED_LOST": "484",
+    "TAINTED_THE_LOST": "484",
     "TAINTED_LILITH": "485",
     "TAINTED_KEEPER": "486",
     "TAINTED_APOLLYON": "487",
-    "TAINTED_FORGOTTEN": "488",
+    "TAINTED_THE_FORGOTTEN": "488",
     "TAINTED_BETHANY": "489",
     "TAINTED_JACOB": "490",
     "GLITCHED_CROWN": "491",
     "BELLY_JELLY": "492",
     "BLUE_KEY": "493",
     "SANGUINE_BOND": "494",
-    "SWARM": "495",
+    "THE_SWARM": "495",
     "HEARTBREAK": "496",
     "LARYNX": "497",
     "AZAZELS_RAGE": "498",
@@ -1991,27 +844,27 @@
     "BROKEN_GLASSES": "521",
     "ICE_CUBE": "522",
     "CHARGED_PENNY": "523",
-    "REVERSED_FOOL": "524",
-    "REVERSED_MAGICIAN": "525",
-    "REVERSED_HIGH_PRIESTESS": "526",
-    "REVERSED_EMPRESS": "527",
-    "REVERSED_EMPEROR": "528",
-    "RESERVED_HEIROPHANT": "529",
-    "REVERSED_LOVERS": "530",
-    "REVERSED_CHARIOT": "531",
+    "REVERSED_THE_FOOL": "524",
+    "REVERSED_THE_MAGICIAN": "525",
+    "REVERSED_THE_HIGH_PRIESTESS": "526",
+    "REVERSED_THE_EMPRESS": "527",
+    "REVERSED_THE_EMPEROR": "528",
+    "REVERSED_THE_HIEROPHANT": "529",
+    "REVERSED_THE_LOVERS": "530",
+    "REVERSED_THE_CHARIOT": "531",
     "REVERSED_JUSTICE": "532",
-    "REVERSED_HERMIT": "533",
+    "REVERSED_THE_HERMIT": "533",
     "REVERSED_WHEEL_OF_FORTUNE": "534",
     "REVERSED_STRENGTH": "535",
-    "REVERSED_HANGED_MAN": "536",
+    "REVERSED_THE_HANGED_MAN": "536",
     "REVERSED_DEATH": "537",
     "REVERSED_TEMPERANCE": "538",
-    "REVERSED_DEVIL": "539",
-    "REVERSED_TOWER": "540",
-    "REVERSED_STARS": "541",
-    "REVERSED_SUN_AND_MOON": "542",
+    "REVERSED_THE_DEVIL": "539",
+    "REVERSED_THE_TOWER": "540",
+    "REVERSED_THE_STARS": "541",
+    "REVERSED_THE_SUN_AND_THE_MOON": "542",
     "REVERSED_JUDGEMENT": "543",
-    "REVERSED_WORLD": "544",
+    "REVERSED_THE_WORLD": "544",
     "OLD_CAPACITOR": "545",
     "BRIMSTONE_BOMBS": "546",
     "MEGA_MUSH": "547",
@@ -2070,7 +923,7 @@
     "ANIMA_SOLA": "600",
     "MEGA_CHEST": "601",
     "QUEEN_OF_HEARTS": "602",
-    "GOLDEN_PILLS": "603",
+    "GOLD_PILL": "603",
     "BLACK_SACK": "604",
     "CHARMING_POOP": "605",
     "HORSE_PILLS": "606",
@@ -2095,14 +948,14 @@
     "SOUL_OF_AZAZEL": "625",
     "SOUL_OF_LAZARUS": "626",
     "SOUL_OF_EDEN": "627",
-    "SOUL_OF_LOST": "628",
+    "SOUL_OF_THE_LOST": "628",
     "SOUL_OF_LILITH": "629",
-    "SOUL_OF_KEEPER": "630",
+    "SOUL_OF_THE_KEEPER": "630",
     "SOUL_OF_APOLLYON": "631",
-    "SOUL_OF_FORGOTTEN": "632",
+    "SOUL_OF_THE_FORGOTTEN": "632",
     "SOUL_OF_BETHANY": "633",
     "SOUL_OF_JACOB": "634",
-    "STRANGE_DOOR": "635",
+    "A_STRANGE_DOOR": "635",
     "DEATH_CERTIFICATE": "636",
     "DEAD_GOD": "637"
   },
@@ -2122,20 +975,15 @@
   },
   "HealthType": {
     "DEFAULT": "0",
-    "RED": "0",
     "SOUL": "1",
     "LOST": "2",
-    "NO_HEALTH": "2",
     "COIN": "3",
-    "KEEPER": "3",
     "BONE": "4"
   },
   "Dimension": {
     "CURRENT": "-1",
     "NORMAL": "0",
     "KNIFE_PUZZLE": "1",
-    "MIRROR": "1",
-    "MINESHAFT": "1",
     "DEATH_CERTIFICATE": "2"
   },
   "LineCheckMode": {
@@ -2164,15 +1012,15 @@
     "ROCK": "1000",
     "BOMB_ROCK": "1001",
     "ALT_ROCK": "1002",
-    "TINTED_ROCK": "1003",
-    "MARKED_SKULL": "1008",
+    "MARKED_ROCK": "1003",
+    "ALT_ROCK_MARKED": "1008",
     "EVENT_ROCK": "1009",
     "SPIKE_ROCK": "1010",
     "FOOLS_GOLD_ROCK": "1011",
     "TNT": "1300",
     "RED_POOP": "1490",
     "RAINBOW_POOP": "1494",
-    "CORN_POOP": "1495",
+    "CHUNKY_POOP": "1495",
     "GOLDEN_POOP": "1496",
     "BLACK_POOP": "1497",
     "HOLY_POOP": "1498",
@@ -2186,7 +1034,7 @@
     "COBWEB": "1940",
     "INVISIBLE_BLOCK": "1999",
     "PIT": "3000",
-    "EVENT_RAIL": "3002",
+    "BUTTON_RAIL": "3002",
     "EVENT_PIT": "3009",
     "KEY_BLOCK": "4000",
     "PRESSURE_PLATE": "4500",
@@ -2260,24 +1108,17 @@
     "REWARD": "1",
     "GREED_MODE": "2",
     "MINES_PUZZLE": "3",
-    "RAIL_PLATE": "3",
     "KILL_SWITCH": "9",
     "EVENT_GROUP_0": "10",
-    "EVENT_0": "10",
     "EVENT_GROUP_1": "11",
-    "EVENT_1": "11",
     "EVENT_GROUP_2": "12",
-    "EVENT_2": "12",
-    "EVENT_GROUP_3": "13",
-    "EVENT_3": "13"
+    "EVENT_GROUP_3": "13"
   },
   "TeleporterVariant": {
     "SQUARE": "0",
     "MOON": "1",
     "RHOMBUS": "2",
-    "DIAMOND": "2",
     "M": "3",
-    "HAGALAZ": "3",
     "PENTAGRAM": "4",
     "CROSS": "5",
     "TRIANGLE": "6"
@@ -2286,12 +1127,10 @@
     "NORMAL": "0",
     "RED": "1",
     "CHUNKY": "2",
-    "CORN": "2",
     "GOLDEN": "3",
     "RAINBOW": "4",
     "BLACK": "5",
     "HOLY": "6",
-    "WHITE": "6",
     "GIANT_TL": "7",
     "GIANT_TR": "8",
     "GIANT_BL": "9",
@@ -2302,20 +1141,15 @@
     "NORMAL": "0",
     "GOLDEN": "1",
     "STONE": "11",
-    "PETRIFIED": "11",
     "CHUNKY": "12",
-    "CORN": "12",
     "FLAMING": "13",
     "STINKY": "14",
-    "POISON": "14",
     "BLACK": "15",
-    "HOLY": "16",
-    "WHITE": "16"
+    "HOLY": "16"
   },
   "PlayerVariant": {
     "PLAYER": "0",
-    "FOUND_SOUL": "1",
-    "CO_OP_BABY": "1"
+    "FOUND_SOUL": "1"
   },
   "PillCardSlot": {
     "PRIMARY": "0",
@@ -2407,6 +1241,7 @@
     "DEVIL_DEALS_TAKEN": "16",
     "BLOOD_DONATION_MACHINE_USED": "17",
     "SLOT_MACHINES_BROKEN": "18",
+    "UNKNOWN_EVENT_19": "19",
     "DONATE_MACHINE_COUNTER": "20",
     "DONATION_MACHINE_COUNTER": "20",
     "EDEN_TOKENS": "21",
@@ -3811,9 +2646,10 @@
     "GREED_MODE_COINS_DONATED_WITH_T_THE_LOST": "397",
     "GREED_MODE_COINS_DONATED_WITH_T_LILITH": "398",
     "GREED_MODE_COINS_DONATED_WITH_T_KEEPER": "399",
-    "GREED_MODE_COINS_DONATED_WITH_T_THE_FORGOTTEN": "400",
-    "GREED_MODE_COINS_DONATED_WITH_T_BETHANY": "401",
-    "GREED_MODE_COINS_DONATED_WITH_T_JACOB_AND_ESAU": "402",
+    "GREED_MODE_COINS_DONATED_WITH_T_APOLLYON": "400",
+    "GREED_MODE_COINS_DONATED_WITH_T_THE_FORGOTTEN": "401",
+    "GREED_MODE_COINS_DONATED_WITH_T_BETHANY": "402",
+    "GREED_MODE_COINS_DONATED_WITH_T_JACOB_AND_ESAU": "403",
     "PROGRESSION_KILL_DELIRIUM_WITH_BETHANY": {
       "value": "404",
       "comment": "(0 for not done. 1 for normal difficulty, 2 for hard)"
@@ -4223,7 +3059,6 @@
   "AnnouncerVoiceMode": {
     "RANDOM": "0",
     "NEVER": "1",
-    "OFF": "1",
     "ALWAYS": "2"
   },
   "CameraStyle": {
@@ -4245,27 +3080,16 @@
     "EPILOGUE": "2",
     "CREDITS": "3",
     "SATAN": "4",
-    "ENDING_12": "4",
     "ISAAC": "5",
-    "ENDING_13": "5",
     "LAMB": "6",
-    "ENDING_15": "6",
     "BLUE_BABY": "7",
-    "ENDING_14": "7",
     "MEGA_SATAN": "8",
-    "ENDING_16": "8",
     "ULTRA_GREED": "9",
-    "ENDING_18": "9",
     "HUSH": "10",
-    "ENDING_17": "10",
     "DELIRIUM": "11",
-    "ENDING_20": "11",
     "ULTRA_GREEDIER": "12",
-    "ENDING_19": "12",
     "MOTHER": "13",
-    "ENDING_21": "13",
-    "BEAST": "14",
-    "FINAL_ENDING": "14"
+    "BEAST": "14"
   },
   "FadeoutTarget": {
     "FILE_SELECT_MENU": "1",
@@ -4290,7 +3114,6 @@
     "NECRONOMICON": "1",
     "MONSTER_MANUAL": "2",
     "WHORE_OF_BABYLON": "3",
-    "HORRIBLE_NIGHT": "3",
     "DEAD_SEA_SCROLLS": "4",
     "THE_SUN": "5",
     "ETERNAL_HEART_SOUL": "6",
@@ -4316,7 +3139,7 @@
     "BERKANO": "26",
     "ALGIZ": "27",
     "D100": "28",
-    "RAINBOW_POOP": "29",
+    "RAINBOW": "29",
     "MISSING_PAGE": "30",
     "MISSING_PAGE_2": "31",
     "SPIDER_BUTT": "32",
@@ -4330,29 +3153,10 @@
     "MAMA_MEGA": "40",
     "ETERNAL_HEART_EMPTY": "41",
     "REVERSE_EMPRESS": "42",
-    "MORNING_SUN": "42",
     "REVERSE_THE_SUN": "43",
-    "REVERSE_SUN": "43",
     "SLEEP_NIGHTMARE": "44",
-    "DOGMA": "44",
     "MEGA_MUSH": "45",
     "ETERNAL_HEART_BLACK": "46"
-  },
-  "DebugFlag": {
-    "ENTITY_POSITIONS": "1 << 0",
-    "GRID": "1 << 1",
-    "INFINITE_HP": "1 << 2",
-    "HIGH_DAMAGE": "1 << 3",
-    "ROOM_INFO": "1 << 4",
-    "HITSPHERES": "1 << 5",
-    "DAMAGE_VALUES": "1 << 6",
-    "INFINITE_ITEM_CHARGES": "1 << 7",
-    "HIGH_LUCK": "1 << 8",
-    "QUICK_KILL": "1 << 9",
-    "GRID_INFO": "1 << 10",
-    "PLAYER_ITEM_INFO": "1 << 11",
-    "GRID_COLLISION_POINTS": "1 << 12",
-    "LUA_MEMORY_USAGE": "1 << 13"
   },
   "CompletionType": {
     "MOMS_HEART": "0",
@@ -4364,10 +3168,26 @@
     "MEGA_SATAN": "6",
     "ULTRA_GREED": "7",
     "HUSH": "9",
+    "HARD_MARKS": {
+      "value": "10",
+      "comment": "not supported"
+    },
     "ULTRA_GREEDIER": "11",
     "DELIRIUM": "12",
     "MOTHER": "13",
-    "BEAST": "14"
+    "BEAST": "14",
+    "TAINTED": {
+      "value": "15",
+      "comment": "not supported"
+    },
+    "TAINTED_GROUP1": {
+      "value": "16",
+      "comment": "not supported"
+    },
+    "TAINTED_GROUP2": {
+      "value": "17",
+      "comment": "not supported"
+    }
   },
   "PedestalType": {
     "DEFAULT": "0",
@@ -4391,17 +3211,33 @@
     "OLD_CHEST_COIN_SLOT": "18",
     "MEGA_CHEST_COIN_SLOT": "19"
   },
+  "DebugFlag": {
+    "ENTITY_POSITIONS": "1",
+    "GRID": "1",
+    "INFINITE_HP": "1",
+    "HIGH_DAMAGE": "1",
+    "ROOM_INFO": "1",
+    "HITSPHERES": "1",
+    "DAMAGE_VALUES": "1",
+    "INFINITE_ITEM_CHARGES": "1",
+    "HIGH_LUCK": "1",
+    "QUICK_KILL": "1",
+    "GRID_INFO": "1",
+    "PLAYER_ITEM_INFO": "1",
+    "GRID_COLLISION_POINTS": "1",
+    "LUA_MEMORY_USAGE": "1"
+  },
   "DipSubType": {
     "NORMAL": "0",
     "RED": "1",
-    "CORN": "2",
+    "CHUNKY": "2",
     "GOLDEN": "3",
     "RAINBOW": "4",
     "BLACK": "5",
     "HOLY": "6",
-    "PETRIFIED": "12",
+    "STONE": "12",
     "FLAMING": "13",
-    "POISON": "14",
+    "STINKY": "14",
     "BROWNIE": "20"
   },
   "PauseMenuStates": {
@@ -4455,7 +3291,6 @@
     "ANTI_GRAVITY": "1",
     "TRACTOR_BEAM": "1",
     "SOY_MILK": "1",
-    "ALMOND_MILK": "1",
     "NEPTUNUS": "1",
     "AZAZELS_SNEEZE": "1",
     "C_SECTION": "1",
@@ -4695,7 +3530,10 @@
     "BOSSRUSHWAVE": "28",
     "PLAYERFORM": "29",
     "NULLITEM": "30",
-    "BOSSCOLOR": "31"
+    "BOSSCOLOR": "31",
+    "FXLAYER": "32",
+    "FXPARAM": "33",
+    "FXRAY": "34"
   },
   "AutocompleteType": {
     "NONE": "0",
@@ -4715,37 +3553,17 @@
     "DELIRIOUS": "14",
     "PLAYER": "15",
     "ACHIEVEMENT": "16",
-    "CUSTOM": "17"
+    "MODFOLDER": "17",
+    "CUSTOM": "18"
   },
   "AnimRenderFlags": {
-    "GLITCH": {
-      "value": "1 << 1",
-      "comment": "Rapidly distorts the spritesheet position. Likely used for glitch items generated by CORRUPTED DATA."
-    },
-    "COLOROFFSET_CHAMPION": {
-      "value": "1 << 4",
-      "comment": "Used by champion NPCs. If not applied to a champion NPC, it will not render."
-    },
-    "STATIC": {
-      "value": "1 << 5",
-      "comment": "Used by Dogma (boss, collectible, related effects)."
-    },
-    "IGNORE_GAME_TIME": {
-      "value": "1 << 6",
-      "comment": "If set, animated effects (static, golden) will continue animating even if the game is paused."
-    },
-    "GOLDEN": {
-      "value": "1 << 7",
-      "comment": "Used by golden trinkets."
-    },
-    "ENABLE_LAYER_LIGHTING": {
-      "value": "1 << 10",
-      "comment": "Layer names starting with * will become fullbright."
-    },
-    "ENABLE_NULL_LAYER_LIGHTING": {
-      "value": "1 << 11",
-      "comment": "Null layer names starting with * will emit light."
-    }
+    "GLITCH": "1",
+    "COLOROFFSET_CHAMPION": "1",
+    "STATIC": "1",
+    "IGNORE_GAME_TIME": "1",
+    "GOLDEN": "1",
+    "ENABLE_LAYER_LIGHTING": "1",
+    "ENABLE_NULL_LAYER_LIGHTING": "1"
   },
   "DialogButtons": {
     "OK": "0",
@@ -4812,32 +3630,20 @@
     "NODELIRIUM": "1"
   },
   "GibFlag": {
-    "BLOOD": "1 << 0",
-    "BONE": "1 << 1",
-    "GUT": "1 << 2",
-    "EYE": "1 << 3",
-    "LARGE": "1 << 4",
-    "POOP": "1 << 5",
-    "WORM": "1 << 6",
-    "ROCK": "1 << 7",
-    "ROCK_SMALL": "1 << 8",
-    "SOUND_BABY": "1 << 9",
-    "SOUND_BONE": "1 << 10",
-    "CHAIN": "1 << 11",
-    "DUST": "1 << 12",
-    "HUGE": "1 << 13"
-  },
-  "ImGuiNotificationType": {
-    "INFO": "0",
-    "SUCCESS": "1",
-    "WARNING": "2",
-    "ERROR": "3"
-  },
-  "PurityState": {
-    "RED": "0",
-    "BLUE": "1",
-    "YELLOW": "2",
-    "ORANGE": "3"
+    "BLOOD": "1",
+    "BONE": "1",
+    "GUT": "1",
+    "EYE": "1",
+    "LARGE": "1",
+    "POOP": "1",
+    "WORM": "1",
+    "ROCK": "1",
+    "ROCK_SMALL": "1",
+    "SOUND_BABY": "1",
+    "SOUND_BONE": "1",
+    "CHAIN": "1",
+    "DUST": "1",
+    "HUGE": "1"
   },
   "BombCostumeLayer": {
     "BACK": "0",
@@ -4846,15 +3652,17 @@
     "FRONT2": "3",
     "OVERLAY": "4"
   },
-  "DeliriumCallbacks": {
-    "TRANSFORMATION": {
-      "value": "1",
-      "comment": "This callback is fired immediately before the game transforms Delirium into a boss (this also includes when Delirium returns to its normal form)."
-    },
-    "POST_TRANSFORMATION": {
-      "value": "2",
-      "comment": "This callback is fired immediately after the game transform Delirium into a boss (this also includes when Delirium returns to its normal form or transforms into the same boss)."
-    }
+  "PurityState": {
+    "RED": "0",
+    "BLUE": "1",
+    "YELLOW": "2",
+    "ORANGE": "3"
+  },
+  "ImGuiNotificationType": {
+    "INFO": "0",
+    "SUCCESS": "1",
+    "WARNING": "2",
+    "ERROR": "3"
   },
   "SpecialQuest": {
     "DISABLED": "-1",
@@ -4873,57 +3681,23 @@
     "ONE_MINUS_SRC_ALPHA": "7",
     "DST_ALPHA": "8",
     "ONE_MINUS_DST_ALPHA": "9",
-    "CONSTANT_COLOR": {
-      "value": "10",
-      "comment": "Currently nonfunctional."
-    },
-    "ONE_MINUS_CONSTANT_COLOR": {
-      "value": "11",
-      "comment": "Currently nonfunctional."
-    },
-    "CONSTANT_ALPHA": {
-      "value": "12",
-      "comment": "Currently nonfunctional."
-    },
-    "ONE_MINUS_CONSTANT_ALPHA": {
-      "value": "13",
-      "comment": "Currently nonfunctional."
-    },
+    "CONSTANT_COLOR": "10",
+    "ONE_MINUS_CONSTANT_COLOR": "11",
+    "CONSTANT_ALPHA": "12",
+    "ONE_MINUS_CONSTANT_ALPHA": "13",
     "SRC_ALPHA_SATURATE": "14"
   },
   "BlendType": {
-    "CONSTANT": {
-      "value": "0",
-      "comment": "`{1, 0, 1, 0}`. Seems to be used to ignore any kind of source/destination modifiers."
-    },
-    "NORMAL": {
-      "value": "1",
-      "comment": "`{1, 7, 1, 7}`"
-    },
-    "ADDITIVE": {
-      "value": "2",
-      "comment": "`{1, 1, 1, 1}`"
-    },
-    "MULTIPLICATIVE": {
-      "value": "3",
-      "comment": "`{0, 2, 0, 2}`"
-    },
-    "OVERLAY": {
-      "value": "4",
-      "comment": "`{4, 7, 4, 7}`"
-    }
+    "CONSTANT": "0",
+    "NORMAL": "1",
+    "ADDITIVE": "2",
+    "MULTIPLICATIVE": "3",
+    "OVERLAY": "4"
   },
-  "AddHealthType": {
-    "NONE": "0",
-    "RED": "1 << 0",
-    "MAX": "1 << 1",
-    "SOUL": "1 << 2",
-    "BLACK": "1 << 3",
-    "ETERNAL": "1 << 4",
-    "GOLDEN": "1 << 5",
-    "BONE": "1 << 6",
-    "ROTTEN": "1 << 7",
-    "BROKEN": "1 << 8"
+  "MinimapState": {
+    "NORMAL": "0",
+    "EXPANDED": "1",
+    "EXPANDED_OPAQUE": "2"
   },
   "DwmWindowAttributes": {
     "DWMWA_NCRENDERING_ENABLED": "1",
@@ -4940,11 +3714,11 @@
     "DWMWA_EXCLUDED_FROM_PEEK": "12",
     "DWMWA_CLOAK": {
       "value": "13",
-      "comment": "Blocked"
+      "comment": "blocked"
     },
     "DWMWA_CLOAKED": {
       "value": "14",
-      "comment": "Blocked"
+      "comment": "blocked"
     },
     "DWMWA_FREEZE_REPRESENTATION": "15",
     "DWMWA_PASSIVE_UPDATE_MODE": "16",
@@ -4958,68 +3732,27 @@
     "DWMWA_SYSTEMBACKDROP_TYPE": "38",
     "DWMWA_LAST": "39"
   },
-  "ButtonActionBitwise": {
-    "ACTION_LEFT": "1<<0",
-    "ACTION_RIGHT": "1<<1",
-    "ACTION_UP": "1<<2",
-    "ACTION_DOWN": "1<<3",
-    "ACTION_SHOOTLEFT": "1<<4",
-    "ACTION_SHOOTRIGHT": "1<<5",
-    "ACTION_SHOOTUP": "1<<6",
-    "ACTION_SHOOTDOWN": "1<<7",
-    "ACTION_BOMB": "1<<8",
-    "ACTION_ITEM": "1<<9",
-    "ACTION_PILLCARD": "1<<10",
-    "ACTION_DROP": "1<<11",
-    "ACTION_PAUSE": "1<<12",
-    "ACTION_MAP": "1<<13",
-    "ACTION_MENUCONFIRM": "1<<14",
-    "ACTION_MENUBACK": "1<<15",
-    "ACTION_RESTART": "1<<16",
-    "ACTION_FULLSCREEN": "1<<17",
-    "ACTION_MUTE": "1<<18",
-    "ACTION_JOINMULTIPLAYER": "1<<19",
-    "ACTION_MENULEFT": "1<<20",
-    "ACTION_MENURIGHT": "1<<21",
-    "ACTION_MENUUP": "1<<22",
-    "ACTION_MENUDOWN": "1<<23",
-    "ACTION_MENULT": "1<<24",
-    "ACTION_MENURT": "1<<25",
-    "ACTION_MENUTAB": "1<<26",
-    "ACTION_CONSOLE": "1<<28"
-  },
-  "MinimapState": {
-    "NORMAL": "0",
-    "EXPANDED_OPAQUE": "1",
-    "EXPANDED": "2"
-  },
   "ConceptionFamiliarFlag": {
-    "LEECH": "1<<0",
-    "DARK_BUM": "1<<1",
-    "DEMON_BABY": "1<<2",
-    "INCUBUS": "1<<3",
-    "LIL_BRIMSTONE": "1<<4",
-    "SUCCUBUS": "1<<5",
-    "GUARDIAN_ANGEL": "1<<6",
-    "HOLY_WATER": "1<<7",
-    "RELIC": "1<<8",
-    "SWORN_PROTECTOR": "1<<9",
-    "SERAPHIM": "1<<10",
-    "LIL_ABADDON": "1<<11",
-    "TWISTED_PAIR": "1<<12"
+    "LEECH": "1",
+    "DARK_BUM": "1",
+    "DEMON_BABY": "1",
+    "INCUBUS": "1",
+    "LIL_BRIMSTONE": "1",
+    "SUCCUBUS": "1",
+    "GUARDIAN_ANGEL": "1",
+    "HOLY_WATER": "1",
+    "RELIC": "1",
+    "SWORN_PROTECTOR": "1",
+    "SERAPHIM": "1",
+    "LIL_ABADDON": "1",
+    "TWISTED_PAIR": "1"
   },
-  "GetCollectibleFlag": {
-    "BAN_ACTIVES": {
-      "value": "1<<0",
-      "comment": "Bans items with Type: `ITEM_ACTIVE`."
-    },
-    "IGNORE_MODIFIERS": {
-      "value": "1<<1",
-      "comment": "If set the game does not attempt to morph the collectible into either `Magic Skin` or `Rosary`. Does not prevent a morph into `Bible`."
-    },
-    "BAN_PASSIVE": {
-      "value": "1<<2",
-      "comment": "Bans items with Type: `ITEM_PASSIVE`"
-    }
+  "CharacterMenuStatus": {
+    "DEFAULT": "0",
+    "SEED": "1",
+    "RANDOM_SELECTION": "2",
+    "RANDOM_CHARACTER_SELECTION": "2",
+    "FADEOUT": "3",
+    "CHARACTER_PAPER_SWAP": "4"
   }
 }
