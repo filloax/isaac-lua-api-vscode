@@ -194,47 +194,47 @@
     },
     "MC_PRE_FAMILIAR_RENDER": {
       "value": "1080",
-      "comment": "(EntityFamiliar Familiar): Vector | boolean, Optional Arg: FamiliarVariant - Called before a familiar is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
+      "comment": "(EntityFamiliar Familiar, Vector Offset): Vector | boolean, Optional Arg: FamiliarVariant - Called before a familiar is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
     },
     "MC_PRE_NPC_RENDER": {
       "value": "1081",
-      "comment": "(EntityNPC NPC): Vector | boolean, Optional Arg: EntityType - Called before an NPC is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
+      "comment": "(EntityNPC NPC, Vector Offset): Vector | boolean, Optional Arg: EntityType - Called before an NPC is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
     },
     "MC_PRE_PLAYER_RENDER": {
       "value": "1082",
-      "comment": "(EntityPlayer Player): Vector | boolean, Optional Arg: PlayerVariant - Called before a player is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
+      "comment": "(EntityPlayer Player, Vector Offset): Vector | boolean, Optional Arg: PlayerVariant - Called before a player is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
     },
     "MC_PRE_PICKUP_RENDER": {
       "value": "1083",
-      "comment": "(EntityPickup Pickup): Vector | boolean, Optional Arg: PickupVariant - Called before a pickup is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
+      "comment": "(EntityPickup Pickup, Vector Offset): Vector | boolean, Optional Arg: PickupVariant - Called before a pickup is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
     },
     "MC_PRE_TEAR_RENDER": {
       "value": "1084",
-      "comment": "(EntityTear Tear): Vector | boolean, Optional Arg: TearVariant - Called before a tear is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
+      "comment": "(EntityTear Tear, Vector Offset): Vector | boolean, Optional Arg: TearVariant - Called before a tear is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
     },
     "MC_PRE_PROJECTILE_RENDER": {
       "value": "1085",
-      "comment": "(EntityProjectile Projectile): Vector | boolean, Optional Arg: ProjectileVariant - Called before a projectile is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
+      "comment": "(EntityProjectile Projectile, Vector Offset): Vector | boolean, Optional Arg: ProjectileVariant - Called before a projectile is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
     },
     "MC_PRE_KNIFE_RENDER": {
       "value": "1086",
-      "comment": "(EntityKnife Knife): Vector | boolean, Optional Arg: KnifeVariant - Called before a knife is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
+      "comment": "(EntityKnife Knife, Vector Offset): Vector | boolean, Optional Arg: KnifeVariant - Called before a knife is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
     },
     "MC_PRE_EFFECT_RENDER": {
       "value": "1087",
-      "comment": "(EntityEffect Effect): Vector | boolean, Optional Arg: EffectVariant - Called before an effect is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
+      "comment": "(EntityEffect Effect, Vector Offset): Vector | boolean, Optional Arg: EffectVariant - Called before an effect is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
     },
     "MC_PRE_BOMB_RENDER": {
       "value": "1088",
-      "comment": "(EntityBomb Bomb): Vector | boolean, Optional Arg: BombVariant - Called before a bomb is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
+      "comment": "(EntityBomb Bomb, Vector Offset): Vector | boolean, Optional Arg: BombVariant - Called before a bomb is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
     },
     "MC_PRE_SLOT_RENDER": {
       "value": "1089",
-      "comment": "(EntitySlot Slot): Vector | boolean, Optional Arg: SlotVariant - Called before a slot is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
+      "comment": "(EntitySlot Slot, Vector Offset): Vector | boolean, Optional Arg: SlotVariant - Called before a slot is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
     },
     "MC_POST_SLOT_RENDER": {
       "value": "1090",
-      "comment": "(EntityFamiliar Familiar): Vector | boolean, Optional Arg: FamiliarVariant - Called after a familiar is rendered, assuming it wasn't skipped."
+      "comment": "(EntityFamiliar Familiar, Vector Offset): Vector | boolean, Optional Arg: FamiliarVariant - Called after a familiar is rendered, assuming it wasn't skipped."
     },
     "MC_PLAYER_GET_ACTIVE_MAX_CHARGE": {
       "value": "1072",
