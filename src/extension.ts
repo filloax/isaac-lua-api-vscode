@@ -68,6 +68,10 @@ function onActivate(context: vscode.ExtensionContext) {
     const config = getConfig();
     const filenamePath = getCfgFilePath();
 
+    if (!filenamePath) {
+        return;
+    }
+
     if (!fs.existsSync(filenamePath)) {
         fs.writeFileSync(filenamePath, "{\n}");
     }
@@ -92,6 +96,10 @@ function onActivate(context: vscode.ExtensionContext) {
 function onDeactivate(context: vscode.ExtensionContext) {
     const filenamePath = getCfgFilePath();
 
+    if (!filenamePath) {
+        return;
+    }
+
     if (fs.existsSync(filenamePath)) {
         modifyJsoncFile(filenamePath, luaCfg => {
             setMiscConfig(false);
@@ -108,6 +116,11 @@ function onConfigChange(context: vscode.ExtensionContext, event: vscode.Configur
     
     if (event.affectsConfiguration("boi-lua.repentogonEnabled")) {
         const filenamePath = getCfgFilePath();
+
+        if (!filenamePath) {
+            return;
+        }
+
         modifyJsoncFile(filenamePath, luaCfg => {
             setExternalLibrary(luaCfg, context, VANILLA_LUA_LIBRARY, !config.repentogonEnabled);
             setExternalLibrary(luaCfg, context, REPENTOGON_LUA_LIBRARY, config.repentogonEnabled);
@@ -118,5 +131,9 @@ function onConfigChange(context: vscode.ExtensionContext, event: vscode.Configur
 
 function getCfgFilePath() {
     const workspaceFolders = vscode.workspace.workspaceFolders as vscode.WorkspaceFolder[];
+    if (!workspaceFolders) {
+        console.error("No workspace has been opened, disabling most extension functionalities!");
+        return null;
+    }
     return path.join(workspaceFolders[0].uri.fsPath, LUA_CONFIG_FILENAME);
 }

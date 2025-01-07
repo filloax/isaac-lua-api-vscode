@@ -43,6 +43,11 @@ More examples:
 ![](https://i.imgur.com/1BiL3CE.png)
 ![](https://i.imgur.com/WnC5IFv.png)
 
+### Notes
+
+- The extension only works **if you open a workspace** (either a single folder or multiple, didn't test the latter).  It won't work if you open standalone Lua files
+without opening a workspace in VSCode.
+
 ## Extension Settings
 
 This extension has no settings; you can configure behavior in the Lua Language Server extension settings.
