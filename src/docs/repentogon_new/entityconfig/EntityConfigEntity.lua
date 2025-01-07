@@ -141,6 +141,10 @@ end
 function EntityConfigEntity:GetStageHP()
 end
 
+---Returns the entity's subtype.
+function EntityConfigEntity:GetSubType()
+end
+
 ---Returns the entity's type.
 ---@return integer
 function EntityConfigEntity:GetType()

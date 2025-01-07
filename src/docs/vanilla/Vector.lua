@@ -22,7 +22,7 @@ _G.Vector = {
 
 ---@param AngleDegrees number
 ---@return Vector
-function Vector.FromAngle(AngleDegrees)
+function _G.Vector.FromAngle(AngleDegrees)
 end
 
 ---@param first Vector

@@ -224,9 +224,10 @@ end
 function Level:SetRedHeartDamage()
 end
 
----@param Stage LevelStage
----@param StageType StageType
-function Level:SetStage(Stage, StageType)
+---Changes the current floor, and it's stage. For the changes to fully apply, either use the reseed console command, or Game.StartStageTransition.
+---@param StageOffset integer @Acts as the new "floor". 1 is Basement I, 2 Basmement II, 3 Caves I, etc
+---@param StageTypeOffset integer @Acts as the new "stage" based on the listed IDs in stages.xml. See [this link](https://wofsauge.github.io/IsaacDocs/rep/Level.html?h=setstage#setstage) for more details.
+function Level:SetStage(StageOffset, StageTypeOffset)
 end
 
 ---@param LevelStateFlag LevelStateFlag

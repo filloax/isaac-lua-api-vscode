@@ -169,3 +169,8 @@ end
 ---@param LoadGraphics? boolean
 function EntityNPC:ReplaceSpritesheet(LayerID, PngFilename, LoadGraphics)
 end
+
+---When Siren controls familiars, they have their own EntityPlayer in order to do so. This returns that specific player if called on Siren
+---@return EntityPlayer?
+function EntityNPC:GetSirenPlayerEntity()
+end

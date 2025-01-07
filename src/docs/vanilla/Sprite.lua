@@ -78,7 +78,7 @@ function Sprite:IsPlaying(AnimationName)
 end
 
 ---@param Filename string
----@param LoadGraphics boolean
+---@param LoadGraphics? boolean
 function Sprite:Load(Filename, LoadGraphics)
 end
 
