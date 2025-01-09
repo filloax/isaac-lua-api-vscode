@@ -3,15 +3,14 @@
 ---@field Hidden boolean
 ---@field InitialWeight number
 ---@field Weight number @Can be modified
-local ItemConfigCard_RGON = {}
 
 ---@return function
-function ItemConfigCard_RGON:GetAvailabilityCondition()
+function ItemConfigCard:GetAvailabilityCondition()
 end
 
 ---@param func function
-function ItemConfigCard_RGON:SetAvailabilityCondition(func)
+function ItemConfigCard:SetAvailabilityCondition(func)
 end
 
-function ItemConfigCard_RGON:ClearAvailabilityCondition()
+function ItemConfigCard:ClearAvailabilityCondition()
 end
