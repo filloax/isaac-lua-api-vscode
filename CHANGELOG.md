@@ -1,5 +1,16 @@
 # Change Log
 
+* [1.12.0]
+    - Fix extension erroring when opneing files outside of a workspace, will now self-disable in that case (check README!)
+    - Add REPENTANCE_PLUS global
+    - Fix FromAngle not being available on global Vector
+    - Add Options.JacobEsauControls for Repentance+
+    - Rename GetPillcolor -> GetPillColor
+    - LoadGraphics argument on Sprite:Load is optional
+    - Corrected LevelCurse enum's values all being the exact same
+    - Add various missing variables, functions, and arguments for both vanilla and REPENTOGON content
+    - PR #25: ItemConfigCard changes
+
 * [1.11.1]
     - Fix enum typos in build
     - Fix EntityEffect.CreateLight (from nazjun)
