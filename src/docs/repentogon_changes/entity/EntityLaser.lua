@@ -42,10 +42,6 @@ end
 function EntityLaser:SetShrink(isShrink)
 end
 
----@param value boolean
-function EntityLaser:SetTimeout(value)
-end
-
 ---@return number
 function EntityLaser:GetDamageMultiplier()
 end
