@@ -150,9 +150,9 @@ end
 function Game:GetDonationModAngel()
 end
 
----Returns how many times you've donated to a donation machine this floor, used for Greed Donation Machine jam chance. Resets on the next floor.
+---Used for Greed Donation Machine jam chance.
 ---@return integer
-function Game:GetDonationModGreed(donation)
+function Game:GetDonationModGreed()
 end
 
 ---@return Font
