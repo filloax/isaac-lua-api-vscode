@@ -594,7 +594,7 @@
     },
     "MC_PRE_PLAYERHUD_TRINKET_RENDER": {
       "value": "1264",
-      "comment": "(ActiveSlot Slot, Vector Position, float Scale, EntityPlayer Player, Vector CropOffset): table{Position, Scale, CropOffset} | boolean, Optional Arg: ActiveSlot - Called before the player's trinket on the HUD is rendered. Return a table with any combination of its parameters to override those respective fields or `true` to cancel rendering."
+      "comment": "(integer Slot, Vector Position, float Scale, EntityPlayer Player, Vector CropOffset): table{Position, Scale, CropOffset} | boolean, Optional Arg: integer - Called before the player's trinket on the HUD is rendered. Return a table with any combination of its parameters to override those respective fields or `true` to cancel rendering."
     },
     "MC_MENU_INPUT_ACTION": {
       "value": "1464",
