@@ -245,6 +245,7 @@ end
 
 ---Returns true if the challenge of the corresponding challengeid is completed.
 ---@param challengeId Challenge
+---@return boolean
 function Isaac.IsChallengeDone(challengeId)
 end
 
