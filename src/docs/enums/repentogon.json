@@ -870,7 +870,7 @@
     },
     "MC_POST_ACHIEVEMENT_UNLOCK": {
       "value": "1476",
-      "comment": "Callback has no arguments. Called after an achievement is unlocked, has the achievement id as its param"
+      "comment": "(AchievementID Achievement), Optional Arg: Achievement - Called after an achievement is unlocked."
     },
     "MC_PRE_MINIMAP_UPDATE": {
       "value": "1477",
