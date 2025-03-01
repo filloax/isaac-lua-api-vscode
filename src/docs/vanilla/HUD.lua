@@ -31,14 +31,16 @@ end
 ---@param MainString string
 ---@param SecondaryString? string
 ---@param IsCurseDisplay? boolean @default: `false`
+---@param ClearStack? boolean @default: `false`. Repentance+ Exclusive
 ---@diagnostic disable-next-line: duplicate-set-field
-function HUD:ShowItemText(MainString, SecondaryString, IsCurseDisplay)
+function HUD:ShowItemText(MainString, SecondaryString, IsCurseDisplay, ClearStack)
 end
 
 ---@param Player EntityPlayer
 ---@param Item ItemConfigItem
+---@param ClearStack? boolean @default: `false`. Repentance+ Exclusive
 ---@diagnostic disable-next-line: duplicate-set-field
-function HUD:ShowItemText(Player, Item)
+function HUD:ShowItemText(Player, Item, ClearStack)
 end
 
 ---@param Visible? boolean @default: `false`
