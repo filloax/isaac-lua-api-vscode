@@ -1046,7 +1046,7 @@
     },
     "MC_PRE_ITEM_TEXT_DISPLAY": {
       "value": "1484",
-      "comment": "(string Title, string Subtitle, boolean IsSticky, boolean IsCurseDisplay): boolean - Called before an item text is displayed. `IsSticky` is `true` is if the item text stays on screen for an indefinite amount of time, namely when holding down the map key. `IsCurseDisplay` is `true` if the text is for displaying a curse."
+      "comment": "(string Title, string Subtitle, boolean IsSticky, boolean IsCurseDisplay): boolean - Called before an item text is displayed. `IsSticky` is `true` is if the item text stays on screen for an indefinite amount of time, namely when holding down the map key. `IsCurseDisplay` is `true` if the text is for displaying a curse. Return `false` to cancel showing the item text."
     },
     "MC_PRE_GET_RANDOM_ROOM_INDEX": {
       "value": "1290",
