@@ -978,11 +978,11 @@
     },
     "MC_POST_PROJECTILE_DEATH": {
       "value": "1032",
-      "comment": "(EntityProjectile Projectile) - Called after the projectile dies."
+      "comment": "(EntityProjectile Projectile), Optional Arg: ProjectileVariant - Called after the projectile dies."
     },
     "MC_POST_TEAR_DEATH": {
       "value": "1032",
-      "comment": "(EntityTear Tear) - Called after the tear dies."
+      "comment": "(EntityTear Tear), Optional Arg: TearVariant - Called after the tear dies."
     },
     "MC_POST_BOSS_INTRO_SHOW": {
       "value": "1270",
