@@ -9,6 +9,10 @@ end
 function Random()
 end
 
+---@return Vector
+function RandomVector()
+end
+
 ---This global is `true` in Repentance DLC and `nil` in Afterbirth+
 _G.REPENTANCE = true ---@type true|nil
 
