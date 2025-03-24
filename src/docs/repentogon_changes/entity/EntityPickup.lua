@@ -6,10 +6,6 @@
 function EntityPickup:AddCollectibleCycle(collectible)
 end
 
----@return boolean
-function EntityPickup:CanReroll()
-end
-
 ---Returns the pickup's alternate pedestal.
 ---@return PedestalType --Returns -1 for non-collectible EntityPickups
 function EntityPickup:GetAlternatePedestal()
