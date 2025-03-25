@@ -128,3 +128,8 @@ end
 ---|1 # Tainted
 function CharacterMenu.SetSelectedCharacterMenu(menu)
 end
+
+---Sets the current character ID.
+---@param ID integer
+function CharacterMenu.SetSelectedCharacterID(ID)
+end
