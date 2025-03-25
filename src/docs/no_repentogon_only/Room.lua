@@ -18,7 +18,7 @@
 ---@param GridPathThreshold? integer @default: `0`. See `GetGridPath` for GridPath values pseudo-enumeration.
 ---@param IgnoreWalls? boolean @default: `false`
 ---@param IgnoreCrushable? boolean @default: `false`
----@return boolean
+---@return boolean, Vector
 function Room:CheckLine(Pos1, Pos2, Mode, GridPathThreshold, IgnoreWalls, IgnoreCrushable)
 end
 

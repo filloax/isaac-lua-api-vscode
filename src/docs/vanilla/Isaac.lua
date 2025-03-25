@@ -100,7 +100,7 @@ end
 
 ---@param Position Vector
 ---@param Radius number
----@param Partitions? integer @default: `0xFFFFFFFF`
+---@param Partitions? EntityPartition | integer @default: `0xFFFFFFFF`
 ---@return Entity[]
 function Isaac.FindInRadius(Position, Radius, Partitions)
 end
