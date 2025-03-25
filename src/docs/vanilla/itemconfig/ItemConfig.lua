@@ -22,7 +22,7 @@ end
 function ItemConfig_Class:GetCards()
 end
 
----@param ID integer
+---@param ID CollectibleType
 ---@return ItemConfigItem
 function ItemConfig_Class:GetCollectible(ID)
 end
@@ -31,7 +31,7 @@ end
 function ItemConfig_Class:GetCollectibles()
 end
 
----@param ID integer
+---@param ID NullItemID
 ---@return ItemConfigItem
 function ItemConfig_Class:GetNullItem(ID)
 end
@@ -49,7 +49,7 @@ end
 function ItemConfig_Class:GetPillEffects()
 end
 
----@param ID integer
+---@param ID TrinketType
 ---@return ItemConfigItem
 function ItemConfig_Class:GetTrinket(ID)
 end

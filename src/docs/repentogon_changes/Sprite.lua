@@ -75,7 +75,7 @@ end
 function Sprite:SetOverlayFrame(AnimationName, FrameNum) end
 
 ---Sets the sprite's render flags.
----@param renderFlags integer
+---@param renderFlags AnimRenderFlags
 function Sprite:SetRenderFlags(renderFlags) end
 
 ---@param StopOverlay? boolean @default is `true`.
