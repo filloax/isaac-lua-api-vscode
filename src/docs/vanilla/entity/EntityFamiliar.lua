@@ -9,7 +9,7 @@
 ---@field LastDirection Direction
 ---@field MoveDirection Direction
 ---@field OrbitAngleOffset number
----@field OrbitLayer Vector # Not officially documented but functional
+---@field OrbitLayer integer # Not officially documented but functional
 ---@field OrbitSpeed number # Not officially documented but functional
 ---@field OrbitDistance Vector
 ---@field Player EntityPlayer
