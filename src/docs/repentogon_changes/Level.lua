@@ -87,39 +87,41 @@ end
 ---If a seed of nil or 0 is provided, a seed will be auto-generated based on the location, room shape, and level seed.
 ---@param roomConfigRoom RoomConfigRoom
 ---@param gridIndex integer
----@param dimension Dimension @default: `Dimension.CURRENT`
----@param allowMultipleDoors boolean @default: `true`. Set to false to only allow successful placement if the room would only have one door (for placing special rooms).
----@param allowSpecialNeighbors boolean @default: `false`. Set to true to allow connections to existing special rooms (note secret rooms are always allowed, but boss rooms are never allowed).
----@param allowNoNeighbors boolean @default: `false`. Set to true to allow placing the room out in the void with no neighbors.
+---@param dimension? Dimension @default: `Dimension.CURRENT`
+---@param seed? integer @default: `0`
+---@param allowMultipleDoors? boolean @default: `true`. Set to false to only allow successful placement if the room would only have one door (for placing special rooms).
+---@param allowSpecialNeighbors? boolean @default: `false`. Set to true to allow connections to existing special rooms (note secret rooms are always allowed, but boss rooms are never allowed).
+---@param allowNoNeighbors? boolean @default: `false`. Set to true to allow placing the room out in the void with no neighbors.
 ---@return RoomDescriptor?
-function Level:TryPlaceRoom(roomConfigRoom, gridIndex, dimension, allowMultipleDoors, allowSpecialNeighbors, allowNoNeighbors)
+function Level:TryPlaceRoom(roomConfigRoom, gridIndex, dimension, seed, allowMultipleDoors, allowSpecialNeighbors, allowNoNeighbors)
 end
 
 ---Returns true if the room could be successfully placed connected to the specified DoorSlot of an existing room.
----@param roomConfigRoom RoomConfigRoom
----@param roomDescriptor RoomDescriptor
+---@param roomConfigRoomToPlace RoomConfigRoom
+---@param neightborRoomDescriptor RoomDescriptor
 ---@param doorSlot DoorSlot
----@param allowMultipleDoors boolean @default: `true`. Set to false to only allow successful placement if the room would only have one door (for placing special rooms).
----@param allowSpecialNeighbors boolean @default: `false`. Set to true to allow connections to existing special rooms (note secret rooms are always allowed, but boss rooms are never allowed).
+---@param allowMultipleDoors? boolean @default: `true`. Set to false to only allow successful placement if the room would only have one door (for placing special rooms).
+---@param allowSpecialNeighbors? boolean @default: `false`. Set to true to allow connections to existing special rooms (note secret rooms are always allowed, but boss rooms are never allowed).
 ---@return boolean
-function Level:CanPlaceRoomAtDoor(roomConfigRoom, roomDescriptor, doorSlot, allowMultipleDoors, allowSpecialNeighbors)
+function Level:CanPlaceRoomAtDoor(roomConfigRoomToPlace, neightborRoomDescriptor, doorSlot, allowMultipleDoors, allowSpecialNeighbors)
 end
 
 ---Similar to `TryPlaceRoom`, but attempts to place the provided room (the RoomConfigRoom) as a neighbor of an existing room (the RoomDescriptor) at the specified DoorSlot.
----@param roomConfigRoom RoomConfigRoom
----@param roomDescriptor RoomDescriptor
+---@param roomConfigRoomToPlace RoomConfigRoom
+---@param neightborRoomDescriptor RoomDescriptor
 ---@param doorSlot DoorSlot
----@param allowMultipleDoors boolean @default: `true`. Set to false to only allow successful placement if the room would only have one door (for placing special rooms).
----@param allowSpecialNeighbors boolean @default: `false`. Set to true to allow connections to existing special rooms (note secret rooms are always allowed, but boss rooms are never allowed).
+---@param seed? integer @default: `0`
+---@param allowMultipleDoors? boolean @default: `true`. Set to false to only allow successful placement if the room would only have one door (for placing special rooms).
+---@param allowSpecialNeighbors? boolean @default: `false`. Set to true to allow connections to existing special rooms (note secret rooms are always allowed, but boss rooms are never allowed).
 ---@return RoomDescriptor?
-function Level:TryPlaceRoomAtDoor(roomConfigRoom, roomDescriptor, doorSlot, allowMultipleDoors, allowSpecialNeighbors)
+function Level:TryPlaceRoomAtDoor(roomConfigRoomToPlace, neightborRoomDescriptor, doorSlot, seed, allowMultipleDoors, allowSpecialNeighbors)
 end
 
 ---Returns a table of level GridIndexes that would be valid locations to place the given room.
 ---@param roomConfigRoom RoomConfigRoom
----@param dimension Dimension @default: `-1`
----@param allowMultipleDoors boolean @default: `true`. Set to false to only allow successful placement if the room would only have one door (for placing special rooms).
----@param allowSpecialNeighbors boolean @default: `false`. Set to true to allow connections to existing special rooms (note secret rooms are always allowed, but boss rooms are never allowed).
+---@param dimension? Dimension @default: `-1`
+---@param allowMultipleDoors? boolean @default: `true`. Set to false to only allow successful placement if the room would only have one door (for placing special rooms).
+---@param allowSpecialNeighbors? boolean @default: `false`. Set to true to allow connections to existing special rooms (note secret rooms are always allowed, but boss rooms are never allowed).
 ---@return integer[]
 function Level:FindValidRoomPlacementLocations(roomConfigRoom, dimension, allowMultipleDoors, allowSpecialNeighbors)
 end
