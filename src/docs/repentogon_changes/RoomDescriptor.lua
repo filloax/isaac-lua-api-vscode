@@ -1,5 +1,5 @@
 ---@class RoomDescriptor
----@field Doors userdata @RoomDescriptorDoors
+---@field Doors {[DoorSlot]: integer} @RoomDescriptorDoors
 ---@field AllowedDoors integer
 ---@field BossDeathSeed integer
 local RoomDescriptor_RGON = {}
