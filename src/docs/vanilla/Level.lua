@@ -18,7 +18,7 @@ end
 function Level:ApplyBlueMapEffect()
 end
 
----@param Persistent boolean
+---@param Persistent? boolean @default: `false`. Set to `true` for it to persist across exiting and contiuing the run. It will reset regardless on the next floor.
 function Level:ApplyCompassEffect(Persistent)
 end
 
