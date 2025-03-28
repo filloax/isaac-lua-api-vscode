@@ -8,7 +8,7 @@ local PocketItem = {}
 ---For pills, returns `PillColor`.
 ---
 ---For items, returns the corresponding `ActiveSlot` (either `ActiveSlot.SLOT_POCKET` or `ActiveSlot.SLOT_POCKET2`).
----@return ActiveSlot
+---@return Card | PillColor | ActiveSlot
 function PocketItem:GetSlot()
 end
 
