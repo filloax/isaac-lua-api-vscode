@@ -1,11 +1,11 @@
 ---Returns true if the collectible can be rerolled.
----@param collectible CollectibleType | integer
+---@param collectible CollectibleType
 ---@return boolean
 function ItemConfig_Class:CanRerollCollectible(collectible)
 end
 
 ---Returns a table of ItemConfigItem objects with the provided tag.
----@param tag string
+---@param tag integer
 ---@return ItemConfigItem[]
 function ItemConfig_Class:GetTaggedItems(tag)
 end
