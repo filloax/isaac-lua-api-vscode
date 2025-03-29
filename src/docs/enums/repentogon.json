@@ -22,11 +22,11 @@
     },
     "MC_PRE_PLAYER_ADD_HEARTS": {
       "value": 1009,
-      "comment": "(EntityPlayer Player, integer Amount, AddHealthType AddHealthType, bool OptionalArg): integer - Runs before Add(...)Hearts functions, allows returning a value to change the given amount of health. Functions that include an argument (e.g. ignoreKeeper for AddMaxHearts) provide the value using OptionalArg."
+      "comment": "(EntityPlayer Player, integer Amount, AddHealthType AddHealthType, boolean ExtraArg): integer, Optional Arg: AddHealthType - Runs before Add(...)Hearts functions, allows returning a value to change the given amount of health. Functions that include an argument (e.g. ignoreKeeper for AddMaxHearts) provide the value using ExtraArg."
     },
     "MC_POST_PLAYER_ADD_HEARTS": {
       "value": 1010,
-      "comment": "(EntityPlayer Player, integer Amount, AddHealthType AddHealthType, bool OptionalArg) - Runs after Add(...)Hearts functions, allows returning a value to change the given amount of health. Functions that include an argument (e.g. ignoreKeeper for AddMaxHearts) provide the value using OptionalArg."
+      "comment": "(EntityPlayer Player, integer Amount, AddHealthType AddHealthType, boolean ExtraArg), Optional Arg: AddHealthType - Runs after Add(...)Hearts functions, allows returning a value to change the given amount of health. Functions that include an argument (e.g. ignoreKeeper for AddMaxHearts) provide the value using ExtraArg."
     },
     "MC_POST_GRID_ROCK_DESTROY": {
       "value": "1011",
@@ -906,59 +906,59 @@
     },
     "MC_PRE_PLAYER_GRID_COLLISION": {
       "value": "1171",
-      "comment": "(EntityPlayer Player, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: PlayerVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
+      "comment": "(EntityPlayer Player, integer GridIndex, GridEntity | nil GridEntity), Optional Arg: PlayerVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_PLAYER_GRID_COLLISION": {
       "value": "1172",
-      "comment": "(EntityPlayer Player, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: PlayerVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
+      "comment": "(EntityPlayer Player, integer GridIndex, GridEntity | nil GridEntity), Optional Arg: PlayerVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_PRE_TEAR_GRID_COLLISION": {
       "value": "1173",
-      "comment": "(EntityTear Tear, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: TearVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
+      "comment": "(EntityTear Tear, integer GridIndex, GridEntity | nil GridEntity), Optional Arg: TearVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_TEAR_GRID_COLLISION": {
       "value": "1174",
-      "comment": "(EntityTear Tear, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: TearVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
+      "comment": "(EntityTear Tear, integer GridIndex, GridEntity | nil GridEntity), Optional Arg: TearVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_PRE_FAMILIAR_GRID_COLLISION": {
       "value": "1175",
-      "comment": "(EntityFamiliar Familiar, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: FamiliarVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
+      "comment": "(EntityFamiliar Familiar, integer GridIndex, GridEntity | nil GridEntity), Optional Arg: FamiliarVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_FAMILIAR_GRID_COLLISION": {
       "value": "1176",
-      "comment": "(EntityFamiliar Familiar, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: FamiliarVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
+      "comment": "(EntityFamiliar Familiar, integer GridIndex, GridEntity | nil GridEntity), Optional Arg: FamiliarVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_PRE_BOMB_GRID_COLLISION": {
       "value": "1177",
-      "comment": "(EntityBomb Bomb, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: BombVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
+      "comment": "(EntityBomb Bomb, integer GridIndex, GridEntity | nil GridEntity), Optional Arg: BombVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_BOMB_GRID_COLLISION": {
       "value": "1178",
-      "comment": "(EntityBomb Bomb, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: BombVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
+      "comment": "(EntityBomb Bomb, integer GridIndex, GridEntity | nil GridEntity), Optional Arg: BombVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_PRE_PICKUP_GRID_COLLISION": {
       "value": "1179",
-      "comment": "(EntityPickup Pickup, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: PickupVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
+      "comment": "(EntityPickup Pickup, integer GridIndex, GridEntity | nil GridEntity), Optional Arg: PickupVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_PICKUP_GRID_COLLISION": {
       "value": "1180",
-      "comment": "(EntityPickup Pickup, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: PickupVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
+      "comment": "(EntityPickup Pickup, integer GridIndex, GridEntity | nil GridEntity), Optional Arg: PickupVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_PRE_PROJECTILE_GRID_COLLISION": {
       "value": "1181",
-      "comment": "(EntityProjectile Projectile, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: ProjectileVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
+      "comment": "(EntityProjectile Projectile, integer GridIndex, GridEntity | nil GridEntity), Optional Arg: ProjectileVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_PROJECTILE_GRID_COLLISION": {
       "value": "1182",
-      "comment": "(EntityProjectile Projectile, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: ProjectileVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
+      "comment": "(EntityProjectile Projectile, integer GridIndex, GridEntity | nil GridEntity), Optional Arg: ProjectileVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_PRE_NPC_GRID_COLLISION": {
       "value": "1183",
-      "comment": "(EntityNPC NPC, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: EntityType - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
+      "comment": "(EntityNPC NPC, integer GridIndex, GridEntity | nil GridEntity), Optional Arg: EntityType - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_NPC_GRID_COLLISION": {
       "value": "1184",
-      "comment": "(EntityNPC NPC, integer GridIndex, GridEntity | nil GridEntity), OptionalArg: EntityType - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
+      "comment": "(EntityNPC NPC, integer GridIndex, GridEntity | nil GridEntity), Optional Arg: EntityType - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000."
     },
     "MC_PRE_PLAYERHUD_RENDER_HEARTS": {
       "value": "1118",
