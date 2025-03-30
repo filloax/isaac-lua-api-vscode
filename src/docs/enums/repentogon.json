@@ -5017,7 +5017,7 @@
       "value": "1<<1",
       "comment": "If set the game does not attempt to morph the collectible into either `Magic Skin` or `Rosary`. Does not prevent a morph into `Bible`."
     },
-    "BAN_PASSIVE": {
+    "BAN_PASSIVES": {
       "value": "1<<2",
       "comment": "Bans items with Type: `ITEM_PASSIVE`"
     }
