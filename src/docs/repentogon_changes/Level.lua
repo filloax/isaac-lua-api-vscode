@@ -73,9 +73,9 @@ end
 ---@param roomConfigRoom RoomConfigRoom
 ---@param gridIndex integer
 ---@param dimension Dimension @default: `Dimension.CURRENT`
----@param allowMultipleDoors boolean @default: `true`. Set to false to only allow successful placement if the room would only have one door (for placing special rooms).
----@param allowSpecialNeighbors boolean @default: `false`. Set to true to allow connections to existing special rooms (note secret rooms are always allowed, but boss rooms are never allowed).
----@param allowNoNeighbors boolean @default: `false`. Set to true to allow placing the room out in the void with no neighbors.
+---@param allowMultipleDoors? boolean @default: `true`. Set to false to only allow successful placement if the room would only have one door (for placing special rooms).
+---@param allowSpecialNeighbors? boolean @default: `false`. Set to true to allow connections to existing special rooms (note secret rooms are always allowed, but boss rooms are never allowed).
+---@param allowNoNeighbors? boolean @default: `false`. Set to true to allow placing the room out in the void with no neighbors.
 ---@return boolean
 function Level:CanPlaceRoom(roomConfigRoom, gridIndex, dimension, allowMultipleDoors, allowSpecialNeighbors, allowNoNeighbors)
 end
@@ -133,7 +133,7 @@ end
 ---Note that this does not give you any signal of if a room would actually fit, or if the neighbors would even allow a connection.
 ---@param gridIndex integer
 ---@param roomShape RoomShape
----@param dimension Dimension @default: `Dimension.CURRENT`
+---@param dimension? Dimension @default: `Dimension.CURRENT`
 ---@return {[DoorSlot]: RoomDescriptor}
 function Level:GetNeighboringRooms(gridIndex, roomShape, dimension)
 end

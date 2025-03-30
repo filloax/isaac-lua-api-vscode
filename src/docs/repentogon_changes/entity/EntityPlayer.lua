@@ -433,7 +433,7 @@ function EntityPlayer:GetSmeltedTrinkets()
 end
 
 ---TODO: Document me!
----@param position Vector @default: `self.Position`
+---@param position? Vector @default: `self.Position`
 ---@return integer
 function EntityPlayer:GetSpecialGridCollision(position)
 end

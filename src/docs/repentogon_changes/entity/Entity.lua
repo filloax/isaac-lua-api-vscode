@@ -354,11 +354,11 @@ end
 function Entity:SetWeaknessCountdown(countdown)
 end
 
----@param subType integer @default: `0`
----@param position Vector @default: `self.Position`
----@param offset Vector @default: `Vector.Zero`
----@param color Color @default: `Color.Default`
----@param velocity Vector @default: `Vector.Zero`
+---@param subType? integer @default: `0`
+---@param position? Vector @default: `self.Position`
+---@param offset? Vector @default: `Vector.Zero`
+---@param color? Color @default: `Color.Default`
+---@param velocity? Vector @default: `Vector.Zero`
 ---@return EntityEffect
 function Entity:SpawnBloodEffect(subType, position, offset, color, velocity)
 end

@@ -35,7 +35,7 @@ end
 function EntityBomb:SetHeight(height)
 end
 
----@param load boolean @default: `true`
+---@param load? boolean @default: `true`
 function EntityBomb:SetLoadCostumes(load)
 end
 

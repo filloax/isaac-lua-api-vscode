@@ -33,7 +33,7 @@ function Room:CanSpawnObstacleAtPosition(gridIndex, force)
 end
 
 ---Creates a lightning effect as seen in Downpour.
----@param seed integer @default: `RandomSeed`. Determines intensity (1.3 + RandomFloat()*.6) and sound pitch (0.9 + RandomFloat()*0.2)
+---@param seed? integer @default: `RandomSeed`. Determines intensity (1.3 + RandomFloat()*.6) and sound pitch (0.9 + RandomFloat()*0.2)
 function Room:DoLightningStrike(seed)
 end
 
@@ -133,7 +133,7 @@ function Room:IsChampionBossSeed() end
 
 ---Returns true if the entity is persistent.
 ---@param type EntityType
----@param variant integer @default: `0`.
+---@param variant? integer @default: `0`.
 ---@return boolean
 function Room:IsPersistentRoomEntity(type, variant)
 end
