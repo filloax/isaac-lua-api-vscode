@@ -18,7 +18,7 @@ end
 function EntityLaser:GetShrink()
 end
 
----@return boolean
+---@return integer
 function EntityLaser:GetTimeout()
 end
 
