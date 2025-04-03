@@ -246,7 +246,7 @@
     },
     "MC_PLAYER_GET_HEART_LIMIT": {
       "value": "1074",
-      "comment": "(ENtityPlayer Player, integer HeartLimit, boolean IsKeeper): integer, Optional Arg: PlayerType - Called when getting the max amount of hearts the player can have. Return an integer to override the heart limit (1 unit equals half a heart)."
+      "comment": "(EnityPlayer Player, integer HeartLimit, boolean IsKeeper): integer, Optional Arg: PlayerType - Called when getting the max amount of hearts the player can have. Return an integer to override the heart limit (1 unit equals half a heart)."
     },
     "MC_POST_ITEM_OVERLAY_UPDATE": {
       "value": "1075",
@@ -1277,6 +1277,7 @@
     "ADVERSARY": "51",
     "POLYCEPHALUS": "52",
     "MR_FRED": "53",
+    "THE_LAMB": "54",
     "LAMB": "54",
     "MEGA_SATAN": "55",
     "GURGLINGS": "56",

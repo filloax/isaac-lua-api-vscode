@@ -25,6 +25,15 @@ end
 function EntityPickup:GetPriceSprite()
 end
 
+---Shoots the pickup in a random direction.
+---
+---This is a static function and must be called via EntityPickup.GetRandomPickupVelocity(Position, RNG, VelocityType).
+---@param Position Vector
+---@param RNG RNG
+---@param VelocityType? integer @default: `0`. VelocityType 0 will shoot pickups in a random direction around the wanted position. VelocityType 1 will shoot pickups in a cone pointing down, mostly used for Beggar payouts. VelocityType also seems to affect pickups in Challenge Rooms, causing them to have a weaker velocity.
+function EntityPickup.GetRandomPickupVelocity(Position, RNG, VelocityType)
+end
+
 ---@return integer
 function EntityPickup:GetVarData()
 end
