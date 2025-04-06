@@ -15,6 +15,7 @@ end
 function GridEntity:GetGridIndex()
 end
 
+--This RNG is initialized with the same seed for all grid entities in the whole run. Instead, it's advised to create a custom data structure or use either the SpawnSeed or VariableSeed fields from the GridEntityDesc object (GridEntity:GetSaveState()).
 ---@return RNG
 function GridEntity:GetRNG()
 end
