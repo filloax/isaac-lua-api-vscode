@@ -618,251 +618,251 @@
     },
     "MC_PRE_GRID_ENTITY_DECORATION_UPDATE": {
       "value": "1400",
-      "comment": "(GridEntityDecoration Decoration) - Called before this grid entity is updated. Return `false` to cancel the update."
+      "comment": "(GridEntityDecoration Decoration): boolean, Optional Arg: GridEntityType - Called before this grid entity is updated. Return `false` to cancel the update."
     },
     "MC_POST_GRID_ENTITY_DECORATION_UPDATE": {
       "value": "1401",
-      "comment": "(GridEntityDecoration Decoration) - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityDecoration Decoration), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_DOOR_UPDATE": {
       "value": "1402",
-      "comment": "(GridEntityDoor Door) - Called before this grid entity is updated. Return `false` to cancel the update."
+      "comment": "(GridEntityDoor Door): boolean, Optional Arg: GridEntityType - Called before this grid entity is updated. Return `false` to cancel the update."
     },
     "MC_POST_GRID_ENTITY_DOOR_UPDATE": {
       "value": "1403",
-      "comment": "(GridEntityDoor Door) - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityDoor Door), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_FIRE_UPDATE": {
       "value": "1404",
-      "comment": "(GridEntityFire Fire) - Called before this grid entity is updated. Return `false` to cancel the update."
+      "comment": "(GridEntityFire Fire): boolean, Optional Arg: GridEntityType - Called before this grid entity is updated. Return `false` to cancel the update."
     },
     "MC_POST_GRID_ENTITY_FIRE_UPDATE": {
       "value": "1405",
-      "comment": "(GridEntityFire Fire) - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityFire Fire), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_GRAVITY_UPDATE": {
       "value": "1406",
-      "comment": "(GridEntityGravity Gravity) - Called before this grid entity is updated. Return `false` to cancel the update."
+      "comment": "(GridEntityGravity Gravity): boolean, Optional Arg: GridEntityType - Called before this grid entity is updated. Return `false` to cancel the update."
     },
     "MC_POST_GRID_ENTITY_GRAVITY_UPDATE": {
       "value": "1407",
-      "comment": "(GridEntityGravity Gravity) - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityGravity Gravity), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_LOCK_UPDATE": {
       "value": "1408",
-      "comment": "(GridEntityLock Lock) - Called before this grid entity is updated. Return `false` to cancel the update."
+      "comment": "(GridEntityLock Lock): boolean, Optional Arg: GridEntityType - Called before this grid entity is updated. Return `false` to cancel the update."
     },
     "MC_POST_GRID_ENTITY_LOCK_UPDATE": {
       "value": "1409",
-      "comment": "(GridEntityLock Lock) - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityLock Lock), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_PIT_UPDATE": {
       "value": "1410",
-      "comment": "(GridEntityPit Pit) - Called before this grid entity is updated. Return `false` to cancel the update."
+      "comment": "(GridEntityPit Pit): boolean, Optional Arg: GridEntityType - Called before this grid entity is updated. Return `false` to cancel the update."
     },
     "MC_POST_GRID_ENTITY_PIT_UPDATE": {
       "value": "1411",
-      "comment": "(GridEntityPit Pit) - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityPit Pit), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_POOP_UPDATE": {
       "value": "1412",
-      "comment": "(GridEntityPoop Poop) - Called before this grid entity is updated. Return `false` to cancel the update."
+      "comment": "(GridEntityPoop Poop): boolean, Optional Arg: GridEntityType - Called before this grid entity is updated. Return `false` to cancel the update."
     },
     "MC_POST_GRID_ENTITY_POOP_UPDATE": {
       "value": "1413",
-      "comment": "(GridEntityPoop Poop) - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityPoop Poop), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_PRESSUREPLATE_UPDATE": {
       "value": "1414",
-      "comment": "(GridEntityPressurePlate PressurePlate) - Called before this grid entity is updated. Return `false` to cancel the update."
+      "comment": "(GridEntityPressurePlate PressurePlate): boolean, Optional Arg: GridEntityType - Called before this grid entity is updated. Return `false` to cancel the update."
     },
     "MC_POST_GRID_ENTITY_PRESSUREPLATE_UPDATE": {
       "value": "1415",
-      "comment": "(GridEntityPressurePlate PressurePlate) - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityPressurePlate PressurePlate), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_ROCK_UPDATE": {
       "value": "1416",
-      "comment": "(GridEntityRock Rock) - Called before this grid entity is updated. Return `false` to cancel the update."
+      "comment": "(GridEntityRock Rock): boolean, Optional Arg: GridEntityType - Called before this grid entity is updated. Return `false` to cancel the update."
     },
     "MC_POST_GRID_ENTITY_ROCK_UPDATE": {
       "value": "1417",
-      "comment": "(GridEntityRock Rock) - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityRock Rock), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_SPIKES_UPDATE": {
       "value": "1418",
-      "comment": "(GridEntitySpikes Spikes) - Called before this grid entity is updated. Return `false` to cancel the update."
+      "comment": "(GridEntitySpikes Spikes): boolean, Optional Arg: GridEntityType - Called before this grid entity is updated. Return `false` to cancel the update."
     },
     "MC_POST_GRID_ENTITY_SPIKES_UPDATE": {
       "value": "1419",
-      "comment": "(GridEntitySpikes Spikes) - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntitySpikes Spikes), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_STAIRCASE_UPDATE": {
       "value": "1420",
-      "comment": "(GridEntityStaircase Staircase) - Called before this grid entity is updated. Return `false` to cancel the update."
+      "comment": "(GridEntityStaircase Staircase): boolean, Optional Arg: GridEntityType - Called before this grid entity is updated. Return `false` to cancel the update."
     },
     "MC_POST_GRID_ENTITY_STAIRCASE_UPDATE": {
       "value": "1421",
-      "comment": "(GridEntityStaircase Staircase) - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityStaircase Staircase), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_STATUE_UPDATE": {
       "value": "1422",
-      "comment": "(GridEntityStatue Statue) - Called before this grid entity is updated. Return `false` to cancel the update."
+      "comment": "(GridEntityStatue Statue): boolean, Optional Arg: GridEntityType - Called before this grid entity is updated. Return `false` to cancel the update."
     },
     "MC_POST_GRID_ENTITY_STATUE_UPDATE": {
       "value": "1423",
-      "comment": "(GridEntityStatue Statue) - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityStatue Statue), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_TELEPORTER_UPDATE": {
       "value": "1424",
-      "comment": "(GridEntityTeleporter Teleporter) - Called before this grid entity is updated. Return `false` to cancel the update."
+      "comment": "(GridEntityTeleporter Teleporter): boolean, Optional Arg: GridEntityType - Called before this grid entity is updated. Return `false` to cancel the update."
     },
     "MC_POST_GRID_ENTITY_TELEPORTER_UPDATE": {
       "value": "1425",
-      "comment": "(GridEntityTeleporter Teleporter) - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityTeleporter Teleporter), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_TRAPDOOR_UPDATE": {
       "value": "1426",
-      "comment": "(GridEntityTrapdoor Trapdoor) - Called before this grid entity is updated. Return `false` to cancel the update."
+      "comment": "(GridEntityTrapdoor Trapdoor): boolean, Optional Arg: GridEntityType - Called before this grid entity is updated. Return `false` to cancel the update."
     },
     "MC_POST_GRID_ENTITY_TRAPDOOR_UPDATE": {
       "value": "1427",
-      "comment": "(GridEntityTrapdoor Trapdoor) - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityTrapdoor Trapdoor), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_WEB_UPDATE": {
       "value": "1428",
-      "comment": "(GridEntityWeb Web) - Called before this grid entity is updated. Return `false` to cancel the update."
+      "comment": "(GridEntityWeb Web): boolean, Optional Arg: GridEntityType - Called before this grid entity is updated. Return `false` to cancel the update."
     },
     "MC_POST_GRID_ENTITY_WEB_UPDATE": {
       "value": "1429",
-      "comment": "(GridEntityWeb Web) - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityWeb Web), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_TNT_UPDATE": {
       "value": "1430",
-      "comment": "(GridEntityTNT TNT) - Called before this grid entity is updated. Return `false` to cancel the update."
+      "comment": "(GridEntityTNT TNT): boolean, Optional Arg: GridEntityType - Called before this grid entity is updated. Return `false` to cancel the update."
     },
     "MC_POST_GRID_ENTITY_TNT_UPDATE": {
       "value": "1431",
-      "comment": "(GridEntityTNT TNT) - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityTNT TNT), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_SPIKES_RENDER": {
       "value": "1432",
-      "comment": "(GridEntitySpikes Spikes, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
+      "comment": "(GridEntitySpikes Spikes, Vector Offset): Vector | boolean, Optional Arg: GridEntityType - Called before this grid entity is rendered. Return `false` to cancel the render."
     },
     "MC_POST_GRID_ENTITY_SPIKES_RENDER": {
       "value": "1433",
-      "comment": "(GridEntitySpikes Spikes, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntitySpikes Spikes, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_WEB_RENDER": {
       "value": "1434",
-      "comment": "(GridEntityWeb Web, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
+      "comment": "(GridEntityWeb Web, Vector Offset): Vector | boolean, Optional Arg: GridEntityType - Called before this grid entity is rendered. Return `false` to cancel the render."
     },
     "MC_POST_GRID_ENTITY_WEB_RENDER": {
       "value": "1435",
-      "comment": "(GridEntityWeb Web, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityWeb Web, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_TNT_RENDER": {
       "value": "1436",
-      "comment": "(GridEntityTNT TNT, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
+      "comment": "(GridEntityTNT TNT, Vector Offset): Vector | boolean, Optional Arg: GridEntityType - Called before this grid entity is rendered. Return `false` to cancel the render."
     },
     "MC_POST_GRID_ENTITY_TNT_RENDER": {
       "value": "1437",
-      "comment": "(GridEntityTNT TNT, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityTNT TNT, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_TRAPDOOR_RENDER": {
       "value": "1438",
-      "comment": "(GridEntityTrapdoor Trapdoor, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
+      "comment": "(GridEntityTrapdoor Trapdoor, Vector Offset): Vector | boolean, Optional Arg: GridEntityType - Called before this grid entity is rendered. Return `false` to cancel the render."
     },
     "MC_POST_GRID_ENTITY_TRAPDOOR_RENDER": {
       "value": "1439",
-      "comment": "(GridEntityTrapdoor Trapdoor, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityTrapdoor Trapdoor, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_STAIRCASE_RENDER": {
       "value": "1440",
-      "comment": "(GridEntityStaircase Staircase, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
+      "comment": "(GridEntityStaircase Staircase, Vector Offset): Vector | boolean, Optional Arg: GridEntityType - Called before this grid entity is rendered. Return `false` to cancel the render."
     },
     "MC_POST_GRID_ENTITY_STAIRCASE_RENDER": {
       "value": "1441",
-      "comment": "(GridEntityStaircase Staircase, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityStaircase Staircase, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_DECORATION_RENDER": {
       "value": "1444",
-      "comment": "(GridEntityDecoration Decoration, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
+      "comment": "(GridEntityDecoration Decoration, Vector Offset): Vector | boolean, Optional Arg: GridEntityType - Called before this grid entity is rendered. Return `false` to cancel the render."
     },
     "MC_POST_GRID_ENTITY_DECORATION_RENDER": {
       "value": "1445",
-      "comment": "(GridEntityDecoration Decoration, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityDecoration Decoration, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_DOOR_RENDER": {
       "value": "1446",
-      "comment": "(GridEntityDoor Door, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
+      "comment": "(GridEntityDoor Door, Vector Offset): Vector | boolean, Optional Arg: GridEntityType - Called before this grid entity is rendered. Return `false` to cancel the render."
     },
     "MC_POST_GRID_ENTITY_DOOR_RENDER": {
       "value": "1447",
-      "comment": "(GridEntityDoor Door, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityDoor Door, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_FIRE_RENDER": {
       "value": "1448",
-      "comment": "(GridEntityFire Fire, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
+      "comment": "(GridEntityFire Fire, Vector Offset): Vector | boolean, Optional Arg: GridEntityType - Called before this grid entity is rendered. Return `false` to cancel the render."
     },
     "MC_POST_GRID_ENTITY_FIRE_RENDER": {
       "value": "1449",
-      "comment": "(GridEntityFire Fire, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityFire Fire, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_LOCK_RENDER": {
       "value": "1450",
-      "comment": "(GridEntityLock Lock, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
+      "comment": "(GridEntityLock Lock, Vector Offset): Vector | boolean, Optional Arg: GridEntityType - Called before this grid entity is rendered. Return `false` to cancel the render."
     },
     "MC_POST_GRID_ENTITY_LOCK_RENDER": {
       "value": "1451",
-      "comment": "(GridEntityLock Lock, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityLock Lock, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_TELEPORTER_RENDER": {
       "value": "1452",
-      "comment": "(GridEntityTeleporter Teleporter, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
+      "comment": "(GridEntityTeleporter Teleporter, Vector Offset): Vector | boolean, Optional Arg: GridEntityType - Called before this grid entity is rendered. Return `false` to cancel the render."
     },
     "MC_POST_GRID_ENTITY_TELEPORTER_RENDER": {
       "value": "1453",
-      "comment": "(GridEntityTeleporter Teleporter, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityTeleporter Teleporter, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_PIT_RENDER": {
       "value": "1454",
-      "comment": "(GridEntityPit Pit, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
+      "comment": "(GridEntityPit Pit, Vector Offset): Vector | boolean, Optional Arg: GridEntityType - Called before this grid entity is rendered. Return `false` to cancel the render."
     },
     "MC_POST_GRID_ENTITY_PIT_RENDER": {
       "value": "1455",
-      "comment": "(GridEntityPit Pit, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityPit Pit, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_POOP_RENDER": {
       "value": "1456",
-      "comment": "(GridEntityPoop Poop, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
+      "comment": "(GridEntityPoop Poop, Vector Offset): Vector | boolean, Optional Arg: GridEntityType - Called before this grid entity is rendered. Return `false` to cancel the render."
     },
     "MC_POST_GRID_ENTITY_POOP_RENDER": {
       "value": "1457",
-      "comment": "(GridEntityPoop Poop, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityPoop Poop, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_ROCK_RENDER": {
       "value": "1458",
-      "comment": "(GridEntityRock Rock, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
+      "comment": "(GridEntityRock Rock, Vector Offset): Vector | boolean, Optional Arg: GridEntityType - Called before this grid entity is rendered. Return `false` to cancel the render."
     },
     "MC_POST_GRID_ENTITY_ROCK_RENDER": {
       "value": "1459",
-      "comment": "(GridEntityRock Rock, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityRock Rock, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_PRESSUREPLATE_RENDER": {
       "value": "1460",
-      "comment": "(GridEntityPressurePlate PressurePlate, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
+      "comment": "(GridEntityPressurePlate PressurePlate, Vector Offset): Vector | boolean, Optional Arg: GridEntityType - Called before this grid entity is rendered. Return `false` to cancel the render."
     },
     "MC_POST_GRID_ENTITY_PRESSUREPLATE_RENDER": {
       "value": "1461",
-      "comment": "(GridEntityPressurePlate PressurePlate, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityPressurePlate PressurePlate, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
     },
     "MC_PRE_GRID_ENTITY_WALL_RENDER": {
       "value": "1462",
-      "comment": "(GridEntityWall Wall, Vector Offset): Vector | boolean - Called before this grid entity is rendered. Return `false` to cancel the render."
+      "comment": "(GridEntityWall Wall, Vector Offset): Vector | boolean, Optional Arg: GridEntityType - Called before this grid entity is rendered. Return `false` to cancel the render."
     },
     "MC_POST_GRID_ENTITY_WALL_RENDER": {
       "value": "1463",
-      "comment": "(GridEntityWall Wall, Vector Offset) - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityWall Wall, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
     },
     "MC_POST_NPC_DARK_RED_CHAMPION_REGEN": {
       "value": "1223",
