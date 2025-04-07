@@ -492,6 +492,10 @@
       "value": "1247",
       "comment": "(EntityNPC NPC, Entity Collider, boolean Low), Optional Arg: EntityType - Runs after the on-collision code of this entity, assuming it wasn't skipped."
     },
+    "MC_PRE_LASER_COLLISION": {
+      "value": "1248",
+      "comment": "(EntityLaser Laser, Entity Collider, boolean Low): boolean, Optional Arg: LaserVariant - Runs after the on-collision code of this entity. Return `true` to ignore the collision"
+    },
     "MC_POST_LASER_COLLISION": {
       "value": "1249",
       "comment": "(EntityLaser Laser, Entity Collider, boolean Low), Optional Arg: LaserVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
