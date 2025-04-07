@@ -48,7 +48,7 @@ end
 function EntityLaser:GetEndPoint()
 end
 
----@return userdata @HomingLaser::SampleList
+---@return VectorList
 function EntityLaser:GetNonOptimizedSamples()
 end
 
@@ -56,7 +56,7 @@ end
 function EntityLaser:GetRenderZ()
 end
 
----@return userdata @HomingLaser::SampleList
+---@return VectorList
 function EntityLaser:GetSamples()
 end
 
