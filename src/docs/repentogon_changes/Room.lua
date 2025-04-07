@@ -41,6 +41,10 @@ end
 function Room:GetBackdrop()
 end
 
+---@return Music
+function Room:GetBossVictoryJingle()
+end
+
 ---@return Camera
 function Room:GetCamera()
 end
@@ -75,10 +79,25 @@ function Room:GetGreedWaveTimer() end
 function Room:GetGridIndexByTile(gridRow, gridColumn)
 end
 
+---Retrieves the pool the game would use to generate random collectibles in the current room. Unlike `ItemPool:GetPoolForRoom()`, this takes into account the pool set using SetItemPool(), and runs the game's pool selection code, which handles unique cases (ex. Boss Room + Used Satanic Bible = Devil Pool).
+---@param Seed integer
+---@param Raw? boolean @default: `false`. If set to true and the pool is set to `POOL_NULL` then `POOL_NULL` will be returned, instead of running the game's pool selection code.
+---@return ItemPoolType
+function Room:GetItemPool(Seed, Raw)
+end
+
 ---Returns the intensity of the lightning effect used in Downpour. This variable will affect the visibility of Wraiths.
 ---
 ---This is set by the game in a random range between `1.3` and `2.1`, and decays by `value * .75` per render.
 function Room:GetLightningIntensity()
+end
+
+---@return LRoomAreaDesc
+function Room:GetLRoomAreaDesc()
+end
+
+---@return LRoomTileDesc
+function Room:GetLRoomTileDesc()
 end
 
 ---The number of areas in a room that spawn rain effects in a tight radius.
@@ -149,6 +168,10 @@ function Room:PickupGridEntity(gridIndex) end
 ---@param keepDecoration boolean TODO: Document me!
 function Room:RemoveGridEntityImmediate(gridIndex, pathTrail, keepDecoration) end
 
+--Saves the current state of the room
+function Room:SaveState()
+end
+
 ---Changes the room's backdrop.
 ---
 ---The backdrop variant chosen is seeded based on the room and does not persist when leaving and re-entering. Calling this function again on re-entry will result in the same backdrop variant as before.
@@ -159,6 +182,11 @@ function Room:SetBackdropType(backdrop, unknown) end
 ---Sets the current time of the greed wave timer.
 ---@param time integer
 function Room:SetGreedWaveTimer(time) end
+
+---Sets the pool to use when the game needs to generate random collectibles in the current room. This takes priority over the game's regular pool selection code. Can be set to `POOL_NULL` to let the game handle pool selection. This is reset every room transition.
+---@param PoolType ItemPoolType
+function Room:SetItemPool(PoolType)
+end
 
 ---This primarily affects `UpdateColorModifier` (if `Process` is true, an orange glow is added based on the number of pits and lava intensity).
 ---@param intensity number
@@ -194,6 +222,9 @@ function Room:SetRoomClearDelay(delay) end
 ---@param amount number
 function Room:SetWaterAmount(amount) end
 
+---@param waterColor KColor
+function Room:SetWaterColor(waterColor) end
+
 ---Sets the room's water current velocity. The game will automatically add the sounds and particles.
 ---@param velocity Vector The velocity of the water current. Setting it to `Vector(0, 0)` will remove the water current.
 function Room:SetWaterCurrent(velocity) end
@@ -208,7 +239,6 @@ function Room:SetWaterCurrent(velocity) end
 function Room:SpawnGridEntity(GridIndex, Type, Variant, Seed, VarData)
 end
 
----TODO: Document me!
 ---@param shopItemIndex integer
 ---@param price integer
 ---@return integer
@@ -219,36 +249,7 @@ function Room:TryGetShopDiscount(shopItemIndex, price) end
 function Room:TrySpawnSpecialQuestDoor(IgnoreStageType)
 end
 
----TODO: Document me!
 ---@param process boolean
 ---@param lerp boolean
 ---@param rate? number @default: `0.015`.
 function Room:UpdateColorModifier(process, lerp, rate) end
-
----@return Music
-function Room:GetBossVictoryJingle()
-end
-
---TODO: Document me!
-function Room:SaveState()
-end
-
----Retrieves the pool the game would use to generate random collectibles in the current room. Unlike `ItemPool:GetPoolForRoom()`, this takes into account the pool set using SetItemPool(), and runs the game's pool selection code, which handles unique cases (ex. Boss Room + Used Satanic Bible = Devil Pool).
----@param Seed integer
----@param Raw? boolean @default: `false`. If set to true and the pool is set to `POOL_NULL` then `POOL_NULL` will be returned, instead of running the game's pool selection code.
----@return ItemPoolType
-function Room:GetItemPool(Seed, Raw)
-end
-
----Sets the pool to use when the game needs to generate random collectibles in the current room. This takes priority over the game's regular pool selection code. Can be set to `POOL_NULL` to let the game handle pool selection. This is reset every room transition.
----@param PoolType ItemPoolType
-function Room:SetItemPool(PoolType)
-end
-
----@return LRoomAreaDesc
-function Room:GetLRoomAreaDesc()
-end
-
----@return LRoomTileDesc
-function Room:GetLRoomTileDesc()
-end
