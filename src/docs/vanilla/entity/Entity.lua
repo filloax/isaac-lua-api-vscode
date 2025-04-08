@@ -55,7 +55,7 @@ end
 function Entity:AddConfusion(Source, Duration, IgnoreBosses)
 end
 
----@param Flags integer
+---@param Flags EntityFlag
 function Entity:AddEntityFlags(Flags)
 end
 
@@ -107,7 +107,7 @@ end
 function Entity:CanShutDoors()
 end
 
----@param Flags integer
+---@param Flags EntityFlag
 function Entity:ClearEntityFlags(Flags)
 end
 
@@ -138,7 +138,7 @@ end
 function Entity:GetDropRNG()
 end
 
----@return integer
+---@return EntityFlag
 function Entity:GetEntityFlags()
 end
 
@@ -159,7 +159,7 @@ end
 function Entity:HasCommonParentWithEntity(Other)
 end
 
----@param Flags integer
+---@param Flags EntityFlag
 ---@return boolean
 function Entity:HasEntityFlags(Flags)
 end
