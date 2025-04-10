@@ -2,7 +2,7 @@
 ---@field AutoUpdatePrice boolean
 ---@field Charge integer
 ---@field OptionsPickupIndex integer
----@field Price integer
+---@field Price PickupPrice
 ---@field ShopItemId integer
 ---@field State integer
 ---@field Timeout integer
