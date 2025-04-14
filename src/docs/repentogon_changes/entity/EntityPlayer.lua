@@ -883,6 +883,7 @@ end
 
 ---Spawns a creep effect that acts like the ones created by the Aquarius collectible.
 ---@param tearParams? TearParams @default: `self.TearParams`. The tear parameters that the creep will inherit from.
+---@return EntityEffect
 function EntityPlayer:SpawnAquariusCreep(tearParams)
 end
 
