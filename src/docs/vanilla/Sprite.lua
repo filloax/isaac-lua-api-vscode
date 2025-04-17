@@ -44,7 +44,7 @@ end
 ---@param RenderPos Vector
 ---@param AlphaThreshold number
 ---@param LayerID? integer @default: `0`
----@return any @KColor
+---@return KColor
 function Sprite:GetTexel(SamplePos, RenderPos, AlphaThreshold, LayerID)
 end
 
