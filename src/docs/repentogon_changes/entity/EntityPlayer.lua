@@ -65,8 +65,7 @@ end
 function EntityPlayer:CanUsePill(pillEffect)
 end
 
----Same as `CheckFamiliar`, but returns a table containing the list of
----spawned projectiles.
+---Same as `CheckFamiliar`, but returns a table containing the list of spawned familiars
 ---@param FamiliarVariant integer
 ---@param TargetCount integer
 ---@param rng RNG
@@ -968,14 +967,14 @@ end
 function EntityPlayer:GetUrnSouls()
 end
 
----@param type integer
+---@param type NullItemID
 ---@param costume boolean
 ---@param cooldown? integer @default: `default cooldown`
 ---@param additive? boolean @default: `true`
 function EntityPlayer:AddNullItemEffect(type, costume, cooldown, additive)
 end
 
----@param type integer
+---@param type CollectibleType
 ---@param costume boolean
 ---@param cooldown? integer @default: `default cooldown`
 ---@param additive? boolean @default: `true`
