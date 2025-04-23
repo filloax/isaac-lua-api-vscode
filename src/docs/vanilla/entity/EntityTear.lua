@@ -25,7 +25,7 @@ local EntityTear = {}
 function EntityTear:AddTearFlags(Flags)
 end
 
----@param NewVariant integer
+---@param NewVariant TearVariant
 function EntityTear:ChangeVariant(NewVariant)
 end
 
