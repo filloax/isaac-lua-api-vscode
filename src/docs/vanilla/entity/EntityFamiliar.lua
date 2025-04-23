@@ -105,5 +105,6 @@ end
 function EntityFamiliar:RemoveFromOrbit()
 end
 
+---When called in POST_FAMILIAR_UPDATE on a custom familiar, appears to handle everything for a basic shooting familiar. This includes handling animations, firing tears, and synergies.
 function EntityFamiliar:Shoot()
 end
