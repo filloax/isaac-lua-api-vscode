@@ -158,6 +158,10 @@ end
 function EntityPlayer:GetBladderCharge()
 end
 
+---@return integer
+function EntityPlayer:GetBloodLustCounter()
+end
+
 ---@return Vector
 function EntityPlayer:GetBodyMoveDirection()
 end
@@ -680,6 +684,10 @@ end
 ---**BUG:** The player's head turns pitch black when this function is used without Kidney Stone.
 ---@param charge integer
 function EntityPlayer:SetBladderCharge(charge)
+end
+
+---@param counter integer
+function EntityPlayer:SetBloodLustCounter(counter)
 end
 
 ---Sets how much damage has been taken for the Cambion Conception item.
