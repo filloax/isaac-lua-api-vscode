@@ -38,7 +38,7 @@
     },
     "MC_POST_PLAYER_INIT": {
       "value": "9",
-      "comment": "(EntityPlayer Player) - Called after the player is initialized."
+      "comment": "(EntityPlayer Player), Optional Arg: PlayerVariant - Called after the player is initialized."
     },
     "MC_USE_PILL": {
       "value": "10",
