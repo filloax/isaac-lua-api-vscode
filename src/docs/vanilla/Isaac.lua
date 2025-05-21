@@ -89,7 +89,7 @@ end
 function Isaac.Explode(pos, source, damage)
 end
 
----@param Type integer
+---@param Type EntityType
 ---@param Variant? integer @default: `-1`
 ---@param SubType? integer @default: `-1`
 ---@param Cache? boolean @default: `false`
@@ -283,12 +283,12 @@ end
 function Isaac.ScreenToWorldDistance(pos)
 end
 
----@param entityType integer
+---@param entityType EntityType
 ---@param entityVariant integer
 ---@param entitySubtype integer
 ---@param position Vector
 ---@param velocity Vector
----@param Spawner Entity | nil
+---@param Spawner Entity | nil @Despite being listed as optional, the function requires you input a value here, as it will error otherwise. Directly inserting `nil` will suffice.
 ---@return Entity
 function Isaac.Spawn(entityType, entityVariant, entitySubtype, position, velocity, Spawner)
 end
