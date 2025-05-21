@@ -5,7 +5,7 @@ function ItemConfig_Class:CanRerollCollectible(collectible)
 end
 
 ---Returns a table of ItemConfigItem objects with the provided tag.
----@param tag integer
+---@param tag integer @Uses `ItemConfig.TAG_` enumeration
 ---@return ItemConfigItem[]
 function ItemConfig_Class:GetTaggedItems(tag)
 end
