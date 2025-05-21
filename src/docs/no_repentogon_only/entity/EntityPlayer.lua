@@ -1,4 +1,4 @@
----@param CacheFlag CacheFlag | integer
+---@param CacheFlag CacheFlag
 function EntityPlayer:AddCacheFlags(CacheFlag)
 end
 

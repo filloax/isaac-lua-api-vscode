@@ -11,7 +11,7 @@ end
 function EntityPlayer:AddBoneOrbital(position)
 end
 
----@param CacheFlag CacheFlag | integer
+---@param CacheFlag CacheFlag
 ---@param EvaluateItems? boolean @default: `false`
 function EntityPlayer:AddCacheFlags(CacheFlag, EvaluateItems)
 end
