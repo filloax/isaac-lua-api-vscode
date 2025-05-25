@@ -1,6 +1,22 @@
 # Change Log
 
+* [1.12.1]
+
+    - Add Get/SetBloodLustCounter, SubCharge field under ActiveItemDesc, CharacterMenu.SetSelectedCharacterID(ID), RandomVector(), EntityPickup.GetRandomPickupVelocity(Position, RNG, VelocityType), and various Room functions
+	- Add PRE_LASER_COLLISION callback
+	- Update comments to GRID_COLLISION callbacks with return types and optional args
+	- Update comments to PRE_KNIFE_COLLISION and PRE_NPC_COLLISION to be consistent with the other PRE_COLLISION callbacks
+	- Add comments to various functions and class fields for more detailed information found on the API docs
+	- Fix GetCollectibleFlag.BAN_PASSIVES being incorrectly named as GetCollectibleFlag.BAN_PASSIVE
+	- WeaponModifier and EntityTag enumerations are now defined with BitFlags instead of all being "1"
+	- Specify specific enumerations for various parameters instead of plain integers
+	- Fix some incorrect/missing parameters and returns in various functions and class fields
+	- Many functions updated to specify if their arguments are optional
+	- PR [#28](https://github.com/filloax/isaac-lua-api-vscode/pull/28): Param and return changes (Kerkel)
+	- PR [#29](https://github.com/filloax/isaac-lua-api-vscode/pull/29): Merge RoomConfig with RoomConfigHolder and Add BossPool related classes (Guantol-Lemat)
+
 * [1.12.0]
+
     - Fix extension erroring when opneing files outside of a workspace, will now self-disable in that case (check README!)
     - Add REPENTANCE_PLUS global
     - Fix FromAngle not being available on global Vector
@@ -12,6 +28,7 @@
     - PR #25: ItemConfigCard changes
 
 * [1.11.1]
+
     - Fix enum typos in build
     - Fix EntityEffect.CreateLight (from nazjun)
     - Document Isaac.GetAxisAlignedUnitVectorFromDir (from nazjun)
@@ -23,6 +40,7 @@
     - Add Color.Default
 
 * [1.11.0]
+
     - Support for Repentogon 1.0.12
     - Fix issues with ItemConfig: Correct enum values, add descriptions, and move ItemConfig.Config under the enum instead of the class
     - Add missing description information to MC_USE_ITEM and MC_USE_CARD
