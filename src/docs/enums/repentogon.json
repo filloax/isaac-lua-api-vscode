@@ -910,7 +910,7 @@
     },
     "MC_PRE_PLAYER_GRID_COLLISION": {
       "value": "1171",
-      "comment": "(EntityPlayer Player, integer GridIndex, GridEntity | nil GridEntity), Optional Arg: PlayerVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000. Return `true` to ignore collision"
+      "comment": "(EntityPlayer Player, integer GridIndex, GridEntity | nil GridEntity): boolean, Optional Arg: PlayerVariant - Called before this entity collides with a GridEntity or other solid grid tile. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000. Return `true` to ignore collision"
     },
     "MC_PLAYER_GRID_COLLISION": {
       "value": "1172",
