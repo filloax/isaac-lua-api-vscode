@@ -1024,8 +1024,8 @@ end
 function EntityPlayer:SetBombPlaceDelay(delay)
 end
 
----Returns an array of tables for all currently spoofed (innate) collectibles.
----@return {CollectibleID: CollectibleType, AppendedCount: integer, IsBlocked: boolean}[]
+---Returns a map of CollectibleType to tables for all currently spoofed (innate) collectibles.
+---@return {[CollectibleType]: {CollectibleID: CollectibleType, AppendedCount: integer, IsBlocked: boolean}}
 function EntityPlayer:GetSpoofedCollectiblesList()
 end
 
