@@ -29,8 +29,8 @@ function Isaac.CenterCursor()
 end
 
 ---Kills all projectiles and non-friendly NPCs capable of keeping doors closed..
----@param includeNpcs? boolean @default: `false`. If `true`, will not kill aforementioned NPCs.
-function Isaac.ClearBossHazards(includeNpcs)
+---@param ignoreNPCs? boolean @default: `false`. If `true`, will not kill aforementioned NPCs.
+function Isaac.ClearBossHazards(ignoreNPCs)
 end
 
 ---Sets the challenge of the corresponding `challengeId` to completed.
