@@ -1233,32 +1233,32 @@
     "GIANT_BRIM_TECH": "15"
   },
   "CacheFlag": {
-    "CACHE_DAMAGE": "0x1",
-    "CACHE_FIREDELAY": "0x2",
-    "CACHE_SHOTSPEED": "0x4",
-    "CACHE_RANGE": "0x8",
-    "CACHE_SPEED": "0x10",
-    "CACHE_TEARFLAG": "0x20",
-    "CACHE_TEARCOLOR": "0x40",
-    "CACHE_FLYING": "0x80",
-    "CACHE_WEAPON": "0x100",
-    "CACHE_FAMILIARS": "0x200",
-    "CACHE_LUCK": "0x400",
+    "CACHE_DAMAGE": "1 << 0",
+    "CACHE_FIREDELAY": "1 << 1",
+    "CACHE_SHOTSPEED": "1 << 2",
+    "CACHE_RANGE": "1 << 3",
+    "CACHE_SPEED": "1 << 4",
+    "CACHE_TEARFLAG": "1 << 5",
+    "CACHE_TEARCOLOR": "1 << 6",
+    "CACHE_FLYING": "1 << 7",
+    "CACHE_WEAPON": "1 << 8",
+    "CACHE_FAMILIARS": "1 << 9",
+    "CACHE_LUCK": "1 << 10",
     "CACHE_SIZE": {
-      "value": "0x800",
+      "value": "1 << 11",
       "comment": "invalidates player size"
     },
     "CACHE_COLOR": {
-      "value": "0x1000",
+      "value": "1 << 12",
       "comment": "invalidates player color"
     },
     "CACHE_PICKUP_VISION": {
-      "value": "0x2000",
+      "value": "1 << 13",
       "comment": "invalidates effects that predict pickup drops (i.e. Guppy's Eye)"
     },
-    "CACHE_ALL": "0xFFFF",
+    "CACHE_ALL": "(1 << 16) - 1",
     "CACHE_TWIN_SYNC": {
-      "value": "0x80000000",
+      "value": "1 << 31",
       "comment": "special cache flag used when syncing Jacob and Esau's speed"
     }
   },
@@ -1338,108 +1338,387 @@
   },
   "EntityFlag": {
     "FLAG_NO_STATUS_EFFECTS": {
-      "value": "1",
-      "comment": "prevent freeze/poison/slow/charm/confusion/fear/burn"
+      "value": "1 <<",
+      "comment": "Prevents status effects from applying to the entity (e.g. freeze, poison, slow, charm, confusion, fear, burn, etc.)."
     },
-    "FLAG_NO_INTERPOLATE": "1 << 0",
-    "FLAG_APPEAR": "1 << 1",
-    "FLAG_RENDER_FLOOR": "1 << 2",
-    "FLAG_NO_TARGET": "1 << 3",
-    "FLAG_FREEZE": "1 << 4",
-    "FLAG_POISON": "1 << 5",
-    "FLAG_SLOW": "1 << 6",
-    "FLAG_CHARM": "1 << 7",
-    "FLAG_CONFUSION": "1 << 8",
-    "FLAG_MIDAS_FREEZE": "1 << 9",
-    "FLAG_FEAR": "1 << 10",
-    "FLAG_BURN": "1 << 11",
-    "FLAG_RENDER_WALL": "1 << 12",
-    "FLAG_INTERPOLATION_UPDATE": "1 << 13",
-    "FLAG_APPLY_GRAVITY": "1 << 14",
-    "FLAG_NO_BLOOD_SPLASH": "1 << 15",
-    "FLAG_NO_REMOVE_ON_TEX_RENDER": "1 << 16",
-    "FLAG_NO_DEATH_TRIGGER": "1 << 17",
-    "FLAG_NO_SPIKE_DAMAGE": "1 << 18",
-    "FLAG_LASER_POP": "1 << 19",
-    "FLAG_ITEM_SHOULD_DUPLICATE": "1 << 19",
-    "FLAG_BOSSDEATH_TRIGGERED": "1 << 20",
-    "FLAG_DONT_OVERWRITE": "1 << 21",
-    "FLAG_SPAWN_STICKY_SPIDERS": "1 << 22",
-    "FLAG_SPAWN_BLACK_HP": "1 << 23",
-    "FLAG_SHRINK": "1 << 24",
-    "FLAG_NO_FLASH_ON_DAMAGE": "1 << 25",
-    "FLAG_NO_KNOCKBACK": "1 << 26",
-    "FLAG_SLIPPERY_PHYSICS": "1 << 27",
-    "FLAG_ADD_JAR_FLY": "1 << 28",
-    "FLAG_FRIENDLY": "1 << 29",
-    "FLAG_NO_PHYSICS_KNOCKBACK": "1 << 30",
-    "FLAG_DONT_COUNT_BOSS_HP": "1 << 31",
-    "FLAG_NO_SPRITE_UPDATE": "1 << 32",
-    "FLAG_CONTAGIOUS": "1 << 33",
-    "FLAG_BLEED_OUT": "1 << 34",
-    "FLAG_HIDE_HP_BAR": "1 << 35",
-    "FLAG_NO_DAMAGE_BLINK": "1 << 36",
-    "FLAG_PERSISTENT": "1 << 37",
-    "FLAG_BACKDROP_DETAIL": "1 << 38",
-    "FLAG_AMBUSH": "1 << 39",
-    "FLAG_GLITCH": "1 << 40",
-    "FLAG_SPIN": "1 << 41",
-    "FLAG_NO_REWARD": "1 << 42",
-    "FLAG_REDUCE_GIBS": "1 << 43",
-    "FLAG_TRANSITION_UPDATE": "1 << 44",
-    "FLAG_NO_PLAYER_CONTROL": "1 << 45",
-    "FLAG_NO_QUERY": "1 << 46",
-    "FLAG_KNOCKED_BACK": "1 << 47",
-    "FLAG_APPLY_IMPACT_DAMAGE": "1 << 48",
-    "FLAG_ICE_FROZEN": "1 << 49",
-    "FLAG_ICE": "1 << 50",
-    "FLAG_MAGNETIZED": "1 << 51",
-    "FLAG_BAITED": "1 << 52",
-    "FLAG_KILLSWITCH": "1 << 53",
-    "FLAG_WEAKNESS": "1 << 54",
-    "FLAG_EXTRA_GORE": "1 << 55",
-    "FLAG_BRIMSTONE_MARKED": "1 << 56",
-    "FLAG_HELD": "1 << 57",
-    "FLAG_THROWN": "1 << 58",
-    "FLAG_FRIENDLY_BALL": "1 << 59"
+    "FLAG_NO_INTERPOLATE": {
+		"value": "1 << 1",
+		"comment": "Do not interpolate the position."
+	},
+    "FLAG_APPEAR": {
+		"value": "1 << 2",
+		"comment": "The \"Appear\" animation will be played after the entity is initialized."
+	},
+    "FLAG_RENDER_FLOOR": {
+		"value": "1 << 3",
+		"comment": "Meant for entities that have a sprite loaded that represent a floor texture. Entities with this flag will be removed after their first render. (Removing the entity is desirable because we would not want it to override other things that render to the floor, like bomb explosions.) You can use `EntityFlag.NO_REMOVE_ON_TEX_RENDER` to disable this behavior."
+	},
+    "FLAG_NO_TARGET": {
+		"value": "1 << 4",
+		"comment": "Will not be a target of NPCs or familiars."
+	},
+    "FLAG_FREEZE": {
+		"value": "1 << 5",
+		"comment": ""
+	},
+    "FLAG_POISON": {
+		"value": "1 << 6",
+		"comment": ""
+	},
+    "FLAG_SLOW": {
+		"value": "1 << 7",
+		"comment": ""
+	},
+    "FLAG_CHARM": {
+		"value": "1 << 8",
+		"comment": ""
+	},
+    "FLAG_CONFUSION": {
+		"value": "1 << 9",
+		"comment": ""
+	},
+    "FLAG_MIDAS_FREEZE": {
+		"value": "1 << 10",
+		"comment": ""
+	},
+    "FLAG_FEAR": {
+		"value": "1 << 11",
+		"comment": "Fleeing in fear (from e.g. Mom's Pad)."
+	},
+    "FLAG_BURN": {
+		"value": "1 << 12",
+		"comment": "Caused by Fire Mind tears. Works like poison except with a red color effect."
+	},
+    "FLAG_RENDER_WALL": {
+		"value": "1 << 13",
+		"comment": "Meant for entities that have a sprite loaded that represent a wall texture. Entities with this flag will be removed afte"
+	},
+    "FLAG_INTERPOLATION_UPDATE": {
+		"value": "1 << 14",
+		"comment": "The entity is updating at 60 frames per second and this is an odd frame."
+	},
+    "FLAG_APPLY_GRAVITY": {
+		"value": "1 << 15",
+		"comment": "Indicates that the entity is in a side-scrolling room and is within a gravity zone."
+	},
+    "FLAG_NO_BLOOD_SPLASH": {
+		"value": "1 << 16",
+		"comment": ""
+	},
+    "FLAG_NO_REMOVE_ON_TEX_RENDER": {
+		"value": "1 << 17",
+		"comment": "See `EntityFlag.FLAG_RENDER_FLOOR` and `EntityFlag.FLAG_RENDER_WALL`."
+	},
+    "FLAG_NO_DEATH_TRIGGER": {
+		"value": "1 << 18",
+		"comment": ""
+	},
+    "FLAG_NO_SPIKE_DAMAGE": {
+		"value": "1 << 19",
+		"comment": ""
+	},
+    "FLAG_LASER_POP": {
+		"value": "1 << 19",
+		"comment": "EntityTear: Pop tear fired by a laser, should decelerate very quickly for the first few frames"
+	},
+    "FLAG_ITEM_SHOULD_DUPLICATE": {
+		"value": "1 << 19",
+		"comment": "EntityPickup: item pedestal affected by Damocles, will be duplicated at the end of the current frame"
+	},
+    "FLAG_BOSSDEATH_TRIGGERED": {
+		"value": "1 << 20",
+		"comment": "Some bosses (Lamb/Mother) can die but they'll still appear to be active in the room (IsActiveEnemy). You can check this flag in those cases"
+	},
+    "FLAG_DONT_OVERWRITE": {
+		"value": "1 << 21",
+		"comment": "Used in entityfactory to not remove this entity if there is no space left for new entity"
+	},
+    "FLAG_SPAWN_STICKY_SPIDERS": {
+		"value": "1 << 22",
+		"comment": "Used by Sticky bombs to generate spiders on death"
+	},
+    "FLAG_SPAWN_BLACK_HP": {
+		"value": "1 << 23",
+		"comment": "Used by black hp drop tear flag to drop a black hp on enemy death"
+	},
+    "FLAG_SHRINK": {
+		"value": "1 << 24",
+		"comment": "God's flesh effect"
+	},
+    "FLAG_NO_FLASH_ON_DAMAGE": {
+		"value": "1 << 25",
+		"comment": "Entity will not flash red when damaged"
+	},
+    "FLAG_NO_KNOCKBACK": {
+		"value": "1 << 26",
+		"comment": "Bombs and farts have no knockback effects"
+	},
+    "FLAG_SLIPPERY_PHYSICS": {
+		"value": "1 << 27",
+		"comment": "Standing on a slippery surface"
+	},
+    "FLAG_ADD_JAR_FLY": {
+		"value": "1 << 28",
+		"comment": "Adds a fly to the jar when killed"
+	},
+    "FLAG_FRIENDLY": {
+		"value": "1 << 29",
+		"comment": "Charmed and m_CharmCountdown<0"
+	},
+    "FLAG_NO_PHYSICS_KNOCKBACK": {
+		"value": "1 << 30",
+		"comment": "No knockback from general collisions"
+	},
+    "FLAG_DONT_COUNT_BOSS_HP": {
+		"value": "1 << 31",
+		"comment": "Do not count boss hp. If all boss entities have this tag, the boss hp bar is hidden"
+	},
+    "FLAG_NO_SPRITE_UPDATE": {
+		"value": "1 << 32",
+		"comment": "Do not update sprite animation"
+	},
+    "FLAG_CONTAGIOUS": {
+		"value": "1 << 33",
+		"comment": "Used for Contagious item (if the enemy is infected)"
+	},
+    "FLAG_BLEED_OUT": {
+		"value": "1 << 34",
+		"comment": "Used for Mom's Razor"
+	},
+    "FLAG_HIDE_HP_BAR": {
+		"value": "1 << 35",
+		"comment": "Hides the Spider Mod hp bar of an EntityNPC"
+	},
+    "FLAG_NO_DAMAGE_BLINK": {
+		"value": "1 << 36",
+		"comment": "Player was given a short period of invulnerability by something other than damage, don't blink"
+	},
+    "FLAG_PERSISTENT": {
+		"value": "1 << 37",
+		"comment": "The entity will persists between rooms. (It will appear in every room, as opposed to the game remembering the specific room that it was spawned in.)"
+	},
+    "FLAG_BACKDROP_DETAIL": {
+		"value": "1 << 38",
+		"comment": "Was spawned as a backdrop decoration, should be deleted if the current backdrop changes (due to Delirium)"
+	},
+    "FLAG_AMBUSH": {
+		"value": "1 << 39",
+		"comment": "Enemy was spawned by some sort of ambush (Greed Mode, challenge rooms), don't collide with the player for a few frames"
+	},
+    "FLAG_GLITCH": {
+		"value": "1 << 40",
+		"comment": "Glitched out, has different effects depending on the entity"
+	},
+    "FLAG_SPIN": {
+		"value": "1 << 41",
+		"comment": "Used by Spin to Win, causes a familiar to rapidly spin around its owner"
+	},
+    "FLAG_NO_REWARD": {
+		"value": "1 << 42",
+		"comment": "Doesn't spawn any kind of reward on death"
+	},
+    "FLAG_REDUCE_GIBS": {
+		"value": "1 << 43",
+		"comment": "Spawn less gibs on death"
+	},
+    "FLAG_TRANSITION_UPDATE": {
+		"value": "1 << 44",
+		"comment": "Updates during room/stage transitions"
+	},
+    "FLAG_NO_PLAYER_CONTROL": {
+		"value": "1 << 45",
+		"comment": "Cannot be controlled by players"
+	},
+    "FLAG_NO_QUERY": {
+		"value": "1 << 46",
+		"comment": "Hide from query results. This can hide entities from things like `Isaac.FindByType` and the `MC_ENTITY_TAKE_DMG` callback. Entities will still be visible to `Isaac.GetRoomEntities` and `_UPDATE` callbacks."
+	},
+    "FLAG_KNOCKED_BACK": {
+		"value": "1 << 47",
+		"comment": "Strong knockback: Forcefy moved in a specified direction for a short duration"
+	},
+    "FLAG_APPLY_IMPACT_DAMAGE": {
+		"value": "1 << 48",
+		"comment": "Inflicts damage upon colliding with enemies, takes damage when colliding with walls"
+	},
+    "FLAG_ICE_FROZEN": {
+		"value": "1 << 49",
+		"comment": "Frozen solid"
+	},
+    "FLAG_ICE": {
+		"value": "1 << 50",
+		"comment": "Flagged to become frozen on death"
+	},
+    "FLAG_MAGNETIZED": {
+		"value": "1 << 51",
+		"comment": "Magnetized: Attracts nearby enemies, projectiles and pickups"
+	},
+    "FLAG_BAITED": {
+		"value": "1 << 52",
+		"comment": "Baited: Is targeted by nearby enemies"
+	},
+    "FLAG_KILLSWITCH": {
+		"value": "1 << 53",
+		"comment": "Killed by a killswitch"
+	},
+    "FLAG_WEAKNESS": {
+		"value": "1 << 54",
+		"comment": "Weakness effect from Reverse Strength"
+	},
+    "FLAG_EXTRA_GORE": {
+		"value": "1 << 55",
+		"comment": "Spawns more gibs on death"
+	},
+    "FLAG_BRIMSTONE_MARKED": {
+		"value": "1 << 56",
+		"comment": "Marked by Tainted Azazel; takes extra damage from Brimstone attacks."
+	},
+    "FLAG_HELD": {
+		"value": "1 << 57",
+		"comment": "Picked up by a player"
+	},
+    "FLAG_THROWN": {
+		"value": "1 << 58",
+		"comment": "Thrown by a player"
+	},
+    "FLAG_FRIENDLY_BALL": {
+		"value": "1 << 59",
+		"comment": "Used to detect enemies spawned by Friendly Ball"
+	}
   },
   "DamageFlag": {
     "DAMAGE_NOKILL": {
       "value": "1 << 0",
-      "comment": "damage can not kill the receiver"
+      "comment": "Damage can not kill the receiver"
     },
-    "DAMAGE_FIRE": "1 << 1",
-    "DAMAGE_EXPLOSION": "1 << 2",
-    "DAMAGE_LASER": "1 << 3",
-    "DAMAGE_ACID": "1 << 4",
-    "DAMAGE_RED_HEARTS": "1 << 5",
-    "DAMAGE_COUNTDOWN": "1 << 6",
-    "DAMAGE_SPIKES": "1 << 7",
-    "DAMAGE_CLONES": "1 << 8",
-    "DAMAGE_POOP": "1 << 9",
-    "DAMAGE_DEVIL": "1 << 10",
-    "DAMAGE_ISSAC_HEART": "1 << 11",
-    "DAMAGE_TNT": "1 << 12",
-    "DAMAGE_INVINCIBLE": "1 << 13",
-    "DAMAGE_SPAWN_FLY": "1 << 14",
-    "DAMAGE_POISON_BURN": "1 << 15",
-    "DAMAGE_CURSED_DOOR": "1 << 16",
-    "DAMAGE_TIMER": "1 << 17",
-    "DAMAGE_IV_BAG": "1 << 18",
-    "DAMAGE_PITFALL": "1 << 19",
-    "DAMAGE_CHEST": "1 << 20",
-    "DAMAGE_FAKE": "1 << 21",
-    "DAMAGE_BOOGER": "1 << 22",
-    "DAMAGE_SPAWN_BLACK_HEART": "1 << 23",
-    "DAMAGE_CRUSH": "1 << 24",
-    "DAMAGE_NO_MODIFIERS": "1 << 25",
-    "DAMAGE_SPAWN_RED_HEART": "1 << 26",
-    "DAMAGE_SPAWN_COIN": "1 << 27",
-    "DAMAGE_NO_PENALTIES": "1 << 28",
-    "DAMAGE_SPAWN_TEMP_HEART": "1 << 29",
-    "DAMAGE_IGNORE_ARMOR": "1 << 30",
-    "DAMAGE_SPAWN_CARD": "1 << 31",
-    "DAMAGE_SPAWN_RUNE": "1 << 32"
+    "DAMAGE_FIRE" : {
+		"value": "1 << 1",
+		"comment": "Source is some sort of fire (ie. fireplace)"
+	},
+    "DAMAGE_EXPLOSION" : {
+		"value": "1 << 2",
+		"comment": "Damage comes from an explosion"
+	},
+    "DAMAGE_LASER" : {
+		"value": "1 << 3",
+		"comment": "Damage comes from laser"
+	},
+    "DAMAGE_ACID" : {
+		"value": "1 << 4",
+		"comment": "Damage comes from acid, e.g. blood acid"
+	},
+    "DAMAGE_RED_HEARTS" : {
+		"value": "1 << 5",
+		"comment": "Damage affects only red hearts if > 1 (ex: razor)"
+	},
+    "DAMAGE_COUNTDOWN" : {
+		"value": "1 << 6",
+		"comment": "Damage from unicorn horn, the nail, game kid that has cooldown"
+	},
+    "DAMAGE_SPIKES" : {
+		"value": "1 << 7",
+		"comment": "Damage from spikes"
+	},
+    "DAMAGE_CLONES" : {
+		"value": "1 << 8",
+		"comment": "Damage is done by clones when they took damage, avoid infinite loops"
+	},
+    "DAMAGE_POOP" : {
+		"value": "1 << 9",
+		"comment": "Damage from red poop"
+	},
+    "DAMAGE_DEVIL" : {
+		"value": "1 << 10",
+		"comment": "Damage comes from devil room deal"
+	},
+    "DAMAGE_ISSAC_HEART" : {
+		"value": "1 << 11",
+		"comment": "Indicates the damage has been redirected from Isaac's Heart familiar"
+	},
+    "DAMAGE_TNT" : {
+		"value": "1 << 12",
+		"comment": "Damage comes from a TNT barrel"
+	},
+    "DAMAGE_INVINCIBLE" : {
+		"value": "1 << 13",
+		"comment": "Damages even if invincible (currently only for player). Used on IV Bag."
+	},
+    "DAMAGE_SPAWN_FLY" : {
+		"value": "1 << 14",
+		"comment": "Creates a fly when damage is applied"
+	},
+    "DAMAGE_POISON_BURN" : {
+		"value": "1 << 15",
+		"comment": "Damage comes from POISON/BURN flags"
+	},
+    "DAMAGE_CURSED_DOOR" : {
+		"value": "1 << 16",
+		"comment": "Damage comes from a cursed door"
+	},
+    "DAMAGE_TIMER" : {
+		"value": "1 << 17",
+		"comment": "Damage comes from the passage of time (used for player damage by time limited special seeds)"
+	},
+    "DAMAGE_IV_BAG" : {
+		"value": "1 << 18",
+		"comment": "Damage from using the IV Bag"
+	},
+    "DAMAGE_PITFALL" : {
+		"value": "1 << 19",
+		"comment": "Damage comes from pitfalls (such as ones spawned by Little Horn)"
+	},
+    "DAMAGE_CHEST" : {
+		"value": "1 << 20",
+		"comment": "Damage comes from spiked chest"
+	},
+    "DAMAGE_FAKE" : {
+		"value": "1 << 21",
+		"comment": "Fake damage that should trigger player's damage effects."
+	},
+    "DAMAGE_BOOGER" : {
+		"value": "1 << 22",
+		"comment": "Damage from booger tear"
+	},
+    "DAMAGE_SPAWN_BLACK_HEART" : {
+		"value": "1 << 23",
+		"comment": "Should drop a black heart if damage is lethal"
+	},
+    "DAMAGE_CRUSH" : {
+		"value": "1 << 24",
+		"comment": "Damage comes from a strong impact, can damage Tuff Twins or The Shells' stony exteriors (like Mom's foot, shockwaves"
+	},
+    "DAMAGE_NO_MODIFIERS" : {
+		"value": "1 << 25",
+		"comment": "Ignore damage modifiers (such as doubled damage from the Womb and later floors or reduced damage from the Wafer)"
+	},
+    "DAMAGE_SPAWN_RED_HEART" : {
+		"value": "1 << 26",
+		"comment": "Should drop a red heart if damage is lethal"
+	},
+    "DAMAGE_SPAWN_COIN" : {
+		"value": "1 << 27",
+		"comment": "Should drop a coin if damage is lethal"
+	},
+    "DAMAGE_NO_PENALTIES" : {
+		"value": "1 << 28",
+		"comment": "Damage shouldn't apply any penalties (such as devil deal chance)"
+	},
+    "DAMAGE_SPAWN_TEMP_HEART" : {
+		"value": "1 << 29",
+		"comment": "Should drop a half red heart that quickly despawns if damage is lethal"
+	},
+    "DAMAGE_IGNORE_ARMOR" : {
+		"value": "1 << 30",
+		"comment": "Damage ignores boss armor"
+	},
+    "DAMAGE_SPAWN_CARD" : {
+		"value": "1 << 31",
+		"comment": "Should drop a card if damage is lethal"
+	},
+    "DAMAGE_SPAWN_RUNE" : {
+		"value": "1 << 32",
+		"comment": "Should drop a rune if damage is lethal"
+	}
   },
   "SortingLayer": {
     "SORTING_BACKGROUND": {
@@ -5141,75 +5420,249 @@
   },
   "ProjectileFlags": {
     "SMART": {
-      "value": "1",
-      "comment": "follow player"
+      "value": "1 << 0",
+      "comment": "follow player "
     },
-    "EXPLODE": "1",
-    "ACID_GREEN": "1",
-    "GOO": "1",
-    "GHOST": "1",
-    "WIGGLE": "1",
-    "BOOMERANG": "1",
-    "HIT_ENEMIES": "1",
-    "ACID_RED": "1",
-    "GREED": "1",
-    "RED_CREEP": "1",
-    "ORBIT_CW": "1",
-    "ORBIT_CCW": "1",
-    "NO_WALL_COLLIDE": "1",
-    "CREEP_BROWN": "1",
-    "FIRE": "1",
-    "BURST": "1",
-    "ANY_HEIGHT_ENTITY_HIT": "1",
-    "CURVE_LEFT": "1",
-    "CURVE_RIGHT": "1",
-    "TURN_HORIZONTAL": "1",
-    "SINE_VELOCITY": "1",
-    "MEGA_WIGGLE": "1",
-    "SAWTOOTH_WIGGLE": "1",
-    "SLOWED": "1",
-    "TRIANGLE": "1",
-    "MOVE_TO_PARENT": "1",
-    "ACCELERATE": "1",
-    "DECELERATE": "1",
-    "BURST3": "1",
-    "CONTINUUM": "1",
-    "CANT_HIT_PLAYER": "1",
-    "CHANGE_FLAGS_AFTER_TIMEOUT": "1",
-    "CHANGE_VELOCITY_AFTER_TIMEOUT": "1",
-    "STASIS": "1",
-    "FIRE_WAVE": "1",
-    "FIRE_WAVE_X": "1",
-    "ACCELERATE_EX": "1",
-    "BURST8": "1",
-    "FIRE_SPAWN": "1",
-    "ANTI_GRAVITY": "1",
-    "TRACTOR_BEAM": "1",
-    "BOUNCE": "1",
-    "BOUNCE_FLOOR": "1",
-    "SHIELDED": "1",
-    "BLUE_FIRE_SPAWN": "1",
-    "LASER_SHOT": "1",
-    "GODHEAD": "1",
-    "SMART_PERFECT": "1",
-    "BURSTSPLIT": "1",
-    "WIGGLE_ROTGUT": "1",
-    "FREEZE": "1",
-    "ACCELERATE_TO_POSITION": "1",
-    "BROCCOLI": "1",
-    "BACKSPLIT": "1",
-    "SIDEWAVE": "1",
-    "ORBIT_PARENT": "1",
-    "FADEOUT": "1"
+    "EXPLODE": {
+		"value": "1 << 1",
+		"comment": "explode on impact "
+	},
+    "ACID_GREEN": {
+		"value": "1 << 2",
+		"comment": "acid splat on impact "
+	},
+    "GOO": {
+		"value": "1 << 3",
+		"comment": "goo splat on impact "
+	},
+    "GHOST": {
+		"value": "1 << 4",
+		"comment": "slide through solid entities "
+	},
+    "WIGGLE": {
+		"value": "1 << 5",
+		"comment": ""
+	},
+    "BOOMERANG": {
+		"value": "1 << 6",
+		"comment": "come back "
+	},
+    "HIT_ENEMIES": {
+		"value": "1 << 7",
+		"comment": "can hit enemies "
+	},
+    "ACID_RED": {
+		"value": " << 81",
+		"comment": "blood acid "
+	},
+    "GREED": {
+		"value": "1 << 9",
+		"comment": "Greed projectiles have same effect as Greed enemy's bullets. "
+	},
+    "RED_CREEP": {
+		"value": "1 << 10",
+		"comment": "Bullet leaves a red creep "
+	},
+    "ORBIT_CW": {
+		"value": "1 << 11",
+		"comment": "Bullet orbits a point clockwise and passes through walls similar to Tiny Planet "
+	},
+    "ORBIT_CCW": {
+		"value": "1 << 12",
+		"comment": "Bullet orbits a point counter-clockwise and passes through walls similar to Tiny Planet "
+	},
+    "NO_WALL_COLLIDE": {
+		"value": "1 << 13",
+		"comment": ""
+	},
+    "CREEP_BROWN": {
+		"value": "1 << 14",
+		"comment": "Bullet leaves a brown creep "
+	},
+    "FIRE": {
+		"value": "1 << 15",
+		"comment": "Projectile was cast by a fireplace "
+	},
+    "BURST": {
+		"value": "1 << 16",
+		"comment": "Bursts into more bullets "
+	},
+    "ANY_HEIGHT_ENTITY_HIT": {
+		"value": "1 << 17",
+		"comment": "Bullets that can hit at any height "
+	},
+    "CURVE_LEFT": {
+		"value": "1 << 18",
+		"comment": "Bullets curve slightly on a circular path "
+	},
+    "CURVE_RIGHT": {
+		"value": "1 << 19",
+		"comment": "Bullets curve slightly on a circular path "
+	},
+    "TURN_HORIZONTAL": {
+		"value": "1 << 20",
+		"comment": "Bullets turn and go horizontally and increase in speed when they pass the const static uint64_t player on either side "
+	},
+    "SINE_VELOCITY": {
+		"value": "1 << 21",
+		"comment": "Bullet velocity varies over time as a function of a wave "
+	},
+    "MEGA_WIGGLE": {
+		"value": "1 << 22",
+		"comment": "Like wiggle worm but the wiggling increases in amplitude over time "
+	},
+    "SAWTOOTH_WIGGLE": {
+		"value": "1 << 23",
+		"comment": "Bullets travel on a sawtooth shaped path "
+	},
+    "SLOWED": {
+		"value": "1 << 24",
+		"comment": ""
+	},
+    "TRIANGLE": {
+		"value": "1 << 25",
+		"comment": ""
+	},
+    "MOVE_TO_PARENT": {
+		"value": "1 << 26",
+		"comment": ""
+	},
+    "ACCELERATE": {
+		"value": "1 << 27",
+		"comment": ""
+	},
+    "DECELERATE": {
+		"value": "1 << 28",
+		"comment": ""
+	},
+    "BURST3": {
+		"value": "1 << 29",
+		"comment": ""
+	},
+    "CONTINUUM": {
+		"value": "1 << 30",
+		"comment": "Bullets reappear from the opposite side as they leave the screen "
+	},
+    "CANT_HIT_PLAYER": {
+		"value": "1 << 31",
+		"comment": ""
+	},
+    "CHANGE_FLAGS_AFTER_TIMEOUT": {
+		"value": "1 << 32",
+		"comment": "\"Change\" flags will change the bullet's behavior after a timeout. change m_ProjectileFlags to"
+	},
+    "CHANGE_VELOCITY_AFTER_TIMEOUT": {
+		"value": "1 << 33",
+		"comment": "\"Change\" flags will change the bullet's behavior after a timeout. "
+	},
+    "STASIS": {
+		"value": "1 << 34",
+		"comment": ""
+	},
+    "FIRE_WAVE": {
+		"value": "1 << 35",
+		"comment": ""
+	},
+    "FIRE_WAVE_X": {
+		"value": "1 << 36",
+		"comment": ""
+	},
+    "ACCELERATE_EX": {
+		"value": "1 << 37",
+		"comment": ""
+	},
+    "BURST8": {
+		"value": "1 << 38",
+		"comment": ""
+	},
+    "FIRE_SPAWN": {
+		"value": "1 << 39",
+		"comment": ""
+	},
+    "ANTI_GRAVITY": {
+		"value": "1 << 40",
+		"comment": ""
+	},
+    "TRACTOR_BEAM": {
+		"value": "1 << 41",
+		"comment": ""
+	},
+    "BOUNCE": {
+		"value": "1 << 42",
+		"comment": ""
+	},
+    "BOUNCE_FLOOR": {
+		"value": "1 << 43",
+		"comment": ""
+	},
+    "SHIELDED": {
+		"value": "1 << 44",
+		"comment": ""
+	},
+    "BLUE_FIRE_SPAWN": {
+		"value": "1 << 45",
+		"comment": ""
+	},
+    "LASER_SHOT": {
+		"value": "1 << 46",
+		"comment": ""
+	},
+    "GODHEAD": {
+		"value": "1 << 47",
+		"comment": ""
+	},
+    "SMART_PERFECT": {
+		"value": "1 << 48",
+		"comment": ""
+	},
+    "BURSTSPLIT": {
+		"value": "1 << 49",
+		"comment": ""
+	},
+    "WIGGLE_ROTGUT": {
+		"value": "1 << 50",
+		"comment": ""
+	},
+    "FREEZE": {
+		"value": "1 << 51",
+		"comment": ""
+	},
+    "ACCELERATE_TO_POSITION": {
+		"value": "1 << 52",
+		"comment": ""
+	},
+    "BROCCOLI": {
+		"value": "1 << 53",
+		"comment": ""
+	},
+    "BACKSPLIT": {
+		"value": "1 << 54",
+		"comment": ""
+	},
+    "SIDEWAVE": {
+		"value": "1 << 55",
+		"comment": ""
+	},
+    "ORBIT_PARENT": {
+		"value": "1 << 56",
+		"comment": ""
+	},
+    "FADEOUT": {
+		"value": "1 << 57",
+		"comment": ""
+	}
   },
   "EntityPartition": {
-    "FAMILIAR": "1",
-    "BULLET": "1",
-    "TEAR": "1",
-    "ENEMY": "1",
-    "PICKUP": "1",
-    "PLAYER": "1",
-    "EFFECT": "1"
+    "FAMILIAR": "1 << 0",
+    "BULLET": "1 << 1",
+    "TEAR": "1 << 2",
+    "ENEMY": "1 << 3",
+    "PICKUP": "1 << 4",
+    "PLAYER": "1 << 5",
+    "EFFECT": {
+		"value": "1 << 6",
+		"comment": "Effects are only returned by Isaac.FindInRadius if its EntityCollisionClass is NOT set to ENTCOLL_NONE"
+	}
   },
   "ChampionColor": {
     "RED": {
@@ -5337,20 +5790,53 @@
   },
   "UseFlag": {
     "USE_NOANIM": {
-      "value": "1",
+      "value": "1 << 0",
       "comment": "Don't play use animations"
     },
-    "USE_NOCOSTUME": "1",
-    "USE_OWNED": "1",
-    "USE_ALLOWNONMAIN": "1",
-    "USE_REMOVEACTIVE": "1",
-    "USE_CARBATTERY": "1",
-    "USE_VOID": "1",
-    "USE_MIMIC": "1",
-    "USE_NOANNOUNCER": "1",
-    "USE_ALLOWWISPSPAWN": "1",
-    "USE_CUSTOMVARDATA": "1",
-    "USE_NOHUD": "1"
+    "USE_NOCOSTUME": {
+		"value": "1 << 1",
+		"comment": "Don't add costume"
+	},
+    "USE_OWNED": {
+		"value": "1 << 2",
+		"comment": "Effect was triggered by an active item owned by the player"
+	},
+    "USE_ALLOWNONMAIN": {
+		"value": "1 << 3",
+		"comment": "Allow the effect to trigger on non-main players (i.e. coop babies)"
+	},
+    "USE_REMOVEACTIVE": {
+		"value": "1 << 4",
+		"comment": "D4 only: Reroll the player's active item"
+	},
+    "USE_CARBATTERY": {
+		"value": "1 << 5",
+		"comment": "Effect was triggered a second time by Car Battery (or Tarot Cloth for cards)"
+	},
+    "USE_VOID": {
+		"value": "1 << 6",
+		"comment": "Effect was triggered by Void"
+	},
+    "USE_MIMIC": {
+		"value": "1 << 7",
+		"comment": "Effect was mimicked by an active item (Blank Card, Placebo)"
+	},
+    "USE_NOANNOUNCER": {
+		"value": "1 << 8",
+		"comment": "Never play announcer voice"
+	},
+    "USE_ALLOWWISPSPAWN": {
+		"value": "1 << 9",
+		"comment": "This allows an item to spawn wisps when called from another item usage as the wisps generator checks for NOANIM, so usually you want to use this with NOANIM call"
+	},
+    "USE_CUSTOMVARDATA": {
+		"value": "1 << 10",
+		"comment": "If set, forces UseActiveItem to use the CustomVarData argument instead of the active item's stored VarData"
+	},
+    "USE_NOHUD": {
+		"value": "1 << 11",
+		"comment": "Don't display text in the HUD (this is currently only used by Echo Chamber)"
+	}
   },
   "RoomTransitionAnim": {
     "WALK": {
@@ -5370,12 +5856,30 @@
       "value": "4",
       "comment": "for curse of the maze"
     },
-    "ANKH": "5",
-    "DEAD_CAT": "6",
-    "ONE_UP": "7",
-    "COLLAR": "8",
-    "JUDAS_SHADOW": "9",
-    "LAZARUS": "10",
+    "ANKH": {
+		"value": "5",
+		"comment": "Works like RoomTransitionAnim.MAZE."
+	},
+    "DEAD_CAT": {
+		"value": "6",
+		"comment": "Works like RoomTransitionAnim.MAZE."
+	},
+    "ONE_UP": {
+		"value": "7",
+		"comment": "Works like RoomTransitionAnim.MAZE but plays the one up sound upon entering the room."
+	},
+    "COLLAR": {
+		"value": "8",
+		"comment": "Works like RoomTransitionAnim.MAZE."
+	},
+    "JUDAS_SHADOW": {
+		"value": "9",
+		"comment": "Works like RoomTransitionAnim.MAZE."
+	},
+    "LAZARUS": {
+		"value": "10",
+		"comment": "Works like RoomTransitionAnim.MAZE."
+	},
     "WOMB_TELEPORT": {
       "value": "11",
       "comment": "for Ventricle razor teleport"
@@ -5384,8 +5888,14 @@
       "value": "12",
       "comment": "for glowing hourglass teleport"
     },
-    "D7": "13",
-    "MISSING_POSTER": "14",
+    "D7": {
+		"value": "13",
+		"comment": "The same as RoomTransitionAnim.TELEPORT, but on Direction.NO_DIRECTION it'll play a fade to black, instead of a fade to white."
+	},
+    "MISSING_POSTER": {
+		"value": "14",
+		"comment": "Works like RoomTransitionAnim.MAZE."
+	},
     "BOSS_FORCED": {
       "value": "15",
       "comment": "No transition, goes directly to boss intro (for backwardass challenge)"
@@ -5398,9 +5908,18 @@
       "value": "17",
       "comment": "for the Forgotten's birthright"
     },
-    "FADE_MIRROR": "18",
-    "MINECART": "19",
-    "DEATH_CERTIFICATE": "20"
+    "FADE_MIRROR": {
+		"value": "18",
+		"comment": "Plays the mirror exit sound and a fade to white animation. If used with Direction.NO_DIRECTION, the fade to white is shorter."
+	},
+    "MINECART": {
+		"value": "19",
+		"comment": "Works like RoomTransitionAnim.FADE."
+	},
+    "DEATH_CERTIFICATE": {
+		"value": "20",
+		"comment": "The player lies down, then there's a fade to black and the player appears lying down again and gets up. Ignores the direction, but using Direction.NO_DIRECTION will make the fade shorter. The game is paused during the lying down and getting up animation."
+	}
   },
   "BackdropType": {
     "BACKDROP_NULL": "0",
@@ -5709,7 +6228,7 @@
     },
     "RENDER_WATER_REFRACT": {
       "value": "4",
-      "comment": "Rendering room entities below the water in a flooded room"
+      "comment": "Rendering room entities below the water in a flooded room. Unused"
     },
     "RENDER_WATER_REFLECT": {
       "value": "5",
