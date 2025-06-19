@@ -4,14 +4,14 @@ local ModReference = {}
 
 ---@param callbackID ModCallbacks | string
 ---@param callbackFn function
----@param entityID? integer
+---@param entityID? any
 function ModReference:AddCallback(callbackID, callbackFn, entityID)
 end
 
 ---@param callbackID ModCallbacks | string
 ---@param priority CallbackPriority
 ---@param callbackFn function
----@param entityID? integer
+---@param entityID? any
 function ModReference:AddPriorityCallback(callbackID, priority, callbackFn, entityID)
 end
 
