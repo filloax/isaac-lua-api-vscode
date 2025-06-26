@@ -696,8 +696,10 @@ function EntityPlayer:SetCambionConceptionState(state)
 end
 
 ---Disables or enables the player's ability to shoot.
+---
+---**WARNING:** If a character is blindfolded by default and this is set to `true`, will enable their ability to shoot!
 ---@param canShoot boolean
----@return boolean unknown TODO: Document me!
+---@return boolean
 function EntityPlayer:SetCanShoot(canShoot)
 end
 
