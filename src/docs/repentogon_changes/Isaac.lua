@@ -213,11 +213,13 @@ end
 ---@param category string
 ---@param key string
 ---@param language Language
----@overload fun(category: string, key: string, languageCode: string)
+---@return string
+---@overload fun(category: string, key: string, languageCode: string): string
 function Isaac.GetLocalizedString(category, key, language)
 end
 
 ---@param challengeId Challenge
+---@return integer
 function Isaac.GetModChallengeClearCount(challengeId)
 end
 
