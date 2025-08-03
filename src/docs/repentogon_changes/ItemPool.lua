@@ -102,3 +102,14 @@ end
 ---@return integer
 function ItemPool:GetNumItemPools()
 end
+
+---Returns the raw result of GetCollectible(), without any of the filtering applied by the original function. If the pool has completely ran out of repicks then this function will return nil.
+---
+---If RNG is not set, its initialized with `RNG(Random(), 4)`
+---@param poolType ItemPoolType
+---@param decrease? boolean @default: `false`
+---@param rng? RNG
+---@param collectibleFlags? GetCollectibleFlag @default: `0`
+---@return { itemID: CollectibleType, initialWeight: number, weight: number, decreaseBy: number, removeOn: number, isUnlocked: boolean } | nil
+function ItemPool:PickCollectible(poolType, decrease, rng, collectibleFlags)
+end

@@ -1,7 +1,7 @@
 ---Returns true if the collectible can be rerolled.
 ---@param collectible CollectibleType
 ---@return boolean
-function ItemConfig_Class:CanRerollCollectible(collectible)
+function ItemConfig_Class.CanRerollCollectible(collectible)
 end
 
 ---Returns a table of ItemConfigItem objects with the provided tag.
