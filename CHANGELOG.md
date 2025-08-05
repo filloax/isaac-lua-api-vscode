@@ -1,5 +1,8 @@
 # Change Log
 
+* [1.12.2]
+    - PR [#31](https://github.com/filloax/isaac-lua-api-vscode/pull/31): ItemPool and ItemConfig changes (epfly6)
+
 * [1.12.1]
 
     - Add Get/SetBloodLustCounter, SubCharge field under ActiveItemDesc, CharacterMenu.SetSelectedCharacterID(ID), RandomVector(), EntityPickup.GetRandomPickupVelocity(Position, RNG, VelocityType), and various Room functions
