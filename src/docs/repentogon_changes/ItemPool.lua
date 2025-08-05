@@ -113,3 +113,8 @@ end
 ---@return { itemID: CollectibleType, initialWeight: number, weight: number, decreaseBy: number, removeOn: number, isUnlocked: boolean } | nil
 function ItemPool:PickCollectible(poolType, decrease, rng, collectibleFlags)
 end
+
+---Makes the available once again, allowing it to naturally spawned even if previously remove. Also restores all instances of the collectible to it's initialWeight in every item pool.
+---@param collectibleType CollectibleType
+function ItemPool:ResetCollectible(collectibleType)
+end
