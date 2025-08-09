@@ -1338,7 +1338,7 @@
   },
   "EntityFlag": {
     "FLAG_NO_STATUS_EFFECTS": {
-      "value": "1 <<",
+      "value": "1 << 0",
       "comment": "Prevents status effects from applying to the entity (e.g. freeze, poison, slow, charm, confusion, fear, burn, etc.)."
     },
     "FLAG_NO_INTERPOLATE": {
@@ -5452,7 +5452,7 @@
 		"comment": "can hit enemies "
 	},
     "ACID_RED": {
-		"value": " << 81",
+		"value": "1 << 8",
 		"comment": "blood acid "
 	},
     "GREED": {
