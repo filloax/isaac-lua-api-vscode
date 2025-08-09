@@ -1,5 +1,8 @@
 # Change Log
 
+* [1.12.3]
+	- Fix two incomplete bitflag enums, causing errors to appear
+
 * [1.12.2]
     - PR [#31](https://github.com/filloax/isaac-lua-api-vscode/pull/31): ItemPool and ItemConfig changes (epfly6)
 
