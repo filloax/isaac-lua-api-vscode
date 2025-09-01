@@ -1,8 +1,8 @@
 ---@param charge integer
 ---@param slot ActiveSlot
----@param flashHUD boolean Currently appears to be redundant. Chargebar flashes regardless of using true or false
----@param overcharge boolean
----@param force boolean
+---@param flashHUD? boolean @default: `true`. Currently appears to be redundant. Chargebar flashes regardless of using true or false
+---@param overcharge? boolean @default: `false`
+---@param force? boolean @default: `false`
 ---@return integer chargesAdded The true amount of charges added, which may have been capped by the targeted item's max charges.
 function EntityPlayer:AddActiveCharge(charge, slot, flashHUD, overcharge, force)
 end
