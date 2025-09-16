@@ -8,7 +8,7 @@
 ---@field Timeout integer
 ---@field Touched boolean
 ---@field Wait integer
-local EntityPickup = {}
+_G.EntityPickup = {}
 
 function EntityPickup:AppearFast()
 end

@@ -31,6 +31,7 @@ end
 ---@param Position Vector
 ---@param RNG RNG
 ---@param VelocityType? integer @default: `0`. VelocityType 0 will shoot pickups in a random direction around the wanted position. VelocityType 1 will shoot pickups in a cone pointing down, mostly used for Beggar payouts. VelocityType also seems to affect pickups in Challenge Rooms, causing them to have a weaker velocity.
+---@return Vector
 function EntityPickup.GetRandomPickupVelocity(Position, RNG, VelocityType)
 end
 
