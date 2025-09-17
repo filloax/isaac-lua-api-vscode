@@ -25,7 +25,7 @@
 ---@field StartAngleDegrees number
 ---@field TearFlags TearFlags
 ---@field Timeout integer
-_G.EntityLaser = {}
+local EntityLaser = {}
 
 ---@param Flags TearFlags
 function EntityLaser:AddTearFlags(Flags)
@@ -37,7 +37,7 @@ end
 ---@param Parent Entity
 ---@param Margin number
 ---@return Vector
-function EntityLaser.CalculateEndPoint(Start, Dir, PositionOffset, Parent, Margin)
+function _G.EntityLaser.CalculateEndPoint(Start, Dir, PositionOffset, Parent, Margin)
 end
 
 ---@param Flags TearFlags
