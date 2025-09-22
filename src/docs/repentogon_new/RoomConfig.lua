@@ -33,5 +33,15 @@ end
 function RoomConfig.GetStage(StbType)
 end
 
+---Adds the provided Lua Rooms to the specified RoomConfigSet. For details on how to generate Lua Rooms, refer to the [Custom StageAPI Github page](https://github.com/Meowlala/BOIStageAPI15/tree/master).
+---
+---The function returns a table containing the placed RoomConfigRoom objects, in the same order as the input `Rooms` table. If a room at a given index could not be converted into a valid RoomConfigRoom, the corresponding entry in the returned table will be nil instead.
+---@param stage StbType
+---@param mode integer
+---@param rooms table
+---@return RoomConfigRoom[]
+function RoomConfig.AddRooms(stage, mode, rooms)
+end
+
 ---@alias RoomConfigHolder RoomConfig
 _G.RoomConfigHolder = RoomConfig

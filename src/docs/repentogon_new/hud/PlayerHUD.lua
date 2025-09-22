@@ -26,3 +26,11 @@ end
 ---@param scale? number @default: `1`.
 function PlayerHUD:RenderActiveItem(slot, position, alpha, scale)
 end
+
+---@return integer
+function PlayerHUD:GetIndex()
+end
+
+---@return PlayerHUDLayout
+function PlayerHUD:GetLayout()
+end

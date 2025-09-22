@@ -68,3 +68,13 @@ end
 ---@return number
 function ProceduralEffect:GetTriggerChance()
 end
+
+---The score is used to generate the `ProceduralItem`. Each `ProceduralItem` has a score limit when generating its effects. If the limit is reached, no more effect will be added.
+---@return number
+function ProceduralEffect:GetScore()
+end
+
+---In most cases, this value should be `1`.
+---@return number
+function ProceduralEffect:GetTriggerChanceScale()
+end

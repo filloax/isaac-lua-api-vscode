@@ -19,3 +19,23 @@ end
 ---@return string[]
 function ItemConfigItem:GetCustomCacheTags()
 end
+
+---Adds the provided string to the table of custom tags.
+---@param tagName string
+function ItemConfigItem:AddCustomTag(tagName)
+end
+
+---Removes the provided string from the table of custom tags.
+---@param tagName string
+function ItemConfigItem:RemoveCustomTag(tagName)
+end
+
+---Adds the provided string to the table of custom cache tags.
+---@param tagName string
+function ItemConfigItem:AddCustomCacheTag(tagName)
+end
+
+---Removes the provided string from the table of custom cache tags.
+---@param tagName string
+function ItemConfigItem:RemoveCustomCacheTag(tagName)
+end

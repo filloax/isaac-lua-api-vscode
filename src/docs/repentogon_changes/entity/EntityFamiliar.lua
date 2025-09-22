@@ -78,3 +78,27 @@ end
 function EntityFamiliar:UpdateDirtColor()
 end
 
+---@return boolean
+function EntityFamiliar:IsLilDelirium()
+end
+
+---@param value boolean
+function EntityFamiliar:SetLilDelirium(value)
+end
+
+---Returns a random `CollectibleType`. Used by Lemegenton for determining what wisp to spawn.
+---@param rng RNG
+---@return CollectibleType
+function _G.EntityFamiliar.GetRandomWisp(rng)
+end
+
+---Returns the Entity associated with the familiar's active [Weapon](Weapon.md).
+---
+---Returns `nil` if it cannot be found.
+---@return Entity?
+function EntityFamiliar:GetActiveWeaponEntity()
+end
+
+---Returns the amount of times the familiar's active `Weapon` has been fired.
+function EntityFamiliar:GetActiveWeaponNumFired()
+end

@@ -68,3 +68,16 @@ end
 ---@return boolean
 function EntityLaser:SetPrismTouched()
 end
+
+---Fire a new tear that inherits many attributes from this laser (flags, damage, size, color, etc).
+---
+---This will also trigger the `MC_POST_FIRE_SPLIT_TEAR` callback. For custom effects, a string may be passed in place of the `SplitTearType`.
+---@param pos Vector
+---@param velocity Vector
+---@param damageMult? number @default: `0.5`.
+---@param sizeMult? number @default: `0.6`.
+---@param variant? @default: `0`.
+---@param splitTearType? SplitTearType|string @default: `SplitTearType.SPLIT_GENERIC`
+---@return EntityTear
+function EntityLaser:FireSplitTear(pos, velocity, damageMult, sizeMult, variant, splitTearType)
+end

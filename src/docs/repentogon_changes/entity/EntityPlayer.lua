@@ -1132,3 +1132,181 @@ end
 ---@return integer
 function EntityPlayer:GetMaxBombs()
 end
+
+---Returns how long the player has held the `ButtonAction.ACTION_DROP` button. Counts up to 120, then resets to 20 and drops all trinkets/consumable on the next frame
+---@return integer
+function EntityPlayer:GetActionHoldDrop()
+end
+
+---Sets how long the player has held the `ButtonAction.ACTION_DROP` button. Counts up to 120, then resets to 20 and drops all trinkets/consumable on the next frame
+---@param value integer
+function EntityPlayer:SetActionHoldDrop(value)
+end
+
+---Returns the remaining cooldown for swapping between Forgotten's forms. Starts at `15` upon swapping forms and counts down to `0`.
+---@return integer
+function EntityPlayer:GetForgottenSwapFormCooldown()
+end
+
+---Sets the remaining cooldown for swapping between Forgotten's forms.  Starts at `15` upon swapping forms and counts down to `0`.
+---@param value integer
+function EntityPlayer:SetForgottenSwapFormCooldown(value)
+end
+
+---@return number
+function EntityPlayer:GetRockBottomMoveSpeed()
+end
+
+---@param value number
+function EntityPlayer:SetRockBottomMoveSpeed(value)
+end
+
+---@return number
+function EntityPlayer:GetRockBottomMaxFireDelay()
+end
+
+---@param value number
+function EntityPlayer:SetRockBottomMaxFireDelay(value)
+end
+
+---@return number
+function EntityPlayer:GetRockBottomDamage()
+end
+
+---@param value number
+function EntityPlayer:SetRockBottomDamage(value)
+end
+
+---@return number
+function EntityPlayer:GetRockBottomTearRange()
+end
+
+---@param value number
+function EntityPlayer:SetRockBottomTearRange(value)
+end
+
+---@return number
+function EntityPlayer:GetRockBottomShotSpeed()
+end
+
+---@param value number
+function EntityPlayer:SetRockBottomShotSpeed(value)
+end
+
+---@return number
+function EntityPlayer:GetRockBottomLuck()
+end
+
+---@param value number
+function EntityPlayer:SetRockBottomLuck(value)
+end
+
+---Gets the current progress of Revelation's chargebar. Counts up indefinitely while firing, but finishes charging at `150`, and resets to `0` when Isaac is no longer firing.
+---@return number
+function EntityPlayer:GetRevelationCharge()
+end
+
+---Sets the current progress of Revelation's chargebar. Counts up indefinitely while firing, but finishes charging at `150`, and resets to `0` when Isaac is no longer firing.
+---@param charge number
+function EntityPlayer:SetRevelationCharge(charge)
+end
+
+---@return PlayerHUD
+function EntityPlayer:GetPlayerHUD()
+end
+
+---@alias SuplexState
+---|1 Dashing
+---|2 Holding target
+---|3 Jumping into the air with target
+---|4 Landing on the ground with target
+
+---@return SuplexState
+function EntityPlayer:GetSuplexState()
+end
+
+---@param state SuplexState
+function EntityPlayer:SetSuplexState(state)
+end
+
+---If Suplex state is `1`: Starts at `16` when dashing, counts down in intervals of `2` until reaching `0.`
+---
+---If Suplex state is `2`: Starts at `60` when grabbing an enemy, counts down in intervals of `2` until reaching `0`.
+---@return integer
+function EntityPlayer:GetSuplexAimCountdown()
+end
+
+---@param countdown integer
+function EntityPlayer:SetSuplexAimCountdown(countdown)
+end
+
+---@return Vector
+function EntityPlayer:GetSuplexTargetPosition()
+end
+
+---@param pos Vector
+function EntityPlayer:SetSuplexTargetPosition(pos)
+end
+
+---@return Vector
+function EntityPlayer:GetSuplexLandPosition()
+end
+
+---@param pos Vector
+function EntityPlayer:SetSuplexLandPosition(pos)
+end
+
+--Creates an afterimage of the player that fades over the course of the given duration, similar to those created by items such as A Pony and Mars.
+---@param duration integer
+---@param pos Vector
+function EntityPlayer:CreateAfterimage(duration, pos)
+end
+
+---Adds a random stat bonus as if the player had collected a heart with Candy Heart.
+---@param cacheFlag? CacheFlag @default: `0`. Can specify a CacheFlag to force the bonus onto a specific stat. Stats are only applied while the player has Candy Heart.
+---@param amount? integer @default: `1`.
+function EntityPlayer:AddCandyHeartBonus(cacheFlag, amount)
+end
+
+---Returns a table of fields corresponding to each stat that Candy Heart can increase and the active amount of bonuses tied to each stat.
+---@return {FireDelay: integer, Damage: integer, TearRange: integer, ShotSpeed: integer, Luck: integer, MoveSpeed: integer}
+function EntityPlayer:GetCandyHeartBonus()
+end
+
+---Adds a random stat bonus as if the player had collected a heart with Soul Locket.
+---@param cacheFlag? CacheFlag @default: `0`. Can specify a CacheFlag to force the bonus onto a specific stat. Stats are only applied while the player has Soul Locket.
+---@param amount? integer @default: `1`
+function EntityPlayer:AddSoulLocketBonus(cacheFlag)
+end
+
+---Returns a table of fields corresponding to each stat that Soul Locket can increase and the active amount of bonuses tied to each stat.
+---@return {FireDelay: integer, Damage: integer, TearRange: integer, ShotSpeed: integer, Luck: integer, MoveSpeed: integer}
+function EntityPlayer:GetSoulLocketBonus()
+end
+
+---Returns the soft tears cap. Default is `5.0`. Not affected by firedelay modifiers.
+---@return number
+function EntityPlayer:GetTearsCap()
+end
+
+---Returns the multiplier added to stats gained from any items.
+---
+---Tainted Bethany returns `0.75`.
+---
+---Cracked Crown returns `1.2`.
+---@return number
+function EntityPlayer:GetStatMultiplier()
+end
+
+---Returns a table of the provided smelted trinket and their corresponding amounts.
+---@param trinketID TrinketType
+---@return SmeltedTrinket
+function EntityPlayer:GetSmeltedTrinketDesc(trinketID)
+end
+
+function EntityPlayer:GetCharmOfTheVampireKills()
+end
+
+---@param kills integer
+function EntityPlayer:SetCharmOfTheVampireKills(kills)
+end

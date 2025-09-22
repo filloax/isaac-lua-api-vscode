@@ -106,3 +106,13 @@ end
 ---@param player EntityPlayer
 function PlayerManager.RemoveCoPlayer(player)
 end
+
+---@param collectible CollectibleType
+---@return EntityPlayer?
+function PlayerManager.GetRandomCollectibleOwner(collectible)
+end
+
+---@param trinket TrinketType
+---@return EntityPlayer?
+function PlayerManager.GetRandomTrinketOwner(trinket)
+end

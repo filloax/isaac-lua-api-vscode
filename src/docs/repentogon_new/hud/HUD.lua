@@ -67,3 +67,11 @@ end
 ---@param percent number Accepts values between `0` and `1`. Numbers below `0` cause the boss hp bar to not be rendered.
 function HUD:SetBossHPBarFill(percent)
 end
+
+---@return Sprite
+function HUD:GetStackedStreakSprite()
+end
+
+---@return Sprite
+function HUD:GetPlayerStreakSprite()
+end

@@ -163,3 +163,12 @@ end
 ---@return GenericPrompt
 function Game:GetGenericPrompt()
 end
+
+---Creates a chain of short technology lasers similar to those created from Jacob's Ladder
+---@param pos Vector
+---@param baseDamage? number @default: `3.5`.
+---@param tearFlags? TearFlags @default: `TearFlags.TEAR_NORMAL`.
+---@param spawner? Entity @default: `nil`.
+---@return EntityEffect Returns with variant `EffectVariant.CHAIN_LIGHTNING`.
+function Game:ChainLightning(pos, baseDamage, tearFlags, spawner)
+end

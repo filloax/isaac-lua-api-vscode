@@ -133,3 +133,20 @@ end
 ---@param ID integer
 function CharacterMenu.SetSelectedCharacterID(ID)
 end
+
+---@return PlayerType
+---@param characterMenuID integer
+---@param tainted? boolean @Default: Current menu
+function CharacterMenu.GetPlayerTypeFromCharacterMenuID(characterMenuID, tainted)
+end
+
+---Note that the normal/tainted versions of a character have the same CharacterMenuID.
+---@return integer
+---@param playerType PlayerType
+function CharacterMenu.GetCharacterMenuIDFromPlayerType(playerType)
+end
+
+---Returns the PlayerType for the character currently selected in the menu.
+---@return PlayerType
+function CharacterMenu.GetSelectedCharacterPlayerType()
+end

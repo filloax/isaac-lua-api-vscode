@@ -58,3 +58,8 @@ end
 ---@return ButtonActionBitwise
 function MenuManager.GetInputMask()
 end
+
+---Returns true when MenuManager is ready to be used a.k.a if you can use the MenuManager's functions (normally, if you are at the main menu)
+---@return boolean
+function MenuManager.IsActive()
+end

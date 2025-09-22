@@ -118,3 +118,30 @@ end
 ---@param collectibleType CollectibleType
 function ItemPool:ResetCollectible(collectibleType)
 end
+
+---@class PoolItems
+---@field itemID CollectibleType? @default: `CollectibleType.COLLECTIBLE_NULL`
+---@field name string? @Alternative to `itemID`
+---@field weight number? @default: `1.0`
+---@field decreaseBy number? @default: `0.5`
+---@field removeOn number? @default: `0.1`
+
+---Adds the provided Lua `PoolItem` objects to the specified Pool permanently, as if they were defined in a `itempools.xml` file.
+---@param poolType ItemPoolType
+---@param poolItems PoolItems | PoolItems[] @Can be either a single Lua `PoolItem` object or an array of them. All field names are case insensitive
+function ItemPool:AddCollectible(poolType, poolItems)
+end
+
+---Adds the provided Lua `PoolItem` objects to the specified Pool, but only for the current run.
+---@param poolType ItemPoolType
+---@param poolItems PoolItems | PoolItems[] @Can be either a single Lua `PoolItem` object or an array of them. All field names are case insensitive
+function ItemPool:AddTemporaryCollectible(poolType, poolItems)
+end
+
+---Removes the provided Temporary Collectibles from the specified Pool, assuming they exist.
+---
+---The Lua `PoolItem` object **MUST** be equal (in terms of field values) to the one that was added in `ItemPool:AddTemporaryCollectible`)
+---@param poolType ItemPoolType
+---@param poolItems PoolItems | PoolItems[] @Can be either a single Lua `PoolItem` object or an array of them. All field names are case insensitive
+function ItemPool:RemoveTemporaryCollectible(poolType, poolItems)
+end

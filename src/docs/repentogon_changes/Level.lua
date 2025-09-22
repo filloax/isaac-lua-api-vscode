@@ -70,14 +70,15 @@ function Level:GetMyosotisPickups()
 end
 
 ---Returns true if the room would be able to fit at this location.`.
----@param roomConfigRoom RoomConfigRoom
+---@param roomConfigRoomToPlace RoomConfigRoom
 ---@param gridIndex integer
 ---@param dimension Dimension @default: `Dimension.CURRENT`
 ---@param allowMultipleDoors? boolean @default: `true`. Set to false to only allow successful placement if the room would only have one door (for placing special rooms).
 ---@param allowSpecialNeighbors? boolean @default: `false`. Set to true to allow connections to existing special rooms (note secret rooms are always allowed, but boss rooms are never allowed).
 ---@param allowNoNeighbors? boolean @default: `false`. Set to true to allow placing the room out in the void with no neighbors.
 ---@return boolean
-function Level:CanPlaceRoom(roomConfigRoom, gridIndex, dimension, allowMultipleDoors, allowSpecialNeighbors, allowNoNeighbors)
+---@overload fun(self: Level, roomShape: RoomShape, doorMask: DoorMask, gridIndex: integer, allowMultipleDoors?: boolean, allowSpecialNeighbors?: boolean, allowNoNeighbors?: boolean): boolean
+function Level:CanPlaceRoom(roomConfigRoomToPlace, gridIndex, dimension, allowMultipleDoors, allowSpecialNeighbors, allowNoNeighbors)
 end
 
 ---Will only place the room if it can fit and all doors can be successfully connected to neighboring rooms.
@@ -103,6 +104,7 @@ end
 ---@param allowMultipleDoors? boolean @default: `true`. Set to false to only allow successful placement if the room would only have one door (for placing special rooms).
 ---@param allowSpecialNeighbors? boolean @default: `false`. Set to true to allow connections to existing special rooms (note secret rooms are always allowed, but boss rooms are never allowed).
 ---@return boolean
+---@overload fun(self: Level, roomShape: RoomShape, doorMask: DoorMask, neightborRoomDescriptor: RoomDescriptor, doorSlot: DoorSlot, allowMultipleDoors?: boolean, allowSpecialNeighbors?: boolean)
 function Level:CanPlaceRoomAtDoor(roomConfigRoomToPlace, neightborRoomDescriptor, doorSlot, allowMultipleDoors, allowSpecialNeighbors)
 end
 
@@ -123,6 +125,7 @@ end
 ---@param allowMultipleDoors? boolean @default: `true`. Set to false to only allow successful placement if the room would only have one door (for placing special rooms).
 ---@param allowSpecialNeighbors? boolean @default: `false`. Set to true to allow connections to existing special rooms (note secret rooms are always allowed, but boss rooms are never allowed).
 ---@return integer[]
+---@overload fun(self: Level, roomShape: RoomShape, doorMask: DoorMask, dimension?: Dimension, allowMultipleDoors?: boolean, allowSpecialNeighbors?: boolean)
 function Level:FindValidRoomPlacementLocations(roomConfigRoom, dimension, allowMultipleDoors, allowSpecialNeighbors)
 end
 

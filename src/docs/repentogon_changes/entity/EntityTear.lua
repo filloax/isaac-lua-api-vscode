@@ -46,3 +46,25 @@ end
 ---@param IsTouched boolean
 function EntityTear:SetPrismTouched(IsTouched)
 end
+
+---Returns a table of Entity `Index` values
+---@return integer[]
+function EntityTear:GetHitList()
+end
+
+---Clears out the hit list, allowing the tear to hit the same enemy again
+function EntityTear:ClearHitList()
+end
+
+---Fire a new tear that inherits many attributes from this tear (flags, damage, size, color, etc).
+---
+---This will also trigger the `MC_POST_FIRE_SPLIT_TEAR` callback. For custom effects, a string may be passed in place of the `SplitTearType`.
+---@param pos Vector
+---@param velocity Vector
+---@param damageMult? number @default: `0.5`.
+---@param sizeMult? number @default: `0.6`.
+---@param variant? @default: `0`.
+---@param splitTearType? SplitTearType|string @default: `SplitTearType.SPLIT_GENERIC`
+---@return EntityTear
+function EntityTear:FireSplitTear(pos, velocity, damageMult, sizeMult, variant, splitTearType)
+end

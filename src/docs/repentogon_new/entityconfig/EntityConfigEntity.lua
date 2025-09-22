@@ -171,3 +171,8 @@ end
 ---@return boolean
 function EntityConfigEntity:IsBoss()
 end
+
+---Returns the `EntityConfigEntity` of the entity that this entity would devolve into. Returns `nil` if there is no devolved entity set.
+---@return EntityConfigEntity?
+function EntityConfigEntity:GetDevolvedEntity()
+end

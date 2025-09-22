@@ -397,3 +397,18 @@ end
 ---@param force number
 function Entity:TryThrow(source, throwDirection, force)
 end
+
+---@return WaterClipFlag
+function Entity:GetWaterClipFlags()
+end
+
+---@param flags WaterClipFlag
+function Entity:SetWaterClipFlags(flags)
+end
+
+function Entity:ResetWaterClipFlags()
+end
+
+---@return boolean
+function Entity:CanDevolve()
+end

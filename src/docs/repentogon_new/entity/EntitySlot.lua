@@ -120,3 +120,7 @@ end
 ---@param num integer
 function EntitySlot:SetTriggerTimerNum(num)
 end
+
+---@return Sprite
+function EntitySlot:GetPrizeSprite()
+end

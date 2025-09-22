@@ -18,3 +18,16 @@ end
 ---@return boolean
 function Camera:IsPosVisible(pos)
 end
+
+function Camera:Update()
+end
+
+---Will set whether or not camera clamping is enabled. If true, will have it follow the player, acting like it does in large rooms
+---@param clamped boolean
+function Camera:SetClampEnabled(clamped)
+end
+
+---Returns whether or not camera clamping is enabled.
+---@return boolean
+function Camera:IsClampEnabled()
+end

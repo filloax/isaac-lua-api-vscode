@@ -108,3 +108,7 @@ end
 ---@return boolean
 function ChallengeParam.IsSecretPath()
 end
+
+---@return boolean
+function ChallengeParam.IsBeastPath()
+end

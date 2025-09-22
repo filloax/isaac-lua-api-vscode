@@ -253,3 +253,6 @@ end
 ---@param lerp boolean
 ---@param rate? number @default: `0.015`.
 function Room:UpdateColorModifier(process, lerp, rate) end
+
+---@return FXLayers
+function Room:GetFXLayers() end

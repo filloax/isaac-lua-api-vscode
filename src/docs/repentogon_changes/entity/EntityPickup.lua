@@ -114,3 +114,29 @@ end
 ---Removes pickups with the same option group `EntityPickup.OptionsPickupIndex` as the target pickup.
 function EntityPickup:TriggerTheresOptionsPickup()
 end
+
+---Returns the other EntityPickup for a Mega Chest
+---@return EntityPickup
+function EntityPickup:GetMegaChestLeftCollectible()
+end
+
+---Returns the other EntityPickup for a Mega Chest
+---@return EntityPickup
+function EntityPickup:GetMegaChestRightCollectible()
+end
+
+---Returns `true` if pickup is collectible and has Flip save state.
+---@return boolean
+function EntityPickup:HasFlipData()
+end
+
+---Returns CollectibleType if flip save state exists, nil otherwise.
+---@return CollectibleType?
+function EntityPickup:GetFlipCollectible()
+end
+
+---Initiates the pedestal with a second ghostly collectible, as if the room was entered with the Flip item.
+---@param itemID? CollectibleType @default: `CollectibleType.COLLECTIBLE_NULL`
+---@param setupGraphics? boolean @default: `true`
+function EntityPickup:InitFlipState(itemID, setupGraphics)
+end

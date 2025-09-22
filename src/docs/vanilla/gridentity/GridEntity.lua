@@ -91,3 +91,13 @@ end
 function GridEntity:Update()
 end
 
+---@return WaterClipFlag
+function GridEntity:GetWaterClipFlags()
+end
+
+---@param flags WaterClipFlag
+function GridEntity:SetWaterClipFlags(flags)
+end
+
+function GridEntity:ResetWaterClipFlags()
+end
