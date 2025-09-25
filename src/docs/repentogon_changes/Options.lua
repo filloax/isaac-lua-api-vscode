@@ -1,10 +1,24 @@
----@type boolean
-Options.BetterVoidGeneration = nil
----@type boolean 
-Options.HushPanicStateFix = nil
----@type boolean 
-Options.KeyMasterDealChance = nil
----@type boolean 
-Options.PreventModUpdates = nil
----@type boolean 
-Options.QuickRoomClear = nil
+---@class Options
+---@field BetterVoidGeneration boolean
+---@field HushPanicStateFix boolean
+---@field PreventModUpdates boolean
+---@field QuickRoomClear boolean
+---@field AimLockEnabled boolean
+---@field AscentVoiceOver boolean
+---@field BossHPOnBottom boolean
+---@field Brightness number
+---@field Contrast number
+---@field Exposure number
+---@field OnlineChatEnabled boolean (read-only)
+---@field OnlineChatFilterEnabled boolean (read-only)
+---@field OnlineColorSet integer (read-only)
+---@field OnlineHUD integer (read-only)
+---@field OnlineInputDelay integer (read-only)
+---@field OnlinePlayerOpacity integer (read-only)
+---@field OnlinePlayerVolume integer (read-only)
+---@field StreamerMode boolean (read-only)
+---@field TouchMode integer
+---@field WindowHeight integer
+---@field WindowPosX integer
+---@field WindowPosY integer
+---@field WindowWidth integer

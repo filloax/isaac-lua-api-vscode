@@ -526,3 +526,7 @@ end
 ---@return Vector
 function Room:WorldToScreenPosition(WorldPos)
 end
+
+---@return Color
+function Room:GetWallColor()
+end

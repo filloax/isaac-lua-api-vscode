@@ -356,3 +356,26 @@ end
 ---@return ItemPoolType
 function Isaac.GetPoolIdByName(name)
 end
+
+---Returns a DoorMask representing all DoorSlots that are allowed for the given RoomShape.
+---@param roomShape RoomShape
+---@return DoorMask
+function Isaac.GetAllowedDoorsMaskForShape(roomShape)
+end
+
+---Sets the target challenge id as not cleared. Not recommended with vanilla ones, but it should still work.
+---@param challenge Challenge
+function Isaac.UnClearChallenge(challenge)
+end
+
+---Spawns an NPC forcing it to be a Boss, giving it a boss bar and boss-like qualities.
+---@param Type EntityType
+---@param Variant integer
+---@param SubType integer
+---@param Position Vector
+---@param Velocity Vector
+---@param Spawner Entity
+---@param Seed? integer
+---@return EntityNPC
+function Isaac.SpawnBoss(Type,Variant,SubType,Position,Velocity,Spawner,Seed)
+end
