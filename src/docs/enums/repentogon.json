@@ -264,10 +264,6 @@
       "value": "1078",
       "comment": "(EntityPlayer Player), Optional Arg: PlayerType - Called after entering a new level, but provides the player. Useful for player-specific effects on a new level."
     },
-    "MC_POST_PLAYER_GET_MULTI_SHOT_PARAMS": {
-      "value": "1251",
-      "comment": "(EntityPlayer Player): MultiShotParams, Optional Arg: PlayerType - Called after getting the player's MultiShotParams. Return a `MultiShotParams` object to change the properties of the players shooting behavior in regards to the MultiShotParams object properties."
-    },
     "MC_PRE_REPLACE_SPRITESHEET": {
       "value": "1116",
       "comment": "(integer LayerID, string PNGFilename): table{LayerID, PNGFilename}, Optional Arg: string ANM2Filename - Called before a Sprite object's spritesheet is replaced. Return a table of parameters to change what spritesheet is replaced."
@@ -1162,8 +1158,112 @@
     },
     "MC_EVALUATE_FAMILIAR_MULTIPLIER": {
       "value": "1225",
-      "comment": "(EntityFamiliar Familiar, float Mult, EntityPlayer Player): float, Optional Arg: FamiliarVariant. Called when a familiar's cached multiplier needs to be re-evaluated. Return a number to modify the multiplier. Modified values are passed to the next callback."
-    }
+      "comment": "(EntityFamiliar Familiar, float Mult, EntityPlayer Player): float, Optional Arg: FamiliarVariant - Called when a familiar's cached multiplier needs to be re-evaluated. Return a number to modify the multiplier. Modified values are passed to the next callback."
+    },
+	"MC_PRE_PLAYER_POCKET_ITEMS_SWAP": {
+		"value": "1287",
+		"comment": "(EntityPlayer Player): boolean - Called when the player swaps their pocket items using the action drop button (even if they are empty). Return `true` to cancel pocket item swap."
+	},
+	"MC_PRE_TRIGGER_BED_SLEEP_EFFECT": {
+		"value": "1285",
+		"comment": "(EntityPlayer Player): boolean - Triggers if \"SleepFillHP\" item overlay sprite's event is triggered, and before the hearts addition is applied. Return `true` to cancel vanilla behavior."
+	},
+	"MC_PRE_BED_SLEEP": {
+		"value": "1288",
+		"comment": "(EntityPlayer Player, EntityPickup Bed): boolean - Triggers on bed collision and before playing sleep sequence. Return `true` to cancel vanilla behavior."
+	},
+	"MC_PRE_ENTITY_SET_COLOR": {
+		"value": "1486",
+		"comment": "(Entity Entity, int Duration, int Priority, boolean FadeOut, boolean Share): boolean | Color, Optional Arg: EntityType - Called when `Entity:SetColor` is called. Return a color to override the color. The overridden color is passed into `MC_POST_ENTITY_SET_COLOR`. Return `false` to cancel the color change. This is only called for `Entity:SetColor` and does not fire when changing the entity's color directly."
+	},
+	"MC_POST_ENTITY_SET_COLOR": {
+		"value": "1487",
+		"comment": "(Entity Entity, int Duration, int Priority, boolean FadeOut, boolean Share), Optional Arg: EntityType - Called after an entity's color is changed via `Entity:SetColor`, assuming it wasn't skipped. This only fires for `Entity:SetColor` and does not fire when changing the entity's color directly."
+	},
+	"MC_POST_PLAYER_TRIGGER_ROOM_CLEAR": {
+		"value": "1138",
+		"comment": "(EntityPlayer Player), Optional Arg: PlayerVariant. Called after all room clear-related effects for a player is triggered, assuming it wasn't skipped. This also accounts for challenge waves. Return `false` to cancel trigger effects."
+	},
+	"MC_GET_STATUS_EFFECT_TARGET": {
+		"value": "1485",
+		"comment": "(Entity Entity): Entity, Optional Arg: EntityType - Called when an Entity is about to recieve a status effect. Return an Entity to apply the status effect to it instead (good for multi-segment enemies)."
+	},
+	"MC_PRE_STATUS_EFFECT_APPLY": {
+		"value": "1465",
+		"comment": "(StatusEffect StatusID, Entity Entity, EntityRef Source, integer Duration): boolean, Optional Arg: StatusEffect - Triggers before applying a status effect to an entity. Return `false` to cancel adding it."
+	},
+	"MC_POST_STATUS_EFFECT_APPLY": {
+		"value": "1466",
+		"comment": "(StatusEffect StatusID, Entity Entity, EntityRef Source, integer Duration), Optional Arg: StatusEffect - Triggers after applying a status effect to an entity, assuming it wasn't skipped."
+	},
+	"MC_PLAYER_HEALTH_TYPE_CHANGE": {
+		"value": "1128",
+		"comment": "(EntityPlayer Player, HealthType NewHealthType, HealthType PreviousHealthType, HealthType DefaultHealthType),Optional Arg: PlayerType - Called when a player's health type changes, but before automatic health conversion."
+	},
+	"MC_POST_ROOM_RENDER_ENTITIES": {
+		"value": "1044",
+		"comment": "Callback has no arguments. Runs after all entities & grid entities in the room have been rendered, but BEFORE effects like overlays, shockwaves, and the mirror world effect are applied."
+	},
+	"MC_POST_START_AMBUSH_WAVE": {
+		"value": "1488",
+		"comment": "(boolean BossAmbush) - Fires at the start of challenge/boss rush room wave."
+	},
+	"MC_POST_START_GREED_WAVE": {
+		"value": "1489",
+		"comment": "Fires at the start of a Greed Mode wave."
+	},
+	"MC_EVALUATE_MULTI_SHOT_PARAMS": {
+		"value": "1289",
+		"comment": "(EntityPlayer Player, MultiShotParams Params, WeaponType WeaponType): MultiShotParams, Optional Arg: PlayerType - Used for modifying and returning the provided mutable `MultiShotParams` object, which is passed along to the remaining callbacks."
+	},
+	"MC_EVALUATE_STAT": {
+		"value": "1226",
+		"comment": "(EntityPlayer Player, EvaluateStatStage Stat, float CurrentValue), Optional Arg: EvaluateStatStage - Used to modify intermediate values of player stat calculations. Unless you need to perform complicated conditions/calculations, it is strongly suggested that you use the XML item stats features instead of this callback!"
+	},
+	"MC_EVALUATE_TEAR_HIT_PARAMS": {
+		"value": "1490",
+		"comment": "(EntityPlayer Player, TearParams Params, WeaponType WeaponType, float DamageScale, integer TearDisplacement, Entity Source), Optional Arg: PlayerType: TearParams - Used for modifying and returning the provided mutable `TearParams` object, which is passed along to the remaining callbacks"
+	},
+	"MC_POST_FIRE_SPLIT_TEAR": {
+		"value": "1025",
+		"comment": "(EntityTear Tear, Entity Source, SplitTearType|string SplitTearType), Optional Arg: SplitTearType|string - Fires when a split tear is created from a tear, knife, or laser (e.g. Cricket's Body, Parasite, etc.)"
+	},
+	"MC_POST_ROOM_SAVE_STATE": {
+		"value": "1304",
+		"comment": "(Room Room, RoomDescriptor RoomDescriptor) - Called after the room saves all entities and grid entities."
+	},
+	"MC_PRE_ROOM_RESTORE_STATE": {
+		"value": "1305",
+		"comment": "(Room Room, RoomDescriptor RoomDescriptor) - Called before the room respawns all saved entities."
+	},
+	"MC_POST_SWAP_ROOMS": {
+		"value": "1306",
+		"comment": "(RoomDescriptor RoomDescriptor1, RoomDescriptor RoomDescriptor2) - Called after two rooms have been swapped, due to Curse of the Maze."
+	},
+	"MC_POST_BACKWARDS_ROOM_SAVE": {
+		"value": "1307",
+		"comment": "(LevelStage Stage, RoomDescriptor RoomDescriptor, string Key) - Called after a room has been saved; to then be restored when generating the Ascent. The string key (e.g. \"boss_0\", \"treasure_0\") identifies which slot the room was saved into."
+	},
+	"MC_POST_BACKWARDS_ROOM_RESTORE": {
+		"value": "1308",
+		"comment": "(LevelStage Stage, RoomDescriptor RoomDescriptor, string Key) - Called when generating the Ascent layout and one of the previously saved room is restored. The string key (e.g. \"boss_0\", \"treasure_0\") identifies which slot the room was saved into."
+	},
+	"MC_PRE_ADD_TRINKET": {
+		"value": "1014",
+		"comment": "(EntityPlayer Player, TrinketType TrinketType, boolean FirstTime): boolean|TrinketType, Optional Arg: TrinketType - Called before a trinket is added to the player. Return `false` to cancel, or a different TrinketType to change the trinket being added."
+	},
+	"MC_POST_ITEM_OVERLAY_RENDER": {
+		"value": "1139",
+		"comment": "(GiantBook OverlayID), Optional Arg: GiantBook - Called every render frame when an item overlay is being displayed."
+	},
+	"MC_PRE_OPEN_CHEST": {
+		"value": "1491",
+		"comment": "(EntityPickup Chest, EntityPlayer|nil Player): boolean - Called before a chest is opened. Return `false` to prevent it from opening."
+	},
+	"MC_POST_OPEN_CHEST": {
+		"value": "1492",
+		"comment": "(EntityPickup Chest, EntityPlayer|nil Player) - Called after a chest is opened."
+	}
   },
   "Renderer": {
     "GLSLType": {
@@ -5026,6 +5126,24 @@
       "value": "1<<2",
       "comment": "Bans items with Type: `ITEM_PASSIVE`"
     }
+  },
+  "StatusEffect": {
+    "BAITED": "0",
+    "BLEEDING": "1",
+    "BRIMSTONE_MARK": "2",
+    "BURN": "3",
+    "CHARMED": "4",
+    "CONFUSION": "5",
+    "FEAR": "6",
+    "FREEZE": "7",
+    "ICE": "8",
+    "KNOCKBACK": "9",
+    "MAGNETIZED": "10",
+    "MIDAS_FREEZE": "11",
+    "POISON": "12",
+    "SHRINK": "13",
+    "SLOWING": "14",
+    "WEAKNESS": "15"
   },
   "CharacterMenuStatus": {
   "DEFAULT": "0",
