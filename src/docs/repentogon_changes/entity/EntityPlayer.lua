@@ -978,14 +978,14 @@ function EntityPlayer:GetUrnSouls()
 end
 
 ---@param type NullItemID
----@param costume boolean
+---@param costume? boolean @default: `false`
 ---@param cooldown? integer @default: `default cooldown`
 ---@param additive? boolean @default: `true`
 function EntityPlayer:AddNullItemEffect(type, costume, cooldown, additive)
 end
 
 ---@param type CollectibleType
----@param costume boolean
+---@param costume? boolean @default: `false`
 ---@param cooldown? integer @default: `default cooldown`
 ---@param additive? boolean @default: `true`
 function EntityPlayer:AddCollectibleEffect(type, costume, cooldown, additive)
