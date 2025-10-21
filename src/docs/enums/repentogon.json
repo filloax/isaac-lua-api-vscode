@@ -1263,6 +1263,14 @@
 	"MC_POST_OPEN_CHEST": {
 		"value": "1492",
 		"comment": "(EntityPickup Chest, EntityPlayer|nil Player) - Called after a chest is opened."
+	},
+	"MC_PRE_APPLY_TEARFLAG_EFFECTS": {
+		"value": "1277",
+		"comment": "(EntityNPC NPC, Vector Position, TearFlags TearFlags, Entity Source, float Damage): boolean, Optional Arg: EntityType - Called before applying TearFlag effects are applied to an npc. Return `false` to stop effects from being applied. The source could be basically anything (tear, laser, knife, nil, etc). The optional arg is for the EntityType of the source, if any."
+	},
+	"MC_POST_APPLY_TEARFLAG_EFFECTS": {
+		"value": "1278",
+		"comment": "(EntityNPC NPC, Vector Position, TearFlags TearFlags, Entity Source, float Damage), Optional Arg: EntityType - Called after applying TearFlag effects are applied to an npc, assuming it wasn't skipped. The source could be basically anything (tear, laser, knife, nil, etc). The optional arg is for the EntityType of the source, if any."
 	}
   },
   "Renderer": {

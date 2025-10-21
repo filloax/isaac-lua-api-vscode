@@ -174,3 +174,11 @@ end
 ---@return EntityPlayer?
 function EntityNPC:GetSirenPlayerEntity()
 end
+
+---Applies the appropriate `tearFlags` to the EntityNPC.
+---@param pos Vector
+---@param tearFlags TearFlags
+---@param sourceEnt? Entity @default: `nil`
+---@param damage? number @default: `3.5`
+function EntityNPC:ApplyTearflagEffects(pos, tearFlags, sourceEnt, damage)
+end
