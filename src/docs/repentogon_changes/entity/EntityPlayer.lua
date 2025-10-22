@@ -991,6 +991,13 @@ end
 function EntityPlayer:AddCollectibleEffect(type, costume, cooldown, additive)
 end
 
+---@param type TrinketType
+---@param costume? boolean @default: `false`
+---@param cooldown? integer @default: `default cooldown`
+---@param additive? boolean @default: `true`
+function EntityPlayer:AddTrinketEffect(type, costume, cooldown, additive)
+end
+
 ---@param direction Direction
 ---@param time integer
 ---@param force? boolean

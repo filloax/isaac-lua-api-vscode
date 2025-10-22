@@ -23,7 +23,7 @@ function TemporaryEffects:ClearEffects()
 end
 
 ---@param CollectibleType CollectibleType
----@return TemporaryEffect
+---@return TemporaryEffect? @Will return `nil` if the effect is not active
 function TemporaryEffects:GetCollectibleEffect(CollectibleType)
 end
 
@@ -37,7 +37,7 @@ function TemporaryEffects:GetEffectsList()
 end
 
 ---@param NullId integer @ItemConfigNullItemID
----@return TemporaryEffect
+---@return TemporaryEffect? @Will return `nil` if the effect is not active
 function TemporaryEffects:GetNullEffect(NullId)
 end
 
@@ -47,7 +47,7 @@ function TemporaryEffects:GetNullEffectNum(NullId)
 end
 
 ---@param TrinketType TrinketType
----@return TemporaryEffect
+---@return TemporaryEffect? @Will return `nil` if the effect is not active
 function TemporaryEffects:GetTrinketEffect(TrinketType)
 end
 
