@@ -5296,7 +5296,7 @@
     "MULTIDIMENSIONAL": "9",
     "ANGELIC_PRISM": "10"
   },
-  "UseActiveItemResultFlags": {
+  "UseActiveItemResultFlag": {
 	"DISCHARGE": "1 << 0",
 	"REMOVE": "1 << 8"
   }
