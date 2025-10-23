@@ -932,6 +932,7 @@ end
 
 ---Tries to add the specified pickup to the player's Bag of Crafting.
 ---@param pickup EntityPickup
+---@return boolean @Returns `true` if successfully added.
 function EntityPlayer:TryAddToBagOfCrafting(pickup)
 end
 
@@ -1316,4 +1317,41 @@ end
 
 ---@param kills integer
 function EntityPlayer:SetCharmOfTheVampireKills(kills)
+end
+
+---Returns if the player has the "Camo Undies" effect of being camoflauged. Returns `true` for both the normal and forced version of the effect.
+---@return boolean
+function EntityPlayer:HasCamoEffect()
+end
+
+---Returns if the player was forced to have the "Camo Undies" camoflauge effect through `EntityPlayer:SetForceCamoEffect`.
+---@return boolean
+function EntityPlayer:HasForcedCamoEffect()
+end
+
+---Forces whether or not the player has the "Camo Undies" effect of being camoflauged with no other effects related to Camo Undies, such as the confusion status, losing the effect after firing, and the change in tears stat.
+---@param value boolean
+function EntityPlayer:SetForceCamoEffect(value)
+end
+
+---@return boolean
+function EntityPlayer:IsPostLevelInitFinished()
+end
+
+---@param Item CollectibleType
+---@param UseFlags? UseFlag @default: `0`
+---@param Slot? ActiveSlot | -1 @default: `-1`
+---@return UseActiveItemResultFlags
+---@overload fun(self: EntityPlayer, Item: CollectibleType, ShowAnim?: boolean, KeepActiveItem?: boolean, AllowNonMainPlayer?: boolean, ToAddCostume?: boolean, Slot?: ActiveSlot | -1): UseActiveItemResultFlags
+function EntityPlayer:UseActiveItem(Item, UseFlags, Slot)
+end
+
+---Starts at and counts down from `300` by default.
+---@return number
+function EntityPlayer:GetMaggyHealthDrainCooldown()
+end
+
+---Has no effect on players that aren't Tainted Magdalene.
+---@param cooldown number
+function EntityPlayer:SetMaggyHealthDrainCooldown(cooldown)
 end

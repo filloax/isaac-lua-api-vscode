@@ -82,7 +82,7 @@
     },
     "MC_POST_RENDER_PLAYER_HEAD": {
       "value": "1045",
-      "comment": "(EntityPlayer Player, Vector RenderPos), Optional Arg: PlayerType - Called before a player's head is rendered, assuming it wasn't skipped."
+      "comment": "(EntityPlayer Player, Vector RenderPos), Optional Arg: PlayerType - Called after a player's head is rendered successfully."
     },
     "MC_PRE_RENDER_PLAYER_BODY": {
       "value": "1039",
@@ -90,7 +90,7 @@
     },
     "MC_POST_RENDER_PLAYER_BODY": {
       "value": "1046",
-      "comment": "(EntityPlayer Player, Vector RenderPos), Optional Arg: PlayerType - Called before a player's body is rendered, assuming it wasn't skipped."
+      "comment": "(EntityPlayer Player, Vector RenderPos), Optional Arg: PlayerType - Called after a player's body is rendered successfully."
     },
     "MC_PRE_ENTITY_THROW": {
       "value": "1040",
@@ -158,7 +158,7 @@
     },
     "MC_POST_COMPLETION_MARKS_RENDER": {
       "value": "1217",
-      "comment": "(Sprite CompletionMarksSprite, Vector RenderPos, Vector RenderScale, PlayerType PlayerType) - Called before a character's completion marks are rendered on the character selection screen, assuming it wasn't skipped."
+      "comment": "(Sprite CompletionMarksSprite, Vector RenderPos, Vector RenderScale, PlayerType PlayerType) - Called after a character's completion marks are rendered on the character selection screen successfully."
     },
     "MC_PRE_PAUSE_SCREEN_RENDER": {
       "value": "1218",
@@ -166,7 +166,7 @@
     },
     "MC_POST_PAUSE_SCREEN_RENDER": {
       "value": "1219",
-      "comment": "(Sprite PauseBody, Sprite PauseStats): boolean - Called before the pause screen is rendered in-game, assuming it wasn't skipped."
+      "comment": "(Sprite PauseBody, Sprite PauseStats): boolean - Called after the pause screen is rendered in-game successfully."
     },
     "MC_PRE_USE_CARD": {
       "value": "1064",
@@ -234,7 +234,7 @@
     },
     "MC_POST_SLOT_RENDER": {
       "value": "1090",
-      "comment": "(EntityFamiliar Familiar, Vector Offset): Vector | boolean, Optional Arg: FamiliarVariant - Called after a familiar is rendered, assuming it wasn't skipped."
+      "comment": "(EntityFamiliar Familiar, Vector Offset): Vector | boolean, Optional Arg: FamiliarVariant - Called after a familiar is rendered successfully."
     },
     "MC_PLAYER_GET_ACTIVE_MAX_CHARGE": {
       "value": "1072",
@@ -262,7 +262,7 @@
     },
     "MC_POST_PLAYER_NEW_LEVEL": {
       "value": "1078",
-      "comment": "(EntityPlayer Player), Optional Arg: PlayerType - Called after entering a new level, but provides the player. Useful for player-specific effects on a new level."
+      "comment": "(EntityPlayer Player, boolean FromPlayerUpdate, boolean IsPostLevelInitFinished), Optional Arg: PlayerType - Called after entering a new level or continuing a run. `IsPostLevelInitFinished` will be `true` if the callback runs from continuing a run. Useful for player-specific effects on a new level."
     },
     "MC_PRE_REPLACE_SPRITESHEET": {
       "value": "1116",
@@ -358,7 +358,7 @@
     },
     "MC_POST_PLAYERHUD_RENDER_HEARTS": {
       "value": "1091",
-      "comment": "(Vector Offset(?), Sprite HeartsSprite, Vector Position, float Unknown, EntityPlayer Player) - Called after the player's hearts are rendered, both on the corners of the HUD and above Strawman-like players, assuming it wasn't skipped."
+      "comment": "(Vector Offset(?), Sprite HeartsSprite, Vector Position, float Unknown, EntityPlayer Player) - Called after the player's hearts are rendered, both on the corners of the HUD and above Strawman-like players successfully."
     },
     "MC_PRE_GET_LIGHTING_ALPHA": {
       "value": "1150",
@@ -450,23 +450,23 @@
     },
     "MC_POST_PLAYER_COLLISION": {
       "value": "1231",
-      "comment": "(EntityPlayer Player, Entity Collider, boolean Low), Optional Arg: PlayerVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
+      "comment": "(EntityPlayer Player, Entity Collider, boolean Low), Optional Arg: PlayerVariant - Called after the on-collision code of this entity is ran successfully."
     },
     "MC_POST_TEAR_COLLISION": {
       "value": "1233",
-      "comment": "(EntityTear Tear, Entity Collider, boolean Low), Optional Arg: TearVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
+      "comment": "(EntityTear Tear, Entity Collider, boolean Low), Optional Arg: TearVariant - Called after the on-collision code of this entity is ran successfully."
     },
     "MC_POST_FAMILIAR_COLLISION": {
       "value": "1235",
-      "comment": "(EntityFamiliar Familiar, Entity Collider, boolean Low), Optional Arg: FamiliarVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
+      "comment": "(EntityFamiliar Familiar, Entity Collider, boolean Low), Optional Arg: FamiliarVariant - Called after the on-collision code of this entity is ran successfully."
     },
     "MC_POST_BOMB_COLLISION": {
       "value": "1237",
-      "comment": "(EntityBomb Bomb, Entity Collider, boolean Low), Optional Arg: BombVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
+      "comment": "(EntityBomb Bomb, Entity Collider, boolean Low), Optional Arg: BombVariant - Called after the on-collision code of this entity is ran successfully."
     },
     "MC_POST_PICKUP_COLLISION": {
       "value": "1239",
-      "comment": "(EntityPickup Pickup, Entity Collider, boolean Low), Optional Arg: PickupVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
+      "comment": "(EntityPickup Pickup, Entity Collider, boolean Low), Optional Arg: PickupVariant - Called after the on-collision code of this entity is ran successfully."
     },
     "MC_PRE_SLOT_COLLISION": {
       "value": "1240",
@@ -474,27 +474,27 @@
     },
     "MC_POST_SLOT_COLLISION": {
       "value": "1241",
-      "comment": "(EntitySlot Slot, Entity Collider, boolean Low), Optional Arg: SlotVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
+      "comment": "(EntitySlot Slot, Entity Collider, boolean Low), Optional Arg: SlotVariant - Called after the on-collision code of this entity is ran successfully."
     },
     "MC_POST_KNIFE_COLLISION": {
       "value": "1243",
-      "comment": "(EntityKnife Knife, Entity Collider, boolean Low), Optional Arg: KnifeSubType - Runs after the on-collision code of this entity, assuming it wasn't skipped."
+      "comment": "(EntityKnife Knife, Entity Collider, boolean Low), Optional Arg: KnifeSubType - Called after the on-collision code of this entity is ran successfully."
     },
     "MC_POST_PROJECTILE_COLLISION": {
       "value": "1245",
-      "comment": "(EntityProjectile Projectile, Entity Collider, boolean Low), Optional Arg: ProjectileVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
+      "comment": "(EntityProjectile Projectile, Entity Collider, boolean Low), Optional Arg: ProjectileVariant - Called after the on-collision code of this entity is ran successfully."
     },
     "MC_POST_NPC_COLLISION": {
       "value": "1247",
-      "comment": "(EntityNPC NPC, Entity Collider, boolean Low), Optional Arg: EntityType - Runs after the on-collision code of this entity, assuming it wasn't skipped."
+      "comment": "(EntityNPC NPC, Entity Collider, boolean Low), Optional Arg: EntityType - Called after the on-collision code of this entity is ran successfully."
     },
     "MC_PRE_LASER_COLLISION": {
       "value": "1248",
-      "comment": "(EntityLaser Laser, Entity Collider, boolean Low): boolean, Optional Arg: LaserVariant - Runs after the on-collision code of this entity. Return `true` to ignore the collision"
+      "comment": "(EntityLaser Laser, Entity Collider, boolean Low): boolean, Optional Arg: LaserVariant - Called after the on-collision code of this entity. Return `true` to ignore the collision"
     },
     "MC_POST_LASER_COLLISION": {
       "value": "1249",
-      "comment": "(EntityLaser Laser, Entity Collider, boolean Low), Optional Arg: LaserVariant - Runs after the on-collision code of this entity, assuming it wasn't skipped."
+      "comment": "(EntityLaser Laser, Entity Collider, boolean Low), Optional Arg: LaserVariant - Called after the on-collision code of this entity is ran successfully."
     },
     "MC_CONSOLE_AUTOCOMPLETE": {
       "value": "1120",
@@ -622,7 +622,7 @@
     },
     "MC_POST_GRID_ENTITY_DECORATION_UPDATE": {
       "value": "1401",
-      "comment": "(GridEntityDecoration Decoration), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityDecoration Decoration), Optional Arg: GridEntityType - Called after this grid entity is updated successfully."
     },
     "MC_PRE_GRID_ENTITY_DOOR_UPDATE": {
       "value": "1402",
@@ -630,7 +630,7 @@
     },
     "MC_POST_GRID_ENTITY_DOOR_UPDATE": {
       "value": "1403",
-      "comment": "(GridEntityDoor Door), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityDoor Door), Optional Arg: GridEntityType - Called after this grid entity is updated successfully."
     },
     "MC_PRE_GRID_ENTITY_FIRE_UPDATE": {
       "value": "1404",
@@ -638,7 +638,7 @@
     },
     "MC_POST_GRID_ENTITY_FIRE_UPDATE": {
       "value": "1405",
-      "comment": "(GridEntityFire Fire), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityFire Fire), Optional Arg: GridEntityType - Called after this grid entity is updated successfully."
     },
     "MC_PRE_GRID_ENTITY_GRAVITY_UPDATE": {
       "value": "1406",
@@ -646,7 +646,7 @@
     },
     "MC_POST_GRID_ENTITY_GRAVITY_UPDATE": {
       "value": "1407",
-      "comment": "(GridEntityGravity Gravity), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityGravity Gravity), Optional Arg: GridEntityType - Called after this grid entity is updated successfully."
     },
     "MC_PRE_GRID_ENTITY_LOCK_UPDATE": {
       "value": "1408",
@@ -654,7 +654,7 @@
     },
     "MC_POST_GRID_ENTITY_LOCK_UPDATE": {
       "value": "1409",
-      "comment": "(GridEntityLock Lock), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityLock Lock), Optional Arg: GridEntityType - Called after this grid entity is updated successfully."
     },
     "MC_PRE_GRID_ENTITY_PIT_UPDATE": {
       "value": "1410",
@@ -662,7 +662,7 @@
     },
     "MC_POST_GRID_ENTITY_PIT_UPDATE": {
       "value": "1411",
-      "comment": "(GridEntityPit Pit), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityPit Pit), Optional Arg: GridEntityType - Called after this grid entity is updated successfully."
     },
     "MC_PRE_GRID_ENTITY_POOP_UPDATE": {
       "value": "1412",
@@ -670,7 +670,7 @@
     },
     "MC_POST_GRID_ENTITY_POOP_UPDATE": {
       "value": "1413",
-      "comment": "(GridEntityPoop Poop), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityPoop Poop), Optional Arg: GridEntityType - Called after this grid entity is updated successfully."
     },
     "MC_PRE_GRID_ENTITY_PRESSUREPLATE_UPDATE": {
       "value": "1414",
@@ -678,7 +678,7 @@
     },
     "MC_POST_GRID_ENTITY_PRESSUREPLATE_UPDATE": {
       "value": "1415",
-      "comment": "(GridEntityPressurePlate PressurePlate), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityPressurePlate PressurePlate), Optional Arg: GridEntityType - Called after this grid entity is updated successfully."
     },
     "MC_PRE_GRID_ENTITY_ROCK_UPDATE": {
       "value": "1416",
@@ -686,7 +686,7 @@
     },
     "MC_POST_GRID_ENTITY_ROCK_UPDATE": {
       "value": "1417",
-      "comment": "(GridEntityRock Rock), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityRock Rock), Optional Arg: GridEntityType - Called after this grid entity is updated successfully."
     },
     "MC_PRE_GRID_ENTITY_SPIKES_UPDATE": {
       "value": "1418",
@@ -694,7 +694,7 @@
     },
     "MC_POST_GRID_ENTITY_SPIKES_UPDATE": {
       "value": "1419",
-      "comment": "(GridEntitySpikes Spikes), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntitySpikes Spikes), Optional Arg: GridEntityType - Called after this grid entity is updated successfully."
     },
     "MC_PRE_GRID_ENTITY_STAIRCASE_UPDATE": {
       "value": "1420",
@@ -702,7 +702,7 @@
     },
     "MC_POST_GRID_ENTITY_STAIRCASE_UPDATE": {
       "value": "1421",
-      "comment": "(GridEntityStaircase Staircase), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityStaircase Staircase), Optional Arg: GridEntityType - Called after this grid entity is updated successfully."
     },
     "MC_PRE_GRID_ENTITY_STATUE_UPDATE": {
       "value": "1422",
@@ -710,7 +710,7 @@
     },
     "MC_POST_GRID_ENTITY_STATUE_UPDATE": {
       "value": "1423",
-      "comment": "(GridEntityStatue Statue), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityStatue Statue), Optional Arg: GridEntityType - Called after this grid entity is updated successfully."
     },
     "MC_PRE_GRID_ENTITY_TELEPORTER_UPDATE": {
       "value": "1424",
@@ -718,7 +718,7 @@
     },
     "MC_POST_GRID_ENTITY_TELEPORTER_UPDATE": {
       "value": "1425",
-      "comment": "(GridEntityTeleporter Teleporter), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityTeleporter Teleporter), Optional Arg: GridEntityType - Called after this grid entity is updated successfully."
     },
     "MC_PRE_GRID_ENTITY_TRAPDOOR_UPDATE": {
       "value": "1426",
@@ -726,7 +726,7 @@
     },
     "MC_POST_GRID_ENTITY_TRAPDOOR_UPDATE": {
       "value": "1427",
-      "comment": "(GridEntityTrapdoor Trapdoor), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityTrapdoor Trapdoor), Optional Arg: GridEntityType - Called after this grid entity is updated successfully."
     },
     "MC_PRE_GRID_ENTITY_WEB_UPDATE": {
       "value": "1428",
@@ -734,7 +734,7 @@
     },
     "MC_POST_GRID_ENTITY_WEB_UPDATE": {
       "value": "1429",
-      "comment": "(GridEntityWeb Web), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityWeb Web), Optional Arg: GridEntityType - Called after this grid entity is updated successfully."
     },
     "MC_PRE_GRID_ENTITY_TNT_UPDATE": {
       "value": "1430",
@@ -742,7 +742,7 @@
     },
     "MC_POST_GRID_ENTITY_TNT_UPDATE": {
       "value": "1431",
-      "comment": "(GridEntityTNT TNT), Optional Arg: GridEntityType - Called after this grid entity is updated, assuming it wasn't skipped."
+      "comment": "(GridEntityTNT TNT), Optional Arg: GridEntityType - Called after this grid entity is updated successfully."
     },
     "MC_PRE_GRID_ENTITY_SPIKES_RENDER": {
       "value": "1432",
@@ -750,7 +750,7 @@
     },
     "MC_POST_GRID_ENTITY_SPIKES_RENDER": {
       "value": "1433",
-      "comment": "(GridEntitySpikes Spikes, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntitySpikes Spikes, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered successfully."
     },
     "MC_PRE_GRID_ENTITY_WEB_RENDER": {
       "value": "1434",
@@ -758,7 +758,7 @@
     },
     "MC_POST_GRID_ENTITY_WEB_RENDER": {
       "value": "1435",
-      "comment": "(GridEntityWeb Web, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityWeb Web, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered successfully."
     },
     "MC_PRE_GRID_ENTITY_TNT_RENDER": {
       "value": "1436",
@@ -766,7 +766,7 @@
     },
     "MC_POST_GRID_ENTITY_TNT_RENDER": {
       "value": "1437",
-      "comment": "(GridEntityTNT TNT, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityTNT TNT, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered successfully."
     },
     "MC_PRE_GRID_ENTITY_TRAPDOOR_RENDER": {
       "value": "1438",
@@ -774,7 +774,7 @@
     },
     "MC_POST_GRID_ENTITY_TRAPDOOR_RENDER": {
       "value": "1439",
-      "comment": "(GridEntityTrapdoor Trapdoor, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityTrapdoor Trapdoor, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered successfully."
     },
     "MC_PRE_GRID_ENTITY_STAIRCASE_RENDER": {
       "value": "1440",
@@ -782,7 +782,7 @@
     },
     "MC_POST_GRID_ENTITY_STAIRCASE_RENDER": {
       "value": "1441",
-      "comment": "(GridEntityStaircase Staircase, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityStaircase Staircase, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered successfully."
     },
     "MC_PRE_GRID_ENTITY_DECORATION_RENDER": {
       "value": "1444",
@@ -790,7 +790,7 @@
     },
     "MC_POST_GRID_ENTITY_DECORATION_RENDER": {
       "value": "1445",
-      "comment": "(GridEntityDecoration Decoration, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityDecoration Decoration, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered successfully."
     },
     "MC_PRE_GRID_ENTITY_DOOR_RENDER": {
       "value": "1446",
@@ -798,7 +798,7 @@
     },
     "MC_POST_GRID_ENTITY_DOOR_RENDER": {
       "value": "1447",
-      "comment": "(GridEntityDoor Door, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityDoor Door, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered successfully."
     },
     "MC_PRE_GRID_ENTITY_FIRE_RENDER": {
       "value": "1448",
@@ -806,7 +806,7 @@
     },
     "MC_POST_GRID_ENTITY_FIRE_RENDER": {
       "value": "1449",
-      "comment": "(GridEntityFire Fire, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityFire Fire, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered successfully."
     },
     "MC_PRE_GRID_ENTITY_LOCK_RENDER": {
       "value": "1450",
@@ -814,7 +814,7 @@
     },
     "MC_POST_GRID_ENTITY_LOCK_RENDER": {
       "value": "1451",
-      "comment": "(GridEntityLock Lock, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityLock Lock, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered successfully."
     },
     "MC_PRE_GRID_ENTITY_TELEPORTER_RENDER": {
       "value": "1452",
@@ -822,7 +822,7 @@
     },
     "MC_POST_GRID_ENTITY_TELEPORTER_RENDER": {
       "value": "1453",
-      "comment": "(GridEntityTeleporter Teleporter, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityTeleporter Teleporter, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered successfully."
     },
     "MC_PRE_GRID_ENTITY_PIT_RENDER": {
       "value": "1454",
@@ -830,7 +830,7 @@
     },
     "MC_POST_GRID_ENTITY_PIT_RENDER": {
       "value": "1455",
-      "comment": "(GridEntityPit Pit, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityPit Pit, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered successfully."
     },
     "MC_PRE_GRID_ENTITY_POOP_RENDER": {
       "value": "1456",
@@ -838,7 +838,7 @@
     },
     "MC_POST_GRID_ENTITY_POOP_RENDER": {
       "value": "1457",
-      "comment": "(GridEntityPoop Poop, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityPoop Poop, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered successfully."
     },
     "MC_PRE_GRID_ENTITY_ROCK_RENDER": {
       "value": "1458",
@@ -846,7 +846,7 @@
     },
     "MC_POST_GRID_ENTITY_ROCK_RENDER": {
       "value": "1459",
-      "comment": "(GridEntityRock Rock, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityRock Rock, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered successfully."
     },
     "MC_PRE_GRID_ENTITY_PRESSUREPLATE_RENDER": {
       "value": "1460",
@@ -854,7 +854,7 @@
     },
     "MC_POST_GRID_ENTITY_PRESSUREPLATE_RENDER": {
       "value": "1461",
-      "comment": "(GridEntityPressurePlate PressurePlate, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityPressurePlate PressurePlate, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered successfully."
     },
     "MC_PRE_GRID_ENTITY_WALL_RENDER": {
       "value": "1462",
@@ -862,7 +862,7 @@
     },
     "MC_POST_GRID_ENTITY_WALL_RENDER": {
       "value": "1463",
-      "comment": "(GridEntityWall Wall, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered, assuming it wasn't skipped."
+      "comment": "(GridEntityWall Wall, Vector Offset), Optional Arg: GridEntityType - Called after this grid entity is rendered successfully."
     },
     "MC_POST_NPC_DARK_RED_CHAMPION_REGEN": {
       "value": "1223",
@@ -910,7 +910,7 @@
     },
     "MC_PLAYER_GRID_COLLISION": {
       "value": "1172",
-      "comment": "(EntityPlayer Player, integer GridIndex, GridEntity | nil GridEntity): boolean, Optional Arg: PlayerVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000. Return `true` to ignore collision"
+      "comment": "(EntityPlayer Player, integer GridIndex, GridEntity | nil GridEntity): boolean, Optional Arg: PlayerVariant - Called when this entity collides with a `GridEntity` successfully. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000. Return `true` to ignore collision"
     },
     "MC_PRE_TEAR_GRID_COLLISION": {
       "value": "1173",
@@ -918,7 +918,7 @@
     },
     "MC_TEAR_GRID_COLLISION": {
       "value": "1174",
-      "comment": "(EntityTear Tear, integer GridIndex, GridEntity | nil GridEntity): boolean, Optional Arg: TearVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000. Return `true` to ignore collision"
+      "comment": "(EntityTear Tear, integer GridIndex, GridEntity | nil GridEntity): boolean, Optional Arg: TearVariant - Called when this entity collides with a `GridEntity` successfully. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000. Return `true` to ignore collision"
     },
     "MC_PRE_FAMILIAR_GRID_COLLISION": {
       "value": "1175",
@@ -926,7 +926,7 @@
     },
     "MC_FAMILIAR_GRID_COLLISION": {
       "value": "1176",
-      "comment": "(EntityFamiliar Familiar, integer GridIndex, GridEntity | nil GridEntity): boolean, Optional Arg: FamiliarVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000. Return `true` to ignore collision"
+      "comment": "(EntityFamiliar Familiar, integer GridIndex, GridEntity | nil GridEntity): boolean, Optional Arg: FamiliarVariant - Called when this entity collides with a `GridEntity` successfully. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000. Return `true` to ignore collision"
     },
     "MC_PRE_BOMB_GRID_COLLISION": {
       "value": "1177",
@@ -934,7 +934,7 @@
     },
     "MC_BOMB_GRID_COLLISION": {
       "value": "1178",
-      "comment": "(EntityBomb Bomb, integer GridIndex, GridEntity | nil GridEntity): boolean, Optional Arg: BombVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000. Return `true` to ignore collision"
+      "comment": "(EntityBomb Bomb, integer GridIndex, GridEntity | nil GridEntity): boolean, Optional Arg: BombVariant - Called when this entity collides with a `GridEntity` successfully. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000. Return `true` to ignore collision"
     },
     "MC_PRE_PICKUP_GRID_COLLISION": {
       "value": "1179",
@@ -942,7 +942,7 @@
     },
     "MC_PICKUP_GRID_COLLISION": {
       "value": "1180",
-      "comment": "(EntityPickup Pickup, integer GridIndex, GridEntity | nil GridEntity): boolean, Optional Arg: PickupVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000. Return `true` to ignore collision"
+      "comment": "(EntityPickup Pickup, integer GridIndex, GridEntity | nil GridEntity): boolean, Optional Arg: PickupVariant - Called when this entity collides with a `GridEntity` successfully. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000. Return `true` to ignore collision"
     },
     "MC_PRE_PROJECTILE_GRID_COLLISION": {
       "value": "1181",
@@ -950,7 +950,7 @@
     },
     "MC_PROJECTILE_GRID_COLLISION": {
       "value": "1182",
-      "comment": "(EntityProjectile Projectile, integer GridIndex, GridEntity | nil GridEntity): boolean, Optional Arg: ProjectileVariant - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000. Return `true` to ignore collision"
+      "comment": "(EntityProjectile Projectile, integer GridIndex, GridEntity | nil GridEntity): boolean, Optional Arg: ProjectileVariant - Called when this entity collides with a `GridEntity` successfully. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000. Return `true` to ignore collision"
     },
     "MC_PRE_NPC_GRID_COLLISION": {
       "value": "1183",
@@ -958,7 +958,7 @@
     },
     "MC_NPC_GRID_COLLISION": {
       "value": "1184",
-      "comment": "(EntityNPC NPC, integer GridIndex, GridEntity | nil GridEntity): boolean, Optional Arg: EntityType - Called when this entity collides with a `GridEntity`, assuming it wasn't skipped. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000. Return `true` to ignore collision"
+      "comment": "(EntityNPC NPC, integer GridIndex, GridEntity | nil GridEntity): boolean, Optional Arg: EntityType - Called when this entity collides with a `GridEntity` successfully. `GridEntity` can be nil, as entities may collide with \"empty\" grid indexes if the GridPath value is >= 1000. Return `true` to ignore collision"
     },
     "MC_PRE_PLAYERHUD_RENDER_HEARTS": {
       "value": "1118",
@@ -1142,11 +1142,11 @@
     },
     "MC_POST_PLAYER_ADD_COSTUME": {
       "value": "1283",
-      "comment": "(ItemConfigItem itemConfig, EntityPlayer Player, boolean ItemStateOnly) - Called after the costume is added to the player, assuming it wasn't skipped."
+      "comment": "(ItemConfigItem itemConfig, EntityPlayer Player, boolean ItemStateOnly) - Called after the costume is added to the player successfully."
     },
     "MC_POST_PLAYER_REMOVE_COSTUME": {
       "value": "1284",
-      "comment": "(ItemConfigItem itemConfig, EntityPlayer Player): boolean - Called after the costume is removed from the player, assuming it wasn't skipped."
+      "comment": "(ItemConfigItem itemConfig, EntityPlayer Player): boolean - Called after the costume is removed from the player successfully."
     },
     "MC_POST_FORCE_PILL_EFFECT": {
       "value": "1129",
@@ -1170,7 +1170,7 @@
 	},
 	"MC_PRE_BED_SLEEP": {
 		"value": "1288",
-		"comment": "(EntityPlayer Player, EntityPickup Bed): boolean - Triggers on bed collision and before playing sleep sequence. Return `true` to cancel vanilla behavior."
+		"comment": "(EntityPlayer Player, EntityPickup Bed): boolean, Optional Arg: BedSubType - Called on bed collision and before playing sleep sequence. Return `true` to cancel vanilla behavior."
 	},
 	"MC_PRE_ENTITY_SET_COLOR": {
 		"value": "1486",
@@ -1178,11 +1178,11 @@
 	},
 	"MC_POST_ENTITY_SET_COLOR": {
 		"value": "1487",
-		"comment": "(Entity Entity, int Duration, int Priority, boolean FadeOut, boolean Share), Optional Arg: EntityType - Called after an entity's color is changed via `Entity:SetColor`, assuming it wasn't skipped. This only fires for `Entity:SetColor` and does not fire when changing the entity's color directly."
+		"comment": "(Entity Entity, int Duration, int Priority, boolean FadeOut, boolean Share), Optional Arg: EntityType - Called after an entity's color is changed via `Entity:SetColor` successfully. This only fires for `Entity:SetColor` and does not fire when changing the entity's color directly."
 	},
 	"MC_POST_PLAYER_TRIGGER_ROOM_CLEAR": {
 		"value": "1138",
-		"comment": "(EntityPlayer Player), Optional Arg: PlayerVariant. Called after all room clear-related effects for a player is triggered, assuming it wasn't skipped. This also accounts for challenge waves. Return `false` to cancel trigger effects."
+		"comment": "(EntityPlayer Player), Optional Arg: PlayerVariant. Called after all room clear-related effects for a player is triggered successfully. This also accounts for challenge waves. Return `false` to cancel trigger effects."
 	},
 	"MC_GET_STATUS_EFFECT_TARGET": {
 		"value": "1485",
@@ -1194,7 +1194,7 @@
 	},
 	"MC_POST_STATUS_EFFECT_APPLY": {
 		"value": "1466",
-		"comment": "(StatusEffect StatusID, Entity Entity, EntityRef Source, integer Duration), Optional Arg: StatusEffect - Triggers after applying a status effect to an entity, assuming it wasn't skipped."
+		"comment": "(StatusEffect StatusID, Entity Entity, EntityRef Source, integer Duration), Optional Arg: StatusEffect - Triggers after applying a status effect to an entity successfully."
 	},
 	"MC_PLAYER_HEALTH_TYPE_CHANGE": {
 		"value": "1128",
@@ -1218,7 +1218,7 @@
 	},
 	"MC_EVALUATE_STAT": {
 		"value": "1226",
-		"comment": "(EntityPlayer Player, EvaluateStatStage Stat, float CurrentValue), Optional Arg: EvaluateStatStage - Used to modify intermediate values of player stat calculations. Unless you need to perform complicated conditions/calculations, it is strongly suggested that you use the XML item stats features instead of this callback!"
+		"comment": "(EntityPlayer Player, EvaluateStatStage Stat, float CurrentValue), Optional Arg: EvaluateStatStage - Used to modify intermediate values of player stat calculations. Note: Unless you need to perform complicated conditions/calculations, it is strongly suggested that you use the XML item stats features instead of this callback!"
 	},
 	"MC_EVALUATE_TEAR_HIT_PARAMS": {
 		"value": "1490",
@@ -1270,7 +1270,19 @@
 	},
 	"MC_POST_APPLY_TEARFLAG_EFFECTS": {
 		"value": "1278",
-		"comment": "(EntityNPC NPC, Vector Position, TearFlags TearFlags, Entity Source, float Damage), Optional Arg: EntityType - Called after applying TearFlag effects are applied to an npc, assuming it wasn't skipped. The source could be basically anything (tear, laser, knife, nil, etc). The optional arg is for the EntityType of the source, if any."
+		"comment": "(EntityNPC NPC, Vector Position, TearFlags TearFlags, Entity Source, float Damage), Optional Arg: EntityType - Called after applying TearFlag effects are applied to an npc successfully. The source could be basically anything (tear, laser, knife, nil, etc). The optional arg is for the EntityType of the source, if any."
+	},
+	"MC_TRY_ADD_TO_BAG_OF_CRAFTING": {
+		"value": "1015",
+		"comment": "(EntityPlayer Player, EntityPickup Pickup, BagOfCraftingPickup[] BOCPickups): boolean | BagOfCraftingPickup[], Optional Arg: PickupVariant - Called when a pickup is attempted to be added to the Bag of Crafting. Return `false` to prevent, or return a table of `BagOfCraftingPickups` to modify what gets added. Note: Prefer to use the new `bagofcrafting` attribute in entities2.xml where possible."
+	},
+	"MC_POST_ADD_TO_BAG_OF_CRAFTING": {
+		"value": "1016",
+		"comment": "(EntityPlayer Player, EntityPickup Pickup), Optional Arg: PickupVariant - Called after the pickup is added to the bag successfully."
+	},
+	"MC_POST_DISCHARGE_ACTIVE_ITEM": {
+		"value": "1140",
+		"comment": "(CollectibleType itemID, boolean CollectibleRemoved, EntityPlayer Player, ActiveSlot Slot), Optional Arg: CollectibleType. Called after an item is discharged. Useful for \"overhead\" items that aren't discharged until after they are thrown"
 	}
   },
   "Renderer": {
@@ -5229,7 +5241,8 @@
     "MAX_KEYS": "maxkeys",
     "MAX_BOMBS": "maxbombs",
     "TEARS_CAP": "tearscap",
-    "STAT_MULTIPLIER": "statmultiplier"
+    "STAT_MULTIPLIER": "statmultiplier",
+	"HEALTH_TYPE": "healthtype"
   },
   "EvaluateStatStage": {
     "TEARS_UP": "0",
@@ -5282,5 +5295,9 @@
     },
     "MULTIDIMENSIONAL": "9",
     "ANGELIC_PRISM": "10"
+  },
+  "UseActiveItemResultFlags": {
+	"DISCHARGE": "1 << 0",
+	"REMOVE": "1 << 8"
   }
 }

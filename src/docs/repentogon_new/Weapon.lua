@@ -79,3 +79,7 @@ end
 ---Returns active entity used by weapon (Brimstone - EntityLaser, Mom's Knife -  EntityKnife and etc.)
 function Weapon:GetMainEntity()
 end
+
+---@return integer
+function Weapon:GetMaxCharge()
+end

@@ -54,3 +54,28 @@ end
 ---@return EntityTear
 function EntityKnife:FireSplitTear(pos, velocity, damageMult, sizeMult, variant, splitTearType)
 end
+
+---@param entity Entity
+---@return boolean
+function EntityKnife:InHitList(entity)
+end
+
+---@param entity Entity
+function EntityKnife:AddToHitList(entity)
+end
+
+---@param entity Entity
+function EntityKnife:RemoveFromHitList(entity)
+end
+
+---For a "hitbox" `EntityKnife` `[KnifeSubType.CLUB_HITBOX` created by melee weapon "swings" (Bone Club, Spirit Sword, etc) this function returns the "main" `EntityKnife` of that melee weapon. Returns `nil` otherwise, and will return `nil` for hitbox entities spawned via other means.
+---@return EntityKnife?
+function EntityKnife:GetHitboxParentKnife()
+end
+
+--Allows setting a custom value for `GetHitboxParentKnife`, which is intended to only be used for a "hitbox" `EntityKnife` `KnifeSubType.CLUB_HITBOX` to refer to the "main" `EntityKnife` of a melee weapon (Bone Club, Spirit Sword, etc).
+---
+---Note that setting this has no influence on any vanilla logic - this reference is only for the convenience of modders. Please use appropriately.
+---@param knife EntityKnife
+function EntityKnife:SetHitboxParentKnife(knife)
+end

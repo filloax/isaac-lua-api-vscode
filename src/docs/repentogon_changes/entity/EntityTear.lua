@@ -68,3 +68,16 @@ end
 ---@return EntityTear
 function EntityTear:FireSplitTear(pos, velocity, damageMult, sizeMult, variant, splitTearType)
 end
+
+---@param entity Entity
+---@return boolean
+function EntityTear:InHitList(entity)
+end
+
+---@param entity Entity
+function EntityTear:AddToHitList(entity)
+end
+
+---@param entity Entity
+function EntityTear:RemoveFromHitList(entity)
+end

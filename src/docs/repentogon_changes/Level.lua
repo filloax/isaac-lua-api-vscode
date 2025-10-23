@@ -140,3 +140,7 @@ end
 ---@return {[DoorSlot]: RoomDescriptor}
 function Level:GetNeighboringRooms(gridIndex, roomShape, dimension)
 end
+
+---@return RNG
+function Level:GetGenerationRNG()
+end
