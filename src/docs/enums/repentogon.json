@@ -5236,13 +5236,13 @@
     "DESCENDING": "4"
   },
   "CustomCacheTag": {
-    "FAMILIAR_MULTIPLIER": "familiarmultiplier",
-    "MAX_COINS": "maxcoins",
-    "MAX_KEYS": "maxkeys",
-    "MAX_BOMBS": "maxbombs",
-    "TEARS_CAP": "tearscap",
-    "STAT_MULTIPLIER": "statmultiplier",
-	"HEALTH_TYPE": "healthtype"
+    "FAMILIAR_MULTIPLIER": "'familiarmultiplier'",
+    "MAX_COINS": "'maxcoins'",
+    "MAX_KEYS": "'maxkeys'",
+    "MAX_BOMBS": "'maxbombs'",
+    "TEARS_CAP": "'tearscap'",
+    "STAT_MULTIPLIER": "'statmultiplier'",
+	"HEALTH_TYPE": "'healthtype'"
   },
   "EvaluateStatStage": {
     "TEARS_UP": "0",
@@ -5251,19 +5251,19 @@
     "FLAT_DAMAGE": "3"
   },
   "StringTableCategory": {
-    "DEFAULT": "Default",
-    "ITEMS": "Items",
-    "CURSES": "Curses",
-    "ENTITIES": "Entities",
-    "MINIBOSSES": "Minibosses",
-    "PLAYERS": "Players",
-    "POCKET_ITEMS": "PocketItems",
-    "STAGES": "Stages",
-    "FORTUNE_GENERAL": "Fortune_General",
-    "FORTUNE_RULES": "Fortune_Rules",
-    "FORTUNE_SEEDS": "Fortune_Seeds",
-    "RUN_STATUS": "RunStatus",
-    "ONLINE": "Online"
+    "DEFAULT": "'Default'",
+    "ITEMS": "'Items'",
+    "CURSES": "'Curses'",
+    "ENTITIES": "'Entities'",
+    "MINIBOSSES": "'Minibosses'",
+    "PLAYERS": "'Players'",
+    "POCKET_ITEMS": "'PocketItems'",
+    "STAGES": "'Stages'",
+    "FORTUNE_GENERAL": "'Fortune_General'",
+    "FORTUNE_RULES": "'Fortune_Rules'",
+    "FORTUNE_SEEDS": "'Fortune_Seeds'",
+    "RUN_STATUS": "'RunStatus'",
+    "ONLINE": "'Online'"
   },
   "SplitTearType": {
     "GENERIC": "0",
