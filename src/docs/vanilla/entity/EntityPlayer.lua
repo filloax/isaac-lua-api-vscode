@@ -740,6 +740,9 @@ end
 function EntityPlayer:GetTearMovementInheritance(ShotDirection)
 end
 
+---The damage number for Poison and Burn status effects, or under certain synergies with Ipecac.
+---
+---Used by Ipecac to have a +2 flat damage instead of its +40 flat damage.
 ---@return number
 function EntityPlayer:GetTearPoisonDamage()
 end
