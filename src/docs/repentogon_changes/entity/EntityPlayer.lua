@@ -1338,10 +1338,15 @@ end
 function EntityPlayer:IsPostLevelInitFinished()
 end
 
+
 ---@param Item CollectibleType
 ---@param UseFlags? UseFlag @default: `0`
 ---@param Slot? ActiveSlot | -1 @default: `-1`
----@return UseActiveItemResultFlag
+---@return UseActiveItemResultFlag @Returns a Bitmask that contains if the item should be discharged and/or removed. `UseActiveItemResultFlags.REMOVE` is possible to not be passed even if the item would be removed normally. It will not be passed if any of the following conditions are met:
+---
+--- - `UseFlag.USE_OWNED` is not passed for vanilla items.
+---
+--- - `UseFlag.USE_VOID` is passed for any items.
 ---@overload fun(self: EntityPlayer, Item: CollectibleType, ShowAnim?: boolean, KeepActiveItem?: boolean, AllowNonMainPlayer?: boolean, ToAddCostume?: boolean, Slot?: ActiveSlot | -1): UseActiveItemResultFlag
 function EntityPlayer:UseActiveItem(Item, UseFlags, Slot)
 end
