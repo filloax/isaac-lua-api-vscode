@@ -1,3 +1,6 @@
+---@class EntityPlayer
+---@field FriendBallEnemy EntityDesc
+
 ---@param charge integer
 ---@param slot ActiveSlot
 ---@param flashHUD? boolean @default: `true`. Currently appears to be redundant. Chargebar flashes regardless of using true or false
@@ -197,19 +200,23 @@ end
 function EntityPlayer:GetCostumeSpriteDescs()
 end
 
----@return integer
+---Returns a multiplier applied to the player's damage
+---@return number
 function EntityPlayer:GetD8DamageModifier()
 end
 
----@return integer
+---Returns a multiplier applied to the player's fire delay
+---@return number
 function EntityPlayer:GetD8FireDelayModifier()
 end
 
----@return integer
+---Returns a multiplier applied to the player's range
+---@return number
 function EntityPlayer:GetD8RangeModifier()
 end
 
----@return integer
+---Returns a multiplier applied to the player's speed
+---@return number
 function EntityPlayer:GetD8SpeedModifier()
 end
 
@@ -1367,4 +1374,24 @@ end
 ---Has no effect on players that aren't Tainted Magdalene.
 ---@param cooldown number
 function EntityPlayer:SetMaggyHealthDrainCooldown(cooldown)
+end
+
+---Sets a multiplier applied to the player's damage
+---@param value number
+function EntityPlayer:SetD8DamageModifier(value)
+end
+
+---Sets a multiplier applied to the player's fire delay
+---@param value number
+function EntityPlayer:SetD8FireDelayModifier(value)
+end
+
+---Sets a multiplier applied to the player's range
+---@param value number
+function EntityPlayer:SetD8RangeModifier(value)
+end
+
+---Sets a multiplier applied to the player's speed
+---@param value number
+function EntityPlayer:SetD8SpeedModifier(value)
 end

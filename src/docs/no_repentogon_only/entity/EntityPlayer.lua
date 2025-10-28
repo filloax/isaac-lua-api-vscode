@@ -1,3 +1,6 @@
+---@class EntityPlayer
+---@field FriendBallEnemy userdata @EntityDesc @const
+
 ---@param CacheFlag CacheFlag
 function EntityPlayer:AddCacheFlags(CacheFlag)
 end
