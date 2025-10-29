@@ -7,7 +7,7 @@ function HistoryItem:GetItemID()
 end
 
 ---Returns the ItemPool tied to the history item.
----@return ItemPool
+---@return ItemPoolType
 function HistoryItem:GetItemPoolType()
 end
 
