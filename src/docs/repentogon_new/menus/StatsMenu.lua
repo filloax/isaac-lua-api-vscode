@@ -57,7 +57,7 @@ function StatsMenu.GetStatsMenuSprite()
 end
 
 ---@return boolean 
-function StatsMenu.IsSecretsMenuActive()
+function StatsMenu.IsSecretsMenuVisible()
 end
 
 ---@param element integer
