@@ -111,6 +111,6 @@ end
 ---@param PosOffset Vector
 ---@param Source Entity
 ---@return EntityLaser
-function EntityLaser.ShootAngle(Variant, SourcePos, AngleDegrees, Timeout, PosOffset, Source)
+function _G.EntityLaser.ShootAngle(Variant, SourcePos, AngleDegrees, Timeout, PosOffset, Source)
 end
 
