@@ -14,7 +14,7 @@
 ---@field StateFrame integer
 ---@field V1 Vector
 ---@field V2 Vector
-_G.EntityNPC = {}
+local EntityNPC = {}
 
 ---@param HorizontalAnim string
 ---@param VerticalAnim string
@@ -125,5 +125,5 @@ end
 ---@param Big boolean
 ---@param YOffset number
 ---@return EntityNPC
-function EntityNPC.ThrowSpider(Position, Spawner, TargetPos, Big, YOffset)
+function _G.EntityNPC.ThrowSpider(Position, Spawner, TargetPos, Big, YOffset)
 end

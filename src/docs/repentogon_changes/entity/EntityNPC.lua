@@ -87,14 +87,22 @@ end
 ---@param YPosOffset? number @default: `-10`
 ---@param Big? boolean @default: `false`
 ---@return EntityNPC
-function EntityNPC:ThrowLeech(Source, Target, YPosOffset, Big)
+function _G.EntityNPC:ThrowLeech(Source, Target, YPosOffset, Big)
+end
+
+---@param Origin Vector
+---@param Velocity Vector @default: `-10.0`
+---@param YOffset? number @default: `0.0`
+---@param FallSpeed? number @default: `-8.0`
+---@return EntityNPC
+function _G.EntityNPC:ThrowMaggot(Origin, Velocity, YOffset, FallSpeed)
 end
 
 ---@param Origin Vector
 ---@param Velocity Vector @default: `-8.0`
 ---@param YOffset? number @default: `0.0`
 ---@return EntityNPC
-function EntityNPC:ThrowMaggotAtPos(Origin, Velocity, YOffset)
+function _G.EntityNPC:ThrowMaggotAtPos(Origin, Velocity, YOffset)
 end
 
 ---@param Source Entity
@@ -102,13 +110,13 @@ end
 ---@param Variant? integer @default: `0`
 ---@param YPosOffset? number @default: `-10.0`
 ---@return EntityNPC
-function EntityNPC:ThrowRockSpider(Source, Target, Variant, YPosOffset)
+function _G.EntityNPC:ThrowRockSpider(Source, Target, Variant, YPosOffset)
 end
 
 ---@param Source Entity
 ---@param Target Vector
 ---@return EntityNPC
-function EntityNPC:ThrowStrider(Source, Target)
+function _G.EntityNPC:ThrowStrider(Source, Target)
 end
 
 ---Used by Lost Fly to force this NPC to focus on a specific target.
