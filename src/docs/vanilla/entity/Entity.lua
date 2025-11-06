@@ -51,7 +51,7 @@ end
 
 ---@param Source EntityRef
 ---@param Duration integer
----@param IgnoreBosses boolean
+---@param IgnoreBosses? boolean @default: `false`. Set to `true` to bypass the boss' status effect cooldown
 function Entity:AddConfusion(Source, Duration, IgnoreBosses)
 end
 
