@@ -1,4 +1,4 @@
----@class ItemConfigClass
+---@class ItemConfigCard
 ---@field ModdedCardFront Sprite
 ---@field Hidden boolean
 ---@field InitialWeight number
