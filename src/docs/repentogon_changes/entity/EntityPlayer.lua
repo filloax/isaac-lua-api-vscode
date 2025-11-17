@@ -454,11 +454,6 @@ end
 function EntityPlayer:GetSpeedModifier()
 end
 
-----For Experimental Treatment and for stat boosts stat boosts from Void. Adds `2.5 * modifier` to the player's TearRange.
----@return integer @Experimental Treatment adds `-1`, `0` or `1` depending on the range rolled. Void may randomly add `1`.
-function EntityPlayer:GetTearRangeModifier()
-end
-
 ---Returns the amount of charges the active item in the provided slot has.
 ---@param slot ActiveSlot The slot to get the active item's charges from. Returns `0` if the slot does not have an active item.
 ---@return integer
@@ -1299,7 +1294,7 @@ end
 ---Adds a random stat bonus as if the player had collected a heart with Soul Locket.
 ---@param cacheFlag? CacheFlag @default: `0`. Can specify a CacheFlag to force the bonus onto a specific stat. Stats are only applied while the player has Soul Locket.
 ---@param amount? integer @default: `1`
-function EntityPlayer:AddSoulLocketBonus(cacheFlag)
+function EntityPlayer:AddSoulLocketBonus(cacheFlag, amount)
 end
 
 ---Returns a table of fields corresponding to each stat that Soul Locket can increase and the active amount of bonuses tied to each stat.

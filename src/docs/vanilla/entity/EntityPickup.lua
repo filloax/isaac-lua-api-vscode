@@ -8,21 +8,21 @@
 ---@field Timeout integer
 ---@field Touched boolean
 ---@field Wait integer
-local EntityPickup = {}
+local EntityPickup_Local = {}
 
-function EntityPickup:AppearFast()
+function EntityPickup_Local:AppearFast()
 end
 
 ---@return boolean
-function EntityPickup:CanReroll()
+function EntityPickup_Local:CanReroll()
 end
 
 ---@return integer
-function EntityPickup:GetCoinValue()
+function EntityPickup_Local:GetCoinValue()
 end
 
 ---@return boolean
-function EntityPickup:IsShopItem()
+function EntityPickup_Local:IsShopItem()
 end
 
 ---@param Type EntityType
@@ -31,16 +31,16 @@ end
 ---@param KeepPrice? boolean @default: `false`
 ---@param KeepSeed? boolean @default: `false`
 ---@param IgnoreModifiers? boolean @default: `false`
-function EntityPickup:Morph(Type, Variant, SubType, KeepPrice, KeepSeed, IgnoreModifiers)
+function EntityPickup_Local:Morph(Type, Variant, SubType, KeepPrice, KeepSeed, IgnoreModifiers)
 end
 
-function EntityPickup:PlayDropSound()
+function EntityPickup_Local:PlayDropSound()
 end
 
-function EntityPickup:PlayPickupSound()
+function EntityPickup_Local:PlayPickupSound()
 end
 
 ---@param Player? EntityPlayer @default: `nil`
 ---@return boolean
-function EntityPickup:TryOpenChest(Player)
+function EntityPickup_Local:TryOpenChest(Player)
 end

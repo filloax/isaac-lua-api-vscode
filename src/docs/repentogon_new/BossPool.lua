@@ -1,7 +1,7 @@
 ---@class BossPoolEntry
 ---@field bossID BossType | integer
 ---@field weight number
----@field weightAlt float
+---@field weightAlt number
 ---@field achievementID Achievement | integer
 
 ---@class BossPool

@@ -49,7 +49,7 @@ end
 ---@param velocity Vector
 ---@param damageMult? number @default: `0.5`.
 ---@param sizeMult? number @default: `0.6`.
----@param variant? @default: `0`.
+---@param variant? TearVariant @default: `0`.
 ---@param splitTearType? SplitTearType|string @default: `SplitTearType.SPLIT_GENERIC`
 ---@return EntityTear
 function EntityKnife:FireSplitTear(pos, velocity, damageMult, sizeMult, variant, splitTearType)

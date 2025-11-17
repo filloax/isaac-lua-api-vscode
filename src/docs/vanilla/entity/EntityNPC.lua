@@ -14,26 +14,28 @@
 ---@field StateFrame integer
 ---@field V1 Vector
 ---@field V2 Vector
-local EntityNPC = {}
+local EntityNPC_Local = {}
+
+_G.EntityNPC = {}
 
 ---@param HorizontalAnim string
 ---@param VerticalAnim string
 ---@param SpeedThreshold number
-function EntityNPC:AnimWalkFrame(HorizontalAnim, VerticalAnim, SpeedThreshold)
+function EntityNPC_Local:AnimWalkFrame(HorizontalAnim, VerticalAnim, SpeedThreshold)
 end
 
 ---@param DistanceLimit number
 ---@return Vector
-function EntityNPC:CalcTargetPosition(DistanceLimit)
+function EntityNPC_Local:CalcTargetPosition(DistanceLimit)
 end
 
 ---@param Velocity Vector
 ---@return boolean
-function EntityNPC:CanBeDamagedFromVelocity(Velocity)
+function EntityNPC_Local:CanBeDamagedFromVelocity(Velocity)
 end
 
 ---@return boolean
-function EntityNPC:CanReroll()
+function EntityNPC_Local:CanReroll()
 end
 
 ---@param NumProjectiles integer
@@ -41,52 +43,52 @@ end
 ---@param TrajectoryModifier number
 ---@param Params ProjectileParams
 ---@return EntityProjectile
-function EntityNPC:FireBossProjectiles(NumProjectiles, TargetPos, TrajectoryModifier, Params)
+function EntityNPC_Local:FireBossProjectiles(NumProjectiles, TargetPos, TrajectoryModifier, Params)
 end
 
 ---@param Pos Vector
 ---@param Velocity Vector
 ---@param Mode integer @ProjectilesMode
 ---@param Params ProjectileParams
-function EntityNPC:FireProjectiles(Pos, Velocity, Mode, Params)
+function EntityNPC_Local:FireProjectiles(Pos, Velocity, Mode, Params)
 end
 
 ---@return integer
-function EntityNPC:GetAliveEnemyCount()
+function EntityNPC_Local:GetAliveEnemyCount()
 end
 
 ---@return integer
-function EntityNPC:GetBossColorIdx()
+function EntityNPC_Local:GetBossColorIdx()
 end
 
 ---@return integer
-function EntityNPC:GetChampionColorIdx()
+function EntityNPC_Local:GetChampionColorIdx()
 end
 
 ---@return Entity
-function EntityNPC:GetPlayerTarget()
+function EntityNPC_Local:GetPlayerTarget()
 end
 
 ---@return boolean
-function EntityNPC:IsBoss()
+function EntityNPC_Local:IsBoss()
 end
 
 ---@return boolean
-function EntityNPC:IsChampion()
+function EntityNPC_Local:IsChampion()
 end
 
-function EntityNPC:KillUnique()
+function EntityNPC_Local:KillUnique()
 end
 
 ---@param Seed integer
 ---@param ChampionColorIdx? ChampionColor @default: `-1`
 ---@param Init? boolean @default: `false`
-function EntityNPC:MakeChampion(Seed, ChampionColorIdx, Init)
+function EntityNPC_Local:MakeChampion(Seed, ChampionColorIdx, Init)
 end
 
 ---@param Size number
 ---@return EntityEffect
-function EntityNPC:MakeSplat(Size)
+function EntityNPC_Local:MakeSplat(Size)
 end
 
 ---@param type EntityType
@@ -94,29 +96,28 @@ end
 ---@param SubType integer
 ---@param ChampionColorIdx integer
 ---@return boolean
-function EntityNPC:Morph(type, Variant, SubType, ChampionColorIdx)
+function EntityNPC_Local:Morph(type, Variant, SubType, ChampionColorIdx)
 end
-
 
 ---@param GroupIdx integer
 ---@return EntityList
-function EntityNPC:QueryNPCsGroup(GroupIdx)
+function EntityNPC_Local:QueryNPCsGroup(GroupIdx)
 end
 
 ---@param SpawnerType EntityType
 ---@param Type EntityType
 ---@param OnlyEnemies boolean
 ---@return EntityList
-function EntityNPC:QueryNPCsSpawnerType(SpawnerType, Type, OnlyEnemies)
+function EntityNPC_Local:QueryNPCsSpawnerType(SpawnerType, Type, OnlyEnemies)
 end
 
 ---@param Type EntityType
 ---@param Variant integer
 ---@return EntityList
-function EntityNPC:QueryNPCsType(Type, Variant)
+function EntityNPC_Local:QueryNPCsType(Type, Variant)
 end
 
-function EntityNPC:ResetPathFinderTarget()
+function EntityNPC_Local:ResetPathFinderTarget()
 end
 
 ---@param Position Vector

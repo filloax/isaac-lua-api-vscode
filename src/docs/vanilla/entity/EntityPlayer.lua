@@ -6,7 +6,6 @@
 ---@field ControlsEnabled boolean
 ---@field Damage number
 ---@field FireDelay number
----@field FriendBallEnemy userdata @EntityDesc @const
 ---@field HeadFrameDelay integer
 ---@field IBSCharge number
 ---@field ItemHoldCooldown integer
@@ -747,8 +746,10 @@ end
 function EntityPlayer:GetTearPoisonDamage()
 end
 
----For Experimental Treatement, returns `-1`, `0` or `1` depending on the range rolled.
----@return integer
+--Why does vanilla API add one getter for one stat for Experimental Treatment/Void. Why.
+
+----For Experimental Treatment and for stat boosts stat boosts from Void. Adds `2.5 * modifier` to the player's TearRange.
+---@return integer @Experimental Treatment adds `-1`, `0` or `1` depending on the range rolled. Void may randomly add `1`.
 function EntityPlayer:GetTearRangeModifier()
 end
 
