@@ -188,10 +188,18 @@
       "value": "1068",
       "comment": "(boolean PlaySound) - Called before a room is cleared."
     },
+    "MC_POST_ROOM_TRIGGER_CLEAR": {
+      "value": "1143",
+      "comment": "(boolean PlaySound) - Called after a room is cleared."
+    },
     "MC_PRE_PLAYER_TRIGGER_ROOM_CLEAR": {
       "value": "1069",
       "comment": "(EntityPlayer Player): boolean, Optional Arg: PlayerVariant. Called before all room clear-related effects for a player is triggered. This also accounts for challenge waves. Return `false` to cancel trigger effects."
     },
+	"MC_POST_PLAYER_TRIGGER_ROOM_CLEAR": {
+		"value": "1138",
+		"comment": "(EntityPlayer Player), Optional Arg: PlayerVariant. Called after all room clear-related effects for a player is triggered successfully. This also accounts for challenge waves. Return `false` to cancel trigger effects."
+	},
     "MC_PRE_FAMILIAR_RENDER": {
       "value": "1080",
       "comment": "(EntityFamiliar Familiar, Vector Offset): Vector | boolean, Optional Arg: FamiliarVariant - Called before a familiar is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
@@ -1180,10 +1188,6 @@
 		"value": "1487",
 		"comment": "(Entity Entity, int Duration, int Priority, boolean FadeOut, boolean Share), Optional Arg: EntityType - Called after an entity's color is changed via `Entity:SetColor` successfully. This only fires for `Entity:SetColor` and does not fire when changing the entity's color directly."
 	},
-	"MC_POST_PLAYER_TRIGGER_ROOM_CLEAR": {
-		"value": "1138",
-		"comment": "(EntityPlayer Player), Optional Arg: PlayerVariant. Called after all room clear-related effects for a player is triggered successfully. This also accounts for challenge waves. Return `false` to cancel trigger effects."
-	},
 	"MC_GET_STATUS_EFFECT_TARGET": {
 		"value": "1485",
 		"comment": "(Entity Entity): Entity, Optional Arg: EntityType - Called when an Entity is about to recieve a status effect. Return an Entity to apply the status effect to it instead (good for multi-segment enemies)."
@@ -1283,6 +1287,10 @@
 	"MC_POST_DISCHARGE_ACTIVE_ITEM": {
 		"value": "1140",
 		"comment": "(CollectibleType itemID, boolean CollectibleRemoved, EntityPlayer Player, ActiveSlot Slot), Optional Arg: CollectibleType. Called after an item is discharged. Useful for \"overhead\" items that aren't discharged until after they are thrown"
+	},
+	"MC_POST_PLAYER_DROP_TRINKET": {
+		"value": "1144",
+		"comment": "(TrinketType Trinket, Vector DropPosition, EntityPlayer Player, boolean IsGolden, boolean ReplaceTick), Optional Arg: TrinketType. Called after a player drops a trinket"
 	}
   },
   "Renderer": {
@@ -5166,12 +5174,12 @@
     "WEAKNESS": "15"
   },
   "CharacterMenuStatus": {
-  "DEFAULT": "0",
-  "SEED": "1",
-  "RANDOM_SELECTION": "2",
-  "RANDOM_CHARACTER_SELECTION": "2",
-  "FADEOUT": "3",
-  "CHARACTER_PAPER_SWAP": "4"
+	"DEFAULT": "0",
+	"SEED": "1",
+	"RANDOM_SELECTION": "2",
+	"RANDOM_CHARACTER_SELECTION": "2",
+	"FADEOUT": "3",
+	"CHARACTER_PAPER_SWAP": "4"
   },
   "DoorMask": {
     "LEFT0": "1 << 0",

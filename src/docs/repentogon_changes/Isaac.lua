@@ -379,3 +379,43 @@ end
 ---@return EntityNPC
 function Isaac.SpawnBoss(Type,Variant,SubType,Position,Velocity,Spawner,Seed)
 end
+
+---Returns the sprite object for displaying controller-specific button inputs
+---@return Sprite
+function Isaac.GetButtonsSprite()
+end
+
+---Returns a high-resolution timestamp in nanoseconds. Useful for evaluating the performance cost of functions in a non-test environment or for high-precision clocks.
+---
+---The clock is precise enough to detect the time that passed between two subsequent calls of `Isaac.GetNanoTime()`
+---@return integer
+function Isaac.GetNanoTime()
+end
+
+---Marks the collectible as reworked, making the game not execute the item's original passive logic.
+---
+---Can only be set during mod load.
+---
+---**NOTE** Does not prevent the UseActiveItem logic from running.
+function Isaac.ReworkCollectible()
+end
+
+---Marks the player's birthright as reworked, making the game not execute the item's original passive logic.
+---
+---Can only be set during mod load.
+function Isaac.ReworkBirthright()
+end
+
+---Marks the trinket as reworked, making the game not execute the trinket's original passive logic.
+---
+---Can only be set during mod load.
+function Isaac.ReworkTrinket()
+end
+
+---Renders item collection sprite from collection menu/death screen.
+---@param itemId CollectibleType
+---@param pos Vector
+---@param scale? Vector @default: `Vector.One`
+---@param color? Color @default: `Color.Default`
+function Isaac.RenderCollectionItem(itemId, pos, scale, color)
+end

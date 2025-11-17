@@ -115,3 +115,15 @@ end
 ---@param ending Ending
 function ScoreSheet.SetRunEnding(ending)
 end
+
+---@return integer
+function ScoreSheet.GetBeastBonus()
+end
+
+---@return integer
+function ScoreSheet.GetDeliriumBonus()
+end
+
+---@return integer
+function ScoreSheet.GetMotherBonus()
+end

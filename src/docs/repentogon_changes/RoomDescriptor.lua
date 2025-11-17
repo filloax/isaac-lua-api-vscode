@@ -41,3 +41,11 @@ end
 ---@return {[DoorSlot]: RoomDescriptor}
 function RoomDescriptor_RGON:GetNeighboringRooms()
 end
+
+---Prevents coin spawn from killed enemies on room reenter when counter reaches 10.
+function RoomDescriptor_RGON:GetTaintedKeeperCoinSpawns()
+end
+
+---@param numSpawns integer
+function RoomDescriptor_RGON:SetTaintedKeeperCoinSpawns(numSpawns)
+end

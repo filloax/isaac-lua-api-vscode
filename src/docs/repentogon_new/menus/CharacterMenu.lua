@@ -150,3 +150,11 @@ end
 ---@return PlayerType
 function CharacterMenu.GetSelectedCharacterPlayerType()
 end
+
+---@return CharacterMenuStatus
+function CharacterMenu.GetActiveStatus()
+end
+
+---@param status CharacterMenuStatus
+function CharacterMenu.SetActiveStatus(status)
+end

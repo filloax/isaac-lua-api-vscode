@@ -49,3 +49,6 @@ end
 ---@param time integer
 function Minimap.SetHoldTime(time)
 end
+
+function Minimap.Refresh()
+end

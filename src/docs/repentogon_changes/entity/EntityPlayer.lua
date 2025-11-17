@@ -1395,3 +1395,19 @@ end
 ---@param value number
 function EntityPlayer:SetD8SpeedModifier(value)
 end
+
+---@return integer
+function EntityPlayer:GetPlanCCountdown()
+end
+
+---@return integer
+function EntityPlayer:GetPotatoPeelerUses()
+end
+
+---@param countdown integer
+function EntityPlayer:SetPlanCCountdown(countdown)
+end
+
+---@param numUses integer
+function EntityPlayer:SetPotatoPeelerUses(numUses)
+end
