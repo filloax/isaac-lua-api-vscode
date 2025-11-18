@@ -64,11 +64,13 @@ end
 function Room:GetCenterPos()
 end
 
+---Returns the grid index located at `Position`. Clamps to the nearest grid index if `Position` is out of bounds.
 ---@param Position Vector
 ---@return integer
 function Room:GetClampedGridIndex(Position)
 end
 
+---Returns `Pos` clamped to within the room's walls with a radius of `Margin` units away from out of bounds.
 ---@param Pos Vector
 ---@param Margin number
 ---@return Vector
