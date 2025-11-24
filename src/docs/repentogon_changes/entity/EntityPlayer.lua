@@ -93,6 +93,10 @@ end
 function EntityPlayer:ClearItemAnimNullItems()
 end
 
+--Empties the player's current QueuedItem. This stops the item from being added to the player, clears the item sprite above the player's head, and does not stop the pickup animation
+function EntityPlayer:ClearQueueItem()
+end
+
 ---@param collectible CollectibleType
 ---@param existingPedestal? EntityPickup @default: `nil`. If defined, the collectible will be swapped out for the dropped collectible instead of a new pedestal spawning.
 ---@param removeFromPlayerForm? boolean @default: `false`

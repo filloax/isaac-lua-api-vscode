@@ -244,9 +244,9 @@ end
 ---@return integer
 function Room:TryGetShopDiscount(shopItemIndex, price) end
 
----An `IgnoreStageType` parameter has been added to allow spawning the Mirror & Mineshaft door outside of `STAGETYPE_REPENTANCE` and `STAGETYPE_REPENTANCE_B` stages. Note that the `KNIFE_PUZZLE` dimension must be set up properly for these doors not to crash on entry!
----@param IgnoreStageType? boolean @default: `false`
-function Room:TrySpawnSpecialQuestDoor(IgnoreStageType)
+---Attempts to spawn either a door to the Mirror Dimension in Downpour, or the abandoned mineshaft in the Mines.
+---@param Force? boolean @default: `false`. If set to `true`, will allow the door to spawn outside of `STAGETYPE_REPENTANCE` and `STAGETYPE_REPENTANCE_B` stages. Note that the `KNIFE_PUZZLE` dimension must be set up properly for these doors not to crash on entry!
+function Room:TrySpawnSpecialQuestDoor(Force)
 end
 
 ---@param process boolean
