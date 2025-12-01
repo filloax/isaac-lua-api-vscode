@@ -29,7 +29,7 @@ end
 local CppList_RoomConfigEntries = {}
 
 ---@param idx integer
----@return userdata
+---@return RoomConfig_Entry
 function CppList_RoomConfigEntries:Get(idx)
 end
 
