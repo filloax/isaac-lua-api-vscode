@@ -1,5 +1,17 @@
 # Change Log
 
+* [1.13.0]
+	- Support for Repentogon 1.1.0
+	- Changed how static methods are exposed under EntityNPC, EntityPickup, and EntityLaser to better separate the global and object versions of the class
+	- Add EntityPlayer:AddTrinketEffect and EntityNPC.ThrowMaggot
+	- Move EntityPlayer:GetTearRangeModifier to vanilla docs
+	- Fix various optional arguments not being labelled as such
+	- Fix wrong return value for HistoryItem:GetItemPoolType
+	- Fix incorrect name for StatsMenu.IsSecretsMenuVisible
+	- Fix RGON's ItemConfigCard variables being sorted under the wrong class
+	- Fix incorrect parameters for RGON's EntityNPC.ThrowX functions
+	- Add many comments to the Room class' functions and other misc functions
+
 * [1.12.3]
 	- Fix two incomplete bitflag enums, causing errors to appear
 
