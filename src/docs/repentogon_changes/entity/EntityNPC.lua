@@ -47,6 +47,11 @@ end
 function EntityNPC_Local:GetShieldStrength()
 end
 
+---Returns a Pathfinder class with fixed versions of its functions. This supersedes EntityNPC.Pathfinder, which has been left as-is for compatibility with existing mods.
+---@return PathFinder
+function EntityNPC_Local:GetPathfinder()
+end
+
 ---@param ID SoundEffect
 ---@param Volume? number @default: `1`
 ---@param FrameDelay? integer @default: `2`
