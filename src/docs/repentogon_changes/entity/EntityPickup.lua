@@ -142,3 +142,15 @@ end
 ---@param setupGraphics? boolean @default: `true`
 function EntityPickup_Local:InitFlipState(itemID, setupGraphics)
 end
+
+function EntityPickup_Local:ReloadGraphics()
+end
+
+---@param sprite Sprite
+---@param layer integer
+---@param itemId CollectibleType
+---@param blind? boolean @default: `false`
+---@param seed? integer @default: `Random()`
+---@param loadGraphics? boolean @default: `false`
+function _G.EntityPickup.SetupCollectibleGraphics(sprite, layer, itemId, blind, seed, loadGraphics)
+end

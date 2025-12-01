@@ -1410,3 +1410,30 @@ end
 ---@param numUses integer
 function EntityPlayer:SetPotatoPeelerUses(numUses)
 end
+
+---@return integer
+function EntityPlayer:GetItemStateCooldown()
+end
+
+---@param cooldown integer
+function EntityPlayer:SetItemStateCooldown(cooldown)
+end
+
+--How long player's head will play fired frame sprite?
+---@return integer
+function EntityPlayer:GetBlinkLockTime()
+end
+
+---Temporary copy of body player sprite while null animation is active.
+---@return Sprite
+function EntityPlayer:GetBodySprite()
+end
+
+---Returns `true` if animation was set successfully, `false` otherwise. Useful for item state/hold items.
+---@param animationName string
+function EntityPlayer:PlayItemNullAnimation(animationName)
+end
+
+---@param time integer
+function EntityPlayer:SetBlinkLockTime(time)
+end
