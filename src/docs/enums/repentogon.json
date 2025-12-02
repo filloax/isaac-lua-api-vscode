@@ -882,19 +882,19 @@
     },
     "MC_PRE_MINIMAP_UPDATE": {
       "value": "1477",
-      "comment": "Callback has no arguments. Called right before the minimap is updated"
+      "comment": "Callback has no arguments. Called right before the minimap is update.d"
     },
     "MC_POST_MINIMAP_UPDATE": {
       "value": "1478",
-      "comment": "Callback has no arguments. Called right after the minimap is updated"
+      "comment": "Callback has no arguments. Called right after the minimap is updated."
     },
     "MC_PRE_MINIMAP_RENDER": {
       "value": "1479",
-      "comment": "Callback has no arguments. Called right before the minimap is rendered"
+      "comment": "Callback has no arguments. Called right before the minimap is rendered."
     },
     "MC_POST_MINIMAP_RENDER": {
       "value": "1480",
-      "comment": "Callback has no arguments. Called right after the minimap is rendered"
+      "comment": "Callback has no arguments. Called right after the minimap is rendered."
     },
     "MC_PRE_PICKUP_GET_LOOT_LIST": {
       "value": "1333",
@@ -904,13 +904,21 @@
       "value": "1334",
       "comment": "(EntityPickup Pickup) - Called before a ghost pickup of the loot content is applied to the pickup. Return `true` to apply pickup ghost to your pickup entity, `false` to cancel it."
     },
+    "MC_POST_PLAYER_ADD_EFFECT": {
+      "value": "1273",
+      "comment": "(EntityPlayer Player, ItemConfigItem ItemConfigItem), Optional Arg: ItemConfigItem - Called after the `TemporaryEffect` of an `ItemConfigItem` is added to a player."
+    },
+    "MC_POST_ROOM_ADD_EFFECT": {
+      "value": "1274",
+      "comment": "(ItemConfigItem ItemConfigItem), Optional Arg: ItemConfigItem - Called after the `TemporaryEffect` of an `ItemConfigItem` is added to a room. Room has its own `TemporaryEffects` that are accessed through `Room::GetEffects()`"
+    },
     "MC_POST_PLAYER_TRIGGER_EFFECT_REMOVED": {
       "value": "1268",
-      "comment": "(EntityPlayer Player, ItemConfigItem ItemConfigItem) - Called after the player's `ItemConfigItem` TemporaryEffect is removed"
+      "comment": "(EntityPlayer Player, ItemConfigItem ItemConfigItem), Optional Arg: ItemConfigItem - Called after the `TemporaryEffect` of an `ItemConfigItem` is removed from a player."
     },
     "MC_POST_ROOM_TRIGGER_EFFECT_REMOVED": {
       "value": "1269",
-      "comment": "(ItemConfigItem ItemConfigItem) - Called after the room's `TemporaryEffects` is removed. Room has its own `TemporaryEffects` that are accessed through `Room::GetEffects()`"
+      "comment": "(ItemConfigItem ItemConfigItem), Optional Arg: ItemConfigItem - Called after the `TemporaryEffect` of an `ItemConfigItem` is removed from a room. Room has its own `TemporaryEffects` that are accessed through `Room::GetEffects()`"
     },
     "MC_PRE_PLAYER_GRID_COLLISION": {
       "value": "1171",
