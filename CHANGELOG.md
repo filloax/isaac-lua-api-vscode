@@ -1,5 +1,11 @@
 # Change Log
 
+* [1.13.1]
+	- Add EntityNPC:GetPathfinder
+	- Add MC_POST_PLAYER_ADD_EFFECT and MC_POST_ROOM_ADD_EFFECT
+	- Update comments for MC_POST_PLAYER_TRIGGER_EFFECT_REMOVED and MC_POST_ROOM_TRIGGER_EFFECT_REMOVED. They accept ItemConfigItem as optional arguments
+	- Specify return value for RoomConfigEntries:Get
+
 * [1.13.0]
 	- Support for Repentogon 1.1.0
 	- Changed how static methods are exposed under EntityNPC, EntityPickup, and EntityLaser to better separate the global and object versions of the class
