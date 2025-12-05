@@ -1190,11 +1190,11 @@
 	},
 	"MC_PRE_ENTITY_SET_COLOR": {
 		"value": "1486",
-		"comment": "(Entity Entity, int Duration, int Priority, boolean FadeOut, boolean Share): boolean | Color, Optional Arg: EntityType - Called when `Entity:SetColor` is called. Return a color to override the color. The overridden color is passed into `MC_POST_ENTITY_SET_COLOR`. Return `false` to cancel the color change. This is only called for `Entity:SetColor` and does not fire when changing the entity's color directly."
+		"comment": "(Entity Entity, Color Color, int Duration, int Priority, boolean FadeOut, boolean Share): boolean | Color, Optional Arg: EntityType - Called when `Entity:SetColor` is called. Return a color to override the color. The overridden color is passed into `MC_POST_ENTITY_SET_COLOR`. Return `false` to cancel the color change. This is only called for `Entity:SetColor` and does not fire when changing the entity's color directly."
 	},
 	"MC_POST_ENTITY_SET_COLOR": {
 		"value": "1487",
-		"comment": "(Entity Entity, int Duration, int Priority, boolean FadeOut, boolean Share), Optional Arg: EntityType - Called after an entity's color is changed via `Entity:SetColor` successfully. This only fires for `Entity:SetColor` and does not fire when changing the entity's color directly."
+		"comment": "(Entity Entity, Color Color, int Duration, int Priority, boolean FadeOut, boolean Share), Optional Arg: EntityType - Called after an entity's color is changed via `Entity:SetColor` successfully. This only fires for `Entity:SetColor` and does not fire when changing the entity's color directly."
 	},
 	"MC_GET_STATUS_EFFECT_TARGET": {
 		"value": "1485",
