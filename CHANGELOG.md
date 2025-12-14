@@ -1,5 +1,9 @@
 # Change Log
 
+* [1.13.2]
+	- Support for REPENTOGON 1.1.1
+	- Add REPENTOGON's Room:ClearBossHazards
+
 * [1.13.1]
 	- Add EntityNPC:GetPathfinder
 	- Add MC_POST_PLAYER_ADD_EFFECT and MC_POST_ROOM_ADD_EFFECT
@@ -7,7 +11,7 @@
 	- Specify return value for RoomConfigEntries:Get
 
 * [1.13.0]
-	- Support for Repentogon 1.1.0
+	- Support for REPENTOGON 1.1.0
 	- Changed how static methods are exposed under EntityNPC, EntityPickup, and EntityLaser to better separate the global and object versions of the class
 	- Add EntityPlayer:AddTrinketEffect and EntityNPC.ThrowMaggot
 	- Move EntityPlayer:GetTearRangeModifier to vanilla docs
@@ -65,19 +69,19 @@
 
 * [1.11.0]
 
-    - Support for Repentogon 1.0.12
+    - Support for REPENTOGON 1.0.12
     - Fix issues with ItemConfig: Correct enum values, add descriptions, and move ItemConfig.Config under the enum instead of the class
     - Add missing description information to MC_USE_ITEM and MC_USE_CARD
     - Add XMLNode.BOSSCOLOR
 
 * [1.10.1]
 
-    - Tweaks to Repentogon docs
+    - Tweaks to REPENTOGON docs
 
 * [1.10.0]
 
-    - Support for Repentogon 1.0.11
-    - Fix Repentogon-added Grid Entity subclasses not being a child of the GridEntity class
+    - Support for REPENTOGON 1.0.11
+    - Fix REPENTOGON-added Grid Entity subclasses not being a child of the GridEntity class
     - Fix EntityPlayer:GetFootprintColor returning Color instead of KColor
     - ItemConfig and RoomDescriptor both now work properly as both a class and an enum
     - Add some missing functions
@@ -86,7 +90,7 @@
 
     - Fix for dupe ItemConfig and missing TEARFLAG warnings
     - Fix a few incomplete functions
-    - Add remaining additions up to Repentogon v1.0.10c
+    - Add remaining additions up to REPENTOGON v1.0.10c
 
 * [1.9.6]
 
@@ -106,13 +110,13 @@
 
 * [1.9.3]
 
-    - Support for Repentogon 1.0.9b
-    - Tweaks to Repentogon and Vanilla docs
+    - Support for REPENTOGON 1.0.9b
+    - Tweaks to REPENTOGON and Vanilla docs
 
 * [1.9.2]
 
-    - Support for Repentogon 1.0.9a
-    - Tweaks to Repentogon docs (Sanio, SomeEngineer and thicco-catto contribution)
+    - Support for REPENTOGON 1.0.9a
+    - Tweaks to REPENTOGON docs (Sanio, SomeEngineer and thicco-catto contribution)
 
 * [1.9.1]
 
@@ -122,7 +126,7 @@
 
 * [1.9.0]
 
-    - Support for Repentogon 1.0.9 and some other docs adjustments by Sanio (It's me, I'm Sanio, I can do this now :>)
+    - Support for REPENTOGON 1.0.9 and some other docs adjustments by Sanio (It's me, I'm Sanio, I can do this now :>)
 
 * [1.8.3]
 
@@ -130,16 +134,16 @@
 
 * [1.8.2]
 
-    - Tweaks to Repentogon docs (Syntax Sculptor contribution)
+    - Tweaks to REPENTOGON docs (Syntax Sculptor contribution)
 
 * [1.8.1]
 
-    - Tweaks to Repentogon docs
+    - Tweaks to REPENTOGON docs
 
 * [1.8.0]
 
     - include defined as alias of require
-    - Support for Repentogon 1.0.8 (thanks Sanio!)
+    - Support for REPENTOGON 1.0.8 (thanks Sanio!)
 
 * [1.7.4]
 
@@ -147,19 +151,19 @@
 
 * [1.7.3]
 
-    - Repentogon
+    - REPENTOGON
         - XMLData.GetBossColorByTypeVarSub
     - Define Vector.One and Vector.Zero as Vectors
     - Assorted fixes
 
 * [1.7.2]
 
-    - Fix some Repentogon functions and overloads
+    - Fix some REPENTOGON functions and overloads
     - Fix some vanilla functions
 
 * [1.7.1]
 
-    - Fix various duplicate entries in repentogon docs
+    - Fix various duplicate entries in REPENTOGON docs
     - More contributions by Sanio and Maya-bee
     - Internal changes: enums are saved as JSON instead
     - Internal changes: now no longer uses docs repo as submodule
@@ -170,11 +174,11 @@
 
 * [1.6.1]
 
-    - Fix syntax errors in Repentogon API docs
+    - Fix syntax errors in REPENTOGON API docs
 
 * [1.6.0]
 
-    - Support for [Repentogon](https://repentogon.com/) API! Can be enabled via extension settings. Thanks to 4head for writing the Lua docs for it!
+    - Support for [REPENTOGON](https://repentogon.com/) API! Can be enabled via extension settings. Thanks to 4head for writing the Lua docs for it!
     - Re-enabled ModReference class
     - Internal changes
 
