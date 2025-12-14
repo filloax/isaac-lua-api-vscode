@@ -173,7 +173,7 @@ end
 function Game:ChainLightning(pos, baseDamage, tearFlags, spawner)
 end
 
----Returns `true` if the the game starts from a continued state. Always returns `false` after MC_POST_GAME_STARTED execution.
+---Returns `true` if the the game starts from a continued state. Always returns `false` after `MC_POST_GAME_STARTED` execution.
 ---@return boolean
 function Game:IsStartingFromState()
 end
