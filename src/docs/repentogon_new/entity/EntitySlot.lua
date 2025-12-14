@@ -28,12 +28,7 @@ function EntitySlot:GetPrizeType()
 end
 
 ---Returns the current state of the slot.
----@return integer
----|1 # Idle
----|2 # Reward / Idle Reward
----|3 # Bombed
----|4 # Payout
----|5 # Shell/Hell Game Exclusive: Reward
+---@return SlotState
 function EntitySlot:GetState()
 end
 
@@ -79,8 +74,8 @@ end
 function EntitySlot:SetPrizeType(prizeType)
 end
 
----Sets the state of the slot. See `EntitySlot:GetState` for more information.
----@param state integer
+---Sets the state of the slot.
+---@param state SlotState
 function EntitySlot:SetState(state)
 end
 

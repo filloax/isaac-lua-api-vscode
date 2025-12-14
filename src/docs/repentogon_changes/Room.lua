@@ -256,3 +256,9 @@ function Room:UpdateColorModifier(process, lerp, rate) end
 
 ---@return FXLayers
 function Room:GetFXLayers() end
+
+---Kills all projectiles.
+---@param ignoreNPCs? boolean @default: `true`. If `false`, kills all non-friendly NPCs capable of keeping doors closed.
+---@param source? Entity @default: `nil`.
+function Room:ClearBossHazards(ignoreNPCs, source)
+end

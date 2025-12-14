@@ -8,11 +8,11 @@ function EntityBomb:GetExplosionCountdown()
 end
 
 ---@return number
-function EntityBomb:GetFallingSpeed()
+function EntityBomb:GetFallSpeed()
 end
 
 ---@return number
-function EntityBomb:GetHeight()
+function EntityBomb:GetFallAcceleration()
 end
 
 ---@return integer[]
@@ -28,11 +28,11 @@ function EntityBomb:IsLoadingCostumes()
 end
 
 ---@param speed number
-function EntityBomb:SetFallingSpeed(speed)
+function EntityBomb:SetFallSpeed(speed)
 end
 
----@param height number
-function EntityBomb:SetHeight(height)
+---@param acceleration number
+function EntityBomb:SetFallAcceleration(acceleration)
 end
 
 ---@param load? boolean @default: `true`

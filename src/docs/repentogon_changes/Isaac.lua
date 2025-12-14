@@ -28,7 +28,10 @@ end
 function Isaac.CenterCursor()
 end
 
----Kills all projectiles and non-friendly NPCs capable of keeping doors closed..
+---@deprecated
+---!Use Room:ClearBossHazards instead!
+---
+---Kills all projectiles and non-friendly NPCs capable of keeping doors closed.
 ---@param ignoreNPCs? boolean @default: `false`. If `true`, will not kill aforementioned NPCs.
 function Isaac.ClearBossHazards(ignoreNPCs)
 end

@@ -38,3 +38,12 @@ end
 ---@param elementNumber integer 
 function SaveMenu.SetSelectedElement(elementNumber)
 end
+
+---Overrides the spritesheet used for a save file drawing. `MC_POST_SAVESLOT_LOAD` is a good place to use this.
+---@param slot
+---|1
+---|2
+---|3
+---@param pngFilename string
+function SaveMenu.SetSlotSpritesheet(slot, pngFilename)
+end

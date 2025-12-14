@@ -81,3 +81,10 @@ end
 ---@param entity Entity
 function EntityTear:RemoveFromHitList(entity)
 end
+
+---Sets the sound that will be automatically played when the tear is spawned. Can be set to `SoundEffect.SOUND_NULL` to make no sound play.
+---
+---Should be set on `MC_POST_TEAR_INIT` or at any point prior to the tear's first Update, otherwise it will have no effect.
+---@param sound SoundEffect
+function EntityTear:SetInitSound(sound)
+end
