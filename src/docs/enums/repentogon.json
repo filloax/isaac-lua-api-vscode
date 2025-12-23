@@ -270,7 +270,7 @@
     },
     "MC_POST_PLAYER_NEW_LEVEL": {
       "value": "1078",
-      "comment": "(EntityPlayer Player, boolean FromPlayerUpdate, boolean IsPostLevelInitFinished), Optional Arg: PlayerType - Called after entering a new level or continuing a run. `IsPostLevelInitFinished` will be `true` if the callback runs from continuing a run. Useful for player-specific effects on a new level."
+      "comment": "(EntityPlayer Player, boolean FromPlayerUpdate, boolean IsPostLevelInitFinished), Optional Arg: PlayerType - Called after entering a new level or starting/continuing a run. `IsPostLevelInitFinished` will be `false` when starting/continuing a run, `true` otherwise. Useful for player-specific effects on a new level."
     },
     "MC_PRE_REPLACE_SPRITESHEET": {
       "value": "1116",

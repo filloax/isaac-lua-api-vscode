@@ -4,5 +4,5 @@
 ---@param state? integer @default: `6`
 ---@param color? Color @default: `Color.Default`
 ---@return EntityEffect
-function EntityEffect.CreateLight(position, scale, lifespan, state, color)
+function _G.EntityEffect.CreateLight(position, scale, lifespan, state, color)
 end
