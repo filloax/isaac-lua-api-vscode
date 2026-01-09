@@ -1,4 +1,3 @@
-
 ---@return Sprite
 function _G.Sprite()
 end

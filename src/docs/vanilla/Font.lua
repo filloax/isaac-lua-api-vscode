@@ -1,10 +1,6 @@
 ---@class Font
 local Font = {}
 
----@return Font
-function _G.Font()
-end
-
 ---@param String string
 ---@param PositionX number
 ---@param PositionY number
