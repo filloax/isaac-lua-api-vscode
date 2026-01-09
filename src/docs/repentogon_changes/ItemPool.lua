@@ -29,9 +29,9 @@ end
 ---@param seed? integer @default: `Random`. The seed to use.
 ---@param defaultItem CollectibleType? @default: `CollectibleType.COLLECTIBLE_BREAKFAST`. The default item to resort to.
 ---@param addToBlacklist? boolean @default: `true`. If `true`, the collectible is added to the blacklist and can't normally spawn again.
----@param excludeLockedItems? boolean @default: `false`. If `true`, collectibles that haven't been unlocked yet can't be chosen.
+---@param excludeActiveItems? boolean @default: `false`. If `true`, active items will be excluded.
 ---@return CollectibleType
-function ItemPool:GetCollectibleFromList(collectibles, seed, defaultItem, addToBlacklist, excludeLockedItems)
+function ItemPool:GetCollectibleFromList(collectibles, seed, defaultItem, addToBlacklist, excludeActiveItems)
 end
 
 ---@class PoolRegistration
