@@ -430,11 +430,15 @@
     },
     "MC_PRE_BACKDROP_CHANGE": {
       "value": "1141",
-      "comment": "(BackdropType Type) - Accepts an integer to change BackdropType."
+      "comment": "(BackdropType Type) - Called before the backdrop of a room changes. Return an integer to change BackdropType."
+    },
+    "MC_POST_BACKDROP_CHANGE": {
+      "value": "1142",
+      "comment": "(BackdropType Type) - Called after the backdrop of a room changes."
     },
     "MC_PRE_BACKDROP_RENDER_FLOOR": {
       "value": "1107",
-      "comment": "(ColorModifier ColorModifier) - Called before the backdrop's floor is rendered."
+      "comment": "(Color Color) - Called before the backdrop's floor is rendered."
     },
     "MC_PRE_BACKDROP_RENDER_WATER": {
       "value": "1108",
@@ -442,7 +446,7 @@
     },
     "MC_POST_BACKDROP_PRE_RENDER_WALLS": {
       "value": "1109",
-      "comment": "(ColorModifier ColorModifier) - Called after the backdrop's walls are rendered."
+      "comment": "(Color Color) - Called after the backdrop's walls are rendered."
     },
     "MC_PRE_PLAYER_USE_BOMB": {
       "value": "1220",
@@ -451,6 +455,14 @@
     "MC_POST_PLAYER_USE_BOMB": {
       "value": "1221",
       "comment": "(EntityPlayer Player): boolean, Optional Arg: PlayerVariant - Called after the player uses a bomb, assuming it hasn't been cancelled."
+    },
+    "MC_POST_BOMB_DAMAGE": {
+      "value": "1275",
+      "comment": "(Vector Position, float Damage, float Radius, bool LineCheck, Entity Source, TearFlags TearFlags, DamageFlags DamageFlags, bool DamageSource), Optional Arg: EntityType - Called after `Game():BombDamage()` is called, used by the game to damage entities within a radius for explosions and similar effects. The optional parameter is the EntityType of the Source entity, if one exists (the Source can be nil)."
+    },
+    "MC_POST_BOMB_TEARFLAG_EFFECTS": {
+      "value": "1276",
+      "comment": "(Vector Position, float Radius, TearFlags TearFlags, Entity Source, float RadiusMult), Optional Arg: EntityType - Called after Game():BombTearflagEffects() is called, used by the game when TearFlags-based effects are triggered from an explosion. The optional parameter is the EntityType of the Source entity, if one exists (the Source can be nil)."
     },
     "MC_NPC_PICK_TARGET": {
       "value": "1222",
@@ -897,11 +909,11 @@
       "comment": "Callback has no arguments. Called right after the minimap is rendered."
     },
     "MC_PRE_PICKUP_GET_LOOT_LIST": {
-      "value": "1333",
+      "value": "1334",
       "comment": "(EntityPickup Pickup, boolean ShouldAdvance): LootList - Called before the pickup determines its loot content. Return `LootList` to change loot content."
     },
     "MC_PRE_PICKUP_UPDATE_GHOST_PICKUPS": {
-      "value": "1334",
+      "value": "1335",
       "comment": "(EntityPickup Pickup) - Called before a ghost pickup of the loot content is applied to the pickup. Return `true` to apply pickup ghost to your pickup entity, `false` to cancel it."
     },
     "MC_POST_PLAYER_ADD_EFFECT": {
@@ -911,6 +923,10 @@
     "MC_POST_ROOM_ADD_EFFECT": {
       "value": "1274",
       "comment": "(ItemConfigItem ItemConfigItem), Optional Arg: ItemConfigItem - Called after the `TemporaryEffect` of an `ItemConfigItem` is added to a room. Room has its own `TemporaryEffects` that are accessed through `Room::GetEffects()`"
+    },
+    "MC_PRE_BOSS_SELECT": {
+      "value": "1280",
+      "comment": "(BossType BossID, BossPool Pool, LevelStage Stage, StageType StageType): BossType, Optional Arg: BossType. Called when a boss is being selected for a specific floor and stage type. Return a new `BossType` to override it."
     },
     "MC_POST_PLAYER_TRIGGER_EFFECT_REMOVED": {
       "value": "1268",
@@ -1137,9 +1153,13 @@
       "comment": "(Challenge ChallengeID, EntityPlayer Player): boolean, Optional Arg: Challenge - Called before a challenge is marked as completed. Return `false` to prevent further execution of the challenge completion-tracking function."
     },
     "MC_POST_CHALLENGE_DONE": {
-      "value": "1472",
-      "comment": "(Challenge ChallengeID), Optional Arg: Challenge - Called after a challenge is marked as completed."
+		"value": "1472",
+		"comment": "(Challenge ChallengeID), Optional Arg: Challenge - Called after a challenge is marked as completed."
     },
+	"MC_PRE_FAMILIAR_CAN_CHARM": {
+	  "value": "1473",
+	  "comment": "(EntityFamiliar Familiar), Optional Arg: FamiliarVariant - Fires when `EntityFamiliar:CanCharm` is called. This is typically used by Siren's familiar charm attack. Return `false` to prevent the familiar from being charmed."
+	},
     "MC_PRE_PLAYER_GIVE_BIRTH_CAMBION": {
       "value": "1474",
       "comment": "(EntityPlayer Player, ConceptionFamiliarFlag Flag): boolean, Optional Arg: ConceptionFamiliarFlag - Called before the player gives birth to a familiar through the Cambion Conception collectible. Return `false` to cancel adding the familiar."
@@ -1294,7 +1314,7 @@
 	},
 	"MC_POST_DISCHARGE_ACTIVE_ITEM": {
 		"value": "1140",
-		"comment": "(CollectibleType itemID, boolean CollectibleRemoved, EntityPlayer Player, ActiveSlot Slot), Optional Arg: CollectibleType. Called after an item is discharged. Useful for \"overhead\" items that aren't discharged until after they are thrown"
+		"comment": "(CollectibleType itemID, boolean CollectibleRemoved, EntityPlayer Player, ActiveSlot Slot), Optional Arg: CollectibleType. Called after an item is discharged. Useful for \"overhead\" items that aren't discharged until after they are thrown."
 	},
 	"MC_POST_PLAYER_DROP_TRINKET": {
 		"value": "1144",
