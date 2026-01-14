@@ -261,7 +261,7 @@ function Entity:SetSpriteOverlayFrame(AnimationName, FrameNum)
 end
 
 ---@param Damage number
----@param Flags integer
+---@param Flags DamageFlag | integer
 ---@param Source EntityRef
 ---@param DamageCountdown integer
 ---@return boolean
