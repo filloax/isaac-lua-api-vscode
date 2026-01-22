@@ -1,5 +1,3 @@
----@class RoomDescriptorDoors
-
 ---@class RoomDescriptor
 ---Allows you to check which level grid index each DoorSlot in the room connects to.
 ---
@@ -8,7 +6,7 @@
 ---The value will be -1 if the RoomShape does not allow a door in that slot.
 ---
 ---Note that this typically provides a valid index even if there is no door present, and even if the room itself does not allow a door in that slot.
----@field Doors {[DoorSlot]: RoomDescriptorDoors}
+---@field Doors {[DoorSlot]: integer}
 ---Returns a bitmask corresponding to which door slots are currently enabled.
 ---
 ---Doors are typically only included in this bitmask when there is a door currently present, even if the room would allow a door in that slot.
@@ -21,7 +19,7 @@ local RoomDescriptor_RGON = {}
 ---@param gridIndex integer
 function RoomDescriptor_RGON:AddRestrictedGridIndex(gridIndex) end
 
----@return EntitiesSaveStateVector
+---@return GridEntitiesSaveStateVector
 function RoomDescriptor_RGON:GetGridEntitiesSaveState(gridIndex) end
 
 ---@return EntitiesSaveStateVector

@@ -77,7 +77,7 @@ end
 ---@param allowSpecialNeighbors? boolean @default: `false`. Set to true to allow connections to existing special rooms (note secret rooms are always allowed, but boss rooms are never allowed).
 ---@param allowNoNeighbors? boolean @default: `false`. Set to true to allow placing the room out in the void with no neighbors.
 ---@return boolean
----@overload fun(self: Level, roomShape: RoomShape, doorMask: DoorMask, gridIndex: integer, allowMultipleDoors?: boolean, allowSpecialNeighbors?: boolean, allowNoNeighbors?: boolean): boolean
+---@overload fun(self: Level, roomShape: RoomShape, doorMask: DoorMask, gridIndex: integer, dimension?: Dimension, allowMultipleDoors?: boolean, allowSpecialNeighbors?: boolean, allowNoNeighbors?: boolean): boolean
 function Level:CanPlaceRoom(roomConfigRoomToPlace, gridIndex, dimension, allowMultipleDoors, allowSpecialNeighbors, allowNoNeighbors)
 end
 
