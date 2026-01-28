@@ -362,7 +362,7 @@
     },
     "MC_POST_PLAYERHUD_RENDER_ACTIVE_ITEM": {
       "value": "1079",
-      "comment": "(EntityPlayer Player, ActiveSlot Slot, Vector Offset, float Alpha, float Scale, Vector ChargeBarOffset) - Called after the player's active item is rendered."
+      "comment": "(EntityPlayer Player, ActiveSlot Slot, Vector Offset, float Alpha, float Scale, Vector ChargeBarOffset), Optional Arg: CollectibleType - Called after the player's active item is rendered."
     },
     "MC_POST_PLAYERHUD_RENDER_HEARTS": {
       "value": "1091",
@@ -998,7 +998,7 @@
     },
     "MC_PRE_PLAYERHUD_RENDER_ACTIVE_ITEM": {
       "value": "1119",
-      "comment": "(EntityPlayer Player, ActiveSlot Slot, Vector Offset, float Alpha, float Scale, Vector ChargeBarOffset) - Called before the player's active item is rendered. Return `true` to cancel rendering."
+      "comment": "(EntityPlayer Player, ActiveSlot Slot, Vector Offset, float Alpha, float Scale, Vector ChargeBarOffset): boolean | table, Optional Arg: CollectibleType - Called before the player's active item is rendered. Return `true` to cancel rendering."
     },
     "MC_PRE_PLAYER_REVIVE": {
       "value": "1481",
