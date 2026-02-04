@@ -56,5 +56,6 @@ end
 
 ---@param Subtype integer
 ---@param Position Vector
+---@return EntityFamiliar
 function EntityPlayer:AddFriendlyDip(Subtype, Position)
 end
