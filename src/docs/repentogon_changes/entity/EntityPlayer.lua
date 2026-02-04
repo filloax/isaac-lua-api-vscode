@@ -1437,3 +1437,8 @@ end
 ---@param time integer
 function EntityPlayer:SetBlinkLockTime(time)
 end
+
+---@param Subtype DipSubType
+---@param Position Vector
+function EntityPlayer:AddFriendlyDip(Subtype, Position)
+end

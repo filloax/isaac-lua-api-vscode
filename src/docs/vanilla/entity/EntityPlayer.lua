@@ -96,11 +96,6 @@ end
 function EntityPlayer:AddEternalHearts(EternalHearts)
 end
 
----@param Subtype integer
----@param Position Vector
-function EntityPlayer:AddFriendlyDip(Subtype, Position)
-end
-
 ---@param GigaBombs integer
 function EntityPlayer:AddGigaBombs(GigaBombs)
 end

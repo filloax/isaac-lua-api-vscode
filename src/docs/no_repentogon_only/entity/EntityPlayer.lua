@@ -53,3 +53,8 @@ end
 ---@overload fun(self: EntityPlayer, Item: CollectibleType, ShowAnim?: boolean, KeepActiveItem?: boolean, AllowNonMainPlayer?: boolean, ToAddCostume?: boolean, Slot?: ActiveSlot | -1)
 function EntityPlayer:UseActiveItem(Item, UseFlags, Slot)
 end
+
+---@param Subtype integer
+---@param Position Vector
+function EntityPlayer:AddFriendlyDip(Subtype, Position)
+end
