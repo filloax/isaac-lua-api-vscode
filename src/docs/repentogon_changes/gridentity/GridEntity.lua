@@ -108,3 +108,14 @@ end
 ---Updates the GridEntity's neighbors.
 function GridEntity:UpdateNeighbors()
 end
+
+---@return WaterClipFlag
+function GridEntity:GetWaterClipFlags()
+end
+
+---@param flags WaterClipFlag
+function GridEntity:SetWaterClipFlags(flags)
+end
+
+function GridEntity:ResetWaterClipFlags()
+end
