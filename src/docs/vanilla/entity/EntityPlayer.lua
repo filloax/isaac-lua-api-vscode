@@ -71,7 +71,8 @@ end
 ---@param FirstTimePickingUp? boolean @default: `true`
 ---@param Slot? ActiveSlot @default: `ActiveSlot.SLOT_PRIMARY`
 ---@param VarData? integer @default: `0`
-function EntityPlayer:AddCollectible(Type, Charge, FirstTimePickingUp, Slot, VarData)
+---@param ItemPoolType? ItemPoolType @**[Repentance+ Only]** default: `ItemPoolType.POOL_TREASURE`. Define the item pool the collectible came from.
+function EntityPlayer:AddCollectible(Type, Charge, FirstTimePickingUp, Slot, VarData, ItemPoolType)
 end
 
 ---@param Cooldown integer

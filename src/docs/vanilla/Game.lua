@@ -113,12 +113,15 @@ function Game:End(Ending)
 end
 
 ---@param Speed number
-function Game:Fadein(Speed)
+---@param ShowIcon? boolean @**[Repentance+ Only]** default? `?`. Appears to be non-functional.
+---@param KColor? KColor @**[Repentance+ Only]**
+function Game:Fadein(Speed, ShowIcon, KColor)
 end
 
 ---@param Speed number
 ---@param Target integer @FadeoutTarget
-function Game:Fadeout(Speed, Target)
+---@param KColor? KColor @**[Repentance+ Only]**
+function Game:Fadeout(Speed, Target, KColor)
 end
 
 ---@param Position Vector

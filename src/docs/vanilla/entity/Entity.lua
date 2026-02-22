@@ -41,7 +41,8 @@ local Entity = {}
 ---@param Source EntityRef
 ---@param Duration integer
 ---@param Damage number
-function Entity:AddBurn(Source, Duration, Damage)
+---@param IgnoreBosses? boolean @**[Repentance+ Only]** default: `false`. Set to `true` to bypass the boss' status effect cooldown
+function Entity:AddBurn(Source, Duration, Damage, IgnoreBosses)
 end
 
 ---@param sourceEntity EntityRef
@@ -51,7 +52,7 @@ end
 
 ---@param Source EntityRef
 ---@param Duration integer
----@param IgnoreBosses? boolean @default: `false`. Set to `true` to bypass the boss' status effect cooldown
+---@param IgnoreBosses? boolean @**[Repentance+ Only]** default: `false`. Set to `true` to bypass the boss' status effect cooldown
 function Entity:AddConfusion(Source, Duration, IgnoreBosses)
 end
 
@@ -61,12 +62,14 @@ end
 
 ---@param Source EntityRef
 ---@param Duration integer
-function Entity:AddFear(Source, Duration)
+---@param IgnoreBosses? boolean @**[Repentance+ Only]** default: `false`. Set to `true` to bypass the boss' status effect cooldown
+function Entity:AddFear(Source, Duration, IgnoreBosses)
 end
 
 ---@param Source EntityRef
 ---@param Duration integer
-function Entity:AddFreeze(Source, Duration)
+---@param IgnoreBosses? boolean @**[Repentance+ Only]** default: `false`. Set to `true` to bypass the boss' status effect cooldown
+function Entity:AddFreeze(Source, Duration, IgnoreBosses)
 end
 
 ---@param HitPoints number
@@ -75,25 +78,29 @@ end
 
 ---@param Source EntityRef
 ---@param Duration integer
-function Entity:AddMidasFreeze(Source, Duration)
+---@param IgnoreBosses? boolean @**[Repentance+ Only]** default: `false`. Set to `true` to bypass the boss' status effect cooldown
+function Entity:AddMidasFreeze(Source, Duration, IgnoreBosses)
 end
 
 ---@param Source EntityRef
 ---@param Duration integer
 ---@param Damage number
-function Entity:AddPoison(Source, Duration, Damage)
+---@param IgnoreBosses? boolean @**[Repentance+ Only]** default: `false`. Set to `true` to bypass the boss' status effect cooldown
+function Entity:AddPoison(Source, Duration, Damage, IgnoreBosses)
 end
 
 ---@param Source EntityRef
 ---@param Duration integer
-function Entity:AddShrink(Source, Duration)
+---@param IgnoreBosses? boolean @**[Repentance+ Only]** default: `false`. Set to `true` to bypass the boss' status effect cooldown
+function Entity:AddShrink(Source, Duration, IgnoreBosses)
 end
 
 ---@param Source EntityRef
 ---@param Duration integer
 ---@param SlowValue number
 ---@param SlowColor Color
-function Entity:AddSlowing(Source, Duration, SlowValue, SlowColor)
+---@param IgnoreBosses? boolean @**[Repentance+ Only]** default: `false`. Set to `true` to bypass the boss' status effect cooldown
+function Entity:AddSlowing(Source, Duration, SlowValue, SlowColor, IgnoreBosses)
 end
 
 ---@param Velocity Vector
@@ -212,6 +219,11 @@ function Entity:IsVulnerableEnemy()
 end
 
 function Entity:Kill()
+end
+
+---**[Repentance+ Only]**
+---@param source EntityRef
+function Entity:KillWithSource(source)
 end
 
 ---@param Value number

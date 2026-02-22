@@ -1,6 +1,15 @@
 ---@class Font
 local Font = {}
 
+---Converts UTF8 to UTF16, then draws the string on screen.
+---
+---The `BoxWidth` and `Center` parameters can be used for aligning the text. Some things to note about this:
+---
+---If `BoxWidth` is zero, the text will be left-aligned and the `Center` parameter will be ignored.
+---
+---If `BoxWidth` is NOT zero, and the `Center` parameter is false, then the text will be right-aligned inside the `BoxWidth` size.
+---
+---If `BoxWidth` is NOT zero, and the `Center` parameter is true, then the text will be centered inside the `BoxWidth` size.
 ---@param String string
 ---@param PositionX number
 ---@param PositionY number
@@ -8,6 +17,17 @@ local Font = {}
 ---@param BoxWidth? integer @default: `0`
 ---@param Center? boolean @default: `false`
 function Font:DrawString(String, PositionX, PositionY, RenderColor, BoxWidth, Center)
+end
+
+---**[Repentance+ Only]** A unique override that accepts a new FontRenderSettings for advanced control over how the string renders.
+---@param String string
+---@param PositionX number
+---@param PositionY number
+---@param sizeX number
+---@param sizeY number
+---@param RenderColor KColor
+---@param settings FontRenderSettings
+function Font:DrawString(String, PositionX, PositionY, sizeX, sizeY, RenderColor, settings)
 end
 
 ---@param String string

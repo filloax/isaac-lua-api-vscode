@@ -8,11 +8,27 @@ local Room = {}
 function Room:DamageGrid(Index, Damage)
 end
 
+---**[Repentance+ Only]** Damage Grid Entities. Currently this concerns `GridEntityPoop` and `GridEntityFire`, which return `true` if a damageable entity was found (and possibly damaged). Returns `false` if not used by tears, bombs, some NPCs, etc
+---@param Index integer
+---@param Damage integer
+---@param source EntityRef
+---@return boolean
+function Room:DamageGridWithSource(Index, Damage, source)
+end
+
 ---Calls DamageGrid internally to damage Poop/Fire, remove rocks, and open secret doors. Returns `true` if something was destroyed.
 ---@param Index integer
 ---@param Immediate boolean
 ---@return boolean
 function Room:DestroyGrid(Index, Immediate)
+end
+
+---**[Repentance+ Only]** Calls DamageGrid internally to damage Poop/Fire, remove rocks, and open secret doors. Returns `true` if something was destroyed.
+---@param Index integer
+---@param Immediate boolean
+---@param source EntityRef
+---@return boolean
+function Room:DestroyGridWithSource(Index, Immediate, source)
 end
 
 ---@param Duration integer
@@ -410,8 +426,9 @@ end
 function Room:KeepDoorsClosed()
 end
 
----@param Position Vector
-function Room:MamaMegaExplosion(Position)
+---@param Position? Vector @default: `Vector.Zero`.
+---@param Player? EntityPlayer
+function Room:MamaMegaExplosion(Position, Player)
 end
 
 ---Plays the music track used by this room. Useful for resetting music after playing a different track.

@@ -25,5 +25,5 @@
 ---@field SFXVolume number
 ---@field UseBorderlessFullscreen boolean
 ---@field VSync boolean
----@field JacobEsauControls integer
+---@field JacobEsauControls integer @**[Repentance+ Only]**
 _G.Options = {}

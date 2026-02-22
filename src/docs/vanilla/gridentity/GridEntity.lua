@@ -11,6 +11,13 @@ local GridEntity = {}
 function GridEntity:Destroy(Immediate)
 end
 
+---**[Repentance+ Only]**
+---@param Immediate? boolean
+---@param source? EntityRef
+---@return boolean
+function GridEntity:DestroyWithSource(Immediate, source)
+end
+
 ---@return integer
 function GridEntity:GetGridIndex()
 end
@@ -39,6 +46,13 @@ end
 ---@param Damage integer
 ---@return boolean
 function GridEntity:Hurt(Damage)
+end
+
+---**[Repentance+ Only]**
+---@param Damage integer
+---@param source EntityRef
+---@return boolean
+function GridEntity:HurtWithSource(Damage, source)
 end
 
 ---@param Seed integer

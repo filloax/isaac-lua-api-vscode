@@ -1036,7 +1036,21 @@
     "GROUND_GLOW": "196",
     "DEAD_BIRD": "197",
     "GENERIC_TRACER": "198",
-    "ULTRA_DEATH_SCYTHE": "199"
+    "ULTRA_DEATH_SCYTHE": "199",
+	"BULLET_POOF_STATIC": "200",
+	"UMBILICAL_CORD_HELPER": "201",
+	"MEGA_BEAN_EXPLOSION": {
+		"value": "202",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SPAWN_PENTAGRAM": {
+		"value": "203",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"PLAYER_CREEP_YELLOW": {
+		"value": "204",
+		"comment": "**[Repentance+ Only]**"
+	}
   },
   "PickupVariant": {
     "PICKUP_NULL": "0",
@@ -2297,7 +2311,11 @@
       "value": "29",
       "comment": "Red secret rooms"
     },
-    "NUM_ROOMTYPES": "30"
+	"ROOM_DEATHMATCH": {
+		"value": "30",
+		"comment": "**[Repentance+ Only]**"
+	},
+    "NUM_ROOMTYPES": "31"
   },
   "RoomShape": {
     "ROOMSHAPE_1x1": "1",
@@ -2527,7 +2545,11 @@
     "MUSIC_MINESHAFT_AMBIENT": "116",
     "MUSIC_MINESHAFT_ESCAPE": "117",
     "MUSIC_REVERSE_GENESIS": "118",
-    "NUM_MUSIC": "119"
+	"MUSIC_DEATHMATCH": {
+		"value": "119",
+		"comment": "**[Repentance+ Only]**"
+	},
+    "NUM_MUSIC": "120"
   },
   "SoundEffect": {
     "SOUND_NULL": "0",
@@ -3342,7 +3364,1035 @@
     "SOUND_GFUEL_GUNSHOT_MINI": "830",
     "SOUND_GFUEL_RICOCHET": "831",
     "SOUND_GFUEL_ROCKETLAUNCHER": "832",
-    "NUM_SOUND_EFFECTS": "833"
+    "SOUND_DEATHMATCH_INTRO": {
+		"value": "833",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_ABYSS": {
+		"value": "834",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BIG_CHUBBY_ATTACK": {
+		"value": "835",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BOOMERANG_THROW": {
+		"value": "836",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BOOMERANG_LOOP": {
+		"value": "837",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BOOMERANG_CATCH": {
+		"value": "838",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BOOMERANG_HIT": {
+		"value": "839",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BOX_OF_FRIENDS": {
+		"value": "840",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BROWN_NUGGET": {
+		"value": "841",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BUMBO_1": {
+		"value": "842",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BUMBO_2": {
+		"value": "843",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BUMBO_3": {
+		"value": "844",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BUMBO_4": {
+		"value": "845",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_PORTAL_ENTITY_LOOP": {
+		"value": "846",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_PORTAL_ENTITY_ENTER": {
+		"value": "847",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_CONVERTER": {
+		"value": "848",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_LITTLE_CHUBBY_ATTACK": {
+		"value": "849",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_CRACKED_ORB": {
+		"value": "850",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_CROOKED_PENNY": {
+		"value": "851",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_CUBE_BABY_KICK": {
+		"value": "852",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_DARKBUM_PAYOUT": {
+		"value": "853",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_DATAMINER": {
+		"value": "854",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_DR_REMOTE_WARNING": {
+		"value": "855",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FLIP_POOF": {
+		"value": "856",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_ERASER_HIT": {
+		"value": "857",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_GNAWED_LEAF": {
+		"value": "858",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_LIL_HAUNT_CHASE": {
+		"value": "859",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_LINGER_BEAN": {
+		"value": "860",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_GLOWING_HOURGLASS_ACTIVATE": {
+		"value": "861",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_GLOWING_HOURGLASS_FIZZLE": {
+		"value": "862",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_INFAMY_DEFLECT": {
+		"value": "863",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_IBS_GURGLE": {
+		"value": "864",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_POOP_THROW": {
+		"value": "865",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_GLITTER_BOOM": {
+		"value": "866",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_GLITTER_FUSE": {
+		"value": "867",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_LITTLEHORN_SHOOT": {
+		"value": "868",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_MEGABEAN_BLAST": {
+		"value": "869",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_MOM_BOTTLE": {
+		"value": "870",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_SUMMON_PENTA": {
+		"value": "871",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_SUMMON_WAVE": {
+		"value": "872",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BIGHORN_APPEAR": {
+		"value": "873",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BIGHORN_CLOSE_BIG": {
+		"value": "874",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BIGHORN_CRACK_BIG": {
+		"value": "875",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BIGHORN_OPEN_BIG": {
+		"value": "876",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BIGHORN_SHAKE_BIG": {
+		"value": "877",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BIGHORN_DEATH": {
+		"value": "878",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BIGHORN_DIZZY_SHAKE": {
+		"value": "879",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BIGHORN_HAND_APPEAR": {
+		"value": "880",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BIGHORN_HAND_HIDE": {
+		"value": "881",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BIGHORN_HIDE": {
+		"value": "882",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BIGHORN_HURT": {
+		"value": "883",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BIGHORN_PRE_SPIT": {
+		"value": "884",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BIGHORN_CLOSE_SMALL": {
+		"value": "885",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BIGHORN_CRACK_SMALL": {
+		"value": "886",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BIGHORN_OPEN_SMALL": {
+		"value": "887",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BIGHORN_SHAKE_SMALL": {
+		"value": "888",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BIGHORN_SPIT": {
+		"value": "889",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_MOMS_BOX": {
+		"value": "890",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_MONSTRO_LUNG_BARF": {
+		"value": "891",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_MOVING_BOX_PACK": {
+		"value": "892",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_MOVING_BOX_UNPACK": {
+		"value": "893",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_PANDORAS_BOX": {
+		"value": "894",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_PAUSE_FREEZE": {
+		"value": "895",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_MONSTRO_LUNG_CHARGE": {
+		"value": "896",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_PLAN_C": {
+		"value": "897",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_PORTABLE_SLOT_USE": {
+		"value": "898",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_PORTABLE_SLOT_WIN": {
+		"value": "899",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_SAFETY_SCISSORS": {
+		"value": "900",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BUTTER_DROP": {
+		"value": "901",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BUTTER_LAND": {
+		"value": "902",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_PRIDE_ZAP": {
+		"value": "903",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_R_KEY": {
+		"value": "904",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_TEAR_BOUNCE": {
+		"value": "905",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_SHARP_PLUG": {
+		"value": "906",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_RIB_DEFLECT": {
+		"value": "907",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_SMELTER": {
+		"value": "908",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_TELEKENESIS": {
+		"value": "909",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_D6_ROLL": {
+		"value": "910",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_TICK_BURN": {
+		"value": "911",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_TELEPORT_UNDEFINED": {
+		"value": "912",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_VOID_CONSUME": {
+		"value": "913",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_YO_LISTEN": {
+		"value": "914",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_SPIN_TO_WIN": {
+		"value": "915",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_SHOVEL_DIG2": {
+		"value": "916",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_SHOVEL_HOLE_OPEN": {
+		"value": "917",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_CAGE_DEATH": {
+		"value": "918",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_CAGE_JUMP": {
+		"value": "919",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_CAGE_RIBS": {
+		"value": "920",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_CAGE_ROLL_START": {
+		"value": "921",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_CAGE_PREP_SHOOT": {
+		"value": "922",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_CAGE_ROLL_STOP": {
+		"value": "923",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_CAGE_ROLL_BOUNCE": {
+		"value": "924",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_DEATH_HOURGLASS": {
+		"value": "925",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_DEATH_SICKLE": {
+		"value": "926",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_DEATH_LEAN": {
+		"value": "927",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_DEATH_VOX": {
+		"value": "928",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_DEATH_SPAWN_PREP": {
+		"value": "929",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_DEATH_HORSE_ATTACK": {
+		"value": "930",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_DEATH_HORSE_WOOSH": {
+		"value": "931",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_PIN_DIVE": {
+		"value": "932",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_PIN_POPUP": {
+		"value": "933",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_PIN_PUDDLE": {
+		"value": "934",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_PIN_SPIT": {
+		"value": "935",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_GISH_JUMP": {
+		"value": "936",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_GISH_JUMP_HIGH": {
+		"value": "937",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_GISH_SPIT": {
+		"value": "938",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_GURDY_FACE_ATTACK_APPEAR": {
+		"value": "939",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_GURDY_FACE_ATTACK_HIDE": {
+		"value": "940",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_GURDY_FACE_SMILE_APPEAR": {
+		"value": "941",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_GURDY_FACE_SMILE_HIDE": {
+		"value": "942",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_GURGLING_ATTACK": {
+		"value": "943",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_LITTLE_HORN_DEATH": {
+		"value": "944",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_LITTLE_HORN_BOMB_DROP": {
+		"value": "945",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_LITTLE_HORN_DIVE": {
+		"value": "946",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_LITTLE_HORN_HOLE_OPEN": {
+		"value": "947",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_LITTLE_HORN_HOLE_EXIT": {
+		"value": "948",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_LOKI_GIGGLE": {
+		"value": "949",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_LOKI_JUMP_OUT": {
+		"value": "950",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_LOKI_JUMP_IN": {
+		"value": "951",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_LOKI_SHOOT": {
+		"value": "952",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_LOKI_SHOOT_8": {
+		"value": "953",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_MASKINFAMY_MAD": {
+		"value": "954",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_MASKINFAMY_DASH": {
+		"value": "955",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_MEGAFATTY_GULP": {
+		"value": "956",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_MEGAFATTY_SUCKIN": {
+		"value": "957",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_MEGAFATTY_VOMIT": {
+		"value": "958",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_STAIN_ATTACK_VOX": {
+		"value": "959",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_SISTERS_VIS_SCARE": {
+		"value": "960",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_STEVEN_DEATH_BIG": {
+		"value": "961",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_STEVEN_DEATH_SMALL": {
+		"value": "963",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FALLEN_FLAP_CHASE": {
+		"value": "964",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FALLEN_GROWL": {
+		"value": "965",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FALLEN_FLAP": {
+		"value": "966",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FALLEN_OPEN_WINGS": {
+		"value": "967",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_TERATOMA_BOUNCE_BIG": {
+		"value": "968",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_TERATOMA_BOUNCE_MEDIUM": {
+		"value": "969",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_TERATOMA_BOUNCE_SMALL": {
+		"value": "970",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FORSAKEN_LASER": {
+		"value": "971",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FORSAKEN_ARMS_UP": {
+		"value": "972",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FORSAKEN_FADE": {
+		"value": "973",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FISTULA_BOUNCE_LARGE": {
+		"value": "974",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FISTULA_BOUNCE_MEDIUM": {
+		"value": "975",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FISTULA_BOUNCE_SMALL": {
+		"value": "976",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FISTULA_BURST_LARGE": {
+		"value": "977",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FISTULA_GROWL_LARGE": {
+		"value": "978",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FISTULA_GROWL_MEDIUM": {
+		"value": "979",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FISTULA_GROWL_SMALL": {
+		"value": "980",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_RAG_MEGA_BALL_ATTACK": {
+		"value": "981",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_RAG_MEGA_BEAM": {
+		"value": "982",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_RAG_MEGA_INHALE": {
+		"value": "983",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_RAG_MEGA_EXHALE": {
+		"value": "984",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_RAG_MEGA_INVINCIBLE_ON": {
+		"value": "985",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_RAG_MEGA_INVINCIBLE_OFF": {
+		"value": "986",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BLASTOCYST_JUMP_BIG": {
+		"value": "987",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BLASTOCYST_JUMP": {
+		"value": "988",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BLASTOCYST_JUMP_SMALL": {
+		"value": "989",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_POOP_DROP": {
+		"value": "990",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_CARRION_QUEEN_BOUNCE": {
+		"value": "991",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_CARRION_QUEEN_DIAGONAL_START": {
+		"value": "992",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_CARRION_QUEEN_DIAGONAL_VOX": {
+		"value": "993",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_CARRION_QUEEN_ROAR": {
+		"value": "994",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_HAUNT_CHARGE": {
+		"value": "995",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_HAUNT_DEATH": {
+		"value": "996",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_HAUNT_ROAR": {
+		"value": "997",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_HAUNT_RELEASE_LIL": {
+		"value": "998",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_LARRY_JR_DEATH_1": {
+		"value": "999",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_LARRY_JR_DEATH_2": {
+		"value": "1000",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_LARRY_JR_ROAR": {
+		"value": "1001",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_MEGA_FATTY_MEGA_FART": {
+		"value": "1002",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_HOLLOW_DEATH_1": {
+		"value": "1003",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_HOLLOW_DEATH_2": {
+		"value": "1004",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_HOLLOW_ROAR": {
+		"value": "1005",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_WAR_KNOCKDOWN": {
+		"value": "1006",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_WAR_CHARGE": {
+		"value": "1007",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BOSS_NEAR": {
+		"value": "1008",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_CAMBION_CONCEPTION": {
+		"value": "1009",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_IMMACULATE_CONCEPTION": {
+		"value": "1010",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_CHARGEDBABY_BATTERY": {
+		"value": "1011",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_CHARGEDBABY_CHARGE": {
+		"value": "1012",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_CHARGEDBABY_STUN": {
+		"value": "1013",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_ROCK_SHINE": {
+		"value": "1014",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BLUESPIDER_DIE": {
+		"value": "1015",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_SISSYLONGLEG_CHARM": {
+		"value": "1016",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_ITEM_RAISE": {
+		"value": "1017",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_CLOG_POOPSMOKE": {
+		"value": "1018",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FRIENDLYBALL_CAPTURE": {
+		"value": "1019",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FRIENDLYBALL_LAND": {
+		"value": "1020",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FRIENDLYBALL_PICKUP": {
+		"value": "1021",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FRIENDLYBALL_RAISE": {
+		"value": "1022",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FRIENDLYBALL_RELEASE": {
+		"value": "1023",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FRIENDLYBALL_THROW": {
+		"value": "1024",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BESTFRIEND": {
+		"value": "1025",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BOOK_SHADOWS_START": {
+		"value": "1026",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BOOK_SHADOWS_END": {
+		"value": "1027",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BOOK_SHADOWS_SIGIL": {
+		"value": "1028",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BOX_SPIDERS": {
+		"value": "1029",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_SUPLEX_ACTIVATE": {
+		"value": "1030",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_SUPLEX_GRAB": {
+		"value": "1031",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_SUPLEX_JUMP": {
+		"value": "1032",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_SUPLEX_LAND": {
+		"value": "1033",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_DEAD_SEA_SCROLLS": {
+		"value": "1034",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_MOMS_BRA": {
+		"value": "1035",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_RED_CANDLE": {
+		"value": "1036",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_SATANIC_BIBLE": {
+		"value": "1037",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BIBLE": {
+		"value": "1038",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_HOURGLASS": {
+		"value": "1039",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_MEGA_MUSH_SHRINK": {
+		"value": "1040",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_MAGIC_SKIN": {
+		"value": "1041",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BOOK_OF_SIN": {
+		"value": "1042",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BROKEN_SHOVEL": {
+		"value": "1043",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_DULL_RAZOR": {
+		"value": "1044",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_DARK_ARTS": {
+		"value": "1045",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_DECAP_ACTIVATE": {
+		"value": "1046",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_DECAP_TRHOW": {
+		"value": "1047",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_ESAUJR": {
+		"value": "1048",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_NECROMANCER": {
+		"value": "1049",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_GELLO": {
+		"value": "1050",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_HEAVENS_DOOR_ENTER": {
+		"value": "1051",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_TRAP_DOOR_LEVEL": {
+		"value": "1052",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_CRYSTAL_BALL": {
+		"value": "1053",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FORGET_ME_NOW": {
+		"value": "1054",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_HOW_TO_JUMP": {
+		"value": "1055",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_IV_BAG": {
+		"value": "1056",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_NOTCHED_AXE": {
+		"value": "1057",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_RAZOR_BLADE": {
+		"value": "1058",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_TELEPATHY_DUMMY": {
+		"value": "1059",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_JAR_OF_FLIES": {
+		"value": "1060",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_DIPLOPIA": {
+		"value": "1061",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_MINECRAFTER": {
+		"value": "1062",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_TEAR_DETONATOR": {
+		"value": "1063",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_VENTRICLE_RAZOR": {
+		"value": "1064",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_WOODEN_NICKEL": {
+		"value": "1065",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_WOODEN_NICKEL_SPAWN": {
+		"value": "1066",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BLACK_HOLE_ACTIVATE": {
+		"value": "1067",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BLACK_HOLE_TRHOW": {
+		"value": "1068",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_MR_ME": {
+		"value": "1069",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_SPRINKLER_SPAWN": {
+		"value": "1070",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_VOID_SUCCESS": {
+		"value": "1071",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_VOID_FAIL": {
+		"value": "1072",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_ABYSS_SUCCESS": {
+		"value": "1073",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BAG_OF_CRAFTING": {
+		"value": "1074",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_GIANT_CHEST_OPEN": {
+		"value": "1075",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_IMP_GROWL": {
+		"value": "1076",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_IMP_SHOOT": {
+		"value": "1077",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_IMP_WARP_OUT": {
+		"value": "1078",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_IMP_WARP_IN": {
+		"value": "1079",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BRAIN_MOVE": {
+		"value": "1080",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_POISON_MIND_HURT": {
+		"value": "1081",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_KNIGHT_GROWL": {
+		"value": "1082",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_SELFLESS_KNIGHT_GROWL": {
+		"value": "1083",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_FLOATING_KNIGHT_GROWL": {
+		"value": "1084",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_BUTTLICKER_GROWL": {
+		"value": "1085",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_LADDER": {
+		"value": "1086",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_OCCULAR_RIFT_SHOOT": {
+		"value": "1087",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_OCCULAR_RIFT_PORTAL": {
+		"value": "1088",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_UNBORN_GROWL": {
+		"value": "1089",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"SOUND_UNBORN_WARP": {
+		"value": "1090",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"NUM_SOUND_EFFECTS": "1091"
   },
   "DoorState": {
     "STATE_INIT": "0",
@@ -3503,7 +4553,23 @@
       "value": "48",
       "comment": "set during the Ascent"
     },
-    "NUM_STATE_FLAGS": "49"
+	"STATE_MEGA_SATAN_DOOR_OPENED": {
+		"value": "49",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"STATE_URIEL_KILLED": {
+		"value": "50",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"STATE_GABRIEL_KILLED": {
+		"value": "51",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"STATE_MOTHER_HEART_DOOR_OPENED": {
+		"value": "52",
+		"comment": "**[Repentance+ Only]**"
+	},
+    "NUM_STATE_FLAGS": "53"
   },
   "CollectibleType": {
     "COLLECTIBLE_NULL": "0",
@@ -5078,19 +6144,35 @@
     "ACTION_MAP": "13",
     "ACTION_MENUCONFIRM": "14",
     "ACTION_MENUBACK": "15",
-    "ACTION_RESTART": "16",
-    "ACTION_FULLSCREEN": "17",
-    "ACTION_MUTE": "18",
+    "ACTION_FULLSCREEN": "16",
+    "ACTION_MUTE": "17",
+    "ACTION_RESTART": "18",
     "ACTION_JOINMULTIPLAYER": "19",
     "ACTION_MENULEFT": "20",
     "ACTION_MENURIGHT": "21",
     "ACTION_MENUUP": "22",
     "ACTION_MENUDOWN": "23",
-    "ACTION_MENULT": "24",
-    "ACTION_MENURT": "25",
-    "ACTION_MENUTAB": "26",
+	"ACTION_MENULB": {
+		"value": "24",
+		"comment": "**[Repentance+ Only]**"
+	},
+	"ACTION_MENURB": {
+		"value": "25",
+		"comment": "**[Repentance+ Only]**"
+	},
+    "ACTION_MENULT": "26",
+    "ACTION_MENURT": "27",
+	"ACTION_MENUEX": {
+		"value": "28",
+		"comment": "**[Repentance+ Only]**"
+	},
+    "ACTION_MENUTAB": "29",
+	"ACTION_EMOTES": {
+		"value": "30",
+		"comment": "**[Repentance+ Only]**"
+	},
     "ACTION_CONSOLE": {
-      "value": "28",
+      "value": "32",
       "comment": "USE ONLY FOR HOOKING! To check the input use IsButtonTriggered with desired key"
     }
   },
@@ -5983,7 +7065,9 @@
     "MINES_SHAFT": "58",
     "ASHPIT_SHAFT": "59",
     "DARK_CLOSET": "60",
-    "NUM_BACKDROPS": "61"
+	"DEATHMATCH": "61",
+	"LIL_PORTAL": "62",
+    "NUM_BACKDROPS": "63"
   },
   "PoopSpellType": {
     "SPELL_NONE": "0",
@@ -6244,5 +7328,16 @@
     "SKIN_GREEN": "4",
     "SKIN_GREY": "5",
     "SKIN_SHADOW": "6"
+  },
+  "DrawStringAlignment": {
+	"TOP_LEFT": "0",
+	"TOP_CENTER": "1",
+	"TOP_RIGHT": "2",
+	"MIDDLE_LEFT": "3",
+	"MIDDLE_CENTER": "4",
+	"MIDDLE_RIGHT": "5",
+	"BOTTOM_LEFT": "6",
+	"BOTTOM_CENTER": "7",
+	"BOTTOM_RIGHT": "8"
   }
 }
