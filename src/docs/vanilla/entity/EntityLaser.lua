@@ -106,7 +106,7 @@ end
 function EntityLaser_Local:SetTimeout(Value)
 end
 
----@param Variant integer
+---@param Variant LaserVariant
 ---@param SourcePos Vector
 ---@param AngleDegrees number
 ---@param Timeout integer
