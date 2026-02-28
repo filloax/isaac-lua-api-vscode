@@ -17,7 +17,7 @@ end
 
 ---Returns an array of entity indexes that have been hit by the bomb.
 ---
----?: Unknown if this ever gets filled; explosions are independent of bombs.
+---Is only used by rockets.
 ---@return integer[]
 function EntityBomb:GetHitList()
 end
