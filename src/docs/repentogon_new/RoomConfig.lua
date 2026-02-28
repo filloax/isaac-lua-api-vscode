@@ -43,5 +43,11 @@ end
 function RoomConfig.AddRooms(stage, mode, rooms)
 end
 
+---@param stbType StbType
+---@param mode integer
+---@param stbFileName string
+function RoomConfig.LoadStb(stbType, mode, stbFileName)
+end
+
 ---@alias RoomConfigHolder RoomConfig
 _G.RoomConfigHolder = RoomConfig

@@ -39,6 +39,7 @@ end
 function EntityNPC_Local:GetDirtColor()
 end
 
+---Returns an array of entity indexes that have been hit by the NPC.
 ---@return integer[]
 function EntityNPC_Local:GetHitList()
 end

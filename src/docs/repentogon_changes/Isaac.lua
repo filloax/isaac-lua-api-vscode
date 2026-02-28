@@ -328,7 +328,9 @@ end
 ---@param challenge? Challenge @default: `Challenge.CHALLENGE_NULL`
 ---@param difficulty? Difficulty @default: `Difficulty.DIFFICULTY_NORMAL`
 ---@param seed? integer @default: `Random()`
-function Isaac.StartNewGame(playerType, challenge, difficulty, seed)
+---@param isCustomRun? boolean @default: `false`. Disables achievements if set to `true`
+---@overload fun(playerType: PlayerType, challenge?: Challenge, difficulty?: Difficulty, seed?: Seeds)
+function Isaac.StartNewGame(playerType, challenge, difficulty, seed, isCustomRun)
 end
 
 ---@return DwmWindowAttributes

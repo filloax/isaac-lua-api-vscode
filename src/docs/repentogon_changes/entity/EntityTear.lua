@@ -47,12 +47,12 @@ end
 function EntityTear:SetPrismTouched(IsTouched)
 end
 
----Returns a table of Entity `Index` values
+---Returns a table of Entity `Index` values.
 ---@return integer[]
 function EntityTear:GetHitList()
 end
 
----Clears out the hit list, allowing the tear to hit the same enemy again
+---Clears out the hit list, allowing the tear to hit the same enemy again.
 function EntityTear:ClearHitList()
 end
 
@@ -64,7 +64,7 @@ end
 ---@param damageMult? number @default: `0.5`.
 ---@param sizeMult? number @default: `0.6`.
 ---@param variant? TearVariant @default: `0`.
----@param splitTearType? SplitTearType|string @default: `SplitTearType.SPLIT_GENERIC`
+---@param splitTearType? SplitTearType|string @default: `SplitTearType.SPLIT_GENERIC`.
 ---@return EntityTear
 function EntityTear:FireSplitTear(pos, velocity, damageMult, sizeMult, variant, splitTearType)
 end

@@ -1,3 +1,4 @@
+---Returns an array of entity indexes that have been hit by the knife.
 ---@return integer[]
 function EntityKnife:GetHitList()
 end
@@ -78,4 +79,14 @@ end
 ---Note that setting this has no influence on any vanilla logic - this reference is only for the convenience of modders. Please use appropriately.
 ---@param knife EntityKnife
 function EntityKnife:SetHitboxParentKnife(knife)
+end
+
+---Set the distance of a thrown knife.
+---@param distance number
+function EntityKnife:SetKnifeDistance(distance)
+end
+
+---Set the velocity speed of a thrown knife.
+---@param velocity number
+function EntityKnife:SetKnifeVelocity(velocity)
 end

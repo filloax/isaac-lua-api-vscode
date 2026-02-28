@@ -1,6 +1,3 @@
----@class HUD
-local HUD = {}
-
 ---Flashes the red hearts on the hud tied to the provided player.
 ---@param player EntityPlayer
 function HUD:FlashRedHearts(player)
@@ -74,4 +71,9 @@ end
 
 ---@return Sprite
 function HUD:GetPlayerStreakSprite()
+end
+
+---The HUD display for the player's inventory.
+---@return HistoryHUD
+function HUD:GetHistoryHUD()
 end

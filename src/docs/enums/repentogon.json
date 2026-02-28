@@ -10,23 +10,23 @@
     },
     "MC_POST_TAKE_DMG": {
       "value": "1006",
-      "comment": "(Entity Entity, float Damage, DamageFlags DamageFlags, EntityRef Source, integer DamageCountdown) - Leftover for backwards compatibility. Use MC_POST_ENTITY_TAKE_DMG instead."
+      "comment": "(Entity, float Damage, DamageFlag, EntityRef Source, integer DamageCountdown) - Leftover for backwards compatibility. Use MC_POST_ENTITY_TAKE_DMG instead."
     },
     "MC_POST_ENTITY_TAKE_DMG": {
       "value": "1006",
-      "comment": "(Entity Entity, float Damage, DamageFlags DamageFlags, EntityRef Source, integer DamageCountdown)"
+      "comment": "(Entity, float Damage, DamageFlag, EntityRef Source, integer DamageCountdown)"
     },
     "MC_PRE_PLAYER_TAKE_DMG": {
       "value": "1008",
-      "comment": "(EntityPlayer Player, float Damage, DamageFlags DamageFlags, EntityRef Source, integer DamageCountdown) - Runs earlier than MC_ENTITY_TAKE_DMG, and even if the player is considered invincible or has Holy Mantles. Only accepts returning `false` to cancel the damage. Good for giving the player invincibility that takes precedence over other damage negation effects, such as Holy Mantle."
+      "comment": "(EntityPlayer Player, float Damage, DamageFlag, EntityRef Source, integer DamageCountdown) - Runs earlier than MC_ENTITY_TAKE_DMG, and even if the player is considered invincible or has Holy Mantles. Only accepts returning `false` to cancel the damage. Good for giving the player invincibility that takes precedence over other damage negation effects, such as Holy Mantle."
     },
     "MC_PRE_PLAYER_ADD_HEARTS": {
       "value": 1009,
-      "comment": "(EntityPlayer Player, integer Amount, AddHealthType AddHealthType, boolean ExtraArg): integer, Optional Arg: AddHealthType - Runs before Add(...)Hearts functions, allows returning a value to change the given amount of health. Functions that include an argument (e.g. ignoreKeeper for AddMaxHearts) provide the value using ExtraArg."
+      "comment": "(EntityPlayer Player, integer Amount, AddHealthType, boolean ExtraArg): integer, Optional Arg: AddHealthType - Runs before Add(...)Hearts functions, allows returning a value to change the given amount of health. Functions that include an argument (e.g. ignoreKeeper for AddMaxHearts) provide the value using ExtraArg."
     },
     "MC_POST_PLAYER_ADD_HEARTS": {
       "value": 1010,
-      "comment": "(EntityPlayer Player, integer Amount, AddHealthType AddHealthType, boolean ExtraArg), Optional Arg: AddHealthType - Runs after Add(...)Hearts functions, allows returning a value to change the given amount of health. Functions that include an argument (e.g. ignoreKeeper for AddMaxHearts) provide the value using ExtraArg."
+      "comment": "(EntityPlayer Player, integer Amount, AddHealthType, boolean ExtraArg), Optional Arg: AddHealthType - Runs after Add(...)Hearts functions, allows returning a value to change the given amount of health. Functions that include an argument (e.g. ignoreKeeper for AddMaxHearts) provide the value using ExtraArg."
     },
     "MC_POST_GRID_ROCK_DESTROY": {
       "value": "1011",
@@ -34,11 +34,11 @@
     },
     "MC_GRID_HURT_DAMAGE": {
       "value": "1012",
-      "comment": "(GridEntity GridEntity, Entity Entity, integer DamageAmount, DamageFlags DamageFlags, float Unknown, boolean Unknown) - Return `false` if entity or player should ignore damage from it. When adding callback, specify a GridEntityType to only respond to that grid type."
+      "comment": "(GridEntity, Entity, integer DamageAmount, DamageFlag, float Unknown, boolean Unknown) - Return `false` if entity or player should ignore damage from it. When adding callback, specify a GridEntityType to only respond to that grid type."
     },
     "MC_POST_GRID_HURT_DAMAGE": {
       "value": "1013",
-      "comment": "(GridEntity GridEntity, Entity Entity, integer DamageAmount, DamageFlags DamageFlags, float Unknown, boolean Unknown) - Runs after MC_GRID_HURT_DAMAGE."
+      "comment": "(GridEntity, Entity, integer DamageAmount, DamageFlag, float Unknown, boolean Unknown) - Runs after MC_GRID_HURT_DAMAGE."
     },
     "MC_HUD_UPDATE": {
       "value": "1020",
@@ -138,7 +138,7 @@
     },
     "MC_PRE_NPC_MORPH": {
       "value": "1212",
-      "comment": "(EntityNPC NPC, EntityType EntityType, integer Variant, integer SubType, ChampionColor ChampionId): table{EntityType, Variant, SubType, ChampionId} | {EntityType, Variant, SubType} | boolean - Called before an NPC morphs. Accepts a table of parameters to change what entity they morph into, or `false` to cancel the morph."
+      "comment": "(EntityNPC NPC, EntityType, integer Variant, integer SubType, ChampionColor ChampionId): table{EntityType, Variant, SubType, ChampionId} | {EntityType, Variant, SubType} | boolean - Called before an NPC morphs. Accepts a table of parameters to change what entity they morph into, or `false` to cancel the morph."
     },
     "MC_PRE_PICKUP_MORPH": {
       "value": "1213",
@@ -146,19 +146,19 @@
     },
     "MC_POST_NPC_MORPH": {
       "value": "1214",
-      "comment": "(EntityNPC NPC, EntityType EntityType, integer Variant, integer SubType, ChampionColor ChampionId). Called after an NPC morphs, assuming it wasn't cancelled."
+      "comment": "(EntityNPC NPC, EntityType, integer Variant, integer SubType, ChampionColor ChampionId). Called after an NPC morphs successfully."
     },
     "MC_POST_PICKUP_MORPH": {
       "value": "1215",
-      "comment": "(EntityPickup Pickup, integer EntityType, integer Variant, integer SubType, boolean KeepPrice, boolean KeepSeed, boolean IgnoreModifiers). Called after a pickup morphs, assuming it wasn't cancelled."
+      "comment": "(EntityPickup Pickup, integer EntityType, integer Variant, integer SubType, boolean KeepPrice, boolean KeepSeed, boolean IgnoreModifiers). Called after a pickup morphs successfully."
     },
     "MC_PRE_COMPLETION_MARKS_RENDER": {
       "value": "1216",
-      "comment": "(Sprite CompletionMarksSprite, Vector RenderPos, Vector RenderScale, PlayerType PlayerType): boolean - Called before a character's completion marks are rendered on the character selection screen. Return `false` to prevent the completion marks from rendering."
+      "comment": "(Sprite CompletionMarksSprite, Vector RenderPos, Vector RenderScale, PlayerType): boolean - Called before a character's completion marks are rendered on the character selection screen. Return `false` to prevent the completion marks from rendering."
     },
     "MC_POST_COMPLETION_MARKS_RENDER": {
       "value": "1217",
-      "comment": "(Sprite CompletionMarksSprite, Vector RenderPos, Vector RenderScale, PlayerType PlayerType) - Called after a character's completion marks are rendered on the character selection screen successfully."
+      "comment": "(Sprite CompletionMarksSprite, Vector RenderPos, Vector RenderScale, PlayerType) - Called after a character's completion marks are rendered on the character selection screen successfully."
     },
     "MC_PRE_PAUSE_SCREEN_RENDER": {
       "value": "1218",
@@ -260,10 +260,6 @@
       "value": "1075",
       "comment": "Callback has no arguments. Optional Arg: Giantbook - Called after an item overlay updates."
     },
-    "MC_PRE_ITEM_OVERLAY_SHOW": {
-      "value": "1076",
-      "comment": "(Giantbook GiantBookID, integer Delay, EntityPlayer Player): Giantbook | boolean, Optional Arg: Giantbook - Called before an item overlay is shown. Return `Giantbook` to change what Giantbook is shown or `false` to cancel it."
-    },
     "MC_POST_PLAYER_NEW_ROOM_TEMP_EFFECTS": {
       "value": "1077",
       "comment": "(EntityPlayer Player), Optional Arg: PlayerType - Called after a player's TemporaryEffects are reset after a new room."
@@ -318,7 +314,7 @@
     },
     "MC_POST_SLOT_CREATE_EXPLOSION_DROPS": {
       "value": "1124",
-      "comment": "(EntitySlot Slot), Optional Arg: SlotVariant - Called after a slot creates explosion drops, whether from exploding or having EntitySlot::CreateExplosionDrops() called, assuming it wasn't cancelled."
+      "comment": "(EntitySlot Slot), Optional Arg: SlotVariant - Called after a slot creates explosion drops successfully, whether from exploding or having EntitySlot::CreateExplosionDrops() called."
     },
     "MC_PRE_SLOT_SET_PRIZE_COLLECTIBLE": {
       "value": "1125",
@@ -346,11 +342,11 @@
     },
     "MC_COMPLETION_MARK_GET": {
       "value": "1047",
-      "comment": "(CompletionType Completion, PlayerType PlayerType): boolean, Optional Arg: PlayerType - Called when the player gets a completion mark. Return `false` to cancel the completion mark."
+      "comment": "(CompletionType Completion, PlayerType): boolean, Optional Arg: PlayerType - Called before the player gets a completion mark. Return `false` to cancel the completion mark."
     },
     "MC_POST_COMPLETION_MARK_GET": {
       "value": "1048",
-      "comment": "(CompletionType Completion, PlayerType PlayerType), Optional Arg: PlayerType - Called when the player gets a completion mark, assuming it wasn't cancelled."
+      "comment": "(CompletionType Completion, PlayerType), Optional Arg: PlayerType - Called after the player successfully gets a completion mark"
     },
     "MC_PRE_COMPLETION_EVENT": {
       "value": "1049",
@@ -366,7 +362,7 @@
     },
     "MC_POST_PLAYERHUD_RENDER_HEARTS": {
       "value": "1091",
-      "comment": "(Vector Offset(?), Sprite HeartsSprite, Vector Position, float Unknown, EntityPlayer Player) - Called after the player's hearts are rendered, both on the corners of the HUD and above Strawman-like players successfully."
+      "comment": "(Vector Offset, Sprite HeartsSprite, Vector Position, float Unknown, EntityPlayer Player) - Called after the player's hearts are rendered, both on the corners of the HUD and above Strawman-like players successfully."
     },
     "MC_PRE_GET_LIGHTING_ALPHA": {
       "value": "1150",
@@ -374,11 +370,11 @@
     },
     "MC_PRE_RENDER_GRID_LIGHTING": {
       "value": "1151",
-      "comment": "(GridEntity GridEntity, Vector Offset) - Called before the the lighting of a grid entity is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
+      "comment": "(GridEntity, Vector Offset) - Called before the the lighting of a grid entity is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
     },
     "MC_PRE_RENDER_ENTITY_LIGHTING": {
       "value": "1152",
-      "comment": "(Entity Entity, Vector Offset) - Called before the lighting of an entity is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
+      "comment": "(Entity, Vector Offset) - Called before the lighting of an entity is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
     },
     "MC_PRE_PLAYER_APPLY_INNATE_COLLECTIBLE_NUM": {
       "value": "1092",
@@ -456,10 +452,18 @@
       "value": "1221",
       "comment": "(EntityPlayer Player): boolean, Optional Arg: PlayerVariant - Called after the player uses a bomb, assuming it hasn't been cancelled."
     },
+	"MC_PRE_BOMB_DAMAGE": {
+		"value": "1291",
+		"comment": "(Vector Position, float Damage, float Radius, bool LineCheck, Entity|nil Source, TearFlags, DamageFlags, bool DamageSource): boolean | table{Position, Damage, Radius, TearFlags, DamageFlags}, Optional Arg: EntityType - Called before Game():BombDamage(), used to damage entities in a radius for explosions, etc. Return a table with any combination of its parameters to override those respective fields or `false` to cancel damage. Optional Arg is the EntityType of the `Source` entity, if one exists."
+	},
     "MC_POST_BOMB_DAMAGE": {
       "value": "1275",
-      "comment": "(Vector Position, float Damage, float Radius, bool LineCheck, Entity Source, TearFlags TearFlags, DamageFlags DamageFlags, bool DamageSource), Optional Arg: EntityType - Called after `Game():BombDamage()` is called, used by the game to damage entities within a radius for explosions and similar effects. The optional parameter is the EntityType of the Source entity, if one exists (the Source can be nil)."
+      "comment": "(Vector Position, float Damage, float Radius, bool LineCheck, Entity Source, TearFlags TearFlags, DamageFlag, bool DamageSource), Optional Arg: EntityType - Called after `Game():BombDamage()` is called, used by the game to damage entities within a radius for explosions and similar effects. The optional parameter is the EntityType of the Source entity, if one exists (the Source can be nil)."
     },
+	"MC_PRE_BOMB_TEARFLAG_EFFECTS": {
+		"value": "1292",
+		"comment": "(Vector Position, float Radius, TearFlags, Entity Source, float RadiusMult): boolean | table{Position, Radius, TearFlags, RadiusMult, Optional Arg: EntityType - Called before Game():BombTearflagEffects(), used when TearFlags-based effects are triggered by an explosion. Return a table with any combination of its parameters to override those respective fields or `false` to cancel effects. Optional Arg is the EntityType of the `Source` entity, if one exists."
+	},
     "MC_POST_BOMB_TEARFLAG_EFFECTS": {
       "value": "1276",
       "comment": "(Vector Position, float Radius, TearFlags TearFlags, Entity Source, float RadiusMult), Optional Arg: EntityType - Called after Game():BombTearflagEffects() is called, used by the game when TearFlags-based effects are triggered from an explosion. The optional parameter is the EntityType of the Source entity, if one exists (the Source can be nil)."
@@ -536,9 +540,13 @@
       "value": "1210",
       "comment": "Callback has no arguments. Called after all Lua scripts have been loaded. Ideal for running code that is expected to run after all mods are initialized, but without the need for load order idiocy!"
     },
+    "MC_PRE_ITEM_OVERLAY_SHOW": {
+      "value": "1076",
+      "comment": "(Giantbook GiantBookID, integer Delay, EntityPlayer Player): Giantbook | boolean, Optional Arg: Giantbook - Called before an item overlay is shown. Return `Giantbook` to change what Giantbook is shown or `false` to cancel it."
+    },
     "MC_POST_ITEM_OVERLAY_SHOW": {
       "value": "1134",
-      "comment": "(Giantbook GiantBookID, integer Delay, EntityPlayer Player), Optional Arg: Giantbook - Called after an item overlay is shown, assuming it wasn't cancelled."
+      "comment": "(Giantbook GiantBookID, integer Delay, EntityPlayer Player), Optional Arg: Giantbook - Called after an item overlay is shown."
     },
     "MC_PRE_RENDER": {
       "value": "1135",
@@ -614,11 +622,11 @@
     },
     "MC_PRE_PLAYERHUD_TRINKET_RENDER": {
       "value": "1264",
-      "comment": "(integer Slot, Vector Position, float Scale, EntityPlayer Player, Vector CropOffset): table{Position, Scale, CropOffset} | boolean, Optional Arg: integer - Called before the player's trinket on the HUD is rendered. Return a table with any combination of its parameters to override those respective fields or `true` to cancel rendering."
+      "comment": "(integer Slot, Vector Position, float Scale, EntityPlayer Player, Vector CropOffset): table{Position, Scale, CropOffset} | boolean, Optional Arg: integer - Called before the player's trinket on the HUD is rendered. Return a table with any combination of its parameters to override those respective fields or `true` to cancel rendering. Position alters position, Scale alters scale, and CropOffset alters the crop on the sprite on its spritesheet. Allows alternate sprites for the same trinket rendered this way, such as Monkey Paw."
     },
     "MC_MENU_INPUT_ACTION": {
       "value": "1464",
-      "comment": "(Entity Entity, InputHook InputHook, ButtonAction ButtonAction): boolean | float, Optional Arg: InputHook - Same as MC_INPUT_ACTION, but only works in the main menu."
+      "comment": "(Entity, InputHook InputHook, ButtonAction ButtonAction): boolean | float, Optional Arg: InputHook - Same as MC_INPUT_ACTION, but only works in the main menu."
     },
     "MC_POST_SAVESLOT_LOAD": {
       "value": "1465",
@@ -998,15 +1006,15 @@
     },
     "MC_PRE_PLAYERHUD_RENDER_ACTIVE_ITEM": {
       "value": "1119",
-      "comment": "(EntityPlayer Player, ActiveSlot Slot, Vector Offset, float Alpha, float Scale, Vector ChargeBarOffset): boolean | table, Optional Arg: CollectibleType - Called before the player's active item is rendered. Return `true` to cancel rendering."
-    },
+      "comment": "(EntityPlayer Player, ActiveSlot Slot, Vector Offset, float Alpha, float Scale, Vector ChargeBarOffset): boolean | table{HideItem, HideOutline, HideChargeBar, CropOffset}, Optional Arg: CollectibleType - Called before the player's active item is rendered. Return `true` to cancel rendering. If a table is returned instead of a boolean, the following fields can be set to a non-nil value for extra functionality: `HideItem`: Boolean. Determines whether the item should be hidden from the active slot or not. `HideOutline`: Boolean. Deterimins if item outline should be hidden or not. `HideChargeBar`: Boolean. Determines if item chargebar should be hidden or not. `CropOffset`: Vector. Determines rectangle area of the active item image that will rendered in active slot."
+	},
     "MC_PRE_PLAYER_REVIVE": {
       "value": "1481",
       "comment": "(EntityPlayer Player) - Called before the player revives. Return `false` to prevent the player from reviving."
     },
     "MC_POST_PLAYER_REVIVE": {
       "value": "1482",
-      "comment": "(EntityPlayer Player) - Called after the player revives, assuming it wasn't cancelled."
+      "comment": "(EntityPlayer Player) - Called after the player revives successfully."
     },
     "MC_POST_PROJECTILE_DEATH": {
       "value": "1032",
@@ -1210,23 +1218,23 @@
 	},
 	"MC_PRE_ENTITY_SET_COLOR": {
 		"value": "1486",
-		"comment": "(Entity Entity, Color Color, int Duration, int Priority, boolean FadeOut, boolean Share): boolean | Color, Optional Arg: EntityType - Called when `Entity:SetColor` is called. Return a color to override the color. The overridden color is passed into `MC_POST_ENTITY_SET_COLOR`. Return `false` to cancel the color change. This is only called for `Entity:SetColor` and does not fire when changing the entity's color directly."
+		"comment": "(Entity, Color Color, int Duration, int Priority, boolean FadeOut, boolean Share): boolean | Color, Optional Arg: EntityType - Called when `Entity:SetColor` is called. Return a color to override the color. The overridden color is passed into `MC_POST_ENTITY_SET_COLOR`. Return `false` to cancel the color change. This is only called for `Entity:SetColor` and does not fire when changing the entity's color directly."
 	},
 	"MC_POST_ENTITY_SET_COLOR": {
 		"value": "1487",
-		"comment": "(Entity Entity, Color Color, int Duration, int Priority, boolean FadeOut, boolean Share), Optional Arg: EntityType - Called after an entity's color is changed via `Entity:SetColor` successfully. This only fires for `Entity:SetColor` and does not fire when changing the entity's color directly."
+		"comment": "(Entity, Color Color, int Duration, int Priority, boolean FadeOut, boolean Share), Optional Arg: EntityType - Called after an entity's color is changed via `Entity:SetColor` successfully. This only fires for `Entity:SetColor` and does not fire when changing the entity's color directly."
 	},
 	"MC_GET_STATUS_EFFECT_TARGET": {
 		"value": "1485",
-		"comment": "(Entity Entity): Entity, Optional Arg: EntityType - Called when an Entity is about to recieve a status effect. Return an Entity to apply the status effect to it instead (good for multi-segment enemies)."
+		"comment": "(Entity): Entity, Optional Arg: EntityType - Called when an Entity is about to recieve a status effect. Return an Entity to apply the status effect to it instead (good for multi-segment enemies)."
 	},
 	"MC_PRE_STATUS_EFFECT_APPLY": {
 		"value": "1465",
-		"comment": "(StatusEffect StatusID, Entity Entity, EntityRef Source, integer Duration): boolean, Optional Arg: StatusEffect - Triggers before applying a status effect to an entity. Return `false` to cancel adding it."
+		"comment": "(StatusEffect StatusID, Entity, EntityRef Source, integer Duration): boolean, Optional Arg: StatusEffect - Triggers before applying a status effect to an entity. Return `false` to cancel adding it."
 	},
 	"MC_POST_STATUS_EFFECT_APPLY": {
 		"value": "1466",
-		"comment": "(StatusEffect StatusID, Entity Entity, EntityRef Source, integer Duration), Optional Arg: StatusEffect - Triggers after applying a status effect to an entity successfully."
+		"comment": "(StatusEffect StatusID, Entity, EntityRef Source, integer Duration), Optional Arg: StatusEffect - Triggers after applying a status effect to an entity successfully."
 	},
 	"MC_PLAYER_HEALTH_TYPE_CHANGE": {
 		"value": "1128",
@@ -1262,11 +1270,11 @@
 	},
 	"MC_POST_ROOM_SAVE_STATE": {
 		"value": "1304",
-		"comment": "(Room Room, RoomDescriptor RoomDescriptor) - Called after the room saves all entities and grid entities."
+		"comment": "(Room Room, RoomDescriptor) - Called after the room saves all entities and grid entities."
 	},
 	"MC_PRE_ROOM_RESTORE_STATE": {
 		"value": "1305",
-		"comment": "(Room Room, RoomDescriptor RoomDescriptor) - Called before the room respawns all saved entities."
+		"comment": "(Room Room, RoomDescriptor) - Called before the room respawns all saved entities."
 	},
 	"MC_POST_SWAP_ROOMS": {
 		"value": "1306",
@@ -1274,11 +1282,11 @@
 	},
 	"MC_POST_BACKWARDS_ROOM_SAVE": {
 		"value": "1307",
-		"comment": "(LevelStage Stage, RoomDescriptor RoomDescriptor, string Key) - Called after a room has been saved; to then be restored when generating the Ascent. The string key (e.g. \"boss_0\", \"treasure_0\") identifies which slot the room was saved into."
+		"comment": "(LevelStage Stage, RoomDescriptor, string Key) - Called after a room has been saved; to then be restored when generating the Ascent. The string key (e.g. \"boss_0\", \"treasure_0\") identifies which slot the room was saved into."
 	},
 	"MC_POST_BACKWARDS_ROOM_RESTORE": {
 		"value": "1308",
-		"comment": "(LevelStage Stage, RoomDescriptor RoomDescriptor, string Key) - Called when generating the Ascent layout and one of the previously saved room is restored. The string key (e.g. \"boss_0\", \"treasure_0\") identifies which slot the room was saved into."
+		"comment": "(LevelStage Stage, RoomDescriptor, string Key) - Called when generating the Ascent layout and one of the previously saved room is restored. The string key (e.g. \"boss_0\", \"treasure_0\") identifies which slot the room was saved into."
 	},
 	"MC_PRE_ADD_TRINKET": {
 		"value": "1014",
@@ -1314,11 +1322,55 @@
 	},
 	"MC_POST_DISCHARGE_ACTIVE_ITEM": {
 		"value": "1140",
-		"comment": "(CollectibleType itemID, boolean CollectibleRemoved, EntityPlayer Player, ActiveSlot Slot), Optional Arg: CollectibleType. Called after an item is discharged. Useful for \"overhead\" items that aren't discharged until after they are thrown."
+		"comment": "(CollectibleType itemID, boolean CollectibleRemoved, EntityPlayer Player, ActiveSlot Slot), Optional Arg: CollectibleType - Called after an item is discharged. Useful for \"overhead\" items that aren't discharged until after they are thrown."
 	},
 	"MC_POST_PLAYER_DROP_TRINKET": {
 		"value": "1144",
-		"comment": "(TrinketType Trinket, Vector DropPosition, EntityPlayer Player, boolean IsGolden, boolean ReplaceTick), Optional Arg: TrinketType. Called after a player drops a trinket"
+		"comment": "(TrinketType Trinket, Vector DropPosition, EntityPlayer Player, boolean IsGolden, boolean ReplaceTick), Optional Arg: TrinketType - Called after a player drops a trinket"
+	},
+	"MC_PRE_UPDATE": {
+		"value": "1026",
+		"comment": "(): boolean - Called before the game's main update cycle. Retrun `true` to prevent the normal update, effectively pausing the game."
+	},
+	"MC_PRE_ROOM_COLLISION_PASS": {
+		"value": "1227",
+		"comment": "Callback has no arguments. Called after the update cycle for all entities, but right before entities are removed and any collision detection."
+	},
+	"MC_GET_BOSS_THEMATIC_ITEM": {
+		"value": "1493",
+		"comment": "(boolean Spawned, CollectibleType SpawnedCollectible, TrinketType SpawnedTrinket): boolean | table{Collectible, Trinket} - Called after boss room clear. Used to spawn/overwrite result of second collectible or trinket. Return table with field `Collectible` to spawn a collectible, or `Trinket` to spawn a trinket. Return `true` to cancel item spawn altogether."
+	},
+	"MC_PRE_RENDER_CHARACTER_SELECT_PORTRAIT": {
+		"value": "1331",
+		"comment": "(PlayerType, Sprite, Vector Position, Vector DefaultScale, Color DefaultColor): boolean | Vector, Optional Arg: PlayerType - Called before character portraits are rendered on the character select screen or continue widget. Modifications made to the sprite object will apply to the natural render. `PlayerType` is `-1` when the \"random character\" is selected. Return `false` to cancel rendering, or a Vector to change the position."
+	},
+	"MC_POST_RENDER_CHARACTER_SELECT_PORTRAIT": {
+		"value": "1332",
+		"comment": "(PlayerType, Sprite, Vector Position, Vector DefaultScale, Color DefaultColor), Optional Arg: PlayerType - Called after character portraits are successfully rendered on the character select screen or continue widget. `PlayerType` is `-1` when the \"random character\" is selected."
+	},
+	"MC_PRE_RENDER_CHARACTER_SELECT_PAGE": {
+		"value": "1329",
+		"comment": "(PlayerType, Vector Position, Sprite DefaultSprite, Sprite|nil ModdedSprite, boolean HasCustomBackground): boolean, Optional Arg: PlayerType - Called before the character selection page is rendered. `ModdedSprite` is `nil` for vanilla characters. `HasCustomBackground` indicates if `ModdedSprite` included a background paper. Modifications made to the sprites will apply to the natural render. `PlayerType` is `-1` when the \"random character\" is selected. Return `false` to cancel rendering."
+	},
+	"MC_POST_RENDER_CHARACTER_SELECT_PAGE": {
+		"value": "1330",
+		"comment": "(PlayerType, Vector Position, Sprite DefaultSprite, Sprite|nil ModdedSprite, boolean HasCustomBackground), Optional Arg: PlayerType - Called after the character selection page is successfully rendered. `ModdedSprite` is `nil` for vanilla characters. `HasCustomBackground` indicates if `ModdedSprite` included a background paper. Modifications made to the sprites will apply to the natural render. `PlayerType` is `-1` when the \"random character\" is selected."
+	},
+	"MC_CAN_SELECT_CHARACTER": {
+		"value": "1328",
+		"comment": "(PlayerType, boolean IsBeingSelected): boolean, Optional Arg: PlayerType - Called when attempting to select a character in the character selection menu, or \"random character\" is selected and determines what characters are available to choose from. Will only run for characters present in the character select menu that are capable of being selected (IE, not hidden or locked behind an achievement). Return `false` to prevent the character from being selectable. `IsBeingSelected` is `true` if the player is actually trying to start a run with the character, `false` if attempting selection by other logic, such as by the \"random character\". Returning `false` if `IsBeingSelected` is `true` will play the error buzzer sound."
+	},
+	"MC_PRE_HISTORYHUD_RENDER": {
+		"value": "1027",
+		"comment": "X"
+	},
+	"MC_POST_HISTORYHUD_RENDER": {
+		"value": "1028",
+		"comment": "X"
+	},
+	"MC_POST_HISTORYHUD_RECOMPUTE": {
+		"value": "1029",
+		"comment": "X"
 	}
   },
   "Renderer": {

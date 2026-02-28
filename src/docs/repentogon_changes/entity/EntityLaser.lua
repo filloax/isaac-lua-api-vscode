@@ -2,6 +2,7 @@
 function EntityLaser_Local:GetDisableFollowParent()
 end
 
+---Returns an array of entity indexes that have been hit by the laser.
 ---@return integer[]
 function EntityLaser_Local:GetHitList()
 end
@@ -82,15 +83,33 @@ end
 function EntityLaser_Local:FireSplitTear(pos, velocity, damageMult, sizeMult, variant, splitTearType)
 end
 
+---Returns if the entity has been hit by the laser.
 ---@param entity Entity
 ---@return boolean
 function EntityLaser_Local:InHitList(entity)
 end
 
+---Set if the entity has been hit by the laser.
 ---@param entity Entity
 function EntityLaser_Local:AddToHitList(entity)
 end
 
+---Remove the entity from the list of entities that have been hit by the laser.
 ---@param entity Entity
 function EntityLaser_Local:RemoveFromHitList(entity)
+end
+
+---Set the sound the laser plays on its first update.
+---@param sound SoundEffect
+function EntityLaser_Local:SetInitSound(sound)
+end
+
+---Used by Mosntro's Lung + Technology synergy.
+---@return integer
+function EntityLaser_Local:GetNumChainedLasers()
+end
+
+---Used by Mosntro's Lung + Technology synergy.
+---@param num integer
+function EntityLaser_Local:SetNumChainedLasers(num)
 end

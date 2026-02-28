@@ -158,3 +158,7 @@ end
 ---@param status CharacterMenuStatus
 function CharacterMenu.SetActiveStatus(status)
 end
+
+---@return Sprite
+function CharacterMenu.GetCompletionsMarksSprite()
+end

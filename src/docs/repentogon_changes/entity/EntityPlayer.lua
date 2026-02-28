@@ -1443,3 +1443,42 @@ end
 ---@return EntityFamiliar
 function EntityPlayer:AddFriendlyDip(Subtype, Position)
 end
+
+---Effect duration of I'm Excited!!! pill effect. Starts at `2700` when the effect is activated.
+---
+---Not tied to the current room speed; will have a chance of triggering the speed increase while countdown is above `0`.
+---@return integer
+function EntityPlayer:GetImExcitedSpeedupCountdown()
+end
+
+---Amount of luck gained from Donation Machines.
+---@return integer
+function EntityPlayer:GetDonateLuck()
+end
+
+---The trinket to be copied by the Error trinket.
+---@return TrinketType
+function EntityPlayer:GetErrorTrinketEffect()
+end
+
+---Effect duration of R U A Wizard? pill effect. Starts at `900` when the effect is activated.
+---@return integer
+function EntityPlayer:GetRUAWizardTimer()
+end
+
+---Effect duration of I'm Excited!!! pill effect. Starts at `2700` when the effect is activated.
+---
+---Not tied to the current room speed; will have a chance of triggering the speed increase while countdown is above `0`.
+---@param countdown integer
+function EntityPlayer:SetImExcitedSpeedupCountdown(countdown)
+end
+
+---Amount of luck gained from Donation Machines.
+---@param luck integer
+function EntityPlayer:SetDonateLuck(luck)
+end
+
+---Effect duration of R U A Wizard? pill effect. Starts at `900` when the effect is activated.
+---@param timer integer
+function EntityPlayer:SetRUAWizardTimer(timer)
+end

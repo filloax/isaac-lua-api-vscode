@@ -121,6 +121,7 @@ end
 function Entity:GetFreezeCountdown()
 end
 
+---Returns the entity index that's used in entity hit lists.
 ---@return integer
 function Entity:GetHitListIndex()
 end

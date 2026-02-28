@@ -47,3 +47,8 @@ end
 ---@param numSpawns integer
 function RoomDescriptor_RGON:SetTaintedKeeperCoinSpawns(numSpawns)
 end
+
+---The trinket to be copied by the Error trinket.
+---@return TrinketType
+function RoomDescriptor_RGON:GetErrorTrinketEffect()
+end

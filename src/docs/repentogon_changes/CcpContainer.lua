@@ -13,3 +13,7 @@ end
 ---@return RoomConfigRoom[]
 function RoomConfigSet:AddRooms(rooms)
 end
+
+---@param stbFileName string
+function RoomConfigSet:LoadStb(stbFileName)
+end

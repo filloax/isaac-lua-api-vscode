@@ -51,8 +51,15 @@ end
 ---Tries to unlock an achievement.
 ---@param achievement Achievement
 ---@param blockPaperPopup? boolean @default: `false`. Prevents popping up the achievement paper for modded achievements.
----@return boolean successful Returns `true` if the achievement was successfully unlocked, `false` if it has already been unlocked or the unlock failed.
+---@return boolean successful Returns `true` if the achievement was successfully unlocked, `false` if it has already been unlocked or the unlock failed (can fail by achievements being disabled).
 function PersistentGameData:TryUnlock(achievement, blockPaperPopup)
+end
+
+---Forces the unlock of an achievement.
+---@param achievement Achievement
+---@param blockPaperPopup? boolean @default: `false`. Prevents popping up the achievement paper for modded achievements.
+---@return boolean successful Returns `true` if the achievement was successfully unlocked, `false` if it has already been unlocked or the unlock failed (will bypass achievements being disabled).
+function PersistentGameData:Unlock(achievement, blockPaperPopup)
 end
 
 ---Returns true if the provided achievement is unlocked.
