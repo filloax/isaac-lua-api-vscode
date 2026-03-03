@@ -926,11 +926,11 @@
     },
     "MC_POST_PLAYER_ADD_EFFECT": {
       "value": "1273",
-      "comment": "(EntityPlayer Player, ItemConfigItem ItemConfigIte, boolean AddCostume, integer Count), Optional Arg: ItemConfigItem - Called after the `TemporaryEffect` of an `ItemConfigItem` is added to a player."
+      "comment": "(EntityPlayer Player, ItemConfigItem, boolean AddCostume, integer Count), Optional Arg: ItemConfigItem - Called after the `TemporaryEffect` of an `ItemConfigItem` is added to a player."
     },
     "MC_POST_ROOM_ADD_EFFECT": {
       "value": "1274",
-      "comment": "(ItemConfigItem ItemConfigItem), Optional Arg: ItemConfigItem - Called after the `TemporaryEffect` of an `ItemConfigItem` is added to a room. Room has its own `TemporaryEffects` that are accessed through `Room::GetEffects()`"
+      "comment": "(ItemConfigItem), Optional Arg: ItemConfigItem - Called after the `TemporaryEffect` of an `ItemConfigItem` is added to a room. Room has its own `TemporaryEffects` that are accessed through `Room::GetEffects()`"
     },
     "MC_PRE_BOSS_SELECT": {
       "value": "1280",
@@ -938,11 +938,11 @@
     },
     "MC_POST_PLAYER_TRIGGER_EFFECT_REMOVED": {
       "value": "1268",
-      "comment": "(EntityPlayer Player, ItemConfigItem ItemConfigItem), Optional Arg: ItemConfigItem - Called after the `TemporaryEffect` of an `ItemConfigItem` is removed from a player."
+      "comment": "(EntityPlayer Player, ItemConfigItem), Optional Arg: ItemConfigItem - Called after the `TemporaryEffect` of an `ItemConfigItem` is removed from a player."
     },
     "MC_POST_ROOM_TRIGGER_EFFECT_REMOVED": {
       "value": "1269",
-      "comment": "(ItemConfigItem ItemConfigItem), Optional Arg: ItemConfigItem - Called after the `TemporaryEffect` of an `ItemConfigItem` is removed from a room. Room has its own `TemporaryEffects` that are accessed through `Room::GetEffects()`"
+      "comment": "(ItemConfigItem), Optional Arg: ItemConfigItem - Called after the `TemporaryEffect` of an `ItemConfigItem` is removed from a room. Room has its own `TemporaryEffects` that are accessed through `Room::GetEffects()`"
     },
     "MC_PRE_PLAYER_GRID_COLLISION": {
       "value": "1171",
