@@ -1322,7 +1322,7 @@
 	},
 	"MC_POST_PLAYER_DROP_TRINKET": {
 		"value": "1144",
-		"comment": "(TrinketType Trinket, Vector DropPosition, EntityPlayer Player, boolean IsGolden, boolean ReplaceTick), Optional Arg: TrinketType - Called after a player drops a trinket"
+		"comment": "(TrinketType Trinket, Vector DropPosition, EntityPlayer Player, boolean IsGolden, boolean ReplaceTick, EntityPickup DroppedTrinket), Optional Arg: TrinketType - Called after a player drops a trinket"
 	},
 	"MC_PRE_UPDATE": {
 		"value": "1026",
