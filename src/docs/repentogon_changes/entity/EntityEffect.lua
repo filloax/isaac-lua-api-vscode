@@ -7,6 +7,13 @@
 function _G.EntityEffect.CreateLight(position, scale, lifespan, state, color)
 end
 
+---@return EntityEffect
+---@param position Vector
+---@param owner EntityPickup
+---@param effect EntityEffect
+function _G.EntityEffect.CreateLootPreview(position, owner, effect)
+end
+
 ---Only works for `EffectVariant.PLAYER_CREEP_HOLYWATER_TRAIL`
 ---@return TearFlags
 function EntityEffect_Local:GetAquariusTearFlags()
