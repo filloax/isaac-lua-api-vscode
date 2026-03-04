@@ -552,10 +552,6 @@
       "value": "1135",
       "comment": "Callback has no arguments. Gets called right before the Manager::Render() function gets called."
     },
-    "MC_PRE_OPENGL_RENDER": {
-      "value": "1136",
-      "comment": "(VertexBuffer VertexBuffer, integer ShaderID, RenderContext Unknown): Unknown - Gets called right before the Manager::Render() function gets called."
-    },
     "MC_PRE_LEVEL_PLACE_ROOM": {
       "value": "1137",
       "comment": "(LevelGeneratorRoom Slot, RoomConfigRoom RoomConfig, integer Seed): RoomConfigRoom - Called before a room is placed during level generation. Return `RoomConfigRoom` to change the room being placed."
@@ -1401,7 +1397,25 @@
       "SHADER_DIZZY": "17",
       "SHADER_HEAT_WAVE": "18",
       "SHADER_MIRROR": "19"
-    }
+    },
+	"VertexAttributeFormat": {
+		"FLOAT": "1",
+		"VEC2": "2",
+		"VEC3": "3",
+		"VEC4": "4",
+		"POSITION": {
+			"value": "5",
+			"comment": "A special VEC3, that is automatically filled with the DestinationQuad position."
+		},
+		"COLOR": {
+			"value": "6",
+			"comment": "A special VEC4, that is automatically filled with the render KColor."
+		},
+		"TEX_COORD": {
+			"value": "7",
+			"comment": "A special VEC2, that is automatically filled with the SourceQuad UV coordinates."
+		}
+	}
   },
   "StbType": {
     "SPECIAL_ROOMS": "0",

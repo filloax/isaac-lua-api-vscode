@@ -1,4 +1,4 @@
----@class SourceQuad
+---@class SourceQuad: DestinationQuad
 local SourceQuad = {}
 
 ---Constructs a new destination quad object.
@@ -9,34 +9,17 @@ local SourceQuad = {}
 function _G.SourceQuad(topLeft, topRight, bottomLeft, bottomRight)
 end
 
----@return Vector
-function SourceQuad:GetBottomLeft()
+---Specialized version of Copy for `SourceQuad`.
+---@return SourceQuad
+function SourceQuad:Copy()
 end
 
----@return Vector
-function SourceQuad:GetBottomRight()
+---@return boolean
+function SourceQuad:IsUVSpace()
 end
 
----@return Vector
-function SourceQuad:GetTopLeft()
+function SourceQuad:ConvertToPixelSpace()
 end
 
----@return Vector
-function SourceQuad:GetTopRight()
-end
-
----@param vector Vector
-function SourceQuad:SetBottomLeft(vector)
-end
-
----@param vector Vector
-function SourceQuad:SetBottomRight(vector)
-end
-
----@param vector Vector
-function SourceQuad:SetTopLeft(vector)
-end
-
----@param vector Vector
-function SourceQuad:SetTopRight(vector)
+function SourceQuad:ConvertToUVSpace()
 end

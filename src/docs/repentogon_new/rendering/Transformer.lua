@@ -1,16 +1,13 @@
 ---@class Transformer
 local Transformer = {}
 
----TODO: Document me!
 function Transformer:Apply()
 end
 
----TODO: Document me!
 ---@return boolean
 function Transformer:IsValid()
 end
 
----TODO: Document me!
 ---@param image Image
 ---@param source SourceQuad
 ---@param dest DestinationQuad
@@ -18,7 +15,6 @@ end
 function Transformer:Render(image, source, dest, modifier)
 end
 
----TODO: Document me!
 ---@param image Image
 ---@param source SourceQuad
 ---@param dest DestinationQuad
