@@ -6,7 +6,7 @@ local Weapon = {}
 function Weapon:ClearItemAnim(collectible)
 end
 
----@return integer
+---@return number
 function Weapon:GetCharge()
 end
 
@@ -14,11 +14,11 @@ end
 function Weapon:GetDirection()
 end
 
----@return integer
+---@return number
 function Weapon:GetFireDelay()
 end
 
----@return integer
+---@return number
 function Weapon:GetMaxFireDelay()
 end
 
@@ -60,7 +60,7 @@ end
 function Weapon:PlayItemAnim(item, anim, position, charge)
 end
 
----@param charge integer
+---@param charge number
 function Weapon:SetCharge(charge)
 end
 
@@ -80,6 +80,6 @@ end
 function Weapon:GetMainEntity()
 end
 
----@return integer
+---@return number
 function Weapon:GetMaxCharge()
 end
