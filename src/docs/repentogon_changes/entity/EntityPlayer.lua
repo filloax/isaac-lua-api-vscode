@@ -1237,12 +1237,6 @@ end
 function EntityPlayer:GetPlayerHUD()
 end
 
----@alias SuplexState
----|1 Dashing
----|2 Holding target
----|3 Jumping into the air with target
----|4 Landing on the ground with target
-
 ---@return SuplexState
 function EntityPlayer:GetSuplexState()
 end
