@@ -1,0 +1,740 @@
+---@meta
+
+---@class Isaac
+_G.Isaac = {}
+
+---@alias CallbackID ModCallbacks | string
+
+---@param modRef table
+---@param callbackId CallbackID # Vanilla IDs are integers, custom IDs can be any type including strings
+---@param callbackFn function
+---@param entityId? integer
+function Isaac.AddCallback(modRef, callbackId, callbackFn, entityId)
+end
+
+---@param modRef table
+---@param callbackId CallbackID # Vanilla IDs are integers, custom IDs can be any type including strings
+---@param priority CallbackPriority # Default priority is 0, higher goes later, using the CallbackPriority table is recommended
+---@param callbackFn function
+---@param entityId? integer
+function Isaac.AddPriorityCallback(modRef, callbackId, priority, callbackFn, entityId)
+end
+
+---@param modRef table
+---@param callbackId CallbackID # Vanilla IDs are integers, custom IDs can be any type including strings
+---@param callbackFn function
+function Isaac.RemoveCallback(modRef, callbackId, callbackFn)
+end
+
+---@vararg any # Callback args
+---@param callbackId CallbackID # Vanilla IDs are integers, custom IDs can be any type including strings
+---@return any # Type of callback return
+function Isaac.RunCallback(callbackId, ...)
+end
+
+---@vararg any # Callback args
+---@param param any # Param to check against
+---@param callbackId CallbackID # Vanilla IDs are integers, custom IDs can be any type including strings
+---@return any # Type of callback return
+function Isaac.RunCallbackWithParam(callbackId, param, ...)
+end
+
+---@class CallbackEntry
+---@field Mod table
+---@field Function function
+---@field Priority integer @default: `0`
+---@field Param integer @default: `-1`; entity ID or anything else
+
+---@param callbackId CallbackID
+---@param createIfMissing? boolean
+---@return CallbackEntry[] callbackList #sorted by priority and addition order, can set __matchParams metamethod (see https://wofsauge.github.io/IsaacDocs/rep/tutorials/CustomCallbacks.html)
+function Isaac.GetCallbacks(callbackId, createIfMissing)
+end
+
+---@param pillEffect integer
+---@return integer
+function Isaac.AddPillEffectToPool(pillEffect)
+end
+
+---@param text string
+function Isaac.ConsoleOutput(text)
+end
+
+---@return integer
+function Isaac.CountBosses()
+end
+
+---@return integer
+function Isaac.CountEnemies()
+end
+
+---@param Spawner? Entity  Optionally specify only entities spawned by this entity
+---@param Type? EntityType @default: `EntityType.ENTITY_NULL`
+---@param Variant? integer @default: `-1`
+---@param SubType? integer @default: `-1`
+---@return integer
+function Isaac.CountEntities(Spawner, Type, Variant, SubType)
+end
+
+---@param str string
+function Isaac.DebugString(str)
+end
+
+---@param command string
+---@return string
+function Isaac.ExecuteCommand(command)
+end
+
+---@param pos Vector
+---@param source Entity
+---@param damage number
+function Isaac.Explode(pos, source, damage)
+end
+
+---@param Type EntityType
+---@param Variant? integer @default: `-1`
+---@param SubType? integer @default: `-1`
+---@param Cache? boolean @default: `false`
+---@param IgnoreFriendly? boolean @default: `false`
+---@return Entity[]
+function Isaac.FindByType(Type, Variant, SubType, Cache, IgnoreFriendly)
+end
+
+---@param Position Vector
+---@param Radius number
+---@param Partitions? EntityPartition @default: `0xFFFFFFFF`
+---@return Entity[]
+function Isaac.FindInRadius(Position, Radius, Partitions)
+end
+
+---@param cardHudName string
+---@return Card
+function Isaac.GetCardIdByName(cardHudName)
+end
+
+---@return Challenge
+function Isaac.GetChallenge()
+end
+
+---@param challengeName string
+---@return Challenge
+function Isaac.GetChallengeIdByName(challengeName)
+end
+
+---@param path string
+---@return integer
+function Isaac.GetCostumeIdByPath(path)
+end
+
+---@param curseName string
+---@return LevelCurse
+function Isaac.GetCurseIdByName(curseName)
+end
+
+---@param entityName string
+---@return EntityType
+function Isaac.GetEntityTypeByName(entityName)
+end
+
+---@param entityName string
+---@return integer
+function Isaac.GetEntityVariantByName(entityName)
+end
+
+---@return integer
+function Isaac.GetFrameCount()
+end
+
+---@param pos Vector
+---@param step number
+---@return Vector
+function Isaac.GetFreeNearPosition(pos, step)
+end
+
+---@return ItemConfig
+function Isaac.GetItemConfig()
+end
+
+---@param itemName string
+---@return CollectibleType
+function Isaac.GetItemIdByName(itemName)
+end
+
+---@param musicName string
+---@return Music
+function Isaac.GetMusicIdByName(musicName)
+end
+
+---@param pillEffect string
+---@return PillEffect
+function Isaac.GetPillEffectByName(pillEffect)
+end
+
+---@param playerID? integer @default: `0`
+---@return EntityPlayer
+function Isaac.GetPlayer(playerID)
+end
+
+---@param playerName string
+---@param Tainted? boolean @default: `false`
+---@return PlayerType
+function Isaac.GetPlayerTypeByName(playerName, Tainted)
+end
+
+---@return Vector
+function Isaac.GetRandomPosition()
+end
+
+---@return Entity[]
+function Isaac.GetRoomEntities()
+end
+
+---@return number
+function Isaac.GetScreenHeight()
+end
+
+---@return number
+function Isaac.GetScreenPointScale()
+end
+
+---@return number
+function Isaac.GetScreenWidth()
+end
+
+---@param soundName string
+---@return SoundEffect
+function Isaac.GetSoundIdByName(soundName)
+end
+
+---@param str string
+---@return integer
+function Isaac.GetTextWidth(str)
+end
+
+---@return integer
+function Isaac.GetTime()
+end
+
+---@param trinketName string
+---@return TrinketType
+function Isaac.GetTrinketIdByName(trinketName)
+end
+
+---@param gridEntityType GridEntityType
+---@param variant integer
+---@param position Vector
+---@param forced? boolean **BUG**: Currently doesn't have any effect
+---@return GridEntity
+function Isaac.GridSpawn(gridEntityType, variant, position, forced)
+end
+
+---@param modRef table
+---@return boolean
+function Isaac.HasModData(modRef)
+end
+
+---@param modRef table
+---@return string
+function Isaac.LoadModData(modRef)
+end
+
+---@param modRef table
+---@param modName string
+---@param apiVersion integer
+function Isaac.RegisterMod(modRef, modName, apiVersion)
+end
+
+---@param modRef table
+function Isaac.RemoveModData(modRef)
+end
+
+---@param str string
+---@param X number
+---@param Y number
+---@param ScaleX number
+---@param ScaleY number
+---@param R number
+---@param G number
+---@param B number
+---@param A number
+function Isaac.RenderScaledText(str, X, Y, ScaleX, ScaleY, R, G, B, A)
+end
+
+---@param str string
+---@param X number
+---@param Y number
+---@param R number
+---@param G number
+---@param B number
+---@param A number
+function Isaac.RenderText(str, X, Y, R, G, B, A)
+end
+
+---@param modRef table
+---@param data string
+function Isaac.SaveModData(modRef, data)
+end
+
+---@param pos Vector
+---@return Vector
+function Isaac.ScreenToWorld(pos)
+end
+
+---@param pos Vector
+---@return Vector
+function Isaac.ScreenToWorldDistance(pos)
+end
+
+---@param entityType EntityType
+---@param entityVariant integer
+---@param entitySubtype integer
+---@param position Vector
+---@param velocity Vector
+---@param Spawner Entity | nil @Despite being listed as optional, the function requires you input a value here, as it will error otherwise. Directly inserting `nil` will suffice.
+---@return Entity
+function Isaac.Spawn(entityType, entityVariant, entitySubtype, position, velocity, Spawner)
+end
+
+---@param pos Vector
+---@return Vector
+function Isaac.WorldToRenderPosition(pos)
+end
+
+---@param pos Vector
+---@return Vector
+function Isaac.WorldToScreen(pos)
+end
+
+---@param pos Vector
+---@return Vector
+function Isaac.WorldToScreenDistance(pos)
+end
+
+
+---Checks if a given character has completed all marks and returns the
+---highest difficulty it was accomplished in.
+---@param playerType PlayerType
+---@return integer
+---|0 # None
+---|1 # Normal
+---|2 # Hard
+function Isaac.AllMarksFilled(playerType)
+end
+
+---Checks if a given character has completed all tainted-related marks
+---and returns the highest difficulty it was accomplished in.
+---@param playerType PlayerType
+---@param taintedMarksGroup TaintedMarksGroup
+---@return integer
+---|0 # None
+---|1 # Normal
+---|2 # Hard
+function Isaac.AllTaintedCompletion(playerType, taintedMarksGroup)
+end
+
+---@return boolean
+function Isaac.CanStartTrueCoop()
+end
+
+--- Moves the windows mouse cursor to the center of the game's window. It
+---won't move the cursor if the game's window is out of focus.
+function Isaac.CenterCursor()
+end
+
+---@deprecated
+---!Use Room:ClearBossHazards instead!
+---
+---Kills all projectiles and non-friendly NPCs capable of keeping doors closed.
+---@param ignoreNPCs? boolean @default: `false`. If `true`, will not kill aforementioned NPCs.
+function Isaac.ClearBossHazards(ignoreNPCs)
+end
+
+---Sets the challenge of the corresponding `challengeId` to completed.
+---@param challengeId Challenge
+function Isaac.ClearChallenge(challengeId)
+end
+
+---Deletes all completion marks for the provided character.
+---@param playerType PlayerType
+function Isaac.ClearCompletionMarks(playerType)
+end
+
+---Spawns a timer effect.
+---
+---The timer is called every game update. This means the timer only runs
+---while the game is unpaused and uses update frames for its delay parameter
+---(30 frames per second).
+---
+---If your use case requires a timer that takes paused time into acount, stick with a custom timer running on a RENDER callback.
+---@param intervalFunction fun()
+---@param interval number How many frames until intervalFunction is ran.
+---@param times number The amount of times intervalFunction can be called after enough interval frames passed.
+---@param persistent boolean If true, the timer will persist across rooms.
+---@return EntityEffect
+function Isaac.CreateTimer(intervalFunction, interval, times, persistent)
+end
+
+---Creates and returns a Weapon object. It is not automatically useable by
+---`owner` and `Isaac.SetWeaponType` must be used in tandem.
+---@param weaponType WeaponType
+---@param owner Entity Advised that this only be used for `EntityPlayer` and `EntityFamiliar` objects.
+---@return Weapon
+function Isaac.CreateWeapon(weaponType, owner)
+end
+
+---Destroys the provided Weapon object.
+---@param weapon Weapon
+function Isaac.DestroyWeapon(weapon)
+end
+
+---Draws a line between two positions on the current render frame.
+---@param startPos Vector
+---@param endPos Vector
+---@param startColor KColor
+---@param endColor KColor
+---@param thickness integer
+function Isaac.DrawLine(startPos, endPos, startColor, endColor, thickness)
+end
+
+---Draws a quad for the current render frame.
+---@param topLeftPosition Vector
+---@param topRightPosition Vector
+---@param bottomLeftPosition Vector
+---@param bottomRightPosition Vector
+---@param color KColor
+---@param thickness integer
+function Isaac.DrawQuad(topLeftPosition, topRightPosition, bottomLeftPosition, bottomRightPosition, color, thickness)
+end
+
+---Fills all of the completion marks for the character.
+---@param playerType PlayerType
+function Isaac.FillCompletionMarks(playerType)
+end
+
+---Returns entities inside of the given capsule, filtered by partitions mask.
+---@param Capsule Capsule
+---@param EntityPartitions? EntityPartition @default: `-1`
+---@return Entity[]
+function Isaac.FindInCapsule(Capsule, EntityPartitions)
+end
+
+---Returns the achievement ID by name.
+---@param name string
+---@return Achievement --Returns `-1` if it fails to find an achievement with the provided name
+function Isaac.GetAchievementIdByName(name)
+end
+
+---@param direction? Direction @default: `Direction.NO_DIRECTION`
+---@return Vector --Returns a vector with a length of 1 or 0 corresponding to the provided direction.
+---`NO_DIRECTION`: `Vector(0, 0)`
+---
+---`LEFT`: `Vector(-1, 0)`
+---
+---`UP`: `Vector(0, -1)`
+---
+---`RIGHT`: `Vector(1, 0)`
+---
+---`DOWN`: `Vector(0, 1)`
+function Isaac.GetAxisAlignedUnitVectorFromDir(direction)
+end
+
+---Returns the bosscoloridx
+---@param name string
+---@return integer --Returns `-1` if it fails to find a boss color with the provided name
+function Isaac.GetBossColorIdxByName(name)
+end
+
+---Returns the contents of the player's clipboard. If nothing is in the
+---clipboard, `nil` is returned instead.
+---@return string?
+function Isaac.GetClipboard()
+end
+
+---Returns what position a collectible would actually spawn at from the
+---provided position.
+---@param position Vector
+---@return Vector
+function Isaac.GetCollectibleSpawnPosition(position)
+end
+
+---Returns a completion mark value for the provided character.
+---@param playerType PlayerType
+---@param markType CompletionType
+---@return Difficulty
+function Isaac.GetCompletionMark(playerType, markType)
+end
+
+---@class CompletionMarks
+---@field PlayerType PlayerType
+---@field MomsHeart Difficulty
+---@field Isaac Difficulty
+---@field Satan Difficulty
+---@field BossRush Difficulty
+---@field BlueBaby Difficulty
+---@field Lamb Difficulty
+---@field MegaSatan Difficulty
+---@field UltraGreed Difficulty
+---@field Hush Difficulty
+---@field UltraGreedier Difficulty
+---@field Delirium Difficulty
+---@field Mother Difficulty
+---@field Beast Difficulty
+
+---Returns a dictionary of the character's current completion marks.
+---@param playerType PlayerType
+---@return CompletionMarks
+function Isaac.GetCompletionMarks(playerType)
+end
+
+---Sets the completion marks of a character to match an input table.
+---Requires a dictionary containing all the marks for the character,
+---getting it from GetCompletionMarks is advised for convenience.
+---@param marks CompletionMarks
+function Isaac.SetCompletionMarks(marks)
+end
+
+---Returns the cursor sprite that is rendered when `Options.MouseControl`
+---is true.
+---@return Sprite
+function Isaac.GetCursorSprite()
+end
+
+---@param name string
+---@return Ending
+function Isaac.GetCutsceneIdByName(name)
+end
+
+---@param name string
+---@return integer
+function Isaac.GetEntitySubTypeByName(name)
+end
+
+---Returns the giantbook id by name. For vanilla giantbooks, the png filename, from the gfx xml attribute, is used as the giantbook name.
+---@param name string
+---@return Giantbook
+function Isaac.GetGiantBookIdByName(name)
+end
+
+---@param name string
+---@return BackdropType
+function Isaac.GetBackdropIdByName(name)
+end
+
+---Returns a key-value table of all loaded script values, where the key is the path of the script and the value is what it returns.
+---@return table<string, any>
+function Isaac.GetLoadedModules()
+end
+
+---Returns the translation string associated with the given key in the given catagory.
+---@param category string
+---@param key string
+---@param language Language
+---@return string
+---@overload fun(category: string, key: string, languageCode: string): string
+function Isaac.GetLocalizedString(category, key, language)
+end
+
+---@param challengeId Challenge
+---@return integer
+function Isaac.GetModChallengeClearCount(challengeId)
+end
+
+---@param name string
+---@return integer
+function Isaac.GetNullItemIdByName(name)
+end
+
+---@return PersistentGameData
+function Isaac.GetPersistentGameData()
+end
+
+---@param position Vector
+---@param scale? boolean @default: `true`
+---@return Vector
+function Isaac.GetRenderPosition(position, scale)
+end
+
+---Returns the translation string associated with the given key in the given category. The translation is given in the currently selected language.
+---@param category string
+---@param key string
+---@return string
+function Isaac.GetString(category, key)
+end
+
+---Returns true if the challenge of the corresponding challengeid is completed.
+---@param challengeId Challenge
+---@return boolean
+function Isaac.IsChallengeDone(challengeId)
+end
+
+---Returns `true` if `Game` is non-nil and the current state is correct.
+---@return boolean
+function Isaac.IsInGame()
+end
+
+---Creates a new blank `LevelGeneratorEntry` object.
+---@return LevelGeneratorEntry
+function Isaac.LevelGeneratorEntry()
+end
+
+---@param challengeId Challenge
+function Isaac.MarkChallengeAsNotDone(challengeId)
+end
+
+---Plays a cutscene.
+---@param cutsceneId Ending
+---@param clearGameState? boolean @default: `false`
+function Isaac.PlayCutscene(cutsceneId, clearGameState)
+end
+
+---Sets the contents of the player's clipboard.
+---@param clipboardData string
+---@return boolean wasSet True if the player's clipboard contents were set successfully.
+function Isaac.SetClipboard(clipboardData)
+end
+
+---Sets a completion mark value of a character.
+---@param playerType PlayerType
+---@param markType CompletionType
+---@param value integer
+function Isaac.SetCompletionMark(playerType, markType, value)
+end
+
+---Displays a Win32 message box.
+---@param title string The title of the message box.
+---@param text string The text of the message box.
+---@param icon? DialogIcons @default: `DialogIcons.ERROR`. The icon of the message box.
+---@param buttons? DialogButtons @default: `DialogButtons.OK`. The buttons on the message box.
+---@return DialogReturn buttonPRessed The value that indicates the button pressed.
+function Isaac.ShowErrorDialog(title, text, icon, buttons)
+end
+
+---Simulates a window resize, useful to refresh some option changes like `MaxRenderScale`.
+function Isaac.TriggerWindowResize()
+end
+
+---Converts the World position from input to a pinned main menu position that varies depending on the enum selected. It's important to reconvert this every frame, in a similar fashion to `Isaac.WorldToRender`, in order to properly render when menus are changed or the window is resized.
+---@param menuId MainMenuType
+---@param position Vector
+---@return Vector
+function Isaac.WorldToMenuPosition(menuId, position)
+end
+
+---@param musicid Music
+function Isaac.SetCurrentFloorMusic(musicid)
+end
+
+---@param backdropid BackdropType
+function Isaac.GetCurrentFloorBackdrop(backdropid)
+end
+
+---@param name string
+function Isaac.SetCurrentFloorName(name)
+end
+
+---@return integer
+function Isaac.GetCurrentStageConfigId()
+end
+
+---Allows starting the game from within the main menu.
+---@param playerType PlayerType
+---@param challenge? Challenge @default: `Challenge.CHALLENGE_NULL`
+---@param difficulty? Difficulty @default: `Difficulty.DIFFICULTY_NORMAL`
+---@param seed? integer @default: `Random()`
+---@param isCustomRun? boolean @default: `false`. Disables achievements if set to `true`
+---@overload fun(playerType: PlayerType, challenge?: Challenge, difficulty?: Difficulty, seed?: Seeds)
+function Isaac.StartNewGame(playerType, challenge, difficulty, seed, isCustomRun)
+end
+
+---@return DwmWindowAttributes
+function Isaac.GetDwmWindowAttribute()
+end
+
+---@param attribute DwmWindowAttributes
+function Isaac.SetDwmWindowAttribute(attribute)
+end
+
+---Returns the appended text on the game window's title.
+---@return string
+function Isaac.GetWindowTitle()
+end
+
+---Sets the appended text on the game window's title.
+---@param title string
+function Isaac.SetWindowTitle(title)
+end
+
+---Sets the 16x16 icon located on the game window. Does not update the icon elsewhere, such as the taskbar.
+---@param icon integer | string Set to 0 for the default Isaac icon, 1 for the Tainted Isaac icon, or a string for the path to a custom icon.
+---@param bypassSize? boolean @default: `false`. Set to `true` to bypass the 16x16 resolution cap.
+function Isaac.SetIcon(icon, bypassSize)
+end
+
+---@param name string
+---@return ItemPoolType
+function Isaac.GetPoolIdByName(name)
+end
+
+---Returns a DoorMask representing all DoorSlots that are allowed for the given RoomShape.
+---@param roomShape RoomShape
+---@return DoorMask
+function Isaac.GetAllowedDoorsMaskForShape(roomShape)
+end
+
+---Sets the target challenge id as not cleared. Not recommended with vanilla ones, but it should still work.
+---@param challenge Challenge
+function Isaac.UnClearChallenge(challenge)
+end
+
+---Spawns an NPC forcing it to be a Boss, giving it a boss bar and boss-like qualities.
+---@param Type EntityType
+---@param Variant integer
+---@param SubType integer
+---@param Position Vector
+---@param Velocity Vector
+---@param Spawner Entity
+---@param Seed? integer
+---@return EntityNPC
+function Isaac.SpawnBoss(Type,Variant,SubType,Position,Velocity,Spawner,Seed)
+end
+
+---Returns the sprite object for displaying controller-specific button inputs
+---@return Sprite
+function Isaac.GetButtonsSprite()
+end
+
+---Returns a high-resolution timestamp in nanoseconds. Useful for evaluating the performance cost of functions in a non-test environment or for high-precision clocks.
+---
+---The clock is precise enough to detect the time that passed between two subsequent calls of `Isaac.GetNanoTime()`
+---@return integer
+function Isaac.GetNanoTime()
+end
+
+---Marks the collectible as reworked, making the game not execute the item's original passive logic.
+---
+---Can only be set during mod load.
+---
+---**NOTE** Does not prevent the UseActiveItem logic from running.
+function Isaac.ReworkCollectible()
+end
+
+---Marks the player's birthright as reworked, making the game not execute the item's original passive logic.
+---
+---Can only be set during mod load.
+function Isaac.ReworkBirthright()
+end
+
+---Marks the trinket as reworked, making the game not execute the trinket's original passive logic.
+---
+---Can only be set during mod load.
+function Isaac.ReworkTrinket()
+end
+
+---Renders item collection sprite from collection menu/death screen.
+---@param itemId CollectibleType
+---@param pos Vector
+---@param scale? Vector @default: `Vector.One`
+---@param color? Color @default: `Color.Default`
+function Isaac.RenderCollectionItem(itemId, pos, scale, color)
+end
+

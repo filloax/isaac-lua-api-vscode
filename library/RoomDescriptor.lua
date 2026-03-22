@@ -1,0 +1,84 @@
+---@meta
+
+---@class RoomDescriptor
+---@field AwardSeed integer
+---@field ChallengeDone boolean
+---@field Clear boolean
+---@field ClearCount integer
+---@field Data RoomConfigRoom
+---@field DecorationSeed integer
+---@field DeliriumDistance integer
+---@field DisplayFlags integer
+---@field Flags integer
+---@field GridIndex integer
+---@field HasWater boolean
+---@field ListIndex integer
+---@field NoReward boolean
+---@field OverrideData RoomConfigRoom
+---@field PitsCount integer
+---@field PoopCount integer
+---@field PressurePlatesTriggered boolean
+---@field SacrificeDone boolean
+---@field SafeGridIndex integer
+---@field ShopItemDiscountIdx integer
+---@field ShopItemIdx integer
+---@field SpawnSeed integer
+---@field SurpriseMiniboss boolean
+---@field VisitedCount integer
+local RoomDescriptor_Class = {}
+
+---@class RoomDescriptor
+---Allows you to check which level grid index each DoorSlot in the room connects to.
+---
+---For example, roomdesc.Doors[DoorSlot.UP0] provides the level grid index that the upwards door would connect to.
+---
+---The value will be -1 if the RoomShape does not allow a door in that slot.
+---
+---Note that this typically provides a valid index even if there is no door present, and even if the room itself does not allow a door in that slot.
+---@field Doors {[DoorSlot]: integer}
+---Returns a bitmask corresponding to which door slots are currently enabled.
+---
+---Doors are typically only included in this bitmask when there is a door currently present, even if the room would allow a door in that slot.
+---@field AllowedDoors integer
+---@field BossDeathSeed integer
+local RoomDescriptor_RGON = {}
+
+-- Note: in current emmylua, defining class twice to add fields to it is valid, as done above
+
+---@param gridIndex integer
+function RoomDescriptor_RGON:AddRestrictedGridIndex(gridIndex) end
+
+---@return GridEntitiesSaveStateVector
+function RoomDescriptor_RGON:GetGridEntitiesSaveState(gridIndex) end
+
+---@return EntitiesSaveStateVector
+function RoomDescriptor_RGON:GetEntitiesSaveState() end
+
+---@return integer[]
+function RoomDescriptor_RGON:GetRestrictedGridIndexes() end
+
+---@param rng RNG
+function RoomDescriptor_RGON:InitSeeds(rng)
+end
+
+---@return Dimension
+function RoomDescriptor_RGON:GetDimension()
+end
+
+---@return {[DoorSlot]: RoomDescriptor}
+function RoomDescriptor_RGON:GetNeighboringRooms()
+end
+
+---Prevents coin spawn from killed enemies on room reenter when counter reaches 10.
+function RoomDescriptor_RGON:GetTaintedKeeperCoinSpawns()
+end
+
+---@param numSpawns integer
+function RoomDescriptor_RGON:SetTaintedKeeperCoinSpawns(numSpawns)
+end
+
+---The trinket to be copied by the Error trinket.
+---@return TrinketType
+function RoomDescriptor_RGON:GetErrorTrinketEffect()
+end
+
