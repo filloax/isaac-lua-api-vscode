@@ -1,0 +1,78 @@
+name: Prepare Addon and Sync Branches
+
+on:
+  workflow_dispatch:
+
+jobs:
+  prepare-and-sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run prepare_addon script
+        run: |
+          python scripts/prepare_addon.py
+
+      - name: Common git configuration
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+
+      - name: Publish vanilla addon
+        run: |
+          TARGET_BRANCH=addon/vanilla
+          WORKSPACE_DIR="${{ github.workspace }}"
+          TEMP_DIR=$(mktemp -d)
+
+          cd "$TEMP_DIR"
+          git init
+          git remote add origin "${{ github.repositoryUrl }}"
+          git fetch --depth=1 origin "$TARGET_BRANCH" || true
+          git checkout --orphan "$TARGET_BRANCH" || true
+
+          git rm -rf . || true
+          # preserve .git folder; copy evaluated files
+          rsync -a --delete --exclude='.git' "$WORKSPACE_DIR/merge/addon/vanilla/" ./
+          cp "$WORKSPACE_DIR/LICENSE" . || true
+
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "Sync generated addon/vanilla content from prepare_addon"
+            git push --force origin "$TARGET_BRANCH"
+          else
+            echo "No changes in vanilla content to commit."
+          fi
+
+      - name: Publish Repentogon addon
+        run: |
+          TARGET_BRANCH=addon/repentogon
+          WORKSPACE_DIR="${{ github.workspace }}"
+          TEMP_DIR=$(mktemp -d)
+
+          cd "$TEMP_DIR"
+          git init
+          git remote add origin "${{ github.repositoryUrl }}"
+          git fetch --depth=1 origin "$TARGET_BRANCH" || true
+          git checkout --orphan "$TARGET_BRANCH" || true
+
+          git rm -rf . || true
+          rsync -a --delete --exclude='.git' "$WORKSPACE_DIR/merge/addon/repentogon/" ./
+          cp "$WORKSPACE_DIR/LICENSE" . || true
+
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "Sync generated addon/repentogon content from prepare_addon"
+            git push --force origin "$TARGET_BRANCH"
+          else
+            echo "No changes in repentogon content to commit."
+          fi
