@@ -27,6 +27,8 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@users.noreply.github.com"
+          # avoid warning
+          git config --global init.defaultBranch main
 
       - name: Publish vanilla addon
         run: |
