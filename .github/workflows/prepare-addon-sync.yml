@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  prepare-and-sync:
+  prepare:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,59 +22,66 @@ jobs:
       - name: Run prepare_addon script
         run: |
           python scripts/prepare_addon.py
+          
+      - name: Upload artifact for publish job 
+        uses: actions/upload-artifact@v4
+        with:
+          name: addon-artifact
+          path: ${{ github.workspace }}/merge/addon
 
-      - name: Common git configuration
+  publish:
+    needs: prepare
+    runs-on: ubuntu-latest
+
+    env:
+      ARTIFACT_DIR: ./addon
+    strategy:
+      matrix:
+        target:
+          - name: vanilla
+            branch: addon/vanilla
+            source: vanilla
+          - name: repentogon
+            branch: addon/repentogon
+            source: repentogon
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: addon-artifact
+          path: ${{env.ARTIFACT_DIR}}
+      
+      - name: Publish addon versions
+        env:
+          TARGET_BRANCH: ${{ matrix.target.branch }}
+          SOURCE_DIR: ${{ env.ARTIFACT_DIR }}/${{ matrix.target.source }}"
         run: |
+          
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@users.noreply.github.com"
           # avoid warning
           git config --global init.defaultBranch main
-
-      - name: Publish vanilla addon
-        run: |
-          TARGET_BRANCH=addon/vanilla
-          WORKSPACE_DIR="${{ github.workspace }}"
           TEMP_DIR=$(mktemp -d)
 
           cd "$TEMP_DIR"
           git init
           git remote add origin "${{ github.repositoryUrl }}"
           git fetch --depth=1 origin "$TARGET_BRANCH" || true
-          git checkout --orphan "$TARGET_BRANCH" || true
 
-          git rm -rf . || true
-          # preserve .git folder; copy evaluated files
-          rsync -a --delete --exclude='.git' "$WORKSPACE_DIR/merge/addon/vanilla/" ./
-          cp "$WORKSPACE_DIR/LICENSE" . || true
-
-          if [ -n "$(git status --porcelain)" ]; then
-            git add .
-            git commit -m "Sync generated addon/vanilla content from prepare_addon"
-            git push --force origin "$TARGET_BRANCH"
+          if git show-ref --verify --quiet "refs/remotes/origin/$TARGET_BRANCH"; then
+            git checkout "$TARGET_BRANCH"
           else
-            echo "No changes in vanilla content to commit."
+            git checkout --orphan "$TARGET_BRANCH"
           fi
 
-      - name: Publish Repentogon addon
-        run: |
-          TARGET_BRANCH=addon/repentogon
-          WORKSPACE_DIR="${{ github.workspace }}"
-          TEMP_DIR=$(mktemp -d)
+          rsync -a --delete --exclude='.git' "$SOURCE_DIR/" ./
+          cp "${{ github.workspace }}/LICENSE" . || true
 
-          cd "$TEMP_DIR"
-          git init
-          git remote add origin "${{ github.repositoryUrl }}"
-          git fetch --depth=1 origin "$TARGET_BRANCH" || true
-          git checkout --orphan "$TARGET_BRANCH" || true
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "🚀 Update ${matrix.target.name} addon"
 
-          git rm -rf . || true
-          rsync -a --delete --exclude='.git' "$WORKSPACE_DIR/merge/addon/repentogon/" ./
-          cp "$WORKSPACE_DIR/LICENSE" . || true
-
-          if [ -n "$(git status --porcelain)" ]; then
-            git add .
-            git commit -m "Sync generated addon/repentogon content from prepare_addon"
-            git push --force origin "$TARGET_BRANCH"
+            git push --force --set-upstream origin "$TARGET_BRANCH"
           else
-            echo "No changes in repentogon content to commit."
+            echo "No changes in $TARGET_BRANCH content to commit."
           fi
