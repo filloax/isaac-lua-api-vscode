@@ -67,7 +67,7 @@ jobs:
 
           cd "$TEMP_DIR"
           git init
-          git remote add origin "${{ github.repositoryUrl }}"
+          git remote add origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git fetch --depth=1 origin "$TARGET_BRANCH" || true
 
           if git show-ref --verify --quiet "refs/remotes/origin/$TARGET_BRANCH"; then
