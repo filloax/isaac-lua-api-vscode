@@ -59,7 +59,6 @@ jobs:
           TARGET_BRANCH: ${{ matrix.target.branch }}
           SOURCE_DIR: ${{ env.ARTIFACT_DIR }}/${{ matrix.target.source }}
         run: |
-          
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@users.noreply.github.com"
           # avoid warning
@@ -81,7 +80,7 @@ jobs:
 
           git add -A
           if ! git diff --cached --quiet; then
-            git commit -m "🚀 Update ${matrix.target.name} addon"
+            git commit -m "🚀 Update ${{matrix.target.name}} addon"
 
             git push --force --set-upstream origin "$TARGET_BRANCH"
           else
