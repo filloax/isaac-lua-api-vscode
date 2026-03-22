@@ -122,7 +122,7 @@ def main():
     }
 
     # Clear folders
-    shutil.rmtree(ADDON_DIR)
+    shutil.rmtree(ADDON_DIR, ignore_errors=True)
     
     for config_name, dirs, enumfiles in sourcefiles:
         output_base = os.path.join(ROOT_DIR, "merge", "addon", config_name)
