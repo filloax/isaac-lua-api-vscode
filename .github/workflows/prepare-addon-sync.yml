@@ -82,7 +82,7 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "🚀 Update ${{matrix.target.name}} addon"
 
-            git push --force --set-upstream origin "$TARGET_BRANCH"
+            git push --set-upstream origin "$TARGET_BRANCH"
           else
             echo "No changes in $TARGET_BRANCH content to commit."
           fi
