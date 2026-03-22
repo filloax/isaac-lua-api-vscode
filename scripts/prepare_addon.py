@@ -25,6 +25,7 @@ ENUMS_REPENTOGON = os.path.join(ROOT_DIR, "src", "docs", "enums", "repentogon.js
 
 CONFIG_FILE_VANILLA = os.path.join(ROOT_DIR, "addon", "config-vanilla.jsonc")
 CONFIG_FILE_REPENTOGON = os.path.join(ROOT_DIR, "addon", "config-repentogon.jsonc")
+LICENSE_FILE = os.path.join(ROOT_DIR, "LICENSE")
 
 CONFIG_FILENAME = "config.json"
 
@@ -153,10 +154,15 @@ def main():
             create_enums_from_json(enumfiles, f)
         print(f"{config_name} | Written enum file: {enum_output_path}")
         
+        # Copy config
         config_file = config_files[config_name]
         output_config_file = os.path.join(output_base, CONFIG_FILENAME)
         shutil.copy(config_file, output_config_file)
-        print(f"{config_name} | Written configuration file: {output_config_file}")
+        print(f"{config_name} | Copied configuration file: {output_config_file}")
+        
+        # Copy license
+        shutil.copy(LICENSE_FILE, os.path.join(output_base, "LICENSE"))
+        print(f"{config_file} | Copied LICENSE")
 
 if __name__ == "__main__":
     main()
