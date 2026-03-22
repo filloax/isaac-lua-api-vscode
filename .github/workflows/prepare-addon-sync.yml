@@ -23,6 +23,11 @@ jobs:
         run: |
           python scripts/prepare_addon.py
           
+      - name: Copy license
+        run: |
+          cp "${{ github.workspace }}/LICENSE" "${{ github.workspace }}/merge/addon/vanilla/LICENSE"
+          cp "${{ github.workspace }}/LICENSE" "${{ github.workspace }}/merge/addon/repentogon/LICENSE"
+        
       - name: Upload artifact for publish job 
         uses: actions/upload-artifact@v4
         with:
@@ -54,37 +59,36 @@ jobs:
       - name: Debug artifact
         run: ls -lR ${{env.ARTIFACT_DIR}}
       
-      # - name: Publish addon versions
-      #   env:
-      #     TARGET_BRANCH: ${{ matrix.target.branch }}
-      #     SOURCE_DIR: ${{ env.ARTIFACT_DIR }}/${{ matrix.target.source }}"
-      #   run: |
+      - name: Publish addon versions
+        env:
+          TARGET_BRANCH: ${{ matrix.target.branch }}
+          SOURCE_DIR: ${{ env.ARTIFACT_DIR }}/${{ matrix.target.source }}"
+        run: |
           
-      #     git config --global user.name "github-actions"
-      #     git config --global user.email "github-actions@users.noreply.github.com"
-      #     # avoid warning
-      #     git config --global init.defaultBranch main
-      #     TEMP_DIR=$(mktemp -d)
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@users.noreply.github.com"
+          # avoid warning
+          git config --global init.defaultBranch main
+          TEMP_DIR=$(mktemp -d)
 
-      #     cd "$TEMP_DIR"
-      #     git init
-      #     git remote add origin "${{ github.repositoryUrl }}"
-      #     git fetch --depth=1 origin "$TARGET_BRANCH" || true
+          cd "$TEMP_DIR"
+          git init
+          git remote add origin "${{ github.repositoryUrl }}"
+          git fetch --depth=1 origin "$TARGET_BRANCH" || true
 
-      #     if git show-ref --verify --quiet "refs/remotes/origin/$TARGET_BRANCH"; then
-      #       git checkout "$TARGET_BRANCH"
-      #     else
-      #       git checkout --orphan "$TARGET_BRANCH"
-      #     fi
+          if git show-ref --verify --quiet "refs/remotes/origin/$TARGET_BRANCH"; then
+            git checkout "$TARGET_BRANCH"
+          else
+            git checkout --orphan "$TARGET_BRANCH"
+          fi
 
-      #     rsync -a --delete --exclude='.git' "$SOURCE_DIR/" ./
-      #     cp "${{ github.workspace }}/LICENSE" . || true
+          rsync -a --delete --exclude='.git' "$SOURCE_DIR/" ./
 
-      #     git add -A
-      #     if ! git diff --cached --quiet; then
-      #       git commit -m "🚀 Update ${matrix.target.name} addon"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "🚀 Update ${matrix.target.name} addon"
 
-      #       git push --force --set-upstream origin "$TARGET_BRANCH"
-      #     else
-      #       echo "No changes in $TARGET_BRANCH content to commit."
-      #     fi
+            git push --force --set-upstream origin "$TARGET_BRANCH"
+          else
+            echo "No changes in $TARGET_BRANCH content to commit."
+          fi
