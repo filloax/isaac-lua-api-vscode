@@ -70,7 +70,7 @@
     },
     "MC_PRE_MUSIC_PLAY": {
       "value": "1034",
-      "comment": "(Music ID, float Volume | float FadeRate, boolean IsFade): table{ID, Volume | FadeRate}, Optional Arg: Music - Called before a music track plays. Accepts a table of parameters to override the music, or `false` to cancel the track."
+      "comment": "(Music ID, float Volume | float FadeRate, boolean IsFade): table{ID, Volume | FadeRate} | Music | boolean, Optional Arg: Music - Called before a music track plays. Accepts a table of parameters to override the music and change the volume or fade rate, a `Music` to change the track without changing volume or fade rate, or `false` to cancel the track."
     },
     "MC_PRE_MUSIC_LAYER_TOGGLE": {
       "value": "1035",
