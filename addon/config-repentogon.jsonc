@@ -1,0 +1,21 @@
+{
+    "$schema": "https://raw.githubusercontent.com/LuaLS/LLS-Addons/refs/heads/main/schemas/addon_config.schema.json",
+    // Name of the addon
+    "name": "Binding of Isaac Mod API + Repentogon",
+    
+
+    // Lua string patterns to look for in a workspace.
+    // If detected, this addon will be recommended to enable
+    "words": [ "Isaac","ModCallbacks" ],
+
+    // Lua string patterns to look for in filenames.
+    // If detected, this addon will be recommended to enable
+    "files": ["metadata.xml"],
+
+    // List of settings to apply when this addon is enabled
+    "settings": {
+        // "Lua.diagnostics.globals" : [
+        //     "awesome"
+        // ]
+    }
+}
