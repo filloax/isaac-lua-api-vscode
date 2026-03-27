@@ -2,6 +2,7 @@
 ---@field bossID BossType | integer
 ---@field weight number
 ---@field weightAlt number
+---@field initialWeight number
 ---@field achievementID Achievement | integer
 
 ---@class BossPool
