@@ -319,7 +319,7 @@ end
 function Isaac.SetCurrentFloorName(name)
 end
 
----@return integer
+---@return StbType
 function Isaac.GetCurrentStageConfigId()
 end
 
