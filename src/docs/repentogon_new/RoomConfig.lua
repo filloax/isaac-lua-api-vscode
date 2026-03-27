@@ -11,7 +11,7 @@ _G.RoomConfig = {}
 ---@param maxVariant? integer @default: `-1`
 ---@param minDifficulty? integer @default: `0.`
 ---@param maxDifficulty? integer @default: `10.`
----@param requiredDoors? integer @default: `0.`
+---@param requiredDoors? DoorMask @default: `0.`
 ---@param subType? integer @default: `-1`.
 ---@param mode? integer @default: `-1`. TODO: Document me!
 ---@return RoomConfigRoom
