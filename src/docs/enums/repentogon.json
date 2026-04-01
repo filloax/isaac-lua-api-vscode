@@ -1254,7 +1254,7 @@
 	},
 	"MC_EVALUATE_STAT": {
 		"value": "1226",
-		"comment": "(EntityPlayer Player, EvaluateStatStage Stat, float CurrentValue), Optional Arg: EvaluateStatStage - Used to modify intermediate values of player stat calculations. Note: Unless you need to perform complicated conditions/calculations, it is strongly suggested that you use the XML item stats features instead of this callback!"
+		"comment": "(EntityPlayer Player, EvaluateStatStage Stat, float CurrentValue): number, Optional Arg: EvaluateStatStage - Used to modify intermediate values of player stat calculations. Return a number to override the current evaluated stat. The return value is passed onto the remaining callbacks. Note: Unless you need to perform complicated conditions/calculations, it is strongly suggested that you use the XML item stats features instead of this callback!"
 	},
 	"MC_EVALUATE_TEAR_HIT_PARAMS": {
 		"value": "1490",
