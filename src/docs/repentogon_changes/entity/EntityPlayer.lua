@@ -21,7 +21,19 @@ end
 
 ---@param collectible CollectibleType
 ---@param amount? integer @default: `1`
-function EntityPlayer:AddInnateCollectible(collectible, amount)
+---@param groupKey? string @default: `""`. If the string isn't empty, the innate item will persist across quit & continue, and interact properly with save state mechanics such as Glowing Hourglass.
+---@param duration? integer @default: `0`. Items added with a positive duration will automatically remove themselves (30 duration = 1 second).
+---@param addCostume? boolean @default: `true`
+function EntityPlayer:AddInnateCollectible(collectible, amount, groupKey, duration, addCostume)
+end
+
+---**NOTE:** Golden trinkets must be added/removed separately.
+---@param collectible TrinketType
+---@param amount? integer @default: `1`
+---@param groupKey? string @default: `""`. If the string isn't empty, the innate item will persist across quit & continue, and interact properly with save state mechanics such as Glowing Hourglass.
+---@param duration? integer @default: `0`. Trinkets added with a positive duration will automatically remove themselves (30 duration = 1 second).
+---@param addCostume? boolean @default: `true`
+function EntityPlayer:AddInnateTrinket(collectible, amount, groupKey, duration, addCostume)
 end
 
 ---This is currently capped at a max of three familiars.
@@ -167,6 +179,11 @@ end
 
 ---@return integer
 function EntityPlayer:GetBloodLustCounter()
+end
+
+---Sprite used for things like Scissors and The Intruder.
+---@return Sprite
+function EntityPlayer:GetBloodGushSprite()
 end
 
 ---@return Vector
@@ -343,6 +360,36 @@ end
 ---Returns how many hearts have been collected with the Immaculate Conception item. Resets to 0 after spawning a familiar/soul heart.
 ---@return integer
 function EntityPlayer:GetImmaculateConceptionState()
+end
+
+---Returns how many innate copies of this collectible are currently in the specified group.
+---@param item CollectibleType
+---@param groupKey string
+---@return integer
+function EntityPlayer:GetInnateCollectibleCount( item, groupKey )
+end
+
+---Returns a table of the innate collectibles currently in the specified group.
+---@param groupKey string
+---@return {[CollectibleType]: integer} @CollectibleType key to count value. If there are no copies of an item in the group, it will not be present in the table.
+function EntityPlayer:GetInnateCollectibleGroup( groupKey )
+end
+
+---Returns how many innate copies of this trinket are currently in the specified group.
+---
+---**NOTE:** Golden trinkets must be added/removed separately.
+
+---@param groupKey string
+---@return integer
+function EntityPlayer:GetInnateTrinketCount( trinket, groupKey )
+end
+
+---Returns a table of the innate trinket currently in the specified group.
+---
+---**NOTE:** Golden trinkets must be added/removed separately.
+---@param groupKey string
+---@return {[TrinketType]: integer} @TrinketType key to count value. If there are no copies of an trinket in the group, it will not be present in the table.
+function EntityPlayer:GetInnateTrinketGroup( groupKey )
 end
 
 ---Returns the coins spent while the player is holding the Keeper's Sack collectible.
@@ -1067,6 +1114,81 @@ end
 ---@param itemID CollectibleType
 ---@return boolean
 function EntityPlayer:IsCollectibleBlocked(itemID)
+end
+
+---Blocks the provided `TrinketType`. This will make it so the game thinks you don't have the trinket, even if it's in your inventory.
+---@param trinketType TrinketType
+function EntityPlayer:BlockTrinket(trinketType)
+end
+
+---Unblocks a `TrinketType` set by EntityPlayer::BlockTrinket().
+---@param trinket TrinketType
+function EntityPlayer:UnblockTrinket(trinket)
+end
+
+---Returns if the `TrinketType` was blocked through EntityPlayer::BlockTrinket().
+---@param trinket TrinketType
+---@return boolean
+function EntityPlayer:IsTrinketBlocked(trinket)
+end
+
+---Remove all innate collectibles and trinkets added under the specified group.
+---@param groupKey string
+function EntityPlayer:ClearInnateItemGroup(groupKey)
+end
+
+---Removes innate collectibles from the specified group. Returns the actual number of innate items removed.
+---@param item CollectibleType
+---@param amount integer
+---@param groupKey string
+---@return integer @The actual number of innate items removed.
+function EntityPlayer:RemoveInnateCollectible(item, amount, groupKey)
+end
+
+---Removes innate trinkets from the specified group. Returns the actual number of innate trinkets removed.
+---
+---**NOTE:** Golden trinkets must be added/removed separately.
+---@param trinket TrinketType
+---@param amount integer
+---@param groupKey string
+---@return integer @The actual number of innate trinkets removed.
+function EntityPlayer:RemoveInnateTrinket(trinket, amount, groupKey)
+end
+
+---Changes the current count of an innate collectible in the specified group. Triggers cache evals and callbacks appropriately if any items needed to be added or removed to reach the desired count. Does nothing if the count is already the desired value.
+---@param item CollectibleType
+---@param newCount integer
+---@param groupKey? string @default: `""`
+---@param addCostume? boolean @default: `true`
+---@return integer difference @Returns the number of items added or removed (removals are negative).
+function EntityPlayer:SetInnateCollectibleCount(item, newCount, groupKey, addCostume)
+end
+
+---Updates the contents of the specified innate collectible group to match the provided table. The table must use `CollectibleType` for the keys and the desired counts as the values.
+---@param groupKey string
+---@param newCounts {[CollectibleType]: integer}
+---@param addCostume? boolean
+function EntityPlayer:SetInnateCollectibleGroup(groupKey, newCounts, addCostume)
+end
+
+---Changes the current count of an innate trinket in the specified group. Triggers cache evals and callbacks appropriately if any items needed to be added or removed to reach the desired count. Does nothing if the count is already the desired value.
+---
+---**NOTE:** Golden trinkets are counted separately.
+---@param item TrinketType
+---@param newCount integer
+---@param groupKey? string @default: `""`
+---@param addCostume? boolean @default: `true`
+---@return integer difference @Returns the number of items added or removed (removals are negative).
+function EntityPlayer:SetInnateTrinketCount(item, newCount, groupKey, addCostume)
+end
+
+---Updates the contents of the specified innate trinket group to match the provided table. The table must use `TrinketType` for the keys and the desired counts as the values.
+---
+---**NOTE:** Golden trinkets are counted separately.
+---@param groupKey string
+---@param newCounts {[TrinketType]: integer}
+---@param addCostume? boolean
+function EntityPlayer:SetInnateTrinketGroup(groupKey, newCounts, addCostume)
 end
 
 ---@param Type CollectibleType

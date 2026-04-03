@@ -6,19 +6,15 @@
     },
     "MC_POST_ADD_COLLECTIBLE": {
       "value": "1005",
-      "comment": "(CollectibleType Type, integer Charge, boolean FirstTime, integer Slot, integer VarData, EntityPlayer Player)"
-    },
-    "MC_POST_TAKE_DMG": {
-      "value": "1006",
-      "comment": "(Entity, float Damage, DamageFlag, EntityRef Source, integer DamageCountdown) - Leftover for backwards compatibility. Use MC_POST_ENTITY_TAKE_DMG instead."
+      "comment": "(CollectibleType Type, integer Charge, boolean FirstTime, integer Slot, integer VarData, EntityPlayer Player), Optional Arg: CollectibleType"
     },
     "MC_POST_ENTITY_TAKE_DMG": {
       "value": "1006",
-      "comment": "(Entity, float Damage, DamageFlag, EntityRef Source, integer DamageCountdown)"
+      "comment": "(Entity, float Damage, DamageFlag, EntityRef Source, integer DamageCountdown, EntityRef ExtraSource), Optional Arg: EntityType - POST version of MC_ENTITY_TAKE_DMG. `ExtraSource` (also available in MC_ENTITY_TAKE_DMG) is the actual source of damage where it would normally pass the player into `Source`. This applies to lasers, melee hitbox knives, Gello, and brimstone balls."
     },
     "MC_PRE_PLAYER_TAKE_DMG": {
       "value": "1008",
-      "comment": "(EntityPlayer Player, float Damage, DamageFlag, EntityRef Source, integer DamageCountdown) - Runs earlier than MC_ENTITY_TAKE_DMG, and even if the player is considered invincible or has Holy Mantles. Only accepts returning `false` to cancel the damage. Good for giving the player invincibility that takes precedence over other damage negation effects, such as Holy Mantle."
+      "comment": "(EntityPlayer Player, float Damage, DamageFlag, EntityRef Source, integer DamageCountdown), Optional Arg: PlayerVariant - Runs earlier than MC_ENTITY_TAKE_DMG, and even if the player is considered invincible or has Holy Mantles. Only accepts returning `false` to cancel the damage. Good for giving the player invincibility that takes precedence over other damage negation effects, such as Holy Mantle."
     },
     "MC_PRE_PLAYER_ADD_HEARTS": {
       "value": 1009,
@@ -30,15 +26,15 @@
     },
     "MC_POST_GRID_ROCK_DESTROY": {
       "value": "1011",
-      "comment": "(GridEntityRock Rock, GridEntityType Type, boolean Immediate) - When adding callback, specify a GridEntityType to only respond to that one grid type."
+      "comment": "(GridEntityRock Rock, GridEntityType Type, boolean Immediate), OptionalArg: GridEntityType - When adding callback, specify a GridEntityType to only respond to that one grid type."
     },
     "MC_GRID_HURT_DAMAGE": {
       "value": "1012",
-      "comment": "(GridEntity, Entity, integer DamageAmount, DamageFlag, float Unknown, boolean Unknown) - Return `false` if entity or player should ignore damage from it. When adding callback, specify a GridEntityType to only respond to that grid type."
+      "comment": "(GridEntity, Entity, integer DamageAmount, DamageFlag, float DamageAmount, boolean IgnoreGridCollisionClass), OptionalArg: GridEntityType - Return `false` if entity or player should ignore damage from it. When adding callback, specify a GridEntityType to only respond to that grid type."
     },
     "MC_POST_GRID_HURT_DAMAGE": {
       "value": "1013",
-      "comment": "(GridEntity, Entity, integer DamageAmount, DamageFlag, float Unknown, boolean Unknown) - Runs after MC_GRID_HURT_DAMAGE."
+      "comment": "(GridEntity, Entity, integer DamageAmount, DamageFlag, float DamageAmount, boolean IgnoreGridCollisionClass), OptionalArg: GridEntityType - Runs after MC_GRID_HURT_DAMAGE."
     },
     "MC_HUD_UPDATE": {
       "value": "1020",
@@ -58,7 +54,7 @@
     },
     "MC_MAIN_MENU_RENDER": {
       "value": "1023",
-      "comment": "Callback has no arguments. Called after HUD render."
+      "comment": "Callback has no arguments. Called after everything else has rendered on the main menu."
     },
     "MC_PRE_SFX_PLAY": {
       "value": "1030",
@@ -386,7 +382,7 @@
     },
     "MC_POST_TRIGGER_COLLECTIBLE_REMOVED": {
       "value": "1095",
-      "comment": "(EntityPlayer Player, CollectibleType ItemID, boolean RemoveFromPlayerForm, boolean FromWisp), Optional Arg: CollectibleType. Called after a collectible is removed from the player."
+      "comment": "(EntityPlayer Player, CollectibleType ItemID, boolean RemoveFromPlayerForm, boolean FromWispOrInnate), Optional Arg: CollectibleType. Called after a collectible is removed from the player."
     },
     "MC_POST_TRIGGER_TRINKET_ADDED": {
       "value": "1096",
@@ -1358,15 +1354,51 @@
 	},
 	"MC_PRE_HISTORYHUD_RENDER": {
 		"value": "1027",
-		"comment": "X"
+		"comment": "(): boolean | table - Called before the History HUD renders. Return a table to specify the CollectibleType or TrinketType of items to skip rendering their sprites, leaving empty space instead. Inside the table, assign an array of CollectibleTypes to `HideCollectibles` and an array of TrinketTypes to `HideTrinkets`. You can then use the HistoryHUD class to help you render in that space (preferably in `MC_POST_HISTORYHUD_RENDER`). "
 	},
 	"MC_POST_HISTORYHUD_RENDER": {
 		"value": "1028",
-		"comment": "X"
+		"comment": "Callback has no arguments. Called after the Hisotry HUD renders."
 	},
 	"MC_POST_HISTORYHUD_RECOMPUTE": {
 		"value": "1029",
-		"comment": "X"
+		"comment": "Callback has no arguments. Runs when the contents of the HistoryHUD are refreshed (typically when some item is added or removed)."
+	},
+	"MC_POST_TRIGGER_COLLECTIBLE_ADDED": {
+		"value": "1053",
+		"comment": "(EntityPlayer Player, CollectibleType Item, boolean FirstTimePickingUp, boolean IsWispOrInnate), Optional Arg: CollectibleType - Compared to `MC_POST_ADD_COLLECTIBLE`, this is called for real collectibles, wisps, and REPENTOGON's innate items."
+	},
+	"MC_POST_ADD_INNATE_COLLECTIBLE": {
+		"value": "1054",
+		"comment": "(EntityPlayer Player, CollectibleType Item, string GroupKey, int Amount, int Duration), Optional Arg: CollectibleType | string GroupKey - Called whenever an innate colletible is added; directly or from a wisp."
+	},
+	"MC_POST_ADD_INNATE_TRINKET": {
+		"value": "1055",
+		"comment": "(EntityPlayer Player, TrinketType Trinket, string GroupKey, int Amount, int Duration), Optional Arg: TrinketType | string GroupKey - Called whenever an innate trinket is added."
+	},
+	"MC_POST_REMOVE_INNATE_COLLECTIBLE": {
+		"value": "1056",
+		"comment": "(EntityPlayer Player, CollectibleType Item, string GroupKey, int Amount, bool ExpiredDuration), Optional Arg: CollectibleType | string GroupKey - Called whenever an innate collectible is removed."
+	},
+	"MC_POST_REMOVE_INNATE_TRINKET": {
+		"value": "1057",
+		"comment": "(EntityPlayer Player, TrinketType Trinket, string GroupKey, int Amount, bool ExpiredDuration), Optional Arg: TrinketType | string GroupKey - Called whenever an innate trinket is removed."
+	},
+	"MC_PRE_BRIMSTONE_SNEEZE": {
+		"value": "1036",
+		"comment": "(Entity Source, Vector Diration, number DamageScale) - Called before Hemoptysis / Tainted Azazel's sneeze attack."
+	},
+	"MC_POST_BRIMSTONE_SNEEZE": {
+		"value": "1037",
+		"comment": "(Entity Source, Vector Diration, number DamageScale) - Called after Hemoptysis / Tainted Azazel's sneeze attack."
+	},
+	"MC_PRE_GRID_HURT": {
+		"value": "1017",
+		"comment": "(GridEntity Grid, integer Damage, EntityRef Source): boolean | intger, Optional Arg: GridEntityType - Called before a GridEntityPoop or GridEntityTNT takes damage. Return an integer to modify the damage, or `false` to cancel it"
+	},
+	"MC_POST_GRID_HURT ": {
+		"value": "1018",
+		"comment": "(Entity Source, Vector Diration, number DamageScale), Optional Arg: GridEntityType - Called after a GridEntityPoop or GridEntityTNT successfully takes damage."
 	}
   },
   "Renderer": {
@@ -5436,5 +5468,58 @@
     "VISIBLE":" 1 << 0",
     "SHOW_LOCK":" 1 << 1",
     "SHOW_ICON":" 1 << 2"
+  },
+  "PillEffectSubClass": {
+    "NEUTRAL": "0",
+    "POSITIVE": "1",
+    "GOOD": "1",
+    "NEGATIVE": "2",
+    "BAD": "2"
+  },
+  "CompletionStatus": {
+    "NOT_DONE": "0",
+    "NONE": "0",
+    "NORMAL": "1",
+    "HARD": "2"
+  },
+  "ChargeType": {
+  	"NORMAL": "0",
+  	"TIMED": "1",
+  	"SPECIAL": "2"
+  },
+  "EnemyTargetFlags": {
+    "CAN_CHANGE_TARGET": {
+		"value": "1 << 0",
+		"comment": "Allow switching to a better target even if we already have one"
+	},
+    "AVOID_CLOSE_ENEMIES": {
+		"value": "1 << 1",
+		"comment": "Don't prioritize enemies close to our owner"
+	},
+    "PRIORITIZE_HIGH_HP": {
+		"value": "1 << 2",
+		"comment": "Prioritize enemies with higher HP"
+	},
+    "PRIORITIZE_LOW_HP": {
+		"value": "1 << 3",
+		"comment": "Prioritize enemies with lower HP"
+	},
+    "DEPRIORITIZE_CURRENT_TARGET": {
+		"value": "1 << 4",
+		"comment": "Give lower priority to our current target (makes switching targets more likely)"
+	}
+  },
+  "TrinketSlot": {
+	"PRIMARY": "0",
+	"SECONDARY": "1",
+	"MOMS_PURSE": "1",
+	"BELLY_BUTTON": "1"
+  },
+  "BlendEquation": {
+    "FUNC_ADD": "0",
+    "FUNC_SUBTRACT": "1",
+    "FUNC_REVERSE_SUBTRACT": "2",
+    "MIN": "3",
+    "MAX": "4"
   }
 }

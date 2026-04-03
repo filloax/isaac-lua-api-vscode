@@ -1,5 +1,7 @@
 ---@class DestinationQuad
-local DestinationQuad = {}
+local DestinationQuad_Local = {}
+
+_G.DestinationQuad = {}
 
 ---Constructs a new destination quad object.
 ---
@@ -12,59 +14,72 @@ local DestinationQuad = {}
 function _G.DestinationQuad(topLeft, topRight, bottomLeft, bottomRight)
 end
 
----@return Vector
-function DestinationQuad:GetBottomLeft()
+---@param topLeft Vector
+---@param bottomRight Vector
+---@return DestinationQuad
+function _G.DestinationQuad.NewFromBounds(topLeft, bottomRight)
+end
+
+---@param topLeft Vector
+---@param width number
+---@param height number
+---@return DestinationQuad
+function _G.DestinationQuad.NewFromRectangle(topLeft, width, height)
 end
 
 ---@return Vector
-function DestinationQuad:GetBottomRight()
+function DestinationQuad_Local:GetBottomLeft()
 end
 
 ---@return Vector
-function DestinationQuad:GetTopLeft()
+function DestinationQuad_Local:GetBottomRight()
 end
 
 ---@return Vector
-function DestinationQuad:GetTopRight()
+function DestinationQuad_Local:GetTopLeft()
+end
+
+---@return Vector
+function DestinationQuad_Local:GetTopRight()
 end
 
 ---@param vector Vector
-function DestinationQuad:SetBottomLeft(vector)
+function DestinationQuad_Local:SetBottomLeft(vector)
 end
 
 ---@param vector Vector
-function DestinationQuad:SetBottomRight(vector)
+function DestinationQuad_Local:SetBottomRight(vector)
 end
 
 ---@param vector Vector
-function DestinationQuad:SetTopLeft(vector)
+function DestinationQuad_Local:SetTopLeft(vector)
 end
 
 ---@param vector Vector
-function DestinationQuad:SetTopRight(vector)
+function DestinationQuad_Local:SetTopRight(vector)
 end
 
 ---@return DestinationQuad
-function DestinationQuad:Copy()
+function DestinationQuad_Local:Copy()
 end
 
 ---@param offset Vector
-function DestinationQuad:Translate(offset)
+function DestinationQuad_Local:Translate(offset)
 end
 
 ---@param scale Vector
 ---@param anchor Vector
-function DestinationQuad:Scale(scale, anchor)
+function DestinationQuad_Local:Scale(scale, anchor)
 end
 
 ---@param rotation number @Rotation is in degrees.
 ---@param anchor Vector
-function DestinationQuad:Rotate(rotation, anchor)
+function DestinationQuad_Local:Rotate(rotation, anchor)
 end
 
 ---@param shear Vector
 ---@param anchor Vector
-function DestinationQuad:Shear(shear, anchor)
+function DestinationQuad_Local:Shear(shear, anchor)
 end
 
 ---Applies a 2x3 render matrix to the image, effectively applying a `Translate`, `Scale`, `Rotate` and `Shear` all at once.
@@ -72,10 +87,10 @@ end
 ---The table must have at least 2 rows, each with at least 3 columns.
 ---@param renderMatrix table
 ---@param anchor Vector
-function DestinationQuad:ApplyMatrix(renderMatrix, anchor)
+function DestinationQuad_Local:ApplyMatrix(renderMatrix, anchor)
 end
 
 ---@param flipX boolean
 ---@param flipY boolean
-function DestinationQuad:Flip(flipX, flipY)
+function DestinationQuad_Local:Flip(flipX, flipY)
 end

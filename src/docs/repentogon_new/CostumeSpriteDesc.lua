@@ -5,10 +5,10 @@ local CostumeSpriteDesc = {}
 function CostumeSpriteDesc:CanOverwriteColor() end
 
 ---@return SkinColor
-function CostumeSpriteDesc:GetBodyColor() end
+function CostumeSpriteDesc:GetSkinColor() end
 
 ---@return SkinColor
-function CostumeSpriteDesc:GetHeadColor() end
+function CostumeSpriteDesc:GetDefaultSkinColor() end
 
 ---@return ItemConfigItem
 function CostumeSpriteDesc:GetItemConfig() end
