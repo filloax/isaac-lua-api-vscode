@@ -1,5 +1,5 @@
 ---@class CppList
----@field Size integer
+---@field Size integer @Can use .Size or a # as if it were a table to get the total number of entries in the array.
 local CppList = {}
 
 -- missing metamethod len as not supported for now
@@ -45,7 +45,7 @@ end
 local CardConfigList = {}
 
 ---@param idx integer
----@return ItemConfigCard
+---@return userdata @Does not return ItemConfigCard, instead being unusable userdata.
 function CardConfigList:Get(idx)
 end
 
@@ -69,7 +69,7 @@ end
 local ItemConfigList = {}
 
 ---@param idx integer
----@return ItemConfigItem
+---@return userdata @Does not return ItemConfigItem, instead being unusable userdata.
 function ItemConfigList:Get(idx)
 end
 
@@ -77,7 +77,7 @@ end
 local PillConfigList = {}
 
 ---@param idx integer
----@return ItemConfigPillEffect
+---@return userdata @Does not return ItemConfigPillEffect, instead being unusable userdata.
 function PillConfigList:Get(idx)
 end
 

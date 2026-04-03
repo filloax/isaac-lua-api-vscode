@@ -27,7 +27,7 @@ end
 function ItemConfig_Class:GetCollectible(ID)
 end
 
----@return userdata
+---@return ItemConfigList
 function ItemConfig_Class:GetCollectibles()
 end
 
