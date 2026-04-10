@@ -402,19 +402,22 @@ end
 ---Can only be set during mod load.
 ---
 ---**NOTE** Does not prevent the UseActiveItem logic from running.
-function Isaac.ReworkCollectible()
+---@param collectible CollectibleType
+function Isaac.ReworkCollectible(collectible)
 end
 
 ---Marks the player's birthright as reworked, making the game not execute the item's original passive logic.
 ---
 ---Can only be set during mod load.
-function Isaac.ReworkBirthright()
+---@param playerType PlayerType
+function Isaac.ReworkBirthright(playerType)
 end
 
 ---Marks the trinket as reworked, making the game not execute the trinket's original passive logic.
 ---
 ---Can only be set during mod load.
-function Isaac.ReworkTrinket()
+---@param trinket TrinketType
+function Isaac.ReworkTrinket(trinket)
 end
 
 ---Renders item collection sprite from collection menu/death screen.
