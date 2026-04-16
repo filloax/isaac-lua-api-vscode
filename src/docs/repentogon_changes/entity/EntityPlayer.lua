@@ -241,7 +241,7 @@ end
 function EntityPlayer:GetD8SpeedModifier()
 end
 
-----For Experimental Treatment and for stat boosts stat boosts from Void. Modifier is applied to the player as flat damage.
+---For Experimental Treatment and for stat boosts stat boosts from Void. Modifier is applied to the player as flat damage.
 ---@return integer @Experimental Treatment adds `-1`, `0` or `1` depending on the damage rolled. Void may randomly add `1`.
 function EntityPlayer:GetDamageModifier()
 end
@@ -500,7 +500,7 @@ end
 function EntityPlayer:GetSpecialGridCollision(position)
 end
 
-----For Experimental Treatment and for stat boosts from Void. Adds `0.2 * modifier` to the player's MoveSpeed.
+---For Experimental Treatment and for stat boosts from Void. Adds `0.2 * modifier` to the player's MoveSpeed.
 ---@return integer @Experimental Treatment adds `-1`, `0` or `1` depending on the speed rolled. Void may randomly add `1`.
 function EntityPlayer:GetSpeedModifier()
 end
@@ -819,7 +819,7 @@ end
 function EntityPlayer:SetEveSumptoriumCharge(chargeNumber)
 end
 
-----For Experimental Treatment and for stat boosts stat boosts from Void. Grants `0.5 * modifier` flat tears per second to the player.
+---For Experimental Treatment and for stat boosts stat boosts from Void. Grants `0.5 * modifier` flat tears per second to the player.
 ---@param modifier integer @Experimental Treatment adds `-1`, `0` or `1` depending on the fire delay rolled. Void may randomly add `1`.
 function EntityPlayer:SetFireDelayModifier(modifier)
 end
@@ -850,7 +850,7 @@ end
 function EntityPlayer:SetLaserColor(color)
 end
 
-----For Experimental Treatment and for stat boosts stat boosts from Void. The modifier is added directly to the player's Luck stat.
+---For Experimental Treatment and for stat boosts stat boosts from Void. The modifier is added directly to the player's Luck stat.
 ---@param modifier integer @Experimental Treatment adds `-1`, `0` or `1` depending on the luck rolled. Void may randomly add `1`.
 function EntityPlayer:SetLuckModifier(modifier)
 end
@@ -899,12 +899,12 @@ end
 function EntityPlayer:SetRedStewBonusDuration(duration)
 end
 
-----For Experimental Treatment and for stat boosts stat boosts from Void. Adds `0.2 * modifier` to the player's ShotSpeed.
+---For Experimental Treatment and for stat boosts stat boosts from Void. Adds `0.2 * modifier` to the player's ShotSpeed.
 ---@param modifier integer @Experimental Treatment adds `-1`, `0` or `1` depending on the shot speed rolled. Void may randomly add `1`.
 function EntityPlayer:SetShotSpeedModifier(modifier)
 end
 
-----For Experimental Treatment and for stat boosts stat boosts from Void. Adds `0.2 * modifier` to the player's MoveSpeed.
+---For Experimental Treatment and for stat boosts stat boosts from Void. Adds `0.2 * modifier` to the player's MoveSpeed.
 ---@param modifier integer @Experimental Treatment adds `-1`, `0` or `1` depending on the speed rolled. Void may randomly add `1`.
 function EntityPlayer:SetSpeedModifier(modifier)
 end
@@ -916,7 +916,7 @@ end
 function EntityPlayer:SetTearPoisonDamage(damage)
 end
 
-----For Experimental Treatment and for stat boosts stat boosts from Void. Adds `2.5 * modifier` to the player's TearRange.
+---For Experimental Treatment and for stat boosts stat boosts from Void. Adds `2.5 * modifier` to the player's TearRange.
 ---@param modifier integer @Experimental Treatment adds `-1`, `0` or `1` depending on the range rolled. Void may randomly add `1`.
 function EntityPlayer:SetTearRangeModifier(modifier)
 end
