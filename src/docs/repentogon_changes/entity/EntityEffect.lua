@@ -14,27 +14,52 @@ end
 function _G.EntityEffect.CreateLootPreview(position, owner, effect)
 end
 
----Only works for `EffectVariant.PLAYER_CREEP_HOLYWATER_TRAIL`
+---Available for the following effects:
+---
+---* `EffectVariant.PLAYER_CREEP_HOLYWATER_TRAIL`
+---* `EffectVariant.BRIMSTONE_BALL`
+---* `EffectVariant.TECH_DOT`
+---* `EffectVariant.CHAIN_LIGHTNING`
 ---@return TearFlags
-function EntityEffect_Local:GetAquariusTearFlags()
+function EntityEffect_Local:GetTearFlags()
 end
 
----Only works for `EffectVariant.PLAYER_CREEP_HOLYWATER_TRAIL`
+---Available for the following effects:
+---
+---* `EffectVariant.PLAYER_CREEP_HOLYWATER_TRAIL`
+---* `EffectVariant.BRIMSTONE_BALL`
+---* `EffectVariant.TECH_DOT`
+---* `EffectVariant.CHAIN_LIGHTNING`
 ---@param tearFlags TearFlags
-function EntityEffect_Local:SetAquariusTearFlags(tearFlags)
+function EntityEffect_Local:SetTearFlags(tearFlags)
 end
 
----Only works for `EffectVariant.PLAYER_CREEP_HOLYWATER_TRAIL`
+---Available for the following effects:
+---
+---* `EffectVariant.PLAYER_CREEP_HOLYWATER_TRAIL`
+---* `EffectVariant.BRIMSTONE_BALL`
+---* `EffectVariant.TECH_DOT`
+---* `EffectVariant.CHAIN_LIGHTNING`
 ---@param tearFlags TearFlags
-function EntityEffect_Local:AddAquariusTearFlags(tearFlags)
+function EntityEffect_Local:AddTearFlags(tearFlags)
 end
 
----Only works for `EffectVariant.PLAYER_CREEP_HOLYWATER_TRAIL`
+---Available for the following effects:
+---
+---* `EffectVariant.PLAYER_CREEP_HOLYWATER_TRAIL`
+---* `EffectVariant.BRIMSTONE_BALL`
+---* `EffectVariant.TECH_DOT`
+---* `EffectVariant.CHAIN_LIGHTNING`
 ---@param tearFlags TearFlags
 ---@return boolean
-function EntityEffect_Local:HasAquariusTearFlags(tearFlags)
+function EntityEffect_Local:HasTearFlags(tearFlags)
 end
 
----Only works for `EffectVariant.PLAYER_CREEP_HOLYWATER_TRAIL`
-function EntityEffect_Local:ClearAquariusTearFlags()
+---Available for the following effects:
+---
+---* `EffectVariant.PLAYER_CREEP_HOLYWATER_TRAIL`
+---* `EffectVariant.BRIMSTONE_BALL`
+---* `EffectVariant.TECH_DOT`
+---* `EffectVariant.CHAIN_LIGHTNING`
+function EntityEffect_Local:ClearTearFlags()
 end
