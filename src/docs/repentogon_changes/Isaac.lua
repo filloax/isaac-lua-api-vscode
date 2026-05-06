@@ -427,3 +427,12 @@ end
 ---@param color? Color @default: `Color.Default`
 function Isaac.RenderCollectionItem(itemId, pos, scale, color)
 end
+
+---Transfers Render coordinates into World coordinates.
+---
+---Unlike `Isaac.ScreenToWorld` (which transfers Window coordinates into World coordinates), this is the true inverse of `Isaac.WorldToScreen` (which transfers World coordinates into Render coordinates).
+---
+---More information can be obtained on [repentogon.com](https://repentogon.com/Isaac.html#rendertoworld)
+---@param pos Vector
+function Isaac.RenderToWorld(pos)
+end
