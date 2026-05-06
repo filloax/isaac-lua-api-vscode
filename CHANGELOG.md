@@ -1,5 +1,19 @@
 # Change Log
 
+* [1.14.0]
+	- Support for REPENTOGON 1.1.2
+	- Add RGON's Font overload
+	- Add missing RGON callbacks MC_POST_BACKDROP_CHANGE, MC_POST_BOMB_DAMAGE, MC_POST_BOMB_TEARFLAG_EFFECTS, MC_PRE_BOSS_SELECT, MC_PRE_FAMILIAR_CAN_CHARM
+	- Update CompletionType enum
+	- Add missing Dimension param in Level:CanPlaceRoom
+	- Fix GridEntity WaterClipFlag functions being on vanilla instead of RGON
+	- Add all Repentance+ additions to the vanilla API
+	- Add missing EntityEffect.CreateLootPreview
+	- Separate local and global functions for EntityEffect
+	- Add missing customVarData param on EntityPlayer:UseActiveItem
+	- Add missing param to Isaac.Rework[Collectible/Birthright/Trinket] functions
+	- Miscellaneous minor tweaks to various param values and comments
+
 * [1.13.2]
 	- Support for REPENTOGON 1.1.1
 	- Add REPENTOGON's Room:ClearBossHazards
