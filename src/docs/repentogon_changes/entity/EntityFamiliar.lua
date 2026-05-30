@@ -71,7 +71,8 @@ end
 
 ---@param aimDirection Vector
 ---@param direction Direction
----@return Vector?
+---@return Vector? @Returns the target's position if it exists
+---@overload fun(self, aimDirection: Vector | nil, direction: Direction | nil, targetPos: Vector | nil): boolean, {[1]: Vector, [2]: Direction, [3]: Vector}? @Boolean returns `true` if the target exists, and a table of the changed AimDirection, Direction, and TargetPos.
 function EntityFamiliar:TryAimAtMarkedTarget(aimDirection, direction)
 end
 
