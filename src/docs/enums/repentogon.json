@@ -262,7 +262,7 @@
     },
     "MC_POST_PLAYER_NEW_LEVEL": {
       "value": "1078",
-      "comment": "(EntityPlayer Player, boolean FromPlayerUpdate, boolean IsPostLevelInitFinished), Optional Arg: PlayerType - Called after entering a new level or starting/continuing a run. `IsPostLevelInitFinished` will be `false` when starting/continuing a run, `true` otherwise. Useful for player-specific effects on a new level."
+      "comment": "(EntityPlayer Player, boolean FromPlayerUpdate, boolean IsPostLevelInitFinished), Optional Arg: PlayerType - Called for each player when triggering a \"On new level\" effect. `FromPlayerUpdate` is true when triggered outside of a stage transition, such as flipping with Tainted Lazarus. `IsPostLevelInitFinished` will be `false` when starting/continuing a run, `true` otherwise."
     },
     "MC_PRE_REPLACE_SPRITESHEET": {
       "value": "1116",
