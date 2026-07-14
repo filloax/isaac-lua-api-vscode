@@ -194,7 +194,7 @@
     },
 	"MC_POST_PLAYER_TRIGGER_ROOM_CLEAR": {
 		"value": "1138",
-		"comment": "(EntityPlayer Player), Optional Arg: PlayerVariant. Called after all room clear-related effects for a player is triggered successfully. This also accounts for challenge waves. Return `false` to cancel trigger effects."
+		"comment": "(EntityPlayer Player), Optional Arg: PlayerVariant. Called after all room clear-related effects for a player is triggered successfully. This also accounts for challenge waves."
 	},
     "MC_PRE_FAMILIAR_RENDER": {
       "value": "1080",
