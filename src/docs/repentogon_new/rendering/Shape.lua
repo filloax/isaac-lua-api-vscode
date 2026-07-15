@@ -1,6 +1,11 @@
 ---@class Shape
 local Shape = {}
 
+---@param position Vector
+---@param size number
+function Shape:Circle(position, size)
+end
+
 ---TODO: Document me!
 ---@return integer
 function Shape:GetTimeout()

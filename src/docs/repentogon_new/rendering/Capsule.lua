@@ -8,12 +8,11 @@ local Capsule = {}
 function Capsule:Collide(capsule2, vec)
 end
 
----TODO: Document me!
 ---@return Vector 
 function Capsule:GetDirection()
 end
 
----TODO: Document me!
+---Returns the `size` of the capsule (consistent with size in both constructors)
 ---@return number 
 function Capsule:GetF1()
 end
@@ -23,19 +22,18 @@ end
 function Capsule:GetF2()
 end
 
----TODO: Returns the capsule's position.
 ---@return Vector 
 function Capsule:GetPosition()
 end
 
----TODO: Document me!
+---Returns the starting position of the capsule (can be set with `position`)
 ---@return Vector 
-function Capsule:GetV2()
+function Capsule:GetVec2()
 end
 
----TODO: Document me!
+---Returns the ending position of the capsule (can be set with `targetposition`)
 ---@return Vector 
-function Capsule:GetV3()
+function Capsule:GetVec3()
 end
 
 ---@param position Vector
