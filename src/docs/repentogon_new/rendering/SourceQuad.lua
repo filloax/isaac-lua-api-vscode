@@ -8,20 +8,24 @@ _G.SourceQuad = {}
 ---@param topRight Vector
 ---@param bottomLeft Vector
 ---@param bottomRight Vector
-function _G.SourceQuad(topLeft, topRight, bottomLeft, bottomRight)
+---@param uv boolean?
+---@return SourceQuad
+function _G.SourceQuad(topLeft, topRight, bottomLeft, bottomRight, uv)
 end
 
 ---@param topLeft Vector
 ---@param bottomRight Vector
+---@param uv boolean?
 ---@return SourceQuad
-function _G.SourceQuad.NewFromBounds(topLeft, bottomRight)
+function _G.SourceQuad.NewFromBounds(topLeft, bottomRight, uv)
 end
 
 ---@param topLeft Vector
 ---@param width number
 ---@param height number
+---@param uv boolean?
 ---@return SourceQuad
-function _G.SourceQuad.NewFromRectangle(topLeft, width, height)
+function _G.SourceQuad.NewFromRectangle(topLeft, width, height, uv)
 end
 
 ---Specialized version of Copy for `SourceQuad`.
