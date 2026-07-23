@@ -1,5 +1,12 @@
 # Change Log
 
+* [1.14.1]
+	- Support for REPENTOGON 1.1.2d and 1.1.2de
+	- Added the overload for EntiyFamiliar:TryAimAtMarkedTarget
+	- Fixed incorrent names for Capsule:GetVec2 and Capsule:GetVec3
+	- Added Shape:Circle
+	- Any functions with an "ignoreModifiers" argument has been given a comment stating how it functions.
+
 * [1.14.0]
 	- Support for REPENTOGON 1.1.2
 	- Add RGON's Font overload
