@@ -36,15 +36,15 @@ function EntityPlayer:GetMultiShotPositionVelocity(LoopIndex, Weapon, ShotDirect
 end
 
 ---@param Type CollectibleType
----@param IgnoreModifiers? boolean @default: `false`
+---@param IgnoreModifiers? boolean @default: `false`. If set to `true`, only counts collectibles the player actually owns and ignores effects granted by other items and if its blocked by effects such as the curse mist.
 ---@return boolean
 function EntityPlayer:HasCollectible(Type, IgnoreModifiers)
 end
 
 ---@param Type CollectibleType
----@param OnlyCountTrueItems? boolean @default: `false`
+---@param IgnoreModifiers? boolean @default: `false`. If set to `true`, only counts collectibles the player actually owns and ignores effects granted by other items and if its blocked by effects such as the curse mist.
 ---@return integer
-function EntityPlayer:GetCollectibleNum(Type, OnlyCountTrueItems)
+function EntityPlayer:GetCollectibleNum(Type, IgnoreModifiers)
 end
 
 ---@param Item CollectibleType

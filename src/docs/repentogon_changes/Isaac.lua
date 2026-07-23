@@ -436,3 +436,9 @@ end
 ---@param pos Vector
 function Isaac.RenderToWorld(pos)
 end
+
+---Similar to `Isaac.LoadModData`, but lets you read the saveX.dat file from any existing mod data folder, even if that mod is not currently enabled.
+---@param name string
+---@return string
+function Isaac.LoadModDataFromFolder(name)
+end

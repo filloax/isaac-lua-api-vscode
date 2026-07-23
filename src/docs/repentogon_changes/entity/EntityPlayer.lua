@@ -1192,17 +1192,17 @@ function EntityPlayer:SetInnateTrinketGroup(groupKey, newCounts, addCostume)
 end
 
 ---@param Type CollectibleType
----@param IgnoreModifiers? boolean @default: `false`
----@param IgnoreSpoof? boolean @default: `false`. Ignores innate items when set to true.
+---@param IgnoreModifiers? boolean @default: `false`. If set to `true`, only counts collectibles the player actually owns and ignores effects granted by other items and if its blocked by effects such as the curse mist.
+---@param IgnoreSpoof? boolean @default: `false`. Ignores innate items when set to `true`.
 ---@return boolean
 function EntityPlayer:HasCollectible(Type, IgnoreModifiers, IgnoreSpoof)
 end
 
 ---@param Type CollectibleType
----@param OnlyCountTrueItems? boolean @default: `false`
----@param IgnoreSpoof? boolean @default: `false`. Ignores innate items when set to true.
+---@param IgnoreModifiers? boolean @default: `false`. If set to `true`, only counts collectibles the player actually owns and ignores effects granted by other items and if its blocked by effects such as the curse mist.
+---@param IgnoreSpoof? boolean @default: `false`. Ignores innate items when set to `true`.
 ---@return integer
-function EntityPlayer:GetCollectibleNum(Type, OnlyCountTrueItems, IgnoreSpoof)
+function EntityPlayer:GetCollectibleNum(Type, IgnoreModifiers, IgnoreSpoof)
 end
 
 ---Returns `true` if you have a golden variant of the provided `TrinketType`.
@@ -1251,6 +1251,15 @@ end
 ---|-1 # Left eye
 ---|1 # Right eye
 function EntityPlayer:GetTearDisplacement()
+end
+
+---Sets the player's TearDisplacement value, which represents which eye the player is shooting from.
+---
+---Note that the game will typically alternate this value BEFORE shooting a tear.
+---@param value integer
+---|-1 # Left eye
+---|1 # Right eye
+function EntityPlayer:SetTearDisplacement(value)
 end
 
 ---Add CustomCacheTag(s) to be evaluated next time EvaluateItems runs (which is right now, if the optional boolean is passed).

@@ -815,7 +815,7 @@ function EntityPlayer:HasTimedItem()
 end
 
 ---@param Type TrinketType
----@param IgnoreModifiers? boolean @default: `false`
+---@param IgnoreModifiers? boolean @default: `false`. If set to `true`, only counts trinkets the player actually owns and ignores effects granted by other items and if its blocked by effects such as the curse mist.
 ---@return boolean
 function EntityPlayer:HasTrinket(Type, IgnoreModifiers)
 end
@@ -907,7 +907,7 @@ function EntityPlayer:RemoveBlueSpider()
 end
 
 ---@param Type CollectibleType
----@param IgnoreModifiers? boolean @default: `false`
+---@param IgnoreModifiers? boolean @default: `false`. Ignores collectible effects granted by other items (i.e. Void).
 ---@param ActiveSlot? ActiveSlot @default: `ActiveSlot.SLOT_PRIMARY`
 ---@param RemoveFromPlayerForm? boolean @default: `true`
 function EntityPlayer:RemoveCollectible(Type, IgnoreModifiers, ActiveSlot, RemoveFromPlayerForm)

@@ -372,10 +372,6 @@
       "value": "1152",
       "comment": "(Entity, Vector Offset) - Called before the lighting of an entity is rendered. Return a Vector to modify render offset or `false` to cancel rendering."
     },
-    "MC_PRE_PLAYER_APPLY_INNATE_COLLECTIBLE_NUM": {
-      "value": "1092",
-      "comment": "(integer ModCount, EntityPlayer Player, CollectibleType Type, boolean OnlyCountTrueItems): integer - Called when getting the amount of innate items on the player. Return an integer to modify how many of a specific innate item the player has."
-    },
     "MC_PRE_MUSIC_PLAY_JINGLE": {
       "value": "1094",
       "comment": "(Music MusicID): Music | boolean, Optional Arg: Music - Called before a music jingle is played. Return `Music` to change the track or `false` to cancel the track."
@@ -910,7 +906,11 @@
     },
     "MC_PRE_PICKUP_GET_LOOT_LIST": {
       "value": "1334",
-      "comment": "(EntityPickup Pickup, boolean ShouldAdvance): LootList - Called before the pickup determines its loot content. Return `LootList` to change loot content."
+      "comment": "(EntityPickup Pickup, boolean ShouldAdvance, RNG, EntityPlayer Player): LootList - Called before the pickup determines its loot content. Accepts a `LootList` to completely replace loot content. If `ShouldAdvance` is `false`, the loot is being checked (such as for a Guppy's Eye preview) but the RNG should not be advanced. The provided RNG (the DropRNG of the entity) will be reset at the end of the callback to preserve the original seed, so you can use the provided RNG for easy consistent results between loot previews and when the loot actually spawns."
+    },
+    "MC_POST_PICKUP_GET_LOOT_LIST": {
+      "value": "1336",
+      "comment": "(EntityPickup Pickup, boolean ShouldAdvance, RNG, EntityPlayer Player): LootList - Called after the pickup determines its loot content. The provided `LootList` can be modified, so this is a good place to make small modifications such as adding to the loot. If `ShouldAdvance` is `false`, the loot is being checked (such as for a Guppy's Eye preview) but the RNG should not be advanced. The provided RNG (the DropRNG of the entity) will be reset at the end of the callback to preserve the original seed, so you can use the provided RNG for easy consistent results between loot previews and when the loot actually spawns."
     },
     "MC_PRE_PICKUP_UPDATE_GHOST_PICKUPS": {
       "value": "1335",
@@ -1170,23 +1170,23 @@
     },
     "MC_PRE_PLAYER_ADD_COSTUME": {
       "value": "1281",
-      "comment": "(ItemConfigItem itemConfig, EntityPlayer Player, boolean ItemStateOnly): ItemConfigItem | boolean - Called before the costume is added to the player. Return `ItemConfigItem` to replace the costume or `true` to cancel adding it entirely."
+      "comment": "(ItemConfigItem itemConfig, EntityPlayer Player, boolean ItemStateOnly): ItemConfigItem | boolean, Optional Arg: ItemConfigItem - Called before the costume is added to the player. Return `ItemConfigItem` to replace the costume or `true` to cancel adding it entirely."
     },
     "MC_PRE_PLAYER_REMOVE_COSTUME": {
       "value": "1282",
-      "comment": "(ItemConfigItem itemConfig, EntityPlayer Player): boolean - Called before the costume is removed from the player. Return `true` to cancel the removal."
+      "comment": "(ItemConfigItem itemConfig, EntityPlayer Player): boolean, Optional Arg: ItemConfigItem - Called before the costume is removed from the player. Return `true` to cancel the removal."
     },
     "MC_POST_PLAYER_ADD_COSTUME": {
       "value": "1283",
-      "comment": "(ItemConfigItem itemConfig, EntityPlayer Player, boolean ItemStateOnly) - Called after the costume is added to the player successfully."
+      "comment": "(ItemConfigItem itemConfig, EntityPlayer Player, boolean ItemStateOnly), Optional Arg: ItemConfigItem - Called after the costume is added to the player successfully."
     },
     "MC_POST_PLAYER_REMOVE_COSTUME": {
       "value": "1284",
-      "comment": "(ItemConfigItem itemConfig, EntityPlayer Player): boolean - Called after the costume is removed from the player successfully."
+      "comment": "(ItemConfigItem itemConfig, EntityPlayer Player): boolean, Optional Arg: ItemConfigItem - Called after the costume is removed from the player successfully."
     },
-    "MC_POST_FORCE_PILL_EFFECT": {
+    "MC_POST_FORCE_ADD_PILL_EFFECT": {
       "value": "1129",
-      "comment": "(PillEffect PillEffectID, PillColor PillColorID) - TODO: Document me!"
+      "comment": "(PillEffect PillEffectID, PillColor PillColorID) - Called after `ItemPool:ForceAddPillEffect` is used to forcibly add a pill effect to the current pill pool.`"
     },
     "MC_EVALUATE_CUSTOM_CACHE" : {
       "value": "1224",
@@ -1399,6 +1399,14 @@
 	"MC_POST_GRID_HURT ": {
 		"value": "1018",
 		"comment": "(Entity Source, Vector Diration, number DamageScale), Optional Arg: GridEntityType - Called after a GridEntityPoop or GridEntityTNT successfully takes damage."
+	},
+	"MC_PRE_SHUFFLE_COSTUMES ": {
+		"value": "1494",
+		"comment": "(EntityPlayer Player, integer seed): boolean, Optional Arg: PlayerType - Called when shuffling costumes with `EntityPlayer:ShuffleCostumes`. Return `false` to cancel the shuffle."
+	},
+	"MC_POST_SHUFFLE_COSTUMES ": {
+		"value": "1495",
+		"comment": "(EntityPlayer Player, integer seed), Optional Arg: PlayerType - Called when shuffling costumes with `EntityPlayer:ShuffleCostumes`."
 	}
   },
   "Renderer": {
@@ -5521,5 +5529,9 @@
     "FUNC_REVERSE_SUBTRACT": "2",
     "MIN": "3",
     "MAX": "4"
+  },
+  "RoomGroup": {
+    "GROUP_NONE": "-1",
+	"GROUP_ULTRA_SECRET": "99"
   }
 }

@@ -52,3 +52,33 @@ end
 ---@return TrinketType
 function RoomDescriptor_RGON:GetErrorTrinketEffect()
 end
+
+---Group is only used by effects that need to randomly select a room to warp to (e.g. Teleport, Gold Pill Teleport, etc.). A room can only be selected if its group is either `RoomGroup.GROUP_NONE` or matches the current room's group.
+---
+---By default, all rooms use `RoomGroup.GROUP_NONE`. The only exception is Ultra Secret Rooms, which are assigned a different group by the game during level generation.
+---@return RoomGroup | integer
+function RoomDescriptor_RGON:GetGroup()
+end
+
+---**It is suggested to use CreateGroup instead of setting an arbitrary group.**
+---
+---Group is only used by effects that need to randomly select a room to warp to (e.g. Teleport, Gold Pill Teleport, etc.). A room can only be selected if its group is either `RoomGroup.GROUP_NONE` or matches the current room's group.
+---
+---By default, all rooms use `RoomGroup.GROUP_NONE`. The only exception is Ultra Secret Rooms, which are assigned a different group by the game during level generation.
+---@param group RoomGroup | integer
+function RoomDescriptor_RGON:SetGroup(group)
+end
+
+---Creates a new unique group id for `SetGroup`.
+---
+---**The function will error if a group with the specified name already exists.**
+---@param groupName string
+---@return integer
+function _G.RoomDescriptor.CreateGroup(groupName)
+end
+
+---Returns the group id tied to the specified name.
+---@param groupName string
+---@return integer? @Returns `nil` if the name has not been registered.
+function _G.RoomDescriptor.GetGroupByName(groupName)
+end

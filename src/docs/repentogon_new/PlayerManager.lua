@@ -3,14 +3,16 @@ _G.PlayerManager = {}
 
 ---Returns true if any player has the provided collectible.
 ---@param collectible CollectibleType
+---@param ignoreModifiers? boolean @default: `false`. If set to `true`, only counts collectibles the player actually owns and ignores effects granted by other items and if its blocked by effects such as the curse mist.
 ---@return boolean
-function PlayerManager.AnyoneHasCollectible(collectible)
+function PlayerManager.AnyoneHasCollectible(collectible, ignoreModifiers)
 end
 
 ---Returns true if any player has the provided trinket.
 ---@param trinket TrinketType
+---@param ignoreModifiers? boolean @default: `false`. If set to `true`, only counts trinkets the player actually owns and ignores effects granted by other items and if its blocked by effects such as the curse mist.
 ---@return boolean
-function PlayerManager.AnyoneHasTrinket(trinket)
+function PlayerManager.AnyoneHasTrinket(trinket, ignoreModifiers)
 end
 
 ---Returns true if any player matches the provided PlayerType.
@@ -60,8 +62,9 @@ end
 
 ---Returns the total number of the specified collectible held by all players.
 ---@param collectible CollectibleType
+---@param ignoreModifiers? boolean @default: `false`. If set to `true`, only counts collectibles the player actually owns and ignores effects granted by other items and if its blocked by effects such as the curse mist.
 ---@return integer
-function PlayerManager.GetNumCollectibles(collectible)
+function PlayerManager.GetNumCollectibles(collectible, ignoreModifiers)
 end
 
 ---Returns a table containing all players.
@@ -92,13 +95,13 @@ end
 
 ---@param playerType PlayerType
 ---@param trinketType TrinketType
----@param ignoreModifiers? boolean @default: `false`
+---@param ignoreModifiers? boolean @default: `false`. If set to `true`, only counts trinkets the player actually owns and ignores effects granted by other items and if its blocked by effects such as the curse mist.
 function PlayerManager.AnyPlayerTypeHasTrinket(playerType, trinketType, ignoreModifiers)
 end
 
 ---@param playerType PlayerType
 ---@param itemID TrinketType
----@param ignoreModifiers? boolean @default: `false`
+---@param ignoreModifiers? boolean @default: `false`. If set to `true`, only counts collectibles the player actually owns and ignores effects granted by other items and if its blocked by effects such as the curse mist.
 function PlayerManager.AnyPlayerTypeHasCollectible(playerType, itemID, ignoreModifiers)
 end
 
