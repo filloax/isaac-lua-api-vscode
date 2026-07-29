@@ -112,12 +112,13 @@ end
 ---@param collectible CollectibleType
 ---@param existingPedestal? EntityPickup @default: `nil`. If defined, the collectible will be swapped out for the dropped collectible instead of a new pedestal spawning.
 ---@param removeFromPlayerForm? boolean @default: `false`
+---@return EntityPickup?
 function EntityPlayer:DropCollectible(collectible, existingPedestal, removeFromPlayerForm)
 end
 
 ---@param index integer
 ---@param pickup? EntityPickup @default: `nil`
----@return EntityPickup
+---@return EntityPickup?
 function EntityPlayer:DropCollectibleByHistoryIndex(index, pickup)
 end
 
