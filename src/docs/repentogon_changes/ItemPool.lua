@@ -9,7 +9,7 @@ end
 
 ---Returns true if the collectible can be spawned.
 ---@param collectible CollectibleType
----@param ignoreLocked boolean If set to `true`, this function will return true for items that could appear but are locked behind achievements.
+---@param ignoreLocked? boolean If set to `true`, this function will return true for items that could appear but are locked behind achievements.
 ---@return boolean canSpawn Will still return `false` if the item was removed from the item pool or if it can't appear because other effects (Tainted Lost offensive items mechanic or NO! trinket effect).
 function ItemPool:CanSpawnCollectible(collectible, ignoreLocked)
 end
