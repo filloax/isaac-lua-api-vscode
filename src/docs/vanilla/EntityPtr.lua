@@ -1,5 +1,5 @@
 ---@class EntityPtr
----@field Ref Entity
+---@field Ref Entity?
 local EntityPtr = {}
 
 ---@param Entity Entity
