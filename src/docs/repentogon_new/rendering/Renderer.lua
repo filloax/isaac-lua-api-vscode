@@ -1,6 +1,12 @@
 ---@class Renderer
 _G.Renderer = {}
 
+---@type VertexAttributeFormat
+Renderer.VertexAttributeFormat = {}
+
+---@type ShaderType
+Renderer.ShaderType = {}
+
 ---@param filePath string @The path to the image.
 ---@return Image
 function Renderer.LoadImage(filePath)

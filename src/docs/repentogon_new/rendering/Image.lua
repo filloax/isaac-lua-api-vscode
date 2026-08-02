@@ -46,7 +46,11 @@ end
 function Image:GetTexelRegion(x, y, width, height)
 end
 
-function Image:Render()
+---@param sourceQuad SourceQuad
+---@param destinationQuad DestinationQuad
+---@param kColor KColor
+---@param color Color?
+function Image:Render(sourceQuad, destinationQuad, kColor, color)
 end
 
 ---The shaderParams are represented as a `table<string, (number | number[])>`.
