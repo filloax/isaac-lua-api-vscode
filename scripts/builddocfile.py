@@ -1,32 +1,54 @@
 """
-Merge all lua docs file from the autocomplete API repository.
-Needs `git submodule init` to have been run.
+Merge all lua docs files.
 """
 
 import json
 import os
-from typing import TextIO
+from pathlib import Path
+from typing import TextIO, TypedDict
 import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-T", "--track-files", action='store_true', help="Prints a comment at the start of the segment of each file")
 
 SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
-ROOT_DIR = os.path.abspath(os.path.join(SCRIPT_PATH, ".."))
-EMMYLUA_DIR = os.path.join(ROOT_DIR, "merge", "emmylua")
+ROOT_DIR = Path(SCRIPT_PATH).parent.absolute()
+DOCS_DIR = ROOT_DIR / "src" / "docs"
+EMMYLUA_DIR = ROOT_DIR / "merge" / "emmylua"
 
-API_DIR_VANILLA = os.path.join(ROOT_DIR, "src", "docs", "vanilla")
-API_DIR_NO_RPGN = os.path.join(ROOT_DIR, "src", "docs", "no_repentogon_only")
-API_DIR_RPGN_NEW = os.path.join(ROOT_DIR, "src", "docs", "repentogon_new")
-API_DIR_RPGN_MOD = os.path.join(ROOT_DIR, "src", "docs", "repentogon_changes")
+class Configuration(TypedDict):
+    name: str
+    fname: Path
+    sourcedirs: list[Path]
+    enumfiles: list[Path]
 
-ENUMS_VANILLA = os.path.join(ROOT_DIR, "src", "docs", "enums", "vanilla.json")
-ENUMS_REPENTOGON = os.path.join(ROOT_DIR, "src", "docs", "enums", "repentogon.json")
-
-API_OUT_NAME = os.path.join("vanilla", "repentanceapi.lua")
-API_OUT_NAME_RPGN = os.path.join("repentogon", "repentanceapi.lua")
-
-ENUMS_RELPATH = "enums.json"
+# for enums, later items overwrite earlier items
+CONFIGURATIONS: list[Configuration] = [
+    Configuration(
+        name="vanilla",
+        fname=Path("vanilla") / "repentanceapi.lua",
+        sourcedirs=[
+            DOCS_DIR / "vanilla",
+            DOCS_DIR / "no_repentogon_only",
+        ],
+        enumfiles=[
+            DOCS_DIR / "enums" / "vanilla.json",
+        ],
+    ),
+    Configuration(
+        name="repentogon",
+        fname=Path("repentogon") / "repentanceapi.lua",
+        sourcedirs=[
+            DOCS_DIR / "vanilla",
+            DOCS_DIR / "repentogon_changes",
+            DOCS_DIR / "repentogon_new",
+        ],
+        enumfiles=[
+            DOCS_DIR / "enums" / "vanilla.json",
+            DOCS_DIR / "enums" / "repentogon.json",
+        ],
+    ),
+]
 
 def get_files_relative_paths(folders):
     file_paths = {}
@@ -52,12 +74,11 @@ def merge_lua_in_dir(path: str, out: TextIO):
                 out.write(luafile.read())
                 out.write("\n\n")
 
-def create_enums_from_json(json_paths: list[str], writer: TextIO):
+def create_enums_from_json(json_paths: list[Path], writer: TextIO):
     data = {}
     for json_path in json_paths:
-        with open(json_path, 'r') as jf:
-            data2 = json.load(jf)
-            data = merge(data, data2, ignore_conflicts=True)
+        data2 = json.loads(json_path.read_text())
+        data = merge(data, data2, ignore_conflicts=True)
 
     for key in data:
         _write_enum(key, data[key], writer)
@@ -113,14 +134,14 @@ def main():
 
     os.makedirs(EMMYLUA_DIR, exist_ok=True)
 
-    sourcefiles = [
-        (API_OUT_NAME, [API_DIR_VANILLA, API_DIR_NO_RPGN], [ENUMS_VANILLA]),
-        (API_OUT_NAME_RPGN, [API_DIR_VANILLA, API_DIR_RPGN_MOD, API_DIR_RPGN_NEW], [ENUMS_VANILLA, ENUMS_REPENTOGON]),
-    ]
+    for config in CONFIGURATIONS:
+        fname = config["fname"]
+        sourcedirs = config["sourcedirs"]
+        enumfiles = config["enumfiles"]
 
-    for fname, sourcedirs, enumfiles in sourcefiles:
-        os.makedirs(os.path.dirname(os.path.join(EMMYLUA_DIR, fname)), exist_ok=True)
-        with open(os.path.join(EMMYLUA_DIR, fname), 'w') as f:
+        out_path = EMMYLUA_DIR / fname
+        os.makedirs(out_path.parent, exist_ok=True)
+        with open(out_path, 'w') as f:
             f.write("---@diagnostic disable: missing-return, duplicate-doc-alias\n\n")
             files = get_files_relative_paths(sourcedirs)
             for luafile in filter(lambda f: f.endswith(".lua"), files):
@@ -134,7 +155,7 @@ def main():
 
             f.write('\n\n-- Enums\n')
             create_enums_from_json(enumfiles, f)
-        print("Written", os.path.join(EMMYLUA_DIR, fname))
+        print("Written", out_path)
 
 if __name__ == "__main__":
     main()

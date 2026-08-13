@@ -38,4 +38,8 @@ function copyFolderRecursiveSync( source, target ) {
     }
 }
 
+
+if (!fs.existsSync("out")){
+    fs.mkdirSync("out");
+}
 copyFolderRecursiveSync(path.join("merge", "emmylua"), "out");
