@@ -15,12 +15,28 @@ SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 ROOT_DIR = Path(SCRIPT_PATH).parent.absolute()
 DOCS_DIR = ROOT_DIR / "src" / "docs"
 EMMYLUA_DIR = ROOT_DIR / "merge" / "emmylua"
+DEPTH_SEP = '    '
 
 class Configuration(TypedDict):
     name: str
     fname: Path
     sourcedirs: list[Path]
     enumfiles: list[Path]
+    callbackfiles: list[Path]
+    
+class CallbackParam(TypedDict):
+    name: str | None
+    type: str
+    """Should be a luadoc type string"""
+    comment: str | None
+    optional: bool | None
+    
+class CallbackDef(TypedDict):
+    value: str
+    args: list[CallbackParam]
+    returns: list[CallbackParam]
+    param: CallbackParam | None
+    comment: str
 
 # for enums, later items overwrite earlier items
 CONFIGURATIONS: list[Configuration] = [
@@ -34,6 +50,9 @@ CONFIGURATIONS: list[Configuration] = [
         enumfiles=[
             DOCS_DIR / "enums" / "vanilla.json",
         ],
+        callbackfiles=[
+            DOCS_DIR / "enums" / "callbacks" / "vanilla.json",
+        ],
     ),
     Configuration(
         name="repentogon",
@@ -46,6 +65,10 @@ CONFIGURATIONS: list[Configuration] = [
         enumfiles=[
             DOCS_DIR / "enums" / "vanilla.json",
             DOCS_DIR / "enums" / "repentogon.json",
+        ],
+        callbackfiles=[
+            DOCS_DIR / "enums" / "callbacks" / "vanilla.json",
+            DOCS_DIR / "enums" / "callbacks" / "repentogon.json",
         ],
     ),
 ]
@@ -75,15 +98,13 @@ def merge_lua_in_dir(path: str, out: TextIO):
                 out.write("\n\n")
 
 def create_enums_from_json(json_paths: list[Path], writer: TextIO):
-    data = {}
+    enums = {}
     for json_path in json_paths:
-        data2 = json.loads(json_path.read_text())
-        data = merge(data, data2, ignore_conflicts=True)
+        data = json.loads(json_path.read_text())
+        enums = merge(enums, data, ignore_conflicts=True)
 
-    for key in data:
-        _write_enum(key, data[key], writer)
-
-DEPTH_SEP = '    '
+    for key in enums:
+        _write_enum(key, enums[key], writer)
 
 def _write_enum(name: str, enum_dict: dict, writer: TextIO, depth: int = 0):
     is_parent = False
@@ -114,6 +135,77 @@ def _is_enum_dict_value(val):
         or (type(val) is dict and "value" in val)
     )
 
+        
+def create_callbacks_from_json(json_paths: list[Path], writer: TextIO):
+    def pr(*args):
+        print(*args, file=writer)
+        
+    callbacks: dict[str, CallbackDef] = {}
+    for json_path in json_paths:
+        data = json.loads(json_path.read_text())
+        callbacks = merge(callbacks, data, ignore_conflicts=True)
+    
+    pr()
+    pr("---@enum ModCallbacks")
+    pr("ModCallbacks = {")
+    
+    for key, callback in callbacks.items():
+        _write_callback(key, callback, writer)
+        
+    pr()
+
+def _write_callback(name: str, callback: CallbackDef, writer: TextIO):
+    result = DEPTH_SEP
+    
+    result += name + " = "
+    
+    value = callback["value"]
+    try:
+        value = str(int(value))
+    except ValueError:
+        value = f'"{value}"'
+    
+    result += value
+    if len(callback.get("args", [])) > 0:
+        result += ", -- ("
+        
+        for i, arg in enumerate(callback["args"]):
+            result += arg["type"]
+            if arg.get("name"):
+                result += f' {arg["name"]}'
+            if i < len(callback["args"]) - 1:
+                result += ", "
+        result += ")"
+    else:
+        # still use () for returns so it looks like (): return for consistency with prev format
+        if len(callback.get("returns", [])) > 0:
+            result += ", -- ()"
+        else:
+            result += ", -- Callback has no arguments."
+    
+    if len(callback.get("returns", [])) > 0:
+        result += ": "
+        for i, ret in enumerate(callback["returns"]):
+            result += ret["type"]
+            if i < len(callback["returns"]) - 1:
+                result += ", "
+                
+    if callback.get("param"):
+        result += "; Optional Arg: "
+        result += callback["param"]["type"]
+        if callback["param"].get("name"):
+            result += f' {callback["param"]["name"]}'
+    
+    if callback.get("comment"):
+        result += " "
+        if len(callback.get("args", [])) > 0:
+            result += "- "
+        result += callback["comment"]
+    
+    print(result, file=writer)
+
+    
+
 def merge(a: dict, b: dict, path=[], ignore_conflicts=False):
     for key in b:
         if key in a:
@@ -138,6 +230,7 @@ def main():
         fname = config["fname"]
         sourcedirs = config["sourcedirs"]
         enumfiles = config["enumfiles"]
+        callbackfiles = config["callbackfiles"]
 
         out_path = EMMYLUA_DIR / fname
         os.makedirs(out_path.parent, exist_ok=True)
@@ -152,6 +245,9 @@ def main():
                     f.write("\n\n")
                 if track_files:
                     f.write(f'-- END FILE {luafile} --\n\n')
+                    
+            f.write("\n\n--Callbacks\n")
+            create_callbacks_from_json(callbackfiles, f)
 
             f.write('\n\n-- Enums\n')
             create_enums_from_json(enumfiles, f)
