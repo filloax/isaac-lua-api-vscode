@@ -24,12 +24,16 @@ class Configuration(TypedDict):
     enumfiles: list[Path]
     callbackfiles: list[Path]
     
+# not all callback-related fields are used (mainly param comments),
+# keep in case we find a way later
+    
 class CallbackParam(TypedDict):
     name: str | None
     type: str
     """Should be a luadoc type string"""
     comment: str | None
     optional: bool | None
+    """Defaults to False for params, True for returns"""
     
 class CallbackDef(TypedDict):
     value: str
@@ -149,11 +153,18 @@ def create_callbacks_from_json(json_paths: list[Path], writer: TextIO):
     pr("ModCallbacks = {")
     
     for key, callback in callbacks.items():
-        _write_callback(key, callback, writer)
+        _write_callback_enum(key, callback, writer)
         
+    pr("}")
     pr()
+    
+    pr("-- Callback alias functions")
+    pr()
+    
+    for key, callback in callbacks.items():
+        _write_callback_alias_fun(key, callback, writer)
 
-def _write_callback(name: str, callback: CallbackDef, writer: TextIO):
+def _write_callback_enum(name: str, callback: CallbackDef, writer: TextIO):
     result = DEPTH_SEP
     
     result += name + " = "
@@ -169,9 +180,7 @@ def _write_callback(name: str, callback: CallbackDef, writer: TextIO):
         result += ", -- ("
         
         for i, arg in enumerate(callback["args"]):
-            result += arg["type"]
-            if arg.get("name"):
-                result += f' {arg["name"]}'
+            result += _format_fun_arg(arg)
             if i < len(callback["args"]) - 1:
                 result += ", "
         result += ")"
@@ -194,6 +203,8 @@ def _write_callback(name: str, callback: CallbackDef, writer: TextIO):
         result += callback["param"]["type"]
         if callback["param"].get("name"):
             result += f' {callback["param"]["name"]}'
+        if callback["param"].get("comment"):
+            result += f' ({callback["param"]["comment"]})'
     
     if callback.get("comment"):
         result += " "
@@ -203,7 +214,41 @@ def _write_callback(name: str, callback: CallbackDef, writer: TextIO):
     
     print(result, file=writer)
 
+def _write_callback_alias_fun(name: str, callback: CallbackDef, writer: TextIO):
+    result = f"---@alias {name}_FUN fun(self: ModReference"
     
+    for i, arg in enumerate(callback.get("args", [])):
+        result += ", "
+        result += _format_fun_arg(arg, lua_name=True)
+            
+    result += ")"
+    
+    if len(callback.get("returns", [])) > 0:
+        result += ": "
+        for i, ret in enumerate(callback["returns"]):
+            result += ret["type"]
+            # default to optional for returns
+            if ret.get("optional") != True:
+                result += "?"
+            if i < len(callback["returns"]) - 1:
+                result += ", "
+    
+    print(result, file=writer)
+    
+def _format_fun_arg(param: CallbackParam, lua_name: bool = False):
+    typ = param["type"]
+    name = param.get("name", typ)
+    if lua_name:
+        name = _to_camel_case(name)
+    if param.get("optional"):
+        name += "?"
+        
+    return f'{name}: {typ}'
+
+def _to_camel_case(name: str) -> str:
+    if name.isupper():
+        return name.lower()
+    return name[0].lower() + name[1:]
 
 def merge(a: dict, b: dict, path=[], ignore_conflicts=False):
     for key in b:
