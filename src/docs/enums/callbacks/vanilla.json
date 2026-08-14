@@ -56,7 +56,7 @@
     ],
     "returns": [
       {
-        "type": "boolean|UseItemResult"
+        "type": "boolean|{Discharge: boolean?, Remove: boolean?, ShowAnim: boolean?}"
       }
     ],
     "param": {
@@ -452,7 +452,7 @@
     ],
     "returns": [
       {
-        "type": "EntitySpawnResult"
+        "type": "{Type: EntityType?, Variant: integer?, Subtype: integer?, Seed: integer?}"
       }
     ],
     "comment": ""
@@ -707,7 +707,7 @@
     ],
     "returns": [
       {
-        "type": "PickupSelectionResult"
+        "type": "{Variant: integer?, SubType: integer?}"
       }
     ],
     "comment": "Called after a Pickup was chosen from a list of random pickups to be spawned. Return table nil to continue with default game code."

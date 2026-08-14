@@ -145,7 +145,6 @@ def create_callbacks_from_json(json_paths: list[Path], writer: TextIO):
         data = json.loads(json_path.read_text())
         callbacks = merge(callbacks, data, ignore_conflicts=True)
     
-    pr()
     pr("---@enum ModCallbacks")
     pr("ModCallbacks = {")
     

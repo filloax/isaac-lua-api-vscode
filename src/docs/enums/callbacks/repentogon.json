@@ -29,7 +29,7 @@
     ],
     "returns": [
       {
-        "type": "CollectibleType|AddCollectibleResult"
+        "type": "CollectibleType|{Type: CollectibleType?, Charge: integer?, FirstTime: boolean?, Slot: integer?, VarData: integer?, Player: EntityPlayer?}"
       }
     ],
     "comment": "Returning a `CollectibleType` overrides the collectible. You can also return a table of parameters to further modify the collectible given."
@@ -335,7 +335,7 @@
     ],
     "returns": [
       {
-        "type": "SFXPlayResult|boolean"
+        "type": "{ID: SoundEffect?, Volume: number?, FrameDelay: integer?, Loop: boolean?, Pitch: number?, Pan: number?}|boolean"
       }
     ],
     "param": {
@@ -398,7 +398,7 @@
     ],
     "returns": [
       {
-        "type": "MusicPlayResult|Music|boolean"
+        "type": "{ID: Music?, Volume: number?, FadeRate: number?}|Music|boolean"
       }
     ],
     "param": {
@@ -643,7 +643,7 @@
     ],
     "returns": [
       {
-        "type": "ChangeRoomResult"
+        "type": "{TargetRoomIdx: integer?, Dimension: integer?}"
       }
     ],
     "comment": "Called before the room changes. Accepts a table of parameters to change what room you enter."
@@ -715,7 +715,7 @@
     ],
     "returns": [
       {
-        "type": "NPCMorphResult|boolean"
+        "type": "{EntityType: EntityType?, Variant: integer?, SubType: integer?, ChampionId: ChampionColor?}|boolean"
       }
     ],
     "comment": "Called before an NPC morphs. Accepts a table of parameters to change what entity they morph into, or `false` to cancel the morph."
@@ -754,7 +754,7 @@
     ],
     "returns": [
       {
-        "type": "PickupMorphResult|boolean"
+        "type": "{EntityType: integer?, Variant: integer?, SubType: integer?, KeepPrice: boolean?, KeepSeed: boolean?, IgnoreModifiers: boolean?}|boolean"
       }
     ],
     "comment": "Called before a pickup is morphed. Accepts a table of parameters to change what pickup it morphs into, or `false` to cancel the morph."
@@ -1462,7 +1462,7 @@
     ],
     "returns": [
       {
-        "type": "ReplaceSpritesheetResult"
+        "type": "{LayerID: integer?, PNGFilename: string?}"
       }
     ],
     "param": {
@@ -2056,7 +2056,7 @@
     ],
     "returns": [
       {
-        "type": "LevelSelectResult"
+        "type": "{Level: LevelStage?, Type: StageType?}"
       }
     ],
     "comment": "Called when the game selects which level (also known as stage) to load, usually when the player enters a trapdoor. Return a table of parameters to change what level is loaded."
@@ -2223,7 +2223,7 @@
     ],
     "returns": [
       {
-        "type": "boolean|BombDamageResult"
+        "type": "boolean|{Position: Vector?, Damage: number?, Radius: number?, TearFlags: TearFlags?, DamageFlags: DamageFlag?}"
       }
     ],
     "param": {
@@ -2299,7 +2299,7 @@
     ],
     "returns": [
       {
-        "type": "boolean|BombTearflagEffectsResult"
+        "type": "boolean|{Position: Vector?, Radius: number?, TearFlags: TearFlags?, RadiusMult: number?}"
       }
     ],
     "param": {
@@ -3029,7 +3029,7 @@
     ],
     "returns": [
       {
-        "type": "PlayerHUDTrinketRenderResult|boolean"
+        "type": "{Position: Vector?, Scale: number?, CropOffset: Vector?}|boolean"
       }
     ],
     "param": {
@@ -4965,7 +4965,7 @@
     ],
     "returns": [
       {
-        "type": "boolean|PlayerHUDActiveItemRenderResult"
+        "type": "boolean|{HideItem: boolean?, HideOutline: boolean?, HideChargeBar: boolean?, CropOffset: Vector?}"
       }
     ],
     "param": {
@@ -6582,7 +6582,7 @@
     ],
     "returns": [
       {
-        "type": "boolean|BossThematicItemResult"
+        "type": "boolean|{Collectible: CollectibleType?, Trinket: TrinketType?}"
       }
     ],
     "comment": "Called after boss room clear. Used to spawn/overwrite result of second collectible or trinket. Return table with field `Collectible` to spawn a collectible, or `Trinket` to spawn a trinket. Return `true` to cancel item spawn altogether."
