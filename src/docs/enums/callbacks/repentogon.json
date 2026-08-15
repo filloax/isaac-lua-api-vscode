@@ -3134,6 +3134,10 @@
       }
     ],
     "returns": [],
+	"param": {
+      "type": "PickupVariant",
+      "optional": true
+    },
     "comment": "Called when a pickup is consumed with the Compost active. Return `false` to cancel the pickup getting consumed."
   },
   "MC_PRE_GRID_ENTITY_DECORATION_UPDATE": {
