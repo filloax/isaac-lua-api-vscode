@@ -6357,6 +6357,10 @@
         "type": "boolean"
       }
     ],
+	"param": {
+      "type": "PickupVariant",
+      "optional": true
+    },
     "comment": "Called before a chest is opened. Return `false` to prevent it from opening."
   },
   "MC_POST_OPEN_CHEST": {
@@ -6372,6 +6376,10 @@
       }
     ],
     "returns": [],
+	"param": {
+      "type": "PickupVariant",
+      "optional": true
+    },
     "comment": "Called after a chest is opened."
   },
   "MC_PRE_APPLY_TEARFLAG_EFFECTS": {
