@@ -83,7 +83,7 @@ function onActivate(context: vscode.ExtensionContext) {
         setExternalLibrary(luaCfg, context, VANILLA_LUA_LIBRARY, !config.repentogonEnabled);
         setExternalLibrary(luaCfg, context, REPENTOGON_LUA_LIBRARY, config.repentogonEnabled);
         setDefinedGlobals(luaCfg, true, config.repentogonEnabled);
-        setPlugin(luaCfg, context, true);
+        setPlugin(luaCfg, context, config.pluginEnabled);
 
         setMiscConfig(config.workspaceSettings);
         updateMaxFileSize(luaCfg);    
@@ -115,17 +115,25 @@ function onDeactivate(context: vscode.ExtensionContext) {
 
 function onConfigChange(context: vscode.ExtensionContext, event: vscode.ConfigurationChangeEvent) {
     const config = getConfig();
-    
-    if (event.affectsConfiguration("boi-lua.repentogonEnabled")) {
-        const filenamePath = getCfgFilePath();
+    const filenamePath = getCfgFilePath();
+    if (!filenamePath) {
+        return;
+    }
 
-        if (!filenamePath) {
-            return;
-        }
+    const repentogonEnabledChanged = event.affectsConfiguration("boi-lua.repentogonEnabled");
+    const pluginEnabledChanged = event.affectsConfiguration("boi-lua.pluginEnabled");
+    const anyChanged = [repentogonEnabledChanged, pluginEnabledChanged].some(x => x);
 
+
+    if (anyChanged) {
         modifyJsoncFile(filenamePath, luaCfg => {
-            setExternalLibrary(luaCfg, context, VANILLA_LUA_LIBRARY, !config.repentogonEnabled);
-            setExternalLibrary(luaCfg, context, REPENTOGON_LUA_LIBRARY, config.repentogonEnabled);
+            if (repentogonEnabledChanged) {
+                setExternalLibrary(luaCfg, context, VANILLA_LUA_LIBRARY, !config.repentogonEnabled);
+                setExternalLibrary(luaCfg, context, REPENTOGON_LUA_LIBRARY, config.repentogonEnabled);
+            }
+            if (pluginEnabledChanged) {
+                setPlugin(luaCfg, context, config.pluginEnabled);
+            }
             return luaCfg;
         });
     }

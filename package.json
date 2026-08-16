@@ -59,6 +59,11 @@
                     "type": "boolean",
                     "default": true,
                     "description": "Enable Repentogon API support"
+                },
+                "boi-lua.pluginEnabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable plugin to customize Lua LS behavior. Current effects:\n- :AddCallback autorecognized arg types for functions passed inline to it"
                 }
             }
         },
