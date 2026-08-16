@@ -37,6 +37,22 @@ function setExternalLibrary(config: any, context: vscode.ExtensionContext, folde
     }
 }
 
+function setPlugin(config: any, context: vscode.ExtensionContext, enable: boolean) {
+    const extensionPath = context.extension.extensionPath;
+    if (!extensionPath) {
+        return;
+    }
+
+    const pluginPath = path.join(extensionPath, "out", "plugin", "plugin.lua");
+    const configKey = "runtime.plugin";
+
+    if (enable) {
+        config[configKey] = pluginPath;
+    } else if (config[configKey] === pluginPath) {
+        delete config[configKey];
+    }
+}
+
 function setDefinedGlobals(config: any, enable: boolean, withRepentogon: boolean = false) {
     const configKey = "diagnostics.globals";
     config[configKey] = config[configKey] || [];
@@ -85,6 +101,7 @@ function updateMaxFileSize(config: any) {
 
 export {
     setExternalLibrary,
+    setPlugin,
     setDefinedGlobals,
     setMiscConfig,
     updateMaxFileSize,

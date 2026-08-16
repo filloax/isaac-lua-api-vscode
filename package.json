@@ -35,11 +35,11 @@
         "sumneko.lua"
     ],
     "scripts": {
-        "vscode:prepublish": "npm run esbuild-base -- --minify && npm run buildemmy",
-        "copyemmy": "node scripts/copyemmy.js",
-        "buildemmy": "python scripts/builddocfile.py && npm run copyemmy",
+        "vscode:prepublish": "npm run esbuild-base -- --minify && npm run buildoutput",
+        "copyoutput": "node scripts/copyoutput.js",
+        "buildoutput": "python scripts/builddocfile.py && npm run copyoutput",
         "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
-        "esbuild": "npm run esbuild-base -- --sourcemap && npm run buildemmy",
+        "esbuild": "npm run esbuild-base -- --sourcemap && npm run buildoutput",
         "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
         "watch": "tsc -watch -p ./",
         "pretest": "npm run compile && npm run lint",

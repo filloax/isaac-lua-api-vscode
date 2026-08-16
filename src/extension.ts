@@ -6,7 +6,7 @@ import * as path from "path";
 import * as fs from 'fs'; // In NodeJS: 'const fs = require('fs')'
 import { getState } from './persist';
 import { checkActivate } from './activationCheck';
-import { setDefinedGlobals, setExternalLibrary, setMiscConfig, updateMaxFileSize } from './luaSettings';
+import { setDefinedGlobals, setExternalLibrary, setMiscConfig, setPlugin, updateMaxFileSize } from './luaSettings';
 import { getConfig } from './config';
 import { Constants } from './constants';
 import { modifyJsoncFile } from './modifyJson';
@@ -83,6 +83,7 @@ function onActivate(context: vscode.ExtensionContext) {
         setExternalLibrary(luaCfg, context, VANILLA_LUA_LIBRARY, !config.repentogonEnabled);
         setExternalLibrary(luaCfg, context, REPENTOGON_LUA_LIBRARY, config.repentogonEnabled);
         setDefinedGlobals(luaCfg, true, config.repentogonEnabled);
+        setPlugin(luaCfg, context, true);
 
         setMiscConfig(config.workspaceSettings);
         updateMaxFileSize(luaCfg);    
@@ -106,6 +107,7 @@ function onDeactivate(context: vscode.ExtensionContext) {
             setDefinedGlobals(luaCfg, false);
             setExternalLibrary(luaCfg, context, VANILLA_LUA_LIBRARY, false);
             setExternalLibrary(luaCfg, context, REPENTOGON_LUA_LIBRARY, false);
+            setPlugin(luaCfg, context, false);
             return luaCfg;
         });
     }

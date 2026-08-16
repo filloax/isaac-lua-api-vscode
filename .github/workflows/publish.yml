@@ -16,7 +16,7 @@ jobs:
                 node-version: 16
             - run: npm ci
             - run: npm run esbuild-base -- --minify
-            - run: npm run buildemmy
+            - run: npm run buildoutput
             - name: Publish to Open VSX Registry
               uses: HaaLeo/publish-vscode-extension@v1
               with:

@@ -43,3 +43,10 @@ if (!fs.existsSync("out")){
     fs.mkdirSync("out");
 }
 copyFolderRecursiveSync(path.join("merge", "emmylua"), "out");
+
+// LuaLS plugin: generated callbackParams.lua + static plugin.lua, side by side
+if (!fs.existsSync(path.join("out", "plugin"))){
+    fs.mkdirSync(path.join("out", "plugin"), { recursive: true });
+}
+copyFolderRecursiveSync(path.join("merge", "plugin"), "out");
+copyFileSync(path.join("src", "plugin", "plugin.lua"), path.join("out", "plugin", "plugin.lua"));
