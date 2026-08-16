@@ -6,6 +6,8 @@
         - Works with both functions defined inline in :AddCallback, and functions defined elsewhere
           in the same file then passed to :AddCallback
     - Callback aliases (CALLBACK_NAME_FUN) offered for custom callback function recognition
+    - Workspaces can now declare their own custom callback types and custom `AddCallback`-like
+      registration functions (e.g. `StageAPI.AddCallback`) via a `.isaac-callbacks.lua` file
 
 * [1.14.1]
 	- Support for REPENTOGON 1.1.2d and 1.1.2de

@@ -12,41 +12,115 @@ end)
 ```
 
 Ignores call if ---@param manually specified
+
+Workspaces can also define their own callback types and their own
+AddCallback-like registration functions (like StageAPI.AddCallback) by
+placing a `.isaac-callbacks.lua` file at the workspace root.
 ]]
 
 print("Loading Isaac Lua plugin!")
 
 local guide = require 'parser.guide'
 local luadoc = require 'parser.luadoc'
+local furi = require 'file-uri'
+local workspace = require 'workspace'
+
+---@class CallbackTypes
+---@field Args string[]
+---@field Returns string[]
 
 ---Contains arg types
----@type table<string, string[]>
-local CALLBACK_PARAMS = {}
+---@type table<string, CallbackTypes>
+local CALLBACK_TYPES = {}
+
+-- probably less complicated would have been enough, but extension paths be wonky so just in case
+local function safeLoadData(path, apply)
+    local chunk = loadfile(path)
+    if chunk then
+        local ok, data = pcall(chunk)
+        if ok and type(data) == 'table' then
+            apply(data)
+        end
+    end
+end
 
 do
-    -- probably less complicated would have been enough, but extension paths be wonky so just in case
     local scriptPath = debug.getinfo(1, 'S').source:match('^@(.*)[/\\][^/\\]+$')
     if scriptPath then
-        local chunk = loadfile(scriptPath .. '/callbackParams.lua')
-        if chunk then
-            local ok, data = pcall(chunk)
-            if ok and type(data) == 'table' then
-                CALLBACK_PARAMS = data
+        safeLoadData(scriptPath .. '/callbackParams.lua', function (data)
+            CALLBACK_TYPES = data
+        end)
+    end
+end
+
+local MOD_TYPE = "ModReference"
+-- in characters
+local MANUAL_DOC_LOOKBACK = 500
+local WORKSPACE_CONFIG_FILENAME = '.isaac-config.lua'
+
+--#region customization / user config
+
+---@class CallbackRegisterFuncConfig
+---@field IdArg integer arg index (from 1) with the callback id
+---@field FunctionArg integer arg index holding the callback function
+---@field HasModArg boolean If true, adds mod (self) as first arg to callbacks
+
+---@class WorkspaceConfig
+---@field Callbacks table<string, CallbackTypes>
+---@field RegisterFunctions table<string, CallbackRegisterFuncConfig>
+
+
+-- Matched only against name (used for mod references with varying name)
+---@type table<string, CallbackRegisterFuncConfig>
+local CALLBACK_REGISTER_FUNCS = {
+    AddCallback = { IdArg = 2, FunctionArg = 3, HasModArg = true },
+    AddPriorityCallback = { IdArg = 2, FunctionArg = 4, HasModArg = true },
+}
+
+-- Callback register functions with full dot path to match against owner table
+-- like StageAPI.AddCallback, takes priority on match
+---@type table<string, CallbackRegisterFuncConfig>
+local PATH_REGISTER_FUNCS = {}
+
+local hasPathRegisterFuncs = false
+
+---@param data WorkspaceConfig
+local function applyWorkspaceConfig(data)
+    if type(data.Callbacks) == 'table' then
+        for name, params in pairs(data.Callbacks) do
+            CALLBACK_TYPES[name] = params
+        end
+    end
+    if type(data.RegisterFunctions) == 'table' then
+        for key, cfg in pairs(data.RegisterFunctions) do
+            hasPathRegisterFuncs = true
+            if key:find('.', 1, true) then
+                PATH_REGISTER_FUNCS[key] = cfg
+            else
+                CALLBACK_REGISTER_FUNCS[key] = cfg
             end
         end
     end
 end
 
-local MOD_TYPE = "ModReference"
+local searchedRootUris = {}
 
--- Arg position where function is passed in callback (starts from 1 remember)
-local CALLBACK_REGISTER_FUNCS = {
-    AddCallback = 3,
-    AddPriorityCallback = 4,
-}
+---@param uri string
+local function loadWorkspaceConfig(uri)
+    local rootUri = workspace.getRootUri(uri)
+    if not rootUri or searchedRootUris[rootUri] then
+        return
+    end
+    searchedRootUris[rootUri] = true
 
--- in characters
-local MANUAL_DOC_LOOKBACK = 500
+    local rootPath = furi.decode(rootUri)
+    safeLoadData(rootPath .. '/' .. WORKSPACE_CONFIG_FILENAME, function (data)
+        applyWorkspaceConfig(data)
+        print("Loaded configuration at " .. tostring(uri))
+    end)
+end
+
+--#endregion
 
 ---@param paramName string
 ---@param typename string
@@ -97,6 +171,25 @@ local function hasManualParams(ast, callSource)
         end
     end
     return best ~= nil and best.text ~= nil and best.text:find('@param', 1, true) ~= nil
+end
+
+---@param ast parser.object
+---@param funcArgs parser.object[]
+---@param paramTypes CallbackTypes
+---@param hasModArg boolean
+local function bindFuncArgs(ast, funcArgs, paramTypes, hasModArg)
+    for i, paramSource in ipairs(funcArgs) do
+        local typename
+        if hasModArg then
+            -- first param is the mod/self reference
+            typename = i == 1 and MOD_TYPE or paramTypes.Args[i - 1]
+        else
+            typename = paramTypes.Args[i]
+        end
+        if typename then
+            bindParamType(ast, paramSource, typename)
+        end
+    end
 end
 
 
@@ -190,24 +283,53 @@ end
 
 --#endregion
 
----@param ast parser.object
----@param funcArgs parser.object[]
----@param paramTypes string[]
-local function bindFuncArgs(ast, funcArgs, paramTypes)
-    for i, paramSource in ipairs(funcArgs) do
-        -- first param is the mod/self reference
-        local typename = i == 1 and MOD_TYPE or paramTypes[i - 1]
-        if typename then
-            bindParamType(ast, paramSource, typename)
+
+---Gets dot-separated path for function calls to match against
+---custom callback config, like `StageAPI.AddCallback`
+---@param node parser.object?
+---@return string?
+local function buildDottedPath(node)
+    if not node then
+        return nil
+    end
+    if node.type == 'getglobal' or node.type == 'getlocal' then
+        return guide.getKeyName(node)
+    elseif node.type == 'getfield' then
+        local base = buildDottedPath(node.node)
+        local key = guide.getKeyName(node)
+        if not base or not key then
+            return nil
+        end
+        return base .. "." .. key
+    end
+    return nil
+end
+
+---@param callee parser.object
+---@return CallbackRegisterFuncConfig?
+local function getRegisterFuncConfig(callee)
+    if hasPathRegisterFuncs then
+        -- first match against full path for custom callback registrators,
+        -- otherwise fall back to more generic match for vanilla :AddCallback
+        -- that does not have a fixed name before
+        local path = buildDottedPath(callee)
+        local fullMatch = path and PATH_REGISTER_FUNCS[path]
+        if fullMatch then
+            return fullMatch
         end
     end
+
+    local funcName = guide.getKeyName(callee)
+    return funcName and CALLBACK_REGISTER_FUNCS[funcName]
 end
 
 ---@param uri string
 ---@param ast parser.object
 ---@return parser.object? ast
 function OnTransformAst(uri, ast)
-    if not next(CALLBACK_PARAMS) then
+    loadWorkspaceConfig(uri)
+
+    if not next(CALLBACK_TYPES) then
         return
     end
 
@@ -220,36 +342,34 @@ function OnTransformAst(uri, ast)
             return
         end
 
-        local funcName = guide.getKeyName(callee)
-
-        local fnOffset = funcName and CALLBACK_REGISTER_FUNCS[funcName]
-        if not fnOffset then
+        local cfg = getRegisterFuncConfig(callee)
+        if not cfg then
             return
         end
+        local fnArgIdx = cfg.FunctionArg
+        local idArgIdx = cfg.IdArg
+        local hasModArg = cfg.HasModArg
 
-        -- print("funcName", tostring(funcName), "fnOffset", tostring(fnOffset))
+        -- print("funcName", tostring(guide.getKeyName(callee)))
 
         local args = callSource.args
         if not args then
             return
         end
 
-
-        local fnArg = args[fnOffset]
+        local fnArg = args[fnArgIdx]
         -- function was passed instead of being inlined
         local isPassedFnArg = isPassedFunction(fnArg)
         if not fnArg or (fnArg.type ~= 'function' and not isPassedFnArg) then
             return
         end
 
-        -- first is self
-        local idArgIndex = 2
-        local callbackName = guide.getKeyName(args[idArgIndex])
+        local callbackName = guide.getKeyName(args[idArgIdx])
         if not callbackName then
             return
         end
 
-        local paramTypes = CALLBACK_PARAMS[callbackName]
+        local paramTypes = CALLBACK_TYPES[callbackName]
         if not paramTypes then
             return
         end
@@ -267,7 +387,7 @@ function OnTransformAst(uri, ast)
                 return
             end
 
-            bindFuncArgs(ast, funcArgs, paramTypes)
+            bindFuncArgs(ast, funcArgs, paramTypes, hasModArg)
         else -- inline function
             if hasManualParams(ast, callSource) then
                 return
@@ -278,7 +398,7 @@ function OnTransformAst(uri, ast)
                 return
             end
 
-            bindFuncArgs(ast, funcArgs, paramTypes)
+            bindFuncArgs(ast, funcArgs, paramTypes, hasModArg)
         end
     end)
 end

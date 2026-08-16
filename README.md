@@ -82,6 +82,37 @@ local function entTakeDamageCallback(_, entity, dmg, flags, source, invuln)
 end
 ```
 
+#### Custom callbacks and custom registration functions
+
+Workspaces can define their own callback types, and even their own `AddCallback`-like registration
+functions (for example `StageAPI.AddCallback` for StageAPI), by adding a `.isaac-config.lua` file
+at the root of the workspace (next to `.luarc.json` if present).
+
+```Lua
+return {
+    -- Extra callback IDs usable with mod:AddCallback / mod:AddPriorityCallback (or any
+    -- other registered function below). Key is identifier, either a string you pass to
+    -- AddCallback or the table key (both "MC_NPC_UPDATE and ModCallbacks.MC_NPC_UPDATE work the same,
+    -- for a vanilla example)
+    Callbacks = {
+        -- ofc this already is defined, just an example
+        -- both Args and Returns take lua type annotation strings, including unions with | and everything you can do
+        -- with the Lua LS normally.
+        -- Returns can also have more values in case it has more returns
+        MC_ENTITY_TAKE_DMG = { 
+            Args = { "Entity", "number", "integer", "EntityRef", "integer" },
+            Returns = { "boolean" },
+        },
+    },
+
+    -- Alternatives to :AddCallback, matched by full path and take priority if match applies
+    RegisterFunctions = {
+        -- StageAPI.AddCallback(modID, callbackId, priority, fn, ...)
+        ["StageAPI.AddCallback"] = { IdArg = 2, FunctionArg = 4, HasModArg = false },
+    },
+}
+```
+
 ### Other types
 
 You can also specify param types manually for custom functions/callbacks where you want the autocomplete to work on its params, also adding `---@return` for return types
@@ -127,6 +158,8 @@ There are some issues on the Lua Language Server (which otherwise is very very g
 local a = Vector(0,1)
 local b = 2 * a
 ```
+
+---
 
 ## Release Notes
 
