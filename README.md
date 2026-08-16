@@ -20,18 +20,42 @@ This extension is based on the [isaac-api-autocomplete-lua](https://github.com/f
 
 First off, the extension won't be active by default even if enabled for convenience (not having to manually disable-enable it in each workspace), but instead it will detect if your workspace matches an Isaac mod (contains a metadata.xml file and lua files), then will ask you for confirmation, once per workspace. It also works if metadata.xml etc are in subfolders. You can also manually enable or disable the mod with a palette command, even if you initially answered otherwise.
 
-By default, with the extension global functions like `Game()`, `Vector(x, y)` and `Isaac.xxx` should already be recognized. To have it work for callback parameters, you'll need to add `---@param` tags, like so:
+By default, with the extension global functions like `Game()`, `Vector(x, y)` and `Isaac.xxx` should already be recognized.
+
+**NEW since 1.15**: Callback parameters are now autorecognized! Two main ways to do it, one automatic and the one manual but still convenient:
+
+- *Inlined functions*: if you put the function inside the callbacks args will be autorecognized!
+```Lua
+mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, function (_, npc)
+    -- npc.Velocity = etc.
+end)
+```
+
+which results into:
+
+![above codeblock with autocomplete showing](readme/callback-autocomplete.png)
+
+- *Callback aliases*: the extension gives for each vanilla/repentogon callback a alias `<callback name>_FUN` usable like this:
+
+```Lua
+---args will be recognized as the correct types
+---@type MC_ENTITY_TAKE_DMG_FUN
+local function entTakeDamageCallback(_, entity, dmg, flags, source, invuln)
+
+end
+```
+
+You can also specify param types manually for custom functions/callbacks where you want the autocomplete to work on its params, also adding `---@return` for return types
+(@return is not always needed, Lua LS is often smart enough to understand it on its own if the input types are specified).
 
 ```Lua
 ---@param npc EntityNPC
 ---@param intParameter integer
 ---@param source EntityRef
-local myCallbackFunction(_, npc, intParameter, source)
+local myFunction(npc, intParameter, source)
 ```
 
-Autocomplete should work with the type specifications too, so it shouldn't be too annoying. You should also do this for any other function where you want the autocomplete to work on its params, also adding `---@return` for return types.
-
-You can also use `---@type` for specific variables, more info on the [annotation documentation](https://github.com/sumneko/lua-language-server/wiki/EmmyLua-Annotations). Example:
+You can also use `---@type` for specific variables, more info on the [annotation documentation](https://luals.github.io/wiki/annotations/). Example:
 
 ```Lua
 ---@type ItemConfig_Item
@@ -66,6 +90,10 @@ local b = 2 * a
 ## Release Notes
 
 See [CHANGELOG.md](CHANGELOG.md) for full changes.
+
+## 1.15.0
+
+Callback type recognition system
 
 ## 1.6.0
 

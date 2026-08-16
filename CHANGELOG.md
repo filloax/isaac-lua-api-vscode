@@ -1,5 +1,9 @@
 # Change Log
 
+* [1.15.0]
+    - Now has a plugin bundled to auto-recognize callback inline function parameters with no annotations
+    - Callback aliases (CALLBACK_NAME_FUN) offered for custom callback function recognition
+
 * [1.14.1]
 	- Support for REPENTOGON 1.1.2d and 1.1.2de
 	- Added the overload for EntiyFamiliar:TryAimAtMarkedTarget
