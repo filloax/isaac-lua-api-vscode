@@ -2,6 +2,7 @@
 
 * [1.15.0]
     - Now has a plugin bundled to auto-recognize callback inline function parameters with no annotations
+        - Plugin can be disabled via a new config setting
     - Callback aliases (CALLBACK_NAME_FUN) offered for custom callback function recognition
 
 * [1.14.1]
