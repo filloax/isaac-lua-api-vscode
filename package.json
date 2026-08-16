@@ -63,7 +63,7 @@
                 "boi-lua.pluginEnabled": {
                     "type": "boolean",
                     "default": true,
-                    "description": "Enable plugin to customize Lua LS behavior. Current effects:\n- :AddCallback autorecognized arg types for functions passed inline to it"
+                    "description": "Enable plugin to customize Lua LS behavior. Current effects:\n- :AddCallback autorecognized arg types for functions passed inline to it\n- Functions defined elsewhere in same file but passed to AddCallback will have their args autorecognized"
                 }
             }
         },

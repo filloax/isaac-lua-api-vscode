@@ -22,20 +22,57 @@ First off, the extension won't be active by default even if enabled for convenie
 
 By default, with the extension global functions like `Game()`, `Vector(x, y)` and `Isaac.xxx` should already be recognized.
 
+### Callbacks
+
 **NEW since 1.15**: Callback parameters are now autorecognized! Two main ways to do it, one automatic and the one manual but still convenient:
 
-- *Inlined functions*: if you put the function inside the callbacks args will be autorecognized!
+#### Automatic recognition
+
+If you pass a function to AddCallback the callbacks args will be autorecognized!
+
 ```Lua
+-- Works with inline function
 mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, function (_, npc)
     -- npc.Velocity = etc.
 end)
+
+-- But also functions passed:
+local function npcUpdateCallback(_, npc)
+
+end
+
+function mod:NpcUpdateCallback(npc)
+
+end
+
+function mod.NpcUpdateCallback2(_, npc) 
+
+end
+
+---Manually passed params will override auto ones
+---@param npc EntityEffect wrong but just as example
+function mod:NpcUpdateCallbackManual(_, npc) 
+
+end
+
+-- please do not really do this this is an example
+function GlobalCallback(_, npc)
+
+end
+
+mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, npcUpdateCallback)
+mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, mod.NpcUpdateCallback)
+mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, mod.NpcUpdateCallback2)
+mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, GlobalCallback)
 ```
 
 which results into:
 
 ![above codeblock with autocomplete showing](readme/callback-autocomplete.png)
 
-- *Callback aliases*: the extension gives for each vanilla/repentogon callback a alias `<callback name>_FUN` usable like this:
+#### Callback aliases
+
+The extension gives for each vanilla/repentogon callback a alias `<callback name>_FUN` usable like this, in cases where the above doesn't work for any reason:
 
 ```Lua
 ---args will be recognized as the correct types
@@ -44,6 +81,8 @@ local function entTakeDamageCallback(_, entity, dmg, flags, source, invuln)
 
 end
 ```
+
+### Other types
 
 You can also specify param types manually for custom functions/callbacks where you want the autocomplete to work on its params, also adding `---@return` for return types
 (@return is not always needed, Lua LS is often smart enough to understand it on its own if the input types are specified).
@@ -66,6 +105,8 @@ More examples:
 
 ![](https://i.imgur.com/1BiL3CE.png)
 ![](https://i.imgur.com/WnC5IFv.png)
+
+---
 
 ### Notes
 
@@ -90,6 +131,9 @@ local b = 2 * a
 ## Release Notes
 
 See [CHANGELOG.md](CHANGELOG.md) for full changes.
+
+<details>
+<summary>Release notes</summary>
 
 ## 1.15.0
 
@@ -128,3 +172,6 @@ Now automatically detects if the folder is an Isaac mod, and asks the user for c
 ### 1.0.0
 
 - Initial release.
+
+
+</details>
