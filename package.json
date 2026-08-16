@@ -64,6 +64,11 @@
                     "type": "boolean",
                     "default": true,
                     "description": "Enable plugin to customize Lua LS behavior. Current effects:\n- :AddCallback autorecognized arg types for functions passed inline to it\n- Functions defined elsewhere in same file but passed to AddCallback will have their args autorecognized"
+                },
+                "boi-lua.stageAPISupportEnabled": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Enable built-in StageAPI callback autocompletion."
                 }
             }
         },

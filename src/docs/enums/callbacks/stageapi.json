@@ -1,0 +1,650 @@
+{
+  "POST_CHECK_VALID_ROOM": {
+    "value": "POST_CHECK_VALID_ROOM",
+    "args": [
+      { "type": "RoomLayout", "name": "layout" },
+      { "type": "RoomsList", "name": "roomList" },
+      { "type": "integer", "name": "seed" },
+      { "type": "RoomShape", "name": "shape" },
+      { "type": "RoomType", "name": "rtype" },
+      { "type": "boolean", "name": "requireRoomType" }
+    ],
+    "returns": [
+      { "type": "boolean" }
+    ],
+    "comment": "Return false to reject room layout"
+  },
+  "PRE_SELECT_GRIDENTITY_LIST": {
+    "value": "PRE_SELECT_GRIDENTITY_LIST",
+    "args": [
+      { "type": "table", "name": "GridDataList" },
+      { "type": "integer", "name": "spawnIndex" }
+    ],
+    "returns": [
+      { "type": "boolean|{Index: integer}|RoomLayout_GridData[]" }
+    ],
+    "comment": "Return false to skip spawning grids at this index, or a table to override"
+  },
+  "PRE_SELECT_ENTITY_LIST": {
+    "value": "PRE_SELECT_ENTITY_LIST",
+    "args": [
+      { "type": "RoomLayout_EntityData[]", "name": "entityList" },
+      { "type": "integer", "name": "spawnIndex" },
+      { "type": "RoomMetadata", "name": "roomMetadata" }
+    ],
+    "returns": [
+      { "type": "boolean|RoomLayout_EntityData[]", "name": "retAdd" },
+      { "type": "RoomLayout_EntityData[]", "name": "retList" },
+      { "type": "boolean", "name": "retRandom", "comment": "whether entities should still be picked from the random pool" }
+    ],
+    "comment": "Return false to not add anything, another list to add (first ret) or replace (second ret) entities from this list"
+  },
+  "PRE_SPAWN_ENTITY_LIST": {
+    "value": "PRE_SPAWN_ENTITY_LIST",
+    "args": [
+      { "type": "SpawnList.EntityInfo[]", "name": "entityList" },
+      { "type": "integer", "name": "spawnIndex" },
+      { "type": "boolean", "name": "doGrids" },
+      { "type": "boolean", "name": "doPersistentOnly" },
+      { "type": "boolean", "name": "doAutoPersistent" },
+      { "type": "boolean", "name": "avoidSpawning" },
+      { "type": "table<integer, EntityPersistenceData>", "name": "persistenceData" }
+    ],
+    "returns": [
+      { "type": "boolean|SpawnList.EntityInfo[]" }
+    ],
+    "comment": "Return false to skip spawning the whole list, or a table to replace entityList"
+  },
+  "PRE_SPAWN_ENTITY": {
+    "value": "PRE_SPAWN_ENTITY",
+    "args": [
+      { "type": "SpawnList.EntityInfo", "name": "entityInfo" },
+      { "type": "SpawnList.EntityInfo[]", "name": "entityList" },
+      { "type": "integer", "name": "index" },
+      { "type": "boolean", "name": "doGrids" },
+      { "type": "boolean", "name": "doPersistentOnly" },
+      { "type": "boolean", "name": "doAutoPersistent" },
+      { "type": "boolean", "name": "avoidSpawning" },
+      { "type": "table<integer, EntityPersistenceData>", "name": "persistenceData" },
+      { "type": "boolean", "name": "shouldSpawnEntity" }
+    ],
+    "returns": [
+      { "type": "boolean|SpawnList.EntityInfo|integer[]" }
+    ],
+    "comment": "Return false to prevent spawn, true to force spawn, entityInfo to replace, or {Type, Variant, SubType} array to change ent type"
+  },
+  "POST_SPAWN_ENTITY": {
+    "value": "POST_SPAWN_ENTITY",
+    "args": [
+      { "type": "Entity", "name": "ent" },
+      { "type": "SpawnList.EntityInfo", "name": "entityInfo" },
+      { "type": "SpawnList.EntityInfo[]", "name": "entityList" },
+      { "type": "integer", "name": "index" },
+      { "type": "boolean", "name": "doGrids" },
+      { "type": "boolean", "name": "doPersistentOnly" },
+      { "type": "boolean", "name": "doAutoPersistent" },
+      { "type": "boolean", "name": "avoidSpawning" },
+      { "type": "table<integer, EntityPersistenceData>", "name": "persistenceData" },
+      { "type": "boolean", "name": "shouldSpawnEntity" }
+    ]
+  },
+  "PRE_SPAWN_GRID": {
+    "value": "PRE_SPAWN_GRID",
+    "args": [
+      { "type": "RoomLayout_GridData", "name": "gridData" },
+      { "type": "table<integer, GridInformation>", "name": "gridInformation", "optional": true },
+      { "type": "table<integer, SpawnList.EntityInfo[]>", "name": "entities" },
+      { "type": "RNG", "name": "gridSpawnRNG" }
+    ],
+    "returns": [
+      { "type": "boolean|RoomLayout_GridData" }
+    ],
+    "comment": "Return false to skip spawning the grid, or a table to replace gridData"
+  },
+  "PRE_ROOMS_LIST_USE": {
+    "value": "PRE_ROOMS_LIST_USE",
+    "args": [
+      { "type": "LevelRoom", "name": "room" }
+    ],
+    "returns": [
+      { "type": "RoomsList" }
+    ],
+    "comment": "Return a RoomsList to use instead of the default"
+  },
+  "PRE_ROOM_LAYOUT_CHOOSE": {
+    "value": "PRE_ROOM_LAYOUT_CHOOSE",
+    "args": [
+      { "type": "LevelRoom", "name": "currentRoom" },
+      { "type": "RoomsList", "name": "roomsList" }
+    ],
+    "returns": [
+      { "type": "RoomLayout" }
+    ],
+    "comment": "Return a RoomLayout to use instead of the default selection"
+  },
+  "POST_ROOM_LAYOUT_CHOOSE": {
+    "value": "POST_ROOM_LAYOUT_CHOOSE",
+    "args": [
+      { "type": "LevelRoom", "name": "currentRoom" },
+      { "type": "RoomsList", "name": "roomsList" }
+    ]
+  },
+  "POST_SET_LEVEL_ROOM": {
+    "value": "POST_SET_LEVEL_ROOM",
+    "args": [
+      { "type": "LevelRoom", "name": "levelRoom" },
+      { "type": "any", "name": "roomID" },
+      { "type": "Dimension", "name": "dimension" }
+    ]
+  },
+  "POST_ROOM_INIT": {
+    "value": "POST_ROOM_INIT",
+    "args": [
+      { "type": "LevelRoom", "name": "currentRoom" },
+      { "type": "boolean", "name": "fromSaveData" },
+      { "type": "table", "name": "saveData", "optional": true }
+    ]
+  },
+  "POST_BOSS_ROOM_INIT": {
+    "value": "POST_BOSS_ROOM_INIT",
+    "args": [
+      { "type": "LevelRoom", "name": "currentRoom" },
+      { "type": "BossData", "name": "boss" },
+      { "type": "string", "name": "bossID" }
+    ]
+  },
+  "POST_ROOM_LOAD": {
+    "value": "POST_ROOM_LOAD",
+    "args": [
+      { "type": "LevelRoom", "name": "currentRoom" },
+      { "type": "boolean", "name": "isFirstLoad" },
+      { "type": "boolean", "name": "isExtraRoom" }
+    ]
+  },
+  "POST_SPAWN_CUSTOM_GRID": {
+    "value": "POST_SPAWN_CUSTOM_GRID",
+    "args": [
+      { "type": "CustomGridEntity", "name": "customGrid" },
+      { "type": "boolean", "name": "force" },
+      { "type": "boolean", "name": "respawning" }
+    ],
+    "param": { "type": "string", "optional": true, "comment": "matched against custom grid entity name" }
+  },
+  "POST_CUSTOM_GRID_UPDATE": {
+    "value": "POST_CUSTOM_GRID_UPDATE",
+    "args": [
+      { "type": "CustomGridEntity", "name": "customGrid" }
+    ],
+    "param": { "type": "string", "optional": true, "comment": "matched against custom grid entity name" }
+  },
+  "POST_CUSTOM_GRID_PROJECTILE_UPDATE": {
+    "value": "POST_CUSTOM_GRID_PROJECTILE_UPDATE",
+    "args": [
+      { "type": "CustomGridEntity", "name": "customGrid" },
+      { "type": "Entity", "name": "projectile" }
+    ],
+    "param": { "type": "string", "optional": true, "comment": "matched against custom grid entity name" }
+  },
+  "POST_CUSTOM_GRID_PROJECTILE_HELPER_UPDATE": {
+    "value": "POST_CUSTOM_GRID_PROJECTILE_HELPER_UPDATE",
+    "args": [
+      { "type": "CustomGridEntity", "name": "customGrid" },
+      { "type": "Entity", "name": "projectileHelper" },
+      { "type": "Entity", "name": "projectileHelperParent", "optional": true }
+    ],
+    "param": { "type": "string", "optional": true, "comment": "matched against custom grid entity name" }
+  },
+  "POST_CUSTOM_GRID_DESTROY": {
+    "value": "POST_CUSTOM_GRID_DESTROY",
+    "args": [
+      { "type": "CustomGridEntity", "name": "customGrid" },
+      { "type": "Entity", "name": "projectile", "optional": true }
+    ],
+    "param": { "type": "string", "optional": true, "comment": "matched against custom grid entity name" }
+  },
+  "POST_CUSTOM_GRID_UNLOAD": {
+    "value": "POST_CUSTOM_GRID_UNLOAD",
+    "args": [
+      { "type": "CustomGridEntity", "name": "customGrid" }
+    ],
+    "param": { "type": "string", "optional": true, "comment": "matched against custom grid entity name" },
+    "comment": "Only fires if not held by a player"
+  },
+  "POST_REMOVE_CUSTOM_GRID": {
+    "value": "POST_REMOVE_CUSTOM_GRID",
+    "args": [
+      { "type": "CustomGridEntity", "name": "customGrid" },
+      { "type": "boolean", "name": "keepBaseGrid" }
+    ],
+    "param": { "type": "string", "optional": true, "comment": "matched against custom grid entity name" }
+  },
+  "POST_CUSTOM_GRID_POOP_GIB_SPAWN": {
+    "value": "POST_CUSTOM_GRID_POOP_GIB_SPAWN",
+    "args": [
+      { "type": "CustomGridEntity", "name": "customGrid" },
+      { "type": "Entity", "name": "effect" }
+    ],
+    "param": { "type": "string", "optional": true, "comment": "matched against custom grid entity name" }
+  },
+  "POST_CUSTOM_GRID_DIRTY_MIND_SPAWN": {
+    "value": "POST_CUSTOM_GRID_DIRTY_MIND_SPAWN",
+    "args": [
+      { "type": "CustomGridEntity", "name": "customGrid" },
+      { "type": "Entity", "name": "familiar" }
+    ],
+    "param": { "type": "string", "optional": true, "comment": "matched against custom grid entity name" }
+  },
+  "PRE_TRANSITION_RENDER": {
+    "value": "PRE_TRANSITION_RENDER",
+    "args": []
+  },
+  "POST_SPAWN_CUSTOM_DOOR": {
+    "value": "POST_SPAWN_CUSTOM_DOOR",
+    "args": [
+      { "type": "Entity", "name": "door" },
+      { "type": "table", "name": "data" },
+      { "type": "Sprite", "name": "sprite" },
+      { "type": "CustomDoor", "name": "CustomDoor" },
+      { "type": "CustomGridEntity", "name": "customGrid" },
+      { "type": "integer", "name": "index" },
+      { "type": "boolean", "name": "force" },
+      { "type": "boolean", "name": "respawning" }
+    ],
+    "param": { "type": "string", "optional": true, "comment": "matched against DoorDataName" }
+  },
+  "POST_CUSTOM_DOOR_UPDATE": {
+    "value": "POST_CUSTOM_DOOR_UPDATE",
+    "args": [
+      { "type": "Entity", "name": "door" },
+      { "type": "table", "name": "data" },
+      { "type": "Sprite", "name": "sprite" },
+      { "type": "CustomDoor", "name": "CustomDoor" },
+      { "type": "CustomGridPersistData", "name": "persistData" }
+    ],
+    "param": { "type": "string", "optional": true, "comment": "matched against DoorDataName" }
+  },
+  "PRE_BOSS_SELECT": {
+    "value": "PRE_BOSS_SELECT",
+    "args": [
+      { "type": "StageAPI.BossesInfo", "name": "bosses" },
+      { "type": "RNG", "name": "rng" },
+      { "type": "RoomDescriptor", "name": "roomDesc" },
+      { "type": "boolean", "name": "ignoreNoOptions" }
+    ],
+    "returns": [
+      { "type": "string|StageAPI.BossesInfo|boolean" }
+    ],
+    "comment": "Return a bossID to force that boss, a table to replace the candidate pool, or boolean to select no boss"
+  },
+  "POST_OVERRIDDEN_GRID_BREAK": {
+    "value": "POST_OVERRIDDEN_GRID_BREAK",
+    "args": [
+      { "type": "integer", "name": "grindex" },
+      { "type": "GridEntity", "name": "grid" },
+      { "type": "table", "name": "justBrokenGridSpawns" }
+    ],
+    "comment": "[DEPRECATED] use POST_OVERRIDDEN_ALT_ROCK_BREAK"
+  },
+  "POST_OVERRIDDEN_ALT_ROCK_BREAK": {
+    "value": "POST_OVERRIDDEN_ALT_ROCK_BREAK",
+    "args": [
+      { "type": "Vector", "name": "gridpos" },
+      { "type": "integer", "name": "gridvar" },
+      { "type": "table", "name": "brokenData" },
+      { "type": "CustomGridEntity", "name": "customGrid" },
+      { "type": "Entity", "name": "projectile", "optional": true }
+    ]
+  },
+  "POST_GRID_UPDATE": {
+    "value": "POST_GRID_UPDATE",
+    "args": []
+  },
+  "PRE_UPDATE_GRID_GFX": {
+    "value": "PRE_UPDATE_GRID_GFX",
+    "args": [],
+    "returns": [
+      { "type": "boolean|GridGfx" }
+    ],
+    "comment": "Return false to suppress default grid gfx, or a table to override it. Does not stop at first ret"
+  },
+  "POST_UPDATE_GRID_GFX": {
+    "value": "POST_UPDATE_GRID_GFX",
+    "args": [
+      { "type": "GridGfx", "name": "gridGfx", "optional": true }
+    ]
+  },
+  "PRE_CHANGE_ROOM_GFX": {
+    "value": "PRE_CHANGE_ROOM_GFX",
+    "args": [
+      { "type": "LevelRoom", "name": "currentRoom", "optional": true },
+      { "type": "GridGfx", "name": "usingGfx", "optional": true },
+      { "type": "boolean", "name": "onRoomLoad" },
+      { "type": "Dimension", "name": "currentDimension" }
+    ],
+    "returns": [
+      { "type": "boolean|GridGfx" }
+    ],
+    "comment": "Return false to suppress the gfx change, or a table to override usingGfx"
+  },
+  "POST_CHANGE_ROOM_GFX": {
+    "value": "POST_CHANGE_ROOM_GFX",
+    "args": [
+      { "type": "LevelRoom", "name": "currentRoom", "optional": true },
+      { "type": "GridGfx", "name": "usingGfx", "optional": true },
+      { "type": "boolean", "name": "onRoomLoad" },
+      { "type": "Dimension", "name": "currentDimension" }
+    ]
+  },
+  "PRE_CHANGE_ROCK_GFX": {
+    "value": "PRE_CHANGE_ROCK_GFX",
+    "args": [
+      { "type": "GridEntity", "name": "grid" },
+      { "type": "integer", "name": "index" },
+      { "type": "string", "name": "usingFilename" }
+    ],
+    "returns": [
+      { "type": "string", "optional": true }
+    ],
+    "param": { "type": "CustomStage", "optional": true, "comment": "matched against the current stage" },
+    "comment": "Return a replacement gfx filename"
+  },
+  "PRE_CHANGE_DECORATION_GFX": {
+    "value": "PRE_CHANGE_DECORATION_GFX",
+    "args": [
+      { "type": "GridEntity", "name": "grid" },
+      { "type": "integer", "name": "index" },
+      { "type": "GridGfx.Decorations", "name": "usingDecorations" }
+    ],
+    "returns": [
+      { "type": "GridGfx.Decorations", "optional": true }
+    ],
+    "param": { "type": "CustomStage", "optional": true, "comment": "matched against the current stage" },
+    "comment": "Return a replacement decorations table"
+  },
+  "PRE_CHANGE_PIT_GFX": {
+    "value": "PRE_CHANGE_PIT_GFX",
+    "args": [
+      { "type": "GridEntity", "name": "grid" },
+      { "type": "integer", "name": "index" },
+      { "type": "GridGfx.PitFile", "name": "usingPitFile", "optional": true },
+      { "type": "string", "name": "usingBridgeFilename", "optional": true },
+      { "type": "GridGfx.PitFile", "name": "usingAlt", "optional": true }
+    ],
+    "returns": [
+      { "type": "GridGfx.PitFile", "name": "pitFile", "optional": true },
+      { "type": "string", "name": "bridgeFilename", "optional": true },
+      { "type": "GridGfx.PitFile", "name": "alt", "optional": true }
+    ],
+    "param": { "type": "CustomStage", "optional": true, "comment": "matched against the current stage" },
+    "comment": "The only callback with 3 real return values; all three are reassigned together whenever any is non-nil"
+  },
+  "PRE_CHANGE_MISC_GRID_GFX": {
+    "value": "PRE_CHANGE_MISC_GRID_GFX",
+    "args": [
+      { "type": "GridEntity", "name": "grid" },
+      { "type": "integer", "name": "index" },
+      { "type": "string|table", "name": "usingFilename" }
+    ],
+    "returns": [
+      { "type": "string", "optional": true }
+    ],
+    "param": { "type": "CustomStage", "optional": true, "comment": "matched against the current stage" },
+    "comment": "Return a replacement gfx filename"
+  },
+  "PRE_STAGEAPI_NEW_ROOM": {
+    "value": "PRE_STAGEAPI_NEW_ROOM",
+    "args": []
+  },
+  "PRE_STAGEAPI_NEW_ROOM_GENERATION": {
+    "value": "PRE_STAGEAPI_NEW_ROOM_GENERATION",
+    "args": [
+      { "type": "LevelRoom", "name": "currentRoom", "optional": true },
+      { "type": "boolean", "name": "justGenerated", "optional": true },
+      { "type": "integer", "name": "currentListIndex" },
+      { "type": "Dimension", "name": "currentDimension" }
+    ],
+    "returns": [
+      { "type": "LevelRoom|{CurrentRoom: LevelRoom, JustGenerated: boolean, Boss: BossData}" }
+    ],
+    "comment": "Return a room, or a table of CurrentRoom/JustGenerated/Boss, to override room generation"
+  },
+  "POST_STAGEAPI_NEW_ROOM_GENERATION": {
+    "value": "POST_STAGEAPI_NEW_ROOM_GENERATION",
+    "args": [
+      { "type": "LevelRoom", "name": "currentRoom", "optional": true },
+      { "type": "boolean", "name": "justGenerated", "optional": true },
+      { "type": "integer", "name": "currentListIndex" },
+      { "type": "BossData", "name": "boss", "optional": true },
+      { "type": "Dimension", "name": "currentDimension" }
+    ],
+    "returns": [
+      { "type": "LevelRoom|{CurrentRoom: LevelRoom, JustGenerated: boolean, Boss: BossData}" }
+    ],
+    "comment": "Same return shape as PRE_STAGEAPI_NEW_ROOM_GENERATION"
+  },
+  "POST_STAGEAPI_NEW_ROOM": {
+    "value": "POST_STAGEAPI_NEW_ROOM",
+    "args": [
+      { "type": "boolean", "name": "justGenerated", "optional": true }
+    ]
+  },
+  "PRE_SELECT_NEXT_STAGE": {
+    "value": "PRE_SELECT_NEXT_STAGE",
+    "args": [
+      { "type": "CustomStage", "name": "currentstage" },
+      { "type": "boolean", "name": "isSecretExit" }
+    ],
+    "returns": [
+      { "type": "CustomStage|{NormalStage: boolean, Stage: LevelStage}" }
+    ],
+    "comment": "Return the next stage to override the trapdoor destination"
+  },
+  "PRE_PARSE_METADATA": {
+    "value": "PRE_PARSE_METADATA",
+    "args": [
+      { "type": "RoomMetadata", "name": "roomMetadata" },
+      { "type": "table<integer, RoomLayout_EntityData[]>", "name": "outEntities" },
+      { "type": "table<integer, RoomLayout_GridData[]>", "name": "outGrids" },
+      { "type": "RNG", "name": "roomLoadRNG" }
+    ],
+    "comment": "Modify outEntities/outGrids/roomMetadata in place"
+  },
+  "POST_PARSE_METADATA": {
+    "value": "POST_PARSE_METADATA",
+    "args": [
+      { "type": "RoomMetadata", "name": "roomMetadata" },
+      { "type": "table<integer, RoomLayout_EntityData[]>", "name": "outEntities" },
+      { "type": "table<integer, RoomLayout_GridData[]>", "name": "outGrids" }
+    ],
+    "comment": "Modify outEntities/outGrids/roomMetadata in place"
+  },
+  "POST_SELECT_BOSS_MUSIC": {
+    "value": "POST_SELECT_BOSS_MUSIC",
+    "args": [
+      { "type": "CustomStage", "name": "currentstage" },
+      { "type": "Music", "name": "musicID", "optional": true },
+      { "type": "boolean", "name": "isCleared" },
+      { "type": "RNG", "name": "musicRNG" }
+    ],
+    "returns": [
+      { "type": "Music", "optional": true }
+    ],
+    "comment": "Return a Music id to override the selected music"
+  },
+  "POST_SELECT_MINIBOSS_MUSIC": {
+    "value": "POST_SELECT_MINIBOSS_MUSIC",
+    "args": [
+      { "type": "CustomStage", "name": "currentstage" },
+      { "type": "Music", "name": "musicID", "optional": true },
+      { "type": "boolean", "name": "isCleared" },
+      { "type": "RNG", "name": "musicRNG" }
+    ],
+    "returns": [
+      { "type": "Music", "optional": true }
+    ],
+    "comment": "Return a Music id to override the selected music"
+  },
+  "POST_SELECT_CHALLENGE_MUSIC": {
+    "value": "POST_SELECT_CHALLENGE_MUSIC",
+    "args": [
+      { "type": "CustomStage", "name": "currentstage" },
+      { "type": "Music", "name": "musicID", "optional": true },
+      { "type": "boolean", "name": "isCleared" },
+      { "type": "RNG", "name": "musicRNG" }
+    ],
+    "returns": [
+      { "type": "Music", "optional": true }
+    ],
+    "comment": "Return a Music id to override the selected music"
+  },
+  "POST_SELECT_BOSSRUSH_MUSIC": {
+    "value": "POST_SELECT_BOSSRUSH_MUSIC",
+    "args": [
+      { "type": "CustomStage", "name": "currentstage" },
+      { "type": "Music", "name": "musicID", "optional": true },
+      { "type": "boolean", "name": "isCleared" },
+      { "type": "RNG", "name": "musicRNG" }
+    ],
+    "returns": [
+      { "type": "Music", "optional": true }
+    ],
+    "comment": "Return a Music id to override the selected music"
+  },
+  "POST_SELECT_STAGE_MUSIC": {
+    "value": "POST_SELECT_STAGE_MUSIC",
+    "args": [
+      { "type": "CustomStage", "name": "currentstage" },
+      { "type": "Music", "name": "musicID", "optional": true },
+      { "type": "RoomType", "name": "roomType" },
+      { "type": "RNG", "name": "musicRNG" }
+    ],
+    "returns": [
+      { "type": "Music", "optional": true }
+    ],
+    "comment": "Return a Music id to override the selected music"
+  },
+  "POST_SELECT_ROOM_MUSIC": {
+    "value": "POST_SELECT_ROOM_MUSIC",
+    "args": [
+      { "type": "LevelRoom", "name": "currentRoom" },
+      { "type": "Music", "name": "musicID", "optional": true },
+      { "type": "RoomType", "name": "baseRoomType" },
+      { "type": "any", "name": "roomId" },
+      { "type": "RNG", "name": "musicRNG" }
+    ],
+    "returns": [
+      { "type": "Music", "optional": true }
+    ],
+    "comment": "Return a Music id to override the selected music"
+  },
+  "POST_ROOM_CLEAR": {
+    "value": "POST_ROOM_CLEAR",
+    "args": []
+  },
+  "PRE_STAGEAPI_SELECT_BOSS_ITEM": {
+    "value": "PRE_STAGEAPI_SELECT_BOSS_ITEM",
+    "args": [
+      { "type": "EntityPickup", "name": "pickup" },
+      { "type": "LevelRoom", "name": "currentRoom" }
+    ],
+    "returns": [
+      { "type": "boolean" }
+    ],
+    "comment": "Replace/do stuff to item here, then return true to prevent it from being morphed by stageAPI"
+  },
+  "PRE_STAGEAPI_LOAD_SAVE": {
+    "value": "PRE_STAGEAPI_LOAD_SAVE",
+    "args": []
+  },
+  "POST_STAGEAPI_LOAD_SAVE": {
+    "value": "POST_STAGEAPI_LOAD_SAVE",
+    "args": []
+  },
+  "PRE_PLAY_MINIBOSS_STREAK": {
+    "value": "PRE_PLAY_MINIBOSS_STREAK",
+    "args": [
+      { "type": "LevelRoom", "name": "currentRoom" },
+      { "type": "BossData", "name": "boss" },
+      { "type": "string", "name": "text" }
+    ],
+    "returns": [
+      { "type": "boolean|string" }
+    ],
+    "comment": "Return false to cancel the streak, or a string to override its text"
+  },
+  "POST_STREAK_RENDER": {
+    "value": "POST_STREAK_RENDER",
+    "args": [
+      { "type": "Vector", "name": "streakPos" },
+      { "type": "table", "name": "streakPlaying" }
+    ]
+  },
+  "POST_HUD_RENDER": {
+    "value": "POST_HUD_RENDER",
+    "args": [
+      { "type": "boolean", "name": "isPauseMenuOpen" },
+      { "type": "number", "name": "pauseMenuDarkPct" }
+    ],
+    "comment": "Uses shader render to render above HUD"
+  },
+  "GREED_WAVE_CHANGED": {
+    "value": "GREED_WAVE_CHANGED",
+    "args": []
+  },
+  "CHALLENGE_WAVE_CHANGED": {
+    "value": "CHALLENGE_WAVE_CHANGED",
+    "args": []
+  },
+  "POST_ROOM_SWAP": {
+    "value": "POST_ROOM_SWAP",
+    "args": [
+      { "type": "integer", "name": "listIndexA" },
+      { "type": "integer", "name": "listIndexB" },
+      { "type": "LevelRoom", "name": "levelRoomA" },
+      { "type": "LevelRoom", "name": "levelRoomB" }
+    ],
+    "comment": "Fires when two vanilla rooms swap positions (like with Red Key)"
+  },
+  "PRE_LEVELMAP_SPAWN_DOOR": {
+    "value": "PRE_LEVELMAP_SPAWN_DOOR",
+    "args": [
+      { "type": "DoorSlot", "name": "slot" },
+      { "type": "{ExitRoom: integer, ExitSlot: DoorSlot}", "name": "doorData" },
+      { "type": "LevelRoom", "name": "levelRoom" },
+      { "type": "LevelRoom", "name": "targetLevelRoom" },
+      { "type": "LevelMap.RoomData", "name": "roomData" },
+      { "type": "LevelMap", "name": "levelMap" }
+    ],
+    "returns": [
+      { "type": "boolean" }
+    ],
+    "comment": "Return true to cancel spawning this door"
+  },
+  "EARLY_NEW_ROOM": {
+    "value": "EARLY_NEW_ROOM",
+    "args": [],
+    "comment": "Fires before POST_NEW_ROOM, on the first vanilla entity-spawn callback of the room"
+  },
+  "EARLY_NEW_CUSTOM_STAGE": {
+    "value": "EARLY_NEW_CUSTOM_STAGE",
+    "args": [
+      { "type": "CustomStage", "name": "stage" }
+    ],
+    "param": { "type": "CustomStage", "optional": true }
+  },
+  "POST_SELECT_BACKDROP_WALL": {
+    "value": "POST_SELECT_BACKDROP_WALL",
+    "args": [
+      { "type": "Sprite", "name": "sprite" },
+      { "type": "table", "name": "backdrop" },
+      { "type": "table<integer, string>", "name": "usedData" }
+    ]
+  },
+  "POST_CHANGE_GRID_GFX": {
+    "value": "POST_CHANGE_GRID_GFX",
+    "args": [
+      { "type": "GridGfx", "name": "gridGfx" },
+      { "type": "boolean", "name": "calledPostInit" }
+    ]
+  }
+}

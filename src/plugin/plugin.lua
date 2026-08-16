@@ -25,12 +25,38 @@ local luadoc = require 'parser.luadoc'
 local furi = require 'file-uri'
 local workspace = require 'workspace'
 
----@class CallbackTypes
+---Args set by `Lua.runtime.pluginArgs` LuaLS setting,
+---and passed by Lua LS
+---@class PluginArgs
+---@field EnableStageAPISupport boolean
+
+local PLUGIN_ARG_LIST = select(3, ...) or {}
+
+local function includes(ls, v)
+    for _, v2 in ipairs(ls) do
+        if v2 == v then
+            return true
+        end
+    end
+    return false
+end
+
+---@type PluginArgs
+local PLUGIN_ARGS = {
+    EnableStageAPISupport = includes(PLUGIN_ARG_LIST, "enableStageAPISupport")
+}
+
+if PLUGIN_ARGS.EnableStageAPISupport then
+    print("Enabled StageAPI support")
+end
+
+---@class CallbackConfig
 ---@field Args string[]
 ---@field Returns string[]
+---@field RequireRegisterFunc string? If set, only applies to the specified register func
 
 ---Contains arg types
----@type table<string, CallbackTypes>
+---@type table<string, CallbackConfig>
 local CALLBACK_TYPES = {}
 
 -- probably less complicated would have been enough, but extension paths be wonky so just in case
@@ -50,6 +76,14 @@ do
         safeLoadData(scriptPath .. '/callbackParams.lua', function (data)
             CALLBACK_TYPES = data
         end)
+
+        if PLUGIN_ARGS.EnableStageAPISupport then
+            safeLoadData(scriptPath .. '/callbackParamsStageAPI.lua', function (callbacks)
+                for name, params in pairs(callbacks) do
+                    CALLBACK_TYPES[name] = params
+                end
+            end)
+        end
     end
 end
 
@@ -58,17 +92,14 @@ local MOD_TYPE = "ModReference"
 local MANUAL_DOC_LOOKBACK = 500
 local WORKSPACE_CONFIG_FILENAME = '.isaac-config.lua'
 
---#region customization / user config
-
 ---@class CallbackRegisterFuncConfig
 ---@field IdArg integer arg index (from 1) with the callback id
 ---@field FunctionArg integer arg index holding the callback function
 ---@field HasModArg boolean If true, adds mod (self) as first arg to callbacks
 
 ---@class WorkspaceConfig
----@field Callbacks table<string, CallbackTypes>
+---@field Callbacks table<string, CallbackConfig>
 ---@field RegisterFunctions table<string, CallbackRegisterFuncConfig>
-
 
 -- Matched only against name (used for mod references with varying name)
 ---@type table<string, CallbackRegisterFuncConfig>
@@ -81,6 +112,14 @@ local CALLBACK_REGISTER_FUNCS = {
 -- like StageAPI.AddCallback, takes priority on match
 ---@type table<string, CallbackRegisterFuncConfig>
 local PATH_REGISTER_FUNCS = {}
+
+if PLUGIN_ARGS.EnableStageAPISupport then
+    PATH_REGISTER_FUNCS["StageAPI.AddCallback"] = {
+        IdArg = 2, FunctionArg = 4, HasModArg = false,
+    }
+end
+
+--#region customization / user config
 
 local hasPathRegisterFuncs = false
 
@@ -175,7 +214,7 @@ end
 
 ---@param ast parser.object
 ---@param funcArgs parser.object[]
----@param paramTypes CallbackTypes
+---@param paramTypes CallbackConfig
 ---@param hasModArg boolean
 local function bindFuncArgs(ast, funcArgs, paramTypes, hasModArg)
     for i, paramSource in ipairs(funcArgs) do
@@ -307,6 +346,7 @@ end
 
 ---@param callee parser.object
 ---@return CallbackRegisterFuncConfig?
+---@return string?
 local function getRegisterFuncConfig(callee)
     if hasPathRegisterFuncs then
         -- first match against full path for custom callback registrators,
@@ -315,12 +355,14 @@ local function getRegisterFuncConfig(callee)
         local path = buildDottedPath(callee)
         local fullMatch = path and PATH_REGISTER_FUNCS[path]
         if fullMatch then
-            return fullMatch
+            return fullMatch, path
         end
     end
 
     local funcName = guide.getKeyName(callee)
-    return funcName and CALLBACK_REGISTER_FUNCS[funcName]
+    if funcName and CALLBACK_REGISTER_FUNCS[funcName] then
+        return CALLBACK_REGISTER_FUNCS[funcName], funcName
+    end
 end
 
 ---@param uri string
@@ -342,7 +384,7 @@ function OnTransformAst(uri, ast)
             return
         end
 
-        local cfg = getRegisterFuncConfig(callee)
+        local cfg, cfgName = getRegisterFuncConfig(callee)
         if not cfg then
             return
         end
@@ -370,7 +412,7 @@ function OnTransformAst(uri, ast)
         end
 
         local paramTypes = CALLBACK_TYPES[callbackName]
-        if not paramTypes then
+        if not paramTypes or (paramTypes.RequireRegisterFunc and cfgName ~= paramTypes.RequireRegisterFunc) then
             return
         end
 

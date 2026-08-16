@@ -96,8 +96,8 @@ return {
     -- for a vanilla example)
     Callbacks = {
         -- ofc this already is defined, just an example
-        -- both Args and Returns take lua type annotation strings, including unions with | and everything you can do
-        -- with the Lua LS normally.
+        -- both Args and Returns take lua type annotation strings, including unions
+        --  with | and everything you can dowith the Lua LS normally.
         -- Returns can also have more values in case it has more returns
         MC_ENTITY_TAKE_DMG = { 
             Args = { "Entity", "number", "integer", "EntityRef", "integer" },
@@ -108,6 +108,9 @@ return {
     -- Alternatives to :AddCallback, matched by full path and take priority if match applies
     RegisterFunctions = {
         -- StageAPI.AddCallback(modID, callbackId, priority, fn, ...)
+        -- IdArg: position of argument containing callback id (starting from 1)
+        -- FunctionArg: position of argument containing function (starting from 1)
+        -- HasModArg: if callbacks functions registered this way will pass the mod as first arg
         ["StageAPI.AddCallback"] = { IdArg = 2, FunctionArg = 4, HasModArg = false },
     },
 }

@@ -6,7 +6,7 @@ import * as path from "path";
 import * as fs from 'fs'; // In NodeJS: 'const fs = require('fs')'
 import { getState } from './persist';
 import { checkActivate } from './activationCheck';
-import { setDefinedGlobals, setExternalLibrary, setMiscConfig, setPlugin, updateMaxFileSize } from './luaSettings';
+import { setDefinedGlobals, setExternalLibrary, setMiscConfig, setPlugin, setPluginArgs, updateMaxFileSize } from './luaSettings';
 import { getConfig } from './config';
 import { Constants } from './constants';
 import { modifyJsoncFile } from './modifyJson';
@@ -84,6 +84,7 @@ function onActivate(context: vscode.ExtensionContext) {
         setExternalLibrary(luaCfg, context, REPENTOGON_LUA_LIBRARY, config.repentogonEnabled);
         setDefinedGlobals(luaCfg, true, config.repentogonEnabled);
         setPlugin(luaCfg, context, config.pluginEnabled);
+        setPluginArgs(luaCfg, getPluginArgs(config));
 
         setMiscConfig(config.workspaceSettings);
         updateMaxFileSize(luaCfg);    
@@ -108,6 +109,7 @@ function onDeactivate(context: vscode.ExtensionContext) {
             setExternalLibrary(luaCfg, context, VANILLA_LUA_LIBRARY, false);
             setExternalLibrary(luaCfg, context, REPENTOGON_LUA_LIBRARY, false);
             setPlugin(luaCfg, context, false);
+            setPluginArgs(luaCfg, {});
             return luaCfg;
         });
     }
@@ -122,7 +124,8 @@ function onConfigChange(context: vscode.ExtensionContext, event: vscode.Configur
 
     const repentogonEnabledChanged = event.affectsConfiguration("boi-lua.repentogonEnabled");
     const pluginEnabledChanged = event.affectsConfiguration("boi-lua.pluginEnabled");
-    const anyChanged = [repentogonEnabledChanged, pluginEnabledChanged].some(x => x);
+    const enableStageAPISupportChanged = event.affectsConfiguration("boi-lua.stageAPISupportEnabled");
+    const anyChanged = [repentogonEnabledChanged, pluginEnabledChanged, enableStageAPISupportChanged].some(x => x);
 
 
     if (anyChanged) {
@@ -134,9 +137,18 @@ function onConfigChange(context: vscode.ExtensionContext, event: vscode.Configur
             if (pluginEnabledChanged) {
                 setPlugin(luaCfg, context, config.pluginEnabled);
             }
+            if (pluginEnabledChanged || enableStageAPISupportChanged) {
+                setPluginArgs(luaCfg, getPluginArgs(config));
+            }
             return luaCfg;
         });
     }
+}
+
+function getPluginArgs(config: ReturnType<typeof getConfig>): Record<string, unknown> {
+    return {
+        enableStageAPISupport: config.stageAPISupportEnabled,
+    };
 }
 
 function getCfgFilePath() {
