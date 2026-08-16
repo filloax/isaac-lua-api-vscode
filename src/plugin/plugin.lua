@@ -99,6 +99,110 @@ local function hasManualParams(ast, callSource)
     return best ~= nil and best.text ~= nil and best.text:find('@param', 1, true) ~= nil
 end
 
+
+--#region modify pre-defined function params
+local ACCESS_TYPES = {
+    ["getlocal"] = true,
+    ["getglobal"] = true,
+    ["getfield"] = true,
+}
+local FIELD_DEF_TYPES = {'setfield', 'tablefield', 'setmethod'}
+local GLOBAL_SET_TYPES = {'setglobal'}
+
+---@param fnArg parser.object
+local function isPassedFunction(fnArg)
+    return ACCESS_TYPES[fnArg.type]
+end
+
+---@param ast parser.object
+---@return parser.object[]
+local function findFunctionDefs(ast, name, cache, key, assignStatementTypes)
+    local byName = cache[key]
+    if not byName then
+        byName = {}
+        cache[key] = byName
+        guide.eachSourceTypes(ast, assignStatementTypes, function (src)
+            local srcName = guide.getKeyName(src)
+            if srcName and src.value and src.value.type == 'function' then
+                if not byName[srcName] then
+                    byName[srcName] = {}
+                end
+                table.insert(byName[srcName], src)
+            end
+        end)
+    end
+    return byName[name] or {}
+end
+
+---@param refBase parser.object
+---@param defBase parser.object
+local function isSameTable(refBase, defBase)
+    if not refBase or not defBase then
+        return false
+    end
+    if defBase.type == 'table' then
+        return refBase.type == 'getlocal'
+            and refBase.node ~= nil
+            and refBase.node.value == defBase
+    end
+    if refBase.type ~= defBase.type then
+        return false
+    end
+    if refBase.type == 'getlocal' then
+        return refBase.node == defBase.node
+    elseif refBase.type == 'getglobal' then
+        return guide.getKeyName(refBase) == guide.getKeyName(defBase)
+    elseif refBase.type == 'getfield' then
+        return guide.getKeyName(refBase) == guide.getKeyName(defBase)
+            and isSameTable(refBase.node, defBase.node)
+    end
+    return false
+end
+
+---@param fnArg parser.object
+---@return parser.object?
+local function getMatchingFunctionDefinition(ast, fnArg, cache)
+    local typ = fnArg.type
+    if typ == "getlocal" then
+        return fnArg.node
+    elseif typ == "getglobal" or typ == "getfield" then
+        local name = guide.getKeyName(fnArg)
+        if not name then return end
+        if typ == "getglobal" then
+            local defs = findFunctionDefs(ast, name, cache, "globals", GLOBAL_SET_TYPES)
+            return defs[1]
+        else
+            local defs = findFunctionDefs(ast, name, cache, "fields", FIELD_DEF_TYPES)
+            -- check if same table
+            for _, def in ipairs(defs) do
+                if isSameTable(fnArg.node, def.node) then
+                    return def
+                end
+            end
+        end
+    end
+end
+
+---@param def parser.object
+local function getFunctionDefArgs(def)
+    return def.value and def.value.args
+end
+
+--#endregion
+
+---@param ast parser.object
+---@param funcArgs parser.object[]
+---@param paramTypes string[]
+local function bindFuncArgs(ast, funcArgs, paramTypes)
+    for i, paramSource in ipairs(funcArgs) do
+        -- first param is the mod/self reference
+        local typename = i == 1 and MOD_TYPE or paramTypes[i - 1]
+        if typename then
+            bindParamType(ast, paramSource, typename)
+        end
+    end
+end
+
 ---@param uri string
 ---@param ast parser.object
 ---@return parser.object? ast
@@ -106,6 +210,8 @@ function OnTransformAst(uri, ast)
     if not next(CALLBACK_PARAMS) then
         return
     end
+
+    local cache = {}
 
     guide.eachSourceType(ast, 'call', function(callSource)
         local callee = callSource.node
@@ -130,7 +236,9 @@ function OnTransformAst(uri, ast)
 
 
         local fnArg = args[fnOffset]
-        if not fnArg or fnArg.type ~= 'function' then
+        -- function was passed instead of being inlined
+        local isPassedFnArg = isPassedFunction(fnArg)
+        if not fnArg or (fnArg.type ~= 'function' and not isPassedFnArg) then
             return
         end
 
@@ -146,21 +254,31 @@ function OnTransformAst(uri, ast)
             return
         end
 
-        if hasManualParams(ast, callSource) then
-            return
-        end
+        if isPassedFnArg then -- passed function
+            local def = getMatchingFunctionDefinition(ast, fnArg, cache)
+            if not def then return end
 
-        local funcArgs = fnArg.args
-        if not funcArgs then
-            return
-        end
-
-        for i, paramSource in ipairs(funcArgs) do
-            -- first param is the mod/self reference
-            local typename = i == 1 and MOD_TYPE or paramTypes[i - 1]
-            if typename then
-                bindParamType(ast, paramSource, typename)
+            if hasManualParams(ast, def) then
+                return
             end
+
+            local funcArgs = getFunctionDefArgs(def)
+            if not funcArgs then
+                return
+            end
+
+            bindFuncArgs(ast, funcArgs, paramTypes)
+        else -- inline function
+            if hasManualParams(ast, callSource) then
+                return
+            end
+
+            local funcArgs = fnArg.args
+            if not funcArgs then
+                return
+            end
+
+            bindFuncArgs(ast, funcArgs, paramTypes)
         end
     end)
 end
