@@ -1,5 +1,10 @@
 # Change Log
 
+* [1.15.1]
+    - Custom add callback method registration properly matches paths with : (e.g. registering Mod:AddExtraCallback())
+    - Show errors in case loading .isaac-config.lua fails
+    - Custom callback returns in plugin are always optional
+
 * [1.15.0]
     - Now has a plugin bundled to auto-recognize callback function parameters with no annotations
         - Plugin can be disabled via a new config setting
