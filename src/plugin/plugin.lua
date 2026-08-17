@@ -202,13 +202,34 @@ local function buildParamComment(paramName, typename, referenceParamName, pos)
     }
 end
 
+---Trailing or a nil |
+---@param typeStr string
+---@return boolean
+local function isTypeOptional(typeStr)
+    typeStr = typeStr:match('^%s*(.-)%s*$')
+    return typeStr:sub(-1) == '?'
+        or typeStr:find('|%s*nil%s*|') ~= nil
+        or typeStr:find('|%s*nil%s*$') ~= nil
+        or typeStr:find('^nil%s*|') ~= nil
+end
+
+---@param typeStr string
+---@return string
+local function makeTypeOptional(typeStr)
+    if isTypeOptional(typeStr) then
+        return typeStr
+    end
+    return "(" .. typeStr .. ')?'
+end
+
 ---@param returns CallbackParamConfig[]
 ---@param pos integer
 local function buildReturnsComment(returns, pos)
     -- multiple returns in a comment to ensure it gets assigned properly
     local parts = {}
     for i, ret in ipairs(returns) do
-        parts[i] = ret.Name and ('%s %s'):format(ret.Type, ret.Name) or ret.Type
+        local optType = makeTypeOptional(ret.Type)
+        parts[i] = ret.Name and ('%s %s'):format(optType, ret.Name) or optType
     end
     return {
         type = 'comment.short',
