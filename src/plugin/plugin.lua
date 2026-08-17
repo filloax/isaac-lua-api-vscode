@@ -381,6 +381,13 @@ local function buildDottedPath(node)
             return nil
         end
         return base .. "." .. key
+    elseif node.type == "getmethod" then
+        local base = buildDottedPath(node.node)
+        local key = guide.getKeyName(node)
+        if not base or not key then
+            return nil
+        end
+        return base .. ":" .. key
     end
     return nil
 end
@@ -394,6 +401,7 @@ local function getRegisterFuncConfig(callee)
         -- otherwise fall back to more generic match for vanilla :AddCallback
         -- that does not have a fixed name before
         local path = buildDottedPath(callee)
+        -- print("PATH IS " .. tostring(path))
         local fullMatch = path and PATH_REGISTER_FUNCS[path]
         if fullMatch then
             return fullMatch, path
