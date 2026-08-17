@@ -50,9 +50,13 @@ if PLUGIN_ARGS.EnableStageAPISupport then
     print("Enabled StageAPI support")
 end
 
+---@class CallbackParamConfig
+---@field Type string
+---@field Name string?
+
 ---@class CallbackConfig
----@field Args string[]
----@field Returns string[]
+---@field Args CallbackParamConfig[]
+---@field Returns CallbackParamConfig[]
 ---@field RequireRegisterFunc string? If set, only applies to the specified register func
 
 ---Contains arg types
@@ -113,15 +117,15 @@ local CALLBACK_REGISTER_FUNCS = {
 ---@type table<string, CallbackRegisterFuncConfig>
 local PATH_REGISTER_FUNCS = {}
 
+local hasPathRegisterFuncs = false
 if PLUGIN_ARGS.EnableStageAPISupport then
     PATH_REGISTER_FUNCS["StageAPI.AddCallback"] = {
         IdArg = 2, FunctionArg = 4, HasModArg = false,
     }
+    hasPathRegisterFuncs = true
 end
 
 --#region customization / user config
-
-local hasPathRegisterFuncs = false
 
 ---@param data WorkspaceConfig
 local function applyWorkspaceConfig(data)
@@ -163,13 +167,33 @@ end
 
 ---@param paramName string
 ---@param typename string
+---@param referenceParamName? string
 ---@param pos integer
-local function buildParamComment(paramName, typename, pos)
+local function buildParamComment(paramName, typename, referenceParamName, pos)
     return {
         type = 'comment.short',
         start = pos,
         finish = pos,
-        text = ('-@param %s %s'):format(paramName, typename),
+        text = ('-@param %s %s'):format(paramName, typename, referenceParamName),
+        -- Currently does not show any hint, and not using the user's name makes recognition not work
+        -- text = ('-@param %s %s %s'):format(paramName, typename, referenceParamName),
+        virtual = true,
+    }
+end
+
+---@param returns CallbackParamConfig[]
+---@param pos integer
+local function buildReturnsComment(returns, pos)
+    -- multiple returns in a comment to ensure it gets assigned properly
+    local parts = {}
+    for i, ret in ipairs(returns) do
+        parts[i] = ret.Name and ('%s %s'):format(ret.Type, ret.Name) or ret.Type
+    end
+    return {
+        type = 'comment.short',
+        start = pos,
+        finish = pos,
+        text = '-@return ' .. table.concat(parts, ', '),
         virtual = true,
     }
 end
@@ -177,8 +201,9 @@ end
 ---Add a comment to the param in the AST (rather than fiddling with internals)
 ---@param ast parser.object
 ---@param paramSource parser.object
----@param typename string
-local function bindParamType(ast, paramSource, typename)
+---@param typeName string
+---@param refParamName? string
+local function bindParamType(ast, paramSource, typeName, refParamName)
     if not guide.isParam(paramSource) then
         return
     end
@@ -186,14 +211,26 @@ local function bindParamType(ast, paramSource, typename)
     if not paramName then
         return
     end
-    local comment = buildParamComment(paramName, typename, paramSource.start - 1)
+    local comment = buildParamComment(paramName, typeName, refParamName, paramSource.start - 1)
     luadoc.buildAndBindDoc(ast, paramSource.parent.parent, comment)
 end
 
---- Check if ---@param comment exists in func
+---Add a ---@return comment to the function in the AST
+---@param ast parser.object
+---@param funcNode parser.object
+---@param returns CallbackParamConfig[]?
+local function bindFuncReturns(ast, funcNode, returns)
+    if not returns or #returns == 0 then
+        return
+    end
+    local comment = buildReturnsComment(returns, funcNode.start - 1)
+    luadoc.buildAndBindDoc(ast, funcNode, comment)
+end
+
+--- Check if ---@param or ---@return comment exists in func
 ---@param ast parser.object
 ---@param callSource parser.object
-local function hasManualParams(ast, callSource)
+local function hasManualDoc(ast, callSource)
     local comments = ast.state and ast.state.comms
     if not comments then
         return false
@@ -209,7 +246,11 @@ local function hasManualParams(ast, callSource)
             end
         end
     end
-    return best ~= nil and best.text ~= nil and best.text:find('@param', 1, true) ~= nil
+    return best ~= nil and best.text ~= nil
+        and (
+            best.text:find('@param', 1, true) ~= nil
+            or best.text:find('@return', 1, true) ~= nil
+        )
 end
 
 ---@param ast parser.object
@@ -218,15 +259,15 @@ end
 ---@param hasModArg boolean
 local function bindFuncArgs(ast, funcArgs, paramTypes, hasModArg)
     for i, paramSource in ipairs(funcArgs) do
-        local typename
+        local paramCfg
         if hasModArg then
             -- first param is the mod/self reference
-            typename = i == 1 and MOD_TYPE or paramTypes.Args[i - 1]
+            paramCfg = i > 1 and paramTypes.Args[i - 1]
         else
-            typename = paramTypes.Args[i]
+            paramCfg = paramTypes.Args[i]
         end
-        if typename then
-            bindParamType(ast, paramSource, typename)
+        if paramCfg then
+            bindParamType(ast, paramSource, paramCfg.Type, paramCfg.Name)
         end
     end
 end
@@ -243,7 +284,7 @@ local GLOBAL_SET_TYPES = {'setglobal'}
 
 ---@param fnArg parser.object
 local function isPassedFunction(fnArg)
-    return ACCESS_TYPES[fnArg.type]
+    return fnArg and ACCESS_TYPES[fnArg.type]
 end
 
 ---@param ast parser.object
@@ -407,6 +448,9 @@ function OnTransformAst(uri, ast)
         end
 
         local callbackName = guide.getKeyName(args[idArgIdx])
+
+        -- print("found callbackName " .. tostring(callbackName))
+
         if not callbackName then
             return
         end
@@ -420,7 +464,7 @@ function OnTransformAst(uri, ast)
             local def = getMatchingFunctionDefinition(ast, fnArg, cache)
             if not def then return end
 
-            if hasManualParams(ast, def) then
+            if hasManualDoc(ast, def) then
                 return
             end
 
@@ -430,8 +474,9 @@ function OnTransformAst(uri, ast)
             end
 
             bindFuncArgs(ast, funcArgs, paramTypes, hasModArg)
+            bindFuncReturns(ast, def.value, paramTypes.Returns)
         else -- inline function
-            if hasManualParams(ast, callSource) then
+            if hasManualDoc(ast, callSource) then
                 return
             end
 
@@ -441,6 +486,7 @@ function OnTransformAst(uri, ast)
             end
 
             bindFuncArgs(ast, funcArgs, paramTypes, hasModArg)
+            bindFuncReturns(ast, fnArg, paramTypes.Returns)
         end
     end)
 end

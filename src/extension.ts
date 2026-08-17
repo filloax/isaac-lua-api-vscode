@@ -12,6 +12,7 @@ import { Constants } from './constants';
 import { modifyJsoncFile } from './modifyJson';
 
 const LUA_CONFIG_FILENAME = ".luarc.json";
+const LUA_EXTENSION_ID = "sumneko.lua";
 
 const VANILLA_LUA_LIBRARY = path.join("out", "emmylua", "vanilla");
 const REPENTOGON_LUA_LIBRARY = path.join("out", "emmylua", "repentogon");
@@ -115,7 +116,7 @@ function onDeactivate(context: vscode.ExtensionContext) {
     }
 }
 
-function onConfigChange(context: vscode.ExtensionContext, event: vscode.ConfigurationChangeEvent) {
+async function onConfigChange(context: vscode.ExtensionContext, event: vscode.ConfigurationChangeEvent) {
     const config = getConfig();
     const filenamePath = getCfgFilePath();
     if (!filenamePath) {
@@ -129,7 +130,7 @@ function onConfigChange(context: vscode.ExtensionContext, event: vscode.Configur
 
 
     if (anyChanged) {
-        modifyJsoncFile(filenamePath, luaCfg => {
+        await modifyJsoncFile(filenamePath, luaCfg => {
             if (repentogonEnabledChanged) {
                 setExternalLibrary(luaCfg, context, VANILLA_LUA_LIBRARY, !config.repentogonEnabled);
                 setExternalLibrary(luaCfg, context, REPENTOGON_LUA_LIBRARY, config.repentogonEnabled);
@@ -142,13 +143,36 @@ function onConfigChange(context: vscode.ExtensionContext, event: vscode.Configur
             }
             return luaCfg;
         });
+
+        // The Lua plugin (and its args) are only read by the language server
+        // on startup, config changes affecting it require a restart
+        if (pluginEnabledChanged || enableStageAPISupportChanged) {
+            await restartLuaLanguageServer();
+        }
     }
 }
 
-function getPluginArgs(config: ReturnType<typeof getConfig>): Record<string, unknown> {
-    return {
-        enableStageAPISupport: config.stageAPISupportEnabled,
-    };
+async function restartLuaLanguageServer() {
+    const luaExtension = vscode.extensions.getExtension(LUA_EXTENSION_ID);
+    if (!luaExtension) {
+        return;
+    }
+
+    try {
+        // lua.startServer stops any running server before starting a new one
+        await vscode.commands.executeCommand("lua.startServer");
+        vscode.window.showInformationMessage("Restarted Lua language server to apply plugin settings.");
+    } catch (error) {
+        console.error("Failed to restart Lua language server", error);
+    }
+}
+
+function getPluginArgs(config: ReturnType<typeof getConfig>) {
+    const args: Record<string, unknown> = {};
+    if (config.stageAPISupportEnabled) {
+        args["enableStageAPISupport"] = config.stageAPISupportEnabled;
+    }
+    return args;
 }
 
 function getCfgFilePath() {
