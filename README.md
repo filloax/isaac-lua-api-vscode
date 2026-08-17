@@ -85,7 +85,8 @@ end
 #### Custom callbacks and custom registration functions
 
 Workspaces can define their own callback types, and even their own `AddCallback`-like registration
-functions (for example `StageAPI.AddCallback` for StageAPI), by adding a `.isaac-config.lua` file
+functions (for example `StageAPI.AddCallback` for StageAPI as an example,
+even if that one is built-in as a setting), by adding a `.isaac-config.lua` file
 at the root of the workspace (next to `.luarc.json` if present).
 
 ```Lua
@@ -96,12 +97,13 @@ return {
     -- for a vanilla example)
     Callbacks = {
         -- ofc this already is defined, just an example
-        -- both Args and Returns take lua type annotation strings, including unions
-        --  with | and everything you can dowith the Lua LS normally.
-        -- Returns can also have more values in case it has more returns
+        -- both Args and Returns take lua type annotation strings in Type, including unions
+        -- with | and everything you can dowith the Lua LS normally. Name is optional
+        -- and currently unused.
+        -- Returns can also have more values in case it has more returns, and can be empty or not included altogether
         MC_ENTITY_TAKE_DMG = { 
-            Args = { "Entity", "number", "integer", "EntityRef", "integer" },
-            Returns = { "boolean" },
+            Args = { {Type = "Entity"}, {Type = "number", Name = "dmg"}, {Type = "integer"}, {Type = "EntityRef"}, {Type = "integer"} },
+            Returns = { {Type = "boolean"} },
         },
     },
 
@@ -111,6 +113,7 @@ return {
         -- IdArg: position of argument containing callback id (starting from 1)
         -- FunctionArg: position of argument containing function (starting from 1)
         -- HasModArg: if callbacks functions registered this way will pass the mod as first arg
+        -- Offered by included stageAPI integration if enabled
         ["StageAPI.AddCallback"] = { IdArg = 2, FunctionArg = 4, HasModArg = false },
     },
 }
@@ -149,7 +152,7 @@ without opening a workspace in VSCode.
 
 ## Extension Settings
 
-This extension has no settings; you can configure behavior in the Lua Language Server extension settings.
+This extension has various settings. Everything except stageAPI support is on by default.
 
 ## Known Issues
 
@@ -173,7 +176,7 @@ See [CHANGELOG.md](CHANGELOG.md) for full changes.
 
 ## 1.15.0
 
-Callback type recognition system
+Callback type recognition plugin now bundled, see main readme
 
 ## 1.6.0
 

@@ -68,7 +68,7 @@
                 "boi-lua.stageAPISupportEnabled": {
                     "type": "boolean",
                     "default": false,
-                    "description": "Enable built-in StageAPI callback autocompletion."
+                    "description": "Enable StageAPI callback autocompletion."
                 }
             }
         },
