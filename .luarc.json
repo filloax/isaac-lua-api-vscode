@@ -3,5 +3,6 @@
     "misc.parameters": ["--develop=true"],
     "workspace.library": [
         "~\\.vscode\\extensions\\sumneko.lua-3.19.1-win32-x64\\server\\script"
-    ]
+    ],
+    "workspace.checkThirdParty": "Disable"
 }
