@@ -1,5 +1,8 @@
 # Change Log
 
+* [1.15.2]
+    - Fix : path registration again
+
 * [1.15.1]
     - Custom add callback method registration properly matches paths with : (e.g. registering Mod:AddExtraCallback())
     - Show errors in case loading .isaac-config.lua fails
