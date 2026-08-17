@@ -147,9 +147,12 @@ local function applyWorkspaceConfig(data)
     if type(data.RegisterFunctions) == 'table' then
         for key, cfg in pairs(data.RegisterFunctions) do
             hasPathRegisterFuncs = true
-            if key:find('.', 1, true) then
+            -- apparently for a simple one like this two plain searches faster than one pattern
+            if key:find('.', 1, true) or key:find(':', 1, true) then
+                -- print("Registered path register func " .. tostring(key))
                 PATH_REGISTER_FUNCS[key] = cfg
             else
+                -- print("Registered callback register func " .. tostring(key))
                 CALLBACK_REGISTER_FUNCS[key] = cfg
             end
         end
