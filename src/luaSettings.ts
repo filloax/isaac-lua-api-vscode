@@ -53,6 +53,16 @@ function setPlugin(config: any, context: vscode.ExtensionContext, enable: boolea
     }
 }
 
+function setPluginArgs(config: any, args: Record<string, unknown>) {
+    const configKey = "runtime.pluginArgs";
+
+    if (Object.keys(args).length > 0) {
+        config[configKey] = args;
+    } else {
+        delete config[configKey];
+    }
+}
+
 function setDefinedGlobals(config: any, enable: boolean, withRepentogon: boolean = false) {
     const configKey = "diagnostics.globals";
     config[configKey] = config[configKey] || [];
@@ -65,10 +75,10 @@ function setDefinedGlobals(config: any, enable: boolean, withRepentogon: boolean
         const index = definedGlobals.indexOf(global);
         if (index === -1 && enable) {
             definedGlobals.push(global);
-            console.log(`added ${global} to globals`);
+            // console.log(`added ${global} to globals`);
         } else if (index !== -1 && !enable) {
             definedGlobals.splice(index, 1);
-            console.log(`removed ${global} from globals`);
+            // console.log(`removed ${global} from globals`);
         }
     });
 }
@@ -102,6 +112,7 @@ function updateMaxFileSize(config: any) {
 export {
     setExternalLibrary,
     setPlugin,
+    setPluginArgs,
     setDefinedGlobals,
     setMiscConfig,
     updateMaxFileSize,

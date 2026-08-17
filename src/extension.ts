@@ -6,15 +6,17 @@ import * as path from "path";
 import * as fs from 'fs'; // In NodeJS: 'const fs = require('fs')'
 import { getState } from './persist';
 import { checkActivate } from './activationCheck';
-import { setDefinedGlobals, setExternalLibrary, setMiscConfig, setPlugin, updateMaxFileSize } from './luaSettings';
+import { setDefinedGlobals, setExternalLibrary, setMiscConfig, setPlugin, setPluginArgs, updateMaxFileSize } from './luaSettings';
 import { getConfig } from './config';
 import { Constants } from './constants';
 import { modifyJsoncFile } from './modifyJson';
 
 const LUA_CONFIG_FILENAME = ".luarc.json";
+const LUA_EXTENSION_ID = "sumneko.lua";
 
 const VANILLA_LUA_LIBRARY = path.join("out", "emmylua", "vanilla");
 const REPENTOGON_LUA_LIBRARY = path.join("out", "emmylua", "repentogon");
+const STAGEAPI_LUA_LIBRARY = path.join("out", "emmylua", "stageapi");
 
 export function activate(context: vscode.ExtensionContext) {
     const state = getState(context);
@@ -82,8 +84,10 @@ function onActivate(context: vscode.ExtensionContext) {
 
         setExternalLibrary(luaCfg, context, VANILLA_LUA_LIBRARY, !config.repentogonEnabled);
         setExternalLibrary(luaCfg, context, REPENTOGON_LUA_LIBRARY, config.repentogonEnabled);
+        setExternalLibrary(luaCfg, context, STAGEAPI_LUA_LIBRARY, config.stageAPISupportEnabled);
         setDefinedGlobals(luaCfg, true, config.repentogonEnabled);
-        setPlugin(luaCfg, context, true);
+        setPlugin(luaCfg, context, config.pluginEnabled);
+        setPluginArgs(luaCfg, getPluginArgs(config));
 
         setMiscConfig(config.workspaceSettings);
         updateMaxFileSize(luaCfg);    
@@ -107,28 +111,74 @@ function onDeactivate(context: vscode.ExtensionContext) {
             setDefinedGlobals(luaCfg, false);
             setExternalLibrary(luaCfg, context, VANILLA_LUA_LIBRARY, false);
             setExternalLibrary(luaCfg, context, REPENTOGON_LUA_LIBRARY, false);
+            setExternalLibrary(luaCfg, context, STAGEAPI_LUA_LIBRARY, false);
             setPlugin(luaCfg, context, false);
+            setPluginArgs(luaCfg, {});
             return luaCfg;
         });
     }
 }
 
-function onConfigChange(context: vscode.ExtensionContext, event: vscode.ConfigurationChangeEvent) {
+async function onConfigChange(context: vscode.ExtensionContext, event: vscode.ConfigurationChangeEvent) {
     const config = getConfig();
-    
-    if (event.affectsConfiguration("boi-lua.repentogonEnabled")) {
-        const filenamePath = getCfgFilePath();
+    const filenamePath = getCfgFilePath();
+    if (!filenamePath) {
+        return;
+    }
 
-        if (!filenamePath) {
-            return;
-        }
+    const repentogonEnabledChanged = event.affectsConfiguration("boi-lua.repentogonEnabled");
+    const pluginEnabledChanged = event.affectsConfiguration("boi-lua.pluginEnabled");
+    const enableStageAPISupportChanged = event.affectsConfiguration("boi-lua.stageAPISupportEnabled");
+    const anyChanged = [repentogonEnabledChanged, pluginEnabledChanged, enableStageAPISupportChanged].some(x => x);
 
-        modifyJsoncFile(filenamePath, luaCfg => {
-            setExternalLibrary(luaCfg, context, VANILLA_LUA_LIBRARY, !config.repentogonEnabled);
-            setExternalLibrary(luaCfg, context, REPENTOGON_LUA_LIBRARY, config.repentogonEnabled);
+
+    if (anyChanged) {
+        await modifyJsoncFile(filenamePath, luaCfg => {
+            if (repentogonEnabledChanged) {
+                setExternalLibrary(luaCfg, context, VANILLA_LUA_LIBRARY, !config.repentogonEnabled);
+                setExternalLibrary(luaCfg, context, REPENTOGON_LUA_LIBRARY, config.repentogonEnabled);
+            }
+            if (pluginEnabledChanged) {
+                setPlugin(luaCfg, context, config.pluginEnabled);
+            }
+            if (pluginEnabledChanged || enableStageAPISupportChanged) {
+                setPluginArgs(luaCfg, getPluginArgs(config));
+            }
+            if (enableStageAPISupportChanged) {
+                setExternalLibrary(luaCfg, context, STAGEAPI_LUA_LIBRARY, config.stageAPISupportEnabled);
+            }
             return luaCfg;
         });
+
+        // The Lua plugin (and its args) are only read by the language server
+        // on startup, config changes affecting it require a restart
+        if (pluginEnabledChanged || enableStageAPISupportChanged) {
+            await restartLuaLanguageServer();
+        }
     }
+}
+
+async function restartLuaLanguageServer() {
+    const luaExtension = vscode.extensions.getExtension(LUA_EXTENSION_ID);
+    if (!luaExtension) {
+        return;
+    }
+
+    try {
+        // lua.startServer stops any running server before starting a new one
+        await vscode.commands.executeCommand("lua.startServer");
+        vscode.window.showInformationMessage("Restarted Lua language server to apply plugin settings.");
+    } catch (error) {
+        console.error("Failed to restart Lua language server", error);
+    }
+}
+
+function getPluginArgs(config: ReturnType<typeof getConfig>) {
+    const args: Record<string, unknown> = {};
+    if (config.stageAPISupportEnabled) {
+        args["enableStageAPISupport"] = config.stageAPISupportEnabled;
+    }
+    return args;
 }
 
 function getCfgFilePath() {

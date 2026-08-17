@@ -1,5 +1,19 @@
 # Change Log
 
+* [1.15.0]
+    - Now has a plugin bundled to auto-recognize callback function parameters with no annotations
+        - Plugin can be disabled via a new config setting
+        - Works with both functions defined inline in :AddCallback, and functions defined elsewhere
+          in the same file then passed to :AddCallback
+        - Workspaces can now declare their own custom callback types and custom `AddCallback`-like
+          registration functions (like `StageAPI.AddCallback`) via a `.isaac-config.lua` file
+    - Callback aliases (CALLBACK_NAME_FUN) offered for custom callback function recognition
+    - Add StageAPI support config setting, off by default
+        - Adds stageAPI callback aliases
+        - Also adds stageAPI callbacks to autorecognition plugin
+        - Does not add stageAPI types as they are provided by it, add it to your workspace
+    - Fix comments on EntityPickup:Morph
+
 * [1.14.1]
 	- Support for REPENTOGON 1.1.2d and 1.1.2de
 	- Added the overload for EntiyFamiliar:TryAimAtMarkedTarget

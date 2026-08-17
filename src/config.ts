@@ -4,6 +4,8 @@ import { Constants } from './constants';
 interface Config {
     get workspaceSettings(): boolean;
     get repentogonEnabled(): boolean;
+    get pluginEnabled(): boolean;
+    get stageAPISupportEnabled(): boolean;
 }
 
 class ConfigImpl implements Config {
@@ -18,6 +20,12 @@ class ConfigImpl implements Config {
     }
     get repentogonEnabled(): boolean {
         return this._config.get("repentogonEnabled") === true;
+    }
+    get pluginEnabled(): boolean {
+        return this._config.get("pluginEnabled") === true;
+    }
+    get stageAPISupportEnabled(): boolean {
+        return this._config.get("stageAPISupportEnabled") === true;
     }
 }
 

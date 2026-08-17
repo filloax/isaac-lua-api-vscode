@@ -20,18 +20,118 @@ This extension is based on the [isaac-api-autocomplete-lua](https://github.com/f
 
 First off, the extension won't be active by default even if enabled for convenience (not having to manually disable-enable it in each workspace), but instead it will detect if your workspace matches an Isaac mod (contains a metadata.xml file and lua files), then will ask you for confirmation, once per workspace. It also works if metadata.xml etc are in subfolders. You can also manually enable or disable the mod with a palette command, even if you initially answered otherwise.
 
-By default, with the extension global functions like `Game()`, `Vector(x, y)` and `Isaac.xxx` should already be recognized. To have it work for callback parameters, you'll need to add `---@param` tags, like so:
+By default, with the extension global functions like `Game()`, `Vector(x, y)` and `Isaac.xxx` should already be recognized.
+
+### Callbacks
+
+**NEW since 1.15**: Callback parameters are now autorecognized! Two main ways to do it, one automatic and the one manual but still convenient:
+
+#### Automatic recognition
+
+If you pass a function to AddCallback the callbacks args will be autorecognized!
+
+```Lua
+-- Works with inline function
+mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, function (_, npc)
+    -- npc.Velocity = etc.
+end)
+
+-- But also functions passed:
+local function npcUpdateCallback(_, npc)
+
+end
+
+function mod:NpcUpdateCallback(npc)
+
+end
+
+function mod.NpcUpdateCallback2(_, npc) 
+
+end
+
+---Manually passed params will override auto ones
+---@param npc EntityEffect wrong but just as example
+function mod:NpcUpdateCallbackManual(_, npc) 
+
+end
+
+-- please do not really do this this is an example
+function GlobalCallback(_, npc)
+
+end
+
+mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, npcUpdateCallback)
+mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, mod.NpcUpdateCallback)
+mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, mod.NpcUpdateCallback2)
+mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, GlobalCallback)
+```
+
+which results into:
+
+![above codeblock with autocomplete showing](readme/callback-autocomplete.png)
+
+#### Callback aliases
+
+The extension gives for each vanilla/repentogon callback a alias `<callback name>_FUN` usable like this, in cases where the above doesn't work for any reason:
+
+```Lua
+---args will be recognized as the correct types
+---@type MC_ENTITY_TAKE_DMG_FUN
+local function entTakeDamageCallback(_, entity, dmg, flags, source, invuln)
+
+end
+```
+
+#### Custom callbacks and custom registration functions
+
+Workspaces can define their own callback types, and even their own `AddCallback`-like registration
+functions (for example `StageAPI.AddCallback` for StageAPI as an example,
+even if that one is built-in as a setting), by adding a `.isaac-config.lua` file
+at the root of the workspace (next to `.luarc.json` if present).
+
+```Lua
+return {
+    -- Extra callback IDs usable with mod:AddCallback / mod:AddPriorityCallback (or any
+    -- other registered function below). Key is identifier, either a string you pass to
+    -- AddCallback or the table key (both "MC_NPC_UPDATE and ModCallbacks.MC_NPC_UPDATE work the same,
+    -- for a vanilla example)
+    Callbacks = {
+        -- ofc this already is defined, just an example
+        -- both Args and Returns take lua type annotation strings in Type, including unions
+        -- with | and everything you can dowith the Lua LS normally. Name is optional
+        -- and currently unused.
+        -- Returns can also have more values in case it has more returns, and can be empty or not included altogether
+        MC_ENTITY_TAKE_DMG = { 
+            Args = { {Type = "Entity"}, {Type = "number", Name = "dmg"}, {Type = "integer"}, {Type = "EntityRef"}, {Type = "integer"} },
+            Returns = { {Type = "boolean"} },
+        },
+    },
+
+    -- Alternatives to :AddCallback, matched by full path and take priority if match applies
+    RegisterFunctions = {
+        -- StageAPI.AddCallback(modID, callbackId, priority, fn, ...)
+        -- IdArg: position of argument containing callback id (starting from 1)
+        -- FunctionArg: position of argument containing function (starting from 1)
+        -- HasModArg: if callbacks functions registered this way will pass the mod as first arg
+        -- Offered by included stageAPI integration if enabled
+        ["StageAPI.AddCallback"] = { IdArg = 2, FunctionArg = 4, HasModArg = false },
+    },
+}
+```
+
+### Other types
+
+You can also specify param types manually for custom functions/callbacks where you want the autocomplete to work on its params, also adding `---@return` for return types
+(@return is not always needed, Lua LS is often smart enough to understand it on its own if the input types are specified).
 
 ```Lua
 ---@param npc EntityNPC
 ---@param intParameter integer
 ---@param source EntityRef
-local myCallbackFunction(_, npc, intParameter, source)
+local myFunction(npc, intParameter, source)
 ```
 
-Autocomplete should work with the type specifications too, so it shouldn't be too annoying. You should also do this for any other function where you want the autocomplete to work on its params, also adding `---@return` for return types.
-
-You can also use `---@type` for specific variables, more info on the [annotation documentation](https://github.com/sumneko/lua-language-server/wiki/EmmyLua-Annotations). Example:
+You can also use `---@type` for specific variables, more info on the [annotation documentation](https://luals.github.io/wiki/annotations/). Example:
 
 ```Lua
 ---@type ItemConfig_Item
@@ -43,6 +143,8 @@ More examples:
 ![](https://i.imgur.com/1BiL3CE.png)
 ![](https://i.imgur.com/WnC5IFv.png)
 
+---
+
 ### Notes
 
 - The extension only works **if you open a workspace** (either a single folder or multiple, didn't test the latter).  It won't work if you open standalone Lua files
@@ -50,7 +152,7 @@ without opening a workspace in VSCode.
 
 ## Extension Settings
 
-This extension has no settings; you can configure behavior in the Lua Language Server extension settings.
+This extension has various settings. Everything except stageAPI support is on by default.
 
 ## Known Issues
 
@@ -63,9 +165,18 @@ local a = Vector(0,1)
 local b = 2 * a
 ```
 
+---
+
 ## Release Notes
 
 See [CHANGELOG.md](CHANGELOG.md) for full changes.
+
+<details>
+<summary>Release notes</summary>
+
+## 1.15.0
+
+Callback type recognition plugin now bundled, see main readme
 
 ## 1.6.0
 
@@ -100,3 +211,6 @@ Now automatically detects if the folder is an Isaac mod, and asks the user for c
 ### 1.0.0
 
 - Initial release.
+
+
+</details>
