@@ -16,6 +16,7 @@ const LUA_EXTENSION_ID = "sumneko.lua";
 
 const VANILLA_LUA_LIBRARY = path.join("out", "emmylua", "vanilla");
 const REPENTOGON_LUA_LIBRARY = path.join("out", "emmylua", "repentogon");
+const STAGEAPI_LUA_LIBRARY = path.join("out", "emmylua", "stageapi");
 
 export function activate(context: vscode.ExtensionContext) {
     const state = getState(context);
@@ -83,6 +84,7 @@ function onActivate(context: vscode.ExtensionContext) {
 
         setExternalLibrary(luaCfg, context, VANILLA_LUA_LIBRARY, !config.repentogonEnabled);
         setExternalLibrary(luaCfg, context, REPENTOGON_LUA_LIBRARY, config.repentogonEnabled);
+        setExternalLibrary(luaCfg, context, STAGEAPI_LUA_LIBRARY, config.stageAPISupportEnabled);
         setDefinedGlobals(luaCfg, true, config.repentogonEnabled);
         setPlugin(luaCfg, context, config.pluginEnabled);
         setPluginArgs(luaCfg, getPluginArgs(config));
@@ -109,6 +111,7 @@ function onDeactivate(context: vscode.ExtensionContext) {
             setDefinedGlobals(luaCfg, false);
             setExternalLibrary(luaCfg, context, VANILLA_LUA_LIBRARY, false);
             setExternalLibrary(luaCfg, context, REPENTOGON_LUA_LIBRARY, false);
+            setExternalLibrary(luaCfg, context, STAGEAPI_LUA_LIBRARY, false);
             setPlugin(luaCfg, context, false);
             setPluginArgs(luaCfg, {});
             return luaCfg;
@@ -140,6 +143,9 @@ async function onConfigChange(context: vscode.ExtensionContext, event: vscode.Co
             }
             if (pluginEnabledChanged || enableStageAPISupportChanged) {
                 setPluginArgs(luaCfg, getPluginArgs(config));
+            }
+            if (enableStageAPISupportChanged) {
+                setExternalLibrary(luaCfg, context, STAGEAPI_LUA_LIBRARY, config.stageAPISupportEnabled);
             }
             return luaCfg;
         });

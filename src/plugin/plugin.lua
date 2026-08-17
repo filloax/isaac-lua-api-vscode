@@ -159,7 +159,7 @@ local function loadWorkspaceConfig(uri)
     local rootPath = furi.decode(rootUri)
     safeLoadData(rootPath .. '/' .. WORKSPACE_CONFIG_FILENAME, function (data)
         applyWorkspaceConfig(data)
-        print("Loaded configuration at " .. tostring(uri))
+        print("Loaded configuration at " .. tostring(rootPath .. '/' .. WORKSPACE_CONFIG_FILENAME))
     end)
 end
 
