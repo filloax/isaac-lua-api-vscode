@@ -64,14 +64,24 @@ end
 local CALLBACK_TYPES = {}
 
 -- probably less complicated would have been enough, but extension paths be wonky so just in case
+---@param path string
+---@param apply fun(data: table)
+---@return boolean found
+---@return boolean|string ok
 local function safeLoadData(path, apply)
-    local chunk = loadfile(path)
-    if chunk then
-        local ok, data = pcall(chunk)
-        if ok and type(data) == 'table' then
-            apply(data)
-        end
+    local chunk, loadErr = loadfile(path)
+    if not chunk then
+        return false, loadErr or 'unknown error'
     end
+    local ok, data = pcall(chunk)
+    if not ok then
+        return true, data
+    end
+    if type(data) ~= 'table' then
+        return true, ('expected file to return a table, got %s'):format(type(data))
+    end
+    apply(data)
+    return true, true
 end
 
 do
@@ -147,6 +157,7 @@ local function applyWorkspaceConfig(data)
 end
 
 local searchedRootUris = {}
+local erroredRootUris = {}
 
 ---@param uri string
 local function loadWorkspaceConfig(uri)
@@ -154,13 +165,23 @@ local function loadWorkspaceConfig(uri)
     if not rootUri or searchedRootUris[rootUri] then
         return
     end
-    searchedRootUris[rootUri] = true
 
     local rootPath = furi.decode(rootUri)
-    safeLoadData(rootPath .. '/' .. WORKSPACE_CONFIG_FILENAME, function (data)
-        applyWorkspaceConfig(data)
-        print("Loaded configuration at " .. tostring(rootPath .. '/' .. WORKSPACE_CONFIG_FILENAME))
-    end)
+    local configPath = rootPath .. '/' .. WORKSPACE_CONFIG_FILENAME
+    local found, ok = safeLoadData(configPath, applyWorkspaceConfig)
+
+    if not found then
+        searchedRootUris[rootUri] = true
+        return
+    end
+
+    if ok == true then
+        searchedRootUris[rootUri] = true
+        print("Loaded configuration at " .. tostring(configPath))
+    elseif not erroredRootUris[rootUri] then
+        erroredRootUris[rootUri] = true
+        print("Failed to load configuration at " .. tostring(configPath) .. ": " .. tostring(ok))
+    end
 end
 
 --#endregion
