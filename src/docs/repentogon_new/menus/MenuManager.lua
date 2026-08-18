@@ -11,7 +11,7 @@ function MenuManager.GetBackWidgetSprite()
 end
 
 ---Returns the color modifier lerp amount. This is formatted as the absolute rate of change.
----@return number
+---@return ColorModifier
 function MenuManager.GetColorModifierLerpAmount()
 end
 
