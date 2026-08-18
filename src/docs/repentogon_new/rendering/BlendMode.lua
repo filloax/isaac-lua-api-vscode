@@ -13,10 +13,12 @@ _G.BlendMode = {}
 ---@param srcAlpha BlendFactor
 ---@param dstAlpha BlendFactor
 ---@param equation BlendEquation
+---@return BlendMode_Local
 function _G.BlendMode.New(srcRGB, dstRGB, srcAlpha, dstAlpha, equation)
 end
 
 ---@param blendType BlendType
+---@return BlendMode_Local
 function _G.BlendMode.NewFromType(blendType)
 end
 
