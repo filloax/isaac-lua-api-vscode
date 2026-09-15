@@ -144,6 +144,10 @@ end
 function Sprite:SetSpritesheet(layer, spritesheet)
 end
 
+---@return Sprite
+function Sprite:Copy()
+end
+
 ---Returns a table of frames at which the specified event will trigger in the specified animation (for example: `{5, 10, 12}`).
 ---@param animationName string
 ---@param eventName string
