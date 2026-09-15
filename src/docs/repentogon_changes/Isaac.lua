@@ -173,6 +173,17 @@ end
 function Isaac.GetCompletionMarks(playerType)
 end
 
+---Returns a table containing all the marks for a character like `Isaac.GetCompletionMarks`, but allows you to get the saved marked for a character that doesn't currently map to a `PlayerType`.
+---
+---Can be used to obtain marks for a character from a disabled mod, OR to assist in tranferring marks if a character needed to be renamed.
+---
+---`modId` is usually the workshop ID of the mod as a string, or the mod's `directory` attribute for non-workshop mods.
+---@param modID string
+---@param playerName string
+---@return CompletionMarks
+function Isaac.GetCompletionMarkData(modID, playerName)
+end
+
 ---Sets the completion marks of a character to match an input table.
 ---Requires a dictionary containing all the marks for the character,
 ---getting it from GetCompletionMarks is advised for convenience.
@@ -262,10 +273,6 @@ end
 ---Creates a new blank `LevelGeneratorEntry` object.
 ---@return LevelGeneratorEntry
 function Isaac.LevelGeneratorEntry()
-end
-
----@param challengeId Challenge
-function Isaac.MarkChallengeAsNotDone(challengeId)
 end
 
 ---Plays a cutscene.
@@ -367,12 +374,6 @@ end
 ---@return DoorMask
 function Isaac.GetAllowedDoorsMaskForShape(roomShape)
 end
-
----Sets the target challenge id as not cleared. Not recommended with vanilla ones, but it should still work.
----@param challenge Challenge
-function Isaac.UnClearChallenge(challenge)
-end
-
 ---Spawns an NPC forcing it to be a Boss, giving it a boss bar and boss-like qualities.
 ---@param Type EntityType
 ---@param Variant integer
@@ -441,4 +442,26 @@ end
 ---@param name string
 ---@return string
 function Isaac.LoadModDataFromFolder(name)
+end
+
+---Allows checking if a specific modded challenge has been completed by name. Works for challenges from mods that are not currently enabled, or have been renamed.
+---
+---`modId` is usually the workshop ID of the mod as a string, or the mod's `directory` attribute for non-workshop mods.
+---@param modID string
+---@param challengeName string
+---@return boolean
+function Isaac.GetModChallengeCompletionData(modID, challengeName)
+end
+
+---Allows setting whether a challenge has been completed.
+---
+---While setting completion to `false` does work with vanilla challenges, it is not recommended to use it on those, as there are no instances of challenges being uncompleted in vanilla, so it could lead to unexpected behaviour in specific scenarios.
+---@param challengeID Challenge
+---@param completed boolean
+function Isaac.SetChallengeCompletion(challengeID, completed)
+end
+
+---@param name string
+---@return BabySubType
+function Isaac.GetBabyIdByName(name)
 end

@@ -90,3 +90,11 @@ end
 ---@param velocity number
 function EntityKnife:SetKnifeVelocity(velocity)
 end
+
+---(Re)calculates the path used for homing knives or "projectile" knives (subtype 1; `KnifeSubType.PROJECTILE`).
+---
+---If not specified, the `Source` will default to the knife's `Parent`, though this is primarily only used to make sure that the knife does not try to home in on its source.
+---@param direction Vector
+---@param source? Entity
+function EntityKnife:InitHomingPath(direction, source)
+end

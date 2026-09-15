@@ -15,3 +15,8 @@ end
 ---@return boolean
 function ItemConfig_Class:IsValidTrinket(trinketType)
 end
+
+---@param customTag string
+---@return ItemConfigItem[]
+function ItemConfig_Class:GetItemsWithCustomTag(customTag)
+end

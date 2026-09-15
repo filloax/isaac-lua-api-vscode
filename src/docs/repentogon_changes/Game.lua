@@ -59,9 +59,11 @@ function Game:GetTargetColorModifier()
 end
 
 ---Returns true if the entity was erased for the run.
+---
+---Note that the game does not utilize subttype-specific erasing.
 ---@param entity Entity
 ---@return boolean
----@overload fun(self: Game, type: EntityType, variant?: integer, subType?: integer): boolean
+---@overload fun(self: Game, entType: EntityType, variant?: integer): boolean
 function Game:IsErased(entity)
 end
 
@@ -176,4 +178,17 @@ end
 ---Returns `true` if the the game starts from a continued state. Always returns `false` after `MC_POST_GAME_STARTED` execution.
 ---@return boolean
 function Game:IsStartingFromState()
+end
+
+---@param entType EntityType
+---@param variant integer
+function Game:AddErasedEnemy(entType, variant)
+end
+
+---Removes a specific Type/Variant from the list of "erased" enemies (as with the "Eraser" active item), allowing it to spawn again.
+---
+---Note that the game does not utilize SubType-specific erasing.
+---@param entType EntityType
+---@param variant? integer
+function Game:RemoveErasedEnemy(entType, variant)
 end

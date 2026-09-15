@@ -3987,7 +3987,11 @@
     "TEARS_UP": "0",
     "FLAT_TEARS": "1",
     "DAMAGE_UP": "2",
-    "FLAT_DAMAGE": "3"
+    "FLAT_DAMAGE": "3",
+	"PRE_FLAT_DAMAGE": {
+		"value": "4",
+		"comment": "The current damage value right after the \"character multiplier\" is applied, but before flat modifiers."
+	}
   },
   "StringTableCategory": {
     "DEFAULT": "'Default'",
@@ -4123,5 +4127,12 @@
   "RoomGroup": {
     "GROUP_NONE": "-1",
 	"GROUP_ULTRA_SECRET": "99"
+  },
+  "AltRockType": {
+	"POT": "1",
+	"MUSHROOM": "2",
+	"SKULL": "3",
+	"POLYP": "4",
+	"BUCKET": "5"
   }
 }
