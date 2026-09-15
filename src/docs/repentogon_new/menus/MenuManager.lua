@@ -63,3 +63,7 @@ end
 ---@return boolean
 function MenuManager.IsActive()
 end
+
+---@return Seeds
+function MenuManager.GetSeeds()
+end

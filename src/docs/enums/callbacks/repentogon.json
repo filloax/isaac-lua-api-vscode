@@ -1,4 +1,82 @@
 {
+  "MC_PRE_USE_ITEM": {
+    "value": "23",
+    "args": [
+      {
+        "type": "CollectibleType",
+        "name": "ItemID"
+      },
+      {
+        "type": "RNG",
+        "name": "ItemRng"
+      },
+      {
+        "type": "EntityPlayer",
+        "name": "Player"
+      },
+      {
+        "type": "UseFlag",
+        "name": "Flags"
+      },
+      {
+        "type": "ActiveSlot",
+        "name": "Slot"
+      },
+      {
+        "type": "integer",
+        "name": "CustomVarData"
+      }
+    ],
+    "returns": [
+      {
+        "type": "boolean|{Discharge: boolean?}"
+      }
+    ],
+    "param": {
+      "type": "CollectibleType",
+      "optional": true
+    },
+    "comment": "Called before an item is used. Return `true` to prevent the default code of an item to be triggered and discharge the item, or `{ Discharge=false }` to cancel the activation without discharging the item."
+  },
+  "MC_POST_USE_ITEM": {
+    "value": "1003",
+    "args": [
+      {
+        "type": "CollectibleType",
+        "name": "ItemID"
+      },
+      {
+        "type": "RNG",
+        "name": "RNG"
+      },
+      {
+        "type": "EntityPlayer",
+        "name": "Player"
+      },
+      {
+        "type": "UseFlag",
+        "name": "Flags"
+      },
+      {
+        "type": "ActiveSlot",
+        "name": "Slot"
+      },
+      {
+        "type": "integer",
+        "name": "CustomVarData"
+      },
+      {
+        "type": "boolean",
+        "name": "Discharge"
+      },
+      {
+        "type": "boolean",
+        "name": "Remove"
+      }
+    ],
+    "returns": [],
+    "comment": "More reliable callback for after an active item has been used, since `MC_USE_ITEM` is intended for modded active logic and is often terminated early. Note that the game usually hasn't actually discharged the item yet in most cases, but if `Discharge` is true and this was a \"real\" active item use, it will be discharged afterwards. If `Remove` is true, the game will have already attempted to remove the item."
+  },
   "MC_PRE_ADD_COLLECTIBLE": {
     "value": "1004",
     "args": [
@@ -7049,5 +7127,131 @@
       "optional": true
     },
     "comment": "Called when shuffling costumes with `EntityPlayer:ShuffleCostumes`."
+  },
+  "MC_PRE_PLAYERHUD_RENDER_INVENTORY": {
+  "value": "1293",
+  "args": [
+      {
+        "type":"EntityPlayer",
+        "name": "Player"
+      },
+      {
+        "type": "Vector",
+        "name": "Offset"
+      },
+      {
+        "type": "number",
+        "name": "Scale"
+      }
+    ],
+    "returns": [
+      {
+        "type": "boolean|Vector"
+      }
+    ],
+    "comment": "Render callback for Tainted Isaac's inventory. Return `false` to cancel rendering, or a `Vector` to modify the offset."
+  },
+  "MC_POST_PLAYERHUD_RENDER_INVENTORY": {
+  "value": "1294",
+  "args": [
+      {
+        "type":"EntityPlayer",
+        "name": "Player"
+      },
+      {
+        "type": "Vector",
+        "name": "Offset"
+      },
+      {
+        "type": "number",
+        "name": "Scale"
+      }
+    ],
+    "returns": [],
+    "comment": "Render callback for Tainted Isaac's inventory"
+  },
+  "MC_PRE_PLAYERHUD_RENDER_POOP_SPELL_QUEUE": {
+  "value": "1295",
+  "args": [
+      {
+        "type":"EntityPlayer",
+        "name": "Player"
+      },
+      {
+        "type": "Vector",
+        "name": "Offset"
+      },
+      {
+        "type": "number",
+        "name": "Scale"
+      }
+    ],
+    "returns": [
+      {
+        "type": "boolean|Vector"
+      }
+    ],
+    "comment": "Render callback for Tainted ???'s poop spell queue. Return `false` to cancel rendering, or a `Vector` to modify the offset."
+  },
+  "MC_POST_PLAYERHUD_RENDER_POOP_SPELL_QUEUE": {
+  "value": "1296",
+  "args": [
+      {
+        "type":"EntityPlayer",
+        "name": "Player"
+      },
+      {
+        "type": "Vector",
+        "name": "Offset"
+      },
+      {
+        "type": "number",
+        "name": "Scale"
+      }
+    ],
+    "returns": [],
+    "comment": "Render callback for Tainted ???'s poop spell queue"
+  },
+  "MC_PRE_PLAYERHUD_RENDER_CRAFTING_TABLE": {
+  "value": "1297",
+  "args": [
+      {
+        "type":"EntityPlayer",
+        "name": "Player"
+      },
+      {
+        "type": "Vector",
+        "name": "Offset"
+      },
+      {
+        "type": "number",
+        "name": "Scale"
+      }
+    ],
+    "returns": [
+      {
+        "type": "boolean|Vector"
+      }
+    ],
+    "comment": "Render callback for Tainted Cain's Bag of Crafting HUD. Return `false` to cancel rendering, or a `Vector` to modify the offset."
+  },
+  "MC_POST_PLAYERHUD_RENDER_CRAFTING_TABLE": {
+  "value": "1298",
+  "args": [
+      {
+        "type":"EntityPlayer",
+        "name": "Player"
+      },
+      {
+        "type": "Vector",
+        "name": "Offset"
+      },
+      {
+        "type": "number",
+        "name": "Scale"
+      }
+    ],
+    "returns": [],
+    "comment": "Render callback for Tainted Cain's Bag of Crafting HUD"
   }
 }

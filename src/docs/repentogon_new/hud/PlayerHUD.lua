@@ -34,3 +34,27 @@ end
 ---@return PlayerHUDLayout
 function PlayerHUD:GetLayout()
 end
+
+---@return integer
+function PlayerHUD:GetFlashGoldHearts()
+end
+
+---@return integer
+function PlayerHUD:GetFlashRedHearts()
+end
+
+---@return integer
+function PlayerHUD:GetFlashSoulHearts()
+end
+
+---@param frames integer
+function PlayerHUD:SetFlashGoldHearts(frames)
+end
+
+---@param frames integer
+function PlayerHUD:SetFlashRedHearts(frames)
+end
+
+---@param frames integer
+function PlayerHUD:SetFlashSoulHearts(frames)
+end

@@ -13,10 +13,6 @@ local EntityPickup_Local = {}
 function EntityPickup_Local:AppearFast()
 end
 
----@return boolean
-function EntityPickup_Local:CanReroll()
-end
-
 ---@return integer
 function EntityPickup_Local:GetCoinValue()
 end

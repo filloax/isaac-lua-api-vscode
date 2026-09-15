@@ -1,5 +1,9 @@
+---Can be used the check the `AltRockType` corresponding to a particular `BackdropType`.
+---
+---By default, returns the `AltRockType` for the backdrop of the current room.
+---@param backdropType? BackdropType
 ---@return integer
-function GridEntity:GetAltRockType()
+function _G.GridEntity.GetAltRockType(backdropType)
 end
 
 ---@return Vector
