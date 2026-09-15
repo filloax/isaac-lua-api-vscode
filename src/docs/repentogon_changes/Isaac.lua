@@ -62,7 +62,7 @@ function Isaac.CreateTimer(intervalFunction, interval, times, persistent)
 end
 
 ---Creates and returns a Weapon object. It is not automatically useable by
----`owner` and `Isaac.SetWeaponType` must be used in tandem.
+---`owner` and `EntityPlayer:SetWeapon` must be used in tandem.
 ---@param weaponType WeaponType
 ---@param owner Entity Advised that this only be used for `EntityPlayer` and `EntityFamiliar` objects.
 ---@return Weapon
