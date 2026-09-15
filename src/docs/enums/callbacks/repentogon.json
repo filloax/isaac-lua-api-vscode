@@ -1,4 +1,157 @@
 {
+  "MC_USE_PILL": {
+    "args": [
+      {
+        "type": "PillEffect",
+        "name": "Effect"
+      },
+      {
+        "type": "EntityPlayer",
+        "name": "Player"
+      },
+      {
+        "type": "UseFlags",
+        "name": "Flags"
+      },
+      {
+        "type": "PillColor",
+        "name": "Color"
+      }
+    ]
+  },
+  "MC_POST_PICKUP_SELECTION": {
+	  "args": [
+      {
+        "type": "EntityPickup",
+        "name": "Pickup"
+      },
+      {
+        "type": "PickupVariant",
+        "name": "Variant"
+      },
+      {
+        "type": "integer",
+        "name": "Subtype"
+      },
+	  {
+        "type": "PickupVariant",
+        "name": "RequestedVariant"
+      },
+      {
+        "type": "integer",
+        "name": "RequestedSubType"
+      },
+      {
+        "type": "RNG",
+        "name": "RNG"
+      }
+    ],
+    "returns": [
+      {
+        "type": "{ [1]: integer?, [2]: integer?, [3]: boolean? }"
+      }
+    ]
+  },
+  "MC_PRE_PLAYER_COLLISION": {
+    "returns": [
+      {
+        "type": "boolean|{Collide:boolean?, SkipCollisionEffects:boolean?}",
+        "optional": true
+      }
+    ]
+  },
+  "MC_PRE_TEAR_COLLISION": {
+    "returns": [
+      {
+        "type": "boolean|{Collide:boolean?, SkipCollisionEffects:boolean?}",
+        "optional": true
+      }
+    ]
+  },
+  "MC_PRE_FAMILIAR_COLLISION": {
+    "returns": [
+      {
+        "type": "boolean|{Collide:boolean?, SkipCollisionEffects:boolean?}",
+        "optional": true
+      }
+    ]
+  },
+  "MC_PRE_BOMB_COLLISION": {
+    "returns": [
+      {
+        "type": "boolean|{Collide:boolean?, SkipCollisionEffects:boolean?}",
+        "optional": true
+      }
+    ]
+  },
+  "MC_PRE_PICKUP_COLLISION": {
+    "returns": [
+      {
+        "type": "boolean|{Collide:boolean?, SkipCollisionEffects:boolean?}",
+        "optional": true
+      }
+    ]
+  },
+  "MC_PRE_KNIFE_COLLISION": {
+    "returns": [
+      {
+        "type": "boolean|{Collide:boolean?, SkipCollisionEffects:boolean?}",
+        "optional": true
+      }
+    ]
+  },
+  "MC_PRE_PROJECTILE_COLLISION": {
+    "returns": [
+      {
+        "type": "boolean|{Collide:boolean?, SkipCollisionEffects:boolean?}",
+        "optional": true
+      }
+    ]
+  },
+  "MC_PRE_NPC_COLLISION": {
+    "returns": [
+      {
+        "type": "boolean|{Collide:boolean?, SkipCollisionEffects:boolean?}",
+        "optional": true
+      }
+    ]
+  },
+  "MC_ENTITY_TAKE_DMG": {
+    "returns": [
+      {
+        "type": "boolean|{Damage: number?,DamageFlags: number|DamageFlag?, DamageCountdown: number?}",
+        "optional": true
+      }
+    ]
+  },
+  "MC_GET_PILL_EFFECT": {
+    "args": [
+      {
+        "type": "PillEffect",
+        "name": "SelectedPillEffect"
+      },
+      {
+        "type": "PillColor",
+        "name": "PillColorID"
+      },
+      {
+        "type": "EntityPlayer",
+        "name": "Player"
+      }
+    ]
+  },
+  "MC_POST_ENTITY_KILL": {
+    "args": [
+      {
+        "type": "Entity",
+        "name": "Entity"
+      },
+      {
+        "type": "EntityRef",
+        "name": "KillSource"
+      }
+    ]
+  },
   "MC_PRE_USE_ITEM": {
     "value": "23",
     "args": [
@@ -2572,7 +2725,7 @@
     ],
     "returns": [
       {
-        "type": "boolean"
+        "type": "boolean|{Collide:boolean?, SkipCollisionEffects:boolean?}"
       }
     ],
     "param": {
@@ -6163,6 +6316,38 @@
     "args": [],
     "returns": [],
     "comment": "Runs after all entities & grid entities in the room have been rendered, but BEFORE effects like overlays, shockwaves, and the mirror world effect are applied."
+  },
+  "MC_PRE_ROOM_GRID_ENTITY_SPAWN": {
+    "value": "1192",
+    "args": [
+      {
+        "type": "GridEntityType",
+        "name": "Type"
+      },
+      {
+        "type": "integer",
+        "name": "Variant"
+      },
+      {
+        "type": "integer",
+        "name": "GridIdx"
+      },
+      {
+        "type": "HealthType",
+        "name": "SpawnSeed"
+      }
+    ],
+    "returns": [
+      {
+        "type": "boolean|table",
+		"optional": true
+      }
+    ],
+	"param": {
+      "type": "GridEntityType",
+      "optional": true
+    },
+    "comment": "This is called during Room initiization when GridEntities from the layout are being spawned. Accepts false to cancel spawning the grid or a table of `{Type, Variant, Vardata, SpawnSeed}` to modify it."
   },
   "MC_POST_START_AMBUSH_WAVE": {
     "value": "1488",
