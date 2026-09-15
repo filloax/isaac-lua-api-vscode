@@ -1609,3 +1609,19 @@ end
 ---@param timer integer
 function EntityPlayer:SetRUAWizardTimer(timer)
 end
+
+---Returns a zero-based index into History's collectibles list (from History:GetCollectiblesHistory())
+---@param slot integer
+---@return integer
+function EntityPlayer:GetInventoryHistoryIndex(slot)
+end
+
+---@param slot integer
+---@return CollectibleType
+function EntityPlayer:GetInventoryCollectible(slot)
+end
+
+---Returns the maximum size of Tainted Isaac's inventory.
+---@return integer
+function EntityPlayer:GetMaxInventorySize()
+end
