@@ -3,6 +3,7 @@
 ---@field HushPanicStateFix boolean
 ---@field PreventModUpdates boolean
 ---@field QuickRoomClear boolean
+---@field StatHUDPlanetarium boolean
 ---@field AimLockEnabled boolean
 ---@field AscentVoiceOver boolean
 ---@field BossHPOnBottom boolean

@@ -1,6 +1,6 @@
 ---@class FXLayers
 local FXLayers = {}
 
----@param colorMod ColorModifier
+---@param colorMod Color
 function FXLayers:AddPoopFx(colorMod)
 end

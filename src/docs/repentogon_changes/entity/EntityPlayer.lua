@@ -713,7 +713,7 @@ end
 ---@param position? Vector @default: `self.Position`
 ---@param rng? RNG @default: PlayerDropRNG
 ---@param itemPool? ItemPoolType @default: `ItemPoolType.POOL_NULL`.
----@overload fun(pickup: EntityPickup, rng?: RNG, itemPool?: ItemPoolType)
+---@overload fun(self:EntityPlayer, pickup: EntityPickup, rng?: RNG, itemPool?: ItemPoolType)
 function EntityPlayer:SalvageCollectible(collectible, position, rng, itemPool)
 end
 

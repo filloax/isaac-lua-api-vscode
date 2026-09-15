@@ -154,3 +154,36 @@ end
 ---@param loadGraphics? boolean @default: `false`
 function _G.EntityPickup.SetupCollectibleGraphics(sprite, layer, itemId, blind, seed, loadGraphics)
 end
+
+---Returns `true` if the Jera rune can be used to duplicate this pickup. Note that a pickup MUST be considered "rerollable" (`EntityPickup:CanReroll` returns `true`) in order to be eligible for Jera duplication.
+---
+---Custom pickups can be blacklisted from Jera duplication using the `nojera` customtag in entities2.xml.
+---@return boolean
+function EntityPickup_Local:CanJeraDuplicate()
+end
+
+---Returns `true` if this pickup can be "rerolled". Note that this also covers other actions such as Moving Box, Jera, Void, Ace Cards, etc.
+---
+---Custom pickups can be blacklisted from Jera duplication using the `norerollpickup` customtag in entities2.xml
+---
+---You can also dynamically alter the result of this function using `EntityPickup:SetCanRerollOverride`.
+---@return boolean
+function EntityPickup_Local:CanReroll()
+end
+
+---Removes any override set by `EntityPickup:SetCanRerollOverride`
+function EntityPickup_Local:ClearCanRerollOverride()
+end
+
+---@return boolean
+function EntityPickup_Local:GetCanRerollOverride()
+end
+
+---Overrides all other conditions for whether or not a pickup can be rerolled (Moving Box, Jera, Void, Ace Cards, etc.). Primarily useful to dynamically make a specific pickup unable to be rerolled.
+---
+---The override can be dismissed using `EntityPickup:ClearCanRerollOverride`.
+---
+---Note that this attribute is persistent and will be remembered even if you leave the room and come back.
+---@param canReroll boolean
+function EntityPickup_Local:SetCanRerollOverride(canReroll)
+end
