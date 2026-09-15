@@ -76,7 +76,8 @@ end
 function Weapon:SetModifiers(modifiers)
 end
 
----Returns active entity used by weapon (Brimstone - EntityLaser, Mom's Knife -  EntityKnife and etc.)
+---Returns active entity used by weapon (Brimstone - EntityLaser, Mom's Knife -  EntityKnife and etc.). Returns `nil` if cannot be found.
+---@return Entity
 function Weapon:GetMainEntity()
 end
 
