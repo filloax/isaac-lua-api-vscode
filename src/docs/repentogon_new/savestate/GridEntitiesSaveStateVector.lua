@@ -1,6 +1,9 @@
 ---@class GridEntitiesSaveStateVector
 local GridEntitiesSaveStateVector = {}
 
+function GridEntitiesSaveStateVector:Clear()
+end
+
 ---TODO: Document me!
 ---@param index integer
 ---@return GridEntityDesc

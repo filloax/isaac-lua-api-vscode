@@ -435,6 +435,7 @@ end
 ---
 ---More information can be obtained on [repentogon.com](https://repentogon.com/Isaac.html#rendertoworld)
 ---@param pos Vector
+---@return Vector
 function Isaac.RenderToWorld(pos)
 end
 

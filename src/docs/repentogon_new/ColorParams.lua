@@ -3,12 +3,11 @@ local ColorParams = {}
 
 ---@param color Color
 ---@param priority integer
----@param duration1 integer
----@param duration2 integer
+---@param duration integer
 ---@param fadeout boolean
 ---@param shared boolean
 ---@return ColorParams
-function _G.ColorParams(color, priority, duration1, duration2, fadeout, shared)
+function _G.ColorParams(color, priority, duration, fadeout, shared)
 end
 
 ---@return Color

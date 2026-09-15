@@ -77,6 +77,13 @@ end
 function EntityConfigPlayer:GetModdedCoopMenuSprite()
 end
 
+---Returns the Sprite used for a modded character's character select screen.
+---
+---Note that this Sprite is shared by other characters from the same mod - there is an animation with the same name as this character.
+---@return Sprite? `nil` for vanilla characters, or characters with no corresponding animation.
+function EntityConfigPlayer:GetModdedMenuBackgroundSprite()
+end
+
 ---Returns the sprite for a modded character's game over screen (ie, their name).
 ---
 ---Note that this sprite is shared by other characters from the same mod - there is an animation with the same name as this character.

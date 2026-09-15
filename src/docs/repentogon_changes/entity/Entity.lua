@@ -85,6 +85,10 @@ end
 function Entity:GetCollisionCapsule(vector)
 end
 
+---@return ColorParams[]
+function Entity:GetColorParams()
+end
+
 ---If the entity recently took damage with the DAMAGE_COUNTDOWN `DamageFlag`, 
 ---this returns how many more frames must pass before they can take damage with 
 ---the DAMAGE_COUNTDOWN `DamageFlag` again.
@@ -236,6 +240,7 @@ end
 ---@param position Vector? @default: `self.Position`
 ---@param color Color? @default: `Color.Default`
 ---@param scale? number @default: `1.0`
+---@return EntityEffect, EntityEffect
 function Entity:MakeGroundPoof(position, color, scale)
 end
 

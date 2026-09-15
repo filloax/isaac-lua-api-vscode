@@ -64,6 +64,7 @@ end
 ---@param advancedSearch? boolean @default: false. Setting to `true` allows you to make use of the `filter` parameter.
 ---@param filter? ItemPoolType[] @default: {}. Normally acts as a blacklist of unwanted item pools, however setting `isWhitelist` to `true` turns it into a list from which to choose from.
 ---@param isWhitelist? boolean @default: false
+---@return ItemPoolType
 function ItemPool:GetRandomPool(rng, advancedSearch, filter, isWhitelist)
 end
 
@@ -117,6 +118,10 @@ end
 ---Makes the available once again, allowing it to naturally spawned even if previously remove. Also restores all instances of the collectible to it's initialWeight in every item pool.
 ---@param collectibleType CollectibleType
 function ItemPool:ResetCollectible(collectibleType)
+end
+
+---@param itemPoolType ItemPoolType
+function ItemPool:SetLastPool(itemPoolType)
 end
 
 ---@class PoolItems

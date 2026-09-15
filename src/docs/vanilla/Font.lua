@@ -93,7 +93,7 @@ end
 function Font:Load(FilePath)
 end
 
----@param MissingCharacter string
+---@param MissingCharacter integer
 function Font:SetMissingCharacter(MissingCharacter)
 end
 
