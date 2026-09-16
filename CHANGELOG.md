@@ -1,5 +1,9 @@
 # Change Log
 
+* [1.16.0]
+    - Support for REPENTOGON 1.1.3
+    - Various additions and fixes from PR #33 - 38 (Guantol, Ignatz-dev, and GoldenShit233 contribution)
+
 * [1.15.2]
     - Fix : path registration again
 
