@@ -12,12 +12,10 @@
 ---@field Scale number
 ---@field State integer
 ---@field Timeout integer
-local EntityEffect_Local = {}
-
-_G.EntityEffect = {}
+local EntityEffect = {}
 
 ---@param Parent Entity
-function EntityEffect_Local:FollowParent(Parent)
+function EntityEffect:FollowParent(Parent)
 end
 
 ---@param Variant integer
@@ -26,15 +24,14 @@ function _G.EntityEffect.IsPlayerCreep(Variant)
 end
 
 ---@param DamageSource EntityType
-function EntityEffect_Local:SetDamageSource(DamageSource)
+function EntityEffect:SetDamageSource(DamageSource)
 end
 
 ---@param min number
 ---@param max number
-function EntityEffect_Local:SetRadii(min, max)
+function EntityEffect:SetRadii(min, max)
 end
 
 ---@param Timeout integer
-function EntityEffect_Local:SetTimeout(Timeout)
+function EntityEffect:SetTimeout(Timeout)
 end
-

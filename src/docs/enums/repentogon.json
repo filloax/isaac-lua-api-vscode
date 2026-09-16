@@ -3556,7 +3556,11 @@
     "BOSSRUSHWAVE": "28",
     "PLAYERFORM": "29",
     "NULLITEM": "30",
-    "BOSSCOLOR": "31"
+    "BOSSCOLOR": "31",
+	"FXLAYER": "32",
+	"FXPARAM": "33",
+	"FXRAY": "34",
+	"BABY": "35"
   },
   "AutocompleteType": {
     "NONE": "0",

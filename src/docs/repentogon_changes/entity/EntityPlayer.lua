@@ -1625,3 +1625,6 @@ end
 ---@return integer
 function EntityPlayer:GetMaxInventorySize()
 end
+
+function _G.EntityPlayer.CalculateBagOfCraftingOutput(collectible)
+end

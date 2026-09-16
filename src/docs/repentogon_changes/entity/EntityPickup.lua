@@ -5,26 +5,26 @@ _G.EntityPickup = {}
 ---Does nothing for non-collectible EntityPickups.
 ---@param collectible CollectibleType
 ---@return boolean wasAdded Returns `true` if adding the collectible was successful.
-function EntityPickup_Local:AddCollectibleCycle(collectible)
+function EntityPickup:AddCollectibleCycle(collectible)
 end
 
 ---Returns the pickup's alternate pedestal.
 ---@return PedestalType --Returns -1 for non-collectible EntityPickups
-function EntityPickup_Local:GetAlternatePedestal()
+function EntityPickup:GetAlternatePedestal()
 end
 
 ---Returns a table of all collectibles types being used inside its collectible cycle (i.e. Cracked Crown).
 ---@return CollectibleType[] --Table will be empty if used on non-collectible EntityPickups
-function EntityPickup_Local:GetCollectibleCycle()
+function EntityPickup:GetCollectibleCycle()
 end
 
 ---@return integer
-function EntityPickup_Local:GetDropDelay()
+function EntityPickup:GetDropDelay()
 end
 
 ---Returns the sprite of the pickup's price label.
 ---@return Sprite
-function EntityPickup_Local:GetPriceSprite()
+function EntityPickup:GetPriceSprite()
 end
 
 ---Shoots the pickup in a random direction.
@@ -38,112 +38,112 @@ function _G.EntityPickup.GetRandomPickupVelocity(Position, RNG, VelocityType)
 end
 
 ---@return integer
-function EntityPickup_Local:GetVarData()
+function EntityPickup:GetVarData()
 end
 
 ---@param checkForceBlindOnly? boolean Set to `true` to ignore the Curse of the Blind and only check for forced blinded items, such as in alt path rooms
 ---@return boolean `true` if the pickup is a collectible pedestal and is hidden. Always returns `false` for non-collectible EntityPickups.
-function EntityPickup_Local:IsBlind(checkForceBlindOnly)
+function EntityPickup:IsBlind(checkForceBlindOnly)
 end
 
 ---Turns the pickup into a shop item for sale.
 ---@param shopItemId integer TODO: Document me!
-function EntityPickup_Local:MakeShopItem(shopItemId)
+function EntityPickup:MakeShopItem(shopItemId)
 end
 
 ---Sets the graphics of the item pedestal.
 ---
 ---Does nothing for non-collectible EntityPickups.
 ---@param pedestalType PedestalType
-function EntityPickup_Local:SetAlternatePedestal(pedestalType)
+function EntityPickup:SetAlternatePedestal(pedestalType)
 end
 
 ---@param delay integer
-function EntityPickup_Local:SetDropDelay(delay)
+function EntityPickup:SetDropDelay(delay)
 end
 
 ---Hides pedestal items similar to Curse of the Blind.
 ---
 ---Does nothing for non-collectible EntityPickups.
 ---@param isBlind boolean
-function EntityPickup_Local:SetForceBlind(isBlind)
+function EntityPickup:SetForceBlind(isBlind)
 end
 
 ---Returns the new pickup index.
 ---
 ---TODO: Document me!
 ---@return integer pickupIndex
-function EntityPickup_Local:SetNewOptionsPickupIndex()
+function EntityPickup:SetNewOptionsPickupIndex()
 end
 
 ---@param varData integer
-function EntityPickup_Local:SetVarData(varData)
+function EntityPickup:SetVarData(varData)
 end
 
 ---Will try to flip the collectible, such as when using the Flip item on a collectible pedestal with a second, holographic collectible present behind the first one.
 ---@return boolean wasFlipped Returns `true` if the collectible was successfully flipped. Returns `false` otherwise, or if used on non-collectible EntityPickups.
-function EntityPickup_Local:TryFlip()
+function EntityPickup:TryFlip()
 end
 
 ---Causes the collectible pedestal to start cycling through the specified amount of collectibles, including its own collectible type.
 ---@param numCycle integer The amount of collectibles to add to the cycle.
 ---@return boolean didCycleInit Returns `true` if the cycle was successfully initialized. Returns `false` if the collectible was already cycling, or if use on non-collectible EntityPickups.
-function EntityPickup_Local:TryInitOptionCycle(numCycle)
+function EntityPickup:TryInitOptionCycle(numCycle)
 end
 
 ---Tries to remove the collectible from the pedestal.
 ---
 ---Does nothing for non-collectible EntityPickups.
 ---@return boolean wasRemoved Returns `true` if the collectible was removed. Returns `false` if it was already empty, or if use on non-collectible EntityPickups.
-function EntityPickup_Local:TryRemoveCollectible()
+function EntityPickup:TryRemoveCollectible()
 end
 
 ---**NOTE**: This is read-only. You will not be able to use `LootList:PushEntry` for this. Instead, use `MC_PRE_PICKUP_GET_LOOT_LIST` in tandem with the `LootList()` constructor.
 ---@param shouldAdvance? boolean @default: `false`
 ---@return LootList
-function EntityPickup_Local:GetLootList(shouldAdvance)
+function EntityPickup:GetLootList(shouldAdvance)
 end
 
 ---Returns the `EffectVariant.PICKUP_GHOST` EntityEffect visible through Guppy's Eye. If not visible, returns `nil`.
 ---@return EntityEffect?
-function EntityPickup_Local:GetPickupGhost()
+function EntityPickup:GetPickupGhost()
 end
 
 ---Updates the `EffectVariant.PICKUP_GHOST` EntityEffect in accordance to the pickup's current `LootList`.
-function EntityPickup_Local:UpdatePickupGhosts()
+function EntityPickup:UpdatePickupGhosts()
 end
 
 ---Removes pickups with the same option group `EntityPickup.OptionsPickupIndex` as the target pickup.
-function EntityPickup_Local:TriggerTheresOptionsPickup()
+function EntityPickup:TriggerTheresOptionsPickup()
 end
 
 ---Returns the other EntityPickup for a Mega Chest
 ---@return EntityPickup
-function EntityPickup_Local:GetMegaChestLeftCollectible()
+function EntityPickup:GetMegaChestLeftCollectible()
 end
 
 ---Returns the other EntityPickup for a Mega Chest
 ---@return EntityPickup
-function EntityPickup_Local:GetMegaChestRightCollectible()
+function EntityPickup:GetMegaChestRightCollectible()
 end
 
 ---Returns `true` if pickup is collectible and has Flip save state.
 ---@return boolean
-function EntityPickup_Local:HasFlipData()
+function EntityPickup:HasFlipData()
 end
 
 ---Returns CollectibleType if flip save state exists, nil otherwise.
 ---@return CollectibleType?
-function EntityPickup_Local:GetFlipCollectible()
+function EntityPickup:GetFlipCollectible()
 end
 
 ---Initiates the pedestal with a second ghostly collectible, as if the room was entered with the Flip item.
 ---@param itemID? CollectibleType @default: `CollectibleType.COLLECTIBLE_NULL`
 ---@param setupGraphics? boolean @default: `true`
-function EntityPickup_Local:InitFlipState(itemID, setupGraphics)
+function EntityPickup:InitFlipState(itemID, setupGraphics)
 end
 
-function EntityPickup_Local:ReloadGraphics()
+function EntityPickup:ReloadGraphics()
 end
 
 ---@param sprite Sprite
@@ -159,7 +159,7 @@ end
 ---
 ---Custom pickups can be blacklisted from Jera duplication using the `nojera` customtag in entities2.xml.
 ---@return boolean
-function EntityPickup_Local:CanJeraDuplicate()
+function EntityPickup:CanJeraDuplicate()
 end
 
 ---Returns `true` if this pickup can be "rerolled". Note that this also covers other actions such as Moving Box, Jera, Void, Ace Cards, etc.
@@ -168,15 +168,15 @@ end
 ---
 ---You can also dynamically alter the result of this function using `EntityPickup:SetCanRerollOverride`.
 ---@return boolean
-function EntityPickup_Local:CanReroll()
+function EntityPickup:CanReroll()
 end
 
 ---Removes any override set by `EntityPickup:SetCanRerollOverride`
-function EntityPickup_Local:ClearCanRerollOverride()
+function EntityPickup:ClearCanRerollOverride()
 end
 
 ---@return boolean
-function EntityPickup_Local:GetCanRerollOverride()
+function EntityPickup:GetCanRerollOverride()
 end
 
 ---Overrides all other conditions for whether or not a pickup can be rerolled (Moving Box, Jera, Void, Ace Cards, etc.). Primarily useful to dynamically make a specific pickup unable to be rerolled.
@@ -185,5 +185,5 @@ end
 ---
 ---Note that this attribute is persistent and will be remembered even if you leave the room and come back.
 ---@param canReroll boolean
-function EntityPickup_Local:SetCanRerollOverride(canReroll)
+function EntityPickup:SetCanRerollOverride(canReroll)
 end

@@ -1,5 +1,5 @@
 ---@class DestinationQuad
-local DestinationQuad_Local = {}
+local DestinationQuad = {}
 
 _G.DestinationQuad = {}
 
@@ -28,58 +28,58 @@ function _G.DestinationQuad.NewFromRectangle(topLeft, width, height)
 end
 
 ---@return Vector
-function DestinationQuad_Local:GetBottomLeft()
+function DestinationQuad:GetBottomLeft()
 end
 
 ---@return Vector
-function DestinationQuad_Local:GetBottomRight()
+function DestinationQuad:GetBottomRight()
 end
 
 ---@return Vector
-function DestinationQuad_Local:GetTopLeft()
+function DestinationQuad:GetTopLeft()
 end
 
 ---@return Vector
-function DestinationQuad_Local:GetTopRight()
+function DestinationQuad:GetTopRight()
 end
 
 ---@param vector Vector
-function DestinationQuad_Local:SetBottomLeft(vector)
+function DestinationQuad:SetBottomLeft(vector)
 end
 
 ---@param vector Vector
-function DestinationQuad_Local:SetBottomRight(vector)
+function DestinationQuad:SetBottomRight(vector)
 end
 
 ---@param vector Vector
-function DestinationQuad_Local:SetTopLeft(vector)
+function DestinationQuad:SetTopLeft(vector)
 end
 
 ---@param vector Vector
-function DestinationQuad_Local:SetTopRight(vector)
+function DestinationQuad:SetTopRight(vector)
 end
 
 ---@return DestinationQuad
-function DestinationQuad_Local:Copy()
+function DestinationQuad:Copy()
 end
 
 ---@param offset Vector
-function DestinationQuad_Local:Translate(offset)
+function DestinationQuad:Translate(offset)
 end
 
 ---@param scale Vector
 ---@param anchor Vector
-function DestinationQuad_Local:Scale(scale, anchor)
+function DestinationQuad:Scale(scale, anchor)
 end
 
 ---@param rotation number @Rotation is in degrees.
 ---@param anchor Vector
-function DestinationQuad_Local:Rotate(rotation, anchor)
+function DestinationQuad:Rotate(rotation, anchor)
 end
 
 ---@param shear Vector
 ---@param anchor Vector
-function DestinationQuad_Local:Shear(shear, anchor)
+function DestinationQuad:Shear(shear, anchor)
 end
 
 ---Applies a 2x3 render matrix to the image, effectively applying a `Translate`, `Scale`, `Rotate` and `Shear` all at once.
@@ -87,10 +87,10 @@ end
 ---The table must have at least 2 rows, each with at least 3 columns.
 ---@param renderMatrix table
 ---@param anchor Vector
-function DestinationQuad_Local:ApplyMatrix(renderMatrix, anchor)
+function DestinationQuad:ApplyMatrix(renderMatrix, anchor)
 end
 
 ---@param flipX boolean
 ---@param flipY boolean
-function DestinationQuad_Local:Flip(flipX, flipY)
+function DestinationQuad:Flip(flipX, flipY)
 end

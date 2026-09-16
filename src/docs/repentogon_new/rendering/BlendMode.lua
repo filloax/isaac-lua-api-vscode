@@ -4,7 +4,7 @@
 ---@field RGBDestinationFactor BlendFactor
 ---@field RGBSourceFactor BlendFactor
 ---@field Equation BlendEquation
-local BlendMode_Local = {}
+local BlendMode = {}
 
 _G.BlendMode = {}
 
@@ -23,5 +23,5 @@ function _G.BlendMode.NewFromType(blendType)
 end
 
 ---@param type BlendType
-function BlendMode_Local:SetMode(type)
+function BlendMode:SetMode(type)
 end

@@ -1,5 +1,5 @@
 ---@class SourceQuad: DestinationQuad
-local SourceQuad_Local = {}
+local SourceQuad = {}
 
 _G.SourceQuad = {}
 
@@ -30,15 +30,15 @@ end
 
 ---Specialized version of Copy for `SourceQuad`.
 ---@return SourceQuad
-function SourceQuad_Local:Copy()
+function SourceQuad:Copy()
 end
 
 ---@return boolean
-function SourceQuad_Local:IsUVSpace()
+function SourceQuad:IsUVSpace()
 end
 
-function SourceQuad_Local:ConvertToPixelSpace()
+function SourceQuad:ConvertToPixelSpace()
 end
 
-function SourceQuad_Local:ConvertToUVSpace()
+function SourceQuad:ConvertToUVSpace()
 end

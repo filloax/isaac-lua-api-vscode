@@ -21,7 +21,7 @@ end
 ---* `EffectVariant.TECH_DOT`
 ---* `EffectVariant.CHAIN_LIGHTNING`
 ---@return TearFlags
-function EntityEffect_Local:GetTearFlags()
+function EntityEffect:GetTearFlags()
 end
 
 ---Available for the following effects:
@@ -31,7 +31,7 @@ end
 ---* `EffectVariant.TECH_DOT`
 ---* `EffectVariant.CHAIN_LIGHTNING`
 ---@param tearFlags TearFlags
-function EntityEffect_Local:SetTearFlags(tearFlags)
+function EntityEffect:SetTearFlags(tearFlags)
 end
 
 ---Available for the following effects:
@@ -41,7 +41,7 @@ end
 ---* `EffectVariant.TECH_DOT`
 ---* `EffectVariant.CHAIN_LIGHTNING`
 ---@param tearFlags TearFlags
-function EntityEffect_Local:AddTearFlags(tearFlags)
+function EntityEffect:AddTearFlags(tearFlags)
 end
 
 ---Available for the following effects:
@@ -52,7 +52,7 @@ end
 ---* `EffectVariant.CHAIN_LIGHTNING`
 ---@param tearFlags TearFlags
 ---@return boolean
-function EntityEffect_Local:HasTearFlags(tearFlags)
+function EntityEffect:HasTearFlags(tearFlags)
 end
 
 ---Available for the following effects:
@@ -61,5 +61,5 @@ end
 ---* `EffectVariant.BRIMSTONE_BALL`
 ---* `EffectVariant.TECH_DOT`
 ---* `EffectVariant.CHAIN_LIGHTNING`
-function EntityEffect_Local:ClearTearFlags()
+function EntityEffect:ClearTearFlags()
 end

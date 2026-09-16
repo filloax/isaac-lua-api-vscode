@@ -8,17 +8,17 @@
 ---@field Timeout integer
 ---@field Touched boolean
 ---@field Wait integer
-local EntityPickup_Local = {}
+local EntityPickup = {}
 
-function EntityPickup_Local:AppearFast()
+function EntityPickup:AppearFast()
 end
 
 ---@return integer
-function EntityPickup_Local:GetCoinValue()
+function EntityPickup:GetCoinValue()
 end
 
 ---@return boolean
-function EntityPickup_Local:IsShopItem()
+function EntityPickup:IsShopItem()
 end
 
 ---@param Type EntityType
@@ -27,16 +27,16 @@ end
 ---@param KeepPrice? boolean @default: `false`
 ---@param KeepSeed? boolean @default: `false`. If set to `true`, keeps the initial RNG seed of the pickup instead of rerolling it
 ---@param IgnoreModifiers? boolean @default: `false`. If set to `true`, ignores item effects that might turn this pickup into something other than the specificed variant and sub-type. Specifically, this can be used to prevent a collectible from being affected by Tainted Isaac's rotation mechanic. (For example, if you manually spawn a quest collectible such as a Polaroid, it will be affected by Tainted Isaac's rotation mechanic, which is normally undesired. To fix this, you can immediately morph it into the same entity type / variant /sub-type after spawning with this argument set to true.)
-function EntityPickup_Local:Morph(Type, Variant, SubType, KeepPrice, KeepSeed, IgnoreModifiers)
+function EntityPickup:Morph(Type, Variant, SubType, KeepPrice, KeepSeed, IgnoreModifiers)
 end
 
-function EntityPickup_Local:PlayDropSound()
+function EntityPickup:PlayDropSound()
 end
 
-function EntityPickup_Local:PlayPickupSound()
+function EntityPickup:PlayPickupSound()
 end
 
 ---@param Player? EntityPlayer @default: `nil`
 ---@return boolean
-function EntityPickup_Local:TryOpenChest(Player)
+function EntityPickup:TryOpenChest(Player)
 end

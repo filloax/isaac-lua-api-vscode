@@ -1,73 +1,73 @@
 ---@return boolean
-function EntityLaser_Local:GetDisableFollowParent()
+function EntityLaser:GetDisableFollowParent()
 end
 
 ---Returns an array of entity indexes that have been hit by the laser.
 ---@return integer[]
-function EntityLaser_Local:GetHitList()
+function EntityLaser:GetHitList()
 end
 
 ---@return boolean
-function EntityLaser_Local:GetOneHit()
+function EntityLaser:GetOneHit()
 end
 
 ---@return number
-function EntityLaser_Local:GetScale()
+function EntityLaser:GetScale()
 end
 
 ---@return boolean
-function EntityLaser_Local:GetShrink()
+function EntityLaser:GetShrink()
 end
 
 ---@return integer
-function EntityLaser_Local:GetTimeout()
+function EntityLaser:GetTimeout()
 end
 
-function EntityLaser_Local:ResetSpriteScale()
+function EntityLaser:ResetSpriteScale()
 end
 
 ---@param angle number
 ---@param speed? number @default: `8`
-function EntityLaser_Local:RotateToAngle(angle, speed)
+function EntityLaser:RotateToAngle(angle, speed)
 end
 
 ---@param isDisabled boolean
-function EntityLaser_Local:SetDisableFollowParent(isDisabled)
+function EntityLaser:SetDisableFollowParent(isDisabled)
 end
 
 ---@param scale number
-function EntityLaser_Local:SetScale(scale)
+function EntityLaser:SetScale(scale)
 end
 
 ---@param isShrink boolean
-function EntityLaser_Local:SetShrink(isShrink)
+function EntityLaser:SetShrink(isShrink)
 end
 
 ---@return number
-function EntityLaser_Local:GetDamageMultiplier()
+function EntityLaser:GetDamageMultiplier()
 end
 
 ---@param damageMult number
-function EntityLaser_Local:SetDamageMultiplier(damageMult)
+function EntityLaser:SetDamageMultiplier(damageMult)
 end
 
 ---Requests the laser's shape to be fully recalculated next time it updates. Can be used to force the laser to instantly change its MaxDistance/Radius instead of transitioning to it. No effect for OneHit or non-sample lasers.
-function EntityLaser_Local:RecalculateSamplesNextUpdate()
+function EntityLaser:RecalculateSamplesNextUpdate()
 end
 
 ---Sets if the laser was created through the Multi Dimensional Baby effect.
 ---@return boolean
-function EntityLaser_Local:IsMultidimensionalTouched()
+function EntityLaser:IsMultidimensionalTouched()
 end
 
 ---Returns if the laser was created through the Angelic Prism effect.
 ---@return boolean
-function EntityLaser_Local:IsPrismTouched()
+function EntityLaser:IsPrismTouched()
 end
 
 ---Returns if the laser was created through the Angelic Prism effect.
 ---@return boolean
-function EntityLaser_Local:SetPrismTouched()
+function EntityLaser:SetPrismTouched()
 end
 
 ---Fire a new tear that inherits many attributes from this laser (flags, damage, size, color, etc).
@@ -80,36 +80,36 @@ end
 ---@param variant? TearVariant @default: `0`.
 ---@param splitTearType? SplitTearType|string @default: `SplitTearType.SPLIT_GENERIC`
 ---@return EntityTear
-function EntityLaser_Local:FireSplitTear(pos, velocity, damageMult, sizeMult, variant, splitTearType)
+function EntityLaser:FireSplitTear(pos, velocity, damageMult, sizeMult, variant, splitTearType)
 end
 
 ---Returns if the entity has been hit by the laser.
 ---@param entity Entity
 ---@return boolean
-function EntityLaser_Local:InHitList(entity)
+function EntityLaser:InHitList(entity)
 end
 
 ---Set if the entity has been hit by the laser.
 ---@param entity Entity
-function EntityLaser_Local:AddToHitList(entity)
+function EntityLaser:AddToHitList(entity)
 end
 
 ---Remove the entity from the list of entities that have been hit by the laser.
 ---@param entity Entity
-function EntityLaser_Local:RemoveFromHitList(entity)
+function EntityLaser:RemoveFromHitList(entity)
 end
 
 ---Set the sound the laser plays on its first update.
 ---@param sound SoundEffect
-function EntityLaser_Local:SetInitSound(sound)
+function EntityLaser:SetInitSound(sound)
 end
 
 ---Used by Mosntro's Lung + Technology synergy.
 ---@return integer
-function EntityLaser_Local:GetNumChainedLasers()
+function EntityLaser:GetNumChainedLasers()
 end
 
 ---Used by Mosntro's Lung + Technology synergy.
 ---@param num integer
-function EntityLaser_Local:SetNumChainedLasers(num)
+function EntityLaser:SetNumChainedLasers(num)
 end
