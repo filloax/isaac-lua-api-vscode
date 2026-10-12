@@ -3,7 +3,7 @@ import { getConfig } from './config';
 import { Constants } from './constants';
 import * as luaparse from 'luaparse';
 
-export function walk(node: unknown, visitor: (node: luaparse.Node) => boolean | void): void {
+function walk(node: unknown, visitor: (node: luaparse.Node) => boolean | void): void {
   if (!node || typeof node !== 'object') {return;}
   
   if ('type' in node && typeof node.type === 'string') {
@@ -19,9 +19,22 @@ export function walk(node: unknown, visitor: (node: luaparse.Node) => boolean | 
   }
 }
 
+const WORKSPACE_CFG_FILENAME = ".isaac-config.lua";
+
+//add error handling
+async function getWorkspaceConfig(){
+    const folder = vscode.workspace.workspaceFolders?.[0];
+    if (!folder) {return undefined;}
+
+    const uri = vscode.Uri.joinPath(folder.uri, WORKSPACE_CFG_FILENAME);
+    const config = await vscode.workspace.fs.readFile(uri);
+    
+    return Buffer.from(config).toString('utf8');
+}
+
 interface CallbackArg {
     type: string;
-    name?: string; //we should get the rgon callback json to a point where the question mark can be removed, since it means there are unnamed arguments out there!
+    name?: string;
 }
 
 interface CallbackReturn {
@@ -47,29 +60,137 @@ import * as jsonVanillaCallbacks from "./docs/enums/callbacks/vanilla.json";
 import * as jsonRgonCallbacks from "./docs/enums/callbacks/repentogon.json";
 import * as jsonStageApiCallbacks from "./docs/enums/callbacks/stageapi.json";
 
-const config = getConfig();
-
 const vanillaCallbacks: Callbacks = jsonVanillaCallbacks;
 const rgonCallbacks: Callbacks = jsonRgonCallbacks;
 const stageApiCallbacks: Callbacks = jsonStageApiCallbacks;
+const customCallbacks: Callbacks = {};
+
 const callbackTables: Callbacks[] = [];
+const callbackByValue = new Map<number, IsaacCallback>();
 
-if(config.repentogonEnabled){callbackTables.push(rgonCallbacks);} //load before vanilla callbacks so that rgon vanilla overrides take priority
-callbackTables.push(vanillaCallbacks);
-if(config.stageAPISupportEnabled){callbackTables.push(stageApiCallbacks);}
+interface RegisterFuncConfig {
+    idArg: number; //where you define da callback
+    funcArg: number; //where you define da function
+    hasModArg: boolean;
+}
 
-var callbackByValue = new Map<number, IsaacCallback>();
+/* eslint-disable @typescript-eslint/naming-convention */
+const REGISTER_FUNCTIONS: Record<string, RegisterFuncConfig> = {
+    "AddCallback": { idArg: 0, funcArg: 1, hasModArg: true },
+    "AddPriorityCallback": { idArg: 0, funcArg: 2, hasModArg: true },
+    "StageAPI.AddCallback": { idArg: 1, funcArg: 3, hasModArg: false },
+};
+/* eslint-enable @typescript-eslint/naming-convention */
 
-for (var callbacks of callbackTables) {
-    for (var callbackId in callbacks) {
-        const entry = callbacks[callbackId];
-        if (entry.value !== undefined) {
-            const numericValue = typeof entry.value === "string" ? parseInt(entry.value, 10) : entry.value;
-            if (!isNaN(numericValue) && callbackByValue.get(numericValue) === undefined) {
-                callbackByValue.set(numericValue, entry);
+const config = getConfig();
+async function loadCallbacksAndConfig(){
+    const workspaceConfig = await getWorkspaceConfig();
+    
+    //json callback stuff
+    if(config.repentogonEnabled){callbackTables.push(rgonCallbacks);} //load before vanilla callbacks so that rgon vanilla overrides take priority
+    callbackTables.push(vanillaCallbacks);
+    if(config.stageAPISupportEnabled){callbackTables.push(stageApiCallbacks);}
+    
+    for (var callbacks of callbackTables) {
+        for (var callbackId in callbacks) {
+            const entry = callbacks[callbackId];
+            if (entry.value !== undefined) {
+                const numericValue = typeof entry.value === "string" ? parseInt(entry.value, 10) : entry.value;
+                if (!isNaN(numericValue) && callbackByValue.get(numericValue) === undefined) {
+                    callbackByValue.set(numericValue, entry);
+                }
             }
         }
     }
+    
+    //lua config callback and func stuff (we add callbacks to table after the value mapping so that we dont waste time on records which wont have a value anyways)
+    const workspaceAST = luaparse.parse(workspaceConfig!, {wait: false, comments: false});
+    console.log(workspaceAST);
+    walk(workspaceAST, (node) => {
+        if (node.type === "TableKeyString"){
+            if (node.key.name === "Callbacks" && node.value.type === "TableConstructorExpression"){
+                const callbackNodes = node.value.fields;
+
+                for (var callbackNode of callbackNodes){
+                    const callback: IsaacCallback = {};
+
+                    if (callbackNode.type === "TableKeyString") {
+                        callback.value = callbackNode.key.name;
+                        
+                        if (callbackNode.value.type === "TableConstructorExpression"){
+                            for (var callbackField of callbackNode.value.fields){
+                                if(callbackField.type === "TableKeyString" && callbackField.value.type === "TableConstructorExpression"){
+                                    if(callbackField.key.name === "Args"){
+                                        const callbackArgs: CallbackArg[] = [];
+
+                                        for (var arg of callbackField.value.fields){
+                                            if(arg.value.type === "TableConstructorExpression"){
+                                                var argType;
+                                                var argName;
+                                                for(var argParam of arg.value.fields){
+                                                    if(argParam.type === "TableKeyString" && argParam.value.type === "StringLiteral"){
+                                                        if(argParam.key.name === "Type"){
+                                                            argType = argParam.value.raw.substring(1, argParam.value.raw.length-1);
+                                                        }
+                                                        if(argParam.key.name === "Name"){
+                                                            argName = argParam.value.raw.substring(1, argParam.value.raw.length-1);
+                                                        }
+                                                    }
+                                                }
+                                                callbackArgs.push({type: argType!, name: argName});
+                                            }
+                                        }
+
+                                        callback.args = callbackArgs;
+                                    }
+                                    //hypothetical support for stuff outside of Args would go here...
+                                }
+                            }
+                        }
+                    }
+
+                    customCallbacks[callback.value!] = callback;
+                }
+                
+                callbackTables.push(customCallbacks);
+            }
+            if (node.key.name === "RegisterFunctions" && node.value.type === "TableConstructorExpression"){
+                const callbackFunctions = node.value.fields;
+
+                for(var callbackFunctionNode of callbackFunctions){
+                    //const callbackFunction: RegisterFuncConfig = {};
+                    if((callbackFunctionNode.type === "TableKey" || callbackFunctionNode.type === "TableKeyString") && callbackFunctionNode.value.type === "TableConstructorExpression"){
+                        const callbackFuncConfig = callbackFunctionNode.value.fields;
+                        for (var arg of callbackFuncConfig){
+                            var luaIdArg;
+                            var luaFuncArg;
+                            var luaModArg;
+
+                            if(arg.type === "TableKeyString"){
+                                if (arg.key.name === "IdArg" && arg.value.type === "NumericLiteral"){
+                                    luaIdArg = arg.value.value - 1;
+                                }
+                                if (arg.key.name === "FunctionArg" && arg.value.type === "NumericLiteral"){
+                                    luaFuncArg = arg.value.value - 1;
+                                }
+                                if (arg.key.name === "HasModArg" && arg.value.type === "BooleanLiteral"){
+                                    luaModArg = arg.value.value;
+                                }
+                            }
+
+                            const finalFuncConfig: RegisterFuncConfig = {idArg: luaIdArg!, funcArg: luaFuncArg!, hasModArg: luaModArg!};
+                            if(callbackFunctionNode.type === "TableKey" && callbackFunctionNode.key.type === "StringLiteral"){
+                                REGISTER_FUNCTIONS[callbackFunctionNode.key.raw.substring(1, callbackFunctionNode.key.raw.length - 1)] = finalFuncConfig;
+                            }
+                            if(callbackFunctionNode.type === "TableKeyString"){
+                                REGISTER_FUNCTIONS[callbackFunctionNode.key.name] = finalFuncConfig;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    });
 }
 
 function findCallback(callbackId: string | number): IsaacCallback | undefined {
@@ -85,20 +206,6 @@ function findCallback(callbackId: string | number): IsaacCallback | undefined {
 
     return undefined;
 }
-
-interface RegisterFuncConfig {
-    idArg: number; //where you define da callback
-    funcArg: number; //where you define da function
-    hasModArg: boolean;
-}
-
-/* eslint-disable @typescript-eslint/naming-convention */
-const REGISTER_FUNCTIONS: Record<string, RegisterFuncConfig> = {
-    "AddCallback": { idArg: 0, funcArg: 1, hasModArg: true },
-    "AddPriorityCallback": { idArg: 0, funcArg: 2, hasModArg: true },
-    "StageAPI.AddCallback": { idArg: 1, funcArg: 3, hasModArg: false },
-};
-/* eslint-enable @typescript-eslint/naming-convention */
 
 function getCallbackTablesFromLua(ast: luaparse.Chunk): string[]{
     const tableCounts: Record<string, number> = {};
@@ -221,11 +328,13 @@ interface CompletionPair {
     isColonMethod: boolean;
 }
 
-export function inlineParamCompletion(context: vscode.ExtensionContext) {
-    console.log("callback param inline autocomplete enabled!");
-
+export function inlineParamCompletion(context: vscode.ExtensionContext) {    
+    loadCallbacksAndConfig();
+    
     const provider : vscode.InlineCompletionItemProvider = {
         provideInlineCompletionItems(document, position, context, token) {
+            if(!config.callbackFunctionCompletionEnabled) {return [];}
+
             const lineText = document.lineAt(position.line).text;
             const beforeCursor = lineText.slice(0, position.character);
 
@@ -234,7 +343,7 @@ export function inlineParamCompletion(context: vscode.ExtensionContext) {
             if (lineText.includes(')') && position.character > lineText.lastIndexOf(')')) {return [];}
 
             const luaLineCode = beforeCursor + "nil)";
-            var lineAST = luaparse.parse(luaLineCode, {wait: false});
+            var lineAST = luaparse.parse(luaLineCode, {wait: false, comments: false});
             const statement = lineAST.body[0];
             if (!statement || statement.type !== 'CallStatement') {return [];}
             
@@ -261,7 +370,7 @@ export function inlineParamCompletion(context: vscode.ExtensionContext) {
 
             //Step 2: Get the function name from callback used, and insert it into inline suggestions
             const allLuaCode = document.getText(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(position.line-1, 0)));
-            var allAST = luaparse.parse(allLuaCode, {wait: false});
+            var allAST = luaparse.parse(allLuaCode, {wait: false, comments: false});
             const sortedTables = getCallbackTablesFromLua(allAST);
 
             const funcName = typeof callbackName === "string" ? getFuncNameFromCallback(callbackName) : "placeholder";
@@ -288,18 +397,29 @@ export function inlineParamCompletion(context: vscode.ExtensionContext) {
             });
 
             //Step 3: Add params based on callback used
+            const paramAliases = config.callbackParamAliases;
             var hasModRefParam = match.cfg.hasModArg;
             var callback = findCallback(callbackName);
             
             var callbackParams: string[] = [];
             if(callback !== undefined && callback.args !== undefined){
                 callbackParams = callback.args.map((arg, idx) => {
-                    const name = arg.name || `unkownArg${idx + 1}`;
+                    if(!arg.name){
+                        return `unknownArg${idx + 1}`;
+                    }
+                    
+                    var name: string;
 
-                    if(name === name.toUpperCase()){
-                        return name.toLowerCase();
+                    if(arg.name === arg.name.toUpperCase()){
+                        name = arg.name.toLowerCase();
                     } else {
-                        return name.charAt(0).toLowerCase() + name.slice(1);
+                        name = arg.name.charAt(0).toLowerCase() + arg.name.slice(1);
+                    }
+
+                    if(paramAliases[name]){
+                        return paramAliases[name];
+                    } else {
+                        return name;
                     }
                 });
             }

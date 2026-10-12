@@ -69,6 +69,19 @@
                     "type": "boolean",
                     "default": false,
                     "description": "Enable StageAPI callback autocompletion."
+                },
+                "boi-lua.callbackFunctionCompletionEnabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable inline code suggestions for functions which are passed when registering a callback."
+                },
+                "boi-lua.callbackParamAliases": {
+                    "type": "object",
+                    "default": {},
+                    "description": "Define aliases for params suggested by the callback function autocomplete.\nKey represents the string to replace, while Value represents what to replace it with.",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
                 }
             }
         },
