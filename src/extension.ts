@@ -10,7 +10,7 @@ import { setDefinedGlobals, setExternalLibrary, setMiscConfig, setPlugin, setPlu
 import { getConfig } from './config';
 import { Constants } from './constants';
 import { modifyJsoncFile } from './modifyJson';
-import { inlineParamCompletion } from './callbackParamCompletion';
+import { inlineParamCompletion } from './callbackFunctionCompletion';
 
 const LUA_CONFIG_FILENAME = ".luarc.json";
 const LUA_EXTENSION_ID = "sumneko.lua";

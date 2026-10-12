@@ -105,7 +105,6 @@ async function loadCallbacksAndConfig(){
     
     //lua config callback and func stuff (we add callbacks to table after the value mapping so that we dont waste time on records which wont have a value anyways)
     const workspaceAST = luaparse.parse(workspaceConfig!, {wait: false, comments: false});
-    console.log(workspaceAST);
     walk(workspaceAST, (node) => {
         if (node.type === "TableKeyString"){
             if (node.key.name === "Callbacks" && node.value.type === "TableConstructorExpression"){

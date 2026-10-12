@@ -78,7 +78,7 @@
                 "boi-lua.callbackParamAliases": {
                     "type": "object",
                     "default": {},
-                    "description": "Define aliases for params suggested by the callback function autocomplete.\nKey represents the string to replace, while Value represents what to replace it with.",
+                    "description": "Define aliases for params suggested by the callback function autocomplete.\nKey represents the string to replace, while Value represents what to replace it with. \n(eg. entity -> e)",
                     "additionalProperties": {
                         "type": "string"
                     }
