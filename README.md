@@ -25,17 +25,15 @@ By default, with the extension global functions like `Game()`, `Vector(x, y)` an
 ### Callbacks
 **NEW since 1.17**: When registering a callback, positioning your cursor where the function argument is defined displays a ghost completion, offering you a variety of automatic function declarations to choose from. Function parameters are automatically filled in based on the callback used. 
 
-#### Callback Function Completion
-
 Autocomplete options include:
 <h4 align="center">Inline Functions</h4>
-<p align="center"> <img src="readme/inline.gif" alt="Inline Example"> </p>
+<p> <img src="readme/inline.gif" alt="Inline Example"> </p>
 
 <h4 align="center">Local Functions</h4>
-<p align="center"> <img src="readme/local.gif" alt="Local Example"> </p>
+<p> <img src="readme/local.gif" alt="Local Example"> </p>
 
 <h4 align="center">Table Methods</h4>
-<p align="center"> <img src="readme/method.gif" alt="Method Example"> </p>
+<p> <img src="readme/method.gif" alt="Method Example"> </p>
 
 You can cycle through these with the keybind tied to the `Show Previous/Next Inline Suggestion` command. (`Alt + [ or ]` by default) <br>
 It should be noted that table methods will not be suggested, if the current file has any __syntax errors__ before the current line.
