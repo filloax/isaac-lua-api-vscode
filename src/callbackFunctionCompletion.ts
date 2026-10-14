@@ -2,6 +2,9 @@ import * as vscode from 'vscode';
 import { getConfig } from './config';
 import { Constants } from './constants';
 import * as luaparse from 'luaparse';
+import * as jsonVanillaCallbacks from "./docs/enums/callbacks/vanilla.json";
+import * as jsonRgonCallbacks from "./docs/enums/callbacks/repentogon.json";
+import * as jsonStageApiCallbacks from "./docs/enums/callbacks/stageapi.json";
 
 function walk(node: unknown, visitor: (node: luaparse.Node) => boolean | void): void {
   if (!node || typeof node !== 'object') {return;}
@@ -21,15 +24,19 @@ function walk(node: unknown, visitor: (node: luaparse.Node) => boolean | void): 
 
 const WORKSPACE_CFG_FILENAME = ".isaac-config.lua";
 
-//add error handling
-async function getWorkspaceConfig(){
+async function getWorkspaceConfig(): Promise<string | undefined>{
     const folder = vscode.workspace.workspaceFolders?.[0];
-    if (!folder) {return undefined;}
+    if (!folder) {return;}
 
     const uri = vscode.Uri.joinPath(folder.uri, WORKSPACE_CFG_FILENAME);
-    const config = await vscode.workspace.fs.readFile(uri);
-    
-    return Buffer.from(config).toString('utf8');
+
+    try {
+        const config = await vscode.workspace.fs.readFile(uri);
+        return Buffer.from(config).toString('utf8');
+    } catch (error) {
+        console.error("Couldn't read lua config file.");
+        return;
+    }
 }
 
 interface CallbackArg {
@@ -55,10 +62,6 @@ interface IsaacCallback {
 }
 
 type Callbacks = Record<string, IsaacCallback>;
-
-import * as jsonVanillaCallbacks from "./docs/enums/callbacks/vanilla.json";
-import * as jsonRgonCallbacks from "./docs/enums/callbacks/repentogon.json";
-import * as jsonStageApiCallbacks from "./docs/enums/callbacks/stageapi.json";
 
 const vanillaCallbacks: Callbacks = jsonVanillaCallbacks;
 const rgonCallbacks: Callbacks = jsonRgonCallbacks;
@@ -91,8 +94,8 @@ async function loadCallbacksAndConfig(){
     callbackTables.push(vanillaCallbacks);
     if(config.stageAPISupportEnabled){callbackTables.push(stageApiCallbacks);}
     
-    for (var callbacks of callbackTables) {
-        for (var callbackId in callbacks) {
+    for (let callbacks of callbackTables) {
+        for (let callbackId in callbacks) {
             const entry = callbacks[callbackId];
             if (entry.value !== undefined) {
                 const numericValue = typeof entry.value === "string" ? parseInt(entry.value, 10) : entry.value;
@@ -104,29 +107,30 @@ async function loadCallbacksAndConfig(){
     }
     
     //lua config callback and func stuff (we add callbacks to table after the value mapping so that we dont waste time on records which wont have a value anyways)
-    const workspaceAST = luaparse.parse(workspaceConfig!, {wait: false, comments: false});
+    if(!workspaceConfig){return;}
+    const workspaceAST = luaparse.parse(workspaceConfig, {wait: false, comments: false});
     walk(workspaceAST, (node) => {
         if (node.type === "TableKeyString"){
             if (node.key.name === "Callbacks" && node.value.type === "TableConstructorExpression"){
                 const callbackNodes = node.value.fields;
 
-                for (var callbackNode of callbackNodes){
+                for (let callbackNode of callbackNodes){
                     const callback: IsaacCallback = {};
 
                     if (callbackNode.type === "TableKeyString") {
                         callback.value = callbackNode.key.name;
                         
                         if (callbackNode.value.type === "TableConstructorExpression"){
-                            for (var callbackField of callbackNode.value.fields){
+                            for (let callbackField of callbackNode.value.fields){
                                 if(callbackField.type === "TableKeyString" && callbackField.value.type === "TableConstructorExpression"){
                                     if(callbackField.key.name === "Args"){
                                         const callbackArgs: CallbackArg[] = [];
 
-                                        for (var arg of callbackField.value.fields){
+                                        for (let arg of callbackField.value.fields){
                                             if(arg.value.type === "TableConstructorExpression"){
-                                                var argType;
-                                                var argName;
-                                                for(var argParam of arg.value.fields){
+                                                let argType;
+                                                let argName;
+                                                for(let argParam of arg.value.fields){
                                                     if(argParam.type === "TableKeyString" && argParam.value.type === "StringLiteral"){
                                                         if(argParam.key.name === "Type"){
                                                             argType = argParam.value.raw.substring(1, argParam.value.raw.length-1);
@@ -156,14 +160,14 @@ async function loadCallbacksAndConfig(){
             if (node.key.name === "RegisterFunctions" && node.value.type === "TableConstructorExpression"){
                 const callbackFunctions = node.value.fields;
 
-                for(var callbackFunctionNode of callbackFunctions){
+                for(let callbackFunctionNode of callbackFunctions){
                     //const callbackFunction: RegisterFuncConfig = {};
                     if((callbackFunctionNode.type === "TableKey" || callbackFunctionNode.type === "TableKeyString") && callbackFunctionNode.value.type === "TableConstructorExpression"){
                         const callbackFuncConfig = callbackFunctionNode.value.fields;
-                        for (var arg of callbackFuncConfig){
-                            var luaIdArg;
-                            var luaFuncArg;
-                            var luaModArg;
+                        let luaIdArg;
+                        let luaFuncArg;
+                        let luaModArg;
+                        for (let arg of callbackFuncConfig){
 
                             if(arg.type === "TableKeyString"){
                                 if (arg.key.name === "IdArg" && arg.value.type === "NumericLiteral"){
@@ -194,7 +198,7 @@ async function loadCallbacksAndConfig(){
 
 function findCallback(callbackId: string | number): IsaacCallback | undefined {
     if (typeof callbackId === "string") {
-        for (var callbacks of callbackTables) {
+        for (let callbacks of callbackTables) {
             if (callbacks[callbackId] !== undefined) {
                 return callbacks[callbackId];
             }
@@ -230,16 +234,17 @@ function getCallbackTablesFromLua(ast: luaparse.Chunk): string[]{
 function getFuncNameFromCallback(callbackName: string): string{
     const words = callbackName.split("_");
 
-    //am i even a good programmer at this point...
-    var funcName = "";
-    if (words[1] === "PRE"){
+    let funcName = "";
+
+    //probably could be improved with a Record of callback name components to function name components
+    if (words[0] === "PRE" || words[1] === "PRE"){
         funcName += "pre";
         words.map((word, idx) => {
             if (idx > 1){
                 funcName += word.charAt(0) + word.substring(1).toLowerCase();
             }
         });
-    } else if (words[1] === "POST") {
+    } else if (words[0] === "POST" || words[1] === "POST") {
         funcName += "on";
         words.map((word, idx) => {
             if (idx > 1){
@@ -273,10 +278,10 @@ function getCalleePath(node: luaparse.Expression): string | undefined {
 
 function getRegisterConfig(callExpr: luaparse.CallExpression): { cfg: RegisterFuncConfig; offset: number } | undefined {
     const fullPath = getCalleePath(callExpr.base);
-    var cfg = fullPath ? REGISTER_FUNCTIONS[fullPath] : undefined;
+    let cfg = fullPath ? REGISTER_FUNCTIONS[fullPath] : undefined;
 
-    var name = "";
-    var isColonCall = false;
+    let name = "";
+    let isColonCall = false;
 
     if (callExpr.base.type === 'MemberExpression') {
         name = callExpr.base.identifier.name;
@@ -342,7 +347,7 @@ export function inlineParamCompletion(context: vscode.ExtensionContext) {
             if (lineText.includes(')') && position.character > lineText.lastIndexOf(')')) {return [];}
 
             const luaLineCode = beforeCursor + "nil)";
-            var lineAST = luaparse.parse(luaLineCode, {wait: false, comments: false});
+            let lineAST = luaparse.parse(luaLineCode, {wait: false, comments: false});
             const statement = lineAST.body[0];
             if (!statement || statement.type !== 'CallStatement') {return [];}
             
@@ -354,9 +359,9 @@ export function inlineParamCompletion(context: vscode.ExtensionContext) {
             const funcIndex = match.cfg.funcArg + match.offset;
             const idIndex = match.cfg.idArg + match.offset;
 
-            if((callExpr.arguments.length - 1) !== funcIndex) {return[];}
+            if((callExpr.arguments.length - 1) !== funcIndex || idIndex > callExpr.arguments.length) {return[];}
 
-            var callbackName: string | number | undefined = undefined;
+            let callbackName: string | number | undefined = undefined;
             const idArg = callExpr.arguments[idIndex];
             if (idArg.type === "MemberExpression"){
                 callbackName = idArg.identifier.name;
@@ -368,9 +373,17 @@ export function inlineParamCompletion(context: vscode.ExtensionContext) {
             if (callbackName === undefined) {return[];}
 
             //Step 2: Get the function name from callback used, and insert it into inline suggestions
-            const allLuaCode = document.getText(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(position.line-1, 0)));
-            var allAST = luaparse.parse(allLuaCode, {wait: false, comments: false});
-            const sortedTables = getCallbackTablesFromLua(allAST);
+            let sortedTables: string[] = [];
+
+            try {
+                const allLuaCode = document.getText(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(position.line, 0)));
+                const allAST = luaparse.parse(allLuaCode, {wait: false, comments: false});
+
+                sortedTables = getCallbackTablesFromLua(allAST);
+            } catch (error) {
+                console.error("Skipping table method completion due to syntax error found in file:");
+                console.error(error);
+            }
 
             const funcName = typeof callbackName === "string" ? getFuncNameFromCallback(callbackName) : "placeholder";
 
@@ -397,17 +410,17 @@ export function inlineParamCompletion(context: vscode.ExtensionContext) {
 
             //Step 3: Add params based on callback used
             const paramAliases = config.callbackParamAliases;
-            var hasModRefParam = match.cfg.hasModArg;
-            var callback = findCallback(callbackName);
+            let hasModRefParam = match.cfg.hasModArg;
+            let callback = findCallback(callbackName);
             
-            var callbackParams: string[] = [];
+            let callbackParams: string[] = [];
             if(callback !== undefined && callback.args !== undefined){
                 callbackParams = callback.args.map((arg, idx) => {
                     if(!arg.name){
                         return `unknownArg${idx + 1}`;
                     }
                     
-                    var name: string;
+                    let name: string;
 
                     if(arg.name === arg.name.toUpperCase()){
                         name = arg.name.toLowerCase();
@@ -426,10 +439,10 @@ export function inlineParamCompletion(context: vscode.ExtensionContext) {
             const finalCompletionItems: vscode.InlineCompletionItem[] = [];
             
             completionPairs.map((pair) => {
-                var inlineStr = pair.inlineString;
-                var bodyStr = pair.bodyString;
+                let inlineStr = pair.inlineString;
+                let bodyStr = pair.bodyString;
 
-                var paramsList = [...callbackParams];
+                let paramsList = [...callbackParams];
 
                 //prolly will be coming back to this condition later since it kinda irks me
                 if (hasModRefParam && !pair.isColonMethod) {
@@ -448,7 +461,7 @@ export function inlineParamCompletion(context: vscode.ExtensionContext) {
                 if (!inlineStr.includes('(')) {
                     const indentedBody = bodyStr.split('\n').map(line => indent + line).join('\n');
                     
-                    var finalLineText = lineText;
+                    let finalLineText = lineText;
                     if (lineText.trimEnd().endsWith(')')) { finalLineText = lineText.slice(0, -1); }
                     const replacementText = `${inlineStr}\n${indentedBody}\n${finalLineText + inlineStr}`;
                     
