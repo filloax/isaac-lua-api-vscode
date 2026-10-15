@@ -10,6 +10,7 @@ import { setDefinedGlobals, setExternalLibrary, setMiscConfig, setPlugin, setPlu
 import { getConfig } from './config';
 import { Constants } from './constants';
 import { modifyJsoncFile } from './modifyJson';
+import { inlineParamCompletion } from './callbackFunctionCompletion';
 
 const LUA_CONFIG_FILENAME = ".luarc.json";
 const LUA_EXTENSION_ID = "sumneko.lua";
@@ -96,6 +97,7 @@ function onActivate(context: vscode.ExtensionContext) {
     });
 
     context.subscriptions.push(vscode.workspace.onDidChangeConfiguration(event => onConfigChange(context, event)));
+    inlineParamCompletion(context);
 }
 
 function onDeactivate(context: vscode.ExtensionContext) {

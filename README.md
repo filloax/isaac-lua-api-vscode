@@ -23,6 +23,20 @@ First off, the extension won't be active by default even if enabled for convenie
 By default, with the extension global functions like `Game()`, `Vector(x, y)` and `Isaac.xxx` should already be recognized.
 
 ### Callbacks
+**NEW since 1.17**: When registering a callback, positioning your cursor where the function argument is defined displays a ghost completion, offering you a variety of automatic function declarations to choose from. Function parameters are automatically filled in based on the callback used. 
+
+Autocomplete options include:
+<h4 align="center">Inline Functions</h4>
+<p> <img src="readme/inline.gif" alt="Inline Example"> </p>
+
+<h4 align="center">Local Functions</h4>
+<p> <img src="readme/local.gif" alt="Local Example"> </p>
+
+<h4 align="center">Table Methods</h4>
+<p> <img src="readme/method.gif" alt="Method Example"> </p>
+
+You can cycle through these with the keybind tied to the `Show Previous/Next Inline Suggestion` command. (`Alt + [ or ]` by default) <br>
+It should be noted that table methods will not be suggested, if the current file has any __syntax errors__ before the current line.
 
 **NEW since 1.15**: Callback parameters are now autorecognized! Two main ways to do it, one automatic and the one manual but still convenient:
 
@@ -98,8 +112,8 @@ return {
     Callbacks = {
         -- ofc this already is defined, just an example
         -- both Args and Returns take lua type annotation strings in Type, including unions
-        -- with | and everything you can dowith the Lua LS normally. Name is optional
-        -- and currently unused.
+        -- with | and everything you can dowith the Lua LS normally. Name is optional,
+        -- however as of 1.17, it is used by the callback function autocomplete.
         -- Returns can also have more values in case it has more returns, and can be empty or not included altogether
         MC_ENTITY_TAKE_DMG = { 
             Args = { {Type = "Entity"}, {Type = "number", Name = "dmg"}, {Type = "integer"}, {Type = "EntityRef"}, {Type = "integer"} },
@@ -107,7 +121,8 @@ return {
         },
     },
 
-    -- Alternatives to :AddCallback, matched by full path and take priority if match applies
+    -- Alternatives to :AddCallback, matched by full path and take priority if match applies.
+    -- For callback function autocomplete to work properly, it is recommended to make sure that FunctionArg is greater in value than IdArg (making it so function argument is set after callback id argument)
     RegisterFunctions = {
         -- StageAPI.AddCallback(modID, callbackId, priority, fn, ...)
         -- IdArg: position of argument containing callback id (starting from 1)

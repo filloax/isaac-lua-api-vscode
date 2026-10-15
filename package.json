@@ -69,6 +69,19 @@
                     "type": "boolean",
                     "default": false,
                     "description": "Enable StageAPI callback autocompletion."
+                },
+                "boi-lua.callbackFunctionCompletionEnabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable inline code suggestions for functions which are passed when registering a callback."
+                },
+                "boi-lua.callbackParamAliases": {
+                    "type": "object",
+                    "default": {},
+                    "description": "Define aliases for params suggested by the callback function autocomplete.\nKey represents the string to replace, while Value represents what to replace it with. \n(eg. entity -> e)",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
                 }
             }
         },
@@ -85,9 +98,10 @@
     },
     "devDependencies": {
         "@types/glob": "^7.2.0",
+        "@types/luaparse": "^0.2.13",
         "@types/mocha": "^9.1.1",
         "@types/node": "14.x",
-        "@types/vscode": "^1.67.0",
+        "@types/vscode": "^1.140.0",
         "@typescript-eslint/eslint-plugin": "^5.21.0",
         "@typescript-eslint/parser": "^5.21.0",
         "@vscode/test-electron": "^2.1.3",
@@ -99,6 +113,7 @@
     },
     "dependencies": {
         "golden-fleece": "^1.0.9",
-        "isaac-lua-api-vscode": "file:"
+        "isaac-lua-api-vscode": "file:",
+        "luaparse": "^0.3.1"
     }
 }
