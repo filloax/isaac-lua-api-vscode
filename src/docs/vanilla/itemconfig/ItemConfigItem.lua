@@ -8,7 +8,7 @@
 ---@field AddKeys integer
 ---@field AddMaxHearts integer
 ---@field AddSoulHearts integer
----@field CacheFlags integer
+---@field CacheFlags CacheFlags
 ---@field ChargeType integer
 ---@field ClearEffectsOnRemove boolean
 ---@field Costume ItemConfigCostume @const

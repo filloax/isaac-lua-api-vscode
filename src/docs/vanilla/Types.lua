@@ -1,0 +1,3 @@
+---@alias CacheFlags CacheFlag | integer  
+---@alias EntityPartitions EntityPartition | integer  
+---@alias UseFlags UseFlag | integer  

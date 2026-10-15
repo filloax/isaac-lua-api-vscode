@@ -1,8 +1,8 @@
 ---@class EntityPlayer
 ---@field FriendBallEnemy userdata @EntityDesc @const
 
----@param CacheFlag CacheFlag
-function EntityPlayer:AddCacheFlags(CacheFlag)
+---@param CacheFlags CacheFlags
+function EntityPlayer:AddCacheFlags(CacheFlags)
 end
 
 ---@param FamiliarVariant integer
@@ -48,7 +48,7 @@ function EntityPlayer:GetCollectibleNum(Type, IgnoreModifiers)
 end
 
 ---@param Item CollectibleType
----@param UseFlags? UseFlag @default: `0`
+---@param UseFlags? UseFlags @default: `0`
 ---@param Slot? ActiveSlot | -1 @default: `-1`
 ---@param customVarData? integer @default: `0`
 ---@overload fun(self: EntityPlayer, Item: CollectibleType, ShowAnim?: boolean, KeepActiveItem?: boolean, AllowNonMainPlayer?: boolean, ToAddCostume?: boolean, Slot?: ActiveSlot | -1)
