@@ -7,13 +7,16 @@ import * as jsonRgonCallbacks from "./docs/enums/callbacks/repentogon.json";
 import * as jsonStageApiCallbacks from "./docs/enums/callbacks/stageapi.json";
 import { Callbacks, IsaacCallback, IsaacLuaConfig, RegisterFuncConfig, getIsaacLuaConfig, onChangeIsaacLuaConfig } from './isaacLuaConfig';
 import { walk } from './luaUtil';
+import { mergeDeep } from './util';
 
 const vanillaCallbacks: Callbacks = jsonVanillaCallbacks;
 const rgonCallbacks: Callbacks = jsonRgonCallbacks;
 const stageApiCallbacks: Callbacks = jsonStageApiCallbacks;
 
 let callbackTables: Callbacks[] = [];
-let callbackByValue = new Map<number, IsaacCallback>();
+// callback value -> callback name
+let callbackByValue = new Map<number | string, string>();
+let callbacksMerged: Callbacks = {};
 
 /* eslint-disable @typescript-eslint/naming-convention */
 const DEFAULT_REGISTER_FUNCTIONS: Record<string, RegisterFuncConfig> = {
@@ -32,7 +35,8 @@ export function rebuildCompletionCallbacks() {
 
 function rebuildCallbacks(luaConfig: IsaacLuaConfig | undefined){
     const tables: Callbacks[] = [];
-    const byValue = new Map<number, IsaacCallback>();
+    const byValue = new Map<number | string, string>();
+    const merged: Callbacks = {};
 
     //json callback stuff
     if(config.repentogonEnabled){tables.push(rgonCallbacks);} //load before vanilla callbacks so that rgon vanilla overrides take priority
@@ -45,9 +49,16 @@ function rebuildCallbacks(luaConfig: IsaacLuaConfig | undefined){
             if (entry.value !== undefined) {
                 const numericValue = typeof entry.value === "string" ? parseInt(entry.value, 10) : entry.value;
                 if (!isNaN(numericValue) && byValue.get(numericValue) === undefined) {
-                    byValue.set(numericValue, entry);
+                    byValue.set(numericValue, callbackId);
+                } else {
+                    byValue.set(entry.value, callbackId);
                 }
             }
+
+            // merge callbacks like build py script to handle
+            // repentogon overrides
+            const mergedEntry = mergeDeep(merged[callbackId] || {}, entry);
+            merged[callbackId] = mergedEntry;
         }
     }
 
@@ -58,21 +69,8 @@ function rebuildCallbacks(luaConfig: IsaacLuaConfig | undefined){
 
     callbackTables = tables;
     callbackByValue = byValue;
+    callbacksMerged = merged;
     registerFunctions = { ...DEFAULT_REGISTER_FUNCTIONS, ...luaConfig?.registerFunctions };
-}
-
-function findCallback(callbackId: string | number): IsaacCallback | undefined {
-    if (typeof callbackId === "string") {
-        for (let callbacks of callbackTables) {
-            if (callbacks[callbackId] !== undefined) {
-                return callbacks[callbackId];
-            }
-        }
-    } else if (typeof callbackId === "number") {
-        return callbackByValue.get(callbackId);
-    }
-
-    return undefined;
 }
 
 function getCallbackTablesFromLua(ast: luaparse.Chunk): string[]{
@@ -225,16 +223,20 @@ export function inlineParamCompletion(context: vscode.ExtensionContext) {
             const funcIndex = match.cfg.funcArg + match.offset;
             const idIndex = match.cfg.idArg + match.offset;
 
-            if((callExpr.arguments.length - 1) !== funcIndex || idIndex > callExpr.arguments.length) {return[];}
+            if((callExpr.arguments.length - 1) !== funcIndex || idIndex >= callExpr.arguments.length) {return[];}
 
-            let callbackName: string | number | undefined = undefined;
+            let callbackName: string | undefined = undefined;
             const idArg = callExpr.arguments[idIndex];
             if (idArg.type === "MemberExpression"){
                 callbackName = idArg.identifier.name;
             } else if (idArg.type === "NumericLiteral"){
-                callbackName = idArg.value;
+                callbackName = callbackByValue.get(idArg.value);
             } else if (idArg.type === "StringLiteral"){
                 callbackName = idArg.raw.substring(1, idArg.raw.length-1);
+                if (!(callbackName in callbacksMerged)) {
+                    // treat string as value
+                    callbackName = callbackByValue.get(callbackName);
+                }
             }
             if (callbackName === undefined) {return[];}
 
@@ -251,7 +253,7 @@ export function inlineParamCompletion(context: vscode.ExtensionContext) {
                 console.error(error);
             }
 
-            const funcName = typeof callbackName === "string" ? getFuncNameFromCallback(callbackName) : "placeholder";
+            const funcName = getFuncNameFromCallback(callbackName);
 
             const completionPairs: CompletionPair[] = [
                 {
@@ -277,7 +279,7 @@ export function inlineParamCompletion(context: vscode.ExtensionContext) {
             //Step 3: Add params based on callback used
             const paramAliases = config.callbackParamAliases;
             let hasModRefParam = match.cfg.hasModArg;
-            let callback = findCallback(callbackName);
+            let callback = callbacksMerged[callbackName];
             
             let callbackParams: string[] = [];
             if(callback !== undefined && callback.args !== undefined){
