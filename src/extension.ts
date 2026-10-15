@@ -11,6 +11,7 @@ import { getConfig } from './config';
 import { Constants } from './constants';
 import { modifyJsoncFile } from './modifyJson';
 import { inlineParamCompletion } from './callbackFunctionCompletion';
+import { initIsaacLuaConfig } from './isaacLuaConfig';
 
 const LUA_CONFIG_FILENAME = ".luarc.json";
 const LUA_EXTENSION_ID = "sumneko.lua";
@@ -97,6 +98,7 @@ function onActivate(context: vscode.ExtensionContext) {
     });
 
     context.subscriptions.push(vscode.workspace.onDidChangeConfiguration(event => onConfigChange(context, event)));
+    initIsaacLuaConfig(context);
     inlineParamCompletion(context);
 }
 
