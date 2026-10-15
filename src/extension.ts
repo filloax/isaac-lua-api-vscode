@@ -10,7 +10,7 @@ import { setDefinedGlobals, setExternalLibrary, setMiscConfig, setPlugin, setPlu
 import { getConfig } from './config';
 import { Constants } from './constants';
 import { modifyJsoncFile } from './modifyJson';
-import { inlineParamCompletion } from './callbackFunctionCompletion';
+import { inlineParamCompletion, rebuildCompletionCallbacks } from './callbackFunctionCompletion';
 import { initIsaacLuaConfig } from './isaacLuaConfig';
 
 const LUA_CONFIG_FILENAME = ".luarc.json";
@@ -141,6 +141,9 @@ async function onConfigChange(context: vscode.ExtensionContext, event: vscode.Co
             if (repentogonEnabledChanged) {
                 setExternalLibrary(luaCfg, context, VANILLA_LUA_LIBRARY, !config.repentogonEnabled);
                 setExternalLibrary(luaCfg, context, REPENTOGON_LUA_LIBRARY, config.repentogonEnabled);
+            }
+            if (repentogonEnabledChanged || enableStageAPISupportChanged) {
+                rebuildCompletionCallbacks();
             }
             if (pluginEnabledChanged) {
                 setPlugin(luaCfg, context, config.pluginEnabled);

@@ -32,7 +32,7 @@ class ConfigImpl implements Config {
     }
 
     get callbackFunctionCompletionEnabled(): boolean {
-        return this._config.get("callbackFunctionCompletionEnabled", false);
+        return this._config.get("callbackFunctionCompletionEnabled", true);
     }
 
     get callbackParamAliases(): Record<string, string> {

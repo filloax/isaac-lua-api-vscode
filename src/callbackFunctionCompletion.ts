@@ -5,7 +5,8 @@ import * as luaparse from 'luaparse';
 import * as jsonVanillaCallbacks from "./docs/enums/callbacks/vanilla.json";
 import * as jsonRgonCallbacks from "./docs/enums/callbacks/repentogon.json";
 import * as jsonStageApiCallbacks from "./docs/enums/callbacks/stageapi.json";
-import { Callbacks, IsaacCallback, IsaacLuaConfig, RegisterFuncConfig, getIsaacLuaConfig, onChangeIsaacLuaConfig, walk } from './isaacLuaConfig';
+import { Callbacks, IsaacCallback, IsaacLuaConfig, RegisterFuncConfig, getIsaacLuaConfig, onChangeIsaacLuaConfig } from './isaacLuaConfig';
+import { walk } from './luaUtil';
 
 const vanillaCallbacks: Callbacks = jsonVanillaCallbacks;
 const rgonCallbacks: Callbacks = jsonRgonCallbacks;
@@ -24,6 +25,11 @@ const DEFAULT_REGISTER_FUNCTIONS: Record<string, RegisterFuncConfig> = {
 let registerFunctions: Record<string, RegisterFuncConfig> = { ...DEFAULT_REGISTER_FUNCTIONS };
 
 const config = getConfig();
+
+export function rebuildCompletionCallbacks() {
+    rebuildCallbacks(getIsaacLuaConfig());
+}
+
 function rebuildCallbacks(luaConfig: IsaacLuaConfig | undefined){
     const tables: Callbacks[] = [];
     const byValue = new Map<number, IsaacCallback>();
@@ -322,7 +328,10 @@ export function inlineParamCompletion(context: vscode.ExtensionContext) {
                     const indentedBody = bodyStr.split('\n').map(line => indent + line).join('\n');
                     
                     let finalLineText = lineText;
-                    if (lineText.trimEnd().endsWith(')')) { finalLineText = lineText.slice(0, -1); }
+                    if (lineText.trimEnd().endsWith(')')) {
+                        const parIdx = lineText.lastIndexOf(')');
+                        finalLineText = lineText.slice(0, parIdx) + lineText.slice(parIdx + 1);
+                    }
                     const replacementText = `${inlineStr}\n${indentedBody}\n${finalLineText + inlineStr}`;
                     
                     const completionItem = new vscode.InlineCompletionItem(
