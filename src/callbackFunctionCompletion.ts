@@ -8,6 +8,7 @@ import * as jsonStageApiCallbacks from "./docs/enums/callbacks/stageapi.json";
 import { Callbacks, IsaacCallback, IsaacLuaConfig, RegisterFuncConfig, getIsaacLuaConfig, onChangeIsaacLuaConfig } from './isaacLuaConfig';
 import { walk } from './luaUtil';
 import { mergeDeep } from './util';
+import { table } from 'console';
 
 const vanillaCallbacks: Callbacks = jsonVanillaCallbacks;
 const rgonCallbacks: Callbacks = jsonRgonCallbacks;
@@ -26,6 +27,10 @@ const DEFAULT_REGISTER_FUNCTIONS: Record<string, RegisterFuncConfig> = {
 };
 /* eslint-enable @typescript-eslint/naming-convention */
 let registerFunctions: Record<string, RegisterFuncConfig> = { ...DEFAULT_REGISTER_FUNCTIONS };
+
+interface TableCacheEntry { version: number; tables: string[]; }
+// document path : last ok parsed table list
+const tableCache = new Map<string, TableCacheEntry>();
 
 const config = getConfig();
 
@@ -71,6 +76,8 @@ function rebuildCallbacks(luaConfig: IsaacLuaConfig | undefined){
     callbackByValue = byValue;
     callbacksMerged = merged;
     registerFunctions = { ...DEFAULT_REGISTER_FUNCTIONS, ...luaConfig?.registerFunctions };
+
+    tableCache.clear();
 }
 
 function getCallbackTablesFromLua(ast: luaparse.Chunk): string[]{
@@ -94,34 +101,32 @@ function getCallbackTablesFromLua(ast: luaparse.Chunk): string[]{
     return Object.keys(tableCounts).sort((a, b) => tableCounts[b] - tableCounts[a]);
 }
 
+const namePatterns = {
+    pre: ["PRE"],
+    on: ["POST"],
+};
+
 function getFuncNameFromCallback(callbackName: string): string{
     const words = callbackName.split("_");
 
-    let funcName = "";
-
-    //probably could be improved with a Record of callback name components to function name components
-    if (words[0] === "PRE" || words[1] === "PRE"){
-        funcName += "pre";
-        words.map((word, idx) => {
-            if (idx > 1){
-                funcName += word.charAt(0) + word.substring(1).toLowerCase();
-            }
-        });
-    } else if (words[0] === "POST" || words[1] === "POST") {
-        funcName += "on";
-        words.map((word, idx) => {
-            if (idx > 1){
-                funcName += word.charAt(0) + word.substring(1).toLowerCase();
-            }
-        });
-    } else {
-        funcName += "on";
-        words.map((word, idx) => {
-            if (idx > 0){
-                funcName += word.charAt(0) + word.substring(1).toLowerCase();
-            }
-        });
+    let prefix: string | undefined;
+    for (const [key, checkWords] of Object.entries(namePatterns)) {
+        // first two words
+        if (words[0] in checkWords || words[1] in checkWords) {
+            prefix = key;
+        }
     }
+    if (!prefix) {
+        prefix = "on";
+    }
+
+    let funcName = prefix;
+    
+    words.map((word, idx) => {
+        if (idx > 1){
+            funcName += word.charAt(0) + word.substring(1).toLowerCase();
+        }
+    });
 
     return funcName;
 }
@@ -198,6 +203,9 @@ interface CompletionPair {
 export function inlineParamCompletion(context: vscode.ExtensionContext) {    
     rebuildCallbacks(getIsaacLuaConfig());
     context.subscriptions.push(onChangeIsaacLuaConfig(rebuildCallbacks));
+    context.subscriptions.push(vscode.workspace.onDidCloseTextDocument(doc => {
+        tableCache.delete(doc.uri.toString());
+    }));
 
     const provider : vscode.InlineCompletionItemProvider = {
         provideInlineCompletionItems(document, position, context, token) {
@@ -241,16 +249,19 @@ export function inlineParamCompletion(context: vscode.ExtensionContext) {
             if (callbackName === undefined) {return[];}
 
             //Step 2: Get the function name from callback used, and insert it into inline suggestions
-            let sortedTables: string[] = [];
+            const tableCacheKey = document.uri.toString();
+            const cachedTables = tableCache.get(tableCacheKey);
+            let sortedTables: string[] = cachedTables?.tables ?? [];
 
-            try {
-                const allLuaCode = document.getText(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(position.line, 0)));
-                const allAST = luaparse.parse(allLuaCode, {wait: false, comments: false});
-
-                sortedTables = getCallbackTablesFromLua(allAST);
-            } catch (error) {
-                console.error("Skipping table method completion due to syntax error found in file:");
-                console.error(error);
+            if (!cachedTables || cachedTables.version !== document.version) {
+                try {
+                    const allLuaCode = document.getText(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(position.line, 0)));
+                    const allAST = luaparse.parse(allLuaCode, {wait: false, comments: false});
+                    sortedTables = getCallbackTablesFromLua(allAST);
+                    tableCache.set(tableCacheKey, { version: document.version, tables: sortedTables });
+                } catch {
+                    // keep cached result
+                }
             }
 
             const funcName = getFuncNameFromCallback(callbackName);

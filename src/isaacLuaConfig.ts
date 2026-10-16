@@ -179,9 +179,9 @@ function parseIsaacLuaConfig(text: string): IsaacLuaConfig {
         if (node.key.name === "RegisterFunctions" && node.value.type === "TableConstructorExpression"){
             for(let callbackFunctionNode of node.value.fields){
                 if((callbackFunctionNode.type === "TableKey" || callbackFunctionNode.type === "TableKeyString") && callbackFunctionNode.value.type === "TableConstructorExpression"){
-                    let luaIdArg;
-                    let luaFuncArg;
-                    let luaModArg;
+                    let luaIdArg: number;
+                    let luaFuncArg: number;
+                    let luaModArg: boolean;
                     for (let arg of callbackFunctionNode.value.fields){
                         if(arg.type === "TableKeyString"){
                             if (arg.key.name === "IdArg" && arg.value.type === "NumericLiteral"){
