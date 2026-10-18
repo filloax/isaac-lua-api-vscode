@@ -16,6 +16,20 @@ This extension uses the [Lua Language Server](https://microsoft.github.io/langua
 
 This extension is based on the [isaac-api-autocomplete-lua](https://github.com/filloax/isaac-api-autocomplete-lua) repository.
 
+## Table of Contents
+
+- [How to use](#how-to-use)
+  - [Callbacks](#callbacks)
+    - [Callback autocomplete (new)](#callback-autocomplete-new)
+    - [Automatic recognition](#automatic-recognition)
+    - [Callback aliases](#callback-aliases)
+    - [Custom callbacks and custom registration functions](#custom-callbacks-and-custom-registration-functions)
+  - [Other types](#other-types)
+  - [Notes](#notes)
+- [Extension Settings](#extension-settings)
+- [Known Issues](#known-issues)
+- [Release Notes](#release-notes)
+
 ## How to use
 
 First off, the extension won't be active by default even if enabled for convenience (not having to manually disable-enable it in each workspace), but instead it will detect if your workspace matches an Isaac mod (contains a metadata.xml file and lua files), then will ask you for confirmation, once per workspace. It also works if metadata.xml etc are in subfolders. You can also manually enable or disable the mod with a palette command, even if you initially answered otherwise.
@@ -23,6 +37,9 @@ First off, the extension won't be active by default even if enabled for convenie
 By default, with the extension global functions like `Game()`, `Vector(x, y)` and `Isaac.xxx` should already be recognized.
 
 ### Callbacks
+
+#### Callback autocomplete (new)
+
 **NEW since 1.17**: When registering a callback, positioning your cursor where the function argument is defined displays a ghost completion, offering you a variety of automatic function declarations to choose from. Function parameters are automatically filled in based on the callback used. 
 
 Autocomplete options include:
@@ -38,9 +55,11 @@ Autocomplete options include:
 You can cycle through these with the keybind tied to the `Show Previous/Next Inline Suggestion` command. (`Alt + [ or ]` by default) <br>
 It should be noted that table methods will not be suggested, if the current file has any __syntax errors__ before the current line.
 
-**NEW since 1.15**: Callback parameters are now autorecognized! Two main ways to do it, one automatic and the one manual but still convenient:
+You can also configure which of the 3 (if any) you want to use in the extension settings.
 
 #### Automatic recognition
+
+**NEW since 1.15**: Callback parameters are now autorecognized! Two main ways to do it, one automatic and the one manual but still convenient:
 
 If you pass a function to AddCallback the callbacks args will be autorecognized!
 
