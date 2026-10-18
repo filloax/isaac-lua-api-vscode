@@ -75,6 +75,33 @@
                     "default": true,
                     "description": "Enable inline code suggestions for functions which are passed when registering a callback."
                 },
+                "boi-lua.callbackFunctionCompletionTypes": {
+                    "type": "object",
+                    "default": {
+                        "inlineFunction": true,
+                        "localFunction": true,
+                        "tableMethod": true
+                    },
+                    "description": "Choose which types of callback function suggestions to show.",
+                    "properties": {
+                        "inlineFunction": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "Inline function: function(...) end"
+                        },
+                        "localFunction": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "Local function defined above call: local function onUpdate(...) end"
+                        },
+                        "tableMethod": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "Function in one of tables used in the file: function mod:onUpdate(...) end"
+                        }
+                    },
+                    "additionalProperties": false
+                },
                 "boi-lua.callbackParamAliases": {
                     "type": "object",
                     "default": {},

@@ -250,11 +250,12 @@ export function inlineParamCompletion(context: vscode.ExtensionContext) {
             if (callbackName === undefined) {return[];}
 
             //Step 2: Get the function name from callback used, and insert it into inline suggestions
+            const completionTypes = config.callbackFunctionCompletionTypes;
             const tableCacheKey = document.uri.toString();
             const cachedTables = tableCache.get(tableCacheKey);
             let sortedTables: string[] = cachedTables?.tables ?? [];
 
-            if (!cachedTables || cachedTables.version !== document.version) {
+            if (completionTypes.tableMethod && !cachedTables || cachedTables?.version !== document.version) {
                 try {
                     const allLuaCode = document.getText(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(position.line, 0)));
                     const allAST = luaparse.parse(allLuaCode, {wait: false, comments: false});
@@ -267,27 +268,33 @@ export function inlineParamCompletion(context: vscode.ExtensionContext) {
 
             const funcName = getFuncNameFromCallback(callbackName);
 
-            const completionPairs: CompletionPair[] = [
-                {
+            const completionPairs: CompletionPair[] = [];
+            if (completionTypes.inlineFunction) {
+                completionPairs.push({
                     inlineString: " function()\n\nend",
                     bodyString: "",
                     isColonMethod: false
-                },
-                {
+                });
+            }
+            if (completionTypes.localFunction) {
+                completionPairs.push({
                     inlineString: ` ${funcName}`,
                     bodyString: `local function ${funcName}()\n\nend`,
                     isColonMethod: false
-                }
-            ];
+                });
+            }
 
             const hasModRefParam = match.cfg.hasModArg;
-            sortedTables.forEach(tableName => {
-                completionPairs.push({
-                    inlineString: ` ${tableName}.${funcName}`,
-                    bodyString: `function ${tableName}${hasModRefParam ? ":" : "."}${funcName}()\n\nend`,
-                    isColonMethod: hasModRefParam
+            if (completionTypes.tableMethod) {
+                sortedTables.forEach(tableName => {
+                    completionPairs.push({
+                        inlineString: ` ${tableName}.${funcName}`,
+                        bodyString: `function ${tableName}${hasModRefParam ? ":" : "."}${funcName}()\n\nend`,
+                        isColonMethod: hasModRefParam
+                    });
                 });
-            });
+            }
+            if (completionPairs.length === 0) {return [];}
 
             //Step 3: Add params based on callback used
             const paramAliases = config.callbackParamAliases;

@@ -7,8 +7,21 @@ interface Config {
     get pluginEnabled(): boolean;
     get stageAPISupportEnabled(): boolean;
     get callbackFunctionCompletionEnabled(): boolean;
+    get callbackFunctionCompletionTypes(): CallbackCompletionTypes;
     get callbackParamAliases(): Record<string, string>;
 }
+
+export interface CallbackCompletionTypes {
+    inlineFunction: boolean;
+    localFunction: boolean;
+    tableMethod: boolean;
+}
+
+const DEFAULT_COMPLETION_TYPES: CallbackCompletionTypes = {
+    inlineFunction: true,
+    localFunction: true,
+    tableMethod: true,
+};
 
 class ConfigImpl implements Config {
     private get _config(): vscode.WorkspaceConfiguration {
@@ -33,6 +46,10 @@ class ConfigImpl implements Config {
 
     get callbackFunctionCompletionEnabled(): boolean {
         return this._config.get("callbackFunctionCompletionEnabled", true);
+    }
+
+    get callbackFunctionCompletionTypes(): CallbackCompletionTypes {
+        return { ...DEFAULT_COMPLETION_TYPES, ...this._config.get("callbackFunctionCompletionTypes", {}) };
     }
 
     get callbackParamAliases(): Record<string, string> {
