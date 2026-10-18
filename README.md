@@ -208,6 +208,10 @@ See [CHANGELOG.md](CHANGELOG.md) for full changes.
 <details>
 <summary>Release notes</summary>
 
+## 1.17.0
+
+Callback autocomplete.
+
 ## 1.15.0
 
 Callback type recognition plugin now bundled, see main readme
