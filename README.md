@@ -53,7 +53,6 @@ Autocomplete options include:
 <p> <img src="readme/method.gif" alt="Method Example"> </p>
 
 You can cycle through these with the keybind tied to the `Show Previous/Next Inline Suggestion` command. (`Alt + [ or ]` by default) <br>
-It should be noted that table methods will not be suggested, if the current file has any __syntax errors__ before the current line.
 
 You can also configure which of the 3 (if any) you want to use in the extension settings.
 
