@@ -1,5 +1,8 @@
 # Change Log
 
+* [1.17.1]
+    - Completion: fix function names
+
 * [1.17.0]
     - New callback autocomplete feature: callbacks are autocompleted when writing AddCallback and getting to function arg, see README for full info (thanks Ignatz for most of the code!)
     - Add missing rgon grid spawn callbacks (Ignatz)
