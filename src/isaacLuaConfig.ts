@@ -36,6 +36,7 @@ export interface IsaacCallback {
 
 export type Callbacks = Record<string, IsaacCallback>;
 
+// same as plugin.lua
 export interface RegisterFuncConfig {
     idArg: number; //where you define da callback
     funcArg: number; //where you define da function

@@ -20,9 +20,10 @@ let callbackByValue = new Map<number | string, string>();
 let callbacksMerged: Callbacks = {};
 
 /* eslint-disable @typescript-eslint/naming-convention */
+// (as for plugin.lua, first id for mod arg funcs is mod)
 const DEFAULT_REGISTER_FUNCTIONS: Record<string, RegisterFuncConfig> = {
-    "AddCallback": { idArg: 0, funcArg: 1, hasModArg: true },
-    "AddPriorityCallback": { idArg: 0, funcArg: 2, hasModArg: true },
+    "AddCallback": { idArg: 1, funcArg: 2, hasModArg: true },
+    "AddPriorityCallback": { idArg: 1, funcArg: 3, hasModArg: true },
     "StageAPI.AddCallback": { idArg: 1, funcArg: 3, hasModArg: false },
 };
 /* eslint-enable @typescript-eslint/naming-convention */
@@ -164,7 +165,7 @@ function getRegisterConfig(callExpr: luaparse.CallExpression): { cfg: RegisterFu
 
     if (!cfg) {return undefined;}
 
-    const offset = (!isColonCall && callExpr.base.type === 'MemberExpression' && cfg.hasModArg) ? 1 : 0;
+    const offset = isColonCall ? -1 : 0;
 
     return { cfg, offset };
 }
@@ -231,7 +232,7 @@ export function inlineParamCompletion(context: vscode.ExtensionContext) {
             const funcIndex = match.cfg.funcArg + match.offset;
             const idIndex = match.cfg.idArg + match.offset;
 
-            if((callExpr.arguments.length - 1) !== funcIndex || idIndex >= callExpr.arguments.length) {return[];}
+            if((callExpr.arguments.length - 1) !== funcIndex || idIndex < 0 || idIndex >= callExpr.arguments.length) {return[];}
 
             let callbackName: string | undefined = undefined;
             const idArg = callExpr.arguments[idIndex];
@@ -279,17 +280,17 @@ export function inlineParamCompletion(context: vscode.ExtensionContext) {
                 }
             ];
 
+            const hasModRefParam = match.cfg.hasModArg;
             sortedTables.forEach(tableName => {
                 completionPairs.push({
                     inlineString: ` ${tableName}.${funcName}`,
-                    bodyString: `function ${tableName}:${funcName}()\n\nend`,
-                    isColonMethod: true
+                    bodyString: `function ${tableName}${hasModRefParam ? ":" : "."}${funcName}()\n\nend`,
+                    isColonMethod: hasModRefParam
                 });
             });
 
             //Step 3: Add params based on callback used
             const paramAliases = config.callbackParamAliases;
-            let hasModRefParam = match.cfg.hasModArg;
             let callback = callbacksMerged[callbackName];
             
             let callbackParams: string[] = [];
