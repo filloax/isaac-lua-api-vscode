@@ -113,7 +113,7 @@ function getFuncNameFromCallback(callbackName: string): string{
     let prefix: string | undefined;
     for (const [key, checkWords] of Object.entries(namePatterns)) {
         // first two words
-        if (words[0] in checkWords || words[1] in checkWords) {
+        if (checkWords.includes(words[0]) || (checkWords.includes(words[1]) && words[0] === "MC")) {
             prefix = key;
         }
     }
@@ -122,9 +122,11 @@ function getFuncNameFromCallback(callbackName: string): string{
     }
 
     let funcName = prefix;
+
+    const startFrom = (words[0] === "MC") ? 2 : 1;
     
     words.map((word, idx) => {
-        if (idx > 1){
+        if (idx >= startFrom){
             funcName += word.charAt(0) + word.substring(1).toLowerCase();
         }
     });
