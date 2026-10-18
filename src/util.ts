@@ -31,7 +31,7 @@ function mergeDeepInner<T extends object>(target: T, ...sources: Partial<T>[]): 
       if (isObject(source[key])) {
         // copy so the field object is not modified
         Object.assign(target, { [key]: {...(target[key] ?? {})} });
-        mergeDeepInner((target as any)[key] as object, source[key]);
+        mergeDeepInner((target as any)[key] as object, (source as any)[key]);
       } else {
         Object.assign(target, { [key]: source[key] });
       }
