@@ -42,7 +42,7 @@
         "name": "Player"
       },
       {
-        "type": "UseFlag",
+        "type": "UseFlags",
         "name": "Flags"
       },
       {
@@ -92,8 +92,8 @@
         "name": "Player"
       },
       {
-        "type": "UseFlag",
-        "name": "integer"
+        "type": "UseFlags",
+        "name": "Flags"
       }
     ],
     "returns": [],
@@ -141,8 +141,8 @@
         "name": "Player"
       },
       {
-        "type": "CacheFlag",
-        "name": "CacheFlag"
+        "type": "CacheFlags",
+        "name": "CacheFlags"
       }
     ],
     "returns": [],
@@ -179,7 +179,7 @@
         "name": "Player"
       },
       {
-        "type": "UseFlag",
+        "type": "UseFlags",
         "name": "Flags"
       }
     ],
@@ -395,7 +395,7 @@
         "name": "Player"
       },
       {
-        "type": "UseFlag",
+        "type": "UseFlags",
         "name": "Flags"
       },
       {

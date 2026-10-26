@@ -14,9 +14,9 @@ end
 function EntityPlayer:AddBoneOrbital(position)
 end
 
----@param CacheFlag CacheFlag
+---@param CacheFlags CacheFlags
 ---@param EvaluateItems? boolean @default: `false`
-function EntityPlayer:AddCacheFlags(CacheFlag, EvaluateItems)
+function EntityPlayer:AddCacheFlags(CacheFlags, EvaluateItems)
 end
 
 ---@param collectible CollectibleType
@@ -1411,9 +1411,9 @@ function EntityPlayer:CreateAfterimage(duration, pos)
 end
 
 ---Adds a random stat bonus as if the player had collected a heart with Candy Heart.
----@param cacheFlag? CacheFlag @default: `0`. Can specify a CacheFlag to force the bonus onto a specific stat. Stats are only applied while the player has Candy Heart.
+---@param cacheFlags? CacheFlags @default: `0`. Can specify a CacheFlag to force the bonus onto a specific stat. Stats are only applied while the player has Candy Heart.
 ---@param amount? integer @default: `1`.
-function EntityPlayer:AddCandyHeartBonus(cacheFlag, amount)
+function EntityPlayer:AddCandyHeartBonus(cacheFlags, amount)
 end
 
 ---Returns a table of fields corresponding to each stat that Candy Heart can increase and the active amount of bonuses tied to each stat.
@@ -1422,9 +1422,9 @@ function EntityPlayer:GetCandyHeartBonus()
 end
 
 ---Adds a random stat bonus as if the player had collected a heart with Soul Locket.
----@param cacheFlag? CacheFlag @default: `0`. Can specify a CacheFlag to force the bonus onto a specific stat. Stats are only applied while the player has Soul Locket.
+---@param cacheFlags? CacheFlags @default: `0`. Can specify a CacheFlag to force the bonus onto a specific stat. Stats are only applied while the player has Soul Locket.
 ---@param amount? integer @default: `1`
-function EntityPlayer:AddSoulLocketBonus(cacheFlag, amount)
+function EntityPlayer:AddSoulLocketBonus(cacheFlags, amount)
 end
 
 ---Returns a table of fields corresponding to each stat that Soul Locket can increase and the active amount of bonuses tied to each stat.
@@ -1480,7 +1480,7 @@ end
 
 
 ---@param Item CollectibleType
----@param UseFlags? UseFlag @default: `0`
+---@param UseFlags? UseFlags @default: `0`
 ---@param Slot? ActiveSlot | -1 @default: `-1`
 ---@param customVarData? integer @default: `0`
 ---@return UseActiveItemResultFlag @Returns a Bitmask that contains if the item should be discharged and/or removed. `UseActiveItemResultFlags.REMOVE` is possible to not be passed even if the item would be removed normally. It will not be passed if any of the following conditions are met:

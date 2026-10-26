@@ -1081,13 +1081,13 @@ function EntityPlayer:UpdateCanShoot()
 end
 
 ---@param ID Card
----@param UseFlags? UseFlag @default: `0`
+---@param UseFlags? UseFlags @default: `0`
 function EntityPlayer:UseCard(ID, UseFlags)
 end
 
 ---@param ID PillEffect
 ---@param PillColor PillColor
----@param UseFlags? UseFlag @default: `0`
+---@param UseFlags? UseFlags @default: `0`
 function EntityPlayer:UsePill(ID, PillColor, UseFlags)
 end
 

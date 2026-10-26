@@ -1,5 +1,13 @@
 # Change Log
 
+* [1.17.1]
+    - Completion: fix function names
+
+* [1.17.0]
+    - New callback autocomplete feature: callbacks are autocompleted when writing AddCallback and getting to function arg, see README for full info (thanks Ignatz for most of the code!)
+    - Add missing rgon grid spawn callbacks (Ignatz)
+    - Add CacheFlags, EntityPartitions, and UseFlags that compatible with integer (GoldenShit233)
+
 * [1.16.0]
     - Support for REPENTOGON 1.1.3
     - Various additions and fixes from PR #33 - 38 (Guantol, Ignatz-dev, and GoldenShit233 contribution)

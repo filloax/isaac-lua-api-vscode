@@ -168,7 +168,7 @@
         "name": "Player"
       },
       {
-        "type": "UseFlag",
+        "type": "UseFlags",
         "name": "Flags"
       },
       {
@@ -207,7 +207,7 @@
         "name": "Player"
       },
       {
-        "type": "UseFlag",
+        "type": "UseFlags",
         "name": "Flags"
       },
       {
@@ -1149,8 +1149,8 @@
         "name": "Player"
       },
       {
-        "type": "integer",
-        "name": "UseFlag"
+        "type": "UseFlags",
+        "name": "Flags"
       }
     ],
     "returns": [
@@ -1176,8 +1176,8 @@
         "name": "Player"
       },
       {
-        "type": "integer",
-        "name": "UseFlag"
+        "type": "UseFlags",
+        "name": "Flags"
       }
     ],
     "returns": [
@@ -2255,6 +2255,60 @@
     ],
     "returns": [],
     "comment": "Called after the layout of a level is generated."
+  },
+  "MC_PRE_GRID_ENTITY_SPAWN": {
+    "value": "1100",
+    "args": [
+      {
+        "type": "GridEntityType",
+        "name": "Type"
+      },
+      {
+        "type": "integer",
+        "name": "Variant"
+      },
+      {
+        "type": "integer",
+        "name": "VarData"
+      },
+      {
+        "type": "integer",
+        "name": "GridIdx"
+      },
+      {
+        "type": "integer",
+        "name": "SpawnSeed"
+      },
+      {
+        "type": "GridEntityDesc",
+        "name": "Desc"
+      }
+    ],
+    "returns": [
+      {
+        "type": "boolean|GridEntityDesc|{Type: GridEntityType?, Variant: integer?, Vardata: integer?, SpawnSeed: integer?}"
+      }
+    ],
+    "param": {
+      "type": "GridEntityType",
+      "optional": true
+    },
+    "comment": "Called when a GridEntity is spawned outside of Room initialization. Accepts `false` to cancel spawning the grid, a table of `{Type, Variant, Vardata, SpawnSeed}` to modify it, or a `GridEntityDesc` to override it entirely."
+  },
+  "MC_POST_GRID_ENTITY_SPAWN": {
+    "value": "1101",
+    "args": [
+      {
+        "type": "GridEntity",
+        "name": "Grid"
+      }
+    ],
+    "returns": [],
+    "param": {
+      "type": "GridEntityType",
+      "optional": true
+    },
+    "comment": "Called after a GridEntity is spawned outside of Room initialization."
   },
   "MC_POST_NIGHTMARE_SCENE_RENDER": {
     "value": "1102",

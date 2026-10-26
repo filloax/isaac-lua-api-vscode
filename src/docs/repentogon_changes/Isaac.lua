@@ -100,7 +100,7 @@ end
 
 ---Returns entities inside of the given capsule, filtered by partitions mask.
 ---@param Capsule Capsule
----@param EntityPartitions? EntityPartition @default: `-1`
+---@param EntityPartitions? EntityPartitions @default: `-1`
 ---@return Entity[]
 function Isaac.FindInCapsule(Capsule, EntityPartitions)
 end

@@ -4,7 +4,7 @@
 
 A VSCode Extension to add support and autocomplete for the The Binding of Isaac: Repentance modding API to the Lua Language Server by Sumneko.
 
-[![Open in VSCode](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://open.vscode.dev/Filloax/isaac-lua-api-vscode) [![Build Status](https://github.com/ManticoreGamesInc/vscode-core/workflows/CI/badge.svg)](https://github.com/Filloax/isaac-lua-api-vscode/actions?workflow=CI) [![Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/Filloax.isaac-lua-api-vscode?label=Visual%20Studio%20Marketplace&logo=visual-studio-code "Current Version")](https://marketplace.visualstudio.com/items?itemName=Filloax.isaac-lua-api-vscode)
+[![Open in VSCode](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://vscode.dev/github/filloax/isaac-lua-api-vscode) [![Deploy Status](https://github.com/filloax/isaac-lua-api-vscode/actions/workflows/publish.yml/badge.svg)](https://github.com/filloax/isaac-lua-api-vscode/actions/workflows/publish.yml) [![Marketplace Version](https://vsmarketplacebadges.dev/version-short/Filloax.isaac-lua-api-vscode.png?label=Visual%20Studio%20Marketplace "Current Version")](https://marketplace.visualstudio.com/items?itemName=Filloax.isaac-lua-api-vscode) [![Open VSX Version](https://img.shields.io/open-vsx/v/Filloax/isaac-lua-api-vscode?label=Open%20VSX)](https://open-vsx.org/extension/Filloax/isaac-lua-api-vscode)
 
 ![](https://i.imgur.com/iZDP2iy.png)
 
@@ -16,6 +16,20 @@ This extension uses the [Lua Language Server](https://microsoft.github.io/langua
 
 This extension is based on the [isaac-api-autocomplete-lua](https://github.com/filloax/isaac-api-autocomplete-lua) repository.
 
+## Table of Contents
+
+- [How to use](#how-to-use)
+  - [Callbacks](#callbacks)
+    - [Callback autocomplete (new)](#callback-autocomplete-new)
+    - [Automatic recognition](#automatic-recognition)
+    - [Callback aliases](#callback-aliases)
+    - [Custom callbacks and custom registration functions](#custom-callbacks-and-custom-registration-functions)
+  - [Other types](#other-types)
+  - [Notes](#notes)
+- [Extension Settings](#extension-settings)
+- [Known Issues](#known-issues)
+- [Release Notes](#release-notes)
+
 ## How to use
 
 First off, the extension won't be active by default even if enabled for convenience (not having to manually disable-enable it in each workspace), but instead it will detect if your workspace matches an Isaac mod (contains a metadata.xml file and lua files), then will ask you for confirmation, once per workspace. It also works if metadata.xml etc are in subfolders. You can also manually enable or disable the mod with a palette command, even if you initially answered otherwise.
@@ -24,9 +38,27 @@ By default, with the extension global functions like `Game()`, `Vector(x, y)` an
 
 ### Callbacks
 
-**NEW since 1.15**: Callback parameters are now autorecognized! Two main ways to do it, one automatic and the one manual but still convenient:
+#### Callback autocomplete (new)
+
+**NEW since 1.17**: When registering a callback, positioning your cursor where the function argument is defined displays a ghost completion, offering you a variety of automatic function declarations to choose from. Function parameters are automatically filled in based on the callback used. 
+
+Autocomplete options include:
+<h4 align="center">Inline Functions</h4>
+<p> <img src="readme/inline.gif" alt="Inline Example"> </p>
+
+<h4 align="center">Local Functions</h4>
+<p> <img src="readme/local.gif" alt="Local Example"> </p>
+
+<h4 align="center">Table Methods</h4>
+<p> <img src="readme/method.gif" alt="Method Example"> </p>
+
+You can cycle through these with the keybind tied to the `Show Previous/Next Inline Suggestion` command. (`Alt + [ or ]` by default) <br>
+
+You can also configure which of the 3 (if any) you want to use in the extension settings.
 
 #### Automatic recognition
+
+**NEW since 1.15**: Callback parameters are now autorecognized! Two main ways to do it, one automatic and the one manual but still convenient:
 
 If you pass a function to AddCallback the callbacks args will be autorecognized!
 
@@ -98,8 +130,8 @@ return {
     Callbacks = {
         -- ofc this already is defined, just an example
         -- both Args and Returns take lua type annotation strings in Type, including unions
-        -- with | and everything you can dowith the Lua LS normally. Name is optional
-        -- and currently unused.
+        -- with | and everything you can dowith the Lua LS normally. Name is optional,
+        -- however as of 1.17, it is used by the callback function autocomplete.
         -- Returns can also have more values in case it has more returns, and can be empty or not included altogether
         MC_ENTITY_TAKE_DMG = { 
             Args = { {Type = "Entity"}, {Type = "number", Name = "dmg"}, {Type = "integer"}, {Type = "EntityRef"}, {Type = "integer"} },
@@ -107,7 +139,8 @@ return {
         },
     },
 
-    -- Alternatives to :AddCallback, matched by full path and take priority if match applies
+    -- Alternatives to :AddCallback, matched by full path and take priority if match applies.
+    -- For callback function autocomplete to work properly, it is recommended to make sure that FunctionArg is greater in value than IdArg (making it so function argument is set after callback id argument)
     RegisterFunctions = {
         -- StageAPI.AddCallback(modID, callbackId, priority, fn, ...)
         -- IdArg: position of argument containing callback id (starting from 1)
@@ -173,6 +206,10 @@ See [CHANGELOG.md](CHANGELOG.md) for full changes.
 
 <details>
 <summary>Release notes</summary>
+
+## 1.17.0
+
+Callback autocomplete.
 
 ## 1.15.0
 
