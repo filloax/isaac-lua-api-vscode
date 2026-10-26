@@ -10,6 +10,7 @@ _G.XMLData = {}
 ---```lua
 ---	print("Red Monstro's suffix:", XMLData.GetBossColorByTypeVarSub(20,0,1).suffix)
 ---	```
+---@return table<string, unknown>
 function XMLData.GetBossColorByTypeVarSub(type, variant, subType)
 end
 
@@ -46,6 +47,7 @@ end
 ---@param entity Entity
 ---@param autoXMLPick? boolean @default: `true`. If set to `true`, picks the xml that matches the `EntityType`. If `false`, picks the entry from entities2.xml.
 ---@param strict boolean If set to `true`, only returns a value when the type, variant and subtype attributes match. If `false`, only matches an entry with the type.
+---@return table<string, unknown>
 function XMLData.GetEntryFromEntity(entity, autoXMLPick, strict)
 end
 
@@ -69,5 +71,6 @@ end
 ---Similar to GetByName or GetById, but it returns the node based on the order in which it appears on the xmls (1 will return the first node, 2 the second one and so on). Useful to iterate through xmls in combination with GetNumEntries, specially for redundant xmls like entities.xml.
 ---@param nodeType XMLNode
 ---@param order integer
+---@return table<string, unknown>
 function XMLData.GetEntryByOrder(nodeType, order)
 end
