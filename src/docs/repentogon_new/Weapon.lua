@@ -1,7 +1,7 @@
 ---@class Weapon
 local Weapon = {}
 
----TODO: Document me!
+---Clears the animation set by PlayItemAnim
 ---@param collectible CollectibleType
 function Weapon:ClearItemAnim(collectible)
 end
@@ -46,18 +46,21 @@ end
 function Weapon:IsAxisAligned()
 end
 
----TODO: Document me!
+---Returns `true` if the current item animation is using its "fully charged" animation
 ---@param item CollectibleType
 ---@return boolean
 function Weapon:IsItemAnimFinished(item)
 end
 
----TODO: Document me!
+---Plays a special head animation associated with a collectible.
 ---@param item CollectibleType
----@param anim integer
----@param position Vector
----@param charge number
-function Weapon:PlayItemAnim(item, anim, position, charge)
+---@param animType integer
+---|0 #Charging
+---|1 #Charged
+---|2 #ChargeShoot
+---@param direction Vector
+---@param frame integer
+function Weapon:PlayItemAnim(item, animType, direction, frame)
 end
 
 ---@param charge number
