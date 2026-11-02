@@ -65,7 +65,7 @@ function Entity:GetBossStatusEffectCooldown()
 end
 
 ---@return integer
-function Entity:GetBrimstoneMarkCooldown()
+function Entity:GetBrimstoneMarkCountdown()
 end
 
 ---@return integer
