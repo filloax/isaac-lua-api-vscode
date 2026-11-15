@@ -260,10 +260,10 @@
     ],
     "returns": [
       {
-        "type": "CollectibleType|{Type: CollectibleType?, Charge: integer?, FirstTime: boolean?, Slot: integer?, VarData: integer?, Player: EntityPlayer?}"
+        "type": "boolean|CollectibleType|{Type: CollectibleType?, Charge: integer?, FirstTime: boolean?, Slot: integer?, VarData: integer?, Player: EntityPlayer?}"
       }
     ],
-    "comment": "Returning a `CollectibleType` overrides the collectible. You can also return a table of parameters to further modify the collectible given."
+    "comment": "Returning `false` will stop the collectible from being added. Returning a `CollectibleType` overrides the collectible. You can also return a table of parameters to further modify the collectible given."
   },
   "MC_POST_ADD_COLLECTIBLE": {
     "value": "1005",
@@ -7474,23 +7474,65 @@
     ],
     "comment": "Render callback for Tainted Cain's Bag of Crafting HUD. Return `false` to cancel rendering, or a `Vector` to modify the offset."
   },
-  "MC_POST_PLAYERHUD_RENDER_CRAFTING_TABLE": {
-  "value": "1298",
+  "MC_PRE_SELECT_AMBUSH_WAVE": {
+  "value": "1058",
   "args": [
       {
-        "type":"EntityPlayer",
-        "name": "Player"
+        "type":"RoomConfigRoom",
+        "name": "roomConfigRoom"
       },
       {
-        "type": "Vector",
-        "name": "Offset"
-      },
-      {
-        "type": "number",
-        "name": "Scale"
+        "type": "integer",
+        "name": "seed"
       }
     ],
-    "returns": [],
-    "comment": "Render callback for Tainted Cain's Bag of Crafting HUD"
+    "returns": [
+		{
+			"type": "RoomConfigRoom"
+		}
+	],
+    "comment": "Called before a Challenge/Boss Rush wave is spawned. Return a different RoomConfig_Room to change the wave layout"
+  },
+  "MC_PRE_SELECT_GREED_WAVE": {
+  "value": "1059",
+  "args": [
+      {
+        "type":"RoomConfigRoom",
+        "name": "roomConfigRoom"
+      },
+      {
+        "type": "integer",
+        "name": "seed"
+      }
+    ],
+    "returns": [
+		{
+			"type": "RoomConfigRoom"
+		}
+	],
+    "comment": "Called before a Greed Mode wave is spawned. Return a different RoomConfig_Room to change the wave layout"
+  },
+  "MC_PRE_NPC_GET_LOOT_LIST": {
+  "value": "1337",
+  "args": [
+      {
+        "type":"EntityNPC",
+        "name": "npc"
+      },
+      {
+        "type": "boolean",
+        "name": "ShouldAdvance"
+      },
+      {
+        "type": "RNG",
+        "name": "rng"
+      }
+    ],
+    "returns": [
+		{
+			"type": "LootList"
+		}
+	],
+    "comment": "Called before an NPC creates a LootList"
   }
 }
