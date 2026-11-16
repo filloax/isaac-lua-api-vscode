@@ -80,7 +80,7 @@ function Room:GetGridIndexByTile(gridRow, gridColumn)
 end
 
 ---Retrieves the pool the game would use to generate random collectibles in the current room. Unlike `ItemPool:GetPoolForRoom()`, this takes into account the pool set using SetItemPool(), and runs the game's pool selection code, which handles unique cases (ex. Boss Room + Used Satanic Bible = Devil Pool).
----@param Seed integer
+---@param Seed? integer @default: `Random()`
 ---@param Raw? boolean @default: `false`. If set to true and the pool is set to `POOL_NULL` then `POOL_NULL` will be returned, instead of running the game's pool selection code.
 ---@return ItemPoolType
 function Room:GetItemPool(Seed, Raw)
