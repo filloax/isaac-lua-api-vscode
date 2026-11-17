@@ -3149,7 +3149,7 @@
       "type": "FamiliarVariant",
       "optional": true
     },
-    "comment": "Called when a familiar fires a tear. (Is this just for Weapon familiars or all familiars??)"
+    "comment": "Called when a non-player-copying familiar fires a tear."
   },
   "MC_POST_FIRE_BOMB": {
     "value": "1253",
@@ -3252,7 +3252,7 @@
       "type": "FamiliarVariant",
       "optional": true
     },
-    "comment": "Called when a familiar fires a brimstone laser."
+    "comment": "Called when a non-player-copying familiar fires a brimstone laser."
   },
   "MC_POST_FAMILIAR_FIRE_TECH_LASER": {
     "value": "1262",
@@ -3267,7 +3267,7 @@
       "type": "FamiliarVariant",
       "optional": true
     },
-    "comment": "Called when a familiar fires a Tech laser."
+    "comment": "Called when a non-player-copying familiar fires a Tech laser."
   },
   "MC_IS_PERSISTENT_ROOM_ENTITY": {
     "value": "1263",
