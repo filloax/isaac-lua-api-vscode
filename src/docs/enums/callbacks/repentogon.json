@@ -375,7 +375,8 @@
         "name": "Amount"
       },
       {
-        "type": "AddHealthType"
+        "type": "AddHealthType",
+		"name": "healthType"
       },
       {
         "type": "boolean",
@@ -405,7 +406,8 @@
         "name": "Amount"
       },
       {
-        "type": "AddHealthType"
+        "type": "AddHealthType",
+		"name": "healthType"
       },
       {
         "type": "boolean",
