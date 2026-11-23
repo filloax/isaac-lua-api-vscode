@@ -1,5 +1,16 @@
 # Change Log
 
+* [1.18.0]
+    - When REPENTOGON is enabled, the workspace Lua runtime is now set to LuaJIT (with LuaJIT extensions enabled) to match REPENTOGON's LuaJIT port; vanilla stays on Lua 5.3
+    - Add REPENTOGON callbacks `MC_PRE_SELECT_AMBUSH_WAVE`, `MC_PRE_SELECT_GREED_WAVE` and `MC_PRE_NPC_GET_LOOT_LIST`
+    - `MC_PRE_ADD_COLLECTIBLE` can return `false` to prevent the collectible from being added
+    - `MC_PRE_PLAYER_ADD_HEARTS`/`MC_POST_PLAYER_ADD_HEARTS`: `AddHealthType` argument is now named `healthType`
+    - Clarify that familiar firing callbacks only apply to non-player-copying familiars
+    - Document `Weapon:PlayItemAnim`, `Weapon:ClearItemAnim` and `Weapon:IsItemAnimFinished`; fix `PlayItemAnim` params (`animType`, `direction`, `frame`)
+    - Rename `Entity:GetBrimstoneMarkCooldown` to `Entity:GetBrimstoneMarkCountdown`
+    - `Room:GetItemPool`'s `Seed` param is now optional
+    - Fix `XMLData.GetBossColorByTypeVarSub`, `GetEntryFromEntity` and `GetEntryByOrder` missing return types
+
 * [1.17.1]
     - Completion: fix function names
 
