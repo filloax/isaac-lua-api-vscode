@@ -3255,13 +3255,17 @@
   "DipSubType": {
     "NORMAL": "0",
     "RED": "1",
+	"CHUNKY": "2",
     "CORN": "2",
     "GOLDEN": "3",
     "RAINBOW": "4",
     "BLACK": "5",
     "HOLY": "6",
+	"WHITE": "6",
+	"STONE": "12",
     "PETRIFIED": "12",
     "FLAMING": "13",
+	"STINKY": "14",
     "POISON": "14",
     "BROWNIE": "20"
   },
