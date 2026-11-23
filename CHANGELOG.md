@@ -1,5 +1,9 @@
 # Change Log
 
+* [1.18.1]
+    - Partially revert early callback changes in last version (`MC_PRE_SELECT_AMBUSH_WAVE`, `MC_PRE_SELECT_GREED_WAVE` and `MC_PRE_NPC_GET_LOOT_LIST`)
+    - Add alternate `DipSubType` enums
+
 * [1.18.0]
     - When REPENTOGON is enabled, the workspace Lua runtime is now set to LuaJIT (with LuaJIT extensions enabled) to match REPENTOGON's LuaJIT port; vanilla stays on Lua 5.3
     - Add REPENTOGON callbacks `MC_PRE_SELECT_AMBUSH_WAVE`, `MC_PRE_SELECT_GREED_WAVE` and `MC_PRE_NPC_GET_LOOT_LIST`
