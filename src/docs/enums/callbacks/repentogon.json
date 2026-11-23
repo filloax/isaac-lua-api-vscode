@@ -7476,65 +7476,23 @@
     ],
     "comment": "Render callback for Tainted Cain's Bag of Crafting HUD. Return `false` to cancel rendering, or a `Vector` to modify the offset."
   },
-  "MC_PRE_SELECT_AMBUSH_WAVE": {
-  "value": "1058",
+  "MC_POST_PLAYERHUD_RENDER_CRAFTING_TABLE": {
+  "value": "1298",
   "args": [
       {
-        "type":"RoomConfigRoom",
-        "name": "roomConfigRoom"
+        "type":"EntityPlayer",
+        "name": "Player"
       },
       {
-        "type": "integer",
-        "name": "seed"
+        "type": "Vector",
+        "name": "Offset"
+      },
+      {
+        "type": "number",
+        "name": "Scale"
       }
     ],
-    "returns": [
-		{
-			"type": "RoomConfigRoom"
-		}
-	],
-    "comment": "Called before a Challenge/Boss Rush wave is spawned. Return a different RoomConfig_Room to change the wave layout"
-  },
-  "MC_PRE_SELECT_GREED_WAVE": {
-  "value": "1059",
-  "args": [
-      {
-        "type":"RoomConfigRoom",
-        "name": "roomConfigRoom"
-      },
-      {
-        "type": "integer",
-        "name": "seed"
-      }
-    ],
-    "returns": [
-		{
-			"type": "RoomConfigRoom"
-		}
-	],
-    "comment": "Called before a Greed Mode wave is spawned. Return a different RoomConfig_Room to change the wave layout"
-  },
-  "MC_PRE_NPC_GET_LOOT_LIST": {
-  "value": "1337",
-  "args": [
-      {
-        "type":"EntityNPC",
-        "name": "npc"
-      },
-      {
-        "type": "boolean",
-        "name": "ShouldAdvance"
-      },
-      {
-        "type": "RNG",
-        "name": "rng"
-      }
-    ],
-    "returns": [
-		{
-			"type": "LootList"
-		}
-	],
-    "comment": "Called before an NPC creates a LootList"
+    "returns": [],
+    "comment": "Render callback for Tainted Cain's Bag of Crafting HUD"
   }
 }
