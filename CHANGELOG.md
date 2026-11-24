@@ -1,5 +1,8 @@
 # Change Log
 
+* [1.18.2]
+    - Remove lua runtime version setting as it broke some things with assumptions
+
 * [1.18.1]
     - Partially revert early callback changes in last version (`MC_PRE_SELECT_AMBUSH_WAVE`, `MC_PRE_SELECT_GREED_WAVE` and `MC_PRE_NPC_GET_LOOT_LIST`)
     - Add alternate `DipSubType` enums
