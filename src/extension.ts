@@ -82,8 +82,8 @@ function onActivate(context: vscode.ExtensionContext) {
 
     modifyJsoncFile(filenamePath, luaCfg => {
         // luaCfg["$schema"] = "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json";
-        const runtimeVersion = config.repentogonEnabled ? "LuaJIT" : "Lua 5.3";
-        luaCfg["runtime.version"] = runtimeVersion;
+        // const runtimeVersion = config.repentogonEnabled ? "LuaJIT" : "Lua 5.3";
+        // luaCfg["runtime.version"] = runtimeVersion;
         luaCfg["runtime.enableLuaJITExtensions"] = config.repentogonEnabled; // added in rgon luajit port
 
         setExternalLibrary(luaCfg, context, VANILLA_LUA_LIBRARY, !config.repentogonEnabled);
